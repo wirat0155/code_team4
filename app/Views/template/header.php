@@ -2,7 +2,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windmill Dashboard</title>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="<?php echo base_url() . '/assets/css/tailwind.output.css'?>">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer=""></script>
     <script src="<?php echo base_url() . '/assets/js/init-alpine.js'?>"></script>
@@ -11,7 +19,14 @@
     <script src="<?php echo base_url() . '/assets/js/charts-lines.js'?>" defer=""></script>
     <script src="<?php echo base_url() . '/assets/js/charts-pie.js'?>" defer=""></script>
     <link rel="stylesheet" href="<?php echo base_url() . '/assets/css/index.css'?>">
-</style>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <style>
+      * {
+        font-family: 'Sarabun', sans-serif !important;
+      }
+    </style>
 </head>
 <body>
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
