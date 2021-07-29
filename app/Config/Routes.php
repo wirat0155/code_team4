@@ -36,6 +36,7 @@ $routes->get('dashboard', 'Dashboard::index');
 $routes->get('member', 'Member::index');
 $routes->get('delete_member', 'Member::delete');
 $routes->get('delete_member/(:num)', 'Member::delete/$1');
+$routes->get('customer', 'Customer_show::customer_show_ajax');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

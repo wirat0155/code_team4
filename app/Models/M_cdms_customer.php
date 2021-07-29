@@ -6,7 +6,8 @@ class M_cdms_customer extends Da_cdms_customer {
     // M get_all get_by_id
     public function get_all()
     {
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM $this->table
+                WHERE cus_status = 1";
         return $this->db->query($sql)->getResult();
     }   
 }
