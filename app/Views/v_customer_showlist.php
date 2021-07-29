@@ -1,3 +1,30 @@
+<style>
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        color: white !important;
+        border: 1px solid #3f83f8 !important;
+        background-color: #3f83f8 !important;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white)) !important;
+        background: -webkit-linear-gradient(top, white 0%, #3f83f8 0%) !important;
+        background: -moz-linear-gradient(top, white 0%, #3f83f8 0%) !important;
+        background: -ms-linear-gradient(top, white 0%, #3f83f8 0%) ;
+        background: -o-linear-gradient(top, white 0%, #3f83f8 0%) !important ;
+        background: linear-gradient(to bottom, white 0%, #3f83f8 0%) !important;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+        cursor: pointer;
+        color: #3f83f8 !important;
+        border: 1px solid #3f83f8 !important;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    @media (min-width: 768px){
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(6,minmax(0,1fr));
+        }
+    }
+</style>
+
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
@@ -10,9 +37,41 @@
         </div>
     </di>
 
+    <!-- Excel and date -->
+    <div class="text-right mb-6">
+        <!-- Download Excel -->
+        <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
+            <i class="bi bi-file-arrow-down mr-1"></i>
+            Download Excel
+        </a>
+        <!-- Date -->
+        <input class="pl-2 shadow-sm rounded" type="text" name="daterange" value="01/01/2018 - 01/15/2018" style=" height: 40px; width: 200px; ">
+    </div>
+
     <!-- Card -->
-    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-        <!-- Card -->
+    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
+        <!-- Card ตู้เข้า -->
+        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 ">
+            <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
+                    </path>
+                </svg>
+            </div>
+            <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    ตู้เข้า
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    <?php 
+                        $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
+                        echo ($count_import != 0) ? $count_import : '0';
+                    ?> 
+                </p>
+            </div>
+        </div>
+        <!-- Card ตู้ออก-->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -23,14 +82,38 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Total clients
+                    ตู้ออก
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    6389
+                    <?php 
+                        $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
+                        echo ($count_export != 0) ? $count_export : '0';
+                    ?> 
                 </p>
             </div>
         </div>
-        <!-- Card -->
+        <!-- Card ตู้ดรอป -->
+        <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+            <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
+                    </path>
+                </svg>
+            </div>
+            <div>
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    ตู้ดรอป
+                </p>
+                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                    <?php 
+                        $count_drop = array_count_values(array_column($arr_service, 'ser_type'))[3];
+                        echo ($count_drop != 0) ? $count_drop : '0';
+                    ?>  
+                </p>
+            </div>
+        </div>
+        <!-- Card Dry Container -->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -41,14 +124,17 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Account balance
+                    Dry Container 
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    $ 46,760.89
+                    <?php 
+                        $count_Dry_Container  = array_count_values(array_column($arr_service, 'con_id'))[1];
+                        echo ($count_Dry_Container != 0) ? $count_Dry_Container : '0';
+                    ?>                    
                 </p>
             </div>
         </div>
-        <!-- Card -->
+        <!-- Card Reefer container -->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -59,14 +145,17 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    New sales
+                    Reefer Container
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    376
+                    <?php 
+                        $count_Reefer_container = array_count_values(array_column($arr_service, 'con_id'))[2];
+                        echo ($count_Reefer_container != 0) ? $count_Reefer_container : '0';
+                    ?>
                 </p>
             </div>
         </div>
-        <!-- Card -->
+        <!-- Card ISO Tank Container -->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -77,10 +166,13 @@
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                    Pending contacts
+                    ISO Tank Container 
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    35
+                    <?php 
+                        $count_ISO_Tank_Container = array_count_values(array_column($arr_service, 'con_id'))[3];
+                        echo ($count_ISO_Tank_Container != 0) ? $count_ISO_Tank_Container : '0';
+                    ?>
                 </p>
             </div>
         </div>
@@ -136,9 +228,14 @@
                         <?php echo $arr_customer[$i]->cus_email?>
                     </td>
 
+                    <!-- ดำเนินการ -->
                     <td class="px-4 py-3 text-sm text-center">
+                        <!-- ปุ่มแก้ไข -->
                         <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        <a href="<?php echo base_url() . '/public/Customer_show/customer_delete/' . $arr_customer[$i]->cus_id?>" class="btn btn-danger p-2"><i class="bi bi-trash"></i></a>
+                        <!-- ปุ่มลบ -->
+                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModal">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </td>
                 </tr>
                 <?php } ?>
@@ -147,6 +244,12 @@
     </div>
 
 </div>
+
+<!-- Modal -->
+
+<!-- ตัวลิ่๊ง -->
+<?php //echo base_url() . '/public/Customer_show/customer_delete/' . $arr_customer[$i]->cus_id ?>
+
 <script>
 $(document).ready(function() {
     $('.table').DataTable({
@@ -158,6 +261,12 @@ $(document).ready(function() {
             "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
             "sSearch": "ค้นหา :"
         }
+    });
+    $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </button>");
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+    }, function(start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
     });
 });
 </script>
