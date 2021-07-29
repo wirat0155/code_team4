@@ -35,22 +35,22 @@
 
                     <!-- สถานะตู้ -->
                     <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_container[$i]->con_stac_id?>
+                        <?php echo $arr_container[$i]->stac_name?>
                     </td>
 
                     <!-- ประเภทตู้ -->
                     <td class="px-4 py-3 text-sm text-center">
-                        <?php echo $arr_container[$i]->con_cont_id?>
+                        <?php echo $arr_container[$i]->cont_name?>
                     </td>
 
                     <!-- ขนาดตู้ -->
                     <td class="px-4 py-3 text-sm text-center">
-                        <?php echo $arr_container[$i]->con_size_id?>
+                        <?php echo $arr_container[$i]->size_name?>
                     </td>
 
                     <!-- เอเย่นต์ -->
                     <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_container[$i]->con_agn_id?>
+                        <?php echo $arr_container[$i]->agn_company_name?>
                     </td>
 
                     <td class="px-4 py-3 text-sm text-center">
