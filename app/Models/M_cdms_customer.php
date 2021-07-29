@@ -10,4 +10,10 @@ class M_cdms_customer extends Da_cdms_customer {
                 WHERE cus_status = 1";
         return $this->db->query($sql)->getResult();
     }   
+    public function get_by_id($cus_id){
+        $sql = "SELECT * FROM $this->table
+                on cus_id
+                WHERE cus_id";
+         return $this->db->query($sql)->getResult();
+    }
 }
