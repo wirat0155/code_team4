@@ -1,5 +1,4 @@
 <div class="container px-6 mx-auto grid">
-
     <!-- หัวข้อ -->
     <div
         class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
