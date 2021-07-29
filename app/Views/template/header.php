@@ -38,10 +38,19 @@
       <!-- Desktop sidebar -->
       <aside class="z-20 hidden w-64 overflow-y-auto  md:block flex-shrink-0" style="background-color: #E7E8EA">
         <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
+          <a class="text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
+            <div class="justify-content-center flex items-center pl-1">
+                  <img class="shadow rounded" src="<?= base_url('/upload').'/'.'Logo_IBS.jpg'?>" alt="" style="width: 3rem; height: 3rem; object-fit: cover;">
+                  <div class="pl-3 items-center">
+                        ระบบจัดการ <br>
+                        ตู้คอนเทนเนอร์
+                  </div>
+            </div>
+          </a>
+          <!-- <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
             ระบบจัดการตู้คอนเทนเนอร์
           </a>
-          <br>
+          <br> -->
 
           <ul class="mt-6">
             <li class="relative px-6 py-3" <?php if($_SESSION['menu'] == 'Dashboard') echo 'style="background-color: #D2D5DA"'?>>
