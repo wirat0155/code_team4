@@ -120,7 +120,10 @@
 
                     <!-- จำนวนตู้ที่กำลังใช้ -->
                     <td class="px-4 py-3 text-sm text-center">
-                        <?php echo 'จำนวนตู้'?>
+                        <?php 
+                            $count_container = array_count_values(array_column($arr_service, 'cus_company_name'))[$arr_customer[$i]->cus_company_name];
+                            echo ($count_container != 0) ? $count_container : '0';
+                        ?>
                     </td>
 
                     <!-- เบอร์โทรศัพท์ -->
@@ -134,7 +137,8 @@
                     </td>
 
                     <td class="px-4 py-3 text-sm text-center">
-                        <?php echo 'ปุ่ม'?>
+                        <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        <a href="<?php echo base_url() . '/public/Customer_show/customer_delete/' . $arr_customer[$i]->cus_id?>" class="btn btn-danger p-2"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
                 <?php } ?>
