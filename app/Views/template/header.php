@@ -31,6 +31,31 @@
       * {
         font-family: 'Sarabun', sans-serif !important;
       }
+
+      /* หน้า Datatable */
+      .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+      .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+          color: white !important;
+          border: 1px solid #3f83f8 !important;
+          background-color: #3f83f8 !important;
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white)) !important;
+          background: -webkit-linear-gradient(top, white 0%, #3f83f8 0%) !important;
+          background: -moz-linear-gradient(top, white 0%, #3f83f8 0%) !important;
+          background: -ms-linear-gradient(top, white 0%, #3f83f8 0%);
+          background: -o-linear-gradient(top, white 0%, #3f83f8 0%) !important;
+          background: linear-gradient(to bottom, white 0%, #3f83f8 0%) !important;
+      }
+
+      /* Datatable Next และ Previous */
+      .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+      .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+      .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+          cursor: pointer;
+          color: #3f83f8 !important;
+          border: 1px solid #3f83f8 !important;
+          background: transparent;
+          box-shadow: none;
+      }
     </style>
 </head>
 <body>
@@ -54,7 +79,7 @@
 
           <ul class="mt-6">
             <li class="relative px-6 py-3" <?php if($_SESSION['menu'] == 'Dashboard') echo 'style="background-color: #D2D5DA"'?>>
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Dashboard') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Dashboard'?>">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Dashboard') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Dashboard/show_dashboard'?>">
                 <span class="ml-4">หน้าหลัก</span>
               </a>
             </li>
@@ -84,7 +109,7 @@
             </li>
             
             <li class="relative px-6 py-3" <?php if($_SESSION['menu'] == 'Driver_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Driver_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Driver_show'?>">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Driver_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Driver_show/driver_show_ajax'?>">
                 <span class="ml-4">ข้อมูลพนักงานขับรถ</span>
               </a>
             </li>

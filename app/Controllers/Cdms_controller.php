@@ -36,7 +36,7 @@ class Cdms_controller extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = ['code'];
 
 	/**
 	 * Constructor.

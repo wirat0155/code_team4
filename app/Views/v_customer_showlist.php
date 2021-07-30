@@ -1,33 +1,12 @@
 <style>
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    color: white !important;
-    border: 1px solid #3f83f8 !important;
-    background-color: #3f83f8 !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white)) !important;
-    background: -webkit-linear-gradient(top, white 0%, #3f83f8 0%) !important;
-    background: -moz-linear-gradient(top, white 0%, #3f83f8 0%) !important;
-    background: -ms-linear-gradient(top, white 0%, #3f83f8 0%);
-    background: -o-linear-gradient(top, white 0%, #3f83f8 0%) !important;
-    background: linear-gradient(to bottom, white 0%, #3f83f8 0%) !important;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
-    cursor: pointer;
-    color: #3f83f8 !important;
-    border: 1px solid #3f83f8 !important;
-    background: transparent;
-    box-shadow: none;
-}
-
-@media (min-width: 1000px){
+/* Grid Card จอต่ำสุด 1000 px */
+@media (min-width: 1000px) {
     .md\:grid-cols-2 {
-        grid-template-columns: repeat(3,minmax(0,1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
+/* Grid Card จอต่ำสุด 1450 px */
 @media (min-width: 1450px) {
     .xl\:grid-cols-3 {
         grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -38,7 +17,8 @@
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
-    <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <di
+        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
                 ข้อมูลลูกค้า
@@ -49,12 +29,14 @@
     <!-- Excel and date -->
     <div class="text-right mb-6">
         <!-- Download Excel -->
-        <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
+        <a href="" class="shadow-sm btn btn-white text-success bg-white"
+            style=" height: 40px; width: 180px; margin-bottom: 5">
             <i class="bi bi-file-arrow-down mr-1"></i>
             Download Excel
         </a>
         <!-- Date -->
-        <input class="pl-2 shadow-sm rounded" type="text" name="daterange" value="01/01/2018 - 01/15/2018" style=" height: 40px; width: 200px; ">
+        <input class="pl-2 shadow-sm rounded" type="text" name="daterange" value="01/01/2018 - 01/15/2018"
+            style=" height: 40px; width: 200px; ">
     </div>
 
     <!-- Card ตู้เข้า -->
@@ -63,7 +45,8 @@
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 ">
             <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="1 1 17 10">
-                    <path d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z">
+                    <path
+                        d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z">
                     </path>
                 </svg>
             </div>
@@ -72,9 +55,9 @@
                     ตู้เข้า
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <?php 
-                        $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
-                        echo ($count_import != 0) ? $count_import : '0';
+                    <?php
+                    $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
+                    echo ($count_import != 0) ? $count_import : '0';
                     ?>
                 </p>
             </div>
@@ -83,7 +66,8 @@
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="-1 1 17 10">
-                    <path fill-rule="evenodd" d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z">
+                    <path fill-rule="evenodd"
+                        d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z">
                     </path>
                 </svg>
             </div>
@@ -92,9 +76,9 @@
                     ตู้ออก
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <?php 
-                        $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
-                        echo ($count_export != 0) ? $count_export : '0';
+                    <?php
+                    $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
+                    echo ($count_export != 0) ? $count_export : '0';
                     ?>
                 </p>
             </div>
@@ -103,7 +87,8 @@
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="3 2 10 11">
-                    <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z">
+                    <path
+                        d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z">
                     </path>
                 </svg>
             </div>
@@ -112,54 +97,57 @@
                     ตู้ดรอป
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <?php 
-                        $count_drop = array_count_values(array_column($arr_service, 'ser_type'))[3];
-                        echo ($count_drop != 0) ? $count_drop : '0';
+                    <?php
+                    $count_drop = array_count_values(array_column($arr_service, 'ser_type'))[3];
+                    echo ($count_drop != 0) ? $count_drop : '0';
                     ?>
                 </p>
             </div>
         </div>
         <!-- Card Dry Container -->
         <div class="flex items-center pl-3 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-            <img src="<?= base_url('/upload').'/'.'DryContainer.jpg'?>" alt="" style="width: 3rem; height: 3rem; object-fit: cover;">
+            <img src="<?= base_url('/upload') . '/' . 'DryContainer.jpg' ?>" alt=""
+                style="width: 3rem; height: 3rem; object-fit: cover;">
             <div class="pl-3">
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                     Dry Container
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <?php 
-                        $count_Dry_Container  = array_count_values(array_column($arr_service, 'con_id'))[1];
-                        echo ($count_Dry_Container != 0) ? $count_Dry_Container : '0';
+                    <?php
+                    $count_Dry_Container  = array_count_values(array_column($arr_service, 'cont_name'))['Dry Container'];
+                    echo ($count_Dry_Container != 0) ? $count_Dry_Container : '0';
                     ?>
                 </p>
             </div>
         </div>
         <!-- Card Reefer container -->
         <div class="flex items-center pl-3 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-            <img src="<?= base_url('/upload').'/'.'ReeferContainer.jpg'?>" alt="" style="width: 4rem; height: 3rem; object-fit: cover;">
+            <img src="<?= base_url('/upload') . '/' . 'ReeferContainer.jpg' ?>" alt=""
+                style="width: 4rem; height: 3rem; object-fit: cover;">
             <div class="pl-4">
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                     Reefer Container
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <?php 
-                        $count_Reefer_container = array_count_values(array_column($arr_service, 'con_id'))[2];
-                        echo ($count_Reefer_container != 0) ? $count_Reefer_container : '0';
+                    <?php
+                    $count_Reefer_container = array_count_values(array_column($arr_service, 'cont_name'))['Reefer Container'];
+                    echo ($count_Reefer_container != 0) ? $count_Reefer_container : '0';
                     ?>
                 </p>
             </div>
         </div>
         <!-- Card ISO Tank Container -->
         <div class="flex items-center pl-3 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-            <img src="<?= base_url('/upload').'/'.'ISOTank.jpg'?>" alt="" style="width: 4rem; height: 3rem; object-fit: cover;">
+            <img src="<?= base_url('/upload') . '/' . 'ISOTank.jpg' ?>" alt=""
+                style="width: 4rem; height: 3rem; object-fit: cover;">
             <div class="pl-4">
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                     ISO Tank Container
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                    <?php 
-                        $count_ISO_Tank_Container = array_count_values(array_column($arr_service, 'con_id'))[3];
-                        echo ($count_ISO_Tank_Container != 0) ? $count_ISO_Tank_Container : '0';
+                    <?php
+                    $count_ISO_Tank_Container = array_count_values(array_column($arr_service, 'cont_name'))['ISO Tank'];
+                    echo ($count_ISO_Tank_Container != 0) ? $count_ISO_Tank_Container : '0';
                     ?>
                 </p>
             </div>
@@ -180,40 +168,40 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                <?php for($i = 0; $i < count($arr_customer); $i++) { ?>
+                <?php for ($i = 0; $i < count($arr_customer); $i++) { ?>
                 <tr class="text-gray-700 dark:text-gray-400">
 
                     <!-- บริษัท -->
                     <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
-                            <?php 
-                                    echo $arr_customer[$i]->cus_company_name;
-                                    echo ($arr_customer[$i]->cus_branch != null) ? ' (' . $arr_customer[$i]->cus_branch . ') ' : '';
+                            <?php
+                                echo $arr_customer[$i]->cus_company_name;
+                                echo ($arr_customer[$i]->cus_branch != null) ? ' (' . $arr_customer[$i]->cus_branch . ') ' : '';
                                 ?>
                         </div>
                     </td>
 
                     <!-- ผู้รับผิดชอบ -->
                     <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname?>
+                        <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
                     </td>
 
                     <!-- จำนวนตู้ที่กำลังใช้ -->
                     <td class="px-4 py-3 text-sm text-center">
-                        <?php 
+                        <?php
                             $count_container = array_count_values(array_column($arr_service, 'cus_company_name'))[$arr_customer[$i]->cus_company_name];
                             echo ($count_container != 0) ? $count_container : '0';
-                        ?>
+                            ?>
                     </td>
 
                     <!-- เบอร์โทรศัพท์ -->
                     <td class="px-4 py-3 text-sm text-center">
-                        <?php echo $arr_customer[$i]->cus_tel?>
+                        <?php echo tel_format($arr_customer[$i]->cus_tel) ?>
                     </td>
 
                     <!-- email -->
                     <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_customer[$i]->cus_email?>
+                        <?php echo $arr_customer[$i]->cus_email ?>
                     </td>
 
                     <!-- ดำเนินการ -->
@@ -221,7 +209,8 @@
                         <!-- ปุ่มแก้ไข -->
                         <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                         <!-- ปุ่มลบ -->
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_customer[$i]->cus_id?>)">
+                        <button type="button" class="btn btn-danger p-2" data-toggle="modal"
+                            data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
                             <i class="bi bi-trash"></i>
                         </button>
 
@@ -236,7 +225,8 @@
 </div>
 
 <!-- Modal ยืนยันการลบ -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -245,10 +235,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            
             <form action="<?php echo base_url() . '/public/Customer_show/customer_delete'?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
-                    <input name="cus_id" id="cus_id" type="text">
+                    <input name="cus_id" id="cus_id" type="hidden">
                     คุณเเน่ใจหรือไม่ที่ต้องการลบ
                 </div>
                 <div class="modal-footer">
@@ -272,14 +263,18 @@ $(document).ready(function() {
             "sSearch": "ค้นหา :"
         }
     });
-    $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </button>");
+    $("#DataTables_Table_0_filter").append(
+        "<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </button>"
+        );
     $('input[name="daterange"]').daterangepicker({
         opens: 'left'
     }, function(start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+            .format('YYYY-MM-DD'));
     });
 });
 
+// ส่ง cus_id เข้า Modal
 function get_id(cus_id) {
     $('#cus_id').val(cus_id);
 }
