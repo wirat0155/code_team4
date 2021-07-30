@@ -41,7 +41,7 @@
                             ?>
                         </td>
                         <td class="phone px-4 py-3 text-sm text-center">
-                            <?php echo $arr_agent[$i]->agn_tel ?>
+                            <?php echo tel_format($arr_agent[$i]->agn_tel) ?>
                         </td>
                         <td class="px-4 py-3 text-sm">
                             <?php echo $arr_agent[$i]->agn_email ?>
@@ -104,9 +104,4 @@
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
-
-    // format เบอร์โทรศัพท์
-    $('.phone').text(function(i, text) {
-        return text.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-    });
 </script>

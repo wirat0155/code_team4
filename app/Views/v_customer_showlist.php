@@ -195,8 +195,8 @@
                     </td>
 
                     <!-- เบอร์โทรศัพท์ -->
-                    <td class="phone px-4 py-3 text-sm text-center">
-                        <?php echo $arr_customer[$i]->cus_tel ?>
+                    <td class="px-4 py-3 text-sm text-center">
+                        <?php echo tel_format($arr_customer[$i]->cus_tel) ?>
                     </td>
 
                     <!-- email -->
@@ -278,9 +278,4 @@ $(document).ready(function() {
 function get_id(cus_id) {
     $('#cus_id').val(cus_id);
 }
-
-// format เบอร์โทรศัพท์
-$('.phone').text(function(i, text) {
-    return text.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-});
 </script>
