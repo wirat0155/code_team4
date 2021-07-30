@@ -57,7 +57,7 @@
 
                     <td class="px-4 py-3 text-sm text-center">
                         <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[$i]->con_id?>)">
+                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[$i]->dri_id?>)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -82,7 +82,7 @@
             <form action="<?php echo base_url() . '/public/Driver_show/driver_delete'?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Container Id -->
-                    <input name="con_id" id="con_id" type="hidden">
+                    <input name="dri_id" id="dri_id" type="hidden">
                     <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
                 </div>
                 <div class="modal-footer">
@@ -108,7 +108,7 @@
         });
         $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มคนขับรถ </button>");
     });
-    function get_id(con_id) {
-        $('#con_id').val(con_id);
+    function get_id(dri_id) {
+        $('#dri_id').val(dri_id);
     }
 </script>

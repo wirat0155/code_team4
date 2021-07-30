@@ -24,7 +24,6 @@ class Da_cdms_driver extends Model{
     * @Create Date 2564-07-30
     * @Update Date
     */
-    
     public function delete($dri_id = NULL, bool $purge = false){
         $sql = "UPDATE $this->table 
                 SET dri_status=2 
