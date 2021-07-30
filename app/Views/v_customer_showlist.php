@@ -1,33 +1,12 @@
 <style>
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    color: white !important;
-    border: 1px solid #3f83f8 !important;
-    background-color: #3f83f8 !important;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, white)) !important;
-    background: -webkit-linear-gradient(top, white 0%, #3f83f8 0%) !important;
-    background: -moz-linear-gradient(top, white 0%, #3f83f8 0%) !important;
-    background: -ms-linear-gradient(top, white 0%, #3f83f8 0%);
-    background: -o-linear-gradient(top, white 0%, #3f83f8 0%) !important;
-    background: linear-gradient(to bottom, white 0%, #3f83f8 0%) !important;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
-    cursor: pointer;
-    color: #3f83f8 !important;
-    border: 1px solid #3f83f8 !important;
-    background: transparent;
-    box-shadow: none;
-}
-
+/* Grid Card จอต่ำสุด 1000 px */
 @media (min-width: 1000px) {
     .md\:grid-cols-2 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
+/* Grid Card จอต่ำสุด 1450 px */
 @media (min-width: 1450px) {
     .xl\:grid-cols-3 {
         grid-template-columns: repeat(6, minmax(0, 1fr));
