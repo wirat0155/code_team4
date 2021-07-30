@@ -245,10 +245,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            
             <form action="<?php echo base_url() . '/public/Customer_show/customer_delete'?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
-                    <input name="cus_id" id="cus_id" type="text">
+                    <input name="cus_id" id="cus_id" type="hidden">
                     คุณเเน่ใจหรือไม่ที่ต้องการลบ
                 </div>
                 <div class="modal-footer">
@@ -280,6 +281,7 @@ $(document).ready(function() {
     });
 });
 
+// ส่ง cus_id เข้า Modal
 function get_id(cus_id) {
     $('#cus_id').val(cus_id);
 }

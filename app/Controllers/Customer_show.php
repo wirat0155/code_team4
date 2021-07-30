@@ -15,8 +15,8 @@ class Customer_show extends Cdms_controller
         $this->output('v_customer_showlist', $data);
     }
     public function customer_delete() {
-        $M_ctm = new M_cdms_customer();
-        $M_ctm->delete($this->request->getPost('cus_id'));
+        $M_cus = new M_cdms_customer();
+        $M_cus->delete($this->request->getPost('cus_id'));
         return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
     }
 
