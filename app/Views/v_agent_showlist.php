@@ -5,7 +5,7 @@
     <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                ข้อมูลเอเยนต์
+                ข้อมูลเอเย่นต์
             </h2>
         </div>
     </di>
@@ -24,7 +24,9 @@
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php
-                for ($i = 0; $i < count($arr_agent); $i++) { ?>
+                for ($i = 0; $i < count($arr_agent); $i++) { 
+                    if($arr_agent[$i]->agn_status==1){
+                    ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3 text-sm">
                             <?php echo $arr_agent[$i]->agn_company_name ?></p>
@@ -54,7 +56,7 @@
                     </td>
                     </tr>
 
-                <?php }  ?>
+                <?php } } ?>
             </tbody>
         </table>
     </div>
@@ -97,7 +99,7 @@
                 "sSearch": "ค้นหา :"
             }
         });
-        $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มเอเยนต์ </button>");
+        $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มเอเย่นต์ </button>");
     });
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
