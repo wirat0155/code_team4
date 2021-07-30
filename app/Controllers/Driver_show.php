@@ -31,7 +31,8 @@ class Driver_show extends Cdms_controller{
     */
     public function driver_delete(){
         $M_dri = new M_cdms_driver();
-        $M_dri->delete($this->request->getPost('dri_id'));
+        $dri_id = $this->request->getPost('dri_id');
+        $M_dri->delete($dri_id);
         return $this->response->redirect(base_url('/public/driver_show/driver_show_ajax'));
     }
 
