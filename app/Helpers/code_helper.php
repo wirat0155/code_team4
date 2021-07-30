@@ -19,8 +19,7 @@ if (!function_exists("DateThai")) {
     $strMonthThai=$strMonthCut[$strMonth];
     return "$strDay $strMonthThai $strYear $strhour:$strmin";
   } 
-$strDate =date("d-m-Y");
-echo ": ".DateThai($strDate);
+
 }
 
 ?>
