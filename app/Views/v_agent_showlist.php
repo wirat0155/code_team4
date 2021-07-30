@@ -70,5 +70,9 @@
                 "sSearch": "ค้นหา :"
             }
         });
+        $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มเอเยนต์ </button>");
     });
+    function get_id(con_id) {
+        $('#con_id').val(con_id);
+    }
 </script>
