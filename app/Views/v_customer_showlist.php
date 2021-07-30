@@ -114,7 +114,7 @@
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     <?php
-                    $count_Dry_Container  = array_count_values(array_column($arr_service, 'con_id'))[1];
+                    $count_Dry_Container  = array_count_values(array_column($arr_service, 'cont_name'))['Dry Container'];
                     echo ($count_Dry_Container != 0) ? $count_Dry_Container : '0';
                     ?>
                 </p>
@@ -130,7 +130,7 @@
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     <?php
-                    $count_Reefer_container = array_count_values(array_column($arr_service, 'con_id'))[2];
+                    $count_Reefer_container = array_count_values(array_column($arr_service, 'cont_name'))['Reefer Container'];
                     echo ($count_Reefer_container != 0) ? $count_Reefer_container : '0';
                     ?>
                 </p>
@@ -146,7 +146,7 @@
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                     <?php
-                    $count_ISO_Tank_Container = array_count_values(array_column($arr_service, 'con_id'))[3];
+                    $count_ISO_Tank_Container = array_count_values(array_column($arr_service, 'cont_name'))['ISO Tank'];
                     echo ($count_ISO_Tank_Container != 0) ? $count_ISO_Tank_Container : '0';
                     ?>
                 </p>
