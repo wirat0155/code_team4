@@ -216,7 +216,7 @@
                     </td>
 
                     <!-- เบอร์โทรศัพท์ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="phone px-4 py-3 text-sm text-center">
                         <?php echo $arr_customer[$i]->cus_tel ?>
                     </td>
 
@@ -256,12 +256,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-<<<<<<< Updated upstream
             
             <form action="<?php echo base_url() . '/public/Customer_show/customer_delete'?>" method="post">
-=======
-            <form action="<?php echo base_url() . '/public/Customer_show/customer_delete' ?>" method="post">
->>>>>>> Stashed changes
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
                     <input name="cus_id" id="cus_id" type="hidden">
@@ -303,4 +299,9 @@ $(document).ready(function() {
 function get_id(cus_id) {
     $('#cus_id').val(cus_id);
 }
+
+// format เบอร์โทรศัพท์
+$('.phone').text(function(i, text) {
+    return text.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+});
 </script>
