@@ -32,21 +32,24 @@
                         <td class="px-4 py-3 text-sm">
                             <?php echo $arr_agent[$i]->agn_firstname . " " . $arr_agent[$i]->agn_lastname ?>
                         </td>
-                        <td class="px-4 py-3 text-sm">
+                        <td class="px-4 py-3 text-sm text-center">
                             <?php
                             $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
                             echo ($count_container != 0) ? $count_container : '0';
                             ?>
                         </td>
-                        <td class="px-4 py-3 text-sm">
+                        <td class="px-4 py-3 text-sm text-center">
                             <?php echo $arr_agent[$i]->agn_tel ?>
                         </td>
                         <td class="px-4 py-3 text-sm">
                             <?php echo $arr_agent[$i]->agn_email ?>
                         </td>
-                        <td class="px-4 py-3 text-sm">
-
-                        </td>
+                        <td class="px-4 py-3 text-sm text-center">
+                        <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[$i]->con_id?>)">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
                     </tr>
 
                 <?php }  ?>
