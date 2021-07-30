@@ -79,7 +79,7 @@
 
           <ul class="mt-6">
             <li class="relative px-6 py-3" <?php if($_SESSION['menu'] == 'Dashboard') echo 'style="background-color: #D2D5DA"'?>>
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Dashboard') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Dashboard'?>">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Dashboard') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Dashboard/show_dashboard'?>">
                 <span class="ml-4">หน้าหลัก</span>
               </a>
             </li>
@@ -109,13 +109,13 @@
             </li>
             
             <li class="relative px-6 py-3" <?php if($_SESSION['menu'] == 'Driver_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Driver_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Driver_show'?>">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Driver_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Driver_show/driver_show_ajax'?>">
                 <span class="ml-4">ข้อมูลพนักงานขับรถ</span>
               </a>
             </li>
 
             <li class="relative px-6 py-3" <?php if($_SESSION['menu'] == 'Car_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Car_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Car_show'?>">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Car_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Car_show/car_show_ajax'?>">
                 <span class="ml-4">ข้อมูลรถ</span>
               </a>
             </li>
