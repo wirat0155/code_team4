@@ -151,15 +151,15 @@
                             if ($arr_service[$i]->ser_type == '1') {
                                 echo '<span class="text-con-in">ตู้เข้า</span>';
                             } else if ($arr_service[$i]->ser_type == '2') {
-                                echo "ตู้ออก";
+                                echo '<span class="text-con-out">ตู้ออก</span>';
                             } else if ($arr_service[$i]->ser_type == '3') {
-                                echo "ตู้ดรอป";
+                                echo '<span class="text-con-drop">ตู้ดรอป</span>';
                             }
                             ?>
                         </td>
 
                         <!-- ประเภทตู้ -->
-                        <td class="px-4 py-3 text-sm text-center">
+                        <td class="px-4 py-3 text-sm">
                             <?php echo $arr_service[$i]->cont_name ?>
                         </td>
 
@@ -205,5 +205,6 @@
                 "sSearch": "ค้นหา :"
             }
         });
+        $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </button>");
     });
 </script>
