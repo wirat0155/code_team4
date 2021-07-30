@@ -173,7 +173,7 @@
                     <!-- Cut-off -->
                     <td class="px-4 py-3 text-sm">
                         <p id="date">
-                            <?php echo $arr_service[$i]->ser_departure_date ?>
+                            <?php echo DateThai($arr_service[$i]->ser_departure_date) ?>
                         </p>
                     </td>
 
