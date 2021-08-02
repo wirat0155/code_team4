@@ -1,3 +1,38 @@
+<style>
+.text-con-ready {
+    background-color: #44BB55;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.text-con-damaged {
+    background-color: #eb1315;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.text-con-repair {
+    background-color: #F5D432;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+</style>
+
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
@@ -29,38 +64,38 @@
                     <!-- หมายเลขรถ -->
                     <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
-                          <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                            <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
-                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                          </div>
-                        <?php echo $arr_car[$i]->car_number?>
+                            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            </div>
+                            <?php echo $arr_car[$i]->car_number?>
                     </td>
 
                     <!-- ทะเบียนรถ -->
                     <td class="px-4 py-3 text-sm text-center">
-                    <?php echo $arr_car[$i]->car_code .' '.$arr_car[$i]->prov_name ?> 
+                        <?php echo $arr_car[$i]->car_code .' '.$arr_car[$i]->prov_name ?>
                     </td>
 
                     <!-- ประเภทรถ-->
                     <td class="px-4 py-3 text-sm text-center">
-                    <?php echo $arr_car[$i]->cart_name?>
+                        <?php echo $arr_car[$i]->cart_name?>
                     </td>
 
                     <!-- ยี่ห้อ -->
                     <td class="px-4 py-3 text-sm text-center">
-                    <?php echo $arr_car[$i]->car_brand?>
+                        <?php echo $arr_car[$i]->car_brand?>
                     </td>
 
                     <!-- สถานะ -->
                     <td class="px-4 py-3 text-sm text-center">
-                    <?php  
+                        <?php  
                         if ($arr_car[$i]->car_status == 1) 
                         {
-                            echo "พร้อมใช้";
+                            echo '<span class="text-con-ready">พร้อมใช้</span>';
                         } else if ($arr_car[$i]->car_status == 2){
-                            echo "เสียหาย";
+                            echo '<span class="text-con-damaged">เสียหาย</span>';
                         }else if ($arr_car[$i]->car_status == 3){
-                            echo "กำลังซ่อม";
+                            echo '<span class="text-con-repair">กำลังซ่อม</span>';
                         } ?>
                     </td>
 
