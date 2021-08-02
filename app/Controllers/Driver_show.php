@@ -1,6 +1,13 @@
 <?php namespace App\Controllers;
 use App\Models\M_cdms_driver;
 
+/*
+* Driver_show
+* แสดงรายการพนักงานขับรถ และลบพนักงานขับรถ
+* @author Thanatip , Warisara
+* @Create Date 2564-07-30
+* @Update Date
+*/
 
 class Driver_show extends Cdms_controller{
 
