@@ -12,22 +12,22 @@
         return substr($string, 0, 3) . '-' . substr($string, 3, 3) . '-' . substr($string, 6);
     }
 /*
-* DateThai
+* date_thai
 * แสดงวันที่ foemat ไทย และเวลา ชม. กับนาที  
 * @author Natdanai
 * @Create Date 2564-07-30
 * @Update Date
 */
-  function DateThai($strDate){
-    
-    $strYear = date("Y",strtotime($strDate))+543;
-    $strMonth= date("n",strtotime($strDate));
-    $strDay= date("j",strtotime($strDate));
-    $strhour= date("H",strtotime($strDate));
-    $strmin= date("i",strtotime($strDate));
-    $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-    $strMonthThai=$strMonthCut[$strMonth];
-    return "$strDay $strMonthThai $strYear $strhour:$strmin";
+  function date_thai($strDate)
+  {
+    $str_year = date("Y",strtotime($strDate))+543;
+    $str_month= date("n",strtotime($strDate));
+    $str_day= date("j",strtotime($strDate));
+    $str_hour= date("H",strtotime($strDate));
+    $str_min= date("i",strtotime($strDate));
+    $str_month_cut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    $str_month_thai=$str_month_cut[$str_month];
+    return "$str_day $str_month_thai $str_year $str_hour:$str_min";
   } 
 
 

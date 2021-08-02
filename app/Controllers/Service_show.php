@@ -23,8 +23,8 @@ class Service_show extends Cdms_controller
     public function service_show_ajax()
     {
         $_SESSION['menu'] = 'Service_show';
-        $M_ser = new M_cdms_service();
-        $data['arr_service'] = $M_ser->get_all();
+        $m_ser = new M_cdms_service();
+        $data['arr_service'] = $m_ser->get_all();
 
         $this->output('v_service_showlist', $data);
     }
@@ -37,8 +37,8 @@ class Service_show extends Cdms_controller
     */
     public function service_delete()
     {
-        $M_ser = new M_cdms_service();
-        $M_ser->delete($this->request->getPost('ser_id'));
+        $m_ser = new M_cdms_service();
+        $m_ser->delete($this->request->getPost('ser_id'));
         return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
     }
 }
