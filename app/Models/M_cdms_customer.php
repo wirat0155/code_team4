@@ -2,8 +2,24 @@
 namespace App\Models;
 use App\Models\Da_cdms_customer;
 
+/*
+    * M_cdms_customer_show
+    * แสดงรายการลูกค้า และลบลูกค้า
+    * @author  XXXX
+    * @Create Date 2564-07-29
+    * @Update Date 2564-08-02
+*/
+
 class M_cdms_customer extends Da_cdms_customer {
-    // M get_all get_by_id
+    /*
+        * get_all
+        * ดึงข้อมูล ชื่อบริษัท สาขา ผู้รับผิดชอบ จำนวนตู้ที่กำลังใช้ เบอร์โทรศัพท์ สถานะ และอีเมล
+        * @input
+        * @output array of customer
+        * @author  XXXX
+        * @Create Date 2564-07-30
+        * @Update Date 2564-08-02
+    */
     public function get_all()
     {
         $sql = "SELECT * FROM $this->table
@@ -14,6 +30,9 @@ class M_cdms_customer extends Da_cdms_customer {
         $sql = "SELECT * FROM $this->table
                 on cus_id
                 WHERE cus_id";
-         return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getResult();
     }
 }
+
+// get_by_name(cus_name)
+// get_all()
