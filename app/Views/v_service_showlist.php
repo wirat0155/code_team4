@@ -1,4 +1,7 @@
+
+
 <style>
+
 .text-con-in {
     background-color: #29B3F1;
     border: none;
@@ -153,7 +156,7 @@
 
                     <!-- ประเภท -->
                     <td class="px-4 py-3 text-sm text-center ">
-
+                        <!-- แสดงชื่อประเภท ตามข้อมูลที่ได้รับ -->
                         <?php
                             if ($arr_service[$i]->ser_type == '1') {
                                 echo '<span class="text-con-in">ตู้เข้า</span>';
@@ -189,8 +192,11 @@
 
                     <!-- ดำเนินการ -->
                     <td class="px-4 py-3 text-sm text-center">
+                        <!-- ปุ่มคิดค่าบริการ -->
                         <a href="" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></a>
+                        <!-- ปุ่มแก้ไข -->
                         <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        <!-- ปุ่มลบ -->
                         <button type="button" class="btn btn-danger p-2" data-toggle="modal"
                             data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_service[$i]->ser_id ?>)">
                             <i class="bi bi-trash"></i>
