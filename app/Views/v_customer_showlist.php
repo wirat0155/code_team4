@@ -177,7 +177,7 @@
                             <?php
                                 echo $arr_customer[$i]->cus_company_name;
                                 echo ($arr_customer[$i]->cus_branch != null) ? ' (' . $arr_customer[$i]->cus_branch . ') ' : '';
-                                ?>
+                            ?>
                         </div>
                     </td>
 
@@ -191,7 +191,7 @@
                         <?php
                             $count_container = array_count_values(array_column($arr_service, 'cus_company_name'))[$arr_customer[$i]->cus_company_name];
                             echo ($count_container != 0) ? $count_container : '0';
-                            ?>
+                        ?>
                     </td>
 
                     <!-- เบอร์โทรศัพท์ -->
@@ -213,8 +213,6 @@
                             data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
                             <i class="bi bi-trash"></i>
                         </button>
-
-
                     </td>
                 </tr>
                 <?php } ?>
