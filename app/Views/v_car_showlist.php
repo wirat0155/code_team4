@@ -131,8 +131,8 @@
             <form action="<?php echo base_url() . '/public/Car_show/car_delete'?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Car Id -->
-                    <input name="car_id" id="car_id" type="text">
-                    คุณเเน่ใจหรือไม่ที่ต้องการลบ
+                    <input name="car_id" id="car_id" type="hidden">
+                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>

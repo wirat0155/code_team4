@@ -238,7 +238,7 @@
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
                     <input name="cus_id" id="cus_id" type="hidden">
-                    คุณเเน่ใจหรือไม่ที่ต้องการลบ
+                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
