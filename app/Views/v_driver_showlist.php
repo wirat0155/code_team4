@@ -50,11 +50,10 @@
 
                     <!-- เบอร์โทร -->
                     <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_driver[$i]->dri_tel?>
+                        <?php echo tel_format($arr_driver[$i]->dri_tel)?>
                     </td>
 
                     
-
                     <td class="px-4 py-3 text-sm text-center">
                         <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                         <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[$i]->dri_id?>)">
