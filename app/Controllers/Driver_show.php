@@ -30,8 +30,8 @@ class Driver_show extends Cdms_controller{
     /*
     * driver_delete
     * ลบรายการพนักงานขับรถ
-    * @input -
-    * @output array of driver
+    * @input dri_id
+    * @output delete driver
     * @author Thanatip
     * @Create Date 2564-07-30
     * @Update Date

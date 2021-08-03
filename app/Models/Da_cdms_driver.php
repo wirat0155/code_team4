@@ -21,12 +21,13 @@ class Da_cdms_driver extends Model{
     * @input dri_id
     * @output ลบพนักงานขับรถ
     * @author Warisara
+    * @latest author Wirat
     * @Create Date 2564-07-30
-    * @Update Date
+    * @Update Date 2564-08-03
     */
     public function delete($dri_id = NULL, bool $purge = false){
         $sql = "UPDATE $this->table 
-                SET dri_status=2 
+                SET dri_status = 4 
                 WHERE dri_id='$dri_id'";
         $this->db->query($sql);
     }
