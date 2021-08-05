@@ -10,7 +10,7 @@ use App\Models\M_cdms_customer;
 */
 class Customer_input extends Cdms_controller
 {
-    /*
+/*
     * customer_input
     * แสดงหน้าจอ customer_input
     * @author  Kittipod
@@ -23,11 +23,11 @@ class Customer_input extends Cdms_controller
     }
 
 /*
-* customer_show_ajax
-* เพิ่มข้อมูลลูกค้า
-* @author  Kittipod
-* @Create Date 2564-08-05
-* @Update Date 2564-08-05
+    * customer_insert
+    * เพิ่มข้อมูลลูกค้า
+    * @author  Kittipod
+    * @Create Date 2564-08-05
+    * @Update Date 2564-08-05
 */
     public function customer_insert() {
         $M_cus = new M_cdms_customer();
