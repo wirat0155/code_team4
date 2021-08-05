@@ -5,7 +5,7 @@ use App\Models\M_cdms_service;
 /*
     * Customer_show
     * แสดงรายชื่อลูกค้า และลบลูกค้า
-    * @author  XXXX
+    * @author  Kittipod
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
 */
@@ -14,7 +14,7 @@ class Customer_show extends Cdms_controller
     /*
     * customer_show_ajax
     * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_customer และ แสดง view รายชื่อ
-    * @author  XXXX
+    * @author  Kittipod
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
 */
@@ -30,7 +30,7 @@ class Customer_show extends Cdms_controller
     }
 
     /*
-    * customer_show_ajax
+    * customer_delete
     * ลบรายชื่อลูกค้าออกจากรายการ
     * @author  XXXX
     * @Create Date 2564-07-29

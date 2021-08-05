@@ -210,7 +210,7 @@
                         <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                         <!-- ปุ่มลบ -->
                         <button type="button" class="btn btn-danger p-2" data-toggle="modal"
-                            data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
+                            data-target="#Modal_Confirm" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -223,8 +223,8 @@
 </div>
 
 <!-- Modal ยืนยันการลบ -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+<div class="modal fade" id="Modal_Confirm" tabindex="-1" role="dialog" aria-labelledby="Modal_ConfirmTitle"
+    aria-hidden="true"> 
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -261,9 +261,13 @@ $(document).ready(function() {
             "sSearch": "ค้นหา :"
         }
     });
+    
+    // แทรกปุ่ม เพิ่มลูกค้า
     $("#DataTables_Table_0_filter").append(
-        "<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </button>"
+        "<a href='<?php echo base_url(). '/public/Customer_input/customer_input' ?>' class='button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </a>"
         );
+
+    //วันที่ Date Range Picker
     $('input[name="daterange"]').daterangepicker({
         opens: 'left'
     }, function(start, end, label) {
