@@ -12,7 +12,7 @@ use App\Models\M_cdms_service;
     * @Update Date 2564-07-30
 */
 
-class service_update extends Cdms_controller
+class service_edit extends Cdms_controller
 {
     /*
         * service_show_ajax
@@ -21,7 +21,7 @@ class service_update extends Cdms_controller
         * @Create Date 2564-07-29
         * @Update Date
     */
-    public function service_update()
+    public function service_edit()
     {
         $this->output('v_service_update');
     }
