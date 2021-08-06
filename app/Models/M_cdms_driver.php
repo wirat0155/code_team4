@@ -30,4 +30,11 @@ class M_cdms_driver extends Da_cdms_driver {
                 WHERE NOT dri_status = 4";
         return $this->db->query($sql)->getResult();
     }   
+
+    public function get_by_id($dri_id){
+        $sql = "SELECT * FROM $this->table
+                on dri_id
+                WHERE dri_id";
+        return $this->db->query($sql)->getResult();
+    }
 }

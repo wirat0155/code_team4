@@ -105,7 +105,7 @@
                 "sSearch": "ค้นหา :"
             }
         });
-        $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มคนขับรถ </button>");
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() .'/public/Driver_input/driver_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มคนขับรถ</a>");
     });
     function get_id(dri_id) {
         $('#dri_id').val(dri_id);
