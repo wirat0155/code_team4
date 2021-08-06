@@ -12,18 +12,18 @@ use App\Models\M_cdms_service;
     * @Update Date 2564-07-30
 */
 
-class Service_input extends Cdms_controller
+class service_update extends Cdms_controller
 {
     /*
         * service_show_ajax
         * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_service และ แสดง view รายการบริการ
-        * @author Natdanai
+        * @author Worarat
         * @Create Date 2564-07-29
         * @Update Date
     */
-    public function service_input()
+    public function service_update()
     {
-        $this->output('v_service_input');
+        $this->output('v_service_update');
     }
 
     public function service_insert()
