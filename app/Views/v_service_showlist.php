@@ -238,7 +238,7 @@
             }
         });
         $("#DataTables_Table_0_filter").append(
-            "<button class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </button>"
+            "<a href='<?php echo base_url(). '/public/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
         );
     });
 
