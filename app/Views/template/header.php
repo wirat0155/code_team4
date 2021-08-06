@@ -56,6 +56,9 @@
           background: transparent;
           box-shadow: none;
       }
+      .form-input {
+        background-color: #fafafa; /* light grey */
+      }
     </style>
 </head>
 <body>
