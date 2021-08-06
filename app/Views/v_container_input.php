@@ -1,5 +1,5 @@
 <div class="container mx-auto grid mt-3">
-    <form id="add_container_form" action="" method="POST">
+    <form id="add_container_form" action="<?php echo base_url() . '/public/Container_input/container_insert'?>" method="POST">
     <div class="row">
         <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -18,7 +18,7 @@
                             </div>
     
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" >
                             </div>
                         </div>
         
@@ -32,21 +32,30 @@
                             </div>
                             <div class="col-12 col-sm-8"> 
                                 <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_cont_id">
-                                    <option value="">Dry Container</option>
-                                    <option value="">Reefer Container</option>
+                                    <?php for($i = 0; $i < count($arr_container_type); $i++) { ?>
+                                        <option value="<?php echo $arr_container_type[$i]->cont_id?>"><?php echo $arr_container_type[$i]->cont_name?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
         
-                        <!-- สถานะตู้
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">สถานะตู้</span>
-                            <select class="block w-full mt-1 text-sm focus:outline-none form-input">
-                                <option value="">นำตู้เข้าลาน</option>
-                                <option value="">รอตรวจสอบ</option>
-                            </select>
-                        </label> -->
-        
+                        <!-- สถานะตู้ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สถานะตู้</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_stac_id">
+                                    <?php for ($i= 0; $i < count($arr_status_container); $i++) { ?>
+                                        <option value="<?php echo $arr_status_container[$i]->stac_id?>"><?php echo $arr_status_container[$i]->stac_name?></option>
+                                    <?php } ?>
+                                    <option value="">รอตรวจสอบ</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         <!-- น้ำหนักตู้สูงสุดที่รับได้ (ตัน) -->
                         <div class="row mt-3">
                             <div class="col-12 col-sm-6">
@@ -114,9 +123,10 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id">
-                                    <option value="">20 ฟุต</option>
-                                    <option value="">40 ฟุต</option>
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id" oninput="get_size_information()">
+                                    <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
+                                        <option value="<?php echo $arr_size[$i]->size_id?>"><?php echo $arr_size[$i]->size_name?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -129,7 +139,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_height_out" value="<?php echo $first_size[0]->size_height_out?>" readonly>
                             </div>
                         </div>
             
@@ -141,7 +151,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_width_out" value="<?php echo $first_size[0]->size_width_out?>" readonly>
                             </div>
                         </div>
         
@@ -153,7 +163,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_length_out" value="<?php echo $first_size[0]->size_length_out?>" readonly>
                             </div>
                         </div>
                     </div>
@@ -192,7 +202,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input"></textarea>
+                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address"></textarea>
                             </div>
                         </div>
 
@@ -204,11 +214,11 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax">
                             </div>
                         </div>
 
-                        <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                        <h4 class="mt-3">ผู้รับผิดชอบ (ตัวแทน)</h4>
                         <!-- ชื่อจริง -->
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
@@ -217,7 +227,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="firstname">
                             </div>
                         </div>
 
@@ -229,7 +239,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname">
                             </div>
                         </div>
 
@@ -241,7 +251,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel">
                             </div>
                         </div>
 
@@ -249,11 +259,11 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                    <span class="text-gray-700 dark:text-gray-400">อีเมล</span>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="email">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email">
                             </div>
                         </div>
                     </div>
@@ -274,41 +284,62 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_container_form').length > 0) {
-            $('#add_container_form').validate({
-                rules: {
-                    agn_company_name: {
-                        required: true
-                    },
-                    con_cube: {
-                        required: true,
-                        min: 0,
-                        max: 100
-                    },
-                    email: {
-                        required: true,
-                        maxlength: 30,
-                        email: true
-                    }
-                },
-                messages: {
-                    agn_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
-                    },
-                    con_cube: {
-                        required: 'กรุณากรอกปริมาตรสุทธิ',
-                        min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-                        max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
-                    },
-                    email: {
-                        required: 'Email is required',
-                        maxlength: 'The email should not more than 30 chars',
-                        email: 'It does not seem to be a valid email',
-                    }
-                }
-            })
-        }
-    });
+    // $(document).ready(function() {
+    //     // jQuery Validation
+    //     if ($('#add_container_form').length > 0) {
+    //         $('#add_container_form').validate({
+    //             rules: {
+    //                 agn_company_name: {
+    //                     required: true
+    //                 },
+    //                 con_cube: {
+    //                     required: true,
+    //                     min: 0,
+    //                     max: 100
+    //                 },
+    //                 email: {
+    //                     required: true,
+    //                     maxlength: 30,
+    //                     email: true
+    //                 }
+    //             },
+    //             messages: {
+    //                 agn_company_name: {
+    //                     required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
+    //                 },
+    //                 con_cube: {
+    //                     required: 'กรุณากรอกปริมาตรสุทธิ',
+    //                     min: 'กรุณาใส่ปริมาตรมากกว่า 0',
+    //                     max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
+    //                 },
+    //                 email: {
+    //                     required: 'Email is required',
+    //                     maxlength: 'The email should not more than 30 chars',
+    //                     email: 'It does not seem to be a valid email',
+    //                 }
+    //             }
+    //         })
+    //     }
+    // });
+    
+    function get_size_information() {
+        let size_id = $('select[name="con_size_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                size_id: size_id
+            },
+            success: function(data) {
+                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
+            }
+        });
+    }
+    function show_size_information(size_height_out, size_width_out, size_length_out) {
+        console.log(size_height_out);
+        $('input[name="size_height_out"]').val(size_height_out);
+        $('input[name="size_width_out"]').val(size_width_out);
+        $('input[name="size_length_out"]').val(size_length_out);
+    }
 </script>

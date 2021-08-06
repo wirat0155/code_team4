@@ -102,7 +102,7 @@
                     <!-- ดำเนินการ -->
                     <td class="px-4 py-3 text-sm text-center">
                         <!-- ปุ่มแก้ไข -->
-                        <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        <a href="<?php echo base_url(). '/public/Car_edit/car_edit' ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                         <!-- ปุ่มลบ -->
                         <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
                             <i class="bi bi-trash"></i>
@@ -155,7 +155,7 @@ $(document).ready(function() {
             "sSearch": "ค้นหา :"
         }
     });
-    $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มรถ </button>");
+    $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Car_input/car_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มรถ</a>");
     $('input[name="daterange"]').daterangepicker({
         opens: 'left'
     }, function(start, end, label) {

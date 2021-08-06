@@ -1,5 +1,8 @@
 <?php namespace App\Controllers;
 use App\Models\M_cdms_container;
+use App\Models\M_cdms_size;
+use App\Models\M_cdms_container_type;
+use App\Models\M_cdms_status_container;
 
 /*
 * Container_show
@@ -21,8 +24,24 @@ class Container_input extends Cdms_controller
     */
     public function container_input()
     {
-        // call container input view
         $data = [];
+        // get dropdown
+        // container size
+        $M_size = new M_cdms_size();
+        $data['arr_size'] = $M_size->get_all();
+
+        // first size information
+        $data['first_size'] = $M_size->get_first();
+
+        // container type
+        $M_cont = new M_cdms_container_type();
+        $data['arr_container_type'] = $M_cont->get_all();
+
+        // status container
+        $M_stac = new M_cdms_status_container();
+        $data['arr_status_container'] = $M_stac->get_all();
+
+        // call container input view
         $this->output('v_container_input', $data);
     }
 
@@ -35,7 +54,6 @@ class Container_input extends Cdms_controller
         $con_tare_weight = $this->request->getPost('con_tare_weight');
         $con_net_weight = $this->request->getPost('con_net_weight');
         $con_cube = $this->request->getPost('con_cube');
-        $con_status = $this->request->getPost('con_status');
         
         // other information
         $con_size_id = $this->request->getPost('con_size_id');
@@ -45,5 +63,20 @@ class Container_input extends Cdms_controller
 
         // upload image
         $con_image = $this->request->getPost('con_image');
+
+        // new agent
+        // insert agent
+        // รอบิ๊ก แพรว
+        // $con_agn_id = select กลับมา
+
+        // old agent
+        // update agent
+        // รอบิ๊ก แพรว
+
+        // get agn id
+        
+
+        // insert container
+        $M_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
     }
 }
