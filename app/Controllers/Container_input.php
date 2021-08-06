@@ -30,6 +30,9 @@ class Container_input extends Cdms_controller
         $M_size = new M_cdms_size();
         $data['arr_size'] = $M_size->get_all();
 
+        // first size information
+        $data['first_size'] = $M_size->get_first();
+
         // container type
         $M_cont = new M_cdms_container_type();
         $data['arr_container_type'] = $M_cont->get_all();
@@ -60,6 +63,18 @@ class Container_input extends Cdms_controller
 
         // upload image
         $con_image = $this->request->getPost('con_image');
+
+        // new agent
+        // insert agent
+        // รอบิ๊ก แพรว
+        // $con_agn_id = select กลับมา
+
+        // old agent
+        // update agent
+        // รอบิ๊ก แพรว
+
+        // get agn id
+        
 
         // insert container
         $M_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
