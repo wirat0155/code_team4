@@ -155,7 +155,7 @@ $(document).ready(function() {
             "sSearch": "ค้นหา :"
         }
     });
-    $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มรถ </button>");
+    $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Car_input/car_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มรถ</a>");
     $('input[name="daterange"]').daterangepicker({
         opens: 'left'
     }, function(start, end, label) {

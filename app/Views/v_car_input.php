@@ -4,7 +4,7 @@
         <div class="container-sm col-12 col-xl-7">
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                 <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ข้อมูลรถ</h2>
-                <hr class="mb-5">
+                <hr class="mb-1">
 
                 <div class="row">
                     <!-- car form left -->
@@ -21,7 +21,6 @@
                                 <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number">
                             </div>
                         </div>
-
 
                         <!-- ทะเบียน -->
                         <div class="row mt-3">
@@ -150,7 +149,6 @@
         </div>
         <!-- end car form -->
 
-
         <div class="container-sm text-right col-12 col-xl-7">
             <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
             <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
@@ -166,28 +164,14 @@ $(document).ready(function() {
     if ($('#add_cae_form').length > 0) {
         $('#add_car_form').validate({
             rules: {
-                agn_company_name: {
+                car_code: {
                     required: true
                 },
-                con_cube: {
-                    required: true,
-                    min: 0,
-                    max: 100
-                },
-                email: {
-                    required: true,
-                    maxlength: 30,
-                    email: true
-                }
+
             },
             messages: {
-                agn_company_name: {
+                car_code: {
                     required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
-                },
-                con_cube: {
-                    required: 'กรุณากรอกปริมาตรสุทธิ',
-                    min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-                    max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
                 },
 
             }
