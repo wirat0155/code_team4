@@ -37,7 +37,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_company" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input_company" name="input_company" placeholder="บริษัท" required>
+                            <input type="text" class="form-control form-input" id="input_company" name="input_company" placeholder="บริษัท" required>
                         </div>
                     </div>
 
@@ -45,7 +45,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_branch" class="col-sm-3 col-form-label">สาขา</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input_branch" name="input_branch" placeholder="สาขา">
+                            <input type="text" class="form-control form-input" id="input_branch" name="input_branch" placeholder="สาขา">
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="input_address" name="input_address" placeholder="ที่ตั้งบริษัท" rows="3" required></textarea>
+                            <textarea class="form-control form-input" id="input_address" name="input_address" placeholder="ที่ตั้งบริษัท" rows="3" required></textarea>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input_tax" name="input_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" required>
+                            <input type="text" class="form-control form-input" id="input_tax" name="input_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" required>
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_fname" class="col-sm-3 col-form-label">ชื่อจริง</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input_fname" name="input_fname" placeholder="ชื่อจริง" required>
+                            <input type="text" class="form-control form-input" id="input_fname" name="input_fname" placeholder="ชื่อจริง" required>
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_lname" class="col-sm-3 col-form-label">นามสกุล</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="input_lname" name="input_lname" placeholder="นามสกุล" required>
+                            <input type="text" class="form-control form-input" id="input_lname" name="input_lname" placeholder="นามสกุล" required>
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control" id="input_tel" name="input_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" required>
+                            <input type="tel" class="form-control form-input" id="input_tel" name="input_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" required>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@
                     <div class="px-3 form-group row">
                         <label for="input_email" class="col-sm-3 col-form-label">อีเมล</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="input_email" name="input_email" placeholder="อีเมล" required>
+                            <input type="email" class="form-control form-input" id="input_email" name="input_email" placeholder="อีเมล" required>
                         </div>
                     </div>
                 </div>
