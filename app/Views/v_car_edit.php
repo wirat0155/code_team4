@@ -1,116 +1,197 @@
-<style>
-@media (min-width: 1200px) {
-    .container-sm {
-        max-width: 900px;
-    }
-}
-</style>
+<div class="container mx-auto grid mt-3">
+    <form id="add_car_form" action="" method="POST">
 
-<div class="container px-6 mx-auto grid">
+        <div class="container-sm col-12 col-xl-7">
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ข้อมูลรถ</h2>
+                <hr class="mb-1">
 
-    <!-- หัวข้อ -->
-    <div
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
-                ข้อมูลรถ
-            </h2>
-        </div>
-    </div>
+                <div class="row">
+                    <!-- car form left -->
+                    <div class="col-12 col-md-6">
+                        <!-- หมายเลขรถ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span>
+                                </label>
+                            </div>
+
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number">
+                            </div>
+                        </div>
 
 
-    <div class="container-sm mb-8">
-        
-        <form action="<?php echo base_url(). '/public/Customer_input/customer_insert' ?>" method="post">
-            
-            <!-- เพิ่มลูกค้า -->
-            <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <!-- ทะเบียน -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ทะเบียน</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id">
+                                    <option value="">ชลบุรี</option>
+                                    <option value="">กรุงเทพ</option>
+                                </select>
+                            </div>
+                        </div>
 
-                <h4 class="px-3 my-4 text-xl font-semibold">
-                    ลูกค้า
-                </h4>
+                        <!-- ประเภทรถ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ประเภทรถ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_cart_id">
+                                    <option value="">บรรทุก 4 ล้อ</option>
+                                    <option value="">บรรทุก 8 ล้อ</option>
+                                </select>
+                            </div>
+                        </div>
 
-                <div class="mb-4 container border-bottom"></div>
-
-                <div class="container">
-                    <!-- บริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="input_company" class="col-sm-3 col-form-label">บริษัท</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_company" name="input_company" placeholder="บริษัท" required>
+                        <!-- ภาพ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ภาพ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <!-- <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight"> -->
+                            </div>
                         </div>
                     </div>
+                    <!-- end car form left -->
 
-                    <!-- สาขา -->
-                    <div class="px-3 form-group row">
-                        <label for="input_branch" class="col-sm-3 col-form-label">สาขา</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_branch" name="input_branch" placeholder="สาขา">
+                    <!-- car form right -->
+                    <div class="col-12 col-md-6">
+                        <!-- ยี่ห้อ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ยี่ห้อ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_brand">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- ที่ตั้งบริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="input_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control form-input" id="input_address" name="input_address" placeholder="ที่ตั้งบริษัท" rows="3" required></textarea>
+                        <!-- สาขา -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สาขา</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_branch">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- หมายเลขผู้เสียภาษี -->
-                    <div class="px-3 form-group row">
-                        <label for="input_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_tax" name="input_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" required>
+                        <!-- หมายเลขโครงรถ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-5">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขโครงรถ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-7">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_chassis_number">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- ผู้รับผิดชอบ -->
-                    <div class="px-3 pt-4 pb-2 form-group row">
-                        <div class="col-sm-12">
-                            ผู้รับผิดชอบ (ตัวแทน)
+                        <!-- ปีที่จดทะเบียน -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-5">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ปีที่จดทะเบียน</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-7">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_register_year">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- ชื่อจริง -->
-                    <div class="px-3 form-group row">
-                        <label for="input_fname" class="col-sm-3 col-form-label">ชื่อจริง</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_fname" name="input_fname" placeholder="ชื่อจริง" required>
+                        <!-- น้ำหนักรถ (ตัน) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-5">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักรถ (ตัน)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-7">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_weight">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- นามสกุล -->
-                    <div class="px-3 form-group row">
-                        <label for="input_lname" class="col-sm-3 col-form-label">นามสกุล</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_lname" name="input_lname" placeholder="นามสกุล" required>
+                        <!-- ชนิดน้ำมัน -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ชนิดน้ำมัน</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_fuel_type">
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- เบอร์ติดต่อ -->
-                    <div class="px-3 form-group row">
-                        <label for="input_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
-                        <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="input_tel" name="input_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" required>
-                        </div>
                     </div>
-
-                    <!-- อีเมล -->
-                    <div class="px-3 form-group row">
-                        <label for="input_email" class="col-sm-3 col-form-label">อีเมล</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control form-input" id="input_email" name="input_email" placeholder="อีเมล" required>
-                        </div>
-                    </div>
+                    <!-- end car form right -->
                 </div>
+                <!-- end car form row -->
             </div>
-            <div class="float-right">
-                <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
-                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
-            </div>
-        </form>
+        </div>
+        <!-- end car form -->
 
-    </div>
 
+        <div class="container-sm text-right col-12 col-xl-7">
+            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
+            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
+        </div>
+    </form>
+    <br>
+    <br>
 </div>
+
+<script>
+$(document).ready(function() {
+    // jQuery Validation
+    if ($('#add_cae_form').length > 0) {
+        $('#add_car_form').validate({
+            rules: {
+                agn_company_name: {
+                    required: true
+                },
+                con_cube: {
+                    required: true,
+                    min: 0,
+                    max: 100
+                },
+                email: {
+                    required: true,
+                    maxlength: 30,
+                    email: true
+                }
+            },
+            messages: {
+                agn_company_name: {
+                    required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
+                },
+                con_cube: {
+                    required: 'กรุณากรอกปริมาตรสุทธิ',
+                    min: 'กรุณาใส่ปริมาตรมากกว่า 0',
+                    max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
+                },
+
+            }
+        })
+    }
+});
+</script>
