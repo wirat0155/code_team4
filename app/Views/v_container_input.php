@@ -123,7 +123,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id" oninput="get_size_information()">
                                     <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                                         <option value="<?php echo $arr_size[$i]->size_id?>"><?php echo $arr_size[$i]->size_name?></option>
                                     <?php } ?>
@@ -139,7 +139,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_height_out">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_height_out" value="<?php echo $first_size[0]->size_height_out?>" readonly>
                             </div>
                         </div>
             
@@ -151,7 +151,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_width_out">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_width_out" value="<?php echo $first_size[0]->size_width_out?>" readonly>
                             </div>
                         </div>
         
@@ -163,7 +163,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_length_out">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_length_out" value="<?php echo $first_size[0]->size_length_out?>" readonly>
                             </div>
                         </div>
                     </div>
@@ -321,4 +321,25 @@
     //         })
     //     }
     // });
+    
+    function get_size_information() {
+        let size_id = $('select[name="con_size_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                size_id: size_id
+            },
+            success: function(data) {
+                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
+            }
+        });
+    }
+    function show_size_information(size_height_out, size_width_out, size_length_out) {
+        console.log(size_height_out);
+        $('input[name="size_height_out"]').val(size_height_out);
+        $('input[name="size_width_out"]').val(size_width_out);
+        $('input[name="size_length_out"]').val(size_length_out);
+    }
 </script>
