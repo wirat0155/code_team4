@@ -26,6 +26,7 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <style>
       * {
@@ -58,6 +59,10 @@
       }
       .form-input {
         background-color: #fafafa; /* light grey */
+      }
+      .error {
+        margin-top: 0.5rem;
+        color: red;
       }
     </style>
 </head>

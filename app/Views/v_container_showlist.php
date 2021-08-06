@@ -105,7 +105,8 @@
             }
         });
         
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Container_input/container_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มตู้ </a>");
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Container_input/container_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มตู้</a>");
+
     });
     function get_id(con_id) {
         $('#con_id').val(con_id);
