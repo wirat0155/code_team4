@@ -36,7 +36,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="บริษัท" value="<?php echo $arr_customer[0]->cus_company_name ?>" required>
+                            <input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="บริษัท" value="<?php echo $arr_customer[0]->cus_company_name ?>" >
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" id="cus_address" name="cus_address" placeholder="ที่ตั้งบริษัท" rows="3" value="<?php echo $arr_customer[0]->cus_address?>" required><?php echo $arr_customer[0]->cus_address?></textarea>
+                            <textarea class="form-control" id="cus_address" name="cus_address" placeholder="ที่ตั้งบริษัท" rows="3" value="<?php echo $arr_customer[0]->cus_address?>" ><?php echo $arr_customer[0]->cus_address?></textarea>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" value="<?php echo $arr_customer[0]->cus_tax?>" required>
+                            <input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" value="<?php echo $arr_customer[0]->cus_tax?>" >
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $arr_customer[0]->cus_firstname?>" required>
+                            <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $arr_customer[0]->cus_firstname?>" >
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $arr_customer[0]->cus_lastname?>" required>
+                            <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $arr_customer[0]->cus_lastname?>" >
                         </div>
                     </div>
 
@@ -91,7 +91,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_customer[0]->cus_tel?>" required>
+                            <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_customer[0]->cus_tel?>" >
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_email" class="col-sm-3 col-form-label">อีเมล</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="อีเมล" value="<?php echo $arr_customer[0]->cus_email?>" required>
+                            <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="อีเมล" value="<?php echo $arr_customer[0]->cus_email?>" >
                         </div>
                     </div>
                 </div>
@@ -113,78 +113,70 @@
     </div>
 
 </div>
+
 <script>
-$(document).ready(function() {
-    // jQuery Validation
-    if ($('#edit_customer_form').length > 0) {
-        $('#edit_customer_form').validate({
-            rules: {
-                cus_company_name: {
-                    required: true
-                },
-                cus_branch: {
-                    required: true
-                },
-                cus_address: {
-                    required: true
-                },
-                cus_tax: {
-                    required: true
-                    maxlength: 13
-                    minlenght: 13
-                },
-                cus_firstname: {
-                    required: true
-                },
-                cus_lastname: {
-                    required: true
-                },
-                cus_tel: {
-                    required: true
-                    maxlength: 10
-                    minlength: 10
-                },
-                cus_email: {
-                    required: true
-                    maxlength: 30
-                    email: true
-                }
-            },
-            messages: {
-                cus_company_name: {
-                    required: 'กรุณากรอกชื่อบริษัทลูกค้า',
-                },
-                cus_branch: {
-                    required: 'กรุณากรอกสาขาบริษัท',
-                },
-                cus_address: {
-                    required: 'กรุณากรอกที่อยู่บริษัท',
-                },
-                cus_tax: {
-                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                    maxlength: 'กรุณากรอกได้ 13 ตัว',
-                    minlength: 'กรุณากรอกได้ 13 ตัว',
-                },
-                cus_firstname: {
-                    required: 'กรุณากรอกชื่อ',
-                },
-                cus_lastname: {
-                    required: 'กรุณากรอกนามสกุล',
-                },
-                cus_tel: {
-                    required: true
-                    maxlength: 'กรุณากรอกได้ 10 ตัว',
-                    minlength: 'กรุณากรอกได้ 10 ตัว',
-                },
-                cus_email: {
-                    required: 'Email is required',
-                    maxlength: 'The email should not more than 30 chars',
-                    email: 'It does not seem to be a valid email',
-                }
-            },
+    $(document).ready(function() {
+        // jQuery Validation
+        if ($('#add_container_form').length > 0) {
+            $('#add_container_form').validate({
+                rules: {
+                    cus_company_name: {
+                        required: true
+                    },
+                    cus_tax: {
+                        required: true,
+                        matches:"[0-9]{13}"
+                    },
+                    cus_address: {
+                        required: true
+                    },
+                    cus_firstname: {
+                        required: true
+                    },
+                    cus_lastname: {
+                        required: true
+                    },
+                    cus_tel:{
+                        required: true,
+                        matches:"[0-9]{10}",
+                        minlength:10, 
+                        maxlength:10
+                    },
+                    cus_email: {
+                        required: true,
+                        email: true
+                    }
 
-        })
-
-    }
-});
+                },
+                messages: {
+                    cus_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท'
+                    },
+                    cus_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    },
+                    cus_address: {
+                        required: 'กรุณากรอกที่อยู่'
+                    },
+                    cus_firstname: {
+                        required: 'กรุณากรอกชื่อจริง'
+                    },
+                    cus_lastname: {
+                        required: 'กรุณากรอกนามสกุล'
+                    },
+                    cus_tel:{
+                        required: 'กรุณากรอกเบอร์โทรศัพท์',
+                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
+                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    },
+                    cus_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    }
+                }
+            })
+        }
+    });
 </script>

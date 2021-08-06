@@ -21,7 +21,7 @@
 
     <div class="container-sm mb-8">
         
-        <form action="<?php echo base_url(). '/public/Customer_input/customer_insert' ?>" method="post">
+        <form id="add_container_form" action="<?php echo base_url(). '/public/Customer_input/customer_insert' ?>" method="post">
             
             <!-- เพิ่มลูกค้า -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -35,33 +35,33 @@
                 <div class="container">
                     <!-- บริษัท -->
                     <div class="px-3 form-group row">
-                        <label for="input_company" class="col-sm-3 col-form-label">บริษัท</label>
+                        <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_company" name="input_company" placeholder="บริษัท" required>
+                            <input type="text" class="form-control form-input" id="cus_company_name" name="cus_company_name" placeholder="บริษัท">
                         </div>
                     </div>
 
                     <!-- สาขา -->
                     <div class="px-3 form-group row">
-                        <label for="input_branch" class="col-sm-3 col-form-label">สาขา</label>
+                        <label for="cus_branch" class="col-sm-3 col-form-label">สาขา</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_branch" name="input_branch" placeholder="สาขา">
+                            <input type="text" class="form-control form-input" id="cus_branch" name="cus_branch" placeholder="สาขา">
                         </div>
                     </div>
 
                     <!-- ที่ตั้งบริษัท -->
                     <div class="px-3 form-group row">
-                        <label for="input_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
+                        <label for="cus_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control form-input" id="input_address" name="input_address" placeholder="ที่ตั้งบริษัท" rows="3" required></textarea>
+                            <textarea class="form-control form-input" id="cus_address" name="cus_address" placeholder="ที่ตั้งบริษัท" rows="3"></textarea>
                         </div>
                     </div>
 
                     <!-- หมายเลขผู้เสียภาษี -->
                     <div class="px-3 form-group row">
-                        <label for="input_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
+                        <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_tax" name="input_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" required>
+                            <input type="text" class="form-control form-input" id="cus_tax" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี">
                         </div>
                     </div>
 
@@ -74,33 +74,33 @@
 
                     <!-- ชื่อจริง -->
                     <div class="px-3 form-group row">
-                        <label for="input_fname" class="col-sm-3 col-form-label">ชื่อจริง</label>
+                        <label for="cus_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_fname" name="input_fname" placeholder="ชื่อจริง" required>
+                            <input type="text" class="form-control form-input" id="cus_firstname" name="cus_firstname" placeholder="ชื่อจริง" >
                         </div>
                     </div>
 
                     <!-- นามสกุล -->
                     <div class="px-3 form-group row">
-                        <label for="input_lname" class="col-sm-3 col-form-label">นามสกุล</label>
+                        <label for="cus_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="input_lname" name="input_lname" placeholder="นามสกุล" required>
+                            <input type="text" class="form-control form-input" id="cus_lastname" name="cus_lastname" placeholder="นามสกุล" >
                         </div>
                     </div>
 
                     <!-- เบอร์ติดต่อ -->
                     <div class="px-3 form-group row">
-                        <label for="input_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
+                        <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="input_tel" name="input_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" required>
+                            <input type="tel" class="form-control form-input" id="cus_tel" name="cus_tel" placeholder="1234567890">
                         </div>
                     </div>
 
                     <!-- อีเมล -->
                     <div class="px-3 form-group row">
-                        <label for="input_email" class="col-sm-3 col-form-label">อีเมล</label>
+                        <label for="cus_email" class="col-sm-3 col-form-label">อีเมล</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control form-input" id="input_email" name="input_email" placeholder="อีเมล" required>
+                            <input type="email" class="form-control form-input" id="cus_email" name="cus_email" placeholder="อีเมล">
                         </div>
                     </div>
                 </div>
@@ -114,3 +114,70 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        // jQuery Validation
+        if ($('#add_container_form').length > 0) {
+            $('#add_container_form').validate({
+                rules: {
+                    cus_company_name: {
+                        required: true
+                    },
+                    cus_tax: {
+                        required: true,
+                        matches:"[0-9]{13}"
+                    },
+                    cus_address: {
+                        required: true
+                    },
+                    cus_firstname: {
+                        required: true
+                    },
+                    cus_lastname: {
+                        required: true
+                    },
+                    cus_tel:{
+                        required: true,
+                        matches:"[0-9]{10}",
+                        minlength:10, 
+                        maxlength:10
+                    },
+                    cus_email: {
+                        required: true,
+                        email: true
+                    }
+
+                },
+                messages: {
+                    cus_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท'
+                    },
+                    cus_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    },
+                    cus_address: {
+                        required: 'กรุณากรอกที่อยู่'
+                    },
+                    cus_firstname: {
+                        required: 'กรุณากรอกชื่อจริง'
+                    },
+                    cus_lastname: {
+                        required: 'กรุณากรอกนามสกุล'
+                    },
+                    cus_tel:{
+                        required: 'กรุณากรอกเบอร์โทรศัพท์',
+                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
+                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    },
+                    cus_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    }
+                }
+            })
+        }
+    });
+</script>
