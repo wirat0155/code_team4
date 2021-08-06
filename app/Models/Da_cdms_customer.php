@@ -36,9 +36,16 @@ class Da_cdms_customer extends Model {
     * @Update Date 2564-08-05
 */
     public function insert($cus_company_name= NULL, $cus_firstname= NULL, $cus_lastname= NULL, $cus_branch= NULL, $cus_tel= NULL, $cus_address= NULL, $cus_tax= NULL, $cus_email= NULL) {
-        $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch, 
-        cus_tel, cus_address, cus_tax, cus_email) 
-        VALUES ('$cus_company_name','$cus_firstname','$cus_lastname','$cus_branch','$cus_tel','$cus_address','$cus_tax','$cus_email')";
+        if($cus_branch != ''){
+            $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch, 
+            cus_tel, cus_address, cus_tax, cus_email) 
+            VALUES ('$cus_company_name','$cus_firstname','$cus_lastname','$cus_branch','$cus_tel','$cus_address','$cus_tax','$cus_email')";
+        }else{
+            $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch, 
+            cus_tel, cus_address, cus_tax, cus_email) 
+            VALUES ('$cus_company_name','$cus_firstname','$cus_lastname',NULL,'$cus_tel','$cus_address','$cus_tax','$cus_email')";
+        }
+
         $this->db->query($sql);
     }
 }

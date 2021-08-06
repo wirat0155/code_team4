@@ -57,6 +57,32 @@
           background: transparent;
           box-shadow: none;
       }
+
+      .dataTables_wrapper .dataTables_paginate .paginate_button {
+          box-sizing: border-box;
+          display: inline-block;
+          min-width: 1.5em;
+          padding: .5em 1em;
+          margin-left: 2px;
+          text-align: center;
+          text-decoration: none !important;
+          cursor: pointer;
+          *cursor: hand;
+          color: #3f83f8 !important;
+          border: 1px solid #3f83f8 !important;
+          border-radius: 2px;
+      }
+
+      .paginate_button:hover{
+          color: white !important;
+          background: #81aefc !important;
+      }
+
+      .paginate_button.previous.disabled:hover, .paginate_button.next.disabled:hover{
+          color: #3f83f8 !important;
+          background: white !important;
+      }
+
       .form-input {
         background-color: #fafafa; /* light grey */
       }

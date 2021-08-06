@@ -189,8 +189,15 @@
                     <!-- จำนวนตู้ที่กำลังใช้ -->
                     <td class="px-4 py-3 text-sm text-center">
                         <?php
-                            $count_container = array_count_values(array_column($arr_service, 'cus_company_name'))[$arr_customer[$i]->cus_company_name];
-                            echo ($count_container != 0) ? $count_container : '0';
+                            $count_container = 0;
+                            for ($j = 0; $j < count($arr_service); $j++) {
+                                if($arr_customer[$i]->cus_company_name == $arr_service[$j]->cus_company_name){
+                                    if($arr_customer[$i]->cus_branch == $arr_service[$j]->cus_branch ){
+                                        $count_container++;
+                                    }
+                                }
+                            }
+                            echo $count_container;  
                         ?>
                     </td>
 
