@@ -5,19 +5,12 @@
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                     <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ตู้คอนเทนเนอร์</h2>
                     <hr class="mb-5">
-                
-                <!-- class -->
-                <!-- margin-top margin-bottom margin-left margin-right -->
-                <!-- mt   mb    ml   mr -->
-                <!-- padding -->
-                <!-- pt   pb    pl   pr -->
-
 
                 <div class="row">
                     <!-- container form left -->
                     <div class="col-12 col-md-6">
                         <!-- หมายเลขตู้ -->
-                        <div class="row">
+                        <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
                                     <span class="text-gray-700 dark:text-gray-400">หมายเลขตู้</span>
@@ -31,13 +24,19 @@
         
 
                         <!-- ประเภทตู้ -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ประเภทตู้</span>
-                            <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_cont_id">
-                                <option value="">Dry Container</option>
-                                <option value="">Reefer Container</option>
-                            </select>
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ประเภทตู้</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8"> 
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_cont_id">
+                                    <option value="">Dry Container</option>
+                                    <option value="">Reefer Container</option>
+                                </select>
+                            </div>
+                        </div>
         
                         <!-- สถานะตู้
                         <label class="block text-sm mt-3">
@@ -49,22 +48,40 @@
                         </label> -->
         
                         <!-- น้ำหนักตู้สูงสุดที่รับได้ (ตัน) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้สูงสุดที่รับได้ (ตัน)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้สูงสุดที่รับได้ (ตัน)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight">
+                            </div>
+                        </div>
         
                         <!-- น้ำหนักตู้เปล่า (ตัน) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้เปล่า (ตัน)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้เปล่า (ตัน)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight">
+                            </div>
+                        </div>
         
                         <!-- น้ำหนักสินค้าสูงสุด (ตัน) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าสูงสุด (ตัน)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าสูงสุด (ตัน)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight">
+                            </div>
+                        </div>
         
                         <!-- น้ำหนักสินค้าปัจจุบัน (ตัน)
                         <label class="block text-sm mt-3">
@@ -73,10 +90,16 @@
                         </label> -->
         
                         <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube">
+                            </div>
+                        </div>
                     </div>
                     <!-- end container form left -->
 
@@ -84,31 +107,55 @@
                     <!-- container form right -->
                     <div class="col-12 col-md-6">
                         <!-- ขนาดตู้ -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ขนาดตู้</span>
-                            <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id">
-                                <option value="">20 ฟุต</option>
-                                <option value="">40 ฟุต</option>
-                            </select>
-                        </label>
-        
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ขนาดตู้</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id">
+                                    <option value="">20 ฟุต</option>
+                                    <option value="">40 ฟุต</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         <!-- ความสูงด้านนอก (เมตร) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ความสูง (เมตร)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ความสูง (เมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
+                            </div>
+                        </div>
             
                         <!-- ความกว้างด้านนอก (เมตร) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ความกว้าง (เมตร)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ความกว้าง (เมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
+                            </div>
+                        </div>
         
                         <!-- ความยาวด้านนอก (เมตร) -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ความยาว (เมตร)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ความยาว (เมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
+                            </div>
+                        </div>
                     </div>
                     <!-- end container form right -->
                 </div>
@@ -123,50 +170,92 @@
                 <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">เอเย่นต์</h2>
                 <hr class="mb-5">
                 
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-12">
                         <!-- บริษัท -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name">
+                            </div>
+                        </div>
 
                         <!-- ที่ตั้งบริษัท -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
-                            <textarea class="block w-full mt-1 text-sm focus:outline-none form-input"></textarea>
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input"></textarea>
+                            </div>
+                        </div>
 
                         <!-- หมายเลขผู้เสียภาษี -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                            </div>
+                        </div>
 
                         <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
                         <!-- ชื่อจริง -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                            </div>
+                        </div>
 
                         <!-- นามสกุล -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                            </div>
+                        </div>
 
                         <!-- เบอร์ติดต่อ -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input">
+                            </div>
+                        </div>
 
                         <!-- อีเมล์ -->
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="email">
-                        </label>
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="email">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -182,71 +271,7 @@
     </form>
     <br>
     <br>
-
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <!-- row -->
-        <div class="row">
-            <div class="col-3">
-                <!-- ข้อความ -->
-                <label class="block text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Name</span>
-                </label>
-            </div>
-
-            <div class="col-9">
-                <!-- ช่องให้กรอก -->
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Jane Doe">
-            </div>
-        </div>
-
-        <!-- row -->
-        <div class="row">
-            <div class="col-1">
-                <!-- ข้อความ -->
-                <label class="block text-sm">
-                    <span class="text-gray-700 dark:text-gray-400">Name</span>
-                </label>
-            </div>
-
-            <div class="col-11">
-                <!-- ช่องให้กรอก -->
-                <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Jane Doe">
-            </div>
-        </div>
-
-
-    </div>
-
-    <!-- col-3 -->
-    <!-- col-9 -->
-    <!-- row = 12 col -->
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
     $(document).ready(function() {
