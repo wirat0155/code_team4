@@ -1,14 +1,13 @@
 <div class="container px-6 mx-auto grid">
 
-
     <!-- หัวข้อ -->
-    <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
                 ข้อมูลเอเย่นต์
             </h2>
         </div>
-    </di>
+    </div>
 
     <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap table">
@@ -24,9 +23,8 @@
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php
-                for ($i = 0; $i < count($arr_agent); $i++) { 
-                    if($arr_agent[$i]->agn_status==1){
-                    ?>
+                    for ($i = 0; $i < count($arr_agent); $i++) { 
+                ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3 text-sm">
                             <?php echo $arr_agent[$i]->agn_company_name ?></p>
@@ -56,7 +54,7 @@
                     </td>
                     </tr>
 
-                <?php } } ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
