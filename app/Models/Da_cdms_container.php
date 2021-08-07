@@ -43,4 +43,10 @@ class Da_cdms_container extends Model {
         $sql = "UPDATE $this->table SET con_status=2 WHERE con_id='$con_id'";
         $this->db->query($sql);
     }
+    
+    public function container_update($con_id = NULL, $con_number = NULL, $con_max_weight = NULL, $con_tare_weight = NULL, $con_net_weight = NULL, $con_cube = NULL, $con_size_id = NULL, $con_cont_id = NULL, $con_agn_id = NULL, $con_stac_id = NULL)
+    {
+        $sql = "UPDATE $this->table SET con_number = '$con_number', con_max_weight = '$con_max_weight', con_tare_weight = '$con_tare_weight', con_net_weight = '$con_net_weight', con_cube = '$con_cube', con_size_id = '$con_size_id', con_cont_id = '$con_cont_id', con_agn_id = '$con_agn_id', con_stac_id = '$con_stac_id' WHERE con_id = '$con_id'";
+        $this->db->query($sql);
+    }
 }
