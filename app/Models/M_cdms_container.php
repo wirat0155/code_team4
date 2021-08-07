@@ -7,7 +7,7 @@ use App\Models\Da_cdms_container;
 * ดึงข้อมูลตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-07-29
-* @Update Date
+* @Update Date 2564-08-07
 */
 class M_cdms_container extends Da_cdms_container {
     

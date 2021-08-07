@@ -10,7 +10,7 @@ use App\Models\M_cdms_status_container;
 * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์ และเพิ่มตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-08-06
-* @Update Date
+* @Update Date 2564-08-07
 */
 class Container_input extends Cdms_controller
 {
@@ -102,7 +102,8 @@ class Container_input extends Cdms_controller
                 $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
 
                 // get agn_id back
-                $con_agn_id = $m_agn->get_max_id();
+                $max_id_agent = $m_agn->get_max_id();
+                $con_agn_id = $max_id_agent[0]->agn_id;
             } else {
                 // old agent
                 // update agent
