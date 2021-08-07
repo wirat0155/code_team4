@@ -10,8 +10,7 @@
         </div>
     </di>
 
-    <form id="add_service_form" action="<?php echo base_url() . '/public/Service_input/service_insert' ?>"
-        method="POST">
+    <form id="add_service_form" action="<?php echo base_url() . '/public/Service_edit/service_update' ?>" method="POST">
         <div class="row">
             <!-- Start container form -->
             <div class="col-12 col-xl-7">
