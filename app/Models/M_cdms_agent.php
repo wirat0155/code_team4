@@ -37,9 +37,9 @@ class M_cdms_agent extends Da_cdms_agent
     public function get_by_id($agn_id)
     {
         $sql = "SELECT * FROM $this->table
-                ON agn_id
-                WHERE agn_id";
+                WHERE agn_id='$agn_id'";
          return $this->db->query($sql)->getResult();
+         
     }
 
     public function get_by_company_name($agn_company_name = NULL) 
