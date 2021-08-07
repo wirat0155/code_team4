@@ -239,9 +239,6 @@
                     dri_date_start: {
                         required: true
                     },
-                    dri_date_end: {
-                        required: true
-                    }
                 },
                 messages: {
                     dri_name:{
@@ -262,9 +259,6 @@
                     dri_date_start: {
                         required: 'กรุณาเลือกวันที่เข้าทำงาน'
                     },
-                    dri_date_end: {
-                        required: 'กรุณาเลือกวันที่ลาออก'
-                    }
                 }
             })
         }

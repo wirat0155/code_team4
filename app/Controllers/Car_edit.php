@@ -55,6 +55,10 @@ class Car_edit extends Cdms_controller
         $car_image = $this->request->getPost('car_image');
 
         $M_car->car_update($car_id, $car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_status, $car_cart_id ,$car_prov_id ,$car_image);
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>';
+        
         return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
     }
 }

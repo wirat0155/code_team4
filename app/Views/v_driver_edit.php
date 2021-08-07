@@ -1,5 +1,5 @@
 <div class="container mx-auto grid mt-3">
-    <form id="add_driver_form" action="<?php echo base_url(). '/public/Driver_input/driver_insert' ?>" method="post">
+    <form id="add_driver_form" action="<?php echo base_url(). '/public/Driver_edit/driver_update' ?>" method="post">
     <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">    
     <div class="row">
             <div class="col-12 col-xl-7">
@@ -51,9 +51,8 @@
                                 </div>
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type">
-                                        <option selected disabled>เลือกประเภท</option>
-                                        <option value="">ท.1</option>
-                                        <option value="">ท.2</option>
+                                        <option value="1">ท.1</option>
+                                        <option value="2">ท.2</option>
                                     </select>
                                 </div>
                             </div>

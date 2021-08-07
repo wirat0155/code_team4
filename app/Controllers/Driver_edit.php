@@ -32,18 +32,22 @@ class driver_edit extends Cdms_controller
     * @Update Date 2564-08-07
 */
 public function driver_update(){
-    $M_dri=new M_cdms_driver;
+    $M_dri=new M_cdms_driver();
+    $dri_id = $this->request->getPost('dri_id');
     $dri_name = $this->request->getPost('dri_name');
     $dri_tel = $this->request->getPost('dri_tel');
     $dri_card_number = $this->request->getPost('dri_card_number');
-    $dri_license = $this->request->getPost(' dri_license');
+    $dri_license = $this->request->getPost('dri_license');
     $dri_license_type = $this->request->getPost('dri_license_type');
     $dri_profile_image = $this->request->getPost('dri_profile_image');
     $dri_status = $this->request->getPost('dri_status');
     $dri_date_start = $this->request->getPost('dri_date_start');
     $dri_date_end = $this->request->getPost('dri_date_end');
+
+    $M_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end);
     
-    $M_dri->driver_update($dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end);
+    print_r($this->request->getPost());
+
     return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
 }   
 }

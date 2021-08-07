@@ -48,6 +48,7 @@ class Da_cdms_driver extends Model{
 */   
 public function driver_update(
     $dri_id=NULL,
+    $dri_name=NULL,
     $dri_tel= NULL, 
     $dri_card_number= NULL, 
     $dri_license= NULL, 
@@ -57,17 +58,19 @@ public function driver_update(
     $dri_date_start= NULL, 
     $dri_date_end= NULL, 
     $dri_car_id= NULL){
+
     $sql = "UPDATE $this->table 
     SET dri_name='$dri_name',
         dri_tel='$dri_tel',
         dri_card_number='$dri_card_number',
         dri_license='$dri_license', 
         dri_license_type='$dri_license_type',
-        NULL,
-        '1',
+        dri_profile_image= NULL,
+        dri_status= '1',
         dri_date_start='$dri_date_start',
         dri_date_end='$dri_date_end'
     WHERE dri_id='$dri_id' ";
+    //echo $sql;
     $this->db->query($sql);
 }
 }
