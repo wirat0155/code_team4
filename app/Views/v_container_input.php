@@ -1,5 +1,5 @@
 <div class="container mx-auto grid mt-3">
-    <form id="add_container_form" action="<?php echo base_url() . '/public/Container_input/container_insert'?>" method="POST">
+    <form id="add_container_form" action="<?php echo base_url() . '/public/Container_input/container_insert'?>" method="POST" onsubmit="check_container_number()">
     <div class="row">
         <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -17,8 +17,8 @@
                                 </label>
                             </div>
     
-                            <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" >
+                            <div class="col-12 col-sm-8 div_con_number_input">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
                             </div>
                         </div>
         
@@ -190,7 +190,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()">
                             </div>
                         </div>
 
@@ -227,7 +227,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="firstname">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname">
                             </div>
                         </div>
 
@@ -284,43 +284,43 @@
 </div>
 
 <script>
-    // $(document).ready(function() {
-    //     // jQuery Validation
-    //     if ($('#add_container_form').length > 0) {
-    //         $('#add_container_form').validate({
-    //             rules: {
-    //                 agn_company_name: {
-    //                     required: true
-    //                 },
-    //                 con_cube: {
-    //                     required: true,
-    //                     min: 0,
-    //                     max: 100
-    //                 },
-    //                 email: {
-    //                     required: true,
-    //                     maxlength: 30,
-    //                     email: true
-    //                 }
-    //             },
-    //             messages: {
-    //                 agn_company_name: {
-    //                     required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
-    //                 },
-    //                 con_cube: {
-    //                     required: 'กรุณากรอกปริมาตรสุทธิ',
-    //                     min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-    //                     max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
-    //                 },
-    //                 email: {
-    //                     required: 'Email is required',
-    //                     maxlength: 'The email should not more than 30 chars',
-    //                     email: 'It does not seem to be a valid email',
-    //                 }
-    //             }
-    //         })
-    //     }
-    // });
+    $(document).ready(function() {
+        // jQuery Validation
+        if ($('#add_container_form').length > 0) {
+            $('#add_container_form').validate({
+                rules: {
+                    agn_company_name: {
+                        required: true
+                    },
+                    con_cube: {
+                        required: true,
+                        min: 0,
+                        max: 100
+                    },
+                    email: {
+                        required: true,
+                        maxlength: 30,
+                        email: true
+                    }
+                },
+                messages: {
+                    agn_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
+                    },
+                    con_cube: {
+                        required: 'กรุณากรอกปริมาตรสุทธิ',
+                        min: 'กรุณาใส่ปริมาตรมากกว่า 0',
+                        max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
+                    },
+                    email: {
+                        required: 'Email is required',
+                        maxlength: 'The email should not more than 30 chars',
+                        email: 'It does not seem to be a valid email',
+                    }
+                }
+            })
+        }
+    });
     
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
@@ -341,5 +341,50 @@
         $('input[name="size_height_out"]').val(size_height_out);
         $('input[name="size_width_out"]').val(size_width_out);
         $('input[name="size_length_out"]').val(size_length_out);
+    }
+    function get_agent_information() {
+        let agn_company_name = $('input[name="agn_company_name"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                agn_company_name: agn_company_name
+            },
+            success: function(data) {
+                console.log(data);
+                show_agent_information(data);
+            }
+        });
+    }
+    function show_agent_information(agent) {
+        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
+        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
+        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
+        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
+        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
+        $('input[name="agn_email"]').val(agent[0]['agn_email']);
+    }
+    function check_container_number() {
+        $('#con_number-error').remove();
+        let con_number = $('input[name="con_number"]').val();
+        if (con_number.length >= 12) {
+            $.ajax({
+                url: '<?php echo base_url() . '/public/Container_show/check_container_number' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    con_number: con_number
+                },
+                success: function(data) {
+                    console.log(data);
+                    if (data == "found") {
+                        // show con_number error
+                        $('.div_con_number_input').append('<label id="con_number-error" class="error" for="con_number">หมายเลขตู้คอนเทนเนอร์นี้ใช้ไปแล้ว</label>');
+                        return false;
+                    }
+                }
+            });
+        }
     }
 </script>

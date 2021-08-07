@@ -41,4 +41,9 @@ class M_cdms_agent extends Da_cdms_agent
                 WHERE agn_id";
          return $this->db->query($sql)->getResult();
     }
+
+    public function get_by_company_name($agn_company_name = NULL) {
+        $sql = "SELECT * FROM $this->table WHERE agn_company_name = '$agn_company_name'";
+        return $this->db->query($sql)->getResult();
+    }
 }

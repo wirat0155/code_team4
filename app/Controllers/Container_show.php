@@ -42,4 +42,16 @@ class Container_show extends Cdms_controller
         $M_con->delete($con_id);
         return $this->response->redirect(base_url('/public/Container_show/container_show_ajax'));
     }
+
+    
+    public function check_container_number() {
+        $M_con = new M_cdms_container();
+        $con_number = $this->request->getPost('con_number');
+        $arr_container = $M_con->is_con_number_exist($con_number);
+        if (count($arr_container) == 1) {
+            return json_encode('found');
+        } else {
+            return json_encode('not found');
+        }
+    }
 }
