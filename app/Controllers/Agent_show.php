@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_container;
 
@@ -22,11 +25,11 @@ class Agent_show extends Cdms_controller
     public function agent_show_ajax()
     {
         $_SESSION['menu'] = 'Agent_show';
-        $M_agn = new M_cdms_agent();
-        $data['arr_agent'] = $M_agn->get_all();
-        
-        $M_con = new M_cdms_container();
-        $data['arr_container'] = $M_con->get_all();
+        $m_agn = new M_cdms_agent();
+        $data['arr_agent'] = $m_agn->get_all();
+
+        $m_con = new M_cdms_container();
+        $data['arr_container'] = $m_con->get_all();
 
         $this->output('v_agent_showlist', $data);
     }
@@ -39,15 +42,16 @@ class Agent_show extends Cdms_controller
     */
     public function agent_delete()
     {
-        $M_agn = new M_cdms_agent();
-        $M_agn->delete($this->request->getPost('agn_id'));
+        $m_agn = new M_cdms_agent();
+        $m_agn->delete($this->request->getPost('agn_id'));
         return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
     }
 
-    public function get_agent_ajax() {
-        $M_agn = new M_cdms_agent();
+    public function get_agent_ajax()
+    {
+        $m_agn = new M_cdms_agent();
         $agn_company_name = $this->request->getPost('agn_company_name');
-        $agn_information = $M_agn->get_by_company_name($agn_company_name);
+        $agn_information = $m_agn->get_by_company_name($agn_company_name);
         echo json_encode($agn_information);
     }
 }

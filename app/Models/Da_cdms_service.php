@@ -33,9 +33,13 @@ class Da_cdms_service extends Model
         $this->db->query($sql);
     }
 
-    public function insert($ser_dri_id_in = NULL, bool $purge = false) {
-        $sql = "INSERT INTO $this->table(ser_dri_id_in) 
-        VALUES ('$ser_dri_id_in')";
+    public function service_insert($ser_type = NULL, $ser_departure_date = NULL, $ser_car_id_in = NULL, $ser_arrivals_date = NULL, $ser_dri_id_in = NULL, $ser_actual_departure_date = NULL, $ser_dri_id_out = NULL, $ser_car_id_out = NULL, $ser_arrivals_location = NULL, $ser_departure_location = NULL, $ser_weight= NULL, $ser_con_id = NULL, $ser_cus_id = NULL) {
+        $sql = "INSERT INTO $this->table(ser_arrivals_location, ser_arrivals_date, ser_departure_date, ser_actual_departure_date, 
+                ser_departure_location, ser_weight, ser_status, ser_con_id, ser_type, ser_cus_id, ser_id_change, ser_dri_id_in, 
+                ser_dri_id_out, ser_car_id_in, ser_car_id_out) 
+        VALUES ('$ser_arrivals_location', '$ser_arrivals_date', '$ser_departure_date', '$ser_actual_departure_date', 
+                '$ser_departure_location', '$ser_weight', '1', '$ser_con_id', '$ser_type', '$ser_cus_id', 
+                 NULL, '$ser_dri_id_in', '$ser_dri_id_out', '$ser_car_id_in', '$ser_car_id_out')";
         $this->db->query($sql);
     }
 }

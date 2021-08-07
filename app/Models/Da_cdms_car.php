@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use CodeIgniter\Model;
 
 /*
@@ -9,47 +11,58 @@ use CodeIgniter\Model;
 * @Create Date 2564-07-29
 * @Update Date
 */
-class Da_cdms_car extends Model {
-    protected $table = 'cdms_car';
-    protected $primaryKey = 'car_id ';
-    protected $allowedFields = ['car_code', 'car_number', 'car_chassis_number', 'car_brand',
-                                'car_register_year', 'car_weight', 'car_branch', 'car_fuel_type', 'car_image', 'car_status', 'car_prov_id', 'car_cart_id'];
 
-    /*
+class Da_cdms_car extends Model
+{
+        protected $table = 'cdms_car';
+        protected $primaryKey = 'car_id ';
+        protected $allowedFields = [
+                'car_code', 'car_number', 'car_chassis_number', 'car_brand',
+                'car_register_year', 'car_weight', 'car_branch', 'car_fuel_type', 'car_image', 'car_status', 'car_prov_id', 'car_cart_id'
+        ];
+
+        /*
     * delete
     * ลบรถ
-    * @input car_id
-    * @output ลบรถ
     * @author Nattanan Tadsawan
     * @Create Date 2564-07-30
     * @Update Date
     */
-    public function delete($car_id= NULL, bool $purge = false) {
-        $sql = "UPDATE $this->table 
-        SET car_status=4 
-        WHERE car_id='$car_id'";
+        public function delete($car_id = NULL, bool $purge = false)
+        {
+                $sql = "UPDATE $this->table 
+                        SET car_status=4 
+                        WHERE car_id='$car_id'";
                 $this->db->query($sql);
-    }
+        }
 
-    /*
+        /*
     * car_update
     * แก้ไขรถ
-    * @input car_id
-    * @output แก้ไขรถ
     * @author Nattanan Tadsawan
     * @Create Date 2564-08-06
     * @Update Date
     */
-    public function car_update($car_id= NULL, bool $data = NULL){
-        $sql = "UPDATE $this->table
-                SET car_code = ?, car_number = ?, car_chassis_number = ?, car_brand = ?,
-                        car_register_year = ?, car_weight = ?, car_branch = ?, car_fuel_type = ?, car_image = ?, car_status = ?, car_prov_id = ?, car_cart_id = ?
-                WHERE car_id = '$car_id' "; // ? = ค่าที่เราจะใส่ไปอยู่แล้ว , อย่าใช้ " ' " เพราะอาจจะเออเร่อได้
-        $this->db->query($sql, array($this->car_code ,$this->car_number ,$this->car_chassis_number ,$this->car_brand ,$this->car_register_year 
-                                                                ,$this->car_weight ,$this->car_branch ,$this->car_fuel_type ,$this->car_image ,$this->car_status 
-                                                                ,$this->car_prov_id ,$this->car_cart_id)); //ถ้า SQL ที่เราใส่มี ? ต้องใส่ array ด้วย
-
-    }
-
-    
+        public function car_update(
+                $car_id = NULL,
+                $car_code = NULL,
+                $car_number = NULL,
+                $car_chassis_number = NULL,
+                $car_brand = NULL,
+                $car_register_year = NULL,
+                $car_weight = NULL,
+                $car_branch = NULL,
+                $car_fuel_type = NULL,
+                $car_image = NULL,
+                $car_status = NULL,
+                $car_prov_id = NULL,
+                $car_cart_id = NULL
+        ) {
+                $sql = "UPDATE $this->table
+                                SET car_code = '$car_code', car_number = '$car_number', car_chassis_number = '$car_chassis_number', car_brand = '$car_brand'
+                                        ,car_register_year = '$car_register_year', car_weight = '$car_weight', car_branch = '$car_branch', car_fuel_type = '$car_fuel_type'
+                                        , car_image = '$car_image', car_status = '$car_status', car_prov_id = '$car_prov_id', car_cart_id = '$car_cart_id'
+                                WHERE car_id = '$car_id' ";
+                $this->db->query($sql);
+        }
 }

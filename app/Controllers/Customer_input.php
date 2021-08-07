@@ -53,9 +53,9 @@ class Customer_input extends Cdms_controller
         }
 
         // เพิ่มข้อมูลลูกค้า
-        //$M_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+        $M_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
 
-        //return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+        return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
     }
 
 }

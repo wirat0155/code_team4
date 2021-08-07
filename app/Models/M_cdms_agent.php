@@ -1,13 +1,16 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Da_cdms_agent;
-    /*
+/*
         * M_cdms_agent
         * นำเข้าข้อมูลรายชื่อเอเย่นต์
         * @author Klayuth
         * @Create Date 2564-07-30
         * @Update Date
     */
+
 class M_cdms_agent extends Da_cdms_agent
 {
     /*
@@ -24,7 +27,7 @@ class M_cdms_agent extends Da_cdms_agent
         $sql = "SELECT * FROM $this->table
                 WHERE agn_status = 1";
         return $this->db->query($sql)->getResult();
-    }   
+    }
     /*
         * get_by_id
         * ดึงข้อมูลจากไอดีเอเย่นต์ 
@@ -38,8 +41,7 @@ class M_cdms_agent extends Da_cdms_agent
     {
         $sql = "SELECT * FROM $this->table
                 WHERE agn_id='$agn_id'";
-         return $this->db->query($sql)->getResult();
-         
+        return $this->db->query($sql)->getResult();
     }
 
     /*
@@ -51,7 +53,7 @@ class M_cdms_agent extends Da_cdms_agent
         * @Create Date 2564-08-07
         * @Update Date 2564-08-07
     */
-    public function get_by_company_name($agn_company_name = NULL) 
+    public function get_by_company_name($agn_company_name = NULL)
     {
         $sql = "SELECT * FROM $this->table WHERE agn_company_name = '$agn_company_name'";
         return $this->db->query($sql)->getResult();
@@ -66,7 +68,8 @@ class M_cdms_agent extends Da_cdms_agent
         * @Create Date 2564-08-07
         * @Update Date 2564-08-07
     */
-    public function get_max_id() {
+    public function get_max_id()
+    {
         $sql = "SELECT MAX(agn_id) AS agn_id FROM $this->table";
         return $this->db->query($sql)->getResult();
     }

@@ -55,7 +55,9 @@
 
                     
                     <td class="px-4 py-3 text-sm text-center">
-                        <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        
+                        <a href="<?php echo base_url(). '/public/Driver_edit/driver_edit/'.$arr_driver[$i]->dri_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        
                         <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[$i]->dri_id?>)">
                             <i class="bi bi-trash"></i>
                         </button>

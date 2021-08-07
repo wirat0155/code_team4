@@ -1,5 +1,6 @@
 <div class="container mx-auto grid mt-3">
-    <form id="add_car_form" action="" method="POST">
+    <form id="edit_car_form" action="<?php echo base_url(). '/public/Car_edit/car_update' ?>" method="POST">
+    <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->cus_id ?>">
 
         <div class="container-sm col-12 col-xl-7">
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -18,10 +19,9 @@
                             </div>
 
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" value="<?php echo $arr_car[0]->car_number ?>">
                             </div>
                         </div>
-
 
                         <!-- ทะเบียน -->
                         <div class="row mt-3">
@@ -31,8 +31,8 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" value="<?php echo $arr_car[0]->car_code ?>">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id" value="<?php echo $arr_car[0]->car_prov_id ?>">
                                     <option value="">ชลบุรี</option>
                                     <option value="">กรุงเทพ</option>
                                 </select>
@@ -47,7 +47,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_cart_id">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_cart_id" value="<?php echo $arr_car[0]->car_cart_id ?>">
                                     <option value="">บรรทุก 4 ล้อ</option>
                                     <option value="">บรรทุก 8 ล้อ</option>
                                 </select>
@@ -62,7 +62,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <!-- <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight"> -->
+                                <!-- <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight" value="" -->
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_brand">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_brand" value="<?php echo $arr_car[0]->car_brand ?>">
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_branch">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_branch" value="<?php echo $arr_car[0]->car_branch ?>">
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_chassis_number">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_chassis_number" value="<?php echo $arr_car[0]->car_chassis_number ?>">
                             </div>
                         </div>
 
@@ -114,7 +114,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_register_year">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_register_year" value="<?php echo $arr_car[0]->car_register_year ?>">
                             </div>
                         </div>
 
@@ -126,7 +126,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_weight">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_weight" value="<?php echo $arr_car[0]->car_weight ?>">
                             </div>
                         </div>
 
@@ -138,7 +138,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_fuel_type">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_fuel_type" value="<?php echo $arr_car[0]->car_fuel_type?>">
                             </div>
                         </div>
 
@@ -150,10 +150,9 @@
         </div>
         <!-- end car form -->
 
-
         <div class="container-sm text-right col-12 col-xl-7">
-            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
-            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
+            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" onclick="window.history.back();" >
+            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข" >
         </div>
     </form>
     <br>
@@ -166,28 +165,14 @@ $(document).ready(function() {
     if ($('#add_cae_form').length > 0) {
         $('#add_car_form').validate({
             rules: {
-                agn_company_name: {
+                car_code: {
                     required: true
                 },
-                con_cube: {
-                    required: true,
-                    min: 0,
-                    max: 100
-                },
-                email: {
-                    required: true,
-                    maxlength: 30,
-                    email: true
-                }
+
             },
             messages: {
-                agn_company_name: {
+                car_code: {
                     required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
-                },
-                con_cube: {
-                    required: 'กรุณากรอกปริมาตรสุทธิ',
-                    min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-                    max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
                 },
 
             }

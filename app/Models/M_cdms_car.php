@@ -34,8 +34,8 @@ class M_cdms_car extends Da_cdms_car {
 
     public function get_by_id($car_id){
         $sql = "SELECT * FROM $this->table
-                on car_id
-                WHERE car_id";
+
+                WHERE car_id='$car_id'";
         return $this->db->query($sql)->getResult();
     }
 }

@@ -23,7 +23,7 @@
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php
-                    for ($i = 0; $i < count($arr_agent); $i++) { 
+                for ($i = 0; $i < count($arr_agent); $i++) {
                 ?>
                     <tr class="text-gray-700 dark:text-gray-400">
                         <td class="px-4 py-3 text-sm">
@@ -46,12 +46,14 @@
                         </td>
                         <td class="px-4 py-3 text-sm text-center">
 
-                        <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        <!-- ปุ่มลบ -->
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[$i]->agn_id?>)">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
+                            <!-- ปุ่มแก้ไข -->
+                            <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+
+                            <!-- ปุ่มลบ -->
+                            <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
                     </tr>
 
                 <?php } ?>
@@ -70,11 +72,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Agent_show/agent_delete'?>" method="post">
+            <form action="<?php echo base_url() . '/public/Agent_show/agent_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Agent Id -->
                     <input name="agn_id" id="agn_id" type="hidden">
-                   <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center> 
+                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -97,8 +99,9 @@
                 "sSearch": "ค้นหา :"
             }
         });
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Agent_input/agent_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มเอเย่นต์</a>");
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Agent_input/agent_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มเอเย่นต์</a>");
     });
+
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }

@@ -23,10 +23,10 @@ class service_edit extends Cdms_controller
     */
     public function service_edit()
     {
-        $this->output('v_service_update');
+        $this->output('v_service_edit');
     }
 
-    public function service_insert()
+    public function service_update()
     {
         $M_ser = new M_cdms_service();
 
