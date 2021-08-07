@@ -79,7 +79,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <!-- <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight" value="" -->
+                                <!-- <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number"  name="con_tare_weight" value="<?php echo $arr_car[0]->car_image ?>"  -->
                             </div>
                         </div>
                     </div>
