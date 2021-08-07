@@ -1,5 +1,5 @@
 <div class="container mx-auto grid mt-3">
-    <form id="add_car_form" action="" method="POST">
+    <form id="add_car_form" action="<?php echo base_url(). '/public/Car_input/car_insert' ?>" method="POST">
 
         <div class="container-sm col-12 col-xl-7">
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -30,10 +30,11 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id">
-                                    <option value="">ชลบุรี</option>
-                                    <option value="">กรุงเทพ</option>
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" placeholder="กข 123">
+                                <select class=" block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id">
+                                    <?php for($i = 0; $i < count($arr_car_prov); $i++) { ?>
+                                    <option value="<?php echo $arr_car_prov[$i]->prov_id?>"><?php echo $arr_car_prov[$i]->prov_name?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -47,8 +48,9 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                 <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_cart_id">
-                                    <option value="">บรรทุก 4 ล้อ</option>
-                                    <option value="">บรรทุก 8 ล้อ</option>
+                                    <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
+                                    <option value="<?php echo $arr_car_type[$i]->cart_id?>"><?php echo $arr_car_type[$i]->cart_name?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -125,7 +127,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_weight">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="car_weight">
                             </div>
                         </div>
 
@@ -166,13 +168,13 @@ $(document).ready(function() {
             rules: {
                 car_code: {
                     required: true
-                },
+                }
 
             },
             messages: {
                 car_code: {
-                    required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
-                },
+                    required: 'กรุณากรอกทะเบียนรถ'
+                }
 
             }
         })
