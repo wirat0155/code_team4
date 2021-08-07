@@ -1,4 +1,4 @@
-<div class="container px-6 mx-auto grid">
+<div class="driver px-6 mx-auto grid">
     <!-- หัวข้อ -->
     <div
         class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <!-- ตารางตู้คอนเทนเนอร์ -->
+    <!-- ตารางพนักงานขับรถ -->
     <div class="w-full overflow-x-auto mb-5 ">
         <table class="w-full whitespace-no-wrap table ">
             <thead>
@@ -80,7 +80,6 @@
             </div>
             <form action="<?php echo base_url() . '/public/Driver_show/driver_delete'?>" method="post">
                 <div class="modal-body float-center">
-                    <!-- เก็บ Container Id -->
                     <input name="dri_id" id="dri_id" type="hidden">
                     <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
                 </div>

@@ -1,5 +1,5 @@
 <div class="container mx-auto grid mt-3">
-    <form action="<?php echo base_url(). '/public/Driver_input/driver_insert' ?>" method="post">
+    <form id="add_driver_form" action="<?php echo base_url(). '/public/Driver_input/driver_insert' ?>" method="post">
         <div class="row">
             <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -7,48 +7,49 @@
                     <hr class="mb-5">
 
                     <div class="row mt-3">
+
                         <div class="col-12">
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label for="input_name" class="block text-sm mt-3">
+                                    <label for="dri_name" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">ชื่อ-นามสกุล</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="input_name" name="input_name">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_name" name="dri_name">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label for="input_card_number" class="block text-sm mt-3">
+                                    <label for="dri_card_number" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">หมายเลขบัตรประชาชน</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="input_card_number" name="input_card_number">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_card_number" name="dri_card_number">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label for="input_license" class="block text-sm mt-3">
+                                    <label for="dri_license" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">หมายเลขใบขับขี่</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="input_license" name="input_license">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license" name="dri_license">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
+                                    <label for="dri_license_type" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">ประเภทใบขับขี่</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="dri_license_type">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type">
                                         <option selected disabled>เลือกประเภท</option>
                                         <option value="">ท.1</option>
                                         <option value="">ท.2</option>
@@ -58,23 +59,23 @@
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
+                                    <label for="dri_tel" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">เบอร์โทร</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="dri_name">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_tel" name="dri_tel">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
+                                    <label for="dri_status" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">สถานะของคนขับรถ</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="dri_license_type">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_status" name="dri_status">
                                         <option selected disabled>เลือกสถานะ</option>
                                         <option value="">พร้อมทำงาน</option>
                                         <option value="">กำลังปฏิบัติงาน</option>
@@ -86,26 +87,26 @@
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
+                                    <label for="dri_date_start" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">วันที่เข้าทำงาน</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input">
+                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_start" name="dri_date_start">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
+                                    <label for="dri_date_end" class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">วันที่ลาออก</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input">
+                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_end" name="dri_date_end">
                                 </div>
                             </div>
-
+                            <!-- 
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label class="block text-sm mt-3">
@@ -113,12 +114,14 @@
                                     </label>
                                 </div>
                                 <div class="picture">
-                                    <img src="#" class="picture-src fa fa-user-circle" id="picture_preview" title="" alt="" style="padding-bottom: 10px;">
+                                    <img src="#" class="picture-src fa fa-user-circle" id="dri_profile_image" title="" alt="" style="padding-bottom: 10px;">
 
-                                    <input type="file" id="file-profile" class="" accept="image/*">
+                                    <input type="file" id="dri_profile_image" class="" accept="image/*">
                                 </div>
-                            </div>
+                            </div> -->
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -139,7 +142,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="dri_name">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="">
                                 </div>
                             </div>
 
@@ -150,7 +153,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="dri_name">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="">
                                 </div>
                             </div>
 
@@ -161,7 +164,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="prov_name">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="">
                                         <option selected disabled>เลือกจังหวัด</option>
                                         <option>ชลบุรี</option>
                                         <option>มีจังหวัดเดียวไปก่อนนะคับอิอิ</option>
@@ -212,44 +215,55 @@
 
 
 
-
-
-
-
-
 <script>
     $(document).ready(function() {
         // jQuery Validation
-        if ($('#add_container_form').length > 0) {
-            $('#add_container_form').validate({
+        if ($('#add_driver_form').length > 0) {
+            $('#add_driver_form').validate({
                 rules: {
-                    agn_company_name: {
+                    dri_name:{
                         required: true
                     },
-                    con_cube: {
+                    dri_card_number: {
                         required: true,
-                        min: 0,
-                        max: 100
+                        maxlength: 13
                     },
-                    email: {
+                    dri_license: {
                         required: true,
-                        maxlength: 30,
-                        email: true
+                        maxlength: 8
+                    },
+                    dri_tel: {
+                        required: true,
+                        maxlength: 10
+                    },
+                    dri_date_start: {
+                        required: true
+                    },
+                    dri_date_end: {
+                        required: true
                     }
                 },
                 messages: {
-                    agn_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
+                    dri_name:{
+                        required: 'กรุณากรอกชื่อ'
                     },
-                    con_cube: {
-                        required: 'กรุณากรอกปริมาตรสุทธิ',
-                        min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-                        max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
+                    dri_card_number: {
+                        required: 'กรุณากรอกหมายเลขบัตรประชาชน',
+                        maxlength: 'กรุณากรอกไม่เกิน 13'
                     },
-                    email: {
-                        required: 'Email is required',
-                        maxlength: 'The email should not more than 30 chars',
-                        email: 'It does not seem to be a valid email',
+                    dri_license: {
+                        required: 'กรุณากรอกหมายเลขใบขับขี่',
+                        maxlength: 'กรุณากรอกไม่เกิน 8'
+                    },
+                    dri_tel: {
+                        required: 'กรุณากรอกหมายเลขโทรศัพท์',
+                        maxlength: 'กรุณากรอกไม่เกิน 10'
+                    },
+                    dri_date_start: {
+                        required: 'กรุณาเลือกวันที่เข้าทำงาน'
+                    },
+                    dri_date_end: {
+                        required: 'กรุณาเลือกวันที่ลาออก'
                     }
                 }
             })
