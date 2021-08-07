@@ -13,32 +13,30 @@ class Car_edit extends Cdms_controller
     /*
     * car_edit
     * เรียกหน้าแก้ไขรถพร้อมดึงข้อมูลของรถที่เลือก
-    * @input -
-    * @output 
     * @author Nattanan Tadsawan
     * @Create Date 2021-08-06
     * @Update Date
     */
-    public function car_edit()
+    public function car_edit($car_id)
     {
         // call car edit view
-        $data = [];
+        $M_car = new M_cdms_car;
+        $data['arr_car']=$M_car->get_by_id($car_id);
         $this->output('v_car_edit', $data);
     }
 
     /*
     * car_update
     * แก้ไขข้อมูลรถ
-    * @input -
-    * @output 
     * @author Nattanan Tadsawan
     * @Create Date 2021-08-06
     * @Update Date
     */
     public function car_update() {
-        $M_car = new M_cdms_car();
+        $M_car = new M_cdms_car;
 
         // car information
+        $car_id = $this->request->getPost('car_id');
         $car_code = $this->request->getPost('car_code');
         $car_number = $this->request->getPost('car_number');
         $car_chassis_number = $this->request->getPost('car_chassis_number');
@@ -56,6 +54,7 @@ class Car_edit extends Cdms_controller
         // upload image
         $car_image = $this->request->getPost('car_image');
 
+        $M_car->car_update($car_id, $car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_status, $car_cart_id ,$car_prov_id ,$car_image);
         return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
     }
 }
