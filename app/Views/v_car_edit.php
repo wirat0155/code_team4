@@ -1,6 +1,6 @@
 <div class="container mx-auto grid mt-3">
     <form id="edit_car_form" action="<?php echo base_url(). '/public/Car_edit/car_update' ?>" method="POST">
-    <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->cus_id ?>">
+    <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
 
         <div class="container-sm col-12 col-xl-7">
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -33,8 +33,8 @@
                             <div class="col-12 col-sm-8">
                                 <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" value="<?php echo $arr_car[0]->car_code ?>">
                                 <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id" value="<?php echo $arr_car[0]->car_prov_id ?>">
-                                    <option value="">ชลบุรี</option>
-                                    <option value="">กรุงเทพ</option>
+                                    <option value="1">ชลบุรี</option>
+                                    <option value="2">กรุงเทพ</option>
                                 </select>
                             </div>
                         </div>
@@ -48,8 +48,25 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                 <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_cart_id" value="<?php echo $arr_car[0]->car_cart_id ?>">
-                                    <option value="">บรรทุก 4 ล้อ</option>
-                                    <option value="">บรรทุก 8 ล้อ</option>
+                                    <option value="0">บรรทุก 4 ล้อ</option>
+                                    <option value="1">บรรทุก 8 ล้อ</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- สถานะรถ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สถานะรถ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_status" value="<?php echo $arr_car[0]->car_status ?>">
+                                    <option value="1">พร้อมใช้</option>
+                                    <option value="2">เสียหาย</option>
+                                    <option value="3">กำลังซ่อม</option>
+                                    <option value="4">เลิกใช้แล้ว</option>
                                 </select>
                             </div>
                         </div>
