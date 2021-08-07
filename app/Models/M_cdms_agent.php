@@ -12,7 +12,7 @@ class M_cdms_agent extends Da_cdms_agent
 {
     /*
         * get_all
-        * ดึงข้อมูล รหัสเอเย่นต์ ชื่อบริษัทเอเย่นต์ ชื่อเอเย่นต์ นามสกุลเอเย่นต์ เบอร์โทรเอเย่นต์ ที่อยู่เอเย่นต์ สถานะเอเย่นต์ หมายเลขประจำตัวของผู้เสียภาษีของเอเย่นต์ อีเมลเอเย่นต์ 
+        * ดึงข้อมูลเอเย่นต์
         * @input
         * @output array of agent
         * @author Klayuth
@@ -27,7 +27,7 @@ class M_cdms_agent extends Da_cdms_agent
     }   
     /*
         * get_by_id
-        * ดึงข้อมูล ไอดีเอเย่นต์ ชื่อบริษัทเอเย่นต์ ชื่อเอเย่นต์ นามสกุลเอเย่นต์ เบอร์โทรเอเย่นต์ ที่อยู่เอเย่นต์ สถานะเอเย่นต์ หมายเลขประจำตัวของผู้เสียภาษีของเอเย่นต์ อีเมลเอเย่นต์ 
+        * ดึงข้อมูลจากไอดีเอเย่นต์ 
         * @input ไอดีเอเย่นต์
         * @output ข้อมูลของไอดีเอเย่นต์ที่นำเข้า
         * @author Klayuth
@@ -42,7 +42,8 @@ class M_cdms_agent extends Da_cdms_agent
          return $this->db->query($sql)->getResult();
     }
 
-    public function get_by_company_name($agn_company_name = NULL) {
+    public function get_by_company_name($agn_company_name = NULL) 
+    {
         $sql = "SELECT * FROM $this->table WHERE agn_company_name = '$agn_company_name'";
         return $this->db->query($sql)->getResult();
     }
