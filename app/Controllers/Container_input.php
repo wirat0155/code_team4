@@ -6,22 +6,22 @@ use App\Models\M_cdms_container_type;
 use App\Models\M_cdms_status_container;
 
 /*
-* Container_show
-* แสดงรายการตู้คอนเนอร์ และลบตู้คอนเทนเนอร์
+* Container_input
+* เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์ และเพิ่มตู้คอนเทนเนอร์
 * @author Wirat
-* @Create Date 2564-07-29
+* @Create Date 2564-08-06
 * @Update Date
 */
 class Container_input extends Cdms_controller
 {
     /*
     * container_input
-    * แสดงรายการตู้คอนเทนเนอร์
+    * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์
     * @input -
-    * @output array of container
+    * @output หน้าจอเพิ่มตู้คอนเทนเนอร์
     * @author Wirat
-    * @Create Date 2564-07-29
-    * @Update Date
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-07
     */
     public function container_input()
     {
@@ -35,7 +35,7 @@ class Container_input extends Cdms_controller
         $data['arr_size'] = $m_size->get_all();
 
         // first size information
-        $data['first_size'] = $M_size->get_first();
+        $data['first_size'] = $m_size->get_first();
 
         // container type
         $m_cont = new M_cdms_container_type();
@@ -49,8 +49,16 @@ class Container_input extends Cdms_controller
         $this->output('v_container_input', $data);
     }
 
+    /*
+    * container_insert
+    * เพิ่มตู้คอนเทนเนอร์
+    * @input ข้อมูลตู้คอนเทนเนอร์ ข้อมูลเอเย่นต์
+    * @output เพิ่มตู้คอนเทนเนอร์ เพิ่มเอเย่นต์ หรือแก้ไขเอเย่นต์
+    * @author Wirat
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-07
+    */
     public function container_insert() {
-        
         // container information
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');
@@ -67,6 +75,8 @@ class Container_input extends Cdms_controller
         $con_image = $this->request->getPost('con_image');
         
         $m_con = new M_cdms_container();
+        // check con_number duplicate
+
         // check con_number duplicate
         $arr_container = $m_con->is_con_number_exist($con_number);
         if (count($arr_container) >= 1) {
@@ -85,16 +95,17 @@ class Container_input extends Cdms_controller
             
             // load agent model
             $m_agn = new M_cdms_agent();
-            // new agent
-            // insert agent
+            
             if ($agn_id == '') {
+                // new agent
+                // insert agent
                 $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+
                 // get agn_id back
                 $con_agn_id = $m_agn->get_max_id();
             } else {
                 // old agent
                 // update agent
-                // รอบิ๊ก แพรว
                 $con_agn_id = $this->request->getPost('agn_id');
                 $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             }

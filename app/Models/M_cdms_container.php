@@ -14,7 +14,7 @@ class M_cdms_container extends Da_cdms_container {
     /*
     * get_all
     * ดึงข้อมูลตู้คอนเทนเนอร์ทั้งหมด
-    * @input
+    * @input - 
     * @output array of container
     * @author Wirat
     * @Create Date 2564-07-29
@@ -26,6 +26,15 @@ class M_cdms_container extends Da_cdms_container {
         return $this->db->query($sql)->getResult();
     }
 
+    /*
+    * is_con_number_exist
+    * ค้นหาหมายเลขตู้คอนเทนเนอร์
+    * @input con_number
+    * @output con_number or null
+    * @author Wirat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+    */
     public function is_con_number_exist($con_number = NULL) {
         $sql = "SELECT con_number FROM $this->table WHERE con_number = '$con_number'";
         return $this->db->query($sql)->getResult();
