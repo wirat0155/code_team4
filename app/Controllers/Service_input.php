@@ -10,6 +10,7 @@ use App\Models\M_cdms_customer;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
 use App\Models\M_cdms_Car;
+use App\Models\M_cdms_agent;
 
 /*
     * Service_show
@@ -62,6 +63,7 @@ class Service_input extends Cdms_controller
         $m_ser = new M_cdms_service();
         $m_cus = new M_cdms_customer();
         $m_con = new M_cdms_container();
+        $m_agn = new M_cdms_agent();
 
         // customer information
         $cus_company_name = $this->request->getPost('cus_company_name');
@@ -84,6 +86,15 @@ class Service_input extends Cdms_controller
         $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
 
+        // agent information
+        $agn_company_name = $this->request->getPost('agn_company_name');
+        $agn_firstname = $this->request->getPost('agn_firstname');
+        $agn_lastname = $this->request->getPost('agn_lastname');
+        $agn_tel = $this->request->getPost('agn_tel');
+        $agn_address = $this->request->getPost('agn_address');
+        $agn_tax = $this->request->getPost('agn_tax');
+        $agn_email = $this->request->getPost('agn_email');
+
         // service information
         $ser_type = $this->request->getPost('ser_type');
         $ser_departure_date = $this->request->getPost('ser_departure_date');
@@ -98,7 +109,16 @@ class Service_input extends Cdms_controller
         $ser_weight = $this->request->getPost('ser_weight');
 
 
-    
+        
+        $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
+        if (count($get_ser_agn_id)  == 0) {
+            $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+            $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
+            $con_agn_id = $get_ser_agn_id[0]->agn_id;
+        } else {
+            $con_agn_id = $get_ser_agn_id[0]->agn_id;
+        }
+
         $get_ser_con_id = $m_con->get_by_con_number($con_number);
         if (count($get_ser_con_id)  == 0) {
             $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
@@ -116,6 +136,7 @@ class Service_input extends Cdms_controller
         } else {
             $ser_cus_id = $get_ser_cus_id[0]->cus_id;
         }
+        
         
         
 
