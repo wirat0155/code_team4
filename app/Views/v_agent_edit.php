@@ -1,28 +1,27 @@
 <style>
-@media (min-width: 1200px) {
-    .container-sm {
-        max-width: 900px;
+    @media (min-width: 1200px) {
+        .container-sm {
+            max-width: 900px;
+        }
     }
-}
 </style>
 
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
-    <div
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                ข้อมูลเอเย่นต์
+                แก้ไขข้อมูลเอเย่นต์
             </h2>
         </div>
     </div>
 
 
     <div class="container-sm mb-8">
-        
-        <form id="add_agent_form" action="<?php echo base_url(). '/public/Agent_input/agent_insert' ?>" method="post">
-            
+
+        <form id="add_agent_form" action="<?php echo base_url() . '/public/Agent_edit/agent_update' ?>" method="post">
+            <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
             <!-- เพิ่มลูกค้า -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
@@ -37,7 +36,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_company_name" name="agn_company_name" placeholder="บริษัท">
+                            <input type="text" class="form-control form-input" id="agn_company_name" name="agn_company_name" placeholder="บริษัท" value="<?php echo $arr_agent[0]->agn_company_name ?>">
                         </div>
                     </div>
 
@@ -45,7 +44,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control form-input" id="agn_address" name="agn_address" placeholder="ที่ตั้งบริษัท" rows="3"></textarea>
+                            <textarea class="form-control form-input" id="agn_address" name="agn_address" placeholder="ที่ตั้งบริษัท" rows="3" value="<?php echo $arr_agent[0]->agn_address ?>"><?php echo $arr_agent[0]->agn_address ?></textarea>
                         </div>
                     </div>
 
@@ -53,7 +52,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_tax" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี">
+                            <input type="text" class="form-control form-input" id="agn_tax" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $arr_agent[0]->agn_tax ?>">
                         </div>
                     </div>
 
@@ -68,7 +67,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_firstname" name="agn_firstname" placeholder="ชื่อจริง" >
+                            <input type="text" class="form-control form-input" id="agn_firstname" name="agn_firstname" placeholder="ชื่อจริง" value="<?php echo $arr_agent[0]->agn_firstname ?>">
                         </div>
                     </div>
 
@@ -76,7 +75,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_lastname" name="agn_lastname" placeholder="นามสกุล" >
+                            <input type="text" class="form-control form-input" id="agn_lastname" name="agn_lastname" placeholder="นามสกุล" value="<?php echo $arr_agent[0]->agn_lastname ?>">
                         </div>
                     </div>
 
@@ -84,7 +83,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890">
+                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890" value="<?php echo $arr_agent[0]->agn_tel ?>">
                         </div>
                     </div>
 
@@ -92,7 +91,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_email" class="col-sm-3 col-form-label">อีเมล</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control form-input" id="agn_email" name="agn_email" placeholder="อีเมล">
+                            <input type="email" class="form-control form-input" id="agn_email" name="agn_email" placeholder="อีเมล" value="<?php echo $arr_agent[0]->agn_email ?>">
                         </div>
                     </div>
                 </div>
@@ -116,7 +115,7 @@
                     },
                     agn_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        matches: "[0-9]{13}"
                     },
                     agn_address: {
                         required: true
@@ -127,11 +126,11 @@
                     agn_lastname: {
                         required: true
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: true,
-                        matches:"[0-9]{10}",
-                        minlength:10, 
-                        maxlength:10
+                        matches: "[0-9]{10}",
+                        minlength: 10,
+                        maxlength: 10
                     },
                     agn_email: {
                         required: true,
@@ -156,11 +155,11 @@
                     agn_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
                         matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     agn_email: {
                         required: 'กรุณากรอกอีเมล',
