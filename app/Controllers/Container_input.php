@@ -25,6 +25,9 @@ class Container_input extends Cdms_controller
     public function container_input()
     {
         $data = [];
+        if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
+            $_SESSION['con_number_error'] = '';
+        }
         // get dropdown
         // container size
         $M_size = new M_cdms_size();
@@ -46,8 +49,7 @@ class Container_input extends Cdms_controller
     }
 
     public function container_insert() {
-        $M_con = new M_cdms_container();
-
+        
         // container information
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');
@@ -58,25 +60,35 @@ class Container_input extends Cdms_controller
         // other information
         $con_size_id = $this->request->getPost('con_size_id');
         $con_cont_id = $this->request->getPost('con_cont_id');
-        $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
-
+        
         // upload image
         $con_image = $this->request->getPost('con_image');
-
-        // new agent
-        // insert agent
-        // รอบิ๊ก แพรว
-        // $con_agn_id = select กลับมา
-
-        // old agent
-        // update agent
-        // รอบิ๊ก แพรว
-
-        // get agn id
         
-
-        // insert container
-        $M_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+        $M_con = new M_cdms_container();
+        // check con_number duplicate
+        $arr_container = $M_con->is_con_number_exist($con_number);
+        if (count($arr_container) >= 1) {
+            $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
+            $this->container_input();
+        } else {
+            // new agent
+            // insert agent
+            // รอบิ๊ก แพรว
+            // $con_agn_id = select กลับมา
+            
+            // old agent
+            // update agent
+            // รอบิ๊ก แพรว
+            $con_agn_id = $this->request->getPost('agn_id');
+            
+            // get agn id
+            
+    
+            // insert container
+            $_SESSION['con_number_error'] = '';
+            $M_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+            $this->response->redirect(base_url() . '/public/Container_show/container_show_ajax');
+        }
     }
 }

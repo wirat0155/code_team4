@@ -1,5 +1,5 @@
 <div class="container mx-auto grid mt-3">
-    <form id="add_container_form" action="<?php echo base_url() . '/public/Container_input/container_insert'?>" method="POST" onsubmit="check_container_number()">
+    <form id="add_container_form" action="<?php echo base_url() . '/public/Container_input/container_insert'?>" method="POST">
     <div class="row">
         <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -19,6 +19,7 @@
     
                             <div class="col-12 col-sm-8 div_con_number_input">
                                 <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
+                                <label id="con_number-error" class="error" for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
                             </div>
                         </div>
         
@@ -181,6 +182,7 @@
                 <hr class="mb-5">
                 
                 <div class="row mt-3">
+                    <input type="hidden" name="agn_id">
                     <div class="col-12">
                         <!-- บริษัท -->
                         <div class="row mt-3">
@@ -251,7 +253,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" tyle="tel" name="agn_tel">
                             </div>
                         </div>
 
@@ -289,33 +291,109 @@
         if ($('#add_container_form').length > 0) {
             $('#add_container_form').validate({
                 rules: {
-                    agn_company_name: {
-                        required: true
+                    con_number:{
+                        required: true,
+                        maxlength: 12
+                    },
+                    con_max_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_tare_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_net_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
                     },
                     con_cube: {
                         required: true,
                         min: 0,
                         max: 100
                     },
-                    email: {
+                    agn_company_name: {
                         required: true,
-                        maxlength: 30,
+                        maxlength: 255
+                    },
+                    agn_address: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    agn_tax: {
+                        required: true,
+                        maxlength: 15
+                    },
+                    agn_firstname: {
+                        required: true
+                    },
+                    agn_lastname: {
+                        required: true
+                    },
+                    agn_tel: {
+                        required: true,
+                        maxlength: 10
+                    },
+                    agn_email: {
+                        required: true,
+                        maxlength: 40,
                         email: true
                     }
                 },
                 messages: {
-                    agn_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
+                    con_number:{
+                        required: 'กรุณากรอกหมายเลขตู้',
+                        maxlength: 'กรุณากรอกตามฟอร์แมต'
+                    },
+                    con_max_weight: {
+                        required: 'กรุณากรอกน้ำหนักสูงสุด',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_tare_weight: {
+                        required: 'กรุณากรอกน้ำหนักตู้เปล่า',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_net_weight: {
+                        required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
                     },
                     con_cube: {
-                        required: 'กรุณากรอกปริมาตรสุทธิ',
-                        min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-                        max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
+                        required: 'กรุณากรอกหมายเลขตู้',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 100'
                     },
-                    email: {
-                        required: 'Email is required',
-                        maxlength: 'The email should not more than 30 chars',
-                        email: 'It does not seem to be a valid email',
+                    agn_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท',
+                        maxlength: 255
+                    },
+                    agn_address: {
+                        required: 'กรุณากรอกที่ตั้งบริษัท',
+                        maxlength: 255
+                    },
+                    agn_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        maxlength: 15
+                    },
+                    agn_firstname: {
+                        required: 'กรุณากรอกชื่อจริงผู้รับผิดชอบ'
+                    },
+                    agn_lastname: {
+                        required: 'กรุณากรอกนามสกุลผู้รับผิดชอบ'
+                    },
+                    agn_tel: {
+                        required: 'กรุณากรอกเบอร์ติดต่อ',
+                        maxlength: 'กรุณากรอกไม่เกิน 10 อักษร',
+                    },
+                    agn_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        maxlength: 'กรุณากรอกไม่เกิน 40 ตัวอักษร',
+                        email: 'กรุณากรอกอีเมล'
                     }
                 }
             })
@@ -358,33 +436,12 @@
         });
     }
     function show_agent_information(agent) {
+        $('input[name="agn_id"]').val(agent[0]['agn_id']);
         $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
         $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
         $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
         $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
         $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
         $('input[name="agn_email"]').val(agent[0]['agn_email']);
-    }
-    function check_container_number() {
-        $('#con_number-error').remove();
-        let con_number = $('input[name="con_number"]').val();
-        if (con_number.length >= 12) {
-            $.ajax({
-                url: '<?php echo base_url() . '/public/Container_show/check_container_number' ?>',
-                method: 'POST',
-                dataType: 'JSON',
-                data: {
-                    con_number: con_number
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data == "found") {
-                        // show con_number error
-                        $('.div_con_number_input').append('<label id="con_number-error" class="error" for="con_number">หมายเลขตู้คอนเทนเนอร์นี้ใช้ไปแล้ว</label>');
-                        return false;
-                    }
-                }
-            });
-        }
     }
 </script>
