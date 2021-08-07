@@ -4,7 +4,7 @@ use App\Models\M_cdms_car;
 /*
 * Car_edit
 * แสดงและแก้ไขรถ
-* @author Nattanan
+* @author Nattanan Tadsawan
 * @Create Date 2021-08-06
 * @Update Date
 */
@@ -15,7 +15,7 @@ class Car_edit extends Cdms_controller
     * เรียกหน้าแก้ไขรถพร้อมดึงข้อมูลของรถที่เลือก
     * @input -
     * @output 
-    * @author Nattanan
+    * @author Nattanan Tadsawan
     * @Create Date 2021-08-06
     * @Update Date
     */
@@ -31,7 +31,7 @@ class Car_edit extends Cdms_controller
     * แก้ไขข้อมูลรถ
     * @input -
     * @output 
-    * @author Nattanan
+    * @author Nattanan Tadsawan
     * @Create Date 2021-08-06
     * @Update Date
     */
@@ -55,5 +55,7 @@ class Car_edit extends Cdms_controller
 
         // upload image
         $car_image = $this->request->getPost('car_image');
+
+        return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
     }
 }

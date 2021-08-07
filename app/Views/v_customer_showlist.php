@@ -17,8 +17,7 @@
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
-    <di
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
                 ข้อมูลลูกค้า
@@ -29,14 +28,12 @@
     <!-- Excel and date -->
     <div class="text-right mb-6">
         <!-- Download Excel -->
-        <a href="" class="shadow-sm btn btn-white text-success bg-white"
-            style=" height: 40px; width: 180px; margin-bottom: 5">
+        <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
             <i class="bi bi-file-arrow-down mr-1"></i>
             Download Excel
         </a>
         <!-- Date -->
-        <input class="pl-2 shadow-sm rounded" type="text" name="daterange" value="01/01/2018 - 01/15/2018"
-            style=" height: 40px; width: 200px; ">
+        <input class="pl-2 shadow-sm rounded" type="text" name="daterange" value="01/01/2018 - 01/15/2018" style=" height: 40px; width: 200px; ">
     </div>
 
     <!-- Card ตู้เข้า -->
@@ -45,8 +42,7 @@
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 ">
             <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="1 1 17 10">
-                    <path
-                        d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z">
+                    <path d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z">
                     </path>
                 </svg>
             </div>
@@ -66,8 +62,7 @@
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="-1 1 17 10">
-                    <path fill-rule="evenodd"
-                        d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z">
+                    <path fill-rule="evenodd" d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z">
                     </path>
                 </svg>
             </div>
@@ -87,8 +82,7 @@
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="3 2 10 11">
-                    <path
-                        d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z">
+                    <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z">
                     </path>
                 </svg>
             </div>
@@ -106,8 +100,7 @@
         </div>
         <!-- Card Dry Container -->
         <div class="flex items-center pl-3 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-            <img src="<?= base_url('/upload') . '/' . 'DryContainer.jpg' ?>" alt=""
-                style="width: 3rem; height: 3rem; object-fit: cover;">
+            <img src="<?= base_url('/upload') . '/' . 'DryContainer.jpg' ?>" alt="" style="width: 3rem; height: 3rem; object-fit: cover;">
             <div class="pl-3">
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                     Dry Container
@@ -122,8 +115,7 @@
         </div>
         <!-- Card Reefer container -->
         <div class="flex items-center pl-3 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-            <img src="<?= base_url('/upload') . '/' . 'ReeferContainer.jpg' ?>" alt=""
-                style="width: 4rem; height: 3rem; object-fit: cover;">
+            <img src="<?= base_url('/upload') . '/' . 'ReeferContainer.jpg' ?>" alt="" style="width: 4rem; height: 3rem; object-fit: cover;">
             <div class="pl-4">
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                     Reefer Container
@@ -138,8 +130,7 @@
         </div>
         <!-- Card ISO Tank Container -->
         <div class="flex items-center pl-3 py-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-            <img src="<?= base_url('/upload') . '/' . 'ISOTank.jpg' ?>" alt=""
-                style="width: 4rem; height: 3rem; object-fit: cover;">
+            <img src="<?= base_url('/upload') . '/' . 'ISOTank.jpg' ?>" alt="" style="width: 4rem; height: 3rem; object-fit: cover;">
             <div class="pl-4">
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                     ISO Tank Container
@@ -214,10 +205,9 @@
                     <!-- ดำเนินการ -->
                     <td class="px-4 py-3 text-sm text-center">
                         <!-- ปุ่มแก้ไข -->
-                        <a href="" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                        <a href="<?php echo base_url(). '/public/Customer_edit/customer_edit/'. $arr_customer[$i]->cus_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                         <!-- ปุ่มลบ -->
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal"
-                            data-target="#Modal_Confirm" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
+                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#Modal_Confirm" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -230,8 +220,7 @@
 </div>
 
 <!-- Modal ยืนยันการลบ -->
-<div class="modal fade" id="Modal_Confirm" tabindex="-1" role="dialog" aria-labelledby="Modal_ConfirmTitle"
-    aria-hidden="true"> 
+<div class="modal fade" id="Modal_Confirm" tabindex="-1" role="dialog" aria-labelledby="Modal_ConfirmTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -240,7 +229,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
+
             <form action="<?php echo base_url() . '/public/Customer_show/customer_delete'?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
@@ -268,11 +257,11 @@ $(document).ready(function() {
             "sSearch": "ค้นหา :"
         }
     });
-    
+
     // แทรกปุ่ม เพิ่มลูกค้า
     $("#DataTables_Table_0_filter").append(
         "<a href='<?php echo base_url(). '/public/Customer_input/customer_input' ?>' class='button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </a>"
-        );
+    );
 
     //วันที่ Date Range Picker
     $('input[name="daterange"]').daterangepicker({

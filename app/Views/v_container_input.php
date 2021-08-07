@@ -17,8 +17,9 @@
                                 </label>
                             </div>
     
-                            <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" >
+                            <div class="col-12 col-sm-8 div_con_number_input">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
+                                <label id="con_number-error" class="error" for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
                             </div>
                         </div>
         
@@ -123,7 +124,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id" oninput="get_size_information()">
                                     <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                                         <option value="<?php echo $arr_size[$i]->size_id?>"><?php echo $arr_size[$i]->size_name?></option>
                                     <?php } ?>
@@ -139,7 +140,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_height_out">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_height_out" value="<?php echo $first_size[0]->size_height_out?>" readonly>
                             </div>
                         </div>
             
@@ -151,7 +152,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_width_out">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_width_out" value="<?php echo $first_size[0]->size_width_out?>" readonly>
                             </div>
                         </div>
         
@@ -163,7 +164,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_length_out">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="size_length_out" value="<?php echo $first_size[0]->size_length_out?>" readonly>
                             </div>
                         </div>
                     </div>
@@ -181,6 +182,7 @@
                 <hr class="mb-5">
                 
                 <div class="row mt-3">
+                    <input type="hidden" name="agn_id">
                     <div class="col-12">
                         <!-- บริษัท -->
                         <div class="row mt-3">
@@ -190,7 +192,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()">
                             </div>
                         </div>
 
@@ -227,7 +229,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="firstname">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname">
                             </div>
                         </div>
 
@@ -251,7 +253,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" tyle="tel" name="agn_tel">
                             </div>
                         </div>
 
@@ -284,41 +286,162 @@
 </div>
 
 <script>
-    // $(document).ready(function() {
-    //     // jQuery Validation
-    //     if ($('#add_container_form').length > 0) {
-    //         $('#add_container_form').validate({
-    //             rules: {
-    //                 agn_company_name: {
-    //                     required: true
-    //                 },
-    //                 con_cube: {
-    //                     required: true,
-    //                     min: 0,
-    //                     max: 100
-    //                 },
-    //                 email: {
-    //                     required: true,
-    //                     maxlength: 30,
-    //                     email: true
-    //                 }
-    //             },
-    //             messages: {
-    //                 agn_company_name: {
-    //                     required: 'กรุณากรอกชื่อบริษัทเอเย่นต์',
-    //                 },
-    //                 con_cube: {
-    //                     required: 'กรุณากรอกปริมาตรสุทธิ',
-    //                     min: 'กรุณาใส่ปริมาตรมากกว่า 0',
-    //                     max: 'กรุณาใส่ปริมาตรไม่เกิน 100'
-    //                 },
-    //                 email: {
-    //                     required: 'Email is required',
-    //                     maxlength: 'The email should not more than 30 chars',
-    //                     email: 'It does not seem to be a valid email',
-    //                 }
-    //             }
-    //         })
-    //     }
-    // });
+    $(document).ready(function() {
+        // jQuery Validation
+        if ($('#add_container_form').length > 0) {
+            $('#add_container_form').validate({
+                rules: {
+                    con_number:{
+                        required: true,
+                        maxlength: 12
+                    },
+                    con_max_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_tare_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_net_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_cube: {
+                        required: true,
+                        min: 0,
+                        max: 100
+                    },
+                    agn_company_name: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    agn_address: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    agn_tax: {
+                        required: true,
+                        maxlength: 15
+                    },
+                    agn_firstname: {
+                        required: true
+                    },
+                    agn_lastname: {
+                        required: true
+                    },
+                    agn_tel: {
+                        required: true,
+                        maxlength: 10
+                    },
+                    agn_email: {
+                        required: true,
+                        maxlength: 40,
+                        email: true
+                    }
+                },
+                messages: {
+                    con_number:{
+                        required: 'กรุณากรอกหมายเลขตู้',
+                        maxlength: 'กรุณากรอกตามฟอร์แมต'
+                    },
+                    con_max_weight: {
+                        required: 'กรุณากรอกน้ำหนักสูงสุด',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_tare_weight: {
+                        required: 'กรุณากรอกน้ำหนักตู้เปล่า',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_net_weight: {
+                        required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_cube: {
+                        required: 'กรุณากรอกหมายเลขตู้',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 100'
+                    },
+                    agn_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท',
+                        maxlength: 255
+                    },
+                    agn_address: {
+                        required: 'กรุณากรอกที่ตั้งบริษัท',
+                        maxlength: 255
+                    },
+                    agn_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        maxlength: 15
+                    },
+                    agn_firstname: {
+                        required: 'กรุณากรอกชื่อจริงผู้รับผิดชอบ'
+                    },
+                    agn_lastname: {
+                        required: 'กรุณากรอกนามสกุลผู้รับผิดชอบ'
+                    },
+                    agn_tel: {
+                        required: 'กรุณากรอกเบอร์ติดต่อ',
+                        maxlength: 'กรุณากรอกไม่เกิน 10 อักษร',
+                    },
+                    agn_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        maxlength: 'กรุณากรอกไม่เกิน 40 ตัวอักษร',
+                        email: 'กรุณากรอกอีเมล'
+                    }
+                }
+            })
+        }
+    });
+    
+    function get_size_information() {
+        let size_id = $('select[name="con_size_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                size_id: size_id
+            },
+            success: function(data) {
+                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
+            }
+        });
+    }
+    function show_size_information(size_height_out, size_width_out, size_length_out) {
+        console.log(size_height_out);
+        $('input[name="size_height_out"]').val(size_height_out);
+        $('input[name="size_width_out"]').val(size_width_out);
+        $('input[name="size_length_out"]').val(size_length_out);
+    }
+    function get_agent_information() {
+        let agn_company_name = $('input[name="agn_company_name"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                agn_company_name: agn_company_name
+            },
+            success: function(data) {
+                console.log(data);
+                show_agent_information(data);
+            }
+        });
+    }
+    function show_agent_information(agent) {
+        $('input[name="agn_id"]').val(agent[0]['agn_id']);
+        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
+        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
+        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
+        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
+        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
+        $('input[name="agn_email"]').val(agent[0]['agn_email']);
+    }
 </script>

@@ -34,14 +34,14 @@ class Customer_input extends Cdms_controller
         $arr_customer = $M_cus->get_all();
 
         // เก็บข้อมูลของ ลูกค้า
-        $cus_company_name = $this->request->getPost('input_company');
-        $cus_firstname = $this->request->getPost('input_fname');
-        $cus_lastname = $this->request->getPost('input_lname');
-        $cus_branch = $this->request->getPost('input_branch');
-        $cus_tel = $this->request->getPost('input_tel');
-        $cus_address = $this->request->getPost('input_address');
-        $cus_tax = $this->request->getPost('input_tax');
-        $cus_email = $this->request->getPost('input_email');
+        $cus_company_name = $this->request->getPost('cus_company_name');
+        $cus_firstname = $this->request->getPost('cus_firstname');
+        $cus_lastname = $this->request->getPost('cus_lastname');
+        $cus_branch = $this->request->getPost('cus_branch');
+        $cus_tel = $this->request->getPost('cus_tel');
+        $cus_address = $this->request->getPost('cus_address');
+        $cus_tax = $this->request->getPost('cus_tax');
+        $cus_email = $this->request->getPost('cus_email');
 
         // Check ชื่อ กับ สาขา ซ้ำ
         for ($i = 0; $i < count($arr_customer); $i++){

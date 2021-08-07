@@ -9,7 +9,7 @@
         </div>
     </di>
 
-    <form id="add_service_form" action="<?php echo base_url(). '/public/Service_input/service_insert' ?>" method="POST">
+    <form id="add_service_form" action="<?php echo base_url() . '/public/Service_input/service_insert' ?>" method="POST">
         <div class="row">
             <!-- Start container form -->
             <div class="col-12 col-xl-7">
@@ -95,18 +95,18 @@
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight" placeholder="0.01">
                                 </div>
                             </div>
-                            <!-- น้ำหนักสินค้าปัจจุบัน (ตัน) 
+                            <!-- น้ำหนักสินค้าปัจจุบัน (ตัน) -->
                             <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-7">
                                     <label class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าปัจจุบัน (ตัน)</span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-5">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="" placeholder="0.01">
                                 </div>
                             </div>
-                        </div> -->
+
                             <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-7">
@@ -225,7 +225,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="date" name="ser_arrivals_date" >
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="date" name="ser_arrivals_date">
                                 </div>
                             </div>
 
@@ -261,12 +261,12 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="date" name="ser_actual_departure_date" >
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="date" name="ser_actual_departure_date">
                                 </div>
                             </div>
 
-                             <!-- พนักงานนำออกลาน -->
-                             <div class="row mt-3">
+                            <!-- พนักงานนำออกลาน -->
+                            <div class="row mt-3">
                                 <div class="col-12 col-sm-4">
                                     <label class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">พนักงานนำออกลาน</span>
@@ -318,6 +318,216 @@
         </div>
         <!-- end row -->
 
+        <div class="row">
+            <!-- Start agent form -->
+            <div class="col-12 col-xl-6">
+                <!-- agent form -->
+                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">เอเย่นต์</h2>
+
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <!-- บริษัท -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท">
+                                </div>
+                            </div>
+
+                            <!-- ที่ตั้งบริษัท -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input"  name="agn_address" placeholder="ที่ตั้งบริษัท"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- หมายเลขผู้เสียภาษี -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี">
+                                </div>
+                            </div>
+                           <hr class="mb-3">
+                            <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                            <!-- ชื่อจริง -->
+                            <div class="row mt-1">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง">
+                                </div>
+                            </div>
+
+                            <!-- นามสกุล -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล">
+                                </div>
+                            </div>
+
+                            <!-- เบอร์ติดต่อ -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ">
+                                </div>
+                            </div>
+
+                            <!-- อีเมล์ -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end agent form -->
+
+            <!-- Start customer form -->
+            <div class="col-12 col-xl-6">
+                <!-- agent form -->
+                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ลูกค้า</h2>
+    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <!-- บริษัท -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="บริษัท">
+                                </div>
+                            </div>
+
+                            <!-- สาขา -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">สาขา</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_branch" placeholder="สาขา">
+                                </div>
+                            </div>
+
+                            <!-- ที่ตั้งบริษัท -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_address" placeholder="ที่ตั้งบริษัท"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- หมายเลขผู้เสียภาษี -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี">
+                                </div>
+                            </div>
+
+                            <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                            <!-- ชื่อจริง -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_firstname" placeholder="ชื่อจริง">
+                                </div>
+                            </div>
+
+                            <!-- นามสกุล -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_lastname" placeholder="นามสกุล">
+                                </div>
+                            </div>
+
+                            <!-- เบอร์ติดต่อ -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ">
+                                </div>
+                            </div>
+
+                            <!-- อีเมล์ -->
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-4">
+                                    <label class="block text-sm mt-3">
+                                        <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end customer form -->
+        </div>
+        <!-- end row -->
         <div class="container text-right">
             <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
             <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />

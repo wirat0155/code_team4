@@ -31,4 +31,34 @@ class Da_cdms_agent extends Model
                 WHERE agn_id='$agn_id'";
         $this->db->query($sql);
     }
+    
+    /*
+        * delete
+        * เพิ่มรายชื่อข้อมูลเอเย่นต์
+        * @author Klayuth
+        * @Create Date 2564-08-07
+        * @Update Date 2564-08-07
+    */
+    
+    public function insert($agn_company_name= NULL, $agn_firstname= NULL, $agn_lastname= NULL, $agn_tel= NULL, $agn_address= NULL, $agn_tax= NULL, $agn_email= NULL) 
+    {
+        $sql = "INSERT INTO $this->table(agn_company_name, agn_firstname, agn_lastname, 
+        agn_tel, agn_address, agn_tax, agn_email) 
+        VALUES ('$agn_company_name', '$agn_firstname', '$agn_lastname', '$agn_tel', '$agn_address', '$agn_tax', '$agn_email')";
+        $this->db->query($sql);
+    }
+    /*
+        * agent_update
+        * แก้ไขข้อมูลเอเย่นต์
+        * @author Klayuth
+        * @Create Date 2564-08-07
+        * @Update Date 2564-08-07
+    */
+    public function agent_update($agn_id=NULL, $agn_company_name= NULL, $agn_firstname= NULL, $agn_lastname= NULL, $agn_tel= NULL, $agn_address= NULL, $agn_tax= NULL, $agn_email= NULL){
+        $sql = "UPDATE $this->table 
+        SET agn_company_name='$agn_company_name',agn_firstname='$agn_firstname'
+        ,agn_lastname='$agn_lastname',agn_tel='$agn_tel',agn_address='$agn_address',agn_tax='$agn_tax',agn_email='$agn_email'
+        WHERE agn_id='$agn_id'";
+        $this->db->query($sql);
+    }
 }
