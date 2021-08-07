@@ -47,4 +47,9 @@ class M_cdms_agent extends Da_cdms_agent
         $sql = "SELECT * FROM $this->table WHERE agn_company_name = '$agn_company_name'";
         return $this->db->query($sql)->getResult();
     }
+
+    public function get_max_id() {
+        $sql = "SELECT MAX(agn_id) FROM $this->table";
+        return $this->db->query($sql)->getResult();
+    }
 }

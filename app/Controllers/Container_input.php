@@ -1,4 +1,5 @@
 <?php namespace App\Controllers;
+use App\Models\M_cdms_agent;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_size;
 use App\Models\M_cdms_container_type;
@@ -30,19 +31,19 @@ class Container_input extends Cdms_controller
         }
         // get dropdown
         // container size
-        $M_size = new M_cdms_size();
-        $data['arr_size'] = $M_size->get_all();
+        $m_size = new M_cdms_size();
+        $data['arr_size'] = $m_size->get_all();
 
         // first size information
         $data['first_size'] = $M_size->get_first();
 
         // container type
-        $M_cont = new M_cdms_container_type();
-        $data['arr_container_type'] = $M_cont->get_all();
+        $m_cont = new M_cdms_container_type();
+        $data['arr_container_type'] = $m_cont->get_all();
 
         // status container
-        $M_stac = new M_cdms_status_container();
-        $data['arr_status_container'] = $M_stac->get_all();
+        $m_stac = new M_cdms_status_container();
+        $data['arr_status_container'] = $m_stac->get_all();
 
         // call container input view
         $this->output('v_container_input', $data);
@@ -65,29 +66,42 @@ class Container_input extends Cdms_controller
         // upload image
         $con_image = $this->request->getPost('con_image');
         
-        $M_con = new M_cdms_container();
+        $m_con = new M_cdms_container();
         // check con_number duplicate
-        $arr_container = $M_con->is_con_number_exist($con_number);
+        $arr_container = $m_con->is_con_number_exist($con_number);
         if (count($arr_container) >= 1) {
             $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
             $this->container_input();
         } else {
+            // agent information
+            $agn_id = $this->request->getPost('agn_id');
+            $agn_company_name = $this->request->getPost('agn_company_name');
+            $agn_firstname = $this->request->getPost('agn_firstname');
+            $agn_lastname = $this->request->getPost('agn_lastname');
+            $agn_tel = $this->request->getPost('agn_tel');
+            $agn_address = $this->request->getPost('agn_address');
+            $agn_tax = $this->request->getPost('agn_tax');
+            $agn_email = $this->request->getPost('agn_email');
+            
+            // load agent model
+            $m_agn = new M_cdms_agent();
             // new agent
             // insert agent
-            // รอบิ๊ก แพรว
-            // $con_agn_id = select กลับมา
-            
-            // old agent
-            // update agent
-            // รอบิ๊ก แพรว
-            $con_agn_id = $this->request->getPost('agn_id');
-            
-            // get agn id
-            
+            if ($agn_id == '') {
+                $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+                // get agn_id back
+                $con_agn_id = $m_agn->get_max_id();
+            } else {
+                // old agent
+                // update agent
+                // รอบิ๊ก แพรว
+                $con_agn_id = $this->request->getPost('agn_id');
+                $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+            }
     
             // insert container
             $_SESSION['con_number_error'] = '';
-            $M_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+            $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
             $this->response->redirect(base_url() . '/public/Container_show/container_show_ajax');
         }
     }
