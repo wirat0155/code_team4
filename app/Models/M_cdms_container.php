@@ -39,4 +39,18 @@ class M_cdms_container extends Da_cdms_container {
         $sql = "SELECT con_number FROM $this->table WHERE con_number = '$con_number'";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * get_by_con_number
+    * ดึงข้อมูลตามหมายเลขตู้
+    * @input con_number
+    * @output container information
+    * @author Wirat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+    */
+    public function get_by_con_number($con_number) {
+        $sql = "SELECT * FROM $this->table WHERE con_number = '$con_number'";
+        return $this->db->query($sql)->getResult();
+    }
 }
