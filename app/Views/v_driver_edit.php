@@ -1,6 +1,7 @@
 <div class="container mx-auto grid mt-3">
     <form id="add_driver_form" action="<?php echo base_url(). '/public/Driver_input/driver_insert' ?>" method="post">
-        <div class="row">
+    <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">    
+    <div class="row">
             <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                     <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">พนักงานขับรถ</h2>
@@ -16,7 +17,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_name" name="dri_name">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_name" name="dri_name" value="<?php echo $arr_driver[0]->dri_name ?>">
                                 </div>
                             </div>
 
@@ -27,7 +28,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_card_number" name="dri_card_number">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_card_number" name="dri_card_number" value="<?php echo $arr_driver[0]->dri_card_number ?>">
                                 </div>
                             </div>
 
@@ -38,7 +39,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license" name="dri_license">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license" name="dri_license" value="<?php echo $arr_driver[0]->dri_license ?>">
                                 </div>
                             </div>
 
@@ -64,7 +65,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_tel" name="dri_tel">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_tel" name="dri_tel" value="<?php echo $arr_driver[0]->dri_tel ?>">
                                 </div>
                             </div>
 
@@ -92,7 +93,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_start" name="dri_date_start">
+                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_start" name="dri_date_start" value="<?php echo $arr_driver[0]->dri_date_start ?>">
                                 </div>
                             </div>
 
@@ -103,7 +104,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_end" name="dri_date_end">
+                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_end" name="dri_date_end" value="<?php echo $arr_driver[0]->dri_date_end ?>">
                                 </div>
                             </div>
                             <!-- 
@@ -142,7 +143,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="" >
                                 </div>
                             </div>
 

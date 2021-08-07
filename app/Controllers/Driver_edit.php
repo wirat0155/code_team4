@@ -42,6 +42,7 @@ public function driver_update(){
     $dri_status = $this->request->getPost('dri_status');
     $dri_date_start = $this->request->getPost('dri_date_start');
     $dri_date_end = $this->request->getPost('dri_date_end');
+    
     $M_dri->driver_update($dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end);
     return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
 }   
