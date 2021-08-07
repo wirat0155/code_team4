@@ -97,7 +97,7 @@
                 "sSearch": "ค้นหา :"
             }
         });
-        $("#DataTables_Table_0_filter").append("<button class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มเอเย่นต์ </button>");
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Agent_input/agent_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มเอเย่นต์</a>");
     });
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
