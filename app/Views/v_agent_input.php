@@ -10,7 +10,7 @@
 
     <!-- หัวข้อ -->
     <div
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md foagn:outline-none foagn:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
                 ข้อมูลเอเย่นต์
@@ -35,7 +35,7 @@
                 <div class="container">
                     <!-- บริษัท -->
                     <div class="px-3 form-group row">
-                        <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
+                        <label for="agn_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="agn_company_name" name="agn_company_name" placeholder="บริษัท">
                         </div>
@@ -43,7 +43,7 @@
 
                     <!-- ที่ตั้งบริษัท -->
                     <div class="px-3 form-group row">
-                        <label for="cus_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
+                        <label for="agn_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
                         <div class="col-sm-9">
                             <textarea class="form-control form-input" id="agn_address" name="agn_address" placeholder="ที่ตั้งบริษัท" rows="3"></textarea>
                         </div>
@@ -51,7 +51,7 @@
 
                     <!-- หมายเลขผู้เสียภาษี -->
                     <div class="px-3 form-group row">
-                        <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
+                        <label for="agn_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="agn_tax" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี">
                         </div>
@@ -66,7 +66,7 @@
 
                     <!-- ชื่อจริง -->
                     <div class="px-3 form-group row">
-                        <label for="cus_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
+                        <label for="agn_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="agn_firstname" name="agn_firstname" placeholder="ชื่อจริง" >
                         </div>
@@ -74,7 +74,7 @@
 
                     <!-- นามสกุล -->
                     <div class="px-3 form-group row">
-                        <label for="cus_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
+                        <label for="agn_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="agn_lastname" name="agn_lastname" placeholder="นามสกุล" >
                         </div>
@@ -82,7 +82,7 @@
 
                     <!-- เบอร์ติดต่อ -->
                     <div class="px-3 form-group row">
-                        <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
+                        <label for="agn_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
                             <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890">
                         </div>
@@ -90,7 +90,7 @@
 
                     <!-- อีเมล -->
                     <div class="px-3 form-group row">
-                        <label for="cus_email" class="col-sm-3 col-form-label">อีเมล</label>
+                        <label for="agn_email" class="col-sm-3 col-form-label">อีเมล</label>
                         <div class="col-sm-9">
                             <input type="email" class="form-control form-input" id="agn_email" name="agn_email" placeholder="อีเมล">
                         </div>
