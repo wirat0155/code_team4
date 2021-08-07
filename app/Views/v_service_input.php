@@ -55,7 +55,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_status">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_stac_id">
                                         <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
                                             <option value="<?php echo $arr_status_container[$i]->stac_id ?>"><?php echo $arr_status_container[$i]->stac_name ?></option>
                                         <?php } ?>
