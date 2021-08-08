@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 * เพิ่ม ลบ แก้ไขข้อมุลตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-07-29
-* @Update Date
+* @Update Date 2564-08-08
 */
 class Da_cdms_container extends Model {
     protected $table = 'cdms_container';
@@ -44,6 +44,15 @@ class Da_cdms_container extends Model {
         $this->db->query($sql);
     }
     
+    /*
+    * container_update
+    * แก้ไขตู้คอนเทนเนอร์
+    * @input container information
+    * @output แก้ไขตู้คอนเทนเนอร์
+    * @author Wirat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+    */
     public function container_update($con_id = NULL, $con_number = NULL, $con_max_weight = NULL, $con_tare_weight = NULL, $con_net_weight = NULL, $con_cube = NULL, $con_size_id = NULL, $con_cont_id = NULL, $con_agn_id = NULL, $con_stac_id = NULL)
     {
         $sql = "UPDATE $this->table SET con_number = '$con_number', con_max_weight = '$con_max_weight', con_tare_weight = '$con_tare_weight', con_net_weight = '$con_net_weight', con_cube = '$con_cube', con_size_id = '$con_size_id', con_cont_id = '$con_cont_id', con_agn_id = '$con_agn_id', con_stac_id = '$con_stac_id' WHERE con_id = '$con_id'";

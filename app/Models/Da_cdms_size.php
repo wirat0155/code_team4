@@ -4,6 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
+/*
+    * Da_cdms_size
+    * เพิ่ม ลบ แก้ไขขนาดตู้
+    * @author Wirat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+*/
 class Da_cdms_size extends Model
 {
     protected $table = 'cdms_size';
