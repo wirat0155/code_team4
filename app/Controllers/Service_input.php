@@ -13,21 +13,23 @@ use App\Models\M_cdms_Car;
 use App\Models\M_cdms_agent;
 
 /*
-    * Service_show
-    * แสดงรายการบริการ และลบบริการ
-    * @author Natdanai Worarat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-07-30
+    * Service_input
+    * เพิ่มบริการ
+    * @author Natdanai 
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-08
 */
 
 class Service_input extends Cdms_controller
 {
     /*
-        * service_show_ajax
-        * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_service และ แสดง view รายการบริการ
-        * @author Natdanai
-        * @Create Date 2564-07-29
-        * @Update Date
+    * container_input
+    * เรียกหน้าจอเพิ่มบริการ
+    * @input -
+    * @output หน้าจอเพิ่มบริการ
+    * @author Natdanai 
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-08
     */
     public function service_input()
     {
@@ -58,6 +60,15 @@ class Service_input extends Cdms_controller
         $this->output('v_service_input', $data);
     }
 
+    /*
+    * service_insert
+    * เพิ่มข้อมูลบริการ
+    * @input ข้อมูลบริการ ข้อมูลตู้คอนเทรนเนอร์ ข้อมูลเอเย่นต์ ข้อมูลลูกค้า
+    * @output เพิ่มข้อมูลบริการ ข้อมูลตู้คอนเทรนเนอร์ ข้อมูลเอเย่นต์ ข้อมูลลูกค้า หรือแก้ไข ข้อมูลตู้คอนเทรนเนอร์ 
+    * @author Natdanai 
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-08
+    */
     public function service_insert()
     {
         $m_ser = new M_cdms_service();
@@ -112,36 +123,51 @@ class Service_input extends Cdms_controller
         //check customer
         $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);  
         if (count($get_ser_cus_id)  == 0) {
+            //new customer
+            //insert new customer
             $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+            //get new cus_id 
             $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
             $ser_cus_id = $get_ser_cus_id[0]->cus_id;
-            print_r($get_ser_cus_id);
-            print_r($ser_cus_id);
         } else {
+            //old customer
+            //get old cus_id
             $ser_cus_id = $get_ser_cus_id[0]->cus_id;
         }
 
         //check agent
         $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
         if (count($get_ser_agn_id)  == 0) {
+            //new agent
+            //insert new agent
             $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+            //get new agn_id 
             $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
             $con_agn_id = $get_ser_agn_id[0]->agn_id;
         } else {
+            //old agent
+            //get old agn_id
             $con_agn_id = $get_ser_agn_id[0]->agn_id;
         }
 
         //check container
         $get_ser_con_id = $m_con->get_by_con_number($con_number);
         if (count($get_ser_con_id)  == 0) {
+            //new container
+            //insert new container
             $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+            //get new con_id
             $get_ser_con_id = $m_con->get_by_con_number($con_number);
             $ser_con_id = $get_ser_con_id[0]->con_id;
         } else {
+            //old container
+            //get old con_id
             $ser_con_id = $get_ser_con_id[0]->con_id;
+            //update container
             $m_con->container_update($ser_con_id, $con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
         }
 
+        //insert service
         $m_ser->service_insert($ser_type, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
         return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
     }
