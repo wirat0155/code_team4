@@ -333,7 +333,7 @@
                     </div>
                 </div>
             </div>
-            <!-- end agent form -->
+            <!-- end service form -->
         </div>
         <!-- end row -->
 
@@ -438,7 +438,6 @@
 
             <!-- Start customer form -->
             <div class="col-12 col-xl-6">
-                <!-- agent form -->
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                     <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ลูกค้า</h2>
 
@@ -562,7 +561,7 @@
         if ($('#add_service_form').length > 0) {
             $('#add_service_form').validate({
                 rules: {
-                    con_number:{
+                    con_number: {
                         required: true,
                         maxlength: 12
                     },
@@ -591,7 +590,7 @@
                     },
                     agn_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        matches: "[0-9]{13}"
                     },
                     agn_address: {
                         required: true
@@ -602,11 +601,11 @@
                     agn_lastname: {
                         required: true
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: true,
-                        matches:"[0-9]{10}",
-                        minlength:10, 
-                        maxlength:10
+                        matches: "[0-9]{10}",
+                        minlength: 10,
+                        maxlength: 10
                     },
                     agn_email: {
                         required: true,
@@ -617,7 +616,7 @@
                     },
                     cus_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        matches: "[0-9]{13}"
                     },
                     cus_address: {
                         required: true
@@ -628,11 +627,11 @@
                     cus_lastname: {
                         required: true
                     },
-                    cus_tel:{
+                    cus_tel: {
                         required: true,
-                        matches:"[0-9]{10}",
-                        minlength:10, 
-                        maxlength:10
+                        matches: "[0-9]{10}",
+                        minlength: 10,
+                        maxlength: 10
                     },
                     cus_email: {
                         required: true,
@@ -646,7 +645,7 @@
                     }
                 },
                 messages: {
-                    con_number:{
+                    con_number: {
                         required: 'กรุณากรอกหมายเลขตู้',
                         maxlength: 'กรุณากรอกตามฟอร์แมต'
                     },
@@ -686,11 +685,11 @@
                     agn_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
                         matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     agn_email: {
                         required: 'กรุณากรอกอีเมล',
@@ -712,11 +711,11 @@
                     cus_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    cus_tel:{
+                    cus_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
                         matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     cus_email: {
                         required: 'กรุณากรอกอีเมล',
