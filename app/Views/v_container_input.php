@@ -52,7 +52,6 @@
                                     <?php for ($i= 0; $i < count($arr_status_container); $i++) { ?>
                                         <option value="<?php echo $arr_status_container[$i]->stac_id?>"><?php echo $arr_status_container[$i]->stac_name?></option>
                                     <?php } ?>
-                                    <option value="">รอตรวจสอบ</option>
                                 </select>
                             </div>
                         </div>
@@ -65,7 +64,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight" placeholder="น้ำหนักตู้สูงสุดที่รับได้">
                             </div>
                         </div>
         
@@ -77,7 +76,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight" placeholder="น้ำหนักตู้เปล่า">
                             </div>
                         </div>
         
@@ -89,7 +88,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight" placeholder="น้ำหนักสินค้าสูงสุด">
                             </div>
                         </div>
         
@@ -107,7 +106,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube" placeholder="ปริมาตรสุทธิ">
                             </div>
                         </div>
                     </div>
@@ -192,7 +191,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()" placeholder="บริษัท">
                             </div>
                         </div>
 
@@ -204,7 +203,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address"></textarea>
+                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address" placeholder="ที่ตั้งบริษัท"></textarea>
                             </div>
                         </div>
 
@@ -216,7 +215,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี">
                             </div>
                         </div>
 
@@ -229,7 +228,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง">
                             </div>
                         </div>
 
@@ -241,7 +240,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล">
                             </div>
                         </div>
 
@@ -253,7 +252,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" tyle="tel" name="agn_tel">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" tyle="tel" name="agn_tel" placeholder="เบอร์ติดต่อ">
                             </div>
                         </div>
 
@@ -265,7 +264,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล">
                             </div>
                         </div>
                     </div>
@@ -400,6 +399,7 @@
         }
     });
     
+    // get size information when change con_size_id dropdown
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
         $.ajax({
@@ -414,12 +414,16 @@
             }
         });
     }
+
+    // show size information when change con_size_id dropdown
     function show_size_information(size_height_out, size_width_out, size_length_out) {
         console.log(size_height_out);
         $('input[name="size_height_out"]').val(size_height_out);
         $('input[name="size_width_out"]').val(size_width_out);
         $('input[name="size_length_out"]').val(size_length_out);
     }
+
+    // get agent information when input agn_company_name
     function get_agent_information() {
         let agn_company_name = $('input[name="agn_company_name"]').val();
         $.ajax({
@@ -435,6 +439,8 @@
             }
         });
     }
+
+    // show agent information when input agn_company_name
     function show_agent_information(agent) {
         $('input[name="agn_id"]').val(agent[0]['agn_id']);
         $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
