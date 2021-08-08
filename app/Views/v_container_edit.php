@@ -19,7 +19,7 @@
                             </div>
     
                             <div class="col-12 col-sm-8 div_con_number_input">
-                                <input type="text" name="con_old_number" value="<?php echo $obj_container->con_number?>">
+                                <input type="hidden" name="con_old_number" value="<?php echo $obj_container->con_number?>">
                                 <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" value="<?php echo $obj_container->con_number?>">
                                 <label id="con_number-error" class="error" for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
                             </div>
@@ -184,7 +184,7 @@
                 <hr class="mb-5">
                 
                 <div class="row mt-3">
-                    <input type="text" name="agn_id" value="<?php echo $arr_agent[0]->agn_id?>">
+                    <input type="hidden" name="agn_id" value="<?php echo $arr_agent[0]->agn_id?>">
                     <div class="col-12">
                         <!-- บริษัท -->
                         <div class="row mt-3">
@@ -424,6 +424,10 @@
     }
     function get_agent_information() {
         let agn_company_name = $('input[name="agn_company_name"]').val();
+
+        if (agn_company_name == '') {
+            $('input[name="agn_id"]').val('');
+        }
         $.ajax({
             url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
             method: 'POST',

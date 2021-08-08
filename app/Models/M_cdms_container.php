@@ -54,6 +54,15 @@ class M_cdms_container extends Da_cdms_container {
         return $this->db->query($sql)->getResult();
     }
 
+    /*
+    * get_by_id
+    * ดึงข้อมูลตามรหัสตู้
+    * @input con_id
+    * @output container information
+    * @author Wirat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+    */
     public function get_by_id($con_id = NULL) {
         $sql = "SELECT * FROM $this->table WHERE con_id = '$con_id'";
         return $this->db->query($sql)->getRow();
