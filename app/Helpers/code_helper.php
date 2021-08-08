@@ -29,6 +29,16 @@
     $str_month_thai=$str_month_cut[$str_month];
     return "$str_day $str_month_thai $str_year $str_hour:$str_min";
   } 
-
+/*
+* datetime_format_value
+* แสดงวันที่ ในรูปแบบ yyyy/mm/ddThh/mm/ss เพื่อไว้แสดง value ใน v_service_edit
+* @author Natdanai
+* @Create Date 2564-08-08
+* @Update Date
+*/
+  function datetime_format_value(string $string)
+  {
+      return substr($string, 0, 10) . 'T' . substr($string, 11); 
+  }
 
 ?>

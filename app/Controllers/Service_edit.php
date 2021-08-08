@@ -56,20 +56,22 @@ class Service_edit extends Cdms_controller
 
         $m_ser = new M_cdms_service();
         $data['obj_service'] = $m_ser->get_by_id($ser_id);
-
+        
         // get customer
         $m_cus = new M_cdms_customer();
-        $data['obj_customer'] = $m_cus->get_by_id($data['obj_service']->ser_cus_id);
-
+        $data['obj_customer'] = $m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
+        
         // get container 
         $m_con = new M_cdms_container();
-        $data['obj_container'] = $m_con->get_by_id($data['obj_service']->ser_con_id);
+        $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
 
         // get agent agent
         $m_agn = new M_cdms_agent();
         $data['obj_agent'] = $m_agn->get_by_id($data['obj_container']->con_agn_id);
         // call service input view
         $this->output('v_service_edit', $data);
+        //print_r($data['obj_service'][0]->ser_departure_date);
+        //print_r($data['obj_agent'][0]->agn_company_name);
     }
 
     public function service_update()
@@ -88,7 +90,7 @@ class Service_edit extends Cdms_controller
         $cus_address = $this->request->getPost('cus_address');
         $cus_tax = $this->request->getPost('cus_tax');
         $cus_email = $this->request->getPost('cus_email');
-        $ser_cus_id = $this->request->getPost('ser_cus_id');
+        $ser_cus_id = $this->request->getPost('cus_id');
 
         // container information
         $con_number = $this->request->getPost('con_number');
@@ -100,7 +102,7 @@ class Service_edit extends Cdms_controller
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
-        $ser_con_id = $this->request->getPost('ser_con_id');
+        $ser_con_id = $this->request->getPost('con_id');
 
         // service information
         $ser_type = $this->request->getPost('ser_type');
@@ -124,7 +126,7 @@ class Service_edit extends Cdms_controller
         $agn_address = $this->request->getPost('agn_address');
         $agn_tax = $this->request->getPost('agn_tax');
         $agn_email = $this->request->getPost('agn_email');
-        $con_agn_id = $this->request->getPost('con_agn_id');
+        $con_agn_id = $this->request->getPost('agn_id');
 
 
         $m_agn->agent_update($con_agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
