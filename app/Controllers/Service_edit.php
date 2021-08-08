@@ -23,10 +23,10 @@ use App\Models\M_cdms_agent;
 class Service_edit extends Cdms_controller
 {
     /*
-        * service_show_ajax
-        * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_service และ แสดง view รายการบริการ
+        * service_edit
+        * แก้ไขข้อมูลบริการ
         * @author Worarat
-        * @Create Date 2564-07-29
+        * @Create Date 2564-08-29
         * @Update Date
     */
     public function service_edit($ser_id)
@@ -56,11 +56,11 @@ class Service_edit extends Cdms_controller
 
         $m_ser = new M_cdms_service();
         $data['obj_service'] = $m_ser->get_by_id($ser_id);
-        
+
         // get customer
         $m_cus = new M_cdms_customer();
         $data['obj_customer'] = $m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
-        
+
         // get container 
         $m_con = new M_cdms_container();
         $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
@@ -76,6 +76,13 @@ class Service_edit extends Cdms_controller
 
     public function service_update()
     {
+        /*
+        * service_update
+        * อัพเดทข้อมูลที่ทำการแก้ไข
+        * @author Worarat
+        * @Create Date 2564-07-29
+        * @Update Date
+    */
         $m_ser = new M_cdms_service();
         $m_cus = new M_cdms_customer();
         $m_con = new M_cdms_container();
