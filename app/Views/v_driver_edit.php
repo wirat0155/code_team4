@@ -205,7 +205,7 @@
                     </div>
                 </div>
             </div>
-        </div>ฝ
+        </div>
         <div class="float-right">
             <!-- ปุ่มยกเลิก -->
             <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
@@ -253,9 +253,6 @@
                     dri_date_start: {
                         required: true
                     },
-                    dri_date_end: {
-                        required: true
-                    }
                 },
                 messages: {
                     dri_name:{
@@ -276,9 +273,6 @@
                     dri_date_start: {
                         required: 'กรุณาเลือกวันที่เข้าทำงาน'
                     },
-                    dri_date_end: {
-                        required: 'กรุณาเลือกวันที่ลาออก'
-                    }
                 }
             })
         }

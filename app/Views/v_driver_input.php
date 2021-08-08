@@ -54,7 +54,6 @@
                                 </div>
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type">
-                                        <option selected disabled>เลือกประเภท</option>
                                         <option value="">ท.1</option>
                                         <option value="">ท.2</option>
                                     </select>
