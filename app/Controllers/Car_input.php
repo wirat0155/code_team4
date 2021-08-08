@@ -3,22 +3,22 @@ use App\Models\M_cdms_car;
 use App\Models\M_cdms_car_type;
 
 /*
-* Car_show
-* แสดงรายการ
-* @author 
-* @Create Date 
-* @Update Date
+* Car_input
+* เรียกหน้าจอเพิ่มรถ และเพิ่มรถ
+* @author Tadsawan
+* @Create Date 2564-08-06
+* @Update Date 2564-08-08
 */
 class Car_input extends Cdms_controller
 {
     /*
     * car_input
-    * แสดงรายการ
+    * เรียกหน้าจอเพิ่มรถ
     * @input -
-    * @output array of 
-    * @author 
-    * @Create Date 
-    * @Update Date
+    * @output  หน้าจอเพิ่มรถ
+    * @author Tadsawan
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-08
     */
     public function car_input()
     {
@@ -36,6 +36,15 @@ class Car_input extends Cdms_controller
         $this->output('v_car_input', $data);
     }
 
+    /*
+    * car_insert
+    * เพิ่มรถ
+    * @input ข้อมูลรถ
+    * @output เพิ่มรถ
+    * @author Tadsawan
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-08
+    */
     public function car_insert() {
         $M_car = new M_cdms_car();
 
@@ -53,10 +62,17 @@ class Car_input extends Cdms_controller
         $car_cart_id = $this->request->getPost('car_cart_id');
         
         // upload image
-        $car_image = $this->request->getPost('car_image');
+        $file = $this->request->getFile('car_image');
+        if($file->isValid() && ! $file->hasMoved()){
+            $imageName = $file->getName();
+            $file->move('car_image', $imageName);
+        }
+
+        $car_image = $imageName;
 
         // เพิ่มข้อมูลรถ
         $M_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id);
         $this->response->redirect(base_url() . '/public/Car_show/car_show_ajax');
     }
+
 }
