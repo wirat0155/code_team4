@@ -8,6 +8,7 @@
 
                     <div class="row mt-3">
 
+                        <!-- ชื่อ นามสกุล -->
                         <div class="col-12">
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
@@ -20,6 +21,7 @@
                                 </div>
                             </div>
 
+                            <!-- หมายเลขบัตรประชาชน -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_card_number" class="block text-sm mt-3">
@@ -31,6 +33,7 @@
                                 </div>
                             </div>
 
+                            <!-- หมายเลขใบขับขี่ -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_license" class="block text-sm mt-3">
@@ -42,6 +45,7 @@
                                 </div>
                             </div>
 
+                            <!-- ประเภทใบขับขี่ -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_license_type" class="block text-sm mt-3">
@@ -57,6 +61,7 @@
                                 </div>
                             </div>
 
+                            <!-- เบอร์โทร -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_tel" class="block text-sm mt-3">
@@ -68,6 +73,7 @@
                                 </div>
                             </div>
 
+                            <!-- สถานะคนขับรถ -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_status" class="block text-sm mt-3">
@@ -85,6 +91,7 @@
                                 </div>
                             </div>
 
+                            <!-- วันที่เข้าทำงาน -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_date_start" class="block text-sm mt-3">
@@ -96,6 +103,7 @@
                                 </div>
                             </div>
 
+                            <!-- วันที่ลาออก -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label for="dri_date_end" class="block text-sm mt-3">
@@ -132,7 +140,7 @@
                     <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">รถ</h2>
                     <hr class="mb-5">
 
-
+                    <!-- หมายเลขรถ -->
                     <div class="row mt-3">
                         <div class="col-12">
                             <div class="row mt-3">
@@ -146,6 +154,7 @@
                                 </div>
                             </div>
 
+                            <!-- ทะเบียน -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label class="block text-sm mt-3">
@@ -157,6 +166,7 @@
                                 </div>
                             </div>
 
+                            <!-- จังหวัด -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-3">
                                     <label class="block text-sm mt-3">
@@ -172,6 +182,7 @@
                                 </div>
                             </div>
 
+                            <!-- ประเภทรถ -->
                             <div class="row mt-3" style="padding-bottom: 303px;">
                                 <div class="col-12 col-sm-3">
                                     <label class="block text-sm mt-3">
@@ -195,7 +206,9 @@
             </div>
         </div>
         <div class="float-right">
+            <!-- ปุ่มยกเลิก -->
             <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
+            <!-- ปุ่มบันทึก -->
             <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
         </div>
     </form>
