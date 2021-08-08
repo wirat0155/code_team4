@@ -31,7 +31,8 @@
 
                                 <div class="col-12 col-sm-8">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input"
-                                        name="con_number" placeholder="หมายเลขตู้">
+                                        name="con_number" placeholder="หมายเลขตู้"
+                                        value="<?php echo $obj_container->con_number ?>">
                                 </div>
                             </div>
 
@@ -46,7 +47,8 @@
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input"
                                         name="con_cont_id">
                                         <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                        <option value="<?php echo $arr_container_type[$i]->cont_id ?>">
+                                        <option value="<?php echo $arr_container_type[$i]->cont_id ?>"
+                                            <?php if ($obj_container->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
                                             <?php echo $arr_container_type[$i]->cont_name ?></option>
                                         <?php } ?>
                                     </select>
@@ -61,7 +63,7 @@
                                 </div>
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input"
-                                        name="con_status">
+                                        name="con_stac_id">
                                         <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
                                         <option value="<?php echo $arr_status_container[$i]->stac_id ?>">
                                             <?php echo $arr_status_container[$i]->stac_name ?></option>
@@ -228,6 +230,7 @@
                                         <option value="1">ตู้เข้า</option>
                                         <option value="2">ตู้ออก</option>
                                         <option value="3">ตู้ดรอป</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -241,7 +244,8 @@
                                 </div>
                                 <div class="col-12 col-sm-8">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input"
-                                        type="datetime-local" name="ser_departure_date">
+                                        type="datetime-local" name="ser_departure_date"
+                                        value="<?php echo $obj_service->ser_departure_date ?>">
                                 </div>
                             </div>
 
@@ -351,7 +355,8 @@
                                 </div>
                                 <div class="col-12 col-sm-8">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text"
-                                        name="ser_arrivals_location" placeholder="สถานที่ต้นทาง">
+                                        name="ser_arrivals_location" placeholder="สถานที่ต้นทาง"
+                                        value="<?php echo $obj_service->ser_arrivals_location ?>">
                                 </div>
                             </div>
                             <!-- สถานที่ปลายทาง-->

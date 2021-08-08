@@ -55,12 +55,19 @@ class Service_edit extends Cdms_controller
         $data['arr_car'] = $m_car->get_all();
 
         $m_ser = new M_cdms_service();
-        $data['arr_service'] = $m_ser->get_by_id($ser_id);
+        $data['obj_service'] = $m_ser->get_by_id($ser_id);
+
+        // get customer
+        $m_cus = new M_cdms_customer();
+        $data['obj_customer'] = $m_cus->get_by_id($data['obj_service']->ser_cus_id);
+
+        // get container 
+        $m_con = new M_cdms_container();
+        $data['obj_container'] = $m_con->get_by_id($data['obj_service']->ser_con_id);
 
         // get agent agent
         $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_by_id($data['obj_container']->con_agn_id);
-
+        $data['obj_agent'] = $m_agn->get_by_id($data['obj_container']->con_agn_id);
         // call service input view
         $this->output('v_service_edit', $data);
     }
