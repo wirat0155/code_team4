@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_car_type;
+use App\Models\M_cdms_province;
 
 /*
 * Car_input
@@ -26,7 +27,7 @@ class Car_input extends Cdms_controller
         $data = [];
 
         // car province
-        $m_car_prov = new M_cdms_car();
+        $m_car_prov = new M_cdms_province();
         $data['arr_car_prov'] = $m_car_prov->get_all();
 
         // car type

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Models;
-
 use CodeIgniter\Model;
 
 /*
@@ -9,7 +7,7 @@ use CodeIgniter\Model;
 * เพิ่ม ลบ แก้ไขข้อมุลรถ
 * @author Nattanan Tadsawan
 * @Create Date 2564-07-29
-* @Update Date
+* @Update Date 2564-08-09
 */
 
 class Da_cdms_car extends Model
@@ -26,7 +24,7 @@ class Da_cdms_car extends Model
     * เพิ่มรถ
     * @author Nattanan Tadsawan
     * @Create Date 2564-08-07
-    * @Update Date
+    * @Update Date 2564-08-09
     */
         function insert(
                 $car_code = NULL, 
@@ -50,7 +48,7 @@ class Da_cdms_car extends Model
     * ลบรถ
     * @author Nattanan Tadsawan
     * @Create Date 2564-07-30
-    * @Update Date
+    * @Update Date 
     */
         public function delete($car_id = NULL, bool $purge = false)
         {
@@ -89,11 +87,4 @@ class Da_cdms_car extends Model
                                 WHERE car_id = '$car_id' ";
                 $this->db->query($sql);
         }
-}
-
-class Da_cdms_province extends Model {
-        protected $table = 'cdms_province';
-        protected $primaryKey = 'prov_id';
-        protected $allowedFields = ['prov_name', 'prov_status'];
-
 }

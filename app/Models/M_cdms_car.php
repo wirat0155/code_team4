@@ -40,12 +40,3 @@ class M_cdms_car extends Da_cdms_car {
     }
 
 }
-
-class M_cdms_province extends Da_cdms_province {
-
-    public function get_all_prov()
-    {
-        $sql = "SELECT * FROM $this->table";
-        return $this->db->query($sql)->getResult();
-    }   
-}
