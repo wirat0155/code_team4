@@ -117,8 +117,8 @@
 <script>
     $(document).ready(function() {
         // jQuery Validation
-        if ($('#add_container_form').length > 0) {
-            $('#add_container_form').validate({
+        if ($('#edit_customer_form').length > 0) {
+            $('#edit_customer_form').validate({
                 rules: {
                     cus_company_name: {
                         required: true
