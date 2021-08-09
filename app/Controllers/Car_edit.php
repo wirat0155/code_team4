@@ -1,5 +1,8 @@
-<?php namespace App\controllers;
+<?php
+namespace App\controllers;
 use App\Models\M_cdms_car;
+use App\Models\M_cdms_car_type;
+use App\Models\M_cdms_province;
 
 /*
 * Car_edit
@@ -8,6 +11,7 @@ use App\Models\M_cdms_car;
 * @Create Date 2021-08-06
 * @Update Date
 */
+
 class Car_edit extends Cdms_controller
 {
     /*
@@ -20,8 +24,17 @@ class Car_edit extends Cdms_controller
     public function car_edit($car_id)
     {
         // call car edit view
-        $M_car = new M_cdms_car;
-        $data['arr_car']=$M_car->get_by_id($car_id);
+        $M_car = new M_cdms_car();
+        $data['arr_car'] = $M_car->get_by_id($car_id);
+
+        // car province
+        $m_car_prov = new M_cdms_province();
+        $data['arr_car_prov'] = $m_car_prov->get_all();
+
+        // car type
+        $m_cart = new M_cdms_car_type();
+        $data['arr_car_type'] = $m_cart->get_all();
+
         $this->output('v_car_edit', $data);
     }
 
@@ -32,8 +45,9 @@ class Car_edit extends Cdms_controller
     * @Create Date 2021-08-06
     * @Update Date
     */
-    public function car_update() {
-        $M_car = new M_cdms_car;
+    public function car_update()
+    {
+        $M_car = new M_cdms_car();
 
         // car information
         $car_id = $this->request->getPost('car_id');
@@ -45,20 +59,23 @@ class Car_edit extends Cdms_controller
         $car_weight = $this->request->getPost('car_weight');
         $car_branch = $this->request->getPost('car_branch');
         $car_fuel_type = $this->request->getPost('car_fuel_type');
-        $car_status = $this->request->getPost('car_status');
-        
-        // other information
-        $car_cart_id = $this->request->getPost('car_cart_id');
-        $car_prov_id = $this->request->getPost('car_prov_id');
 
         // upload image
-        $car_image = $this->request->getPost('car_image');
+        $file = $this->request->getFile('car_image');
+        if ($file->isValid() && !$file->hasMoved()) {
+            $imageName = $file->getName();
+            $file->move('./car_image', $imageName);
+        }
+        $car_image = $imageName;
 
-        $M_car->car_update($car_id, $car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_status, $car_cart_id ,$car_prov_id ,$car_image);
-        // echo '<pre>';
-        // print_r($_POST);
-        // echo '</pre>';
+        $car_status = $this->request->getPost('car_status');
+        $car_prov_id = $this->request->getPost('car_prov_id');
+        $car_cart_id = $this->request->getPost('car_cart_id');
+
+        // เพิ่มข้อมูลรถ
+        $M_car->car_update($car_id,$car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_status,$car_prov_id, $car_cart_id);
         
-        return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
+        print_r($this->request->getPost());
+        $this->response->redirect(base_url() . '/public/Car_show/car_show_ajax');
     }
 }
