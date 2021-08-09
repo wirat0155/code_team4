@@ -1,9 +1,9 @@
 <style>
-    @media (min-width: 1200px) {
-        .container-sm {
-            max-width: 900px;
-        }
+@media (min-width: 1200px) {
+    .container-sm {
+        max-width: 900px;
     }
+}
 </style>
 
 <div class="container px-6 mx-auto grid">
@@ -52,7 +52,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_tax" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $arr_agent[0]->agn_tax ?>">
+                            <input type="text" class="form-control form-input" id="agn_tax" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" value="<?php echo $arr_agent[0]->agn_tax ?>">
                         </div>
                     </div>
 
@@ -83,7 +83,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890" value="<?php echo $arr_agent[0]->agn_tel ?>">
+                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_agent[0]->agn_tel ?>">
                         </div>
                     </div>
 
@@ -105,68 +105,64 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_agent_form').length > 0) {
-            $('#add_agent_form').validate({
-                rules: {
-                    agn_company_name: {
-                        required: true
-                    },
-                    agn_tax: {
-                        required: true,
-                        matches: "[0-9]{13}"
-                    },
-                    agn_address: {
-                        required: true
-                    },
-                    agn_firstname: {
-                        required: true
-                    },
-                    agn_lastname: {
-                        required: true
-                    },
-                    agn_tel: {
-                        required: true,
-                        matches: "[0-9]{10}",
-                        minlength: 10,
-                        maxlength: 10
-                    },
-                    agn_email: {
-                        required: true,
-                        email: true
-                    }
-
+$(document).ready(function() {
+    // jQuery Validation
+    if ($('#add_agent_form').length > 0) {
+        $('#add_agent_form').validate({
+            rules: {
+                agn_company_name: {
+                    required: true
                 },
-                messages: {
-                    agn_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัท'
-                    },
-                    agn_tax: {
-                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
-                    },
-                    agn_address: {
-                        required: 'กรุณากรอกที่อยู่'
-                    },
-                    agn_firstname: {
-                        required: 'กรุณากรอกชื่อจริง'
-                    },
-                    agn_lastname: {
-                        required: 'กรุณากรอกนามสกุล'
-                    },
-                    agn_tel: {
-                        required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
-                    },
-                    agn_email: {
-                        required: 'กรุณากรอกอีเมล',
-                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
-                    }
+                agn_tax: {
+                    required: true,
+                },
+                agn_address: {
+                    required: true
+                },
+                agn_firstname: {
+                    required: true
+                },
+                agn_lastname: {
+                    required: true
+                },
+                agn_tel: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                agn_email: {
+                    required: true,
+                    email: true
                 }
-            })
-        }
-    });
+
+            },
+            messages: {
+                agn_company_name: {
+                    required: 'กรุณากรอกชื่อบริษัท'
+                },
+                agn_tax: {
+                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                },
+                agn_address: {
+                    required: 'กรุณากรอกที่อยู่'
+                },
+                agn_firstname: {
+                    required: 'กรุณากรอกชื่อจริง'
+                },
+                agn_lastname: {
+                    required: 'กรุณากรอกนามสกุล'
+                },
+                agn_tel: {
+                    required: 'กรุณากรอกเบอร์โทรศัพท์',
+                    minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                    maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                },
+                agn_email: {
+                    required: 'กรุณากรอกอีเมล',
+                    email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                }
+            }
+        })
+    }
+});
 </script>
