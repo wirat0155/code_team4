@@ -1,4 +1,12 @@
 <div class="container mx-auto grid mt-3">
+    <!-- หัวข้อ -->
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+        <div class="flex items-center">
+            <h2 class=" text-2xl font-semibold">
+                ข้อมูลตู้คอนเทนเนอร์
+            </h2>
+        </div>
+    </div>
     <form id="update_container_form" action="<?php echo base_url() . '/public/Container_edit/container_update'?>" method="POST">
     <div class="row">
         <div class="col-12 col-xl-7">
