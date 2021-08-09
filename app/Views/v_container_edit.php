@@ -431,6 +431,12 @@
 
         if (agn_company_name == '') {
             $('input[name="agn_id"]').val('');
+            $('textarea[name="agn_address"]').val('');
+            $('input[name="agn_tax"]').val('');
+            $('input[name="agn_firstname"]').val('');
+            $('input[name="agn_lastname"]').val('');
+            $('input[name="agn_tel"]').val('');
+            $('input[name="agn_email"]').val('');
         }
         $.ajax({
             url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
