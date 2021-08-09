@@ -12,7 +12,7 @@
     <form id="add_service_form" action="<?php echo base_url() . '/public/Service_edit/service_update' ?>" method="POST">
         <div class="row">
             <!-- Start container form -->
-            <input type='hidden' name='con_id' value="<?php echo $obj_container->con_id ?>">
+            <input type='hidden' name='con_id' value="<?php echo $obj_container[0]->con_id ?>">
             <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                     <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ตู้คอนเทนเนอร์</h2>
@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" placeholder="หมายเลขตู้" value="<?php echo $obj_container->con_number ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" placeholder="หมายเลขตู้" value="<?php echo $obj_container[0]->con_number ?>">
                                 </div>
                             </div>
 
@@ -43,7 +43,7 @@
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_cont_id">
                                         <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                            <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($obj_container->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
+                                            <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($obj_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
                                                 <?php echo $arr_container_type[$i]->cont_name ?></option>
                                         <?php } ?>
                                     </select>
@@ -59,7 +59,7 @@
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_stac_id">
                                         <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                            <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($obj_container->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
+                                            <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
                                                 <?php echo $arr_status_container[$i]->stac_name ?></option>
                                         <?php } ?>
                                     </select>
@@ -74,7 +74,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container->con_max_weight ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
                                 </div>
                             </div>
 
@@ -86,7 +86,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container->con_tare_weight ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_tare_weight ?>">
                                 </div>
                             </div>
 
@@ -98,7 +98,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight" placeholder="0.01" value="<?php echo $obj_container->con_net_weight ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_net_weight ?>">
                                 </div>
                             </div>
                             <!-- น้ำหนักสินค้าปัจจุบัน (ตัน) -->
@@ -122,7 +122,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-5">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container->con_cube ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container[0]->con_cube ?>">
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id" oninput="get_size_information()">
                                         <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                            <option value="<?php echo $arr_size[$i]->size_id ?>" <?php if ($obj_container->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
+                                            <option value="<?php echo $arr_size[$i]->size_id ?>" <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
                                                 <?php echo $arr_size[$i]->size_name ?></option>
                                         <?php } ?>
                                     </select>
@@ -573,7 +573,7 @@
 <script>
     $(document).ready(function() {
         // jQuery Validation
-        /*  if ($('#add_service_form').length > 0) {
+          if ($('#add_service_form').length > 0) {
             $('#add_service_form').validate({
                 rules: {
                     con_number:{
@@ -744,7 +744,7 @@
                     }
                 }
             })
-        }*/
+        }
     });
 
     function get_size_information() {
