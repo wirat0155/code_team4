@@ -90,3 +90,10 @@ class Da_cdms_car extends Model
                 $this->db->query($sql);
         }
 }
+
+class Da_cdms_province extends Model {
+        protected $table = 'cdms_province';
+        protected $primaryKey = 'prov_id';
+        protected $allowedFields = ['prov_name', 'prov_status'];
+
+}

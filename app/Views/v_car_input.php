@@ -5,7 +5,7 @@
     display: inline-block;
 }
 
-.uploadfile {
+.upload-file {
     background-color: #eeeee4;
     border: none;
     color: black;
@@ -44,7 +44,6 @@
                                     <span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span>
                                 </label>
                             </div>
-
                             <div class="col-12 col-sm-8">
                                 <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" placeholder="10">
                             </div>
@@ -93,8 +92,8 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                 <div class="upload-btn-wrapper">
-                                    <button class="uploadfile">เลือกไฟล์</button>
-                                    <input type="file" name="car_image">
+                                    <button class="upload-file">เลือกไฟล์</button>
+                                    <input type="file" name="car_image" accept="image/jpg,image/jpeg,image/png">
                                 </div>
                             </div>
                         </div>
@@ -223,6 +222,9 @@ $(document).ready(function() {
                 car_fuel_type: {
                     required: true
                 },
+                car_image: {
+                    required: true
+                },
 
             },
             messages: {
@@ -250,6 +252,9 @@ $(document).ready(function() {
                 },
                 car_fuel_type: {
                     required: 'กรุณากรอกชนิดน้ำมัน'
+                },
+                car_image: {
+                    required: 'กรุณาเลือกไฟล์รูป'
                 },
 
             }

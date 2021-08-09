@@ -65,7 +65,7 @@ class Car_input extends Cdms_controller
         $file = $this->request->getFile('car_image');
         if($file->isValid() && ! $file->hasMoved()){
             $imageName = $file->getName();
-            $file->move('car_image', $imageName);
+            $file->move('./car_image', $imageName);
         }
 
         $car_image = $imageName;
