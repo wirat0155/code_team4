@@ -43,7 +43,15 @@ class Container_show extends Cdms_controller
         return $this->response->redirect(base_url('/public/Container_show/container_show_ajax'));
     }
 
-    
+    /*
+    * check_container_number
+    * ค้นหาหมายเลขตู้คอนเทนเนอร์
+    * @input con_number
+    * @output ค้นหาหมายเลขตู้คอนเทนเนอร์
+    * @author Wirat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+    */
     public function check_container_number() {
         $M_con = new M_cdms_container();
         $con_number = $this->request->getPost('con_number');
