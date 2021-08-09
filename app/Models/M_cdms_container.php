@@ -65,6 +65,6 @@ class M_cdms_container extends Da_cdms_container {
     */
     public function get_by_id($con_id = NULL) {
         $sql = "SELECT * FROM $this->table WHERE con_id = '$con_id'";
-        return $this->db->query($sql)->getRow();
+        return $this->db->query($sql)->getResult();
     }
 }

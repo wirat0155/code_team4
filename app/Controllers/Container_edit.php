@@ -32,11 +32,11 @@ class Container_edit extends Cdms_controller
 
         // get container data
         $m_con = new M_cdms_container();
-        $data['obj_container'] = $m_con->get_by_id($con_id);
+        $data['arr_container'] = $m_con->get_by_id($con_id);
 
         // get agent agent
         $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_by_id($data['obj_container']->con_agn_id);
+        $data['arr_agent'] = $m_agn->get_by_id($data['arr_container'][0]->con_agn_id);
         // print_r($data['arr_agent']);
         
         // get dropdown
@@ -45,7 +45,7 @@ class Container_edit extends Cdms_controller
         $data['arr_size'] = $m_size->get_all();
 
         // size information
-        $data['arr_con_size'] = $m_size->get_by_id($data['obj_container']->con_size_id);
+        $data['arr_con_size'] = $m_size->get_by_id($data['arr_container'][0]->con_size_id);
 
         // container type
         $m_cont = new M_cdms_container_type();
