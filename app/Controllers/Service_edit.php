@@ -67,22 +67,22 @@ class Service_edit extends Cdms_controller
 
         // get agent agent
         $m_agn = new M_cdms_agent();
-        $data['obj_agent'] = $m_agn->get_by_id($data['obj_container']->con_agn_id);
+        $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
         // call service input view
         $this->output('v_service_edit', $data);
         //print_r($data['obj_service'][0]->ser_departure_date);
         //print_r($data['obj_agent'][0]->agn_company_name);
     }
-
-    public function service_update()
-    {
-        /*
+    /*
         * service_update
         * อัพเดทข้อมูลที่ทำการแก้ไข
         * @author Worarat
         * @Create Date 2564-07-29
         * @Update Date
     */
+    public function service_update()
+    {
+
         $m_ser = new M_cdms_service();
         $m_cus = new M_cdms_customer();
         $m_con = new M_cdms_container();
@@ -110,7 +110,6 @@ class Service_edit extends Cdms_controller
         $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
         $ser_con_id = $this->request->getPost('con_id');
-
         // service information
         $ser_type = $this->request->getPost('ser_type');
         $ser_departure_date = $this->request->getPost('ser_departure_date');
@@ -135,6 +134,12 @@ class Service_edit extends Cdms_controller
         $agn_email = $this->request->getPost('agn_email');
         $con_agn_id = $this->request->getPost('agn_id');
 
+        // $check_con_id = $m_con->is_con_number_exist($con_number);
+        // if (count($check_con_id) == 0) {
+        //     $m_con->container_update($ser_con_id, $con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+        // } else {
+        //     $ser_con_id = $check_con_id[0]->con_id;
+        // }
 
         $m_agn->agent_update($con_agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         $m_cus->customer_update($ser_cus_id, $cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);

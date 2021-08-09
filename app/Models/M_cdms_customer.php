@@ -32,6 +32,7 @@ class M_cdms_customer extends Da_cdms_customer {
                 WHERE cus_id='$cus_id'";
         return $this->db->query($sql)->getResult();
     }
+
     public function get_by_name($cus_company_name, $cus_branch){
         if($cus_branch == ''){
             $sql = "SELECT * FROM $this->table
@@ -44,5 +45,3 @@ class M_cdms_customer extends Da_cdms_customer {
     }
 }
 
-// get_by_name(cus_name)
-// get_all()
