@@ -1,233 +1,164 @@
-<div class="container mx-auto grid mt-3">
-    <form id="add_driver_form" action="<?php echo base_url(). '/public/Driver_edit/driver_update' ?>" method="post">
-    <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">    
-    <div class="row">
-            <div class="col-12 col-xl-7">
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">พนักงานขับรถ</h2>
-                    <hr class="mb-5">
+<style>
+    @media (min-width: 1200px) {
+        .container-sm {
+            max-width: 900px;
+        }
+    }
+</style>
 
+<div class="container px-6 mx-auto grid">
+
+    <!-- หัวข้อ -->
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+        <div class="flex items-center">
+            <h2 class=" text-2xl font-semibold">
+                ข้อมูลพนักงานขับรถ
+            </h2>
+        </div>
+    </div>
+
+
+    <div class="container-sm mb-8">
+
+        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_edit/driver_update' ?>" method="post">
+        <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>"> 
+            <!-- เพิ่มพนักงาน -->
+            <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+
+                <h4 class="px-3 my-4 text-xl font-semibold">
+                    พนักงานขับรถ
+                </h4>
+
+                <div class="mb-4 container border-bottom"></div>
+
+                <div class="container">
                     <!-- ชื่อ นามสกุล -->
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_name" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ชื่อ-นามสกุล</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_name" name="dri_name" value="<?php echo $arr_driver[0]->dri_name ?>">
-                                </div>
-                            </div>
-
-                            <!-- หมายเลขใบขับขี่ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_card_number" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขบัตรประชาชน</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_card_number" name="dri_card_number" value="<?php echo $arr_driver[0]->dri_card_number ?>">
-                                </div>
-                            </div>
-
-                            <!-- ประเภทใบขับขี่ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_license" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขใบขับขี่</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license" name="dri_license" value="<?php echo $arr_driver[0]->dri_license ?>">
-                                </div>
-                            </div>
-
-                            <!-- ประเภทใบขับขี่ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_license_type" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ประเภทใบขับขี่</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type">
-                                        <option value="1">ท.1</option>
-                                        <option value="2">ท.2</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- เบอร์โทร -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_tel" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">เบอร์โทร</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_tel" name="dri_tel" value="<?php echo $arr_driver[0]->dri_tel ?>">
-                                </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <!-- สถานะคนขับ -->
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_status" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">สถานะของคนขับรถ</span>
-                                    </label>
-                                </div>
-                                <!-- เลือกสถานะ -->
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_status" name="dri_status">
-                                        <option selected disabled>เลือกสถานะ</option>
-                                        <option value="">พร้อมทำงาน</option>
-                                        <option value="">กำลังปฏิบัติงาน</option>
-                                        <option value="">สำรอง</option>
-                                        <option value="">ลาออก</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- วันที่เข้าทำงาน -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_date_start" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">วันที่เข้าทำงาน</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_start" name="dri_date_start" value="<?php echo $arr_driver[0]->dri_date_start ?>">
-                                </div>
-                            </div>
-
-                            <!-- วันที่ลาออก -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label for="dri_date_end" class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">วันที่ลาออก</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input type="date" class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_date_end" name="dri_date_end" value="<?php echo $arr_driver[0]->dri_date_end ?>">
-                                </div>
-                            </div>
-                            <!-- 
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ภาพ</span>
-                                    </label>
-                                </div>
-                                <div class="picture">
-                                    <img src="#" class="picture-src fa fa-user-circle" id="dri_profile_image" title="" alt="" style="padding-bottom: 10px;">
-
-                                    <input type="file" id="dri_profile_image" class="" accept="image/*">
-                                </div>
-                            </div> -->
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-12 col-xl-5">
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">รถ</h2>
-                    <hr class="mb-5">
-
-
-                    <div class="row mt-3">
-                        <!-- หมายเลขรถ -->
-                        <div class="col-12">
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="" >
-                                </div>
-                            </div>
-
-                            <!-- ทะเบียนรถ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ทะเบียน</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="">
-                                </div>
-                            </div>
-
-                            <!-- จังหวัด -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">จังหวัด</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="">
-                                        <option selected disabled>เลือกจังหวัด</option>
-                                        <option>ชลบุรี</option>
-                                        <option>มีจังหวัดเดียวไปก่อนนะคับอิอิ</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- ประเภทรถ -->
-                            <div class="row mt-3" style="padding-bottom: 303px;">
-                                <div class="col-12 col-sm-3">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ประเภทรถ</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="dri_license_type">
-                                        <option selected disabled>เลือกประเภทรถ</option>
-                                        <option value="">บรรทุก 4 ล้อ</option>
-                                        <option value="">บรรทุก 6 ล้อ</option>
-                                        <option value="">บรรทุก 10 ล้อ</option>
-                                        <option value="">เทรลเลอร์ 6 ล้อ</option>
-                                        <option value="">เทรลเลอร์ 10 ล้อ</option>
-                                    </select>
-                                </div>
-                            </div>
+                    <div class="px-3 form-group row">
+                        <label for="dri_name" class="col-sm-3 col-form-label">ชื่อ-นามสกุล</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-input" id="dri_name" name="dri_name" value="<?php echo $arr_driver[0]->dri_name ?>">
                         </div>
                     </div>
+
+                    <!-- เลขบัตรประชาชน -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_card_number" class="col-sm-3 col-form-label">หมายเลขบัตรประชาชน</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-input" id="dri_card_number" name="dri_card_number" value="<?php echo $arr_driver[0]->dri_card_number ?>">
+                        </div>
+                    </div>
+
+                    <!-- หมายเลขใบขับขี่ -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_license" class="col-sm-3 col-form-label">หมายเลขใบขับขี่</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-input" id="dri_license" name="dri_license" value="<?php echo $arr_driver[0]->dri_license ?>">
+                        </div>
+                    </div>
+
+                    <!-- เบอร์โทร -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_tel" class="col-sm-3 col-form-label">เบอร์โทร</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-input" id="dri_tel" name="dri_tel" value="<?php echo $arr_driver[0]->dri_tel ?>">
+                        </div>
+                    </div>
+                    <!-- หมายเลขรถ -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_car_id" class="col-sm-3 col-form-label">หมายเลขรถ</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-input" id="dri_car_id" name="dri_car_id" value="<?php echo $arr_driver[0]->dri_car_id ?>">
+                        </div>
+                    </div>
+
+                    <!-- ประเภทใบขับขี่ -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_license_type" class="col-sm-3 col-form-label">ประเภทใบขับขี่</label>
+                        <div class="col-sm-9">
+                        <?php    
+                        $license1=' ';
+                        $license2=' ';
+                        $license3=' ';
+                        $license4=' ';
+                        if($arr_driver[0]->dri_license_type == 1){
+                            $license1 = 'selected';
+                        }else if($arr_driver[0]->dri_license_type == 2){
+                            $license2 = 'selected';
+                        }else if($arr_driver[0]->dri_license_type == 3){
+                            $license3 = 'selected';
+                        }else if($arr_driver[0]->dri_license_type == 4){
+                            $license4 = 'selected';
+                        }
+                        ?>
+
+                            <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type" value="<?php echo $arr_driver[0]->dri_license_type ?>">
+                                <option selected disabled >เลือกประเภทใบขับขี่</option>
+                                <option value="1" <?php echo $license1 ?>>ท.1</option>
+                                <option value="2" <?php echo $license2 ?>>ท.2</option>
+                                <option value="3" <?php echo $license3 ?>>ท.3</option>
+                                <option value="4" <?php echo $license4 ?>>ท.4</option>
+                            </select>
+                        </div> <br><br>
+                    </div>
+
+                    <!-- สถานะพนักงานขับรถ -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_status" class="col-sm-3 col-form-label">สถานะของขับรถ</label>
+                        <div class="col-sm-9">
+                        <?php    
+                        $status1=' ';
+                        $status2=' ';
+                        $status3=' ';
+                        $status4=' ';
+                        if($arr_driver[0]->dri_status == 1){
+                            $status1 = 'selected';
+                        }else if($arr_driver[0]->dri_status == 2){
+                            $status2 = 'selected';
+                        }else if($arr_driver[0]->dri_status == 3){
+                            $status3 = 'selected';
+                        }else if($arr_driver[0]->dri_status == 4){
+                            $status4 = 'selected';
+                        }
+                        ?>  
+                            <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_status" name="dri_status" value="<?php echo $arr_driver[0]->dri_status ?>">
+                                <option selected disabled>เลือกสถานะ</option>
+                                <option value="1" <?php echo  $status1 ?>>พร้อมทำงาน</option>
+                                <option value="2" <?php echo  $status2 ?>>กำลังปฏิบัติงาน</option>
+                                <option value="3" <?php echo  $status3 ?>>สำรอง</option>
+                                <option value="4" <?php echo  $status4 ?>>ลาออก</option>
+                            </select>
+                        </div><br><br>
+                    </div>
+
+                    <!-- วันเข้าทำงาน -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_date_start" class="col-sm-3 col-form-label">วันที่เข้าทำงาน</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start" value="<?php echo $arr_driver[0]->dri_date_start ?>">
+                        </div>
+                    </div>
+
+                    <!-- วันที่ลาออก -->
+                    <div class="px-3 form-group row">
+                        <label for="dri_date_end" class="col-sm-3 col-form-label">วันที่ลาออก</label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end" value="<?php echo $arr_driver[0]->dri_date_end ?>">
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
-        </div>
-        <div class="float-right">
-            <!-- ปุ่มยกเลิก -->
-            <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
-            <!-- ปุ่มบันทึก -->
-            <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
-        </div>
-    </form>
+            <div class="float-right">
+                <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
+                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
+            </div>
+        </form>
+
+    </div>
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
     $(document).ready(function() {
@@ -235,7 +166,7 @@
         if ($('#add_driver_form').length > 0) {
             $('#add_driver_form').validate({
                 rules: {
-                    dri_name:{
+                    dri_name: {
                         required: true
                     },
                     dri_card_number: {
@@ -255,7 +186,7 @@
                     },
                 },
                 messages: {
-                    dri_name:{
+                    dri_name: {
                         required: 'กรุณากรอกชื่อ'
                     },
                     dri_card_number: {

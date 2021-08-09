@@ -43,8 +43,9 @@ public function driver_update(){
     $dri_status = $this->request->getPost('dri_status');
     $dri_date_start = $this->request->getPost('dri_date_start');
     $dri_date_end = $this->request->getPost('dri_date_end');
+    $dri_car_id = $this->request->getPost('dri_car_id');
 
-    $M_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end);
+    $M_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end, $dri_car_id);
     
     print_r($this->request->getPost());
 

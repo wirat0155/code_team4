@@ -66,9 +66,10 @@ public function driver_update(
         dri_license='$dri_license', 
         dri_license_type='$dri_license_type',
         dri_profile_image= NULL,
-        dri_status= '1',
+        dri_status= '$dri_status',
         dri_date_start='$dri_date_start',
-        dri_date_end='$dri_date_end'
+        dri_date_end='$dri_date_end',
+        dri_car_id= '$dri_car_id'
     WHERE dri_id='$dri_id' ";
     //echo $sql;
     $this->db->query($sql);

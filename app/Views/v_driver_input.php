@@ -22,7 +22,7 @@
 
         <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_input/driver_insert' ?>" method="post">
 
-            <!-- เพิ่มลูกค้า -->
+            <!-- เพิ่มพนักงาน -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
                 <h4 class="px-3 my-4 text-xl font-semibold">
@@ -32,7 +32,7 @@
                 <div class="mb-4 container border-bottom"></div>
 
                 <div class="container">
-                    <!-- บริษัท -->
+                    <!-- ชื่แ นามสกุล -->
                     <div class="px-3 form-group row">
                         <label for="dri_name" class="col-sm-3 col-form-label">ชื่อ-นามสกุล</label>
                         <div class="col-sm-9">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <!-- สาขา -->
+                    <!-- เลขบัตรประชาชน -->
                     <div class="px-3 form-group row">
                         <label for="dri_card_number" class="col-sm-3 col-form-label">หมายเลขบัตรประชาชน</label>
                         <div class="col-sm-9">
@@ -64,6 +64,7 @@
                         </div>
                     </div>
 
+                    <!-- หมายเลขรถ -->
                     <div class="px-3 form-group row">
                         <label for="dri_car_id" class="col-sm-3 col-form-label">หมายเลขรถ</label>
                         <div class="col-sm-9">
@@ -85,6 +86,7 @@
                         </div> <br><br>
                     </div>
 
+                    <!-- สถานะพนักงานขับรถ -->
                     <div class="px-3 form-group row">
                         <label for="dri_status" class="col-sm-3 col-form-label">สถานะของขับรถ</label>
                         <div class="col-sm-9">
@@ -98,6 +100,7 @@
                         </div><br><br>
                     </div>
 
+                    <!-- วันเข้าทำงาน -->
                     <div class="px-3 form-group row">
                         <label for="dri_date_start" class="col-sm-3 col-form-label">วันที่เข้าทำงาน</label>
                         <div class="col-sm-9">
@@ -105,6 +108,7 @@
                         </div>
                     </div>
 
+                    <!-- วันที่ลาออก -->
                     <div class="px-3 form-group row">
                         <label for="dri_date_end" class="col-sm-3 col-form-label">วันที่ลาออก</label>
                         <div class="col-sm-9">
