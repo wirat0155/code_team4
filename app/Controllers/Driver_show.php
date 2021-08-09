@@ -25,6 +25,10 @@ class Driver_show extends Cdms_controller{
         $M_dri = new M_cdms_driver();
         $data['arr_driver'] = $M_dri->get_all();
         $this->output('v_driver_showlist', $data);
+        // echo '<pre>'; 
+        // print_r($data['arr_driver']);
+        // echo '</pre>'; 
+        
     }
 
     /*

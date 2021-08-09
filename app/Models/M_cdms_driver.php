@@ -24,9 +24,11 @@ class M_cdms_driver extends Da_cdms_driver {
     */
     public function get_all()
     {
-        $sql = "SELECT * FROM $this->table 
+        $sql = "SELECT * FROM cdms_driver 
+                LEFT JOIN cdms_car 
+                ON dri_car_id = car_id 
                 LEFT JOIN cdms_car_type 
-                ON dri_car_id = cart_id
+                ON cart_id = car_cart_id
                 WHERE NOT dri_status = 4";
         return $this->db->query($sql)->getResult();
     }   
@@ -36,4 +38,5 @@ class M_cdms_driver extends Da_cdms_driver {
                 WHERE dri_id='$dri_id'";
         return $this->db->query($sql)->getResult();
     }
+
 }
