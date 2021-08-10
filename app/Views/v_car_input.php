@@ -1,9 +1,4 @@
 <style>
-.upload-btn-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
 
 .upload-file {
     background-color: #eeeee4;
@@ -23,6 +18,16 @@
     left: 0;
     top: 0;
     opacity: 0;
+}
+
+#file_name {
+  display: block;/* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 100%;
+  line-height: 1.5em;
+  margin-top: 10;
 }
 </style>
 
@@ -93,7 +98,8 @@
                             <div class="col-12 col-sm-8">
                                 <div class="upload-btn-wrapper">
                                     <button class="upload-file">เลือกไฟล์</button>
-                                    <input type="file" name="car_image" accept="image/jpg,image/jpeg,image/png">
+                                    <div id='file_name'></div>
+                                    <input type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
                                 </div>
                             </div>
                         </div>
@@ -261,4 +267,9 @@ $(document).ready(function() {
         })
     }
 });
+
+function get_image() {
+    var car_img = $('#car_image').val();
+    $('#file_name').html(car_img.substr(12));
+}
 </script>
