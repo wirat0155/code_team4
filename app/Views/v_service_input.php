@@ -731,7 +731,7 @@
             })
         }
     });
-
+    // get size information when change con_size_id dropdown
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
         $.ajax({
@@ -746,7 +746,7 @@
             }
         });
     }
-
+    // show size information when change con_size_id dropdown
     function show_size_information(size_height_out, size_width_out, size_length_out) {
         console.log(size_height_out);
         $('input[name="size_height_out"]').val(size_height_out);
