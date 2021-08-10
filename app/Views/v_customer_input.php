@@ -126,7 +126,8 @@
                     },
                     cus_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        minlength:13, 
+                        maxlength:13
                     },
                     cus_address: {
                         required: true
@@ -139,7 +140,6 @@
                     },
                     cus_tel:{
                         required: true,
-                        matches:"[0-9]{10}",
                         minlength:10, 
                         maxlength:10
                     },
@@ -155,7 +155,8 @@
                     },
                     cus_tax: {
                         required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                        minlength:'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
                     },
                     cus_address: {
                         required: 'กรุณากรอกที่อยู่'
@@ -168,7 +169,6 @@
                     },
                     cus_tel:{
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
                         minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
                         maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
