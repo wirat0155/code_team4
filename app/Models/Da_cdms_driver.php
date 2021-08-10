@@ -40,7 +40,7 @@ class Da_cdms_driver extends Model{
     }
 
     /*
-    * update
+    * driver_update
     * เเก้ไขข้อมูลพนักงานขับรถ
     * @author  Warisara
     * @Create Date 2564-08-07
