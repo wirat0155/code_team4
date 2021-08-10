@@ -27,6 +27,15 @@
 </style>
 
 <div class="container mx-auto grid mt-3">
+        <!-- หัวข้อ -->
+        <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+        <div class="flex items-center">
+            <h2 class=" text-2xl font-semibold">
+                แก้ไขข้อมูลรถ
+            </h2>
+        </div>
+    </di>
+    
     <form id="add_car_form" action="<?php echo base_url(). '/public/Car_edit/car_update' ?>" enctype="multipart/form-data" method="POST">
     <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
 
