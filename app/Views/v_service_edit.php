@@ -367,7 +367,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท" value="<?php echo $obj_agent[0]->agn_company_name?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท" value="<?php echo $obj_agent[0]->agn_company_name ?>">
                                 </div>
                             </div>
 
@@ -379,7 +379,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address" placeholder="ที่ตั้งบริษัท" ><?php echo $obj_agent[0]->agn_address?></textarea>
+                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address" placeholder="ที่ตั้งบริษัท"><?php echo $obj_agent[0]->agn_address ?></textarea>
                                 </div>
                             </div>
 
@@ -391,7 +391,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_agent[0]->agn_tax?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_agent[0]->agn_tax ?>">
                                 </div>
                             </div>
                             <hr class="mb-3">
@@ -404,7 +404,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_agent[0]->agn_firstname?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_agent[0]->agn_firstname ?>">
                                 </div>
                             </div>
 
@@ -416,7 +416,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล" value="<?php echo $obj_agent[0]->agn_lastname?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล" value="<?php echo $obj_agent[0]->agn_lastname ?>">
                                 </div>
                             </div>
 
@@ -428,7 +428,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_agent[0]->agn_tel?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_agent[0]->agn_tel ?>">
                                 </div>
                             </div>
 
@@ -440,7 +440,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์" value="<?php echo $obj_agent[0]->agn_email?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์" value="<?php echo $obj_agent[0]->agn_email ?>">
                                 </div>
                             </div>
                         </div>
@@ -478,7 +478,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_branch" placeholder="สาขา" value="<?php echo $obj_customer[0]->cus_branch?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_branch" placeholder="สาขา" value="<?php echo $obj_customer[0]->cus_branch ?>">
                                 </div>
                             </div>
 
@@ -490,7 +490,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_address" placeholder="ที่ตั้งบริษัท"><?php echo $obj_customer[0]->cus_address?></textarea>
+                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_address" placeholder="ที่ตั้งบริษัท"><?php echo $obj_customer[0]->cus_address ?></textarea>
                                 </div>
                             </div>
 
@@ -502,7 +502,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_customer[0]->cus_tax?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_customer[0]->cus_tax ?>">
                                 </div>
                             </div>
 
@@ -515,7 +515,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_customer[0]->cus_firstname?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_customer[0]->cus_firstname ?>">
                                 </div>
                             </div>
 
@@ -527,7 +527,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $obj_customer[0]->cus_lastname?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $obj_customer[0]->cus_lastname ?>">
                                 </div>
                             </div>
 
@@ -539,7 +539,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_customer[0]->cus_tel?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_customer[0]->cus_tel ?>">
                                 </div>
                             </div>
 
@@ -551,7 +551,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์" value="<?php echo $obj_customer[0]->cus_email?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์" value="<?php echo $obj_customer[0]->cus_email ?>">
                                 </div>
                             </div>
                         </div>
@@ -573,10 +573,10 @@
 <script>
     $(document).ready(function() {
         // jQuery Validation
-          if ($('#add_service_form').length > 0) {
+        if ($('#add_service_form').length > 0) {
             $('#add_service_form').validate({
                 rules: {
-                    con_number:{
+                    con_number: {
                         required: true,
                         maxlength: 12
                     },
@@ -605,7 +605,7 @@
                     },
                     agn_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        matches: "[0-9]{13}"
                     },
                     agn_address: {
                         required: true
@@ -616,11 +616,11 @@
                     agn_lastname: {
                         required: true
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: true,
-                        matches:"[0-9]{10}",
-                        minlength:10, 
-                        maxlength:10
+                        matches: "[0-9]{10}",
+                        minlength: 10,
+                        maxlength: 10
                     },
                     agn_email: {
                         required: true,
@@ -631,7 +631,7 @@
                     },
                     cus_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        matches: "[0-9]{13}"
                     },
                     cus_address: {
                         required: true
@@ -642,11 +642,11 @@
                     cus_lastname: {
                         required: true
                     },
-                    cus_tel:{
+                    cus_tel: {
                         required: true,
-                        matches:"[0-9]{10}",
-                        minlength:10, 
-                        maxlength:10
+                        matches: "[0-9]{10}",
+                        minlength: 10,
+                        maxlength: 10
                     },
                     cus_email: {
                         required: true,
@@ -660,7 +660,7 @@
                     }
                 },
                 messages: {
-                    con_number:{
+                    con_number: {
                         required: 'กรุณากรอกหมายเลขตู้',
                         maxlength: 'กรุณากรอกตามฟอร์แมต'
                     },
@@ -700,11 +700,11 @@
                     agn_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
                         matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     agn_email: {
                         required: 'กรุณากรอกอีเมล',
@@ -726,11 +726,11 @@
                     cus_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    cus_tel:{
+                    cus_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
                         matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     cus_email: {
                         required: 'กรุณากรอกอีเมล',
@@ -746,7 +746,7 @@
             })
         }
     });
-
+    // get size information when change con_size_id dropdown
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
         $.ajax({
@@ -762,7 +762,7 @@
             }
         });
     }
-
+    // show size information when change con_size_id dropdown
     function show_size_information(size_height_out, size_width_out, size_length_out) {
         console.log(size_height_out);
         $('input[name="size_height_out"]').val(size_height_out);
