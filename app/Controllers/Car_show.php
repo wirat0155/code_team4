@@ -6,13 +6,13 @@ class Car_show extends Cdms_controller
     public function car_show_ajax()
     {
         $_SESSION['menu'] = 'Car_show';
-        $M_car = new M_cdms_car();
-        $data['arr_car'] = $M_car->get_all();
+        $m_car = new M_cdms_car();
+        $data['arr_car'] = $m_car->get_all();
         $this->output('v_car_showlist', $data);
     }
     public function car_delete() {
-        $M_car = new M_cdms_car();
-        $M_car->delete($this->request->getPost('car_id'));
+        $m_car = new M_cdms_car();
+        $m_car->delete($this->request->getPost('car_id'));
         return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
     }
 

@@ -24,8 +24,8 @@ class Car_edit extends Cdms_controller
     public function car_edit($car_id)
     {
         // call car edit view
-        $M_car = new M_cdms_car();
-        $data['arr_car'] = $M_car->get_by_id($car_id);
+        $m_car = new M_cdms_car();
+        $data['arr_car'] = $m_car->get_by_id($car_id);
 
         // car province
         $m_car_prov = new M_cdms_province();
@@ -47,7 +47,7 @@ class Car_edit extends Cdms_controller
     */
     public function car_update()
     {
-        $M_car = new M_cdms_car();
+        $m_car = new M_cdms_car();
 
         // car information
         $car_id = $this->request->getPost('car_id');
@@ -73,7 +73,7 @@ class Car_edit extends Cdms_controller
         $car_cart_id = $this->request->getPost('car_cart_id');
 
         // เพิ่มข้อมูลรถ
-        $M_car->car_update($car_id,$car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_status,$car_prov_id, $car_cart_id);
+        $m_car->car_update($car_id,$car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_status,$car_prov_id, $car_cart_id);
         
         print_r($this->request->getPost());
         $this->response->redirect(base_url() . '/public/Car_show/car_show_ajax');

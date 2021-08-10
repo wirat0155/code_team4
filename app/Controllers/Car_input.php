@@ -47,7 +47,7 @@ class Car_input extends Cdms_controller
     * @Update Date 2564-08-08
     */
     public function car_insert() {
-        $M_car = new M_cdms_car();
+        $m_car = new M_cdms_car();
 
         // car information
         $car_code = $this->request->getPost('car_code');
@@ -72,7 +72,7 @@ class Car_input extends Cdms_controller
         $car_image = $imageName;
 
         // เพิ่มข้อมูลรถ
-        $M_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id);
+        $m_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id);
         $this->response->redirect(base_url() . '/public/Car_show/car_show_ajax');
     }
 
