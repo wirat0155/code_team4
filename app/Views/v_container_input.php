@@ -182,7 +182,7 @@
         </div>
 
         <!-- end container form -->
-        <div class="col-12 col-xl-5">
+        <div class="col-12 col-xl-5 agent_form">
             <!-- agent form -->
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                 <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">เอเย่นต์</h2>
@@ -458,4 +458,8 @@
         $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
         $('input[name="agn_email"]').val(agent[0]['agn_email']);
     }
+
+    // function remove_agent() {
+    //     $('.agent_form').remove();
+    // }
 </script>
