@@ -110,7 +110,7 @@
                                     <!-- <div id='file_name'></div> -->
                                     <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
                                     <div id='file_name'></div>
-                                    <!-- </div> -->
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>

@@ -117,19 +117,19 @@
                             </div>
                         </div>
 
-                    <!-- ภาพ -->
-                    <div class="row mt-3">
-                        <div class="col-12 col-sm-4">
-                            <label class="block text-sm mt-3">
-                                <span class="text-gray-700 dark:text-gray-400">ภาพ</span>
-                            </label>
-                        </div>
-                        <div class="col-12 col-sm-8">
-                            <!-- <div class="upload-btn-wrapper"> -->
-                            <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
-                                <!-- <div id='file_name'></div> -->
-                                <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png" <?php echo $arr_car[0]->car_image?>>
-                                <div id='file_name'></div>
+                        <!-- ภาพ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ภาพ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <!-- <div class="upload-btn-wrapper"> -->
+                                    <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
+                                    <!-- <div id='file_name'></div> -->
+                                    <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                                    <div id='file_name'><?php echo $arr_car[0]->car_image?></div>
                                 <!-- </div> -->
                             </div>
                         </div>
@@ -258,9 +258,6 @@ $(document).ready(function() {
                 car_fuel_type: {
                     required: true
                 },
-                car_image: {
-                    required: true
-                },
 
             },
             messages: {
@@ -288,9 +285,6 @@ $(document).ready(function() {
                 },
                 car_fuel_type: {
                     required: 'กรุณากรอกชนิดน้ำมัน'
-                },
-                car_image: {
-                    required: 'กรุณาเลือกไฟล์รูป'
                 },
 
             }
