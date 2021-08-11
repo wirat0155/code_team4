@@ -203,7 +203,7 @@
         <!-- end car form -->
 
         <div class="container-sm text-right col-12 col-xl-7">
-            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
+            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" onclick="window.history.back();" type="reset" value="ยกเลิก" />
             <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
         </div>
     </form>
