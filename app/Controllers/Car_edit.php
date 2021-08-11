@@ -60,13 +60,18 @@ class Car_edit extends Cdms_controller
         $car_branch = $this->request->getPost('car_branch');
         $car_fuel_type = $this->request->getPost('car_fuel_type');
 
-        // upload image
-        $file = $this->request->getFile('car_image');
-        if ($file->isValid() && !$file->hasMoved()) {
-            $imageName = $file->getRandomName();
-            $file->move('./car_image', $imageName);
+        //ถ้าไม่เปลี่ยน รูปจะใช้รูปเดิม
+        if(!$this->request->getFile('car_image')->isValid()){
+            $car_image = $this->request->getPost('old_car_image');
+        }else{
+            // upload image
+            $file = $this->request->getFile('car_image');
+            if ($file->isValid() && !$file->hasMoved()) {
+                $imageName = $file->getRandomName();
+                $file->move('./car_image', $imageName);
+            }
+            $car_image = $imageName;
         }
-        $car_image = $imageName;
 
         $car_status = $this->request->getPost('car_status');
         $car_prov_id = $this->request->getPost('car_prov_id');
@@ -75,7 +80,7 @@ class Car_edit extends Cdms_controller
         // เพิ่มข้อมูลรถ
         $m_car->car_update($car_id,$car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_status,$car_prov_id, $car_cart_id);
         
-        print_r($this->request->getPost());
+        //print_r($this->request->getPost());
         $this->response->redirect(base_url() . '/public/Car_show/car_show_ajax');
     }
 }

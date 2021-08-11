@@ -129,6 +129,7 @@
                                     <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
                                     <!-- <div id='file_name'></div> -->
                                     <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                                    <input type="text" id='old_car_image' name='old_car_image' value='<?php echo $arr_car[0]->car_image ?>' hidden>
                                     <div id='file_name'><?php echo $arr_car[0]->car_image?></div>
                                 <!-- </div> -->
                             </div>
@@ -296,5 +297,6 @@ function get_image() {
     var car_img = $('#car_image').val();
     $('#file_name').html(car_img.substr(12));
     $('#car_image-error').remove();
+    $('#old_car_image').remove();
 }
 </script>
