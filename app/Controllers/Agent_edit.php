@@ -18,7 +18,7 @@ class Agent_edit extends Cdms_controller
         * agent_edit
         * แสดงหน้าจอ agent_input
         * @input -
-        * @output 
+        * @output แสดงข้อมูลหน้าที่จะแก้ไข
         * @author Klayuth,Preechaya
         * @Create Date 2021-08-06
         * @Update Date
@@ -35,7 +35,7 @@ class Agent_edit extends Cdms_controller
         * agent_update
         * แก้ไขข้อมูลเอเย่นต์
         * @input -
-        * @output 
+        * @output เพิ่มข้อมูลเอเย่นต์
         * @author Klayuth,Preechaya
         * @Create Date 2021-08-06
         * @Update Date
