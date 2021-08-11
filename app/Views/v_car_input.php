@@ -12,22 +12,14 @@
     display: inline-block;
 }
 
-.upload-btn-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-}
-
 #file_name {
-  display: block;/* or inline-block */
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  max-height: 100%;
-  line-height: 1.5em;
-  margin-top: 10;
+    display: block;/* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 100%;
+    line-height: 1.5em;
+    margin-top: 10;
 }
 </style>
 
@@ -96,11 +88,11 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <div class="upload-btn-wrapper">
-                                    <button class="upload-file">เลือกไฟล์</button>
+                                <!-- <div class="upload-btn-wrapper"> -->
+                                    <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
                                     <div id='file_name'></div>
-                                    <input type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
-                                </div>
+                                    <input type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png" hidden>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
