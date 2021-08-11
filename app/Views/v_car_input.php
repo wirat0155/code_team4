@@ -20,10 +20,6 @@
     cursor: pointer;
 }
 
-#car_image-error{
-    
-}
-
 #file_name {
     display: block;/* or inline-block */
     text-overflow: ellipsis;
@@ -110,7 +106,7 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                 <!-- <div class="upload-btn-wrapper"> -->
-                                    <div class="upload-file btn" onclick="$('#car_image').click();" style="cursor:pointer">เลือกไฟล์</div>
+                                    <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
                                     <!-- <div id='file_name'></div> -->
                                     <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
                                     <div id='file_name'></div>
