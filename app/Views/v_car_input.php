@@ -11,6 +11,19 @@
     display: inline-block;
 }
 
+.input-image{
+    height: 0;
+    width: 0;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#car_image-error{
+    
+}
+
 #file_name {
     display: block;/* or inline-block */
     text-overflow: ellipsis;
@@ -97,10 +110,11 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                 <!-- <div class="upload-btn-wrapper"> -->
-                                    <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
+                                    <div class="upload-file btn" onclick="$('#car_image').click();" style="cursor:pointer">เลือกไฟล์</div>
+                                    <!-- <div id='file_name'></div> -->
+                                    <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
                                     <div id='file_name'></div>
-                                    <input type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png" hidden>
-                                <!-- </div> -->
+                                    <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -271,5 +285,6 @@ $(document).ready(function() {
 function get_image() {
     var car_img = $('#car_image').val();
     $('#file_name').html(car_img.substr(12));
+    $('#car_image-error').remove();
 }
 </script>
