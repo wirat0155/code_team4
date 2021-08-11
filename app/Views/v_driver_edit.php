@@ -184,6 +184,7 @@
                             <!-- <div class="upload-btn-wrapper"> -->
                                     <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
                                     <input class="input-image" type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                                    <input type="text" id='old_dri_profile_image' name='old_dri_profile_image' value='<?php echo $arr_driver[0]->dri_profile_image ?>' hidden>
                                     <div id='file_name'><?php echo $arr_driver[0]->dri_profile_image ?></div>
                             <!-- </div> -->
                         </div>
@@ -273,5 +274,6 @@
         var dri_profile_image = $('#dri_profile_image').val();
         $('#file_name').html(dri_profile_image.substr(12));
         $('#dri_profile_image-error').remove();
+        $('#old_dri_profile_image').remove();
     }
 </script>

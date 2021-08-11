@@ -46,20 +46,26 @@ public function driver_update(){
     $dri_date_end = $this->request->getPost('dri_date_end');
     $dri_car_id = $this->request->getPost('dri_car_id');
 
-     // upload image
-     $file = $this->request->getFile('dri_profile_image');
-     if ($file->isValid() && !$file->hasMoved()) {
-         $imageName = $file->getRandomName();
-         $file->move('./dri_profile_image', $imageName);
-     }
-     $dri_profile_image = $imageName;
+    //ถ้าไม่เปลี่ยน รูปจะใช้รูปเดิม
+    if(!$this->request->getFile('dri_profile_image')->isValid()){
+        $dri_profile_image = $this->request->getPost('old_dri_profile_image');
+    }else{
+        // upload image
+        $file = $this->request->getFile('dri_profile_image');
+        if ($file->isValid() && !$file->hasMoved()) {
+            $imageName = $file->getRandomName();
+            $file->move('./dri_profile_image', $imageName);
+        }
+        $dri_profile_image = $imageName;
+    }
 
+    echo $dri_profile_image;
 
     //แก้ไขข้อมูลพนักงาน
-    print_r($this->request->getFile('dri_profile_image'));
-   $m_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end, $dri_car_id);
+    $m_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end, $dri_car_id);
 
-   print_r($this->request->getPost());
+    //print_r($this->request->getFile('dri_profile_image'));
+    //print_r($this->request->getPost());
 
     return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
 }   
