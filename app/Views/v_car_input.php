@@ -1,5 +1,4 @@
 <style>
-
 .upload-file {
     background-color: #eeeee4;
     border: none;
@@ -21,19 +20,29 @@
 }
 
 #file_name {
-  display: block;/* or inline-block */
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  max-height: 100%;
-  line-height: 1.5em;
-  margin-top: 10;
+    display: block;
+    /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 100%;
+    line-height: 1.5em;
+    margin-top: 10;
 }
 </style>
 
-<div class="container mx-auto grid mt-3">
-    <form id="add_car_form" action="<?php echo base_url(). '/public/Car_input/car_insert' ?>" enctype="multipart/form-data" method="POST">
+<div class="container px-3 mx-auto grid">
 
+    <!-- หัวข้อ -->
+    <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+        <div class="flex items-center">
+            <h2 class=" text-2xl font-semibold">
+                ข้อมูลรถ
+            </h2>
+        </div>
+    </di>
+
+    <form id="add_car_form" action="<?php echo base_url(). '/public/Car_input/car_insert' ?>" enctype="multipart/form-data" method="POST">
         <div class="container-sm col-12 col-xl-7">
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                 <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ข้อมูลรถ</h2>

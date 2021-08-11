@@ -68,7 +68,7 @@ class Car_input extends Cdms_controller
             $imageName = $file->getRandomName();
             $file->move('./car_image', $imageName);
         }
-
+        
         $car_image = $imageName;
 
         // เพิ่มข้อมูลรถ
