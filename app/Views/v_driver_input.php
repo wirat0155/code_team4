@@ -149,7 +149,7 @@
 
                     <!-- ภาพ -->
                     <div class="px-3 form-group row">
-                        <label for="dri_date_end" class="col-sm-3 col-form-label">ภาพ</label>
+                        <label for="dri_profile_image" class="col-sm-3 col-form-label">ภาพ</label>
                         <div class="col-sm-9">
                             <!-- <div class="upload-btn-wrapper"> -->
                                     <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
@@ -196,6 +196,15 @@
                         required: true,
                         maxlength: 10
                     },
+                    dri_car_id: {
+                        required: true,
+                    },
+                    dri_license_type: {
+                        required: true,
+                    },
+                    dri_status: {
+                        required: true,
+                    },
                     dri_date_start: {
                         required: true
                     },
@@ -218,6 +227,15 @@
                     dri_tel: {
                         required: 'กรุณากรอกหมายเลขโทรศัพท์',
                         maxlength: 'กรุณากรอกไม่เกิน 10'
+                    },
+                    dri_car_id: {
+                        required: 'กรุณากรอกหมายเลขรถ'
+                    },
+                    dri_license_type: {
+                        required: 'กรุณากรอกประเภทใบขับขี่'
+                    },
+                    dri_status: {
+                        required: 'กรุณากรอกสถานะพนักงานขับรถ'
                     },
                     dri_date_start: {
                         required: 'กรุณาเลือกวันที่เข้าทำงาน'

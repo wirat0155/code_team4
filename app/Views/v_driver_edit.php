@@ -4,6 +4,37 @@
             max-width: 900px;
         }
     }
+
+    .upload-file {
+        background-color: #eeeee4;
+        border: none;
+        color: black;
+        border-radius: 8px;
+        font-size: 14px;
+        padding: 8px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .input-image{
+        height: 0;
+        width: 0;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    #file_name {
+        display: block;/* or inline-block */
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 100%;
+        line-height: 1.5em;
+        margin-top: 10;
+    }
 </style>
 
 <div class="container px-6 mx-auto grid">
@@ -146,14 +177,15 @@
                         </div>
                     </div>
 
-                     <!-- ภาพ -->
-                     <div class="px-3 form-group row">
+                    <!-- ภาพ -->
+                    <div class="px-3 form-group row">
                         <label for="dri_date_end" class="col-sm-3 col-form-label">ภาพ</label>
                         <div class="col-sm-9">
-                            <div class="upload-btn-wrapper">
-                                    <button class="upload-file">เลือกไฟล์</button>
-                                    <input type="file" name="dri_profile_image" accept="image/jpg,image/jpeg,image/png">
-                            </div>
+                            <!-- <div class="upload-btn-wrapper"> -->
+                                    <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
+                                    <input class="input-image" type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                                    <div id='file_name'><?php echo $arr_driver[0]->dri_profile_image ?></div>
+                            <!-- </div> -->
                         </div>
                     </div>
                     <!-- end car form left -->
@@ -192,9 +224,18 @@
                         required: true,
                         maxlength: 10
                     },
+                    dri_car_id: {
+                        required: true,
+                    },
+                    dri_license_type: {
+                        required: true,
+                    },
+                    dri_status: {
+                        required: true,
+                    },
                     dri_date_start: {
                         required: true
-                    },
+                    }
                 },
                 messages: {
                     dri_name: {
@@ -212,11 +253,25 @@
                         required: 'กรุณากรอกหมายเลขโทรศัพท์',
                         maxlength: 'กรุณากรอกไม่เกิน 10'
                     },
+                    dri_car_id: {
+                        required: 'กรุณากรอกหมายเลขรถ'
+                    },
+                    dri_license_type: {
+                        required: 'กรุณากรอกประเภทใบขับขี่'
+                    },
+                    dri_status: {
+                        required: 'กรุณากรอกสถานะพนักงานขับรถ'
+                    },
                     dri_date_start: {
                         required: 'กรุณาเลือกวันที่เข้าทำงาน'
-                    },
+                    }
                 }
             })
         }
     });
+    function get_image() {
+        var dri_profile_image = $('#dri_profile_image').val();
+        $('#file_name').html(dri_profile_image.substr(12));
+        $('#dri_profile_image-error').remove();
+    }
 </script>

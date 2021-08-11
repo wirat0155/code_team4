@@ -1,10 +1,4 @@
 <style>
-.upload-btn-wrapper {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
-
 .upload-file {
     background-color: #eeeee4;
     border: none;
@@ -17,12 +11,23 @@
     display: inline-block;
 }
 
-.upload-btn-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
+.input-image{
+    height: 0;
+    width: 0;
     left: 0;
     top: 0;
     opacity: 0;
+    cursor: pointer;
+}
+
+#file_name {
+    display: block;/* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 100%;
+    line-height: 1.5em;
+    margin-top: 10;
 }
 </style>
 
@@ -120,10 +125,12 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <div class="upload-btn-wrapper">
-                                    <button class="upload-file">เลือกไฟล์</button>
-                                    <input type="file" name="car_image" accept="image/jpg,image/jpeg,image/png" value="<?php echo $arr_car[0]->car_image ?>">
-                                </div>
+                                <!-- <div class="upload-btn-wrapper"> -->
+                                    <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
+                                    <!-- <div id='file_name'></div> -->
+                                    <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                                    <div id='file_name'><?php echo $arr_car[0]->car_image?></div>
+                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -251,9 +258,6 @@ $(document).ready(function() {
                 car_fuel_type: {
                     required: true
                 },
-                car_image: {
-                    required: true
-                },
 
             },
             messages: {
@@ -282,12 +286,15 @@ $(document).ready(function() {
                 car_fuel_type: {
                     required: 'กรุณากรอกชนิดน้ำมัน'
                 },
-                car_image: {
-                    required: 'กรุณาเลือกไฟล์รูป'
-                },
 
             }
         })
     }
 });
+
+function get_image() {
+    var car_img = $('#car_image').val();
+    $('#file_name').html(car_img.substr(12));
+    $('#car_image-error').remove();
+}
 </script>
