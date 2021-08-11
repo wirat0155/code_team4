@@ -19,8 +19,8 @@ class driver_edit extends Cdms_controller
 */
     public function driver_edit($dri_id)
     {   
-        $M_dri=new M_cdms_driver;
-        $data['arr_driver']=$M_dri->get_by_id($dri_id);
+        $m_dri=new M_cdms_driver;
+        $data['arr_driver']=$m_dri->get_by_id($dri_id);
         $this->output('v_driver_edit',$data);  
     }
 
@@ -32,7 +32,8 @@ class driver_edit extends Cdms_controller
     * @Update Date 2564-08-07
 */
 public function driver_update(){
-    $M_dri=new M_cdms_driver();
+    $m_dri=new M_cdms_driver();
+    //driver information
     $dri_id = $this->request->getPost('dri_id');
     $dri_name = $this->request->getPost('dri_name');
     $dri_tel = $this->request->getPost('dri_tel');
@@ -45,9 +46,20 @@ public function driver_update(){
     $dri_date_end = $this->request->getPost('dri_date_end');
     $dri_car_id = $this->request->getPost('dri_car_id');
 
-    $M_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end, $dri_car_id);
-    
-    print_r($this->request->getPost());
+     // upload image
+     $file = $this->request->getFile('dri_profile_image');
+     if ($file->isValid() && !$file->hasMoved()) {
+         $imageName = $file->getRandomName();
+         $file->move('./dri_profile_image', $imageName);
+     }
+     $dri_profile_image = $imageName;
+
+
+    //แก้ไขข้อมูลพนักงาน
+    print_r($this->request->getFile('dri_profile_image'));
+   $m_dri->driver_update($dri_id, $dri_name, $dri_tel,  $dri_card_number,  $dri_license, $dri_license_type, $dri_profile_image,  $dri_status, $dri_date_start,  $dri_date_end, $dri_car_id);
+
+   print_r($this->request->getPost());
 
     return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
 }   

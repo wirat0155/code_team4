@@ -32,11 +32,19 @@ class Da_cdms_driver extends Model{
         $this->db->query($sql);
     }
 
+    /*
+    * insert
+    * เพิ่มข้อมูลพนักงาน
+    * @author  Thanatip
+    * @Create Date 2564-08-05
+    * @Update Date 2564-08-05
+*/
     public function insert($dri_name= NULL, $dri_tel= NULL, $dri_card_number= NULL, $dri_license= NULL, $dri_license_type= NULL, $dri_profile_image= NULL, $dri_status= NULL, $dri_date_start= NULL, $dri_date_end= NULL, $dri_car_id= NULL) {
             $sql = "INSERT INTO $this->table(dri_name, dri_tel, dri_card_number, dri_license, 
             dri_license_type, dri_profile_image, dri_status, dri_date_start, dri_date_end, dri_car_id) 
-            VALUES ('$dri_name','$dri_tel','$dri_card_number','$dri_license','$dri_license_type',NULL,'$dri_status','$dri_date_start','$dri_date_end','$dri_car_id')";
-        $this->db->query($sql);
+            VALUES ('$dri_name','$dri_tel','$dri_card_number','$dri_license','$dri_license_type','$dri_profile_image','$dri_status','$dri_date_start','$dri_date_end','$dri_car_id')";
+        echo $sql;
+       $this->db->query($sql);
     }
 
     /*
@@ -65,13 +73,13 @@ public function driver_update(
         dri_card_number='$dri_card_number',
         dri_license='$dri_license', 
         dri_license_type='$dri_license_type',
-        dri_profile_image= NULL,
+        dri_profile_image='$dri_profile_image',
         dri_status= '$dri_status',
         dri_date_start='$dri_date_start',
         dri_date_end='$dri_date_end',
         dri_car_id= '$dri_car_id'
     WHERE dri_id='$dri_id' ";
-    //echo $sql;
+    echo $sql;
     $this->db->query($sql);
 }
 }

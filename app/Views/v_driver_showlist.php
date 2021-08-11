@@ -29,6 +29,12 @@
                     <!-- ชื่อ-สกุล -->
                     <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
+                            <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/public/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
+                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            </div>
+
+                        <div class="flex items-center text-sm">
                             <?php echo $arr_driver[$i]->dri_name?>
                         </div>
                     </td>
@@ -55,9 +61,9 @@
 
                     
                     <td class="px-4 py-3 text-sm text-center">
-                        
+                        <!-- ปุ่มแก้ไข -->
                         <a href="<?php echo base_url(). '/public/Driver_edit/driver_edit/'.$arr_driver[$i]->dri_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        
+                        <!-- ปุ่มลบ -->
                         <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[$i]->dri_id?>)">
                             <i class="bi bi-trash"></i>
                         </button>

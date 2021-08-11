@@ -20,7 +20,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_edit/driver_update' ?>" method="post">
+        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_edit/driver_update' ?>"enctype="multipart/form-data" method="POST">
         <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>"> 
             <!-- เพิ่มพนักงาน -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -146,6 +146,17 @@
                         </div>
                     </div>
 
+                     <!-- ภาพ -->
+                     <div class="px-3 form-group row">
+                        <label for="dri_date_end" class="col-sm-3 col-form-label">ภาพ</label>
+                        <div class="col-sm-9">
+                            <div class="upload-btn-wrapper">
+                                    <button class="upload-file">เลือกไฟล์</button>
+                                    <input type="file" name="dri_profile_image" accept="image/jpg,image/jpeg,image/png">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end car form left -->
 
 
                 </div>
