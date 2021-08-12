@@ -19,11 +19,11 @@ class M_cdms_car_type extends Da_cdms_car_type {
         * @output array of car_type
         * @author Wirat
         * @Create Date 2564-07-28
-        * @Update Date 2564-07-28
+        * @Update Date 2564-08-12
     */
     public function get_all()
     {
-        $sql = "SELECT * FROM $this->table";
+        $sql = "SELECT * FROM $this->table WHERE cart_status = 1";
         return $this->db->query($sql)->getResult();
     }   
 }

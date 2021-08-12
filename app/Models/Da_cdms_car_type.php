@@ -15,4 +15,9 @@ class Da_cdms_car_type extends Model {
     protected $allowedFields = ['cart_name', 'cart_status'];
 
     // insert update delete
+
+    public function delete($cart_id = NULL, bool $purge = false) {
+        $sql = "UPDATE $this->table SET cart_status=2 WHERE cart_id='$cart_id'";
+        $this->db->query($sql);
+    }
 }

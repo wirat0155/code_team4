@@ -1,16 +1,21 @@
 <?php namespace App\Controllers;
-use App\Models\M_member;
-
-class Dashboard extends T4MNG_Controller
+use App\Models\M_cdms_car_type;
+class Dashboard extends Cdms_controller
 {
-    public function index()
-    {
-        $_SESSION['menu'] = 'dashboard';
+    public function dashboard_show() {
+        // get all car type
+        $m_cart = new M_cdms_car_type();
+        $data['arr_car_type'] = $m_cart->get_all();
+        // print_r($data['arr_cart_type']);
 
-        $M_member = new M_member();
-        $data = [];
-        $data['arr_member'] = $M_member->get_all();
-        // print_r($data['arr_member']);
         $this->output('v_dashboard', $data);
+    }
+
+    public function car_type_delete() {
+        $cart_id = $this->request->getPost('cart_id');
+        $m_cart = new M_cdms_car_type();
+        $m_cart->delete($cart_id);
+
+        return json_encode('pass');
     }
 }
