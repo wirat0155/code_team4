@@ -1,7 +1,7 @@
 <div class="container-lg px-6 mx-auto grid">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
+            <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">ขนาดตู้</div>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
+            <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">สถานะตู้</div>
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
+            <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">ประเภทตู้</div>
@@ -66,7 +66,7 @@
 
         <!-- ประเภทรถ -->
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
+            <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">ประเภทรถ</div>
