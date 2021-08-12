@@ -1,5 +1,6 @@
 <div class="container-lg px-6 mx-auto grid">
     <div class="row">
+
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
@@ -18,6 +19,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
@@ -36,6 +38,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="max-height: 500px; overflow: auto;">
                 <div>
@@ -131,9 +134,10 @@
         $('.modal-header').append(modal_header + close_button);
         
         
+
         $('.modal_content').empty();
         
-        modal_body = `<div class="modal-body float-center">`;
+        modal_body = `r<div class="modal-body float-cente">`;
         modal_message = `<center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center></div>`;
         
         modal_footer = `<div class="modal-footer">`;
@@ -145,9 +149,9 @@
     }
 
     function car_type_delete(cart_id) {
-        console.log('car_type_delete', cart_id);
+        // console.log('car_type_delete', cart_id);
         $.ajax({
-            url: '<?php echo base_url() . '/public/Dashboard/car_type_delete' ?>',
+            url: 'car_type_delete',
             method: 'POST',
             dataType: 'JSON',
             data: {

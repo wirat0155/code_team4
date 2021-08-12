@@ -10,6 +10,16 @@ class Dashboard extends Cdms_controller
         $data['arr_car_type'] = $m_cart->get_all();
         // print_r($data['arr_cart_type']);
 
+        // get status container
+
+
+        // get container size
+
+
+        // get container type
+
+
+
         $this->output('v_dashboard', $data);
     }
 
