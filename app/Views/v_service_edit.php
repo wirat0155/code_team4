@@ -29,7 +29,7 @@
                                 </div>
 
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" placeholder="หมายเลขตู้" value="<?php echo $obj_container[0]->con_number ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" value="<?php echo $obj_container[0]->con_number ?>">
                                 </div>
                             </div>
 
@@ -605,7 +605,8 @@
                     },
                     agn_tax: {
                         required: true,
-                        matches: "[0-9]{13}"
+                        minlength:13, 
+                        maxlength:13
                     },
                     agn_address: {
                         required: true
@@ -618,7 +619,6 @@
                     },
                     agn_tel: {
                         required: true,
-                        matches: "[0-9]{10}",
                         minlength: 10,
                         maxlength: 10
                     },
@@ -631,7 +631,8 @@
                     },
                     cus_tax: {
                         required: true,
-                        matches: "[0-9]{13}"
+                        minlength:13, 
+                        maxlength:13
                     },
                     cus_address: {
                         required: true
@@ -642,11 +643,10 @@
                     cus_lastname: {
                         required: true
                     },
-                    cus_tel: {
+                    cus_tel:{
                         required: true,
-                        matches: "[0-9]{10}",
-                        minlength: 10,
-                        maxlength: 10
+                        minlength:10, 
+                        maxlength:10
                     },
                     cus_email: {
                         required: true,
@@ -689,7 +689,8 @@
                     },
                     agn_tax: {
                         required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                        minlength:'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
                     },
                     agn_address: {
                         required: 'กรุณากรอกที่อยู่'
@@ -702,7 +703,6 @@
                     },
                     agn_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
                         minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
                         maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
@@ -715,7 +715,8 @@
                     },
                     cus_tax: {
                         required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                        minlength:'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
                     },
                     cus_address: {
                         required: 'กรุณากรอกที่อยู่'
@@ -726,11 +727,10 @@
                     cus_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    cus_tel: {
+                    cus_tel:{
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     cus_email: {
                         required: 'กรุณากรอกอีเมล',
