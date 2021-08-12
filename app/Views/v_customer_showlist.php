@@ -173,9 +173,7 @@
 
                     <!-- ผู้รับผิดชอบ -->
                     <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
-                        <a href="<?php echo base_url() . '/public/Customer_show/customer_detail/' . $arr_customer[$i]->cus_id?>">
-                            <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
-                        </a>
+                        <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
                     </td>
 
                     <!-- จำนวนตู้ที่กำลังใช้ -->
