@@ -41,7 +41,7 @@
         </div>
     </di>
     
-    <form id="add_car_form" action="<?php echo base_url(). '/public/Car_edit/car_update' ?>" enctype="multipart/form-data" method="POST">
+    <form id="add_car_form" action="<?php echo base_url(). '/public/Car_show/car_detail' ?>" enctype="multipart/form-data" method="POST">
     <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
 
         <div class="container-sm col-12 col-xl-7">
@@ -74,12 +74,12 @@
                             <div class="col-12 col-sm-8">
                                 <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" placeholder="กข 123" value="<?php echo $arr_car[0]->car_code ?>">
                                 <!-- จังหวัด -->
-                                <select class=" block w-full mt-1 text-sm focus:outline-none form-input" name="car_prov_id" >
+                                
                                     <?php for($i = 0; $i < count($arr_car_prov); $i++) { ?>
-                                    <option value="<?php echo $arr_car_prov[$i]->prov_id?>" <?php if ($arr_car_prov[$i]->prov_id == $arr_car[0]->car_prov_id) echo "selected" ?>>
-                                    <?php echo $arr_car_prov[$i]->prov_name?></option>
+                                        <?php if ($arr_car_prov[$i]->prov_id == $arr_car[0]->car_prov_id){ 
+                                    echo $arr_car_prov[$i]->prov_name; }?>
                                     <?php } ?>
-                                </select>
+                               
                             </div>
                         </div>
 
@@ -91,12 +91,12 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_cart_id">
+                               
                                     <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
-                                    <option value="<?php echo $arr_car_type[$i]->cart_id?>"<?php if ($arr_car_type[$i]->cart_id == $arr_car[0]->car_cart_id) echo "selected" ?> >
-                                        <?php echo $arr_car_type[$i]->cart_name?></option>
+                                        <?php if ($arr_car_type[$i]->cart_id == $arr_car[0]->car_cart_id){
+                                    echo $arr_car_type[$i]->cart_name; }?>
                                     <?php } ?>
-                                </select>
+                                
                             </div>
                         </div>
 
@@ -219,10 +219,10 @@
         </div>
         <!-- end car form -->
 
-        <!-- <div class="container-sm text-right col-12 col-xl-7">
+        <div class="container-sm text-right col-12 col-xl-7">
             <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" onclick="window.history.back();" type="reset" value="ยกเลิก" />
             <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข" />
-        </div> -->
+        </div>
     </form>
     <br>
     <br>

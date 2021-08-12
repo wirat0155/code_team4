@@ -62,7 +62,7 @@
                 <tr class="text-gray-700 dark:text-gray-400">
 
                     <!-- หมายเลขรถ -->
-                    <td class="px-4 py-3">
+                    <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id?>)">
                         <div class="flex items-center text-sm">
                             <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                                 <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/public/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
@@ -72,17 +72,17 @@
                     </td>
 
                     <!-- ทะเบียนรถ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="car_detail(<?php echo $arr_car[$i]->car_id?>)">
                         <?php echo $arr_car[$i]->car_code .' '.$arr_car[$i]->prov_name ?>
                     </td>
 
                     <!-- ประเภทรถ-->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="car_detail(<?php echo $arr_car[$i]->car_id?>)">
                         <?php echo $arr_car[$i]->cart_name?>
                     </td>
 
                     <!-- ยี่ห้อ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="car_detail(<?php echo $arr_car[$i]->car_id?>)">
                         <?php echo $arr_car[$i]->car_brand?>
                     </td>
 
@@ -165,5 +165,8 @@ $(document).ready(function() {
 
 function get_id(car_id) {
     $('#car_id').val(car_id);
+}
+function car_detail(car_id) {
+    window.location = '<?php echo base_url('') . '/public/Car_show/car_detail/' ?>' + car_id;
 }
 </script>

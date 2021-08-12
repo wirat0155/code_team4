@@ -77,7 +77,7 @@ class Car_edit extends Cdms_controller
         $car_prov_id = $this->request->getPost('car_prov_id');
         $car_cart_id = $this->request->getPost('car_cart_id');
 
-        // เพิ่มข้อมูลรถ
+        // แก้ไขข้อมูลรถ
         $m_car->car_update($car_id,$car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_status,$car_prov_id, $car_cart_id);
         
         //print_r($this->request->getPost());
