@@ -90,11 +90,9 @@
         margin-top: 0.5rem;
         color: red;
       }
-
-      /* body {
-        background-image: url('<?php echo base_url() . '/upload/dashboard_background.jpg'?>') important;
-        background-repeat: no-repeat;
-      } */
+      td {
+        cursor: pointer;
+      }
     </style>
 </head>
 <body>

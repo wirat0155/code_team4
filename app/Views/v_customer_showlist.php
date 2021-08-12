@@ -144,7 +144,6 @@
             </div>
         </div>
     </div>
-
     <!-- ตาราง -->
     <div class="w-full overflow-x-auto mb-5 ">
         <table class="w-full whitespace-no-wrap table ">
@@ -163,7 +162,7 @@
                 <tr class="text-gray-700 dark:text-gray-400">
 
                     <!-- บริษัท -->
-                    <td class="px-4 py-3">
+                    <td class="px-4 py-3" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
                         <div class="flex items-center text-sm">
                             <?php
                                 echo $arr_customer[$i]->cus_company_name;
@@ -173,12 +172,14 @@
                     </td>
 
                     <!-- ผู้รับผิดชอบ -->
-                    <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
+                    <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
+                        <a href="<?php echo base_url() . '/public/Customer_show/customer_detail/' . $arr_customer[$i]->cus_id?>">
+                            <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
+                        </a>
                     </td>
 
                     <!-- จำนวนตู้ที่กำลังใช้ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
                         <?php
                             $count_container = 0;
                             for ($j = 0; $j < count($arr_service); $j++) {
@@ -193,12 +194,12 @@
                     </td>
 
                     <!-- เบอร์โทรศัพท์ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
                         <?php echo tel_format($arr_customer[$i]->cus_tel) ?>
                     </td>
 
                     <!-- email -->
-                    <td class="px-4 py-3 text-sm">
+                    <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
                         <?php echo $arr_customer[$i]->cus_email ?>
                     </td>
 
@@ -275,5 +276,8 @@ $(document).ready(function() {
 // ส่ง cus_id เข้า Modal
 function get_id(cus_id) {
     $('#cus_id').val(cus_id);
+}
+function customer_detail(cus_id) {
+    window.location = '<?php echo base_url('') . '/public/Customer_show/customer_detail/' ?>' + cus_id;
 }
 </script>
