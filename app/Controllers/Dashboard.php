@@ -23,12 +23,12 @@ class Dashboard extends Cdms_controller
         $data['arr_size'] = $m_size->get_all();
 
         // get status container
-        $m_cont = new M_cdms_status_container();
-        $data['arr_container_type'] = $m_cont->get_all();
+        $m_stac = new M_cdms_status_container();
+        $data['arr_status_container'] = $m_stac->get_all();
 
         // get container type
-        $m_stac = new M_cdms_container_type();
-        $data['arr_status_container'] = $m_stac->get_all();
+        $m_cont = new M_cdms_container_type();
+        $data['arr_container_type'] = $m_cont->get_all();
 
 
         $this->output('v_dashboard', $data);

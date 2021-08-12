@@ -12,8 +12,18 @@
                     </div>
 
                     <div class="row p-3">
-                        <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm" style="background-color: #FAFAFA; border-radius: 5px;"><?php echo $arr_car_type[$i]->cart_name ?></div>
+                        <?php for($i = 0; $i < count($arr_size); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'size_id' . $arr_size[$i]->size_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                                <div class="col-10">
+                                    <?php echo $arr_size[$i]->size_name ?>
+                                </div>
+                                <div class="col-2">
+                                    <button class="mt-1" data-toggle="modal" data-target="#Modal_Confirm" onclick="delete_modal('size_id', <?php echo $arr_size[$i]->size_id?>)">
+                                        <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
                         <?php } ?>
                     </div>
                 </div>
@@ -31,8 +41,18 @@
                     </div>
 
                     <div class="row p-3">
-                        <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm" style="background-color: #FAFAFA; border-radius: 5px;"><?php echo $arr_car_type[$i]->cart_name ?></div>
+                        <?php for($i = 0; $i < count($arr_status_container); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'stac_id' . $arr_status_container[$i]->stac_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                                <div class="col-10">
+                                    <?php echo $arr_status_container[$i]->stac_name ?>
+                                </div>
+                                <div class="col-2">
+                                    <button class="mt-1" data-toggle="modal" data-target="#Modal_Confirm" onclick="delete_modal('stac_id', <?php echo $arr_status_container[$i]->stac_id?>)">
+                                        <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
                         <?php } ?>
                     </div>
                 </div>
@@ -50,13 +70,13 @@
                     </div>
 
                     <div class="row p-3">
-                        <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'cart_id' . $arr_car_type[$i]->cart_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                        <?php for($i = 0; $i < count($arr_container_type); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'cont_id' . $arr_container_type[$i]->cont_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
                                 <div class="col-10">
-                                    <?php echo $arr_car_type[$i]->cart_name ?>
+                                    <?php echo $arr_container_type[$i]->cont_name ?>
                                 </div>
                                 <div class="col-2">
-                                    <button class="mt-1" data-toggle="modal" data-target="#Modal_Confirm" onclick="delete_modal('cont_id', <?php echo $arr_car_type[$i]->cart_id?>)">
+                                    <button class="mt-1" data-toggle="modal" data-target="#Modal_Confirm" onclick="delete_modal('cont_id', <?php echo $arr_container_type[$i]->cont_id?>)">
                                         <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
                                     </button>
                                 </div>
@@ -95,10 +115,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div>      
     </div>
-</div>
+</div> <br>
 
 <!-- Modal ยืนยันการลบ -->
 <div class="modal fade" id="Modal_Confirm" tabindex="-1" role="dialog" aria-labelledby="Modal_ConfirmTitle" aria-hidden="true">
@@ -128,6 +147,14 @@
             delete_type_name = 'ประเภทตู้';
             delete_function_name = 'container_type_delete';
         }
+        else if (delete_type == 'stac_id') {
+            delete_type_name = 'สถานะตู้';
+            delete_function_name = 'status_container_delete';
+        }
+        else if (delete_type == 'size_id') {
+            delete_type_name = 'ขนาดตู้';
+            delete_function_name = 'size_delete';
+        }
         modal_header = `<h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบ${delete_type_name}</h5>`;
         close_button = `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>`;
         
@@ -137,7 +164,7 @@
 
         $('.modal_content').empty();
         
-        modal_body = `r<div class="modal-body float-cente">`;
+        modal_body = `<div class="modal-body float-cente">`;
         modal_message = `<center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center></div>`;
         
         modal_footer = `<div class="modal-footer">`;
@@ -162,8 +189,50 @@
             }
         });
     }
+
     function container_type_delete(cont_id) {
         console.log('container_type_delete', cont_id);
+        $.ajax({
+            url: 'container_type_delete',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                cont_id: cont_id
+            },
+            success: function(data) {
+                delete_item('cont_id', cont_id);
+            }
+        });
+    }
+
+    function status_container_delete(stac_id) {
+        //console.log('status_container_delete', stac_id);
+        $.ajax({
+            url: 'status_container_delete',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                stac_id: stac_id
+            },
+            success: function(data) {
+                delete_item('stac_id', stac_id);
+            }
+        });
+    }
+
+    function size_delete(size_id) {
+        console.log('size_delete', size_id);
+        $.ajax({
+            url: 'size_delete',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                size_id: size_id
+            },
+            success: function(data) {
+                delete_item('size_id', size_id);
+            }
+        });
     }
 
     function delete_item(delete_type, delete_id) {
