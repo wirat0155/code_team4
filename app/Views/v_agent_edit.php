@@ -83,7 +83,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_agent[0]->agn_tel ?>">
+                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="08x-xxx-xxxx" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_agent[0]->agn_tel ?>">
                         </div>
                     </div>
 
@@ -98,7 +98,7 @@
             </div>
             <div class="float-right">
                 <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
-                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
+                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึกการแก้ไข">
             </div>
         </form>
     </div>

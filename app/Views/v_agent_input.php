@@ -84,7 +84,7 @@
                     <div class="px-3 form-group row">
                         <label for="agn_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="1234567890">
+                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="08x-xxx-xxxx">
                         </div>
                     </div>
 
@@ -116,7 +116,8 @@
                     },
                     agn_tax: {
                         required: true,
-                        matches:"[0-9]{13}"
+                        minlength:10, 
+                        maxlength:10
                     },
                     agn_address: {
                         required: true
@@ -129,7 +130,6 @@
                     },
                     agn_tel:{
                         required: true,
-                        matches:"[0-9]{10}",
                         minlength:10, 
                         maxlength:10
                     },
@@ -145,7 +145,8 @@
                     },
                     agn_tax: {
                         required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        matches: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
+                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     agn_address: {
                         required: 'กรุณากรอกที่อยู่'
@@ -158,7 +159,6 @@
                     },
                     agn_tel:{
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        matches: 'กรุณากรอกเป็นตัวเลข 0-9 จำนวน 10 ตัวอักษร',
                         minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
                         maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },

@@ -23,7 +23,9 @@ class Agent_input extends Cdms_controller
     */
     public function agent_input()
     {
-        $this->output('v_agent_input');
+        $m_agn = new M_cdms_agent;
+        $data['arr_agent'] = $m_agn->get_all();
+        $this->output('v_agent_input', $data);
     }
 
     /*
@@ -52,7 +54,7 @@ class Agent_input extends Cdms_controller
             }
         }
 
-        $M_agent->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+        $M_agent->agent_insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
     }
 }
