@@ -60,7 +60,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" placeholder="10" value="<?php echo $arr_car[0]->car_number ?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" placeholder="10" value="<?php echo $arr_car[0]->car_number ?>" readonly>
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" placeholder="กข 123" value="<?php echo $arr_car[0]->car_code ?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" placeholder="กข 123" value="<?php echo $arr_car[0]->car_code ?>" readonly>
                                 <!-- จังหวัด -->
                                 
                                     <?php for($i = 0; $i < count($arr_car_prov); $i++) { ?>
@@ -108,11 +108,11 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_status">
-                                    <option value="1" <?php if ($arr_car[0]->car_status == 1) echo "selected" ?>>พร้อมใช้</option>
-                                    <option value="2" <?php if ($arr_car[0]->car_status == 2) echo "selected" ?>>เสียหาย</option>
-                                    <option value="3" <?php if ($arr_car[0]->car_status == 3) echo "selected" ?>>กำลังซ่อม</option>
-                                    <option value="4" <?php if ($arr_car[0]->car_status == 4) echo "selected" ?>>เลิกใช้งาน</option>
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_status" readonly>
+                                    <option value="1" <?php if ($arr_car[0]->car_status == 1) echo "selected" ?> readonly>พร้อมใช้</option>
+                                    <option value="2" <?php if ($arr_car[0]->car_status == 2) echo "selected" ?> readonly>เสียหาย</option>
+                                    <option value="3" <?php if ($arr_car[0]->car_status == 3) echo "selected" ?> readonly>กำลังซ่อม</option>
+                                    <option value="4" <?php if ($arr_car[0]->car_status == 4) echo "selected" ?> readonly>เลิกใช้งาน</option>
                                 </select>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_brand" placeholder="ยี่ห้อ" value="<?php echo $arr_car[0]->car_brand?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_brand" placeholder="ยี่ห้อ" value="<?php echo $arr_car[0]->car_brand?>" readonly>
                             </div>
                         </div>
 
@@ -159,7 +159,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_branch" placeholder="สาขา" value="<?php echo $arr_car[0]->car_branch?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_branch" placeholder="สาขา" value="<?php echo $arr_car[0]->car_branch?>" readonly>
                             </div>
                         </div>
 
@@ -171,7 +171,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_chassis_number" placeholder="01001" value="<?php echo $arr_car[0]->car_chassis_number ?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_chassis_number" placeholder="01001" value="<?php echo $arr_car[0]->car_chassis_number ?>" readonly>
                             </div>
                         </div>
 
@@ -183,7 +183,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_register_year" placeholder="ปีที่จดทะเบียน" value="<?php echo $arr_car[0]->car_register_year ?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_register_year" placeholder="ปีที่จดทะเบียน" value="<?php echo $arr_car[0]->car_register_year ?>" readonly>
                             </div>
                         </div>
 
@@ -195,7 +195,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="car_weight" placeholder="0.01" value="<?php echo $arr_car[0]->car_weight ?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="car_weight" placeholder="0.01" value="<?php echo $arr_car[0]->car_weight ?>" readonly>
                             </div>
                         </div>
 
@@ -207,7 +207,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_fuel_type" placeholder="ชนิดน้ำมัน" value="<?php echo $arr_car[0]->car_fuel_type ?>">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_fuel_type" placeholder="ชนิดน้ำมัน" value="<?php echo $arr_car[0]->car_fuel_type ?>" readonly>
                             </div>
                         </div>
 
@@ -219,10 +219,10 @@
         </div>
         <!-- end car form -->
 
-        <div class="container-sm text-right col-12 col-xl-7">
+        <!-- <div class="container-sm text-right col-12 col-xl-7">
             <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" onclick="window.history.back();" type="reset" value="ยกเลิก" />
             <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข" />
-        </div>
+        </div> -->
     </form>
     <br>
     <br>
