@@ -18,4 +18,11 @@ class Da_cdms_status_container extends Model
     protected $allowedFields = [
         'stac_name', 'stac_status'
     ];
+
+    // insert update delete
+
+    public function delete($stac_id = NULL, bool $purge = false) {
+        $sql = "UPDATE $this->table SET stac_status=2 WHERE stac_id='$stac_id'";
+        $this->db->query($sql);
+    }
 }
