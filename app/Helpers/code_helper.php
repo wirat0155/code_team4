@@ -7,10 +7,10 @@
 * @Create Date 2564-07-30
 * @Update Date
 */
-    function tel_format(string $string)
-    {
-        return substr($string, 0, 3) . '-' . substr($string, 3, 3) . '-' . substr($string, 6);
-    }
+  function tel_format(string $string)
+  {
+    return substr($string, 0, 3) . '-' . substr($string, 3, 3) . '-' . substr($string, 6);
+  }
 /*
 * date_thai
 * แสดงวันที่ foemat ไทย และเวลา ชม. กับนาที  
@@ -39,6 +39,12 @@
   function datetime_format_value(string $string)
   {
       return substr($string, 0, 10) . 'T' . substr($string, 11); 
+  }
+  function date_time($date_time) {
+    $date = substr($date_time,0,10);
+    $time = substr($date_time,10, 5);
+    return date_thai($date) . ' ' . $time;
+
   }
 
 ?>
