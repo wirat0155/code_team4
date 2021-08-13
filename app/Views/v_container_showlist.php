@@ -1,7 +1,6 @@
 <div class="container px-6 mx-auto grid">
     <!-- หัวข้อ -->
-    <div
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
                 ข้อมูลตู้คอนเทนเนอร์
@@ -23,43 +22,45 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                <?php for($i = 0; $i < count($arr_container); $i++) { ?>
-                <tr class="text-gray-700 dark:text-gray-400">
+                <?php for ($i = 0; $i < count($arr_container); $i++) { ?>
+                    <tr class="text-gray-700 dark:text-gray-400">
 
-                    <!-- หมายเลขตู้ -->
-                    <td class="px-4 py-3">
-                        <div class="flex items-center text-sm">
-                            <?php echo $arr_container[$i]->con_number?>
-                        </div>
-                    </td>
+                        <!-- หมายเลขตู้ -->
+                        <td class="px-4 py-3" onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
+                            <div class="flex items-center text-sm">
+                                <?php echo $arr_container[$i]->con_number ?>
+                            </div>
+                        </td>
 
-                    <!-- สถานะตู้ -->
-                    <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_container[$i]->stac_name?>
-                    </td>
+                        <!-- สถานะตู้ -->
+                        <td class="px-4 py-3 text-sm" onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
+                            <?php echo $arr_container[$i]->stac_name ?>
+                        </td>
 
-                    <!-- ประเภทตู้ -->
-                    <td class="px-4 py-3 text-sm text-center">
-                        <?php echo $arr_container[$i]->cont_name?>
-                    </td>
+                        <!-- ประเภทตู้ -->
+                        <td class="px-4 py-3 text-sm text-center" onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
+                            <?php echo $arr_container[$i]->cont_name ?>
+                        </td>
 
-                    <!-- ขนาดตู้ -->
-                    <td class="px-4 py-3 text-sm text-center">
-                        <?php echo $arr_container[$i]->size_name?>
-                    </td>
+                        <!-- ขนาดตู้ -->
+                        <td class="px-4 py-3 text-sm text-center" onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
+                            <?php echo $arr_container[$i]->size_name ?>
+                        </td>
 
-                    <!-- เอเย่นต์ -->
-                    <td class="px-4 py-3 text-sm">
-                        <?php echo $arr_container[$i]->agn_company_name?>
-                    </td>
+                        <!-- เอเย่นต์ -->
+                        <td class="px-4 py-3 text-sm" onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
+                            <?php echo $arr_container[$i]->agn_company_name ?>
+                        </td>
 
-                    <td class="px-4 py-3 text-sm text-center">
-                        <a href="<?php echo base_url() . '/public/Container_edit/container_edit/' . $arr_container[$i]->con_id?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[$i]->con_id?>)">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+                        <!-- ปุ่มแก้ไข/ลบ -->
+                        <td class="px-4 py-3 text-sm text-center">
+                            <a href="<?php echo base_url() . '/public/Container_edit/container_edit/' . $arr_container[$i]->con_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[$i]->con_id ?>)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -77,7 +78,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Container_show/container_delete'?>" method="post">
+            <form action="<?php echo base_url() . '/public/Container_show/container_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Container Id -->
                     <input name="con_id" id="con_id" type="hidden">
@@ -104,11 +105,17 @@
                 "sSearch": "ค้นหา :"
             }
         });
-        
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Container_input/container_input'?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มตู้</a>");
+
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Container_input/container_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มตู้</a>");
 
     });
+
     function get_id(con_id) {
         $('#con_id').val(con_id);
+    }
+
+    function container_detail(con_id) {
+        // console.log(con_id);
+        window.location = '<?php echo base_url('') . '/public/Container_show/container_detail/' ?>' + con_id;
     }
 </script>
