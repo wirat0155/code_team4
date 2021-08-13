@@ -25,6 +25,11 @@ class M_cdms_container_type extends Da_cdms_container_type {
         $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1";
         return $this->db->query($sql)->getResult();
     }
+
+    public function get_by_id($cont_id){
+        $sql = "SELECT * FROM $this->table
+
+                WHERE cont_id='$cont_id'";
+        return $this->db->query($sql)->getResult();
+    }
 }
-
-
