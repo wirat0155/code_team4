@@ -9,8 +9,7 @@
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
-    <div
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <div class="flex items-center justify-between p-3 pl-4 my-8 bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="items-center container">
             <h2 class=" text-2xl font-semibold float-left">
                 ข้อมูลลูกค้า
@@ -18,9 +17,9 @@
             <div class="float-right">
                 <!-- ปุ่มแก้ไข -->
                 <a href="<?php echo base_url() . '/public/Customer_edit/customer_edit/' . $arr_customer[0]->cus_id ?>"
-                    class="btn btn-warning p-2">แก้ไขข้อมูล</a>
+                    class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <!-- ปุ่มลบ -->
-                <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#Modal_Confirm"
+                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#Modal_Confirm"
                     onclick="get_id(<?php echo $arr_customer[0]->cus_id ?>)">ลบลูกค้า
                 </button>
             </div>
