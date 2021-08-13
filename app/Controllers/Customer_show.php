@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\M_cdms_customer;
 use App\Models\M_cdms_service;
 
@@ -9,6 +12,7 @@ use App\Models\M_cdms_service;
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
 */
+
 class Customer_show extends Cdms_controller
 {
     /*
@@ -36,10 +40,16 @@ class Customer_show extends Cdms_controller
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
     */
-    public function customer_delete() {
+    public function customer_delete()
+    {
         $M_cus = new M_cdms_customer();
         $M_cus->delete($this->request->getPost('cus_id'));
         return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
     }
-
+    public function customer_detail($cus_id)
+    {
+        $M_cus = new M_cdms_customer;
+        $data['arr_customer'] = $M_cus->get_by_id($cus_id);
+        $this->output('v_customer_show_infromation', $data);
+    }
 }

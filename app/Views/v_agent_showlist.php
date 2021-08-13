@@ -21,41 +21,44 @@
                     <th class="px-4 py-3">ดำเนินการ</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" >
                 <?php
                 for ($i = 0; $i < count($arr_agent); $i++) {
                 ?>
-                    <tr class="text-gray-700 dark:text-gray-400">
-                        <td class="px-4 py-3 text-sm">
+                    <tr class="text-gray-700 dark:text-gray-400" >
+                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
                             <?php echo $arr_agent[$i]->agn_company_name ?></p>
                         </td>
-                        <td class="px-4 py-3 text-sm">
+
+                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
                             <?php echo $arr_agent[$i]->agn_firstname . " " . $arr_agent[$i]->agn_lastname ?>
                         </td>
-                        <td class="px-4 py-3 text-sm text-center">
+
+                        <td class="px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
                             <?php
                             $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
                             echo ($count_container != 0) ? $count_container : '0';
                             ?>
                         </td>
-                        <td class="phone px-4 py-3 text-sm text-center">
+
+                        <td class="phone px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
                             <?php echo tel_format($arr_agent[$i]->agn_tel) ?>
                         </td>
-                        <td class="px-4 py-3 text-sm">
+
+                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
                             <?php echo $arr_agent[$i]->agn_email ?>
                         </td>
-                        <td class="px-4 py-3 text-sm text-center">
 
+                        <!-- ดำเนินการ -->
+                        <td class="px-4 py-3 text-sm text-center">
                             <!-- ปุ่มแก้ไข -->
                             <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-
                             <!-- ปุ่มลบ -->
                             <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[$i]->agn_id ?>)">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </td>
                     </tr>
-
                 <?php } ?>
             </tbody>
         </table>
@@ -105,4 +108,8 @@
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
+
+    function agent_detail(agn_id) {
+    window.location = '<?php echo base_url('') . '/public/Agent_show/agent_detail/' ?>' + agn_id;
+}
 </script>

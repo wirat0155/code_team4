@@ -27,35 +27,35 @@
                 <tr class="text-gray-700 dark:text-gray-400">
 
                     <!-- ชื่อ-สกุล -->
-                    <td class="px-4 py-3">
+                    <td class="px-4 py-3" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id?>)">
                         <div class="flex items-center text-sm">
                             <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                                 <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/public/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
                                 <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                             </div>
 
-                        <div class="flex items-center text-sm">
+                        <div class="flex items-center text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id?>)">
                             <?php echo $arr_driver[$i]->dri_name?>
                         </div>
                     </td>
 
                     <!-- รถประจำตัว -->
-                    <td class="px-4 py-3 text-sm">
+                    <td class="px-4 py-3 text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id?>)">
                         <?php echo $arr_driver[$i]->dri_car_id?>
                     </td>
 
                     <!-- ประเภทรถ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id?>)">
                         <?php echo $arr_driver[$i]->cart_name?>
                     </td>
 
                     <!-- เลขใบขับขี่ -->
-                    <td class="px-4 py-3 text-sm text-center">
+                    <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id?>)">
                         <?php echo $arr_driver[$i]->dri_license?>
                     </td>
 
                     <!-- เบอร์โทร -->
-                    <td class="px-4 py-3 text-sm">
+                    <td class="px-4 py-3 text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id?>)">
                         <?php echo tel_format($arr_driver[$i]->dri_tel)?>
                     </td>
 
@@ -117,4 +117,7 @@
     function get_id(dri_id) {
         $('#dri_id').val(dri_id);
     }
+    function driver_detail(dri_id) {
+    window.location = '<?php echo base_url('') . '/public/Driver_show/driver_detail/' ?>' + dri_id;
+}
 </script>
