@@ -54,4 +54,18 @@ class Agent_show extends Cdms_controller
         $agn_information = $m_agn->get_by_company_name($agn_company_name);
         echo json_encode($agn_information);
     }
+
+    /*
+    * agent_detail
+    * ดูข้อมูลเอเย่นต์
+    * @author Nattanan
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-
+    */
+    public function agent_detail($agn_id)
+    {
+        $m_agn = new M_cdms_agent;
+        $data['arr_agent'] = $m_agn->get_by_id($agn_id);
+        $this->output('v_agent_detail', $data);
+    }
 }
