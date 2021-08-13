@@ -29,6 +29,28 @@
     line-height: 1.5em;
     margin-top: 10;
 }
+
+.picture-container {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .picture {
+        width: 200px;
+        height: 200px;
+        background-color: #999999;
+        border: 4px solid #CCCCCC;
+        color: #FFFFFF;
+        border-radius: 50%;
+        margin: auto;
+        overflow: hidden;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        text-align: center;
+    }
+
 </style>
 
 <div class="container mx-auto grid mt-3">
@@ -49,6 +71,12 @@
                 <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ข้อมูลรถ</h2>
                 <hr class="mb-1">
 
+                <div class="picture-container">
+                        <div class="picture">
+                            <img src=<?php echo base_url(). '/public/car_image/'.$arr_car[0]->car_image ?>>
+                        </div>
+                    </div>
+
                 <div class="row">
                     <!-- car form left -->
                     <div class="col-12 col-md-6">
@@ -60,7 +88,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" placeholder="10" value="<?php echo $arr_car[0]->car_number ?>" readonly>
+                                <p class="block w-full mt-3 text-sm" > <?php echo $arr_car[0]->car_number ?></p>
                             </div>
                         </div>
 
@@ -72,14 +100,15 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_code" placeholder="กข 123" value="<?php echo $arr_car[0]->car_code ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"> <?php echo $arr_car[0]->car_code ?></p>
                                 <!-- จังหวัด -->
                                 
+                                    <p class="block w-full mt-1 text-sm">
                                     <?php for($i = 0; $i < count($arr_car_prov); $i++) { ?>
                                         <?php if ($arr_car_prov[$i]->prov_id == $arr_car[0]->car_prov_id){ 
                                     echo $arr_car_prov[$i]->prov_name; }?>
-                                    <?php } ?>
-                               
+                                    <?php } ?></p>
+                                        
                             </div>
                         </div>
 
@@ -92,10 +121,11 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                
+                                    <p class="block w-full mt-3 text-sm">
                                     <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
                                         <?php if ($arr_car_type[$i]->cart_id == $arr_car[0]->car_cart_id){
                                     echo $arr_car_type[$i]->cart_name; }?>
-                                    <?php } ?>
+                                    <?php } ?></p>
                                 
                             </div>
                         </div>
@@ -108,32 +138,35 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_status" readonly>
-                                    <option value="1" <?php if ($arr_car[0]->car_status == 1) echo "selected" ?> readonly>พร้อมใช้</option>
-                                    <option value="2" <?php if ($arr_car[0]->car_status == 2) echo "selected" ?> readonly>เสียหาย</option>
-                                    <option value="3" <?php if ($arr_car[0]->car_status == 3) echo "selected" ?> readonly>กำลังซ่อม</option>
-                                    <option value="4" <?php if ($arr_car[0]->car_status == 4) echo "selected" ?> readonly>เลิกใช้งาน</option>
-                                </select>
+                                <p class="block w-full mt-3 text-sm">
+                                    <?php if ($arr_car[0]->car_status == 1) {
+                                        echo  "พร้อมใช้";
+                                    }
+                                    else if ($arr_car[0]->car_status == 2){
+                                     echo "เสียหาย";
+                                    }
+                                    else if ($arr_car[0]->car_status == 3){ 
+                                    echo "กำลังซ่อม";
+                                    } 
+                                    else if ($arr_car[0]->car_status == 4){
+                                    echo "เลิกใช้งาน";
+                                    } ?>
+                                    </p>
                             </div>
                         </div>
 
-                        <!-- ภาพ -->
+                        <!-- ชนิดน้ำมัน -->
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ภาพ</span>
+                                    <span class="text-gray-700 dark:text-gray-400">ชนิดน้ำมัน</span>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <!-- <div class="upload-btn-wrapper"> -->
-                                    <div class="upload-file btn" onclick="$('#car_image').click();">เลือกไฟล์</div>
-                                    <!-- <div id='file_name'></div> -->
-                                    <input class="input-image" type="file" id="car_image" name="car_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
-                                    <input type="text" id='old_car_image' name='old_car_image' value='<?php echo $arr_car[0]->car_image ?>' hidden>
-                                    <div id='file_name'><?php echo $arr_car[0]->car_image?></div>
-                                <!-- </div> -->
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_car[0]->car_fuel_type ?></p>
                             </div>
                         </div>
+                        
                     </div>
                     <!-- end car form left -->
 
@@ -147,7 +180,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_brand" placeholder="ยี่ห้อ" value="<?php echo $arr_car[0]->car_brand?>" readonly>
+                                <P class="block w-full mt-3 text-sm"><?php echo $arr_car[0]->car_brand?></p>
                             </div>
                         </div>
 
@@ -159,57 +192,46 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_branch" placeholder="สาขา" value="<?php echo $arr_car[0]->car_branch?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_car[0]->car_branch?></p>
                             </div>
                         </div>
 
                         <!-- หมายเลขโครงรถ -->
                         <div class="row mt-3">
-                            <div class="col-12 col-sm-5">
+                            <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
                                     <span class="text-gray-700 dark:text-gray-400">หมายเลขโครงรถ</span>
                                 </label>
                             </div>
-                            <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_chassis_number" placeholder="01001" value="<?php echo $arr_car[0]->car_chassis_number ?>" readonly>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_car[0]->car_chassis_number ?></p>
                             </div>
                         </div>
 
                         <!-- ปีที่จดทะเบียน -->
                         <div class="row mt-3">
-                            <div class="col-12 col-sm-5">
+                            <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
                                     <span class="text-gray-700 dark:text-gray-400">ปีที่จดทะเบียน</span>
                                 </label>
                             </div>
-                            <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_register_year" placeholder="ปีที่จดทะเบียน" value="<?php echo $arr_car[0]->car_register_year ?>" readonly>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"> <?php echo $arr_car[0]->car_register_year ?></p>
                             </div>
                         </div>
 
                         <!-- น้ำหนักรถ (ตัน) -->
                         <div class="row mt-3">
-                            <div class="col-12 col-sm-5">
+                            <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
                                     <span class="text-gray-700 dark:text-gray-400">น้ำหนักรถ (ตัน)</span>
                                 </label>
                             </div>
-                            <div class="col-12 col-sm-7">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="car_weight" placeholder="0.01" value="<?php echo $arr_car[0]->car_weight ?>" readonly>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_car[0]->car_weight ?></p>
                             </div>
                         </div>
 
-                        <!-- ชนิดน้ำมัน -->
-                        <div class="row mt-3">
-                            <div class="col-12 col-sm-4">
-                                <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ชนิดน้ำมัน</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_fuel_type" placeholder="ชนิดน้ำมัน" value="<?php echo $arr_car[0]->car_fuel_type ?>" readonly>
-                            </div>
-                        </div>
 
                     </div>
                     <!-- end car form right -->
