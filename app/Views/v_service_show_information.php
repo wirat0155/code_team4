@@ -9,563 +9,550 @@
         </div>
     </di>
 
-    <form id="add_service_form" action="" method="POST">
-        <div class="row">
-            <!-- Start container form -->
-            <input type='hidden' name='con_id' value="<?php echo $obj_container[0]->con_id ?>">
-            <div class="col-12 col-xl-7">
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ตู้คอนเทนเนอร์</h2>
+    <div class="row">
+        <!-- Start container form -->
+        <input type='hidden' name='con_id' value="<?php echo $obj_container[0]->con_id ?>">
+        <div class="col-12 col-xl-7">
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ตู้คอนเทนเนอร์</h2>
 
-                    <div class="row">
-                        <!-- container form left -->
-                        <div class="col-12 col-md-6">
-                            <!-- หมายเลขตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขตู้</span>
-                                    </label>
-                                </div>
-
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" placeholder="หมายเลขตู้" value="<?php echo $obj_container[0]->con_number ?>" readonly>
-                                </div>
+                <div class="row">
+                    <!-- container form left -->
+                    <div class="col-12 col-md-6">
+                        <!-- หมายเลขตู้ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขตู้</span>
+                                </label>
                             </div>
 
-                            <!-- ประเภทตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ประเภทตู้</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_cont_id">
-                                        <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                        <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($obj_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
-                                            <?php echo $arr_container_type[$i]->cont_name ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- สถานะตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">สถานะตู้</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_stac_id">
-                                        <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                        <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
-                                            <?php echo $arr_status_container[$i]->stac_name ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- น้ำหนักตู้สูงสุดที่รับได้ (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้สูงสุดที่รับได้
-                                            (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- น้ำหนักตู้เปล่า (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้เปล่า (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_tare_weight ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- น้ำหนักสินค้าสูงสุด (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าสูงสุด (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_net_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_net_weight ?>" readonly>
-                                </div>
-                            </div>
-                            <!-- น้ำหนักสินค้าปัจจุบัน (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-7">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าปัจจุบัน
-                                            (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-5">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="ser_weight" placeholder="0.01" value="<?php echo $obj_service[0]->ser_weight ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-7">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-5">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container[0]->con_cube ?>" readonly>
-                                </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_container[0]->con_number ?></p>
                             </div>
                         </div>
-                        <!-- end container form left -->
 
-
-                        <!-- container form right -->
-                        <div class="col-12 col-md-6">
-                            <!-- ขนาดตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ขนาดตู้</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id" oninput="get_size_information()">
-                                        <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                        <option value="<?php echo $arr_size[$i]->size_id ?>" <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
-                                            <?php echo $arr_size[$i]->size_name ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                        <!-- ประเภทตู้ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ประเภทตู้</span>
+                                </label>
                             </div>
-
-                            <!-- ความสูงด้านนอก (เมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ความสูง (เมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="size_height_out" value="<?php echo $first_size[0]->size_height_out ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- ความกว้างด้านนอก (เมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ความกว้าง (เมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="size_width_out" value="<?php echo $first_size[0]->size_width_out ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- ความยาวด้านนอก (เมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ความยาว (เมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="size_length_out" value="<?php echo $first_size[0]->size_length_out ?>" readonly>
-                                </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_container_type[$obj_container[0]->con_cont_id-1]->cont_name ?></p>
                             </div>
                         </div>
-                        <!-- end container form right -->
-                    </div>
-                    <!-- end container form row -->
-                </div>
-            </div>
-            <!-- end container form -->
-
-            <!-- Start service form -->
-            <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
-            <div class="col-12 col-xl-5">
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">บริการ</h2>
-
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <!-- ประเภท -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ประเภท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_type">
-                                        <option value="1" <?php if ($obj_service[0]->ser_type == 1) echo "selected" ?>>ตู้เข้า</option>
-                                        <option value="2" <?php if ($obj_service[0]->ser_type == 2) echo "selected" ?>>ตู้ออก</option>
-                                        <option value="3" <?php if ($obj_service[0]->ser_type == 3) echo "selected" ?>>ตู้ดรอป</option>
-
-                                    </select>
-                                </div>
+                        <!-- สถานะตู้ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สถานะตู้</span>
+                                </label>
                             </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_status_container[$obj_container[0]->con_stac_id-1]->stac_name ?></p>
+                            </div>
+                        </div>
+                        <!-- น้ำหนักตู้สูงสุดที่รับได้ (ตัน) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้สูงสุดที่รับได้
+                                        (ตัน)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_container[0]->con_max_weight ?></p>
+                            </div>
+                        </div>
 
-                            <!-- วันที่ต้องออก cut off -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">วันที่ต้องออก (cut off)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date) ?>" readonly>
-                                </div>
+                        <!-- น้ำหนักตู้เปล่า (ตัน) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้เปล่า (ตัน)</span>
+                                </label>
                             </div>
+                            <div class="col-12 col-sm-6">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_container[0]->con_tare_weight ?></p>
+                            </div>
+                        </div>
 
-                            <!-- วันที่เข้าลาน -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">วันที่เข้าลาน</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date) ?>" readonly>
-                                </div>
+                        <!-- น้ำหนักสินค้าสูงสุด (ตัน) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าสูงสุด (ตัน)</span>
+                                </label>
                             </div>
+                            <div class="col-12 col-sm-6">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_container[0]->con_net_weight ?></p>
+                            </div>
+                        </div>
+                        <!-- น้ำหนักสินค้าปัจจุบัน (ตัน) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-7">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าปัจจุบัน
+                                        (ตัน)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_weight ?></p>
+                            </div>
+                        </div>
 
-                            <!-- พนักงานนำเข้าลาน -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">พนักงานนำเข้าลาน</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in">
-                                        <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                        <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_in == $arr_driver[$i]->dri_id) echo "selected" ?>>
-                                            <?php echo $arr_driver[$i]->dri_name ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                        <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-7">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
+                                </label>
                             </div>
-
-                            <!-- รถที่นำเข้า -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">รถที่นำเข้า</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in">
-                                        <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                        <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_in == $arr_car[$i]->car_id) echo "selected" ?>>
-                                            <?php echo $arr_car[$i]->car_code ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- วันที่ออกจริง -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">วันที่ออกจริง</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- พนักงานนำออกลาน -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">พนักงานนำออกลาน</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out">
-                                        <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                        <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_out == $arr_driver[$i]->dri_id) echo "selected" ?>>
-                                            <?php echo $arr_driver[$i]->dri_name ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- รถที่นำออก-->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">รถที่นำออก</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out">
-                                        <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                        <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
-                                            <?php echo $arr_car[$i]->car_code ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- สถานที่ต้นทาง-->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">สถานที่ต้นทาง</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php echo $obj_service[0]->ser_arrivals_location ?>" readonly>
-                                </div>
-                            </div>
-                            <!-- สถานที่ปลายทาง-->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">สถานที่ปลายทาง</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php echo $obj_service[0]->ser_departure_location ?>" readonly>
-                                </div>
+                            <div class="col-12 col-sm-5">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_container[0]->con_cube ?></p>
                             </div>
                         </div>
                     </div>
+                    <!-- end container form left -->
+
+
+                    <!-- container form right -->
+                    <div class="col-12 col-md-6">
+                        <!-- ขนาดตู้ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ขนาดตู้</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_size[$obj_container[0]->con_size_id-1]->size_name ?></p>
+                            </div>
+                        </div>
+
+                        <!-- ความสูงด้านนอก (เมตร) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ความสูง (เมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <p class="block w-full mt-3 text-sm"><?php echo $first_size[0]->size_height_out ?></p>
+                            </div>
+                        </div>
+
+                        <!-- ความกว้างด้านนอก (เมตร) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ความกว้าง (เมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <p class="block w-full mt-3 text-sm"><?php echo $first_size[0]->size_width_out ?></p>
+                            </div>
+                        </div>
+
+                        <!-- ความยาวด้านนอก (เมตร) -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ความยาว (เมตร)</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <p class="block w-full mt-3 text-sm"><?php echo $first_size[0]->size_length_out ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end container form right -->
                 </div>
+                <!-- end container form row -->
             </div>
-            <!-- end agent form -->
         </div>
-        <!-- end row -->
+        <!-- end container form -->
 
-        <div class="row">
-            <!-- Start agent form -->
-            <input type='hidden' name='agn_id' value="<?php echo $obj_agent[0]->agn_id ?>">
-            <div class="col-12 col-xl-6">
-                <!-- agent form -->
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">เอเย่นต์</h2>
+        <!-- Start service form -->
+        <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
+        <div class="col-12 col-xl-5">
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">บริการ</h2>
 
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <!-- บริษัท -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท" value="<?php echo $obj_agent[0]->agn_company_name ?>" readonly>
-                                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <!-- ประเภท -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ประเภท</span>
+                                </label>
                             </div>
-
-                            <!-- ที่ตั้งบริษัท -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address" placeholder="ที่ตั้งบริษัท" readonly><?php echo $obj_agent[0]->agn_address ?></textarea>
-                                </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm">
+                                    <?php if($obj_service[0]->ser_type == 1){
+                                            echo "ตู้เข้า";
+                                        }else if ($obj_service[0]->ser_type == 2){
+                                            echo "ตู้ออก";
+                                        }else if($obj_service[0]->ser_type == 3){
+                                            echo "ตู้ดรอป";
+                                        }       
+                                    ?>
+                                </p>
                             </div>
+                        </div>
 
-                            <!-- หมายเลขผู้เสียภาษี -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_agent[0]->agn_tax ?>" readonly>
-                                </div>
+                        <!-- วันที่ต้องออก cut off -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">วันที่ต้องออก (cut off)</span>
+                                </label>
                             </div>
-                            <hr class="mb-3">
-                            <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
-                            <!-- ชื่อจริง -->
-                            <div class="row mt-1">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_agent[0]->agn_firstname ?>" readonly>
-                                </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_departure_date ?></p>
                             </div>
+                        </div>
 
-                            <!-- นามสกุล -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล" value="<?php echo $obj_agent[0]->agn_lastname ?>" readonly>
-                                </div>
+                        <!-- วันที่เข้าลาน -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">วันที่เข้าลาน</span>
+                                </label>
                             </div>
-
-                            <!-- เบอร์ติดต่อ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_agent[0]->agn_tel ?>" readonly>
-                                </div>
+                            <div class="col-12 col-sm-8">
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_arrivals_date ?></p>
                             </div>
+                        </div>
 
-                            <!-- อีเมล์ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์" value="<?php echo $obj_agent[0]->agn_email ?>" readonly>
-                                </div>
+                        <!-- พนักงานนำเข้าลาน -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">พนักงานนำเข้าลาน</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in">
+                                    <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
+                                    <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_in == $arr_driver[$i]->dri_id) echo "selected" ?>>
+                                        <?php echo $arr_driver[$i]->dri_name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- รถที่นำเข้า -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">รถที่นำเข้า</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in">
+                                    <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
+                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_in == $arr_car[$i]->car_id) echo "selected" ?>>
+                                        <?php echo $arr_car[$i]->car_code ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- วันที่ออกจริง -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">วันที่ออกจริง</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- พนักงานนำออกลาน -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">พนักงานนำออกลาน</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out">
+                                    <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
+                                    <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_out == $arr_driver[$i]->dri_id) echo "selected" ?>>
+                                        <?php echo $arr_driver[$i]->dri_name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- รถที่นำออก-->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">รถที่นำออก</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out">
+                                    <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
+                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
+                                        <?php echo $arr_car[$i]->car_code ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- สถานที่ต้นทาง-->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สถานที่ต้นทาง</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php echo $obj_service[0]->ser_arrivals_location ?>" readonly>
+                            </div>
+                        </div>
+                        <!-- สถานที่ปลายทาง-->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สถานที่ปลายทาง</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php echo $obj_service[0]->ser_departure_location ?>" readonly>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- end agent form -->
-
-            <!-- Start customer form -->
-            <input type='hidden' name='cus_id' value="<?php echo $obj_customer[0]->cus_id ?>" readonly>
-            <div class="col-12 col-xl-6">
-                <!-- agent form -->
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ลูกค้า</h2>
-
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <!-- บริษัท -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="บริษัท" value="<?php echo $obj_customer[0]->cus_company_name ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- สาขา -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">สาขา</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_branch" placeholder="สาขา" value="<?php echo $obj_customer[0]->cus_branch ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- ที่ตั้งบริษัท -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_address" placeholder="ที่ตั้งบริษัท" readonly><?php echo $obj_customer[0]->cus_address ?></textarea>
-                                </div>
-                            </div>
-
-                            <!-- หมายเลขผู้เสียภาษี -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_customer[0]->cus_tax ?>" readonly>
-                                </div>
-                            </div>
-
-                            <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
-                            <!-- ชื่อจริง -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_customer[0]->cus_firstname ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- นามสกุล -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $obj_customer[0]->cus_lastname ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- เบอร์ติดต่อ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_customer[0]->cus_tel ?>" readonly>
-                                </div>
-                            </div>
-
-                            <!-- อีเมล์ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์" value="<?php echo $obj_customer[0]->cus_email ?>" readonly>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end customer form -->
         </div>
-        <!-- end row -->
-        <!-- <div class="container text-right">
+        <!-- end agent form -->
+    </div>
+    <!-- end row -->
+
+    <div class="row">
+        <!-- Start agent form -->
+        <input type='hidden' name='agn_id' value="<?php echo $obj_agent[0]->agn_id ?>">
+        <div class="col-12 col-xl-6">
+            <!-- agent form -->
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">เอเย่นต์</h2>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <!-- บริษัท -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท" value="<?php echo $obj_agent[0]->agn_company_name ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- ที่ตั้งบริษัท -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address" placeholder="ที่ตั้งบริษัท" readonly><?php echo $obj_agent[0]->agn_address ?></textarea>
+                            </div>
+                        </div>
+
+                        <!-- หมายเลขผู้เสียภาษี -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_agent[0]->agn_tax ?>" readonly>
+                            </div>
+                        </div>
+                        <hr class="mb-3">
+                        <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                        <!-- ชื่อจริง -->
+                        <div class="row mt-1">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_agent[0]->agn_firstname ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- นามสกุล -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล" value="<?php echo $obj_agent[0]->agn_lastname ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- เบอร์ติดต่อ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_agent[0]->agn_tel ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- อีเมล์ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์" value="<?php echo $obj_agent[0]->agn_email ?>" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end agent form -->
+
+        <!-- Start customer form -->
+        <input type='hidden' name='cus_id' value="<?php echo $obj_customer[0]->cus_id ?>" readonly>
+        <div class="col-12 col-xl-6">
+            <!-- agent form -->
+            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
+                <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ลูกค้า</h2>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <!-- บริษัท -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="บริษัท" value="<?php echo $obj_customer[0]->cus_company_name ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- สาขา -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">สาขา</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_branch" placeholder="สาขา" value="<?php echo $obj_customer[0]->cus_branch ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- ที่ตั้งบริษัท -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_address" placeholder="ที่ตั้งบริษัท" readonly><?php echo $obj_customer[0]->cus_address ?></textarea>
+                            </div>
+                        </div>
+
+                        <!-- หมายเลขผู้เสียภาษี -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_customer[0]->cus_tax ?>" readonly>
+                            </div>
+                        </div>
+
+                        <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                        <!-- ชื่อจริง -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_customer[0]->cus_firstname ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- นามสกุล -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $obj_customer[0]->cus_lastname ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- เบอร์ติดต่อ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_customer[0]->cus_tel ?>" readonly>
+                            </div>
+                        </div>
+
+                        <!-- อีเมล์ -->
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-4">
+                                <label class="block text-sm mt-3">
+                                    <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์" value="<?php echo $obj_customer[0]->cus_email ?>" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end customer form -->
+    </div>
+    <!-- end row -->
+    <!-- <div class="container text-right">
             <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
             <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
         </div> -->
-    </form>
     <br>
     <br>
 </div>
