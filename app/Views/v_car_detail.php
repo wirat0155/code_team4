@@ -58,9 +58,16 @@
         <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                แก้ไขข้อมูลรถ
+                ข้อมูลรถ
             </h2>
         </div>
+
+        <div class="float-right">
+                <a href="<?php echo base_url() . '/public/Car_edit/car_edit/' . $arr_car[0]->car_id ?>" class="btn btn-warning p-2 ">แก้ไขข้อมูล</a>
+                <button type="button" class="btn btn-danger p-2 " data-toggle="modal" data-target="#exampleModalCenter"  onclick="get_id(<?php echo $arr_car[0]->car_id ?>)">ลบข้อมูลรถ
+                </button>
+        </div>
+
     </di>
     
     <form id="add_car_form" action="<?php echo base_url(). '/public/Car_show/car_detail' ?>" enctype="multipart/form-data" method="POST">
@@ -166,7 +173,7 @@
                                 <p class="block w-full mt-3 text-sm"><?php echo $arr_car[0]->car_fuel_type ?></p>
                             </div>
                         </div>
-                        
+
                     </div>
                     <!-- end car form left -->
 
@@ -239,86 +246,45 @@
                 <!-- end car form row -->
             </div>
         </div>
-        <!-- end car form -->
-
-        <!-- <div class="container-sm text-right col-12 col-xl-7">
-            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" onclick="window.history.back();" type="reset" value="ยกเลิก" />
-            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข" />
-        </div> -->
     </form>
     <br>
     <br>
 </div>
 
+ <!-- Modal ยืนยันการลบ -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบข้อมูลรถ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?php echo base_url() . '/public/Car_show/car_delete' ?>" method="post">
+                    <div class="modal-body float-center">
+                        <!-- เก็บ Car Id -->
+                        <input name="car_id" id="car_id" type="hidden">
+                        <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                        <input type="submit" class="btn btn-danger" value="ลบ">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 <script>
-$(document).ready(function() {
-    // jQuery Validation
-    if ($('#add_car_form').length > 0) {
-        $('#add_car_form').validate({
-            rules: {
-                car_number: {
-                    required: true
-                },
-                car_code: {
-                    required: true
-                },
-                car_brand: {
-                    required: true
-                },
-                car_branch: {
-                    required: true
-                },
-                car_chassis_number: {
-                    required: true
-                },
-                car_register_year: {
-                    required: true
-                },
-                car_weight: {
-                    required: true,
-                    min: 0
-                },
-                car_fuel_type: {
-                    required: true
-                },
-
-            },
-            messages: {
-                car_number: {
-                    required: 'กรุณากรอกหมายเลขรถ'
-                },
-                car_code: {
-                    required: 'กรุณากรอกทะเบียนรถ'
-                },
-                car_brand: {
-                    required: 'กรุณากรอกยี่ห้อรถ'
-                },
-                car_branch: {
-                    required: 'กรุณากรอกสาขา'
-                },
-                car_chassis_number: {
-                    required: 'กรุณากรอกหมายเลขโครงรถ'
-                },
-                car_register_year: {
-                    required: 'กรุณากรอกปีที่จดทะเบียน'
-                },
-                car_weight: {
-                    required: 'กรุณากรอกน้ำหนักรถ',
-                    min: 'กรุณากรอกอย่างน้อย 0'
-                },
-                car_fuel_type: {
-                    required: 'กรุณากรอกชนิดน้ำมัน'
-                },
-
-            }
-        })
-    }
-});
-
 function get_image() {
     var car_img = $('#car_image').val();
     $('#file_name').html(car_img.substr(12));
     $('#car_image-error').remove();
     $('#old_car_image').remove();
 }
+
+    function get_id(car_id) {
+            $('#car_id').val(car_id);
+        }
 </script>
