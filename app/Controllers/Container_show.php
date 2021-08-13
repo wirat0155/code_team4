@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\M_cdms_agent;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_size;
 use App\Models\M_cdms_container_type;
@@ -46,11 +47,11 @@ class Container_show extends Cdms_controller
     public function container_detail($con_id)
     {
         $_SESSION['menu'] = 'Container_show';
-        $m_size = new M_cdms_size();
-        $data['arr_size'] = $m_size->get_all();
+        $m_con = new M_cdms_container();
+        $data['arr_container'] = $m_con->get_by_id($con_id);
 
-        // first size information
-        $data['first_size'] = $m_size->get_first();
+        $m_size = new M_cdms_size();
+        $data['arr_size'] = $m_size->get_by_id($data['arr_container'][0]->con_size_id);
 
         // container type
         $m_cont = new M_cdms_container_type();
@@ -60,8 +61,9 @@ class Container_show extends Cdms_controller
         $m_stac = new M_cdms_status_container();
         $data['arr_status_container'] = $m_stac->get_all();
 
-        $m_con = new M_cdms_container();
-        $data['arr_container'] = $m_con->get_by_id($con_id);
+        $m_agn = new M_cdms_agent();
+        $data['arr_agent'] = $m_agn->get_by_id($data['arr_container'][0]->con_agn_id);
+
         $this->output('v_container_show_information', $data);
     }
 
