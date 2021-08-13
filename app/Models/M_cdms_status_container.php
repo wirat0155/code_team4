@@ -27,4 +27,11 @@ class M_cdms_status_container extends Da_cdms_status_container
         $sql = "SELECT stac_id, stac_name FROM $this->table WHERE stac_status = 1";
         return $this->db->query($sql)->getResult();
     }
+
+    public function get_by_id($stac_id){
+        $sql = "SELECT * FROM $this->table
+
+                WHERE stac_id='$stac_id'";
+        return $this->db->query($sql)->getResult();
+    }
 }

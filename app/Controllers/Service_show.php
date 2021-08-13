@@ -60,39 +60,39 @@ class Service_show extends Cdms_controller
     */
     public function service_detail($ser_id)
     {
+        // get service
+        $m_ser = new M_cdms_service();
+        $data['obj_service'] = $m_ser->get_by_id($ser_id);
+
+         // get container 
+         $m_con = new M_cdms_container();
+         $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
+        
         // size name
         $m_size = new M_cdms_size();
-        $data['arr_size'] = $m_size->get_all();
-
-        // first size information
-        $data['first_size'] = $m_size->get_first();
+        $data['arr_size'] = $m_size->get_by_id($data['obj_container'][0]->con_size_id);
 
         // container type
         $m_cont = new M_cdms_container_type();
-        $data['arr_container_type'] = $m_cont->get_all();
+        $data['arr_container_type'] = $m_cont->get_by_id($data['obj_container'][0]->con_cont_id);
 
         // status container
         $m_stac = new M_cdms_status_container();
-        $data['arr_status_container'] = $m_stac->get_all();
+        $data['arr_status_container'] = $m_stac->get_by_id($data['obj_container'][0]->con_stac_id);
 
         // driver name
         $m_dri = new M_cdms_driver();
-        $data['arr_driver'] = $m_dri->get_all();
+        $data['arr_driver_in'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_in);
+        $data['arr_driver_out'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_out);
 
-        // car name
-        $m_car = new M_cdms_car();
-        $data['arr_car'] = $m_car->get_all();
-
-        $m_ser = new M_cdms_service();
-        $data['obj_service'] = $m_ser->get_by_id($ser_id);
+         // car name
+         $m_car = new M_cdms_car();
+         $data['arr_car_in'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_in);
+         $data['arr_car_out'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_out);
 
         // get customer
         $m_cus = new M_cdms_customer();
         $data['obj_customer'] = $m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
-
-        // get container 
-        $m_con = new M_cdms_container();
-        $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
 
         // get agent agent
         $m_agn = new M_cdms_agent();

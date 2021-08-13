@@ -40,7 +40,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $arr_container_type[$obj_container[0]->con_cont_id-1]->cont_name ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_container_type[0]->cont_name ?></p>
                             </div>
                         </div>
                         <!-- สถานะตู้ -->
@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $arr_status_container[$obj_container[0]->con_stac_id-1]->stac_name ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_status_container[0]->stac_name ?></p>
                             </div>
                         </div>
                         <!-- น้ำหนักตู้สูงสุดที่รับได้ (ตัน) -->
@@ -128,7 +128,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $arr_size[$obj_container[0]->con_size_id-1]->size_name ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_size[0]->size_name ?></p>
                             </div>
                         </div>
 
@@ -140,7 +140,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <p class="block w-full mt-3 text-sm"><?php echo $first_size[0]->size_height_out ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_size[0]->size_height_out ?></p>
                             </div>
                         </div>
 
@@ -152,7 +152,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <p class="block w-full mt-3 text-sm"><?php echo $first_size[0]->size_width_out ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_size[0]->size_width_out ?></p>
                             </div>
                         </div>
 
@@ -164,7 +164,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <p class="block w-full mt-3 text-sm"><?php echo $first_size[0]->size_length_out ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_size[0]->size_length_out ?></p>
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_departure_date ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
                             </div>
                         </div>
 
@@ -224,7 +224,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_arrivals_date ?></p>
+                                <p class="block w-full mt-3 text-sm"><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
                             </div>
                         </div>
 
@@ -236,12 +236,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in">
-                                    <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                    <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_in == $arr_driver[$i]->dri_id) echo "selected" ?>>
-                                        <?php echo $arr_driver[$i]->dri_name ?></option>
-                                    <?php } ?>
-                                </select>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_driver_in[0]->dri_name ?></p>
                             </div>
                         </div>
 
@@ -253,12 +248,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in">
-                                    <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_in == $arr_car[$i]->car_id) echo "selected" ?>>
-                                        <?php echo $arr_car[$i]->car_code ?></option>
-                                    <?php } ?>
-                                </select>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_car_in[0]->car_code ?></p>
                             </div>
                         </div>
 
@@ -270,7 +260,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo date_thai($obj_service[0]->ser_actual_departure_date) ?></p>
                             </div>
                         </div>
 
@@ -282,12 +272,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out">
-                                    <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                    <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_out == $arr_driver[$i]->dri_id) echo "selected" ?>>
-                                        <?php echo $arr_driver[$i]->dri_name ?></option>
-                                    <?php } ?>
-                                </select>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_driver_out[0]->dri_name ?></p>
                             </div>
                         </div>
 
@@ -299,12 +284,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out">
-                                    <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
-                                        <?php echo $arr_car[$i]->car_code ?></option>
-                                    <?php } ?>
-                                </select>
+                                <p class="block w-full mt-3 text-sm"><?php echo $arr_car_out[0]->car_code ?></p>
                             </div>
                         </div>
                         <!-- สถานที่ต้นทาง-->
@@ -315,7 +295,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php echo $obj_service[0]->ser_arrivals_location ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_arrivals_location ?></p>
                             </div>
                         </div>
                         <!-- สถานที่ปลายทาง-->
@@ -326,7 +306,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php echo $obj_service[0]->ser_departure_location ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_service[0]->ser_departure_location ?></p>
                             </div>
                         </div>
                     </div>
@@ -355,7 +335,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท" value="<?php echo $obj_agent[0]->agn_company_name ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_company_name ?></p>
                             </div>
                         </div>
 
@@ -367,7 +347,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_address" placeholder="ที่ตั้งบริษัท" readonly><?php echo $obj_agent[0]->agn_address ?></textarea>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_address ?></p>
                             </div>
                         </div>
 
@@ -379,7 +359,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_agent[0]->agn_tax ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_tax ?></p>
                             </div>
                         </div>
                         <hr class="mb-3">
@@ -392,7 +372,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_agent[0]->agn_firstname ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_firstname ?></p>
                             </div>
                         </div>
 
@@ -404,7 +384,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_lastname" placeholder="นามสกุล" value="<?php echo $obj_agent[0]->agn_lastname ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_lastname ?></p>
                             </div>
                         </div>
 
@@ -416,7 +396,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_agent[0]->agn_tel ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_tel ?></p>
                             </div>
                         </div>
 
@@ -428,7 +408,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์" value="<?php echo $obj_agent[0]->agn_email ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_email ?></p>
                             </div>
                         </div>
                     </div>
@@ -454,7 +434,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="บริษัท" value="<?php echo $obj_customer[0]->cus_company_name ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_company_name ?></p>
                             </div>
                         </div>
 
@@ -466,7 +446,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_branch" placeholder="สาขา" value="<?php echo $obj_customer[0]->cus_branch ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_branch ?></p>
                             </div>
                         </div>
 
@@ -478,7 +458,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <textarea class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_address" placeholder="ที่ตั้งบริษัท" readonly><?php echo $obj_customer[0]->cus_address ?></textarea>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_address ?></p>
                             </div>
                         </div>
 
@@ -490,7 +470,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" value="<?php echo $obj_customer[0]->cus_tax ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_tax ?></p>
                             </div>
                         </div>
 
@@ -503,7 +483,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $obj_customer[0]->cus_firstname ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_firstname ?></p>
                             </div>
                         </div>
 
@@ -515,7 +495,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $obj_customer[0]->cus_lastname ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_lastname ?></p>
                             </div>
                         </div>
 
@@ -527,7 +507,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_customer[0]->cus_tel ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_tel ?></p>
                             </div>
                         </div>
 
@@ -539,7 +519,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์" value="<?php echo $obj_customer[0]->cus_email ?>" readonly>
+                                <p class="block w-full mt-3 text-sm"><?php echo $obj_customer[0]->cus_email ?></p>
                             </div>
                         </div>
                     </div>
@@ -549,12 +529,6 @@
         <!-- end customer form -->
     </div>
     <!-- end row -->
-    <!-- <div class="container text-right">
-            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
-            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
-        </div> -->
-    <br>
-    <br>
 </div>
 
 <script>
