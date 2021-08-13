@@ -40,6 +40,7 @@
   {
       return substr($string, 0, 10) . 'T' . substr($string, 11); 
   }
+  
   function date_time($date_time) {
     $date = substr($date_time,0,10);
     $time = substr($date_time,10, 5);
