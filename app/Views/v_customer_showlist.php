@@ -1,17 +1,17 @@
 <style>
-/* Grid Card จอต่ำสุด 1000 px */
-@media (min-width: 1000px) {
-    .md\:grid-cols-2 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Grid Card จอต่ำสุด 1000 px */
+    @media (min-width: 1000px) {
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
     }
-}
 
-/* Grid Card จอต่ำสุด 1450 px */
-@media (min-width: 1450px) {
-    .xl\:grid-cols-3 {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+    /* Grid Card จอต่ำสุด 1450 px */
+    @media (min-width: 1450px) {
+        .xl\:grid-cols-3 {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
     }
-}
 </style>
 
 <div class="container px-6 mx-auto grid">
@@ -159,58 +159,58 @@
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php for ($i = 0; $i < count($arr_customer); $i++) { ?>
-                <tr class="text-gray-700 dark:text-gray-400">
+                    <tr class="text-gray-700 dark:text-gray-400">
 
-                    <!-- บริษัท -->
-                    <td class="px-4 py-3" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
-                        <div class="flex items-center text-sm">
-                            <?php
+                        <!-- บริษัท -->
+                        <td class="px-4 py-3" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                            <div class="flex items-center text-sm">
+                                <?php
                                 echo $arr_customer[$i]->cus_company_name;
                                 echo ($arr_customer[$i]->cus_branch != null) ? ' (' . $arr_customer[$i]->cus_branch . ') ' : '';
-                            ?>
-                        </div>
-                    </td>
+                                ?>
+                            </div>
+                        </td>
 
-                    <!-- ผู้รับผิดชอบ -->
-                    <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
-                        <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
-                    </td>
+                        <!-- ผู้รับผิดชอบ -->
+                        <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                            <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
+                        </td>
 
-                    <!-- จำนวนตู้ที่กำลังใช้ -->
-                    <td class="px-4 py-3 text-sm text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
-                        <?php
+                        <!-- จำนวนตู้ที่กำลังใช้ -->
+                        <td class="px-4 py-3 text-sm text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                            <?php
                             $count_container = 0;
                             for ($j = 0; $j < count($arr_service); $j++) {
-                                if($arr_customer[$i]->cus_company_name == $arr_service[$j]->cus_company_name){
-                                    if($arr_customer[$i]->cus_branch == $arr_service[$j]->cus_branch ){
+                                if ($arr_customer[$i]->cus_company_name == $arr_service[$j]->cus_company_name) {
+                                    if ($arr_customer[$i]->cus_branch == $arr_service[$j]->cus_branch) {
                                         $count_container++;
                                     }
                                 }
                             }
-                            echo $count_container;  
-                        ?>
-                    </td>
+                            echo $count_container;
+                            ?>
+                        </td>
 
-                    <!-- เบอร์โทรศัพท์ -->
-                    <td class="px-4 py-3 text-sm text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
-                        <?php echo tel_format($arr_customer[$i]->cus_tel) ?>
-                    </td>
+                        <!-- เบอร์โทรศัพท์ -->
+                        <td class="px-4 py-3 text-sm text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                            <?php echo tel_format($arr_customer[$i]->cus_tel) ?>
+                        </td>
 
-                    <!-- email -->
-                    <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id?>)">
-                        <?php echo $arr_customer[$i]->cus_email ?>
-                    </td>
+                        <!-- email -->
+                        <td class="px-4 py-3 text-sm" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                            <?php echo $arr_customer[$i]->cus_email ?>
+                        </td>
 
-                    <!-- ดำเนินการ -->
-                    <td class="px-4 py-3 text-sm text-center">
-                        <!-- ปุ่มแก้ไข -->
-                        <a href="<?php echo base_url(). '/public/Customer_edit/customer_edit/'. $arr_customer[$i]->cus_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        <!-- ปุ่มลบ -->
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#Modal_Confirm" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+                        <!-- ดำเนินการ -->
+                        <td class="px-4 py-3 text-sm text-center">
+                            <!-- ปุ่มแก้ไข -->
+                            <a href="<?php echo base_url() . '/public/Customer_edit/customer_edit/' . $arr_customer[$i]->cus_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <!-- ปุ่มลบ -->
+                            <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#Modal_Confirm" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -229,7 +229,7 @@
                 </button>
             </div>
 
-            <form action="<?php echo base_url() . '/public/Customer_show/customer_delete'?>" method="post">
+            <form action="<?php echo base_url() . '/public/Customer_show/customer_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
                     <input name="cus_id" id="cus_id" type="hidden">
@@ -245,37 +245,38 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    $('.table').DataTable({
-        "oLanguage": {
-            "sLengthMenu": "แสดง _MENU_ รายการ",
-            "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-            "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
-            "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
-            "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
-            "sSearch": "ค้นหา :"
-        }
+    $(document).ready(function() {
+        $('.table').DataTable({
+            "oLanguage": {
+                "sLengthMenu": "แสดง _MENU_ รายการ",
+                "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
+                "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
+                "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
+                "sSearch": "ค้นหา :"
+            }
+        });
+
+        // แทรกปุ่ม เพิ่มลูกค้า
+        $("#DataTables_Table_0_filter").append(
+            "<a href='<?php echo base_url() . '/public/Customer_input/customer_input' ?>' class='button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </a>"
+        );
+
+        //วันที่ Date Range Picker
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+                .format('YYYY-MM-DD'));
+        });
     });
 
-    // แทรกปุ่ม เพิ่มลูกค้า
-    $("#DataTables_Table_0_filter").append(
-        "<a href='<?php echo base_url(). '/public/Customer_input/customer_input' ?>' class='button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </a>"
-    );
+    // ส่ง cus_id เข้า Modal
+    function get_id(cus_id) {
+        $('#cus_id').val(cus_id);
+    }
 
-    //วันที่ Date Range Picker
-    $('input[name="daterange"]').daterangepicker({
-        opens: 'left'
-    }, function(start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
-            .format('YYYY-MM-DD'));
-    });
-});
-
-// ส่ง cus_id เข้า Modal
-function get_id(cus_id) {
-    $('#cus_id').val(cus_id);
-}
-function customer_detail(cus_id) {
-    window.location = '<?php echo base_url('') . '/public/Customer_show/customer_detail/' ?>' + cus_id;
-}
+    function customer_detail(cus_id) {
+        window.location = '<?php echo base_url('') . '/public/Customer_show/customer_detail/' ?>' + cus_id;
+    }
 </script>

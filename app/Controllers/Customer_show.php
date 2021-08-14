@@ -25,10 +25,10 @@ class Customer_show extends Cdms_controller
     public function customer_show_ajax()
     {
         $_SESSION['menu'] = 'Customer_show';
-        $M_cus = new M_cdms_customer();
-        $data['arr_customer'] = $M_cus->get_all();
-        $M_ser = new M_cdms_service();
-        $data['arr_service'] = $M_ser->get_all();
+        $m_cus = new M_cdms_customer();
+        $data['arr_customer'] = $m_cus->get_all();
+        $m_ser = new M_cdms_service();
+        $data['arr_service'] = $m_ser->get_all();
 
         $this->output('v_customer_showlist', $data);
     }
@@ -42,14 +42,14 @@ class Customer_show extends Cdms_controller
     */
     public function customer_delete()
     {
-        $M_cus = new M_cdms_customer();
-        $M_cus->delete($this->request->getPost('cus_id'));
+        $m_cus = new M_cdms_customer();
+        $m_cus->delete($this->request->getPost('cus_id'));
         return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
     }
     public function customer_detail($cus_id)
     {
-        $M_cus = new M_cdms_customer;
-        $data['arr_customer'] = $M_cus->get_by_id($cus_id);
+        $m_cus = new M_cdms_customer;
+        $data['arr_customer'] = $m_cus->get_by_id($cus_id);
         $this->output('v_customer_show_infromation', $data);
     }
 }

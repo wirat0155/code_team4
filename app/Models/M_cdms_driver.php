@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Da_cdms_driver;
 
 /*
@@ -10,7 +12,8 @@ use App\Models\Da_cdms_driver;
 * @Update Date
 */
 
-class M_cdms_driver extends Da_cdms_driver {
+class M_cdms_driver extends Da_cdms_driver
+{
 
     /*
     * get_all
@@ -31,12 +34,12 @@ class M_cdms_driver extends Da_cdms_driver {
                 ON cart_id = car_cart_id
                 WHERE NOT dri_status = 4";
         return $this->db->query($sql)->getResult();
-    }   
+    }
 
-    public function get_by_id($dri_id){
+    public function get_by_id($dri_id)
+    {
         $sql = "SELECT * FROM $this->table
                 WHERE dri_id='$dri_id'";
         return $this->db->query($sql)->getResult();
     }
-
 }

@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\M_cdms_driver;
 
 /*
@@ -9,9 +12,10 @@ use App\Models\M_cdms_driver;
 * @Update Date
 */
 
-class Driver_show extends Cdms_controller{
+class Driver_show extends Cdms_controller
+{
 
-   /*
+    /*
     * driver_show_ajax
     * แสดงพนักงานขับรถทั้งหมด
     * @input -
@@ -20,15 +24,16 @@ class Driver_show extends Cdms_controller{
     * @Create Date 2564-07-30
     * @Update Date
     */
-    public function driver_show_ajax(){
+    public function driver_show_ajax()
+    {
         $_SESSION['menu'] = 'Driver_show';
-        $M_dri = new M_cdms_driver();
-        $data['arr_driver'] = $M_dri->get_all();
+        $m_dri = new M_cdms_driver();
+        $data['arr_driver'] = $m_dri->get_all();
         $this->output('v_driver_showlist', $data);
         // echo '<pre>'; 
         // print_r($data['arr_driver']);
         // echo '</pre>'; 
-        
+
     }
 
     /*
@@ -40,20 +45,18 @@ class Driver_show extends Cdms_controller{
     * @Create Date 2564-07-30
     * @Update Date
     */
-    public function driver_delete(){
+    public function driver_delete()
+    {
         $m_dri = new M_cdms_driver();
         $dri_id = $this->request->getPost('dri_id');
         $m_dri->delete($dri_id);
         return $this->response->redirect(base_url('/public/driver_show/driver_show_ajax'));
     }
 
-    public function driver_detail($dri_id){
+    public function driver_detail($dri_id)
+    {
         $m_dri = new M_cdms_driver();
         $data['arr_driver'] = $m_dri->get_by_id($dri_id);
-        $this->output('v_driver_detail', $data);
+        $this->output('v_driver_show_information', $data);
     }
-    
-
-    
-
 }

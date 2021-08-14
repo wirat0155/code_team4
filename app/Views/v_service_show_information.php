@@ -1,36 +1,36 @@
 <style>
-.text-con-in {
-    background-color: #29B3F1;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
+    .text-con-in {
+        background-color: #29B3F1;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
 
-.text-con-out {
-    background-color: #44BB55;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
+    .text-con-out {
+        background-color: #44BB55;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
 
-.text-con-drop {
-    background-color: #F5D432;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
+    .text-con-drop {
+        background-color: #F5D432;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
 </style>
 <div class="container px-6 mx-auto grid">
 
@@ -44,7 +44,7 @@
                 <!-- ปุ่มแก้ไข -->
                 <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <!-- ปุ่มลบ -->
-                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $obj_service[0]->ser_id ?>)">ลบบริการ
+                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $obj_service[0]->ser_id ?>)">ลบข้อมูล
                 </button>
             </div>
         </div>
@@ -233,13 +233,13 @@
                             </div>
                             <div class="col-12 col-sm-8">
                                 <p class="block w-full mt-3 text-sm">
-                                    <?php if($obj_service[0]->ser_type == 1){
-                                            echo '<span class="text-con-in">ตู้เข้า</span>';
-                                        }else if ($obj_service[0]->ser_type == 2){
-                                            echo '<span class="text-con-out">ตู้ออก</span>';
-                                        }else if($obj_service[0]->ser_type == 3){
-                                            echo '<span class="text-con-drop">ตู้ดรอป</span>';
-                                        }       
+                                    <?php if ($obj_service[0]->ser_type == 1) {
+                                        echo '<span class="text-con-in">ตู้เข้า</span>';
+                                    } else if ($obj_service[0]->ser_type == 2) {
+                                        echo '<span class="text-con-out">ตู้ออก</span>';
+                                    } else if ($obj_service[0]->ser_type == 3) {
+                                        echo '<span class="text-con-drop">ตู้ดรอป</span>';
+                                    }
                                     ?>
                                 </p>
                             </div>
@@ -599,31 +599,31 @@
 </div>
 
 <script>
-// get size information when change con_size_id dropdown
-function get_size_information() {
-    let size_id = $('select[name="con_size_id"]').val();
-    $.ajax({
-        url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
-        method: 'POST',
-        dataType: 'JSON',
-        data: {
-            size_id: size_id
-        },
-        success: function(data) {
-            show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]
-                ['size_length_out']);
-        }
-    });
-}
-// show size information when change con_size_id dropdown
-function show_size_information(size_height_out, size_width_out, size_length_out) {
-    console.log(size_height_out);
-    $('input[name="size_height_out"]').val(size_height_out);
-    $('input[name="size_width_out"]').val(size_width_out);
-    $('input[name="size_length_out"]').val(size_length_out);
-}
+    // get size information when change con_size_id dropdown
+    function get_size_information() {
+        let size_id = $('select[name="con_size_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                size_id: size_id
+            },
+            success: function(data) {
+                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]
+                    ['size_length_out']);
+            }
+        });
+    }
+    // show size information when change con_size_id dropdown
+    function show_size_information(size_height_out, size_width_out, size_length_out) {
+        console.log(size_height_out);
+        $('input[name="size_height_out"]').val(size_height_out);
+        $('input[name="size_width_out"]').val(size_width_out);
+        $('input[name="size_length_out"]').val(size_length_out);
+    }
 
-function get_id(ser_id) {
-    $('#ser_id').val(ser_id);
-}
+    function get_id(ser_id) {
+        $('#ser_id').val(ser_id);
+    }
 </script>

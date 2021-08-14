@@ -1,13 +1,13 @@
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
-    <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                เพิ่มบริการ
+                แก้ไขบริการ
             </h2>
         </div>
-    </di>
+    </div>
 
     <form id="add_service_form" action="<?php echo base_url() . '/public/Service_edit/service_update' ?>" method="POST">
         <div class="row">
@@ -562,8 +562,8 @@
         </div>
         <!-- end row -->
         <div class="container text-right">
-            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
-            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก" />
+            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="button" value="ยกเลิก" onclick="window.history.back();">
+            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข">
         </div>
     </form>
     <br>

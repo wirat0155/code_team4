@@ -17,7 +17,7 @@
         display: inline-block;
     }
 
-    .input-image{
+    .input-image {
         height: 0;
         width: 0;
         left: 0;
@@ -27,7 +27,8 @@
     }
 
     #file_name {
-        display: block;/* or inline-block */
+        display: block;
+        /* or inline-block */
         text-overflow: ellipsis;
         word-wrap: break-word;
         overflow: hidden;
@@ -43,7 +44,7 @@
     <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                ข้อมูลพนักงานขับรถ
+                เพิ่มพนักงานขับรถ
             </h2>
         </div>
     </div>
@@ -108,7 +109,7 @@
                         <label for="dri_license_type" class="col-sm-3 col-form-label">ประเภทใบขับขี่</label>
                         <div class="col-sm-9">
                             <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type">
-                                <option selected disabled >เลือกประเภทใบขับขี่</option>
+                                <option selected disabled>เลือกประเภทใบขับขี่</option>
                                 <option value="1">ท.1</option>
                                 <option value="2">ท.2</option>
                                 <option value="3">ท.3</option>
@@ -152,22 +153,22 @@
                         <label for="dri_profile_image" class="col-sm-3 col-form-label">ภาพ</label>
                         <div class="col-sm-9">
                             <!-- <div class="upload-btn-wrapper"> -->
-                                    <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
-                                    <input class="input-image" type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
-                                    <div id='file_name'></div>
+                            <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
+                            <input class="input-image" type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                            <div id='file_name'></div>
                             <!-- </div> -->
                         </div>
                     </div>
-                    
-                    
+
+
                     <!-- end car form left -->
 
 
                 </div>
             </div>
             <div class="float-right">
-                <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
-                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
+                <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="button" value="ยกเลิก" onclick="window.history.back();">
+                <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก">
             </div>
         </form>
 
@@ -248,6 +249,7 @@
             })
         }
     });
+
     function get_image() {
         var dri_profile_image = $('#dri_profile_image').val();
         $('#file_name').html(dri_profile_image.substr(12));

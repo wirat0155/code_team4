@@ -1,36 +1,36 @@
 <style>
-.text-con-in {
-    background-color: #29B3F1;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
+    .text-con-in {
+        background-color: #29B3F1;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
 
-.text-con-out {
-    background-color: #44BB55;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
+    .text-con-out {
+        background-color: #44BB55;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
 
-.text-con-drop {
-    background-color: #F5D432;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
+    .text-con-drop {
+        background-color: #F5D432;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        padding: 5px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
 </style>
 <div class="container px-6 mx-auto grid">
 
@@ -130,24 +130,24 @@
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php for ($i = 0; $i < count($arr_service); $i++) { ?>
-                <tr class="text-gray-700 dark:text-gray-400">
+                    <tr class="text-gray-700 dark:text-gray-400">
 
-                    <!-- หมายเลขตู้ -->
-                    <td class="px-4 py-3" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <div class="flex items-center text-sm">
-                            <?php echo $arr_service[$i]->con_number; ?>
-                        </div>
-                    </td>
+                        <!-- หมายเลขตู้ -->
+                        <td class="px-4 py-3" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <div class="flex items-center text-sm">
+                                <?php echo $arr_service[$i]->con_number; ?>
+                            </div>
+                        </td>
 
-                    <!-- สถานะตู้ -->
-                    <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <?php echo $arr_service[$i]->stac_name; ?>
-                    </td>
+                        <!-- สถานะตู้ -->
+                        <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <?php echo $arr_service[$i]->stac_name; ?>
+                        </td>
 
-                    <!-- ประเภท -->
-                    <td class="px-4 py-3 text-sm text-center" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <!-- แสดงชื่อประเภท ตามข้อมูลที่ได้รับ -->
-                        <?php
+                        <!-- ประเภท -->
+                        <td class="px-4 py-3 text-sm text-center" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <!-- แสดงชื่อประเภท ตามข้อมูลที่ได้รับ -->
+                            <?php
                             if ($arr_service[$i]->ser_type == '1') {
                                 echo '<span class="text-con-in">ตู้เข้า</span>';
                             } else if ($arr_service[$i]->ser_type == '2') {
@@ -156,43 +156,43 @@
                                 echo '<span class="text-con-drop">ตู้ดรอป</span>';
                             }
                             ?>
-                    </td>
+                        </td>
 
-                    <!-- ประเภทตู้ -->
-                    <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <?php echo $arr_service[$i]->cont_name ?>
-                    </td>
+                        <!-- ประเภทตู้ -->
+                        <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <?php echo $arr_service[$i]->cont_name ?>
+                        </td>
 
-                    <!-- Cut-off เวลาออก-->
-                    <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <p id="date">
-                            <?php echo date_thai($arr_service[$i]->ser_departure_date) ?>
-                        </p>
-                    </td>
+                        <!-- Cut-off เวลาออก-->
+                        <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <p id="date">
+                                <?php echo date_thai($arr_service[$i]->ser_departure_date) ?>
+                            </p>
+                        </td>
 
-                    <!-- เอเย่นต์ -->
-                    <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <?php echo $arr_service[$i]->agn_company_name ?>
-                    </td>
+                        <!-- เอเย่นต์ -->
+                        <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <?php echo $arr_service[$i]->agn_company_name ?>
+                        </td>
 
-                    <!-- ลูกค้า -->
-                    <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                        <?php echo $arr_service[$i]->cus_company_name ?>
-                    </td>
+                        <!-- ลูกค้า -->
+                        <td class="px-4 py-3 text-sm" onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                            <?php echo $arr_service[$i]->cus_company_name ?>
+                        </td>
 
-                    <!-- ดำเนินการ -->
-                    <td class="px-4 py-3 text-sm text-center">
-                        <!-- ปุ่มคิดค่าบริการ -->
-                        <a href="" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></a>
-                        <!-- ปุ่มแก้ไข -->
-                        <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                        <!-- ปุ่มลบ -->
-                        <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_service[$i]->ser_id ?>)">
-                            <i class="bi bi-trash"></i>
-                        </button>
+                        <!-- ดำเนินการ -->
+                        <td class="px-4 py-3 text-sm text-center">
+                            <!-- ปุ่มคิดค่าบริการ -->
+                            <a href="" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></a>
+                            <!-- ปุ่มแก้ไข -->
+                            <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <!-- ปุ่มลบ -->
+                            <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_service[$i]->ser_id ?>)">
+                                <i class="bi bi-trash"></i>
+                            </button>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -225,27 +225,27 @@
     </div>
 </div>
 <script>
-$(document).ready(function() {
-    $('.table').DataTable({
-        "oLanguage": {
-            "sLengthMenu": "แสดง _MENU_ รายการ",
-            "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-            "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
-            "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
-            "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
-            "sSearch": "ค้นหา :"
-        }
+    $(document).ready(function() {
+        $('.table').DataTable({
+            "oLanguage": {
+                "sLengthMenu": "แสดง _MENU_ รายการ",
+                "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
+                "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
+                "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
+                "sSearch": "ค้นหา :"
+            }
+        });
+        $("#DataTables_Table_0_filter").append(
+            "<a href='<?php echo base_url() . '/public/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
+        );
     });
-    $("#DataTables_Table_0_filter").append(
-        "<a href='<?php echo base_url() . '/public/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
-    );
-});
 
-function get_id(ser_id) {
-    $('#ser_id').val(ser_id);
-}
+    function get_id(ser_id) {
+        $('#ser_id').val(ser_id);
+    }
 
-function service_detail(ser_id) {
-    window.location = '<?php echo base_url('') . '/public/Service_show/service_detail/' ?>' + ser_id;
-}
+    function service_detail(ser_id) {
+        window.location = '<?php echo base_url('') . '/public/Service_show/service_detail/' ?>' + ser_id;
+    }
 </script>

@@ -63,16 +63,15 @@
 
     <!-- หัวข้อ -->
     <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
+        <div class="items-center container">
+            <h2 class=" text-2xl font-semibold float-left">
                 ข้อมูลพนักงานขับรถ
             </h2>
-        </div>
-
-        <div class="float-right">
-            <a href="<?php echo base_url() . '/public/Driver_edit/driver_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning p-2 ">แก้ไขพนักงานขับรถ</a>
-            <button type="button" class="btn btn-danger p-2 " data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[0]->dri_id ?>)">ลบพนักงานขับรถ
-            </button>
+            <div class="float-right">
+                <a href="<?php echo base_url() . '/public/Driver_edit/driver_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
+                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[0]->dri_id ?>)">ลบข้อมูล
+                </button>
+            </div>
         </div>
     </div>
 
@@ -196,28 +195,28 @@
 </div>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบเอเย่นต์</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="<?php echo base_url() . '/public/Driver_show/driver_delete' ?>" method="post">
-                    <div class="modal-body float-center">
-                        <!-- เก็บ Driver Id -->
-                        <input name="dri_id" id="dri_id" type="hidden">
-                        <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                        <input type="submit" class="btn btn-danger" value="ลบ">
-                    </div>
-                </form>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบเอเย่นต์</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form action="<?php echo base_url() . '/public/Driver_show/driver_delete' ?>" method="post">
+                <div class="modal-body float-center">
+                    <!-- เก็บ Driver Id -->
+                    <input name="dri_id" id="dri_id" type="hidden">
+                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <input type="submit" class="btn btn-danger" value="ลบ">
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 <script>
     function get_image() {
@@ -230,5 +229,4 @@
     function get_id(dri_id) {
         $('#dri_id').val(dri_id);
     }
-
 </script>

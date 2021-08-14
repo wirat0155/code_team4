@@ -17,7 +17,7 @@
         display: inline-block;
     }
 
-    .input-image{
+    .input-image {
         height: 0;
         width: 0;
         left: 0;
@@ -27,7 +27,8 @@
     }
 
     #file_name {
-        display: block;/* or inline-block */
+        display: block;
+        /* or inline-block */
         text-overflow: ellipsis;
         word-wrap: break-word;
         overflow: hidden;
@@ -43,7 +44,7 @@
     <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                ข้อมูลพนักงานขับรถ
+                แก้ไขพนักงานขับรถ
             </h2>
         </div>
     </div>
@@ -51,8 +52,8 @@
 
     <div class="container-sm mb-8">
 
-        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_edit/driver_update' ?>"enctype="multipart/form-data" method="POST">
-        <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>"> 
+        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_edit/driver_update' ?>" enctype="multipart/form-data" method="POST">
+            <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">
             <!-- เพิ่มพนักงาน -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
@@ -106,24 +107,24 @@
                     <div class="px-3 form-group row">
                         <label for="dri_license_type" class="col-sm-3 col-form-label">ประเภทใบขับขี่</label>
                         <div class="col-sm-9">
-                        <?php    
-                        $license1=' ';
-                        $license2=' ';
-                        $license3=' ';
-                        $license4=' ';
-                        if($arr_driver[0]->dri_license_type == 1){
-                            $license1 = 'selected';
-                        }else if($arr_driver[0]->dri_license_type == 2){
-                            $license2 = 'selected';
-                        }else if($arr_driver[0]->dri_license_type == 3){
-                            $license3 = 'selected';
-                        }else if($arr_driver[0]->dri_license_type == 4){
-                            $license4 = 'selected';
-                        }
-                        ?>
+                            <?php
+                            $license1 = ' ';
+                            $license2 = ' ';
+                            $license3 = ' ';
+                            $license4 = ' ';
+                            if ($arr_driver[0]->dri_license_type == 1) {
+                                $license1 = 'selected';
+                            } else if ($arr_driver[0]->dri_license_type == 2) {
+                                $license2 = 'selected';
+                            } else if ($arr_driver[0]->dri_license_type == 3) {
+                                $license3 = 'selected';
+                            } else if ($arr_driver[0]->dri_license_type == 4) {
+                                $license4 = 'selected';
+                            }
+                            ?>
 
                             <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_license_type" name="dri_license_type" value="<?php echo $arr_driver[0]->dri_license_type ?>">
-                                <option selected disabled >เลือกประเภทใบขับขี่</option>
+                                <option selected disabled>เลือกประเภทใบขับขี่</option>
                                 <option value="1" <?php echo $license1 ?>>ท.1</option>
                                 <option value="2" <?php echo $license2 ?>>ท.2</option>
                                 <option value="3" <?php echo $license3 ?>>ท.3</option>
@@ -136,21 +137,21 @@
                     <div class="px-3 form-group row">
                         <label for="dri_status" class="col-sm-3 col-form-label">สถานะของขับรถ</label>
                         <div class="col-sm-9">
-                        <?php    
-                        $status1=' ';
-                        $status2=' ';
-                        $status3=' ';
-                        $status4=' ';
-                        if($arr_driver[0]->dri_status == 1){
-                            $status1 = 'selected';
-                        }else if($arr_driver[0]->dri_status == 2){
-                            $status2 = 'selected';
-                        }else if($arr_driver[0]->dri_status == 3){
-                            $status3 = 'selected';
-                        }else if($arr_driver[0]->dri_status == 4){
-                            $status4 = 'selected';
-                        }
-                        ?>  
+                            <?php
+                            $status1 = ' ';
+                            $status2 = ' ';
+                            $status3 = ' ';
+                            $status4 = ' ';
+                            if ($arr_driver[0]->dri_status == 1) {
+                                $status1 = 'selected';
+                            } else if ($arr_driver[0]->dri_status == 2) {
+                                $status2 = 'selected';
+                            } else if ($arr_driver[0]->dri_status == 3) {
+                                $status3 = 'selected';
+                            } else if ($arr_driver[0]->dri_status == 4) {
+                                $status4 = 'selected';
+                            }
+                            ?>
                             <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_status" name="dri_status" value="<?php echo $arr_driver[0]->dri_status ?>">
                                 <option selected disabled>เลือกสถานะ</option>
                                 <option value="1" <?php echo  $status1 ?>>พร้อมทำงาน</option>
@@ -182,10 +183,10 @@
                         <label for="dri_date_end" class="col-sm-3 col-form-label">ภาพ</label>
                         <div class="col-sm-9">
                             <!-- <div class="upload-btn-wrapper"> -->
-                                    <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
-                                    <input class="input-image" type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
-                                    <input type="text" id='old_dri_profile_image' name='old_dri_profile_image' value='<?php echo $arr_driver[0]->dri_profile_image ?>' hidden>
-                                    <div id='file_name'><?php echo $arr_driver[0]->dri_profile_image ?></div>
+                            <div class="upload-file btn" onclick="$('#dri_profile_image').click();">เลือกไฟล์</div><br>
+                            <input class="input-image" type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image()" accept="image/jpg,image/jpeg,image/png">
+                            <input type="text" id='old_dri_profile_image' name='old_dri_profile_image' value='<?php echo $arr_driver[0]->dri_profile_image ?>' hidden>
+                            <div id='file_name'><?php echo $arr_driver[0]->dri_profile_image ?></div>
                             <!-- </div> -->
                         </div>
                     </div>
@@ -195,8 +196,8 @@
                 </div>
             </div>
             <div class="float-right">
-                <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
-                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
+                <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="button" value="ยกเลิก" onclick="window.history.back();">
+                <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข">
             </div>
         </form>
 
@@ -270,6 +271,7 @@
             })
         }
     });
+
     function get_image() {
         var dri_profile_image = $('#dri_profile_image').val();
         $('#file_name').html(dri_profile_image.substr(12));

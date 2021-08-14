@@ -25,9 +25,8 @@ class Driver_input extends Cdms_controller
     */
     public function driver_input()
     {
-        $data = [];
-        $this->output('v_driver_input', $data);
-        
+        $_SESSION['menu'] = 'Driver_show';
+        $this->output('v_driver_input');
     }
 
     /*
@@ -39,8 +38,7 @@ class Driver_input extends Cdms_controller
     */
     public function driver_insert()
     {
-        $M_dri = new M_cdms_driver();
-        $arr_driver = $M_dri->get_all();
+        $m_dri = new M_cdms_driver();
 
         // เก็บข้อมูลพนักงานขับรถ
         $dri_name = $this->request->getPost('dri_name');
@@ -54,18 +52,18 @@ class Driver_input extends Cdms_controller
         $dri_date_end = $this->request->getPost('dri_date_end');
         $dri_car_id = $this->request->getPost('dri_car_id');
 
-         // upload image
-         $file = $this->request->getFile('dri_profile_image');
-         if($file->isValid() && ! $file->hasMoved()){
-             $imageName = $file->getRandomName();
-             $file->move('./dri_profile_image', $imageName);
-         }
- 
-         $dri_profile_image = $imageName;
+        // upload image
+        $file = $this->request->getFile('dri_profile_image');
+        if ($file->isValid() && !$file->hasMoved()) {
+            $imageName = $file->getRandomName();
+            $file->move('./dri_profile_image', $imageName);
+        }
+
+        $dri_profile_image = $imageName;
 
         // เพิ่มข้อมูลพนักงาน
-        $M_dri->insert($dri_name, $dri_tel, $dri_card_number, $dri_license, $dri_license_type, $dri_profile_image, $dri_status, $dri_date_start, $dri_date_end, $dri_car_id);
-        
+        $m_dri->insert($dri_name, $dri_tel, $dri_card_number, $dri_license, $dri_license_type, $dri_profile_image, $dri_status, $dri_date_start, $dri_date_end, $dri_car_id);
+
         return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
     }
 }

@@ -31,6 +31,7 @@ class Service_edit extends Cdms_controller
     */
     public function service_edit($ser_id)
     {
+        $_SESSION['menu'] = 'Service_show';
         // size name
         $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_all();

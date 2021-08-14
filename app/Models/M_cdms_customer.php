@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Da_cdms_customer;
 
 /*
@@ -10,7 +12,8 @@ use App\Models\Da_cdms_customer;
     * @Update Date 2564-08-02
 */
 
-class M_cdms_customer extends Da_cdms_customer {
+class M_cdms_customer extends Da_cdms_customer
+{
     /*
         * get_all
         * ดึงข้อมูล ชื่อบริษัท สาขา ผู้รับผิดชอบ จำนวนตู้ที่กำลังใช้ เบอร์โทรศัพท์ สถานะ และอีเมล
@@ -25,23 +28,24 @@ class M_cdms_customer extends Da_cdms_customer {
         $sql = "SELECT * FROM $this->table
                 WHERE cus_status = 1";
         return $this->db->query($sql)->getResult();
-    }   
-    public function get_by_id($cus_id){
+    }
+    public function get_by_id($cus_id)
+    {
         $sql = "SELECT * FROM $this->table
             
                 WHERE cus_id='$cus_id'";
         return $this->db->query($sql)->getResult();
     }
 
-    public function get_by_name($cus_company_name, $cus_branch){
-        if($cus_branch == ''){
+    public function get_by_name($cus_company_name, $cus_branch)
+    {
+        if ($cus_branch == '') {
             $sql = "SELECT * FROM $this->table
                 WHERE cus_company_name='$cus_company_name' AND cus_branch IS NULL";
-        }else{
+        } else {
             $sql = "SELECT * FROM $this->table
                 WHERE cus_company_name='$cus_company_name' AND cus_branch='$cus_branch'";
         }
         return $this->db->query($sql)->getResult();
     }
 }
-

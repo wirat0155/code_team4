@@ -33,6 +33,7 @@ class Service_input extends Cdms_controller
     */
     public function service_input()
     {
+        $_SESSION['menu'] = 'Service_show';
         // size name
         $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_all();
