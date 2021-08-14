@@ -10,10 +10,11 @@
 
     <!-- หัวข้อ -->
     <div class="flex items-center justify-between p-3 pl-4 my-8 bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="items-center container">
-            <h2 class=" text-2xl font-semibold float-left">
-                ข้อมูลลูกค้า
-            </h2>
+            <div class="items-center">
+                <h2 class=" text-2xl font-semibold ">
+                    ข้อมูลลูกค้า
+                </h2>
+            </div>
             <div class="float-right">
                 <!-- ปุ่มแก้ไข -->
                 <a href="<?php echo base_url() . '/public/Customer_edit/customer_edit/' . $arr_customer[0]->cus_id ?>"
@@ -23,7 +24,6 @@
                     onclick="get_id(<?php echo $arr_customer[0]->cus_id ?>)">ลบลูกค้า
                 </button>
             </div>
-        </div>
     </div>
 
 
