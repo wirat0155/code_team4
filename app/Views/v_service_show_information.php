@@ -1,11 +1,52 @@
+<style>
+.text-con-in {
+    background-color: #29B3F1;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.text-con-out {
+    background-color: #44BB55;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.text-con-drop {
+    background-color: #F5D432;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+</style>
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
     <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
+        <div class="items-center container">
+            <h2 class=" text-2xl font-semibold float-left">
                 ข้อมูลบริการ
             </h2>
+            <div class="float-right">
+                <!-- ปุ่มแก้ไข -->
+                <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
+                <!-- ปุ่มลบ -->
+                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $obj_service[0]->ser_id ?>)">ลบบริการ
+                </button>
+            </div>
         </div>
     </di>
 
@@ -193,11 +234,11 @@
                             <div class="col-12 col-sm-8">
                                 <p class="block w-full mt-3 text-sm">
                                     <?php if($obj_service[0]->ser_type == 1){
-                                            echo "ตู้เข้า";
+                                            echo '<span class="text-con-in">ตู้เข้า</span>';
                                         }else if ($obj_service[0]->ser_type == 2){
-                                            echo "ตู้ออก";
+                                            echo '<span class="text-con-out">ตู้ออก</span>';
                                         }else if($obj_service[0]->ser_type == 3){
-                                            echo "ตู้ดรอป";
+                                            echo '<span class="text-con-drop">ตู้ดรอป</span>';
                                         }       
                                     ?>
                                 </p>
@@ -531,6 +572,32 @@
     <!-- end row -->
 </div>
 
+<!-- Modal ยืนยันการลบ -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบบริการ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="<?php echo base_url() . '/public/Service_show/service_delete' ?>" method="post">
+                <div class="modal-body float-center">
+                    <!-- เก็บ Service Id -->
+                    <input name="ser_id" id="ser_id" type="hidden">
+                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                    <input type="submit" class="btn btn-danger" value="ลบ">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
 // get size information when change con_size_id dropdown
 function get_size_information() {
@@ -554,5 +621,9 @@ function show_size_information(size_height_out, size_width_out, size_length_out)
     $('input[name="size_height_out"]').val(size_height_out);
     $('input[name="size_width_out"]').val(size_width_out);
     $('input[name="size_length_out"]').val(size_length_out);
+}
+
+function get_id(ser_id) {
+    $('#ser_id').val(ser_id);
 }
 </script>

@@ -271,7 +271,6 @@
                                             <?php echo $arr_car[$i]->car_code ?></option>
                                         <?php } ?>
                                     </select>
-                                    <?php print_r($arr_car) ?>
                                 </div>
                             </div>
 
