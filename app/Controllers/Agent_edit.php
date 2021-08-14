@@ -26,6 +26,7 @@ class Agent_edit extends Cdms_controller
 
     public function agent_edit($agn_id)
     {
+        $_SESSION['menu'] = 'Agent_show';
         $m_agn = new M_cdms_agent;
         $data['arr_agent'] = $m_agn->get_by_id($agn_id);
         $this->output('v_agent_edit', $data);

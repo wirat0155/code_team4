@@ -1,16 +1,16 @@
-<div class="container mx-auto grid mt-3">
+<div class="container px-6 mx-auto grid">
     <!-- หัวข้อ -->
     <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
+        <div class="items-center container">
+            <h2 class=" text-2xl font-semibold float-left">
                 ข้อมูลตู้คอนเทนเนอร์
             </h2>
-        </div>
 
-        <!-- ปุ่มแก้ไข/ลบ -->
-        <div class="float-right">
-            <a href="<?php echo base_url() . '/public/Container_edit/container_edit/' . $arr_container[0]->con_id ?>" class="btn btn-warning p-2 ">แก้ไขข้อมูล</a>
-            <button type="button" class="btn btn-danger p-2 " data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[0]->con_id ?>)">ลบตู้ </button>
+            <!-- ปุ่มแก้ไข/ลบ -->
+            <div class="float-right">
+                <a href="<?php echo base_url() . '/public/Container_edit/container_edit/' . $arr_container[0]->con_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
+                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[0]->con_id ?>)">ลบข้อมูล </button>
+            </div>
         </div>
     </div>
 
@@ -363,15 +363,7 @@
             <!-- end agent form -->
         </div>
         <!-- end row -->
-
-
-        <!-- <div class="container text-right">
-            <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="reset" value="ยกเลิก" />
-            <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข" />
-        </div> -->
     </form>
-    <br>
-    <br>
 </div>
 
 <!-- Modal ยืนยันการลบ -->

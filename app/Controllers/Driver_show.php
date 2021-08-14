@@ -55,6 +55,7 @@ class Driver_show extends Cdms_controller
 
     public function driver_detail($dri_id)
     {
+        $_SESSION['menu'] = 'Driver_show';
         $m_dri = new M_cdms_driver();
         $data['arr_driver'] = $m_dri->get_by_id($dri_id);
         $this->output('v_driver_show_information', $data);

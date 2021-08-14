@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Da_cdms_container_type;
 
 /*
@@ -9,7 +11,9 @@ use App\Models\Da_cdms_container_type;
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
 */
-class M_cdms_container_type extends Da_cdms_container_type {
+
+class M_cdms_container_type extends Da_cdms_container_type
+{
     // M get_all get_by_id
 
     /*
@@ -21,12 +25,14 @@ class M_cdms_container_type extends Da_cdms_container_type {
         * @Create Date 2564-08-06
         * @Update Date 2564-08-06
     */
-    public function get_all() {
+    public function get_all()
+    {
         $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1";
         return $this->db->query($sql)->getResult();
     }
 
-    public function get_by_id($cont_id){
+    public function get_by_id($cont_id)
+    {
         $sql = "SELECT * FROM $this->table
 
                 WHERE cont_id='$cont_id'";

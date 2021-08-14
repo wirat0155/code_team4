@@ -64,8 +64,9 @@ class Agent_show extends Cdms_controller
     */
     public function agent_detail($agn_id)
     {
+        $_SESSION['menu'] = 'Agent_show';
         $m_agn = new M_cdms_agent;
         $data['arr_agent'] = $m_agn->get_by_id($agn_id);
-        $this->output('v_agent_detail', $data);
+        $this->output('v_agent_show_information', $data);
     }
 }

@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_province;
 use App\Models\M_cdms_car_type;
@@ -12,22 +15,23 @@ class Car_show extends Cdms_controller
         $data['arr_car'] = $m_car->get_all();
         $this->output('v_car_showlist', $data);
     }
-    public function car_delete() {
+    public function car_delete()
+    {
         $m_car = new M_cdms_car();
         $m_car->delete($this->request->getPost('car_id'));
         return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
     }
-    public function car_detail($car_id) {
+    public function car_detail($car_id)
+    {
         $m_car = new M_cdms_car();
         $data['arr_car'] = $m_car->get_by_id($car_id);
-        
+
         $m_car_prov = new M_cdms_province();
         $data['arr_car_prov'] = $m_car_prov->get_all();
 
         $m_cart = new M_cdms_car_type();
         $data['arr_car_type'] = $m_cart->get_all();
 
-        $this->output('v_car_detail', $data);
+        $this->output('v_car_show_information', $data);
     }
-
 }

@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Da_cdms_car;
 
 /*
@@ -9,7 +11,9 @@ use App\Models\Da_cdms_car;
 * @Create Date 2564-07-30
 * @Update Date
 */
-class M_cdms_car extends Da_cdms_car {
+
+class M_cdms_car extends Da_cdms_car
+{
     /*
     * get_all
     * ดึงข้อมูลรถทั้งหมด
@@ -30,13 +34,13 @@ class M_cdms_car extends Da_cdms_car {
         ON car_cart_id = cart_id
         WHERE NOT car_status = 4";
         return $this->db->query($sql)->getResult();
-    }  
+    }
 
-    public function get_by_id($car_id){
+    public function get_by_id($car_id)
+    {
         $sql = "SELECT * FROM $this->table
 
                 WHERE car_id='$car_id'";
         return $this->db->query($sql)->getResult();
     }
-
 }

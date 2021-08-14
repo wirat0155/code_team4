@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Models;
+
 use App\Models\Da_cdms_container;
 
 /*
@@ -9,8 +11,10 @@ use App\Models\Da_cdms_container;
 * @Create Date 2564-07-29
 * @Update Date 2564-08-07
 */
-class M_cdms_container extends Da_cdms_container {
-    
+
+class M_cdms_container extends Da_cdms_container
+{
+
     /*
     * get_all
     * ดึงข้อมูลตู้คอนเทนเนอร์ทั้งหมด
@@ -35,7 +39,8 @@ class M_cdms_container extends Da_cdms_container {
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function is_con_number_exist($con_number = NULL) {
+    public function is_con_number_exist($con_number = NULL)
+    {
         $sql = "SELECT con_id, con_number FROM $this->table WHERE con_number = '$con_number'";
         return $this->db->query($sql)->getResult();
     }
@@ -49,7 +54,8 @@ class M_cdms_container extends Da_cdms_container {
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function get_by_con_number($con_number = NULL) {
+    public function get_by_con_number($con_number = NULL)
+    {
         $sql = "SELECT * FROM $this->table WHERE con_number = '$con_number'";
         return $this->db->query($sql)->getResult();
     }
@@ -63,7 +69,8 @@ class M_cdms_container extends Da_cdms_container {
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function get_by_id($con_id = NULL) {
+    public function get_by_id($con_id = NULL)
+    {
         $sql = "SELECT * FROM $this->table WHERE con_id = '$con_id'";
         return $this->db->query($sql)->getResult();
     }

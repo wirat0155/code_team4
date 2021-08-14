@@ -48,8 +48,9 @@ class Customer_show extends Cdms_controller
     }
     public function customer_detail($cus_id)
     {
+        $_SESSION['menu'] = 'Customer_show';
         $m_cus = new M_cdms_customer;
         $data['arr_customer'] = $m_cus->get_by_id($cus_id);
-        $this->output('v_customer_show_infromation', $data);
+        $this->output('v_customer_show_information', $data);
     }
 }

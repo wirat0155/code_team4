@@ -60,6 +60,7 @@ class Service_show extends Cdms_controller
     */
     public function service_detail($ser_id)
     {
+        $_SESSION['menu'] = 'Service_show';
         // get service
         $m_ser = new M_cdms_service();
         $data['obj_service'] = $m_ser->get_by_id($ser_id);

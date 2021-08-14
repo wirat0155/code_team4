@@ -21,31 +21,31 @@
                     <th class="px-4 py-3">ดำเนินการ</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" >
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 <?php
                 for ($i = 0; $i < count($arr_agent); $i++) {
                 ?>
-                    <tr class="text-gray-700 dark:text-gray-400" >
-                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
+                    <tr class="text-gray-700 dark:text-gray-400">
+                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                             <?php echo $arr_agent[$i]->agn_company_name ?></p>
                         </td>
 
-                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
+                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                             <?php echo $arr_agent[$i]->agn_firstname . " " . $arr_agent[$i]->agn_lastname ?>
                         </td>
 
-                        <td class="px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
+                        <td class="px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                             <?php
                             $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
                             echo ($count_container != 0) ? $count_container : '0';
                             ?>
                         </td>
 
-                        <td class="phone px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
+                        <td class="phone px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                             <?php echo tel_format($arr_agent[$i]->agn_tel) ?>
                         </td>
 
-                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id?>)">
+                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                             <?php echo $arr_agent[$i]->agn_email ?>
                         </td>
 
@@ -110,6 +110,6 @@
     }
 
     function agent_detail(agn_id) {
-    window.location = '<?php echo base_url('') . '/public/Agent_show/agent_detail/' ?>' + agn_id;
-}
+        window.location = '<?php echo base_url('') . '/public/Agent_show/agent_detail/' ?>' + agn_id;
+    }
 </script>

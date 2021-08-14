@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_size;
@@ -12,6 +15,7 @@ use App\Models\M_cdms_status_container;
 * @Create Date 2564-08-06
 * @Update Date 2564-08-07
 */
+
 class Container_edit extends Cdms_controller
 {
     /*
@@ -25,7 +29,7 @@ class Container_edit extends Cdms_controller
     */
     public function container_edit($con_id = NULL)
     {
-        $data = [];
+        $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
         }
@@ -38,7 +42,7 @@ class Container_edit extends Cdms_controller
         $m_agn = new M_cdms_agent();
         $data['arr_agent'] = $m_agn->get_by_id($data['arr_container'][0]->con_agn_id);
         // print_r($data['arr_agent']);
-        
+
         // get dropdown
         // container size
         $m_size = new M_cdms_size();
@@ -68,7 +72,8 @@ class Container_edit extends Cdms_controller
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
     */
-    public function container_update() {
+    public function container_update()
+    {
         // container information
         $con_id = $this->request->getPost('con_id');
         $con_number = $this->request->getPost('con_number');
@@ -77,17 +82,17 @@ class Container_edit extends Cdms_controller
         $con_tare_weight = $this->request->getPost('con_tare_weight');
         $con_net_weight = $this->request->getPost('con_net_weight');
         $con_cube = $this->request->getPost('con_cube');
-        
+
         // other information
         $con_size_id = $this->request->getPost('con_size_id');
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
-        
+
         // upload image
         $con_image = $this->request->getPost('con_image');
         // echo "hi";
         // print_r($this->request->getPost());
-        
+
         $m_con = new M_cdms_container();
 
         // test data for statement coverage test
@@ -129,7 +134,7 @@ class Container_edit extends Cdms_controller
             // old agent
             // update agent
             $con_agn_id = $this->request->getPost('agn_id');
-            $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax,$agn_email);
+            $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         }
 
         // update container

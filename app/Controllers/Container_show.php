@@ -30,8 +30,8 @@ class Container_show extends Cdms_controller
     public function container_show_ajax()
     {
         $_SESSION['menu'] = 'Container_show';
-        $M_con = new M_cdms_container();
-        $data['arr_container'] = $M_con->get_all();
+        $m_con = new M_cdms_container();
+        $data['arr_container'] = $m_con->get_all();
         $this->output('v_container_showlist', $data);
     }
 
@@ -78,9 +78,9 @@ class Container_show extends Cdms_controller
     */
     public function container_delete()
     {
-        $M_con = new M_cdms_container();
+        $m_con = new M_cdms_container();
         $con_id = $this->request->getPost('con_id');
-        $M_con->delete($con_id);
+        $m_con->delete($con_id);
         return $this->response->redirect(base_url('/public/Container_show/container_show_ajax'));
     }
 
@@ -95,9 +95,9 @@ class Container_show extends Cdms_controller
     */
     public function check_container_number()
     {
-        $M_con = new M_cdms_container();
+        $m_con = new M_cdms_container();
         $con_number = $this->request->getPost('con_number');
-        $arr_container = $M_con->is_con_number_exist($con_number);
+        $arr_container = $m_con->is_con_number_exist($con_number);
         if (count($arr_container) == 1) {
             return json_encode('found');
         } else {

@@ -1,28 +1,26 @@
     <style>
-    @media (min-width: 1200px) {
-        .container-sm {
-            max-width: 900px;
+        @media (min-width: 1200px) {
+            .container-sm {
+                max-width: 900px;
+            }
         }
-    }
     </style>
 
     <div class="container px-6 mx-auto grid">
-    <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
+        <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
         <!-- หัวข้อ -->
         <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-            <div class="flex items-center">
-                <h2 class=" text-2xl font-semibold">
+            <div class="items-center container">
+                <h2 class=" text-2xl font-semibold float-left">
                     ข้อมูลเอเย่นต์
                 </h2>
+                <div class="float-right">
+                    <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขข้อมูล</a>
+                    <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[0]->agn_id ?>)">ลบข้อมูล
+                    </button>
+                </div>
             </div>
-
-            <div class="float-right">
-                <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning p-2 ">แก้ไขเอเย่นต์</a>
-                <button type="button" class="btn btn-danger p-2 " data-toggle="modal" data-target="#exampleModalCenter"  onclick="get_id(<?php echo $arr_agent[0]->agn_id ?>)">ลบเอเย่นต์
-                </button>
         </div>
-        </div>
-
 
         <div class="container-sm mb-8 ">
 
@@ -50,16 +48,17 @@
                         <div class="px-3 form-group row">
                             <label for="cus_tax" class="col-sm-3 col-form-label font-weight-bold">หมายเลขผู้เสียภาษี</label>
                             <div class="col-sm-9">
-                                <p id="agn_tax" name="agn_tax" ><?php echo $arr_agent[0]->agn_tax ?></p>
+                                <p id="agn_tax" name="agn_tax"><?php echo $arr_agent[0]->agn_tax ?></p>
                             </div>
                         </div>
                         <br>
 
                         <!-- ผู้รับผิดชอบ -->
                         <div class="px-3 mt-3 form-group row">
-                        <label for="cus_tax" class="col-sm-3 col-form-label font-weight-bold">ผู้รับผิดชอบ</label>
+                            <label for="cus_tax" class="col-sm-3 col-form-label font-weight-bold">ผู้รับผิดชอบ</label>
                             <div class="col-sm-9">
-                                <p><?php echo $arr_agent[0]->agn_firstname." ".$arr_agent[0]->agn_lastname ?><p>
+                                <p><?php echo $arr_agent[0]->agn_firstname . " " . $arr_agent[0]->agn_lastname ?>
+                                <p>
                             </div>
                         </div>
                         <br>
@@ -68,12 +67,12 @@
                         <div class="px-3 form-group row">
                             <label for="cus_tel" class="col-sm-3 col-form-label font-weight-bold">ติดต่อ</label>
                             <div class="col-sm-9">
-                                <p id="agn_tel" name="agn_tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10"><?php echo substr($arr_agent[0]->agn_tel,0,3).'-'.substr($arr_agent[0]->agn_tel,3,3).'-'.substr($arr_agent[0]->agn_tel,6) ?></p>
+                                <p id="agn_tel" name="agn_tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10"><?php echo substr($arr_agent[0]->agn_tel, 0, 3) . '-' . substr($arr_agent[0]->agn_tel, 3, 3) . '-' . substr($arr_agent[0]->agn_tel, 6) ?></p>
                                 <p id="agn_email" name="agn_email"><?php echo $arr_agent[0]->agn_email ?></p>
                             </div>
                         </div>
                     </div>
-            
+
             </form>
         </div>
     </div>
@@ -104,8 +103,7 @@
     </div>
 
     <script>
-    function get_id(agn_id) {
+        function get_id(agn_id) {
             $('#agn_id').val(agn_id);
         }
-
     </script>

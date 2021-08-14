@@ -1,4 +1,7 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
+
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_size;
@@ -12,6 +15,7 @@ use App\Models\M_cdms_status_container;
 * @Create Date 2564-08-06
 * @Update Date 2564-08-07
 */
+
 class Container_input extends Cdms_controller
 {
     /*
@@ -25,7 +29,7 @@ class Container_input extends Cdms_controller
     */
     public function container_input()
     {
-        $data = [];
+        $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
         }
@@ -58,22 +62,23 @@ class Container_input extends Cdms_controller
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
     */
-    public function container_insert() {
+    public function container_insert()
+    {
         // container information
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');
         $con_tare_weight = $this->request->getPost('con_tare_weight');
         $con_net_weight = $this->request->getPost('con_net_weight');
         $con_cube = $this->request->getPost('con_cube');
-        
+
         // other information
         $con_size_id = $this->request->getPost('con_size_id');
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
-        
+
         // upload image
         $con_image = $this->request->getPost('con_image');
-        
+
         $m_con = new M_cdms_container();
         // check con_number duplicate
 
@@ -92,10 +97,10 @@ class Container_input extends Cdms_controller
             $agn_address = $this->request->getPost('agn_address');
             $agn_tax = $this->request->getPost('agn_tax');
             $agn_email = $this->request->getPost('agn_email');
-            
+
             // load agent model
             $m_agn = new M_cdms_agent();
-            
+
 
             // test data for condition
             // $agn_id = '' then insert
@@ -115,7 +120,7 @@ class Container_input extends Cdms_controller
                 $con_agn_id = $this->request->getPost('agn_id');
                 $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             }
-    
+
 
 
             // insert container

@@ -1,28 +1,27 @@
 <style>
-@media (min-width: 1200px) {
-    .container-sm {
-        max-width: 900px;
+    @media (min-width: 1200px) {
+        .container-sm {
+            max-width: 900px;
+        }
     }
-}
 </style>
 
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
-    <div
-        class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md foagn:outline-none foagn:shadow-outline-purple">
+    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md foagn:outline-none foagn:shadow-outline-purple">
         <div class="flex items-center">
             <h2 class=" text-2xl font-semibold">
-                ข้อมูลเอเย่นต์
+                เพิ่มข้อมูลเอเย่นต์
             </h2>
         </div>
     </div>
 
 
     <div class="container-sm mb-8">
-        
-        <form id="add_agent_form" action="<?php echo base_url(). '/public/Agent_input/agent_insert' ?>" method="post">
-            
+
+        <form id="add_agent_form" action="<?php echo base_url() . '/public/Agent_input/agent_insert' ?>" method="post">
+
             <!-- เพิ่มลูกค้า -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
@@ -68,7 +67,7 @@
                     <div class="px-3 form-group row">
                         <label for="agn_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_firstname" name="agn_firstname" placeholder="ชื่อจริง" >
+                            <input type="text" class="form-control form-input" id="agn_firstname" name="agn_firstname" placeholder="ชื่อจริง">
                         </div>
                     </div>
 
@@ -76,7 +75,7 @@
                     <div class="px-3 form-group row">
                         <label for="agn_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_lastname" name="agn_lastname" placeholder="นามสกุล" >
+                            <input type="text" class="form-control form-input" id="agn_lastname" name="agn_lastname" placeholder="นามสกุล">
                         </div>
                     </div>
 
@@ -98,8 +97,8 @@
                 </div>
             </div>
             <div class="float-right">
-                <input type="reset" onclick="window.history.back();" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-secondary rounded-lg shadow-md right mr-2" value="ยกเลิก">
-                <input type="submit" class="button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg shadow-md right" value="บันทึก">
+                <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="button" value="ยกเลิก" onclick="window.history.back();">
+                <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก">
             </div>
         </form>
     </div>
@@ -116,8 +115,8 @@
                     },
                     agn_tax: {
                         required: true,
-                        minlength:10, 
-                        maxlength:10
+                        minlength: 10,
+                        maxlength: 10
                     },
                     agn_address: {
                         required: true
@@ -128,10 +127,10 @@
                     agn_lastname: {
                         required: true
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: true,
-                        minlength:10, 
-                        maxlength:10
+                        minlength: 10,
+                        maxlength: 10
                     },
                     agn_email: {
                         required: true,
@@ -145,8 +144,8 @@
                     },
                     agn_tax: {
                         required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     agn_address: {
                         required: 'กรุณากรอกที่อยู่'
@@ -157,10 +156,10 @@
                     agn_lastname: {
                         required: 'กรุณากรอกนามสกุล'
                     },
-                    agn_tel:{
+                    agn_tel: {
                         required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        minlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร', 
-                        maxlength:'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
                     },
                     agn_email: {
                         required: 'กรุณากรอกอีเมล',
