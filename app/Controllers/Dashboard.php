@@ -7,8 +7,22 @@ use App\Models\M_cdms_size;
 use App\Models\M_cdms_status_container;
 use App\Models\M_cdms_container_type;
 
+/*
+    * Dashboard
+    * แสดงหน้าจอแดชบอร์ด
+    * @author  Wirat, Klayuth, Natthadanai, Benjapon
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+*/
 class Dashboard extends Cdms_controller
 {
+    /*
+    * dashboard_show
+    * แสดงหน้าจอแดชบอร์ด
+    * @author  Wirat, Klayuth, Natthadanai, Benjapon
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+    */
     public function dashboard_show()
     {
         $_SESSION['menu'] = 'Dashboard';
@@ -34,6 +48,13 @@ class Dashboard extends Cdms_controller
         $this->output('v_dashboard', $data);
     }
 
+    /*
+    * car_type_delete
+    * ลบประเภทรถ
+    * @author  Wirat
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+    */
     public function car_type_delete()
     {
         $cart_id = $this->request->getPost('cart_id');

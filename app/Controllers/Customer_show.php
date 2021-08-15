@@ -21,7 +21,7 @@ class Customer_show extends Cdms_controller
     * @author  Kittipod
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
-*/
+    */
     public function customer_show_ajax()
     {
         $_SESSION['menu'] = 'Customer_show';
