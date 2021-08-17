@@ -89,7 +89,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -101,7 +101,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ทะเบียน</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">ทะเบียน</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -122,7 +122,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ประเภทรถ</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">ประเภทรถ</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -141,7 +141,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">สถานะรถ</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">สถานะรถ</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -163,7 +163,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ชนิดน้ำมัน</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">ชนิดน้ำมัน</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -180,7 +180,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ยี่ห้อ</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">ยี่ห้อ</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -192,7 +192,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">สาขา</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">สาขา</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -204,7 +204,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขโครงรถ</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">หมายเลขโครงรถ</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -216,7 +216,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">ปีที่จดทะเบียน</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">ปีที่จดทะเบียน</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -228,7 +228,7 @@
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">น้ำหนักรถ (ตัน)</span>
+                                    <b><span class="text-gray-700 dark:text-gray-400">น้ำหนักรถ (ตัน)</span></b>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
