@@ -15,7 +15,7 @@
                     ข้อมูลเอเย่นต์
                 </h2>
                 <div class="float-right">
-                    <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขข้อมูล</a>
+                    <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขเอเย่นต์</a>
                     <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[0]->agn_id ?>)">ลบข้อมูล
                     </button>
                 </div>
@@ -67,7 +67,7 @@
                         <div class="px-3 form-group row">
                             <label for="cus_tel" class="col-sm-3 col-form-label font-weight-bold">ติดต่อ</label>
                             <div class="col-sm-9">
-                                <p id="agn_tel" name="agn_tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10"><?php echo substr($arr_agent[0]->agn_tel, 0, 3) . '-' . substr($arr_agent[0]->agn_tel, 3, 3) . '-' . substr($arr_agent[0]->agn_tel, 6) ?></p>
+                                <p id="agn_tel" name="agn_tel" ><?php echo tel_format($arr_agent[0]->agn_tel) ?></p>
                                 <p id="agn_email" name="agn_email"><?php echo $arr_agent[0]->agn_email ?></p>
                             </div>
                         </div>
