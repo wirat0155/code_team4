@@ -12,8 +12,7 @@ use App\Models\Da_cdms_car;
 * @Update Date
 */
 
-class M_cdms_car extends Da_cdms_car
-{
+class M_cdms_car extends Da_cdms_car {
     /*
     * get_all
     * ดึงข้อมูลรถทั้งหมด
@@ -23,8 +22,7 @@ class M_cdms_car extends Da_cdms_car
     * @Create Date 2564-07-30
     * @Update Date
     */
-    public function get_all()
-    {
+    public function get_all() {
         $sql = "SELECT *
         FROM $this->table
         LEFT JOIN cdms_province
@@ -36,8 +34,7 @@ class M_cdms_car extends Da_cdms_car
         return $this->db->query($sql)->getResult();
     }
 
-    public function get_by_id($car_id)
-    {
+    public function get_by_id($car_id) {
         $sql = "SELECT * FROM $this->table
 
                 WHERE car_id='$car_id'";

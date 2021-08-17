@@ -16,7 +16,7 @@ use App\Models\M_cdms_status_container;
 * @Update Date 2564-08-07
 */
 
-class Container_input extends Cdms_controller{
+class Container_input extends Cdms_controller {
     /*
     * container_input
     * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์
@@ -26,7 +26,7 @@ class Container_input extends Cdms_controller{
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
     */
-    public function container_input(){
+    public function container_input() {
         $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
@@ -60,7 +60,7 @@ class Container_input extends Cdms_controller{
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
     */
-    public function container_insert(){
+    public function container_insert() {
         // container information
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');

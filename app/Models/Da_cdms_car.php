@@ -12,8 +12,7 @@ use CodeIgniter\Model;
 * @Update Date 2564-08-09
 */
 
-class Da_cdms_car extends Model
-{
+class Da_cdms_car extends Model {
         protected $table = 'cdms_car';
         protected $primaryKey = 'car_id ';
         protected $allowedFields = [
@@ -52,8 +51,7 @@ class Da_cdms_car extends Model
     * @Create Date 2564-07-30
     * @Update Date 
     */
-        public function delete($car_id = NULL, bool $purge = false)
-        {
+        public function delete($car_id = NULL, bool $purge = false) {
                 $sql = "UPDATE $this->table 
                         SET car_status=4 
                         WHERE car_id='$car_id'";
@@ -61,12 +59,12 @@ class Da_cdms_car extends Model
         }
 
         /*
-    * car_update
-    * แก้ไขรถ
-    * @author Nattanan Tadsawan
-    * @Create Date 2564-08-06
-    * @Update Date
-    */
+        * car_update
+        * แก้ไขรถ
+        * @author Nattanan Tadsawan
+        * @Create Date 2564-08-06
+        * @Update Date
+        */
         public function car_update(
                 $car_id = NULL,
                 $car_code = NULL,

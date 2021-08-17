@@ -12,8 +12,7 @@ use App\Models\Da_cdms_container;
 * @Update Date 2564-08-07
 */
 
-class M_cdms_container extends Da_cdms_container
-{
+class M_cdms_container extends Da_cdms_container {
 
     /*
     * get_all
@@ -24,8 +23,7 @@ class M_cdms_container extends Da_cdms_container
     * @Create Date 2564-07-29
     * @Update Date
     */
-    public function get_all()
-    {
+    public function get_all() {
         $sql = "SELECT * FROM $this->table LEFT JOIN cdms_size ON con_size_id = size_id LEFT JOIN cdms_container_type ON con_cont_id = cont_id LEFT JOIN cdms_agent ON con_agn_id = agn_id LEFT JOIN cdms_status_container ON con_stac_id = stac_id WHERE con_status=1";
         return $this->db->query($sql)->getResult();
     }
@@ -39,8 +37,7 @@ class M_cdms_container extends Da_cdms_container
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function is_con_number_exist($con_number = NULL)
-    {
+    public function is_con_number_exist($con_number = NULL) {
         $sql = "SELECT con_id, con_number FROM $this->table WHERE con_number = '$con_number'";
         return $this->db->query($sql)->getResult();
     }
@@ -54,8 +51,7 @@ class M_cdms_container extends Da_cdms_container
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function get_by_con_number($con_number = NULL)
-    {
+    public function get_by_con_number($con_number = NULL) {
         $sql = "SELECT * FROM $this->table WHERE con_number = '$con_number'";
         return $this->db->query($sql)->getResult();
     }
@@ -69,8 +65,7 @@ class M_cdms_container extends Da_cdms_container
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function get_by_id($con_id = NULL)
-    {
+    public function get_by_id($con_id = NULL) {
         $sql = "SELECT * FROM $this->table WHERE con_id = '$con_id'";
         return $this->db->query($sql)->getResult();
     }

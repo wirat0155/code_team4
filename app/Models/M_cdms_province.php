@@ -20,8 +20,7 @@ class M_cdms_province extends Da_cdms_province {
         * @Create Date 2564-08-09
         * @Update Date 2564-08-09
     */
-    public function get_all()
-    {
+    public function get_all() {
         $sql = "SELECT * FROM $this->table";
         return $this->db->query($sql)->getResult();
     }   

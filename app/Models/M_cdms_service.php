@@ -12,8 +12,7 @@ use App\Models\Da_cdms_service;
     * @Update Date 2564-08-08
 */
 
-class M_cdms_service extends Da_cdms_service
-{
+class M_cdms_service extends Da_cdms_service {
 
     /*
         * get_all
@@ -24,8 +23,7 @@ class M_cdms_service extends Da_cdms_service
         * @Create Date 2564-07-30
         * @Update Date
     */
-    public function get_all()
-    {
+    public function get_all() {
         $sql = "SELECT * FROM $this->table
                 INNER JOIN cdms_customer ON ser_cus_id = cus_id 
                 INNER JOIN cdms_container ON ser_con_id = con_id
@@ -44,8 +42,7 @@ class M_cdms_service extends Da_cdms_service
         * @Create Date 2564-08-07
         * @Update Date 2564-08-08
     */
-    public function get_by_id($ser_id)
-    {
+    public function get_by_id($ser_id) {
         $sql = "SELECT * FROM $this->table 
                 INNER JOIN cdms_customer ON ser_cus_id = cus_id 
                 INNER JOIN cdms_container ON ser_con_id = con_id

@@ -12,8 +12,7 @@ use App\Models\M_cdms_customer;
     * @Update Date 2564-08-06
 */
 
-class Customer_edit extends Cdms_controller
-{
+class Customer_edit extends Cdms_controller {
     /*   
     * customer_edit
     * แสดงหน้าจอ customer_edit
@@ -21,8 +20,7 @@ class Customer_edit extends Cdms_controller
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
 */
-    public function customer_edit($cus_id)
-    {
+    public function customer_edit($cus_id) {
         $_SESSION['menu'] = 'Customer_show';
         $m_cus = new M_cdms_customer;
         $data['arr_customer'] = $m_cus->get_by_id($cus_id);
@@ -35,8 +33,7 @@ class Customer_edit extends Cdms_controller
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
 */
-    public function customer_update()
-    {
+    public function customer_update() {
         $m_cus = new M_cdms_customer;
         $cus_id = $this->request->getPost('cus_id');
         $cus_company_name = $this->request->getPost('cus_company_name');

@@ -8,11 +8,10 @@ use App\Models\Da_cdms_agent;
         * นำเข้าข้อมูลรายชื่อเอเย่นต์
         * @author Klayuth
         * @Create Date 2564-07-30
-        * @Update Date
+        * @Update Date 2564-08-07
     */
 
-class M_cdms_agent extends Da_cdms_agent
-{
+class M_cdms_agent extends Da_cdms_agent {
     /*
         * get_all
         * ดึงข้อมูลเอเย่นต์
@@ -22,8 +21,7 @@ class M_cdms_agent extends Da_cdms_agent
         * @Create Date 2564-07-30
         * @Update Date 2564-08-02
     */
-    public function get_all()
-    {
+    public function get_all() {
         $sql = "SELECT * FROM $this->table
                 WHERE agn_status = 1";
         return $this->db->query($sql)->getResult();
@@ -37,8 +35,7 @@ class M_cdms_agent extends Da_cdms_agent
         * @Create Date 2564-07-30
         * @Update Date 2564-08-02
     */
-    public function get_by_id($agn_id)
-    {
+    public function get_by_id($agn_id) {
         $sql = "SELECT * FROM $this->table
                 WHERE agn_id='$agn_id'";
         return $this->db->query($sql)->getResult();
@@ -53,8 +50,7 @@ class M_cdms_agent extends Da_cdms_agent
         * @Create Date 2564-08-07
         * @Update Date 2564-08-07
     */
-    public function get_by_company_name($agn_company_name = NULL)
-    {
+    public function get_by_company_name($agn_company_name = NULL) {
         $sql = "SELECT * FROM $this->table WHERE agn_company_name = '$agn_company_name' AND agn_status = 1";
         return $this->db->query($sql)->getResult();
     }
@@ -68,8 +64,7 @@ class M_cdms_agent extends Da_cdms_agent
         * @Create Date 2564-08-07
         * @Update Date 2564-08-07
     */
-    public function get_max_id()
-    {
+    public function get_max_id() {
         $sql = "SELECT MAX(agn_id) AS agn_id FROM $this->table";
         return $this->db->query($sql)->getResult();
     }

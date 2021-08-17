@@ -11,16 +11,22 @@ use CodeIgniter\Model;
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
 */
-class Da_cdms_status_container extends Model
-{
+class Da_cdms_status_container extends Model {
     protected $table = 'cdms_status_container';
     protected $primaryKey = 'stac_id';
     protected $allowedFields = [
         'stac_name', 'stac_status'
     ];
 
-    // insert update delete
-
+    /*
+    * delete
+    * ลบสถานะตู้
+    * @input stac_id
+    * @output ลบสถานะตู้
+    * @author Klayuth
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-07
+    */
     public function delete($stac_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET stac_status=2 WHERE stac_id='$stac_id'";
         $this->db->query($sql);
