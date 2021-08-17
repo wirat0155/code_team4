@@ -16,7 +16,7 @@
                 </h2>
                 <div class="float-right">
                     <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขเอเย่นต์</a>
-                    <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[0]->agn_id ?>)">ลบข้อมูล
+                    <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[0]->agn_id ?>)">ลบเอเย่นต์
                     </button>
                 </div>
             </div>
