@@ -6,10 +6,10 @@ use App\Models\Da_cdms_customer;
 
 /*
     * M_cdms_customer_show
-    * แสดงรายการลูกค้า และลบลูกค้า
-    * @author  XXXX
+    * ดึงข้อมูลลูกค้า
+    * @author  วรรัตน์
     * @Create Date 2564-07-29
-    * @Update Date 2564-08-02
+    * @Update Date 2564-08-13
 */
 
 class M_cdms_customer extends Da_cdms_customer {
