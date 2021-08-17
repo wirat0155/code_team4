@@ -25,8 +25,7 @@ class M_cdms_driver extends Da_cdms_driver
     * @Create Date 2564-07-30
     * @Update Date 2564-08-30
     */
-    public function get_all()
-    {
+    public function get_all(){
         $sql = "SELECT * FROM cdms_driver 
                 LEFT JOIN cdms_car 
                 ON dri_car_id = car_id 
@@ -35,9 +34,17 @@ class M_cdms_driver extends Da_cdms_driver
                 WHERE NOT dri_status = 4";
         return $this->db->query($sql)->getResult();
     }
-
-    public function get_by_id($dri_id)
-    {
+    /*
+    * get_by_id
+    * ดึงข้อมูลตามรหัสพนักงานขับรถ
+    * @input $dri_id
+    * @output driver information
+    * @author Thanatip
+    * @lastest author Benjapon
+    * @Create Date 2564-07-30
+    * @Update Date 2564-08-17
+    */
+    public function get_by_id($dri_id){
         $sql = "SELECT * FROM $this->table
                 WHERE dri_id='$dri_id'";
         return $this->db->query($sql)->getResult();

@@ -45,16 +45,22 @@ class Driver_show extends Cdms_controller
     * @Create Date 2564-07-30
     * @Update Date
     */
-    public function driver_delete()
-    {
+    public function driver_delete(){
         $m_dri = new M_cdms_driver();
         $dri_id = $this->request->getPost('dri_id');
         $m_dri->delete($dri_id);
         return $this->response->redirect(base_url('/public/driver_show/driver_show_ajax'));
     }
-
-    public function driver_detail($dri_id)
-    {
+    /*
+    * driver_delete
+    * ดูข้อมูลพนักงานขับรถ
+    * @input dri_id
+    * @output driver information
+    * @author Thanatip
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-17
+    */
+    public function driver_detail($dri_id){
         $_SESSION['menu'] = 'Driver_show';
         $m_dri = new M_cdms_driver();
         $data['arr_driver'] = $m_dri->get_by_id($dri_id);
