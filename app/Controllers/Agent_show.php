@@ -13,8 +13,7 @@ use App\Models\M_cdms_container;
 * @Update Date 2564-08-02
 */
 
-class Agent_show extends Cdms_controller
-{
+class Agent_show extends Cdms_controller{
     /*
     * agent_show_ajax
     * แสดงรายชื่อเอเย่นต์
@@ -22,8 +21,7 @@ class Agent_show extends Cdms_controller
     * @Create Date 2564-07-30
     * @Update Date 2564-08-02
     */
-    public function agent_show_ajax()
-    {
+    public function agent_show_ajax(){
         $_SESSION['menu'] = 'Agent_show';
         $m_agn = new M_cdms_agent();
         $data['arr_agent'] = $m_agn->get_all();
@@ -40,15 +38,13 @@ class Agent_show extends Cdms_controller
     * @Create Date 2564-07-30
     * @Update Date 2564-08-02
     */
-    public function agent_delete()
-    {
+    public function agent_delete(){
         $m_agn = new M_cdms_agent();
         $m_agn->delete($this->request->getPost('agn_id'));
         return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
     }
 
-    public function get_agent_ajax()
-    {
+    public function get_agent_ajax(){
         $m_agn = new M_cdms_agent();
         $agn_company_name = $this->request->getPost('agn_company_name');
         $agn_information = $m_agn->get_by_company_name($agn_company_name);
@@ -60,10 +56,9 @@ class Agent_show extends Cdms_controller
     * ดูข้อมูลเอเย่นต์
     * @author Nattanan
     * @Create Date 2564-08-12
-    * @Update Date 2564-08-
+    * @Update Date 2564-08-17
     */
-    public function agent_detail($agn_id)
-    {
+    public function agent_detail($agn_id){
         $_SESSION['menu'] = 'Agent_show';
         $m_agn = new M_cdms_agent;
         $data['arr_agent'] = $m_agn->get_by_id($agn_id);
