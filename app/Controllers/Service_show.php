@@ -20,8 +20,7 @@ use App\Models\M_cdms_agent;
     * @Create Date 2564-07-29
     * @Update Date 2564-07-30
 */
-class Service_show extends Cdms_controller
-{
+class Service_show extends Cdms_controller{
     /*
         * service_show_ajax
         * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_service และ แสดง view รายการบริการ
@@ -29,8 +28,7 @@ class Service_show extends Cdms_controller
         * @Create Date 2564-07-29
         * @Update Date
     */
-    public function service_show_ajax()
-    {
+    public function service_show_ajax(){
         $_SESSION['menu'] = 'Service_show';
         $m_ser = new M_cdms_service();
         $data['arr_service'] = $m_ser->get_all();
@@ -44,8 +42,7 @@ class Service_show extends Cdms_controller
         * @Create Date 2564-07-30
         * @Update Date
     */
-    public function service_delete()
-    {
+    public function service_delete(){
         $m_ser = new M_cdms_service();
         $m_ser->delete($this->request->getPost('ser_id'));
         return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
@@ -58,9 +55,9 @@ class Service_show extends Cdms_controller
         * @Create Date 2564-08-12
         * @Update Date
     */
-    public function service_detail($ser_id)
-    {
+    public function service_detail($ser_id){
         $_SESSION['menu'] = 'Service_show';
+        
         // get service
         $m_ser = new M_cdms_service();
         $data['obj_service'] = $m_ser->get_by_id($ser_id);

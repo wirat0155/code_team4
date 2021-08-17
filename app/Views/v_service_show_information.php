@@ -1,36 +1,36 @@
 <style>
-    .text-con-in {
-        background-color: #29B3F1;
-        border: none;
-        color: white;
-        border-radius: 8px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
+.text-con-in {
+    background-color: #29B3F1;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
 
-    .text-con-out {
-        background-color: #44BB55;
-        border: none;
-        color: white;
-        border-radius: 8px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
+.text-con-out {
+    background-color: #44BB55;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
 
-    .text-con-drop {
-        background-color: #F5D432;
-        border: none;
-        color: white;
-        border-radius: 8px;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
+.text-con-drop {
+    background-color: #F5D432;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
 </style>
 <div class="container px-6 mx-auto grid">
 
@@ -599,31 +599,7 @@
 </div>
 
 <script>
-    // get size information when change con_size_id dropdown
-    function get_size_information() {
-        let size_id = $('select[name="con_size_id"]').val();
-        $.ajax({
-            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                size_id: size_id
-            },
-            success: function(data) {
-                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]
-                    ['size_length_out']);
-            }
-        });
-    }
-    // show size information when change con_size_id dropdown
-    function show_size_information(size_height_out, size_width_out, size_length_out) {
-        console.log(size_height_out);
-        $('input[name="size_height_out"]').val(size_height_out);
-        $('input[name="size_width_out"]').val(size_width_out);
-        $('input[name="size_length_out"]').val(size_length_out);
-    }
-
-    function get_id(ser_id) {
-        $('#ser_id').val(ser_id);
-    }
+function get_id(ser_id) {
+    $('#ser_id').val(ser_id);
+}
 </script>
