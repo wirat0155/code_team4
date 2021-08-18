@@ -115,8 +115,8 @@
                     },
                     agn_tax: {
                         required: true,
-                        minlength: 10,
-                        maxlength: 10
+                        minlength: 13,
+                        maxlength: 13
                     },
                     agn_address: {
                         required: true
@@ -144,8 +144,8 @@
                     },
                     agn_tax: {
                         required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
                     },
                     agn_address: {
                         required: 'กรุณากรอกที่อยู่'
