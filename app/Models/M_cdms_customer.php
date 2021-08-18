@@ -66,15 +66,15 @@ class M_cdms_customer extends Da_cdms_customer {
 
     /*
     * is_cus_branch_exist
-    * ค้นหาชื่อ และสาขาบริษัท
-    * @input cus_company_name, cus_branch
-    * @output cus_branch or null
+    * ค้นหาชื่อ
+    * @input cus_company_name
+    * @output cus_company_name cus_branch or null
     * @author Kittipod
     * @Create Date 2564-08-18
     * @Update Date 2564-08-18
     */
-    public function is_cus_branch_exist($cus_company_name = NULL, $cus_branch = NULL) {
-        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name' and cus_branch = '$cus_branch'";
+    public function is_cus_branch_exist($cus_company_name = NULL) {
+        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name'";
         return $this->db->query($sql)->getResult();
     }
 

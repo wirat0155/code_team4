@@ -27,6 +27,9 @@ class Customer_input extends Cdms_controller
         if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
             $_SESSION['cus_branch_error'] = '';
         }
+        if (!isset($_SESSION['cus_company_name_error']) || $_SESSION['cus_company_name_error'] == '') {
+            $_SESSION['cus_company_name_error'] = '';
+        }
 
         $this->output('v_customer_input');
     }
@@ -41,7 +44,6 @@ class Customer_input extends Cdms_controller
     public function customer_insert()
     {
         $m_cus = new M_cdms_customer();
-        $arr_customer = $m_cus->get_all();
 
         // เก็บข้อมูลของ ลูกค้า
         $cus_company_name = $this->request->getPost('cus_company_name');
@@ -53,14 +55,27 @@ class Customer_input extends Cdms_controller
         $cus_tax = $this->request->getPost('cus_tax');
         $cus_email = $this->request->getPost('cus_email');
 
-        $arr_cus = $m_cus->is_cus_branch_exist($cus_company_name, $cus_branch);
-        if (count($arr_cus) >= 1) {
-            $_SESSION['cus_branch_error'] = 'มีสาขาอยู่แล้ว';
+        $count_cus = 0;
+        $arr_customer = $m_cus->is_cus_branch_exist($cus_company_name);
+        
+        for($i = 0; $i < count($arr_customer);$i++){
+            if($arr_customer[$i]->cus_branch == $cus_branch){
+                $count_cus++;
+            }
+        }
+        
+        if ($count_cus >= 1) {
+            if($cus_branch == '')
+                $_SESSION['cus_company_name_error'] = 'มีชื่อบริษัทอยู่แล้ว';
+            else
+                $_SESSION['cus_branch_error'] = 'มีสาขาอยู่แล้ว';
+
             $this->customer_input();
         } else {
             // เพิ่มข้อมูลลูกค้า
             $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
             $_SESSION['cus_branch_error'] = '';
+            $_SESSION['cus_company_name_error'] = '';
 
             return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
         }

@@ -37,6 +37,7 @@
                         <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="cus_company_name" name="cus_company_name" placeholder="บริษัท">
+                            <label id="cus_company_name-error" class="error" for="cus_company_name"><?php echo $_SESSION['cus_company_name_error'] ?></label>
                         </div>
                     </div>
 
