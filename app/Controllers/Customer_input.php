@@ -24,6 +24,10 @@ class Customer_input extends Cdms_controller
     public function customer_input()
     {
         $_SESSION['menu'] = 'Customer_show';
+        if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
+            $_SESSION['cus_branch_error'] = '';
+        }
+
         $this->output('v_customer_input');
     }
 
@@ -49,18 +53,16 @@ class Customer_input extends Cdms_controller
         $cus_tax = $this->request->getPost('cus_tax');
         $cus_email = $this->request->getPost('cus_email');
 
-        // Check ชื่อ กับ สาขา ซ้ำ
-        for ($i = 0; $i < count($arr_customer); $i++) {
-            if ($arr_customer[$i]->cus_company_name == $cus_company_name) {
-                if ($arr_customer[$i]->cus_branch == $cus_branch) {
-                    return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
-                }
-            }
+        $arr_cus = $m_cus->is_cus_branch_exist($cus_company_name, $cus_branch);
+        if (count($arr_cus) >= 1) {
+            $_SESSION['cus_branch_error'] = 'มีสาขาอยู่แล้ว';
+            $this->customer_input();
+        } else {
+            // เพิ่มข้อมูลลูกค้า
+            $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+            $_SESSION['cus_branch_error'] = '';
+
+            return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
         }
-
-        // เพิ่มข้อมูลลูกค้า
-        $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
-
-        return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
     }
 }

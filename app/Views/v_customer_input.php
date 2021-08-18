@@ -45,6 +45,7 @@
                         <label for="cus_branch" class="col-sm-3 col-form-label">สาขา</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="cus_branch" name="cus_branch" placeholder="สาขา">
+                            <label id="cus_branch-error" class="error" for="cus_branch"><?php echo $_SESSION['cus_branch_error'] ?></label>
                         </div>
                     </div>
 

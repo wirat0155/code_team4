@@ -27,6 +27,16 @@ class M_cdms_customer extends Da_cdms_customer {
                 WHERE cus_status = 1";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * get_by_id
+    * ค้นหาลูกค้าด้วย ID
+    * @input cus_id
+    * @output array of customer
+    * @author XXX
+    * @Create Date 2564-08-02
+    * @Update Date 2564-08-02
+    */
     public function get_by_id($cus_id) {
         $sql = "SELECT * FROM $this->table
             
@@ -34,6 +44,15 @@ class M_cdms_customer extends Da_cdms_customer {
         return $this->db->query($sql)->getResult();
     }
 
+    /*
+    * get_by_name
+    * ค้นหาลูกค้าด้วยชื่อ
+    * @input cus_company_name, cus_branch
+    * @output array of customer
+    * @author XXX
+    * @Create Date 2564-08-08
+    * @Update Date 2564-08-08
+    */
     public function get_by_name($cus_company_name, $cus_branch) {
         if ($cus_branch == '') {
             $sql = "SELECT * FROM $this->table
@@ -44,4 +63,19 @@ class M_cdms_customer extends Da_cdms_customer {
         }
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * is_cus_branch_exist
+    * ค้นหาชื่อ และสาขาบริษัท
+    * @input cus_company_name, cus_branch
+    * @output cus_branch or null
+    * @author Kittipod
+    * @Create Date 2564-08-18
+    * @Update Date 2564-08-18
+    */
+    public function is_cus_branch_exist($cus_company_name = NULL, $cus_branch = NULL) {
+        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name' and cus_branch = '$cus_branch'";
+        return $this->db->query($sql)->getResult();
+    }
+
 }
