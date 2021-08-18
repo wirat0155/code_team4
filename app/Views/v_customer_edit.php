@@ -37,6 +37,8 @@
                         <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="cus_company_name" name="cus_company_name" placeholder="บริษัท" value="<?php echo $arr_customer[0]->cus_company_name ?>">
+                            <input type="text" class="form-control form-input" id="old_cus_company_name" name="old_cus_company_name" placeholder="บริษัท" hidden value="<?php echo $arr_customer[0]->cus_company_name ?>">
+                            <label id="cus_company_name-error" class="error" for="cus_company_name"><?php echo $_SESSION['cus_company_name_error'] ?></label>
                         </div>
                     </div>
 
@@ -45,6 +47,8 @@
                         <label for="cus_branch" class="col-sm-3 col-form-label">สาขา</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-input" id="cus_branch" name="cus_branch" placeholder="สาขา" value="<?php echo $arr_customer[0]->cus_branch ?>">
+                            <input type="text" class="form-control form-input" id="old_cus_branch" name="old_cus_branch" placeholder="บริษัท" hidden value="<?php echo $arr_customer[0]->cus_branch ?>">
+                            <label id="cus_branch-error" class="error" for="cus_branch"><?php echo $_SESSION['cus_branch_error'] ?></label>
                         </div>
                     </div>
 
