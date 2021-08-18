@@ -332,7 +332,7 @@
                     },
                     agn_tax: {
                         required: true,
-                        maxlength: 15
+                        maxlength: 13
                     },
                     agn_firstname: {
                         required: true
