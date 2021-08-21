@@ -20,8 +20,7 @@ use App\Models\M_cdms_agent;
     * @Update Date 2564-08-08
 */
 
-class Service_input extends Cdms_controller
-{
+class Service_input extends Cdms_controller {
     /*
     * container_input
     * เรียกหน้าจอเพิ่มบริการ
@@ -31,8 +30,7 @@ class Service_input extends Cdms_controller
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
     */
-    public function service_input()
-    {
+    public function service_input() {
         $_SESSION['menu'] = 'Service_show';
         // size name
         $m_size = new M_cdms_size();
@@ -70,8 +68,7 @@ class Service_input extends Cdms_controller
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
     */
-    public function service_insert()
-    {
+    public function service_insert() {
         $m_ser = new M_cdms_service();
         $m_cus = new M_cdms_customer();
         $m_con = new M_cdms_container();

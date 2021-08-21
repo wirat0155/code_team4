@@ -7,22 +7,22 @@ use App\Models\M_cdms_province;
 /*
 * Car_edit
 * แสดงและแก้ไขรถ
-* @author Nattanan Tadsawan
+* @author Nattanan, Tadsawan
 * @Create Date 2021-08-06
-* @Update Date
+* @Update Date 2021-08-06
 */
 
-class Car_edit extends Cdms_controller
-{
+class Car_edit extends Cdms_controller {
     /*
     * car_edit
     * เรียกหน้าแก้ไขรถพร้อมดึงข้อมูลของรถที่เลือก
-    * @author Nattanan Tadsawan
+    * @input car_id
+    * @output แสดงหน้าจอแก้ไขรถ
+    * @author Nattanan, Tadsawan
     * @Create Date 2021-08-06
-    * @Update Date
+    * @Update Date 2021-08-06
     */
-    public function car_edit($car_id)
-    {
+    public function car_edit($car_id) {
         // call car edit view
         $m_car = new M_cdms_car();
         $data['arr_car'] = $m_car->get_by_id($car_id);
@@ -41,12 +41,13 @@ class Car_edit extends Cdms_controller
     /*
     * car_update
     * แก้ไขข้อมูลรถ
-    * @author Nattanan Tadsawan
+    * @input car information
+    * @output แก้ไขข้อมูลรถ
+    * @author Nattanan, Tadsawan
     * @Create Date 2021-08-06
-    * @Update Date
+    * @Update Date 2021-08-06
     */
-    public function car_update()
-    {
+    public function car_update() {
         $m_car = new M_cdms_car();
 
         // car information

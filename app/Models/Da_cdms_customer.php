@@ -5,11 +5,11 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 /*
-    * Da_cdms_customer_show
-    * เพิ่ม ลบ แก้ไขข้อมูลลูกค้า
-    * @author  Kittipod
-    * @Create Date 2564-07-29
-    * @Update Date 2564-08-02
+* Da_cdms_customer_show
+* เพิ่ม ลบ แก้ไขข้อมูลลูกค้า
+* @author  Kittipod
+* @Create Date 2564-07-29
+* @Update Date 2564-08-02
 */
 
 class Da_cdms_customer extends Model {
@@ -23,10 +23,12 @@ class Da_cdms_customer extends Model {
     /*
     * delete
     * ลบข้อมูลลูกค้า
-    * @author  XXXX
+    * @input cus_id
+    * @output ลบลูกค้า
+    * @author Benjapon
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
-*/
+    */
     public function delete($cus_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cus_status=2 WHERE cus_id='$cus_id'";
         $this->db->query($sql);
@@ -35,10 +37,12 @@ class Da_cdms_customer extends Model {
     /*
     * insert
     * เพิ่มข้อมูลลูกค้า
+    * @input cus information
+    * @output เพิ่มลูกค้า
     * @author  Kittipod
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
-*/
+    */
     public function insert($cus_company_name = NULL, $cus_firstname = NULL, $cus_lastname = NULL, $cus_branch = NULL, $cus_tel = NULL, $cus_address = NULL, $cus_tax = NULL, $cus_email = NULL) {
         if ($cus_branch != '') {
             $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch, 

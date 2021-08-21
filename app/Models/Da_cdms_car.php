@@ -21,12 +21,14 @@ class Da_cdms_car extends Model {
         ];
 
         /*
-    * insert
-    * เพิ่มรถ
-    * @author Nattanan Tadsawan
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-09
-    */
+        * insert
+        * เพิ่มรถ
+        * @input car information
+        * @output เพิ่มรถ
+        * @author Nattanan Tadsawan
+        * @Create Date 2564-08-07
+        * @Update Date 2564-08-09
+        */
         function insert(
                 $car_code = NULL,
                 $car_number = NULL,
@@ -45,12 +47,14 @@ class Da_cdms_car extends Model {
         }
 
         /*
-    * delete
-    * ลบรถ
-    * @author Nattanan Tadsawan
-    * @Create Date 2564-07-30
-    * @Update Date 
-    */
+        * delete
+        * ลบรถ
+        * @input car_id
+        * @output ลบรถ
+        * @author Nattanan Tadsawan
+        * @Create Date 2564-07-30
+        * @Update Date 2564-07-30
+        */
         public function delete($car_id = NULL, bool $purge = false) {
                 $sql = "UPDATE $this->table 
                         SET car_status=4 
@@ -61,6 +65,8 @@ class Da_cdms_car extends Model {
         /*
         * car_update
         * แก้ไขรถ
+        * @input car information
+        * @output แก้ไขรถ
         * @author Nattanan Tadsawan
         * @Create Date 2564-08-06
         * @Update Date

@@ -9,35 +9,34 @@ use App\Models\M_cdms_driver;
 * แสดงรายการพนักงานขับรถ และลบพนักงานขับรถ
 * @author Thanatip
 * @Create Date 2564-08-06
-* @Update Date
+* @Update Date 2564-08-07
 */
 
-class Driver_input extends Cdms_controller
-{
+class Driver_input extends Cdms_controller {
     /*
     * driver_input
-    * แสดงรายการพนักงานขับรถ
+    * แสดงหน้าจอเพิ่มพนักงานขับรถ
     * @input -
-    * @output array of container
+    * @outpu แสดงหน้าจอเพิ่มพนักงานขับรถ
     * @author Thanatip 
     * @Create Date 2564-08-06
-    * @Update Date
+    * @Update Date 2564-08-06
     */
-    public function driver_input()
-    {
+    public function driver_input() {
         $_SESSION['menu'] = 'Driver_show';
         $this->output('v_driver_input');
     }
 
     /*
     * driver_insert
-    * เพิ่มข้อมูลลูกค้า
+    * เพิ่มข้อมูลพนักงานขับรถ
+    * @input dri information
+    * @output เพิ่มพนักงานขับรถ
     * @author  Thanatip
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function driver_insert()
-    {
+    public function driver_insert() {
         $m_dri = new M_cdms_driver();
 
         // เก็บข้อมูลพนักงานขับรถ

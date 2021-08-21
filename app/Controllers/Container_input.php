@@ -118,8 +118,6 @@ class Container_input extends Cdms_controller {
                 $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             }
 
-
-
             // insert container
             $_SESSION['con_number_error'] = '';
             $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);

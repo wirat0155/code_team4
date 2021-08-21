@@ -13,24 +13,23 @@ use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
 
 /*
-    * Service_show
-    * แสดงรายการบริการ และลบบริการ
-    * @author Natdanai Worarat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-07-30
+* Service_show
+* แสดงรายการบริการ และลบบริการ
+* @author Natdanai, Worarat
+* @Create Date 2564-07-29
+* @Update Date 2564-07-30
 */
-
-class Service_edit extends Cdms_controller
-{
+class Service_edit extends Cdms_controller {
     /*
-        * service_edit
-        * แก้ไขข้อมูลบริการ
-        * @author Worarat
-        * @Create Date 2564-08-29
-        * @Update Date
+    * service_edit
+    * แสดงหน้าจอแก้ไขข้อมูลบริการ
+    * @input ser_id
+    * @output แสดงหน้าจอแก้ไขข้อมูลบริการ
+    * @author Worarat
+    * @Create Date 2564-07-29
+    * @Update Date 2564-08-08
     */
-    public function service_edit($ser_id)
-    {
+    public function service_edit($ser_id) {
         $_SESSION['menu'] = 'Service_show';
         // size name
         $m_size = new M_cdms_size();
@@ -74,16 +73,17 @@ class Service_edit extends Cdms_controller
         //print_r($data['obj_service'][0]->ser_departure_date);
         //print_r($data['obj_agent'][0]->agn_company_name);
     }
-    /*
-        * service_update
-        * อัพเดทข้อมูลที่ทำการแก้ไข
-        * @author Worarat
-        * @Create Date 2564-07-29
-        * @Update Date
-    */
-    public function service_update()
-    {
 
+    /*
+    * service_update
+    * อัพเดทข้อมูลที่ทำการแก้ไข
+    * @input ser, cus, agn, con information
+    * @output แสดงหน้าจอแก้ไขข้อมูลบริการ
+    * @author Worarat
+    * @Create Date 2564-07-29
+    * @Update Date 2564-08-08
+    */
+    public function service_update() {
         $m_ser = new M_cdms_service();
         $m_cus = new M_cdms_customer();
         $m_con = new M_cdms_container();

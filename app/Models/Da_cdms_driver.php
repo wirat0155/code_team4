@@ -37,6 +37,8 @@ class Da_cdms_driver extends Model {
     /*
     * insert
     * เพิ่มข้อมูลพนักงาน
+    * @input dri information
+    * @output เพิ่มพนักงานขับรถ
     * @author  Thanatip
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
@@ -52,10 +54,12 @@ class Da_cdms_driver extends Model {
     /*
     * driver_update
     * เเก้ไขข้อมูลพนักงานขับรถ
+    * @input dri information
+    * @output แก้ไขพนักงานขับรถ
     * @author  Warisara
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
-*/
+    */
     public function driver_update(
         $dri_id = NULL,
         $dri_name = NULL,

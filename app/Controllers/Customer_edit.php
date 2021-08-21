@@ -5,21 +5,23 @@ namespace App\Controllers;
 use App\Models\M_cdms_customer;
 
 /*
-    * Customer_edit
-    * แสดงหน้าจอเเก้ไขข้อมูลลูกค้า 
-    * @author  Benapon
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+* Customer_edit
+* แสดงหน้าจอเเก้ไขข้อมูลลูกค้า 
+* @author  Benapon
+* @Create Date 2564-08-06
+* @Update Date 2564-08-06
 */
 
 class Customer_edit extends Cdms_controller {
     /*   
     * customer_edit
     * แสดงหน้าจอ customer_edit
+    * @input -
+    * @output แสดงหน้าจอแก้ไขลูกค้า
     * @author  Benjapon
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
-*/
+    */
     public function customer_edit($cus_id) {
         $_SESSION['menu'] = 'Customer_show';
         $m_cus = new M_cdms_customer;
@@ -29,10 +31,12 @@ class Customer_edit extends Cdms_controller {
     /*
     * customer_update
     * เเก้ไขข้อมูลลูกค้า
+    * @input cus information
+    * @output แก้ไขลูกค้า
     * @author  Benjapon
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
-*/
+    */
     public function customer_update() {
         $m_cus = new M_cdms_customer;
 

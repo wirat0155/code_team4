@@ -5,23 +5,23 @@ namespace App\Models;
 use App\Models\Da_cdms_service;
 
 /*
-    * M_cdms_service
-    * ดึงข้อมูลบริการ
-    * @author Natdanai Worarat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-08-08
+* M_cdms_service
+* ดึงข้อมูลบริการ
+* @author Natdanai Worarat
+* @Create Date 2564-07-29
+* @Update Date 2564-08-08
 */
 
 class M_cdms_service extends Da_cdms_service {
 
     /*
-        * get_all
-        * ดึงข้อมูลทั้งหมดของตารางบริการ
-        * @input 
-        * @output array of service
-        * @author Natdanai
-        * @Create Date 2564-07-30
-        * @Update Date
+    * get_all
+    * ดึงข้อมูลทั้งหมดของตารางบริการ
+    * @input 
+    * @output array of service
+    * @author Natdanai
+    * @Create Date 2564-07-30
+    * @Update Date  2564-07-30
     */
     public function get_all() {
         $sql = "SELECT * FROM $this->table
@@ -34,13 +34,13 @@ class M_cdms_service extends Da_cdms_service {
         return $this->db->query($sql)->getResult();
     }
     /*
-        * get_by_id
-        * ดึงข้อมูลตามรหัสบริการ
-        * @input $ser_id
-        * @output service information
-        * @author Worarat
-        * @Create Date 2564-08-07
-        * @Update Date 2564-08-08
+    * get_by_id
+    * ดึงข้อมูลตามรหัสบริการ
+    * @input $ser_id
+    * @output service information
+    * @author Worarat
+    * @Create Date 2564-08-07
+    * @Update Date 2564-08-08
     */
     public function get_by_id($ser_id) {
         $sql = "SELECT * FROM $this->table 

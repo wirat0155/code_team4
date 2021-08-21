@@ -16,7 +16,7 @@ class M_cdms_car extends Da_cdms_car {
     /*
     * get_all
     * ดึงข้อมูลรถทั้งหมด
-    * @input
+    * @input -
     * @output array of car
     * @author Nattanan Tadsawan
     * @Create Date 2564-07-30

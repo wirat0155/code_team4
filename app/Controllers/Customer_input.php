@@ -5,24 +5,23 @@ namespace App\Controllers;
 use App\Models\M_cdms_customer;
 
 /*
-    * Customer_input
-    * แสดงหน้าจอเพิ่มข้อมูล และเพิ่มลูกค้า
-    * @author  Kittipod
-    * @Create Date 2564-08-05
-    * @Update Date 2564-08-05
+* Customer_input
+* แสดงหน้าจอเพิ่มข้อมูล และเพิ่มลูกค้า
+* @author  Kittipod
+* @Create Date 2564-08-05
+* @Update Date 2564-08-05
 */
-
-class Customer_input extends Cdms_controller
-{
+class Customer_input extends Cdms_controller {
     /*
     * customer_input
     * แสดงหน้าจอ customer_input
+    * @input -
+    * @output แสดงหน้าจอเพิ่มลูกค้า
     * @author  Kittipod
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
-*/
-    public function customer_input()
-    {
+    */
+    public function customer_input() {
         $_SESSION['menu'] = 'Customer_show';
         if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
             $_SESSION['cus_branch_error'] = '';
@@ -37,12 +36,13 @@ class Customer_input extends Cdms_controller
     /*
     * customer_insert
     * เพิ่มข้อมูลลูกค้า
+    * @input cus information
+    * @output เพิ่มลูกค้า
     * @author  Kittipod
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
-*/
-    public function customer_insert()
-    {
+    */
+    public function customer_insert() {
         $m_cus = new M_cdms_customer();
 
         // เก็บข้อมูลของ ลูกค้า

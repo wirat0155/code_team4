@@ -19,6 +19,8 @@ class Dashboard extends Cdms_controller
     /*
     * dashboard_show
     * แสดงหน้าจอแดชบอร์ด
+    * @input -
+    * @output array of car_type, status_container, size, container_type
     * @author  Wirat, Klayuth, Natthadanai, Benjapon
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
@@ -51,6 +53,8 @@ class Dashboard extends Cdms_controller
     /*
     * car_type_delete
     * ลบประเภทรถ
+    * @input cart_id
+    * @output ลบประเภทรถ
     * @author  Wirat
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
@@ -64,6 +68,15 @@ class Dashboard extends Cdms_controller
         return json_encode('pass');
     }
 
+    /*
+    * size_delete
+    * ลบขนาดตู้
+    * @input size_id
+    * @output ลบประเภทรถ
+    * @author  Natadanai
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+    */
     public function size_delete()
     {
         $size_id = $this->request->getPost('size_id');
@@ -73,6 +86,15 @@ class Dashboard extends Cdms_controller
         return json_encode('pass');
     }
 
+    /*
+    * container_type_delete
+    * ลบประเภทตู้
+    * @input cont_id
+    * @output ลบประเภทตู้
+    * @author  Natadanai
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+    */
     public function container_type_delete()
     {
         $cont_id = $this->request->getPost('cont_id');
@@ -82,6 +104,15 @@ class Dashboard extends Cdms_controller
         return json_encode('pass');
     }
 
+    /*
+    * status_container_delete
+    * ลบสถานะตู้
+    * @input stac_id
+    * @output ลบสถานะตู้
+    * @author  Natadanai
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+    */
     public function status_container_delete()
     {
         $stac_id = $this->request->getPost('stac_id');

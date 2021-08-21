@@ -13,7 +13,7 @@ use App\Models\M_cdms_status_container;
 * แสดงรายการตู้คอนเนอร์ และลบตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-07-29
-* @Update Date
+* @Update Date 2564-08-12
 */
 
 class Container_show extends Cdms_controller {
@@ -34,13 +34,13 @@ class Container_show extends Cdms_controller {
     }
 
     /*
-    * container_show_ajax
+    * container_detail
     * แสดงข้อมูลตู้คอนเทนเนอร์
-    * @input -
-    * @output array of container
+    * @input con_id
+    * @output หน้าจอข้อมูลตู้คอนเทนเนอร์
     * @author Preechaya
     * @Create Date 2564-08-12
-    * @Update Date
+    * @Update Date 2564-08-12
     */
     public function container_detail($con_id) {
         $_SESSION['menu'] = 'Container_show';
@@ -75,7 +75,7 @@ class Container_show extends Cdms_controller {
     * @output ลบตู้คอนเทนเนอร์ และกลับไปแสดงรายการตู้คอนเทนเนอร์
     * @author Wirat
     * @Create Date 2564-07-29
-    * @Update Date
+    * @Update Date 2564-07-29
     */
     public function container_delete() {
         $m_con = new M_cdms_container();

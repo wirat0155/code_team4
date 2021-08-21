@@ -16,17 +16,17 @@ use App\Models\M_cdms_status_container;
 * @Update Date 2564-08-07
 */
 
-class Container_edit extends Cdms_controller{
+class Container_edit extends Cdms_controller {
     /*
     * container_input
     * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์
-    * @input -
+    * @input con_id
     * @output หน้าจอเพิ่มตู้คอนเทนเนอร์
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
     */
-    public function container_edit($con_id = NULL){
+    public function container_edit($con_id = NULL) {
         $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
@@ -62,15 +62,15 @@ class Container_edit extends Cdms_controller{
     }
 
     /*
-    * container_insert
-    * เพิ่มตู้คอนเทนเนอร์
+    * container_update
+    * แก้ไขตู้คอนเทนเนอร์
     * @input ข้อมูลตู้คอนเทนเนอร์ ข้อมูลเอเย่นต์
-    * @output เพิ่มตู้คอนเทนเนอร์ เพิ่มเอเย่นต์ หรือแก้ไขเอเย่นต์
+    * @output แก้ไขตู้คอนเทนเนอร์ เพิ่ม/แก้ไขเอเย่นต์ หรือชเพิ่ม/แก้ไขเอเย่นต์
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
     */
-    public function container_update(){
+    public function container_update() {
         // container information
         $con_id = $this->request->getPost('con_id');
         $con_number = $this->request->getPost('con_number');

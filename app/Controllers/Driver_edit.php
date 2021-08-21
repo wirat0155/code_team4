@@ -5,24 +5,24 @@ namespace App\Controllers;
 use App\Models\M_cdms_driver;
 
 /*
-    * Driver_update
-    * แสดงหน้าจอเเก้ไขข้อมูลพนักงาน 
-    * @author  Warisara
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+* Driver_update
+* แสดงหน้าจอเเก้ไขข้อมูลพนักงาน 
+* @author  Warisara
+* @Create Date 2564-08-07
+* @Update Date 2564-08-07
 */
 
-class driver_edit extends Cdms_controller
-{
+class driver_edit extends Cdms_controller {
     /*   
     * driver_update
     * แสดงหน้าจอ driver_update
+    * @input dri_id
+    * @output แสดงหน้าจอแก้ไขพนักงานขับรถ
     * @author  Warisara
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
-*/
-    public function driver_edit($dri_id)
-    {
+    */
+    public function driver_edit($dri_id) {
         $_SESSION['menu'] = 'Driver_show';
         $m_dri = new M_cdms_driver;
         $data['arr_driver'] = $m_dri->get_by_id($dri_id);
@@ -32,12 +32,13 @@ class driver_edit extends Cdms_controller
     /*
     * driver_update
     * เเก้ไขข้อมูลพนักงานขับรถ
+    * @input dri information
+    * @output แก้ไขพนักงานขับรถ
     * @author  Warisara
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
-*/
-    public function driver_update()
-    {
+    */
+    public function driver_update() {
         $m_dri = new M_cdms_driver();
         //driver information
         $dri_id = $this->request->getPost('dri_id');
