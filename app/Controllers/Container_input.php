@@ -61,26 +61,20 @@ class Container_input extends Cdms_controller {
     * @Update Date 2564-08-07
     */
     public function container_insert() {
-        // container information
+        // get container information
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');
         $con_tare_weight = $this->request->getPost('con_tare_weight');
         $con_net_weight = $this->request->getPost('con_net_weight');
         $con_cube = $this->request->getPost('con_cube');
-
-        // other information
         $con_size_id = $this->request->getPost('con_size_id');
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
 
-        // upload image
-        $con_image = $this->request->getPost('con_image');
-
+        // check con_number duplicate
         $m_con = new M_cdms_container();
-        // check con_number duplicate
-
-        // check con_number duplicate
         $arr_container = $m_con->is_con_number_exist($con_number);
+
         if (count($arr_container) >= 1) {
             $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
             $this->container_input();
@@ -97,11 +91,6 @@ class Container_input extends Cdms_controller {
 
             // load agent model
             $m_agn = new M_cdms_agent();
-
-
-            // test data for condition
-            // $agn_id = '' then insert
-            // $agn_id != '' ex. 18 then update
 
             if ($agn_id == '') {
                 // new agent
