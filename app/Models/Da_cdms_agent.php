@@ -12,7 +12,8 @@ use CodeIgniter\Model;
 * @Update Date 2564-08-02
 */
 
-class Da_cdms_agent extends Model {
+class Da_cdms_agent extends Model
+{
     protected $table = 'cdms_agent';
     protected $primaryKey = 'agn_id';
     protected $allowedFields = [
@@ -29,14 +30,15 @@ class Da_cdms_agent extends Model {
     * @Update Date 2564-08-02
     */
 
-    public function delete($agn_id = NULL, bool $purge = false) {
+    public function delete($agn_id = NULL, bool $purge = false)
+    {
         $sql = "UPDATE $this->table SET agn_status=2 
                 WHERE agn_id='$agn_id'";
         $this->db->query($sql);
     }
 
     /*
-    * agent_insert
+    * insert
     * เพิ่มรายชื่อข้อมูลเอเย่นต์
     * @input agn information
     * @output เพิ่มเอเย่นต์
@@ -45,7 +47,8 @@ class Da_cdms_agent extends Model {
     * @Update Date 2564-08-07
     */
 
-    public function agent_insert($agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL) {
+    public function insert($agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL)
+    {
         $sql = "INSERT INTO $this->table(agn_company_name, agn_firstname, agn_lastname, 
         agn_tel, agn_address, agn_tax, agn_email) 
         VALUES ('$agn_company_name', '$agn_firstname', '$agn_lastname', '$agn_tel', '$agn_address', '$agn_tax', '$agn_email')";
@@ -60,7 +63,8 @@ class Da_cdms_agent extends Model {
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function agent_update($agn_id = NULL, $agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL) {
+    public function agent_update($agn_id = NULL, $agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL)
+    {
         $sql = "UPDATE $this->table 
         SET agn_company_name='$agn_company_name',agn_firstname='$agn_firstname'
         ,agn_lastname='$agn_lastname',agn_tel='$agn_tel',agn_address='$agn_address',agn_tax='$agn_tax',agn_email='$agn_email'
