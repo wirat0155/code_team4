@@ -437,27 +437,23 @@
     function get_agent_information() {
         let agn_company_name = $('input[name="agn_company_name"]').val();
 
-        if (agn_company_name == '') {
-            $('input[name="agn_id"]').val('');
-            $('textarea[name="agn_address"]').val('');
-            $('input[name="agn_tax"]').val('');
-            $('input[name="agn_firstname"]').val('');
-            $('input[name="agn_lastname"]').val('');
-            $('input[name="agn_tel"]').val('');
-            $('input[name="agn_email"]').val('');
+        if (agn_company_name != '') {
+            $.ajax({
+                url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    agn_company_name: agn_company_name
+                },
+                success: function(data) {
+                    console.log(data);
+                    show_agent_information(data);
+                }
+            });
         }
-        $.ajax({
-            url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                agn_company_name: agn_company_name
-            },
-            success: function(data) {
-                console.log(data);
-                show_agent_information(data);
-            }
-        });
+        else {
+            clear_agent_information();
+        }
     }
 
     // show agent information when input agn_company_name
@@ -469,5 +465,16 @@
         $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
         $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
         $('input[name="agn_email"]').val(agent[0]['agn_email']);
+    }
+
+    // clear agent information when delete input agn_company_name
+    function clear_agent_information() {
+        $('input[name="agn_id"]').val('');
+        $('textarea[name="agn_address"]').val('');
+        $('input[name="agn_tax"]').val('');
+        $('input[name="agn_firstname"]').val('');
+        $('input[name="agn_lastname"]').val('');
+        $('input[name="agn_tel"]').val('');
+        $('input[name="agn_email"]').val('');
     }
 </script>
