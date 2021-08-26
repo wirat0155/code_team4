@@ -91,12 +91,6 @@ class Container_edit extends Cdms_controller {
         // print_r($this->request->getPost());
 
         $m_con = new M_cdms_container();
-
-        // test data for statement coverage test
-        // $con_id = 18;
-        // $con_number = "ABCD 12345 0";
-        // $con_old_number = "ABCD 12344 0";
-
         if ($con_number != $con_old_number) {
             // edit con_number
             $arr_con_number = $m_con->is_con_number_exist($con_number);
