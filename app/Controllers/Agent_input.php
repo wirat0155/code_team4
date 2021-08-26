@@ -41,8 +41,8 @@ class Agent_input extends Cdms_controller {
     * @Update Date 2564-08-06
     */
     public function agent_insert() {
-        $M_agent = new M_cdms_agent();
-        $arr_agent = $M_agent->get_all();
+        $m_agn = new M_cdms_agent();
+        $arr_agn = $m_agn->get_all();
 
         $agn_company_name = $this->request->getPost('agn_company_name');
         $agn_firstname = $this->request->getPost('agn_firstname');
@@ -54,13 +54,13 @@ class Agent_input extends Cdms_controller {
 
         // duplicate agn_company_name
         // then back to v_agent_showlist
-        for ($i = 0; $i < count($arr_agent); $i++) {
-            if ($arr_agent[$i]->agn_company_name == $agn_company_name) {
+        for ($i = 0; $i < count($arr_agn); $i++) {
+            if ($arr_agn[$i]->agn_company_name == $agn_company_name) {
                 return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
             }
         }
 
-        $M_agent->agent_insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+        $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
     }
 }
