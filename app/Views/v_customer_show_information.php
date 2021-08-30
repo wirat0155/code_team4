@@ -47,24 +47,10 @@
                     <div class="px-3 form-group row">
                         <label for="cus_company_name" class="col-sm-3 col-form-label"><b>บริษัท</b></label>
                         <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"> <?php echo $arr_customer[0]->cus_company_name ?></p>
-                        </div>
-                    </div>
-
-                    <!-- สาขา -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_branch" class="col-sm-3 col-form-label"><b>สาขา</b></label>
-                        <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"><?php echo $arr_customer[0]->cus_branch ?></p>
-                        </div>
-                    </div>
-
-                    <!-- ที่ตั้งบริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_address" class="col-sm-3 col-form-label"><b>ที่ตั้งบริษัท</b></label>
-                        <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"> <?php echo $arr_customer[0]->cus_address ?>
-                                <?php echo $arr_customer[0]->cus_address ?></p>
+                            <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_company_name ;
+                                                        if($arr_customer[0]->cus_branch != '') 
+                                                            echo ' สาขา ' . $arr_customer[0]->cus_branch; ?></p>
+                            <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_address ?></p>
                         </div>
                     </div>
 
@@ -72,48 +58,27 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tax" class="col-sm-3 col-form-label"><b>หมายเลขผู้เสียภาษี</b></label>
                         <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"> <?php echo $arr_customer[0]->cus_tax ?></p>
+                            <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_tax ?></p>
                         </div>
                     </div>
 
                     <!-- ผู้รับผิดชอบ -->
-                    <div class="px-3 pt-4 pb-2 form-group row">
-                        <div class="col-sm-12">
-                            <b>ผู้รับผิดชอบ (ตัวแทน)</b>
+                    <div class="px-3 form-group row">
+                        <label for="cus_firstname" class="col-sm-3 col-form-label"><b>ผู้รับผิดชอบ</b></label>
+                        <div class="col-sm-9">
+                            <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_firstname . ' ' . $arr_customer[0]->cus_lastname ?></p>
                         </div>
                     </div>
 
-                    <!-- ชื่อจริง -->
+                    <!-- ติดต่อ -->
                     <div class="px-3 form-group row">
-                        <label for="cus_firstname" class="col-sm-3 col-form-label"><b>ชื่อจริง</b></label>
+                        <label for="cus_tel" class="col-sm-3 col-form-label"><b>ติดต่อ</b></label>
                         <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"> <?php echo $arr_customer[0]->cus_firstname ?></p>
+                            <p class="block w-full mt-2"><?php echo $arr_customer[0]->cus_tel ?></p>
+                            <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_email ?> </p>
                         </div>
                     </div>
 
-                    <!-- นามสกุล -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_lastname" class="col-sm-3 col-form-label"><b>นามสกุล</b></label>
-                        <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"> <?php echo $arr_customer[0]->cus_lastname ?></p>
-                        </div>
-                    </div>
-
-                    <!-- เบอร์ติดต่อ -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_tel" class="col-sm-3 col-form-label"><b>เบอร์ติดต่อ</b></label>
-                        <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"><?php echo $arr_customer[0]->cus_tel ?></p>
-                        </div>
-                    </div>
-
-                    <!-- อีเมล -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_email" class="col-sm-3 col-form-label"><b>อีเมล</b></label>
-                        <div class="col-sm-9">
-                            <p class="block w-full mt-3 text-sm"> <?php echo $arr_customer[0]->cus_email ?> </p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
