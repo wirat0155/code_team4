@@ -34,6 +34,15 @@ class M_cdms_car extends Da_cdms_car {
         return $this->db->query($sql)->getResult();
     }
 
+    /*
+    * get_by_id
+    * ดึงข้อมูลรถตาม id
+    * @input car_id
+    * @output car_information
+    * @author Nattanan
+    * @Create Date 2564-07-30
+    * @Update Date 2565-07-30
+    */
     public function get_by_id($car_id) {
         $sql = "SELECT * FROM $this->table
 
