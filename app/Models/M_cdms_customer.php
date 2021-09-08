@@ -23,7 +23,8 @@ class M_cdms_customer extends Da_cdms_customer {
     */
     public function get_all() {
         $sql = "SELECT * FROM $this->table
-                WHERE cus_status = 1";
+                WHERE cus_status = 1
+                ORDER BY cus_id DESC";
         return $this->db->query($sql)->getResult();
     }
 
