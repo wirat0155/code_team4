@@ -23,7 +23,8 @@ class M_cdms_agent extends Da_cdms_agent {
     */
     public function get_all() {
         $sql = "SELECT * FROM $this->table
-                WHERE agn_status = 1";
+                WHERE agn_status = 1
+                ORDER BY agn_id DESC" ;
         return $this->db->query($sql)->getResult();
     }
     /*

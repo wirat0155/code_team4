@@ -30,7 +30,8 @@ class M_cdms_car extends Da_cdms_car {
 
         LEFT JOIN cdms_car_type 
         ON car_cart_id = cart_id
-        WHERE NOT car_status = 4";
+        WHERE NOT car_status = 4
+        ORDER BY car_id DESC" ;
         return $this->db->query($sql)->getResult();
     }
 

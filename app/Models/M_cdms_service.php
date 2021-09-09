@@ -30,7 +30,8 @@ class M_cdms_service extends Da_cdms_service {
                 INNER JOIN cdms_container_type ON con_cont_id = cont_id
                 INNER JOIN cdms_status_container ON con_stac_id = stac_id
                 INNER JOIN cdms_agent ON con_agn_id = agn_id
-                WHERE ser_status=1";
+                WHERE ser_status=1
+                ORDER BY ser_id DESC" ;
         return $this->db->query($sql)->getResult();
     }
     /*
