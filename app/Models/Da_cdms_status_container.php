@@ -19,6 +19,20 @@ class Da_cdms_status_container extends Model {
     ];
 
     /*
+    * insert
+    * เพิ่มสถานะตู้คอนเทนเนอร์
+    * @input stac_name
+    * @output เพิ่มสถานะตู้คอนเทนเนอร์
+    * @author Wirat
+    * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
+    */
+    public function insert($stac_name = NULL, bool $return_ID = true) {
+        $sql = "INSERT INTO $this->table VALUES(NULL, '$stac_name', 1)";
+        $this->db->query($sql);
+    }
+
+    /*
     * delete
     * ลบสถานะตู้
     * @input stac_id

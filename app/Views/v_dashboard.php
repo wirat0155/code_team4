@@ -40,7 +40,7 @@
                         <hr>
                     </div>
 
-                    <div class="row p-3">
+                    <div class="row p-3 stac_list">
                         <?php for($i = 0; $i < count($arr_status_container); $i++) { ?>
                             <div class="col-12 m-1 p-2 text-sm row <?php echo 'stac_id' . $arr_status_container[$i]->stac_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
                                 <div class="col-10">
@@ -342,7 +342,33 @@
             }
         });
     }
-    function show_info() {}
+    function status_container_insert() {
+        var stac_name = $('input[name="stac_name"]').val();
+        console.log(stac_name);
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Container_status_input/container_status_insert'?>',
+            method: 'POST',
+            data: {
+                stac_name: stac_name
+            },
+            success: function(data) {
+                const last_stac = JSON.parse(data);
+                const last_stac_id = last_stac[0]['stac_id'];
+
+                var stac = '<div class="col-12 m-1 p-2 text-sm row stac_id' + last_stac_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                stac += `<div class="col-10">${stac_name}</div>`;
+                stac += `<div class="col-2">`;
+                stac += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id', ${last_stac_id})">`;
+                stac += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`;
+                stac += `</button></div></div>`;
+
+                $('.stac_list').prepend(stac);
+            },
+            error: function() {
+                console.log('error');
+            }
+        });
+    }
 
 
     function car_type_delete(cart_id) {
