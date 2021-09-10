@@ -26,14 +26,30 @@ class Service_show extends Cdms_controller {
     * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_service และ แสดง view รายการบริการ
     * @input -
     * @output array of service
-    * @author Natdanai
+    * @author Natdanai Kittipod
     * @Create Date 2564-07-29
-    * @Update Date 2564-07-29
+    * @Update Date 2564-09-10
     */
     public function service_show_ajax() {
         $_SESSION['menu'] = 'Service_show';
         $m_ser = new M_cdms_service();
-        $data['arr_service'] = $m_ser->get_all();
+
+        if(isset($_POST['daterange'])){
+            $daterange = $this->request->getPost('daterange');
+            $start = substr($daterange,6,4).'-'.substr($daterange,3,2).'-'.(substr($daterange,0,2)) . ' ' . '00:00:00';
+            $end = substr($daterange,19,4).'-'.substr($daterange,16,2).'-'.(substr($daterange,13,2)) . ' ' . '23:59:59';
+            $data['arr_service'] = $m_ser->get_by_date($start, $end);
+            
+            $data['arrivals_date'] = $daterange;
+        }
+        else{
+            $data['arr_service'] = $m_ser->get_all();
+            $index = count($data['arr_service'])-1;
+            $start = $data['arr_service'][$index]->ser_arrivals_date;
+            $end = $data['arr_service'][0]->ser_arrivals_date;
+            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
+                                    ' - '. date("d-m-Y");
+        }
 
         $this->output('v_service_showlist', $data);
     }

@@ -56,6 +56,25 @@ class M_cdms_service extends Da_cdms_service {
 
     /*
     *get_by_date
+    * ค้นหาตามวันที่ ของลูกค้า
+    * @input start_date end_date
+    * @output Servier and Customer or null
+    * @author Kittipod
+    * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
+    */
+    public function get_by_date_customer($start_date = NULL, $end_date = NULL) {
+        $sql = "SELECT * FROM $this->table 
+                LEFT JOIN cdms_customer 
+                on ser_cus_id = cus_id
+                WHERE ser_status = 1
+                AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
+                ORDER BY ser_id DESC";
+        return $this->db->query($sql)->getResult();
+    }
+
+    /*
+    *get_by_date
     * ค้นหาตามวันที่
     * @input start_date end_date
     * @output Servier or null
@@ -64,10 +83,13 @@ class M_cdms_service extends Da_cdms_service {
     * @Update Date 2564-09-10
     */
     public function get_by_date($start_date = NULL, $end_date = NULL) {
-        $sql = "SELECT * FROM $this->table 
-                LEFT JOIN cdms_customer 
-                on ser_cus_id = cus_id
-                WHERE ser_status = 1
+        $sql = "SELECT * FROM $this->table
+                INNER JOIN cdms_customer ON ser_cus_id = cus_id 
+                INNER JOIN cdms_container ON ser_con_id = con_id
+                INNER JOIN cdms_container_type ON con_cont_id = cont_id
+                INNER JOIN cdms_status_container ON con_stac_id = stac_id
+                INNER JOIN cdms_agent ON con_agn_id = agn_id
+                WHERE ser_status=1
                 AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
                 ORDER BY ser_id DESC";
         return $this->db->query($sql)->getResult();

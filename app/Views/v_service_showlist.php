@@ -43,6 +43,20 @@
         </div>
     </di>
 
+    <!-- Excel and date -->
+    <div class="text-right mb-2">
+        <form action="<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>" method="post">
+        <!-- Download Excel -->
+            <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
+                <i class="bi bi-file-arrow-down mr-1"></i>
+                Download Excel
+            </a>
+        <!-- Date -->
+            <input class="pl-2 shadow-sm rounded" type="text" name="daterange" id="daterange" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
+            <input class="shadow-sm btn btn-white text-info bg-white" type="submit" id="submit_date" value="GO">
+        </form>
+    </div>
+
     <!-- Card -->
     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <!-- Card -->
@@ -240,6 +254,29 @@
         $("#DataTables_Table_0_filter").append(
             "<a href='<?php echo base_url() . '/public/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
         );
+
+        //วันที่ Date Range Picker
+        $('input[name="daterange"]').daterangepicker({
+            "locale": {
+                "format": 'DD/MM/YYYY',
+                "customRangeLabel": "Custom",
+                "daysOfWeek": [
+                    "อา", "จ", "อ", "พ",
+                    "พฤ", "ศ", "ส"
+                ],
+                "monthNames": [
+                    "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                    "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+                    "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                ],
+                "firstDay": 1
+            },
+            language: 'th',
+            opens: 'left'
+        }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
+                .format('YYYY-MM-DD'));
+        });
     });
 
     function get_id(ser_id) {
