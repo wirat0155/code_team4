@@ -53,4 +53,23 @@ class M_cdms_service extends Da_cdms_service {
                 WHERE ser_id ='$ser_id' ";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    *get_by_date
+    * ค้นหาตามวันที่
+    * @input start_date end_date
+    * @output Servier or null
+    * @author Kittipod
+    * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
+    */
+    public function get_by_date($start_date = NULL, $end_date = NULL) {
+        $sql = "SELECT * FROM $this->table 
+                LEFT JOIN cdms_customer 
+                on ser_cus_id = cus_id
+                WHERE ser_status = 1
+                AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
+                ORDER BY ser_id DESC";
+        return $this->db->query($sql)->getResult();
+    }
 }

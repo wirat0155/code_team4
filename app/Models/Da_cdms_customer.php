@@ -70,4 +70,24 @@ class Da_cdms_customer extends Model {
     WHERE cus_id='$cus_id' ";
         $this->db->query($sql);
     }
+
+    /*
+    *get_by_date
+    * ค้นหาตามวันที่
+    * @input start_date end_date
+    * @output Customer and Servier or null
+    * @author Kittipod
+    * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
+    */
+    public function get_by_date($start_date = NULL, $end_date = NULL) {
+        $sql = "SELECT * FROM $this->table 
+                LEFT JOIN cdms_service 
+                on cus_id = ser_cus_id
+                WHERE ser_status = 1
+                AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
+                GROUP BY cus_id
+                ORDER BY cus_id DESC";
+        return $this->db->query($sql)->getResult();
+    }
 }

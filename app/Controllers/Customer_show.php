@@ -21,14 +21,38 @@ class Customer_show extends Cdms_controller {
     * @output array of customer
     * @author  Kittipod
     * @Create Date 2564-07-29
-    * @Update Date 2564-08-02
+    * @Update Date 2564-09-10
     */
     public function customer_show_ajax() {
         $_SESSION['menu'] = 'Customer_show';
         $m_cus = new M_cdms_customer();
-        $data['arr_customer'] = $m_cus->get_all();
         $m_ser = new M_cdms_service();
-        $data['arr_service'] = $m_ser->get_all();
+
+        if(isset($_POST['daterange'])){
+
+            $daterange = $this->request->getPost('daterange');
+            $daterange = $this->request->getPost('daterange');
+            $start = substr($daterange,6,4).'-'.substr($daterange,3,2).'-'.(substr($daterange,0,2)) . ' ' . '00:00:00';
+            $end = substr($daterange,19,4).'-'.substr($daterange,16,2).'-'.(substr($daterange,13,2)) . ' ' . '23:59:59';
+            //Data Customer
+            $data['arr_customer'] = $m_cus->get_by_date($start, $end);
+            //Data Service
+            $data['arr_service'] = $m_ser->get_by_date($start, $end);
+            
+            $data['arrivals_date'] = $daterange;
+        }else{
+
+            //Data Customer
+            $data['arr_customer'] = $m_cus->get_all();
+            //Data Service
+            $data['arr_service'] = $m_ser->get_all();
+
+            $index = count($data['arr_service'])-1;
+            $start = $data['arr_service'][$index]->ser_arrivals_date;
+            $end = $data['arr_service'][0]->ser_arrivals_date;
+            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
+                                    ' - '. date("d-m-Y");
+        }
 
         $this->output('v_customer_showlist', $data);
     }

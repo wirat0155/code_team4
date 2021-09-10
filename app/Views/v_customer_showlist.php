@@ -26,14 +26,17 @@
     </di>
 
     <!-- Excel and date -->
-    <div class="text-right mb-6">
+    <div class="text-right mb-2">
+        <form action="<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>" method="post">
         <!-- Download Excel -->
-        <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
-            <i class="bi bi-file-arrow-down mr-1"></i>
-            Download Excel
-        </a>
+            <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
+                <i class="bi bi-file-arrow-down mr-1"></i>
+                Download Excel
+            </a>
         <!-- Date -->
-        <input class="pl-2 shadow-sm rounded" type="text" name="daterange" value="01/01/2018 - 01/15/2018" style=" height: 40px; width: 200px; ">
+            <input class="pl-2 shadow-sm rounded" type="text" name="daterange" id="daterange" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
+            <input class="shadow-sm btn btn-white text-info bg-white" type="submit" id="submit_date" value="GO">
+        </form>
     </div>
 
     <!-- Card ตู้เข้า -->
@@ -265,6 +268,21 @@
 
         //วันที่ Date Range Picker
         $('input[name="daterange"]').daterangepicker({
+            "locale": {
+                "format": 'DD/MM/YYYY',
+                "customRangeLabel": "Custom",
+                "daysOfWeek": [
+                    "อา", "จ", "อ", "พ",
+                    "พฤ", "ศ", "ส"
+                ],
+                "monthNames": [
+                    "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                    "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+                    "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                ],
+                "firstDay": 1
+            },
+            language: 'th',
             opens: 'left'
         }, function(start, end, label) {
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
