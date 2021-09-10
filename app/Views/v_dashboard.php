@@ -7,7 +7,7 @@
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">ขนาดตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('size')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600">ดูทั้งหมด</div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_size" style="cursor: pointer;" onclick="show_all_size()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
@@ -36,7 +36,7 @@
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">สถานะตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('stac')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600">ดูทั้งหมด</div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_status_container" style="cursor: pointer;" onclick="show_all_status_container()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
@@ -65,7 +65,7 @@
                     <div class="row p-3">
                         <div class="col-6 font-semibold ">ประเภทตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cont')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600">ดูทั้งหมด</div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_container_type" style="cursor: pointer;" onclick="show_all_container_type()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
@@ -94,7 +94,7 @@
                     <div class="row p-3">
                         <div class="col-6 font-semibold">ประเภทรถ</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cart')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600">ดูทั้งหมด</div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_car_type" style="cursor: pointer;" onclick="show_all_car_type()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
@@ -145,6 +145,91 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Show ขนาดตู้ -->
+<div class="modal fade" id="myModal_size" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ขนาดตู้ทั้งหมด</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" id="show_size">
+                <div class="col-12 m-1 p-2 text-sm row size_id" style="background-color: #FAFAFA; border-radius: 5px;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal Show สถานะตู้ -->
+<div class="modal fade" id="myModal_status_container" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">สถานะตู้ทั้งหมด</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" id="show_status_container">
+                <div class="col-12 m-1 p-2 text-sm row size_id" style="background-color: #FAFAFA; border-radius: 5px;">
+                    <div class="col-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Show ประเภทตู้ -->
+<div class="modal fade" id="myModal_container_type" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ประเภทตู้ทั้งหมด</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" id="show_container_type">
+                <div class="col-12 m-1 p-2 text-sm row cont_id" style="background-color: #FAFAFA; border-radius: 5px;">
+                    <div class="col-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Show ประเภทรถ -->
+<div class="modal fade" id="myModal_car_type" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ประเภทตู้ทั้งหมด</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body" id="show_car_type">
+                <div class="col-12 m-1 p-2 text-sm row cont_id" style="background-color: #FAFAFA; border-radius: 5px;">
+                    <div class="col-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     $(document).ready(function() {
@@ -474,6 +559,114 @@
 
     function delete_item(delete_type, delete_id) {
         $('.' + delete_type + delete_id).remove();
+    }
+
+    function show_all_size() {
+        $.ajax({
+            url: 'get_all_size',
+            method: 'POST',
+            dataType: 'JSON',
+
+            success: function(data) {
+                console.log(data)
+                $('#show_size').empty();
+                var size = ''
+                for (let i = 0; i < data.length; i++) {
+                    size = `<div class="col-12 m-1 p-2 text-sm row size_id" style="background-color: #FAFAFA; border-radius: 5px;">`
+                    size += `<div class="col-10"> ${data[i]['size_name']}`
+                    size += `</div>`
+                    // size += `<div class="col-2">`
+                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('size_id')">`
+                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    // size += `</button>`
+                    // size += `</div>`
+                    size += `</div>`
+                    $('#show_size').append(size);
+                }
+
+            }
+        });
+    }
+
+    function show_all_status_container() {
+        $.ajax({
+            url: 'get_all_status_container',
+            method: 'POST',
+            dataType: 'JSON',
+
+            success: function(data) {
+                console.log(data)
+                $('#show_status_container').empty();
+                var status_container = ''
+                for (let i = 0; i < data.length; i++) {
+                    status_container = `<div class="col-12 m-1 p-2 text-sm row stac_id" style="background-color: #FAFAFA; border-radius: 5px;">`
+                    status_container += `<div class="col-10"> ${data[i]['stac_name']}`
+                    status_container += `</div>`
+                    // size += `<div class="col-2">`
+                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id')">`
+                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    // size += `</button>`
+                    // size += `</div>`
+                    status_container += `</div>`
+                    $('#show_status_container').append(status_container);
+                }
+
+            }
+        });
+    }
+
+    function show_all_container_type() {
+        $.ajax({
+            url: 'get_all_container_type',
+            method: 'POST',
+            dataType: 'JSON',
+
+            success: function(data) {
+                console.log(data)
+                $('#show_container_type').empty();
+                var container_type = ''
+                for (let i = 0; i < data.length; i++) {
+                    container_type = `<div class="col-12 m-1 p-2 text-sm row cont_id" style="background-color: #FAFAFA; border-radius: 5px;">`
+                    container_type += `<div class="col-10"> ${data[i]['cont_name']}`
+                    container_type += `</div>`
+                    // size += `<div class="col-2">`
+                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id')">`
+                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    // size += `</button>`
+                    // size += `</div>`
+                    container_type += `</div>`
+                    $('#show_container_type').append(container_type);
+                }
+
+            }
+        });
+    }
+
+    function show_all_car_type() {
+        $.ajax({
+            url: 'get_all_car_type',
+            method: 'POST',
+            dataType: 'JSON',
+
+            success: function(data) {
+                console.log(data)
+                $('#show_car_type').empty();
+                var car_type = ''
+                for (let i = 0; i < data.length; i++) {
+                    car_type = `<div class="col-12 m-1 p-2 text-sm row cart_id" style="background-color: #FAFAFA; border-radius: 5px;">`
+                    car_type += `<div class="col-10"> ${data[i]['cart_name']}`
+                    car_type += `</div>`
+                    // size += `<div class="col-2">`
+                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id')">`
+                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    // size += `</button>`
+                    // size += `</div>`
+                    car_type += `</div>`
+                    $('#show_car_type').append(car_type);
+                }
+
+            }
+        });
     }
     
 </script>

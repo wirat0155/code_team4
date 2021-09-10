@@ -121,4 +121,32 @@ class Dashboard extends Cdms_controller
 
         return json_encode('pass');
     }
+
+    public function get_all_size()
+    {
+        $m_size = new M_cdms_size();
+        $data['arr_size'] = $m_size->get_all();
+        return json_encode($data['arr_size']);
+    }
+
+    public function get_all_status_container()
+    {
+        $m_stac = new M_cdms_status_container();
+        $data['arr_status_container'] = $m_stac->get_all();
+        return json_encode($data['arr_status_container']);
+    }
+
+    public function get_all_container_type()
+    {
+        $m_cont = new M_cdms_container_type();
+        $data['arr_container_type'] = $m_cont->get_all();
+        return json_encode($data['arr_container_type']);
+    }
+
+    public function get_all_car_type()
+    {
+        $m_cart = new M_cdms_car_type();
+        $data['arr_car_type'] = $m_cart->get_all();
+        return json_encode($data['arr_car_type']);
+    }
 }
