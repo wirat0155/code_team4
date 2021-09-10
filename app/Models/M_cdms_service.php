@@ -55,7 +55,7 @@ class M_cdms_service extends Da_cdms_service {
     }
 
     /*
-    *get_by_date
+    *get_by_date_customer
     * ค้นหาตามวันที่ ของลูกค้า
     * @input start_date end_date
     * @output Servier and Customer or null
