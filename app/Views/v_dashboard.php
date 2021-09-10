@@ -69,7 +69,7 @@
                         <hr>
                     </div>
 
-                    <div class="row p-3">
+                    <div class="row p-3 cont_list">
                         <?php for($i = 0; $i < count($arr_container_type); $i++) { ?>
                             <div class="col-12 m-1 p-2 text-sm row <?php echo 'cont_id' . $arr_container_type[$i]->cont_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
                                 <div class="col-10">
@@ -92,13 +92,13 @@
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="min-height: 400px; max-height: 400px; overflow: auto;">
                 <div>
                     <div class="row p-3">
-                        <div class="col-6 font-semibold ">ประเภทรถ</div>
+                        <div class="col-6 font-semibold">ประเภทรถ</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cart')" style="cursor: pointer;">เพิ่ม</span></div>
                         <div class="col-3 text-xs text-gray-600">ดูทั้งหมด</div>
                         <hr>
                     </div>
 
-                    <div class="row p-3">
+                    <div class="row p-3 cart_list">
                         <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
                             <div class="col-12 m-1 p-2 text-sm row <?php echo 'cart_id' . $arr_car_type[$i]->cart_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
                                 <div class="col-10">
@@ -344,7 +344,6 @@
     }
     function status_container_insert() {
         var stac_name = $('input[name="stac_name"]').val();
-        console.log(stac_name);
         $.ajax({
             url: '<?php echo base_url() . '/public/Container_status_input/container_status_insert'?>',
             method: 'POST',
@@ -363,14 +362,56 @@
                 stac += `</button></div></div>`;
 
                 $('.stac_list').prepend(stac);
-            },
-            error: function() {
-                console.log('error');
             }
         });
     }
+    function container_type_insert() {
+        var cont_name = $('input[name="cont_name"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Container_type_input/container_type_insert'?>',
+            method: 'POST',
+            data: {
+                cont_name: cont_name
+            },
+            success: function(data) {
+                const last_cont = JSON.parse(data);
+                const last_cont_id = last_cont[0]['cont_id'];
 
+                var cont = '<div class="col-12 m-1 p-2 text-sm row cont_id' + last_cont_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                cont += `<div class="col-10">${cont_name}</div>`;
+                cont += `<div class="col-2">`;
+                cont += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id', ${last_cont_id})">`;
+                cont += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`;
+                cont += `</button></div></div>`;
 
+                $('.cont_list').prepend(cont);
+            }
+        });
+    }
+    function car_type_insert() {
+        var cart_name = $('input[name="cart_name"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Car_type_input/car_type_insert'?>',
+            method: 'POST',
+            data: {
+                cart_name: cart_name
+            },
+            success: function(data) {
+                const last_cart = JSON.parse(data);
+                const last_cart_id = last_cart[0]['cart_id'];
+
+                var cart = '<div class="col-12 m-1 p-2 text-sm row cart_id' + last_cart_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                cart += `<div class="col-10">${cart_name}</div>`;
+                cart += `<div class="col-2">`;
+                cart += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id', ${last_cart_id})">`;
+                cart += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`;
+                cart += `</button></div></div>`;
+
+                $('.cart_list').prepend(cart);
+            }
+        });
+    }
+    
     function car_type_delete(cart_id) {
         // console.log('car_type_delete', cart_id);
         $.ajax({

@@ -9,7 +9,7 @@ use App\Models\Da_cdms_container_type;
 * ดึงข้อมูลประเภทตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-08-06
-* @Update Date 2564-08-06
+* @Update Date 2564-09-10
 */
 
 class M_cdms_container_type extends Da_cdms_container_type {
@@ -38,9 +38,21 @@ class M_cdms_container_type extends Da_cdms_container_type {
     * @Update Date 2564-08-06
     */
     public function get_by_id($cont_id) {
-        $sql = "SELECT * FROM $this->table
+        $sql = "SELECT * FROM $this->table WHERE cont_id='$cont_id'";
+        return $this->db->query($sql)->getResult();
+    }
 
-                WHERE cont_id='$cont_id'";
+    /*
+    * get_last
+    * ดึงข้อมูลประเภทตู้คอนเทนเนอร์รายการสุดท้าย
+    * @input -
+    * @output cont information
+    * @author Wirat
+    * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
+    */
+    public function get_last() {
+        $sql = "SELECT * FROM $this->table ORDER BY 'cont_id' DESC LIMIT 1";
         return $this->db->query($sql)->getResult();
     }
 }
