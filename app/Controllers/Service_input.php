@@ -89,6 +89,7 @@ class Service_input extends Cdms_controller {
         $m_cus = new M_cdms_customer();
         $m_con = new M_cdms_container();
         $m_agn = new M_cdms_agent();
+        $m_dri = new M_cdms_driver();
 
         // customer information
         $cus_id = $this->request->getPost('cus_id');
@@ -129,11 +130,17 @@ class Service_input extends Cdms_controller {
         $ser_arrivals_date = $this->request->getPost('ser_arrivals_date');
         $ser_dri_id_in = $this->request->getPost('ser_dri_id_in');
         $ser_car_id_in = $this->request->getPost('ser_car_id_in');
-        print_r($ser_car_id_in);
+        if($ser_car_id_in == ''){
+            $get_ser_car_id_in = $m_dri->get_by_id($ser_dri_id_in);
+            $ser_car_id_in = $get_ser_car_id_in[0]->dri_car_id;
+        }
         $ser_actual_departure_date = $this->request->getPost('ser_actual_departure_date');
         $ser_dri_id_out = $this->request->getPost('ser_dri_id_out');
         $ser_car_id_out = $this->request->getPost('ser_car_id_out');
-        print_r($ser_car_id_out);
+        if($ser_car_id_out == ''){
+            $get_ser_car_id_out = $m_dri->get_by_id($ser_dri_id_out);
+            $ser_car_id_out = $get_ser_car_id_out[0]->dri_car_id;
+        }
         $ser_arrivals_location = $this->request->getPost('ser_arrivals_location');
         $ser_departure_location = $this->request->getPost('ser_departure_location');
         $ser_weight = $this->request->getPost('ser_weight');
@@ -154,8 +161,8 @@ class Service_input extends Cdms_controller {
                 $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
                 $ser_cus_id = $get_ser_cus_id[0]->cus_id;
             } else {
-                // $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
-                // $this->service_input();
+                $_SESSION['cus_company_name_error'] = 'มีลูกค้ารายนี้แล้ว';
+                $this->service_input();
             }
         }
         
@@ -174,8 +181,8 @@ class Service_input extends Cdms_controller {
                 $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
                 $con_agn_id = $get_ser_agn_id[0]->agn_id;
             } else {
-                // $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
-                // $this->service_input();
+                $_SESSION['agn_company_name_error'] = 'มีเอเย่นต์รายนี้แล้ว';
+                $this->service_input();
             }
         }
         
@@ -195,14 +202,14 @@ class Service_input extends Cdms_controller {
                 $get_ser_con_id = $m_con->get_by_con_number($con_number);
                 $ser_con_id = $get_ser_con_id[0]->con_id;
             }else{
-                // $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
-                // $this->service_input();
+                $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
+                $this->service_input();
             }
         }
         
 
         //insert service
         $m_ser->service_insert($ser_type, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
-        //return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
+        return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
     }
 }
