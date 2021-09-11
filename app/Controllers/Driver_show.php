@@ -44,6 +44,14 @@ class Driver_show extends Cdms_controller {
         $m_dri->delete($dri_id);
         return $this->response->redirect(base_url('/public/driver_show/driver_show_ajax'));
     }
+
+    public function get_driver_ajax() {
+        $m_dri = new M_cdms_driver();
+        $ser_dri = $this->request->getPost('ser_dri');
+        $dri_information = $m_dri->get_by_id($ser_dri);
+
+        echo json_encode($dri_information);
+    }
     /*
     * driver_delete
     * ดูข้อมูลพนักงานขับรถ

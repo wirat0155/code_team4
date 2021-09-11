@@ -199,7 +199,11 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()" placeholder="บริษัท">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()">
+                                        <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                            <option value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -433,23 +437,22 @@
 
     // get agent information when input agn_company_name
     function get_agent_information() {
-        let agn_company_name = $('input[name="agn_company_name"]').val();
+        let agn_id = $('select[name="agn_company_name"]').val();
 
-        if (agn_company_name != '') {
+        if (agn_id != '') {
             $.ajax({
                 url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
                 method: 'POST',
                 dataType: 'JSON',
                 data: {
-                    agn_company_name: agn_company_name
+                    agn_id: agn_id
                 },
                 success: function(data) {
                     console.log(data);
                     show_agent_information(data);
                 }
             });
-        }
-        else {
+        } else {
             clear_agent_information();
         }
 

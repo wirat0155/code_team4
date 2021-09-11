@@ -85,4 +85,12 @@ class Customer_show extends Cdms_controller {
         $data['arr_customer'] = $m_cus->get_by_id($cus_id);
         $this->output('v_customer_show_information', $data);
     }
+
+    public function get_customer_ajax() {
+        $m_cus = new M_cdms_customer();
+        $cus_id = $this->request->getPost('cus_id');
+        $cus_information = $m_cus->get_by_id($cus_id);
+
+        echo json_encode($cus_information);
+    }
 }

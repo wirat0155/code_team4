@@ -62,8 +62,8 @@ class Agent_show extends Cdms_controller {
     */
     public function get_agent_ajax() {
         $m_agn = new M_cdms_agent();
-        $agn_company_name = $this->request->getPost('agn_company_name');
-        $agn_information = $m_agn->get_by_company_name($agn_company_name);
+        $agn_id = $this->request->getPost('agn_id');
+        $agn_information = $m_agn->get_by_id($agn_id);
 
         echo json_encode($agn_information);
     }
