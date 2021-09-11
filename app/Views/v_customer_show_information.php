@@ -74,7 +74,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label"><b>ติดต่อ</b></label>
                         <div class="col-sm-9">
-                            <p class="block w-full mt-2"><?php echo $arr_customer[0]->cus_tel ?></p>
+                            <p class="block w-full mt-2"><?php echo tel_format($arr_customer[0]->cus_tel) ?></p>
                             <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_email ?> </p>
                         </div>
                     </div>
