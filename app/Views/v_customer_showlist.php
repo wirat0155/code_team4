@@ -27,7 +27,7 @@
 
     <!-- Excel and date -->
     <div class="text-right mb-2">
-        <form action="<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>" method="post">
+        <form id='form_date' action="<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>" method="post">
         <!-- Download Excel -->
             <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
                 <i class="bi bi-file-arrow-down mr-1"></i>
@@ -35,7 +35,6 @@
             </a>
         <!-- Date -->
             <input class="pl-2 shadow-sm rounded" type="text" name="daterange" id="daterange" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
-            <input class="shadow-sm btn btn-white text-info bg-white" type="submit" id="submit_date" value="GO">
         </form>
     </div>
 
@@ -288,12 +287,17 @@
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
                 .format('YYYY-MM-DD'));
         });
+
+        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>\'');
+        $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     });
 
     // ส่ง cus_id เข้า Modal
     function get_id(cus_id) {
         $('#cus_id').val(cus_id);
     }
+
+    
 
     function customer_detail(cus_id) {
         window.location = '<?php echo base_url('') . '/public/Customer_show/customer_detail/' ?>' + cus_id;
