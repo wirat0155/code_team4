@@ -9,7 +9,7 @@ use CodeIgniter\Model;
 * เพิ่ม ลบ รายชื่อเอเย่นต์
 * @author Klayuth,Preechaya
 * @Create Date 2564-07-30
-* @Update Date 2564-08-02
+* @Update Date 2564-09-11
 */
 
 class Da_cdms_agent extends Model
@@ -61,14 +61,21 @@ class Da_cdms_agent extends Model
     * @output แก้ไขเอเย่นต์
     * @author Klayuth
     * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * @Update Date 2564-09-11
     */
     public function agent_update($agn_id = NULL, $agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL)
     {
-        $sql = "UPDATE $this->table 
-        SET agn_company_name='$agn_company_name',agn_firstname='$agn_firstname'
-        ,agn_lastname='$agn_lastname',agn_tel='$agn_tel',agn_address='$agn_address',agn_tax='$agn_tax',agn_email='$agn_email'
-        WHERE agn_id='$agn_id'";
+        if($agn_company_name!=NULL){
+            $sql = "UPDATE $this->table 
+            SET agn_company_name='$agn_company_name',agn_firstname='$agn_firstname'
+            ,agn_lastname='$agn_lastname',agn_tel='$agn_tel',agn_address='$agn_address',agn_tax='$agn_tax',agn_email='$agn_email'
+            WHERE agn_id='$agn_id'";
+        }else{
+            $sql = "UPDATE $this->table 
+            SET agn_firstname='$agn_firstname'
+            ,agn_lastname='$agn_lastname',agn_tel='$agn_tel',agn_address='$agn_address',agn_tax='$agn_tax',agn_email='$agn_email'
+            WHERE agn_id='$agn_id'";
+        }
         $this->db->query($sql);
     }
 }
