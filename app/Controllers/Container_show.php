@@ -33,6 +33,13 @@ class Container_show extends Cdms_controller {
         $this->output('v_container_showlist', $data);
     }
 
+    public function get_container_ajax() {
+        $m_con = new M_cdms_container();
+        $con_id = $this->request->getPost('con_id');
+        $con_information = $m_con->get_by_id($con_id);
+
+        echo json_encode($con_information);
+    }
     /*
     * container_detail
     * แสดงข้อมูลตู้คอนเทนเนอร์

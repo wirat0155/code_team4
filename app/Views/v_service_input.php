@@ -1,3 +1,8 @@
+<style>
+    span {
+        font-weight: bold;
+    }
+</style>
 <div class="container px-6 mx-auto grid">
 
     <!-- หัวข้อ -->
@@ -28,7 +33,13 @@
                                 </div>
 
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_id" oninput="get_container_information()">
+                                        <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
+                                            <option value="<?php echo $arr_con[$i]->con_id ?>"><?php echo $arr_con[$i]->con_number ?></option>
+                                        <?php } ?>
+                                        <option value="new">ตู้ใหม่</option>
+                                    </select>
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
                                 </div>
                             </div>
 
@@ -212,10 +223,10 @@
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-4">
                                     <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">วันที่ต้องออก (cut off)</span>
+                                        <span class="text-gray-700 dark:text-gray-400">วันที่ต้องออก <br><i style="color:gray;">cut off</i></span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-8">
+                                <div class="col-12 col-sm-12">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_departure_date">
                                 </div>
                             </div>
@@ -227,7 +238,7 @@
                                         <span class="text-gray-700 dark:text-gray-400">วันที่เข้าลาน</span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-8">
+                                <div class="col-12 col-sm-12">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_arrivals_date">
                                 </div>
                             </div>
@@ -240,11 +251,14 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in" oninput="get_car_information(1)">
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                             <option value="<?php echo $arr_driver[$i]->dri_id ?>"><?php echo $arr_driver[$i]->dri_name ?></option>
                                         <?php } ?>
                                     </select>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <br><input type="checkbox" id="open" onclick="open_disable(1)"> ใช้รถที่ไม่ใช่รถประจำ
                                 </div>
                             </div>
 
@@ -256,9 +270,10 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in" disabled>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                            <option value="<?php echo $arr_car[$i]->car_id ?>"><?php echo $arr_car[$i]->car_code ?></option>
+                                            <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
+                                                <?php echo $arr_car[$i]->car_code ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -271,7 +286,7 @@
                                         <span class="text-gray-700 dark:text-gray-400">วันที่ออกจริง</span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-8">
+                                <div class="col-12 col-sm-12">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="datetime-local" name="ser_actual_departure_date">
                                 </div>
                             </div>
@@ -284,11 +299,14 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out" oninput="get_car_information(2)">
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                             <option value="<?php echo $arr_driver[$i]->dri_id ?>"><?php echo $arr_driver[$i]->dri_name ?></option>
                                         <?php } ?>
                                     </select>
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <br><input type="checkbox" id="open2" onclick="open_disable(2)"> ใช้รถที่ไม่ใช่รถประจำ
                                 </div>
                             </div>
 
@@ -300,9 +318,10 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out" disabled>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                            <option value="<?php echo $arr_car[$i]->car_id ?>"><?php echo $arr_car[$i]->car_code ?></option>
+                                            <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
+                                                <?php echo $arr_car[$i]->car_code ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -353,8 +372,16 @@
                                         <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="บริษัท">
+                                <div class="col-12 col-sm-4">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_id" oninput="get_agent_information()">
+                                        <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                            <option value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name ?></option>
+                                        <?php } ?>
+                                        <option value="new">เอเย่นต์ใหม่</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="ชื่อบริษัท" hidden>
                                 </div>
                             </div>
 
@@ -450,8 +477,16 @@
                                         <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="บริษัท">
+                                <div class="col-12 col-sm-4">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_id" oninput="get_customer_information()">
+                                        <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
+                                            <option value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name ?></option>
+                                        <?php } ?>
+                                        <option value="new">ลูกค้าใหม่</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="ชื่อบริษัท" hidden>
                                 </div>
                             </div>
 
@@ -733,6 +768,24 @@
             })
         }
     });
+
+    function open_disable(status) {
+        if (status == 1) {
+            if (document.getElementById('open').checked) {
+                $('select[name="ser_car_id_in"]').prop('disabled', false);
+            } else {
+                $('select[name="ser_car_id_in"]').prop('disabled', true);
+                get_car_information(status);
+            }
+        } else {
+            if (document.getElementById('open2').checked) {
+                $('select[name="ser_car_id_out"]').prop('disabled', false);
+            } else {
+                $('select[name="ser_car_id_out"]').prop('disabled', true);
+                get_car_information(status);
+            }
+        }
+    }
     // get size information when change con_size_id dropdown
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
@@ -754,5 +807,204 @@
         $('input[name="size_height_out"]').val(size_height_out);
         $('input[name="size_width_out"]').val(size_width_out);
         $('input[name="size_length_out"]').val(size_length_out);
+    }
+
+    function get_car_information(status) {
+        let ser_dri_id_in = $('select[name="ser_dri_id_in"]').val();
+        let ser_dri_id_out = $('select[name="ser_dri_id_out"]').val();
+
+        if (status == 1) {
+            if (ser_dri_id_in != '') {
+                $.ajax({
+                    url: '<?php echo base_url() . '/public/Driver_show/get_driver_ajax' ?>',
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        ser_dri: ser_dri_id_in
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        show_driver_information(data, status);
+                    }
+                });
+            } else {
+                clear_driver_information();
+            }
+        } else {
+            if (ser_dri_id_out != '') {
+                $.ajax({
+                    url: '<?php echo base_url() . '/public/Driver_show/get_driver_ajax' ?>',
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        ser_dri: ser_dri_id_out
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        show_driver_information(data, status);
+                    }
+                });
+            } else {
+                clear_driver_information();
+            }
+        }
+
+    }
+
+    // show agent information when input agn_company_name
+    function show_driver_information(driver, status) {
+        if (status == 1) {
+            $('select[name="ser_car_id_in"]').val(driver[0]['dri_car_id']);
+        } else {
+            $('select[name="ser_car_id_out"]').val(driver[0]['dri_car_id']);
+        }
+    }
+
+    // clear agent information when delete input agn_company_name
+    function clear_driver_information() {
+        $('select[name="ser_car_id_in"]').val('');
+        $('select[name="ser_car_id_out"]').val('');
+    }
+
+    function get_container_information() {
+        let con_id = $('select[name="con_id"]').val();
+
+        if (con_id != '' && con_id != "new") {
+            $('input[name="con_number"]').prop('hidden', true);
+            $.ajax({
+                url: '<?php echo base_url() . '/public/Container_show/get_container_ajax' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    con_id: con_id
+                },
+                success: function(data) {
+                    console.log(data);
+                    show_container_information(data);
+                }
+            });
+        }
+        if (con_id == "new") {
+            $('input[name="con_number"]').prop('hidden', false);
+            clear_container_information();
+        }
+    }
+
+
+    function show_container_information(container) {
+        $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
+        $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
+        $('input[name="con_max_weight"]').val(container[0]['con_max_weight']);
+        $('input[name="con_tare_weight"]').val(container[0]['con_tare_weight']);
+        $('input[name="con_net_weight"]').val(container[0]['con_net_weight']);
+        $('input[name="con_cube"]').val(container[0]['con_cube']);
+        $('select[name="con_size_id"]').val(container[0]['con_size_id']);
+        get_size_information();
+    }
+
+
+    function clear_container_information() {
+        $('select[name="con_cont_id"]').val('');
+        $('select[name="con_stac_id"]').val('');
+        $('input[name="con_max_weight"]').val('');
+        $('input[name="con_tare_weight"]').val('');
+        $('input[name="con_net_weight"]').val('');
+        $('input[name="con_cube"]').val('');
+        $('select[name="con_size_id"]').val('');
+        $('input[name="size_height_out"]').val('');
+        $('input[name="size_width_out"]').val('');
+        $('input[name="size_length_out"]').val('');
+
+    }
+
+    // get agent information when input agn_company_name
+    function get_agent_information() {
+        let agn_id = $('select[name="agn_id"]').val();
+        // console.log("agn_name :" + agn_company_name);
+        if (agn_id != '' && agn_id != "new") {
+            $('input[name="agn_company_name"]').prop('hidden', true);
+            $.ajax({
+                url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    agn_id: agn_id
+                },
+                success: function(data) {
+                    console.log(data);
+                    show_agent_information(data);
+                }
+            });
+        }
+        if (agn_id == "new") {
+            $('input[name="agn_company_name"]').prop('hidden', false);
+            clear_agent_information();
+        }
+    }
+
+    // show agent information when input agn_company_name
+    function show_agent_information(agent) {
+        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
+        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
+        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
+        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
+        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
+        $('input[name="agn_email"]').val(agent[0]['agn_email']);
+    }
+
+    // clear agent information when delete input agn_company_name
+    function clear_agent_information() {
+        $('textarea[name="agn_address"]').val('');
+        $('input[name="agn_tax"]').val('');
+        $('input[name="agn_firstname"]').val('');
+        $('input[name="agn_lastname"]').val('');
+        $('input[name="agn_tel"]').val('');
+        $('input[name="agn_email"]').val('');
+    }
+
+    // get agent information when input agn_company_name
+    function get_customer_information() {
+        let cus_id = $('select[name="cus_id"]').val();
+        // console.log("agn_name :" + agn_company_name);
+        if (cus_id != '' && cus_id != "new") {
+            $('input[name="cus_company_name"]').prop('hidden', true);
+            $.ajax({
+                url: '<?php echo base_url() . '/public/Customer_show/get_customer_ajax' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    cus_id: cus_id
+                },
+                success: function(data) {
+                    console.log(data);
+                    show_customer_information(data);
+                }
+            });
+        } if (cus_id == "new") {
+            $('input[name="cus_company_name"]').prop('hidden', false);
+            clear_customer_information();
+        }
+    }
+
+    // show agent information when input agn_company_name
+    function show_customer_information(customer) {
+        $('input[name="cus_branch"]').val(customer[0]['cus_branch']);
+        $('textarea[name="cus_address"]').val(customer[0]['cus_address']);
+        $('input[name="cus_tax"]').val(customer[0]['cus_tax']);
+        $('input[name="cus_firstname"]').val(customer[0]['cus_firstname']);
+        $('input[name="cus_lastname"]').val(customer[0]['cus_lastname']);
+        $('input[name="cus_tel"]').val(customer[0]['cus_tel']);
+        $('input[name="cus_email"]').val(customer[0]['cus_email']);
+    }
+
+    // clear agent information when delete input agn_company_name
+    function clear_customer_information() {
+        $('input[name="cus_branch"]').val('');
+        $('textarea[name="cus_address"]').val('');
+        $('input[name="cus_tax"]').val('');
+        $('input[name="cus_firstname"]').val('');
+        $('input[name="cus_lastname"]').val('');
+        $('input[name="cus_tel"]').val('');
+        $('input[name="cus_email"]').val('');
     }
 </script>

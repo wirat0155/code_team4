@@ -49,6 +49,10 @@ class Container_input extends Cdms_controller
         $m_stac = new M_cdms_status_container();
         $data['arr_status_container'] = $m_stac->get_all();
 
+        // agent
+        $m_agn = new M_cdms_agent();
+        $data['arr_agn'] = $m_agn->get_all();
+
         // call container input view
         $this->output('v_container_input', $data);
     }

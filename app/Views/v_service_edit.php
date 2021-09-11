@@ -255,6 +255,9 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <div class="col-12 col-sm-12">
+                                    <br><input type="checkbox" id="open" onclick="open_disable(1)"> ใช้รถที่ไม่ใช่รถประจำ
+                                </div>
                             </div>
 
                             <!-- รถที่นำเข้า -->
@@ -265,7 +268,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in" disabled>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                         <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_in == $arr_car[$i]->car_id) echo "selected" ?>>
                                             <?php echo $arr_car[$i]->car_code ?></option>
@@ -301,6 +304,9 @@
                                         <?php } ?>
                                     </select>
                                 </div>
+                                <div class="col-12 col-sm-12">
+                                    <br><input type="checkbox" id="open2" onclick="open_disable(2)"> ใช้รถที่ไม่ใช่รถประจำ
+                                </div>
                             </div>
 
                             <!-- รถที่นำออก-->
@@ -311,7 +317,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out" disabled>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                         <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
                                             <?php echo $arr_car[$i]->car_code ?></option>
@@ -746,6 +752,24 @@ $(document).ready(function() {
         })
     }
 });
+
+function open_disable(status) {
+        if (status == 1) {
+            if (document.getElementById('open').checked) {
+                $('select[name="ser_car_id_in"]').prop('disabled', false);
+            } else {
+                $('select[name="ser_car_id_in"]').prop('disabled', true);
+                get_car_information(status);
+            }
+        } else {
+            if (document.getElementById('open2').checked) {
+                $('select[name="ser_car_id_out"]').prop('disabled', false);
+            } else {
+                $('select[name="ser_car_id_out"]').prop('disabled', true);
+                get_car_information(status);
+            }
+        }
+    }
 // get size information when change con_size_id dropdown
 function get_size_information() {
     let size_id = $('select[name="con_size_id"]').val();
