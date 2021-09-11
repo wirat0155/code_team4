@@ -122,6 +122,14 @@ class Dashboard extends Cdms_controller
         return json_encode('pass');
     }
 
+    /*
+    * get_all_size
+    * แสดงทั้งหมดของขนาดตู้
+    * @input -
+    * @output array of size
+    * @author Thanatip
+    * @Create Date 2564-09-10
+    */
     public function get_all_size()
     {
         $m_size = new M_cdms_size();
@@ -129,6 +137,14 @@ class Dashboard extends Cdms_controller
         return json_encode($data['arr_size']);
     }
 
+    /*
+    * get_all_status_container
+    * แสดงทั้งหมดของสถานะตู้
+    * @input -
+    * @output array of status_container
+    * @author Thanatip
+    * @Create Date 2564-09-10
+    */
     public function get_all_status_container()
     {
         $m_stac = new M_cdms_status_container();
@@ -136,6 +152,14 @@ class Dashboard extends Cdms_controller
         return json_encode($data['arr_status_container']);
     }
 
+    /*
+    * get_all_container_type
+    * แสดงทั้งหมดของประเภทตู้
+    * @input -
+    * @output array of container_type
+    * @author Thanatip
+    * @Create Date 2564-09-10
+    */
     public function get_all_container_type()
     {
         $m_cont = new M_cdms_container_type();
@@ -143,6 +167,14 @@ class Dashboard extends Cdms_controller
         return json_encode($data['arr_container_type']);
     }
 
+    /*
+    * get_all_car_type
+    * แสดงทั้งหมดของประเภทรถ
+    * @input -
+    * @output array of car_type
+    * @author Thanatip
+    * @Create Date 2564-09-10
+    */
     public function get_all_car_type()
     {
         $m_cart = new M_cdms_car_type();
