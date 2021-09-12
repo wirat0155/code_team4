@@ -277,7 +277,7 @@
                 .format('YYYY-MM-DD'));
         });
 
-        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>\'');
+        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>\'');
         $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     });
 
