@@ -43,7 +43,7 @@
                     <div class="row p-3 stac_list">
                         <?php for($i = 0; $i < count($arr_status_container); $i++) { ?>
                             <div class="col-12 m-1 p-2 text-sm row <?php echo 'stac_id' . $arr_status_container[$i]->stac_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
-                                <div class="col-10">
+                                <div class="col-10 stac_name<?php echo $arr_status_container[$i]->stac_id?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac', <?php echo $arr_status_container[$i]->stac_id?>)">
                                     <?php echo $arr_status_container[$i]->stac_name ?>
                                 </div>
                                 <div class="col-2">
@@ -72,7 +72,7 @@
                     <div class="row p-3 cont_list">
                         <?php for($i = 0; $i < count($arr_container_type); $i++) { ?>
                             <div class="col-12 m-1 p-2 text-sm row <?php echo 'cont_id' . $arr_container_type[$i]->cont_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
-                                <div class="col-10">
+                                <div class="col-10 cont_name<?php echo $arr_container_type[$i]->cont_id?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont', <?php echo $arr_container_type[$i]->cont_id?>)">
                                     <?php echo $arr_container_type[$i]->cont_name ?>
                                 </div>
                                 <div class="col-2">
@@ -101,7 +101,7 @@
                     <div class="row p-3 cart_list">
                         <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
                             <div class="col-12 m-1 p-2 text-sm row <?php echo 'cart_id' . $arr_car_type[$i]->cart_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
-                                <div class="col-10">
+                                <div class="col-10 cart_name<?php echo $arr_car_type[$i]->cart_id?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart', <?php echo $arr_car_type[$i]->cart_id?>)">
                                     <?php echo $arr_car_type[$i]->cart_name ?>
                                 </div>
                                 <div class="col-2">
@@ -119,7 +119,7 @@
     </div>
 </div> <br>
 
-<!-- Modal ยืนยันการลบ -->
+<!-- Modal เพิ่ม -->
 <div class="modal fade" id="add_modal" tabindex="-1" role="dialog" aria-labelledby="add_modalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -132,9 +132,21 @@
     </div>
 </div>
 
-
 <!-- Modal ยืนยันการลบ -->
 <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="delete_modalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+
+            <div class="modal_content">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal แก้ไข -->
+<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="edit_modalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -387,6 +399,69 @@
         modal_content = modal_body + modal_message + modal_footer + cancel_button + delete_button;
         $('.modal_content').append(modal_content);
     }
+    function edit_modal(edit_type, edit_id) {
+        $('.modal-header').empty();
+        if (edit_type == 'cart') {
+            edit_type_name = 'ประเภทรถ';
+            edit_function_name = 'car_type_update';
+            form_action = "Car_type_edit/car_type_update";
+        }
+        else if (edit_type == 'cont') {
+            edit_type_name = 'ประเภทตู้';
+            edit_function_name = 'container_type_update';
+            form_action = "Container_type_edit/container_type_update";
+        }
+        else if (edit_type == 'stac') {
+            edit_type_name = 'สถานะตู้';
+            edit_function_name = 'status_container_update';
+            form_action = "Container_status_edit/container_status_update";
+        }
+        else if (edit_type == 'size') {
+            edit_type_name = 'ขนาดตู้';
+            edit_function_name = 'size_update';
+            form_action = "Size_edit/size_update";
+        }
+        modal_header = `<h5 class="modal-title">แก้ไข${edit_type_name}</h5>`;
+        close_button = `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>`;
+        
+        $('.modal-header').append(modal_header + close_button);
+
+        $('.modal_content').empty();
+        
+        modal_body = `<d class="modal-body float-cente">`;
+        
+        // เข้าถึงชื่อสถานะตู้ ประเภทตู้ หรือประเภทรถ จาก ID ที่ส่งมา
+        var edit_name = $(`.${edit_type}_name${edit_id}`).text();
+        edit_name = edit_name.trim();
+        console.log(edit_name);
+        
+        // แก้ไขประเภทตู้ สถานะตู้ หรือประเภทรถ
+        if (edit_type != 'size') {
+            modal_message = `<form action="<?php echo base_url() . '/public/${form_action}'?>" method="POST"><div class="pt-3 pb-3 pl-5 pr-5"><input name="${edit_type}_id" value="${edit_id}" hidden/><center>
+            <input type="text" class="block w-full mt-1 text-sm focus:outline-none form-input" name="${edit_type}_name" value="${edit_name}"></center></div>`;
+        }
+        // แก้ไขขนาดตู้ ต้องดึงข้อมูลความยาว ความสูง ความกว้างด้านนอก และด้านใน
+        else if (edit_type == 'size') {
+            // ดึงค่าขนาดตู้จากฐานข้อมูล โดยใช้ ajax
+            $.ajax({
+                url: `get_size_by_id`,
+                method: 'POST',
+                data: {
+                    size_id: size_id
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        modal_footer = `<div class="modal-footer">`;
+        cancel_button = `<button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>`;
+        edit_button = `<input type="submit" class="btn btn-success" value="บันทึกการแก้ไข"></div>`;
+        
+        modal_content = modal_body + modal_message + modal_footer + cancel_button + edit_button;
+        $('.modal_content').append(modal_content);
+    }
     function size_insert() {
         var size_name = $('input[name="size_name"]').val();
 
@@ -440,7 +515,7 @@
                 const last_stac_id = last_stac[0]['stac_id'];
 
                 var stac = '<div class="col-12 m-1 p-2 text-sm row stac_id' + last_stac_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
-                stac += `<div class="col-10">${stac_name}</div>`;
+                stac += `<div class="col-10 stac_name${last_stac_id}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac', ${last_stac_id})">${stac_name}</div>`;
                 stac += `<div class="col-2">`;
                 stac += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id', ${last_stac_id})">`;
                 stac += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`;
@@ -463,7 +538,7 @@
                 const last_cont_id = last_cont[0]['cont_id'];
 
                 var cont = '<div class="col-12 m-1 p-2 text-sm row cont_id' + last_cont_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
-                cont += `<div class="col-10">${cont_name}</div>`;
+                cont += `<div class="col-10 cont_name${last_cont_id}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont', ${last_cont_id})">${cont_name}</div>`;
                 cont += `<div class="col-2">`;
                 cont += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id', ${last_cont_id})">`;
                 cont += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`;
@@ -486,7 +561,7 @@
                 const last_cart_id = last_cart[0]['cart_id'];
 
                 var cart = '<div class="col-12 m-1 p-2 text-sm row cart_id' + last_cart_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
-                cart += `<div class="col-10">${cart_name}</div>`;
+                cart += `<div class="col-10 cart_name${last_cart_id}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart', ${last_cart_id})">${cart_name}</div>`;
                 cart += `<div class="col-2">`;
                 cart += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id', ${last_cart_id})">`;
                 cart += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`;
@@ -668,5 +743,4 @@
             }
         });
     }
-    
 </script>

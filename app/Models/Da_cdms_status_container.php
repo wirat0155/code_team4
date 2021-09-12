@@ -33,6 +33,19 @@ class Da_cdms_status_container extends Model {
     }
 
     /*
+    * status_container_update
+    * แก้ไขสถานะตู้คอนเทนเนอร์
+    * @input stac_id, stac_name
+    * @output แก้ไขสถานะตู้คอนเทนเนอร์
+    * @author Wirat
+    * @Create Date 2564-09-12
+    * @Update Date 2564-09-12
+    */
+    public function status_container_update($stac_id = NULL, $stac_name = NULL) {
+        $sql = "UPDATE $this->table SET stac_name = '$stac_name' WHERE stac_id = '$stac_id'";
+        $this->db->query($sql);
+    }
+    /*
     * delete
     * ลบสถานะตู้
     * @input stac_id
