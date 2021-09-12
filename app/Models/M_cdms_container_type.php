@@ -52,7 +52,7 @@ class M_cdms_container_type extends Da_cdms_container_type {
     * @Update Date 2564-09-10
     */
     public function get_last() {
-        $sql = "SELECT * FROM $this->table ORDER BY 'cont_id' DESC LIMIT 1";
+        $sql = "SELECT * FROM $this->table ORDER BY cont_id DESC LIMIT 1";
         return $this->db->query($sql)->getResult();
     }
 }

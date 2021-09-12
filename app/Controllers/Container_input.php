@@ -13,7 +13,7 @@ use App\Models\M_cdms_status_container;
 * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์ และเพิ่มตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-08-06
-* @Update Date 2564-08-07
+* @Update Date 2564-09-11
 */
 
 class Container_input extends Cdms_controller
@@ -48,7 +48,7 @@ class Container_input extends Cdms_controller
         // status container
         $m_stac = new M_cdms_status_container();
         $data['arr_status_container'] = $m_stac->get_all();
-
+        
         // agent
         $m_agn = new M_cdms_agent();
         $data['arr_agn'] = $m_agn->get_all();
@@ -64,7 +64,7 @@ class Container_input extends Cdms_controller
     * @output เพิ่มตู้คอนเทนเนอร์ เพิ่มเอเย่นต์ หรือแก้ไขเอเย่นต์
     * @author Wirat
     * @Create Date 2564-08-06
-    * @Update Date 2564-08-07
+    * @Update Date 2564-09-11
     */
     public function container_insert()
     {
@@ -110,7 +110,7 @@ class Container_input extends Cdms_controller
             // $agn_id = '' then insert
             // $agn_id != '' ex. 18 then update
 
-            if ($agn_id == '') {
+            if ($agn_id == 'new') {
                 // new agent
                 // insert agent
                 $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
@@ -122,7 +122,7 @@ class Container_input extends Cdms_controller
                 // old agent
                 // update agent
                 $con_agn_id = $this->request->getPost('agn_id');
-                $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+                $m_agn->agent_update($agn_id, NULL, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             }
 
 
@@ -134,4 +134,5 @@ class Container_input extends Cdms_controller
         }
         echo 'name';
     }
+    
 }

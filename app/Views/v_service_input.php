@@ -33,13 +33,14 @@
                                 </div>
 
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_id" oninput="get_container_information()">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_id" onclick="get_container_information()">
                                         <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
                                             <option value="<?php echo $arr_con[$i]->con_id ?>"><?php echo $arr_con[$i]->con_number ?></option>
                                         <?php } ?>
                                         <option value="new">ตู้ใหม่</option>
                                     </select>
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
+                                    <label id="con_number-error" class="error" for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
                                 </div>
                             </div>
 
@@ -251,7 +252,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in" oninput="get_car_information(1)">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_in" onclick="get_car_information(1)">
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                             <option value="<?php echo $arr_driver[$i]->dri_id ?>"><?php echo $arr_driver[$i]->dri_name ?></option>
                                         <?php } ?>
@@ -299,7 +300,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out" oninput="get_car_information(2)">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_dri_id_out" onclick="get_car_information(2)">
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                             <option value="<?php echo $arr_driver[$i]->dri_id ?>"><?php echo $arr_driver[$i]->dri_name ?></option>
                                         <?php } ?>
@@ -373,7 +374,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-4">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_id" oninput="get_agent_information()">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_id" onclick="get_agent_information()">
                                         <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
                                             <option value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name ?></option>
                                         <?php } ?>
@@ -382,6 +383,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="ชื่อบริษัท" hidden>
+                                    <label id="agn_company_name_error" class="error" for="agn_company_name"><?php echo $_SESSION['agn_company_name_error'] ?></label>
                                 </div>
                             </div>
 
@@ -408,10 +410,10 @@
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี">
                                 </div>
                             </div>
-                            <hr class="mb-3">
+                            
                             <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
                             <!-- ชื่อจริง -->
-                            <div class="row mt-1">
+                            <div class="row mt-3">
                                 <div class="col-12 col-sm-4">
                                     <label class="block text-sm mt-3">
                                         <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
@@ -478,7 +480,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-4">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_id" oninput="get_customer_information()">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_id" onclick="get_customer_information()">
                                         <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
                                             <option value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name ?></option>
                                         <?php } ?>
@@ -487,6 +489,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_company_name" placeholder="ชื่อบริษัท" hidden>
+                                    <label id="cus_company_name_error" class="error" for="cus_company_name"><?php echo $_SESSION['cus_company_name_error'] ?></label>
                                 </div>
                             </div>
 

@@ -53,7 +53,7 @@ class M_cdms_service extends Da_cdms_service {
                 WHERE ser_id ='$ser_id' ";
         return $this->db->query($sql)->getResult();
     }
-
+    
     /*
     *get_by_date_customer
     * ค้นหาตามวันที่ ของลูกค้า

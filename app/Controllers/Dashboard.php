@@ -12,7 +12,7 @@ use App\Models\M_cdms_container_type;
     * แสดงหน้าจอแดชบอร์ด
     * @author  Wirat, Klayuth, Natthadanai, Benjapon
     * @Create Date 2564-08-12
-    * @Update Date 2564-08-12
+    * @Update Date 2564-09-12
 */
 class Dashboard extends Cdms_controller
 {
@@ -180,5 +180,13 @@ class Dashboard extends Cdms_controller
         $m_cart = new M_cdms_car_type();
         $data['arr_car_type'] = $m_cart->get_all();
         return json_encode($data['arr_car_type']);
+    }
+
+    public function get_size_by_id() {
+        $size_id = $this->request->getPost('size_id');
+
+        $m_size = new M_cdms_size();
+        $data['arr_size'] = $m_size->get_by_id($size_id);
+        return json_encode($data['arr_size']);
     }
 }

@@ -13,7 +13,7 @@ use App\Models\M_cdms_status_container;
 * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์ และเพิ่มตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-08-06
-* @Update Date 2564-08-07
+* @Update Date 2564-09-11
 */
 
 class Container_edit extends Cdms_controller {
@@ -40,7 +40,7 @@ class Container_edit extends Cdms_controller {
         $m_agn = new M_cdms_agent();
         $data['arr_agent'] = $m_agn->get_by_id($data['arr_container'][0]->con_agn_id);
         // print_r($data['arr_agent']);
-
+        $data['arr_agn'] = $m_agn->get_all();
         // get dropdown
         // container size
         $m_size = new M_cdms_size();
@@ -68,7 +68,7 @@ class Container_edit extends Cdms_controller {
     * @output แก้ไขตู้คอนเทนเนอร์ เพิ่ม/แก้ไขเอเย่นต์ หรือชเพิ่ม/แก้ไขเอเย่นต์
     * @author Wirat
     * @Create Date 2564-08-06
-    * @Update Date 2564-08-07
+    * @Update Date 2564-09-11
     */
     public function container_update() {
         // container information
@@ -114,7 +114,7 @@ class Container_edit extends Cdms_controller {
 
         // load agent model
         $m_agn = new M_cdms_agent();
-        if ($agn_id == '') {
+        if ($agn_id == 'new') {
             // new agent
             // insert agent
             $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
@@ -125,7 +125,7 @@ class Container_edit extends Cdms_controller {
             // old agent
             // update agent
             $con_agn_id = $this->request->getPost('agn_id');
-            $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+            $m_agn->agent_update($agn_id, NULL, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         }
 
         // update container

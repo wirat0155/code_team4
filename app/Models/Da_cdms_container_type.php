@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 * เพิ่ม ลบ แก้ไขประเภทตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-09-10
-* @Update Date 2564-09-10
+* @Update Date 2564-09-12
 */
 class Da_cdms_container_type extends Model {
     protected $table = 'cdms_container_type';
@@ -29,6 +29,19 @@ class Da_cdms_container_type extends Model {
     }
 
     /*
+    * container_type_update
+    * แก้ไขประเภทตู้คอนเทนเนอร์
+    * @input cont_id, cont_name
+    * @output แก้ไจประเภทตู้คอนเทนเนอร์
+    * @author Wirat
+    * @Create Date 2564-09-12
+    * @Update Date  2564-09-12
+    */
+    public function container_type_update($cont_id = NULL, $cont_name = NULL) {
+        $sql = "UPDATE $this->table SET cont_name = '$cont_name' WHERE cont_id = '$cont_id'";
+        $this->db->query($sql);
+    }
+    /*
     * delete
     * ลบประเภทตู้คอนเทนเนอร์
     * @input cont_id
@@ -38,7 +51,7 @@ class Da_cdms_container_type extends Model {
     * @Update Date 2564-08-06
     */
     public function delete($cont_id = NULL, bool $purge = false) {
-        $sql = "UPDATE $this->table SET cont_status=2 WHERE cont_id='$cont_id'";
+        $sql = "UPDATE $this->table SET cont_status = 2 WHERE cont_id = '$cont_id'";
         $this->db->query($sql);
     }
 }

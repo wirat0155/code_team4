@@ -42,7 +42,7 @@
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_cont_id">
                                         <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                            <option value="<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></option>
+                                        <option value="<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -58,7 +58,7 @@
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_stac_id">
                                         <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                            <option value="<?php echo $arr_status_container[$i]->stac_id ?>"><?php echo $arr_status_container[$i]->stac_name ?></option>
+                                        <option value="<?php echo $arr_status_container[$i]->stac_id ?>"><?php echo $arr_status_container[$i]->stac_name ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -133,7 +133,7 @@
                                 <div class="col-12 col-sm-8">
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_size_id" oninput="get_size_information()">
                                         <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                            <option value="<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_name ?></option>
+                                        <option value="<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_name ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -198,12 +198,16 @@
                                         <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
                                     </label>
                                 </div>
-                                <div class="col-12 col-sm-8">
-                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" oninput="get_agent_information()">
+                                <div class="col-12 col-sm-4">
+                                    <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_id" onclick="get_agent_information()">
                                         <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                            <option value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name ?></option>
+                                        <option value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name ?></option>
                                         <?php } ?>
+                                        <option value="new">เอเย่นต์ใหม่</option>
                                     </select>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_company_name" placeholder="ชื่อบริษัท" hidden>
                                 </div>
                             </div>
 
@@ -297,186 +301,188 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_container_form').length > 0) {
-            $('#add_container_form').validate({
-                rules: {
-                    con_number: {
-                        required: true,
-                        maxlength: 12
-                    },
-                    con_max_weight: {
-                        required: true,
-                        min: 0,
-                        max: 40
-                    },
-                    con_tare_weight: {
-                        required: true,
-                        min: 0,
-                        max: 40
-                    },
-                    con_net_weight: {
-                        required: true,
-                        min: 0,
-                        max: 40
-                    },
-                    con_cube: {
-                        required: true,
-                        min: 0,
-                        max: 100
-                    },
-                    agn_company_name: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    agn_address: {
-                        required: true,
-                        maxlength: 255
-                    },
-                    agn_tax: {
-                        required: true,
-                        maxlength: 13
-                    },
-                    agn_firstname: {
-                        required: true
-                    },
-                    agn_lastname: {
-                        required: true
-                    },
-                    agn_tel: {
-                        required: true,
-                        maxlength: 10
-                    },
-                    agn_email: {
-                        required: true,
-                        maxlength: 40,
-                        email: true
-                    }
+$(document).ready(function() {
+    // jQuery Validation
+    if ($('#add_container_form').length > 0) {
+        $('#add_container_form').validate({
+            rules: {
+                con_number: {
+                    required: true,
+                    maxlength: 12
                 },
-                messages: {
-                    con_number: {
-                        required: 'กรุณากรอกหมายเลขตู้',
-                        maxlength: 'กรุณากรอกตามฟอร์แมต'
-                    },
-                    con_max_weight: {
-                        required: 'กรุณากรอกน้ำหนักสูงสุด',
-                        min: 'กรุณากรอกอย่างน้อย 0',
-                        max: 'กรุณากรอกไม่เกิน 40'
-                    },
-                    con_tare_weight: {
-                        required: 'กรุณากรอกน้ำหนักตู้เปล่า',
-                        min: 'กรุณากรอกอย่างน้อย 0',
-                        max: 'กรุณากรอกไม่เกิน 40'
-                    },
-                    con_net_weight: {
-                        required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
-                        min: 'กรุณากรอกอย่างน้อย 0',
-                        max: 'กรุณากรอกไม่เกิน 40'
-                    },
-                    con_cube: {
-                        required: 'กรุณากรอกหมายเลขตู้',
-                        min: 'กรุณากรอกอย่างน้อย 0',
-                        max: 'กรุณากรอกไม่เกิน 100'
-                    },
-                    agn_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัท',
-                        maxlength: 255
-                    },
-                    agn_address: {
-                        required: 'กรุณากรอกที่ตั้งบริษัท',
-                        maxlength: 255
-                    },
-                    agn_tax: {
-                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        maxlength: 15
-                    },
-                    agn_firstname: {
-                        required: 'กรุณากรอกชื่อจริงผู้รับผิดชอบ'
-                    },
-                    agn_lastname: {
-                        required: 'กรุณากรอกนามสกุลผู้รับผิดชอบ'
-                    },
-                    agn_tel: {
-                        required: 'กรุณากรอกเบอร์ติดต่อ',
-                        maxlength: 'กรุณากรอกไม่เกิน 10 อักษร',
-                    },
-                    agn_email: {
-                        required: 'กรุณากรอกอีเมล',
-                        maxlength: 'กรุณากรอกไม่เกิน 40 ตัวอักษร',
-                        email: 'กรุณากรอกอีเมล'
-                    }
+                con_max_weight: {
+                    required: true,
+                    min: 0,
+                    max: 40
+                },
+                con_tare_weight: {
+                    required: true,
+                    min: 0,
+                    max: 40
+                },
+                con_net_weight: {
+                    required: true,
+                    min: 0,
+                    max: 40
+                },
+                con_cube: {
+                    required: true,
+                    min: 0,
+                    max: 100
+                },
+                agn_company_name: {
+                    required: true,
+                    maxlength: 255
+                },
+                agn_address: {
+                    required: true,
+                    maxlength: 255
+                },
+                agn_tax: {
+                    required: true,
+                    maxlength: 13
+                },
+                agn_firstname: {
+                    required: true
+                },
+                agn_lastname: {
+                    required: true
+                },
+                agn_tel: {
+                    required: true,
+                    maxlength: 10
+                },
+                agn_email: {
+                    required: true,
+                    maxlength: 40,
+                    email: true
                 }
-            })
+            },
+            messages: {
+                con_number: {
+                    required: 'กรุณากรอกหมายเลขตู้',
+                    maxlength: 'กรุณากรอกตามฟอร์แมต'
+                },
+                con_max_weight: {
+                    required: 'กรุณากรอกน้ำหนักสูงสุด',
+                    min: 'กรุณากรอกอย่างน้อย 0',
+                    max: 'กรุณากรอกไม่เกิน 40'
+                },
+                con_tare_weight: {
+                    required: 'กรุณากรอกน้ำหนักตู้เปล่า',
+                    min: 'กรุณากรอกอย่างน้อย 0',
+                    max: 'กรุณากรอกไม่เกิน 40'
+                },
+                con_net_weight: {
+                    required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
+                    min: 'กรุณากรอกอย่างน้อย 0',
+                    max: 'กรุณากรอกไม่เกิน 40'
+                },
+                con_cube: {
+                    required: 'กรุณากรอกหมายเลขตู้',
+                    min: 'กรุณากรอกอย่างน้อย 0',
+                    max: 'กรุณากรอกไม่เกิน 100'
+                },
+                agn_company_name: {
+                    required: 'กรุณากรอกชื่อบริษัท',
+                    maxlength: 255
+                },
+                agn_address: {
+                    required: 'กรุณากรอกที่ตั้งบริษัท',
+                    maxlength: 255
+                },
+                agn_tax: {
+                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                    maxlength: 15
+                },
+                agn_firstname: {
+                    required: 'กรุณากรอกชื่อจริงผู้รับผิดชอบ'
+                },
+                agn_lastname: {
+                    required: 'กรุณากรอกนามสกุลผู้รับผิดชอบ'
+                },
+                agn_tel: {
+                    required: 'กรุณากรอกเบอร์ติดต่อ',
+                    maxlength: 'กรุณากรอกไม่เกิน 10 อักษร',
+                },
+                agn_email: {
+                    required: 'กรุณากรอกอีเมล',
+                    maxlength: 'กรุณากรอกไม่เกิน 40 ตัวอักษร',
+                    email: 'กรุณากรอกอีเมล'
+                }
+            }
+        })
+    }
+});
+
+// get size information when change con_size_id dropdown
+function get_size_information() {
+    let size_id = $('select[name="con_size_id"]').val();
+    $.ajax({
+        url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            size_id: size_id
+        },
+        success: function(data) {
+            show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
         }
     });
+}
 
-    // get size information when change con_size_id dropdown
-    function get_size_information() {
-        let size_id = $('select[name="con_size_id"]').val();
+// show size information when change con_size_id dropdown
+function show_size_information(size_height_out, size_width_out, size_length_out) {
+    console.log(size_height_out);
+    $('input[name="size_height_out"]').val(size_height_out);
+    $('input[name="size_width_out"]').val(size_width_out);
+    $('input[name="size_length_out"]').val(size_length_out);
+}
+
+// get agent information when input agn_company_name
+function get_agent_information() {
+    let agn_id = $('select[name="agn_id"]').val();
+
+    if (agn_id != 'new') {
+        $('input[name="agn_company_name"]').prop('hidden', true);
         $.ajax({
-            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+            url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {
-                size_id: size_id
+                agn_id: agn_id
             },
             success: function(data) {
-                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
+                console.log(data);
+                show_agent_information(data);
             }
         });
+    } else {
+        $('input[name="agn_company_name"]').prop('hidden', false);
+        clear_agent_information();
     }
 
-    // show size information when change con_size_id dropdown
-    function show_size_information(size_height_out, size_width_out, size_length_out) {
-        console.log(size_height_out);
-        $('input[name="size_height_out"]').val(size_height_out);
-        $('input[name="size_width_out"]').val(size_width_out);
-        $('input[name="size_length_out"]').val(size_length_out);
-    }
+}
 
-    // get agent information when input agn_company_name
-    function get_agent_information() {
-        let agn_id = $('select[name="agn_company_name"]').val();
+// show agent information when input agn_company_name
+function show_agent_information(agent) {
+    $('input[name="agn_id"]').val(agent[0]['agn_id']);
+    $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
+    $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
+    $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
+    $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
+    $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
+    $('input[name="agn_email"]').val(agent[0]['agn_email']);
+}
 
-        if (agn_id != '') {
-            $.ajax({
-                url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
-                method: 'POST',
-                dataType: 'JSON',
-                data: {
-                    agn_id: agn_id
-                },
-                success: function(data) {
-                    console.log(data);
-                    show_agent_information(data);
-                }
-            });
-        } else {
-            clear_agent_information();
-        }
-
-    }
-
-    // show agent information when input agn_company_name
-    function show_agent_information(agent) {
-        $('input[name="agn_id"]').val(agent[0]['agn_id']);
-        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
-        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
-        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
-        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
-        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
-        $('input[name="agn_email"]').val(agent[0]['agn_email']);
-    }
-
-    // clear agent information when delete input agn_company_name
-    function clear_agent_information() {
-        $('input[name="agn_id"]').val('');
-        $('textarea[name="agn_address"]').val('');
-        $('input[name="agn_tax"]').val('');
-        $('input[name="agn_firstname"]').val('');
-        $('input[name="agn_lastname"]').val('');
-        $('input[name="agn_tel"]').val('');
-        $('input[name="agn_email"]').val('');
-    }
+// clear agent information when delete input agn_company_name
+function clear_agent_information() {
+    $('input[name="agn_id"]').val('');
+    $('textarea[name="agn_address"]').val('');
+    $('input[name="agn_tax"]').val('');
+    $('input[name="agn_firstname"]').val('');
+    $('input[name="agn_lastname"]').val('');
+    $('input[name="agn_tel"]').val('');
+    $('input[name="agn_email"]').val('');
+}
 </script>

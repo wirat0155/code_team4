@@ -35,7 +35,7 @@ class M_cdms_car_type extends Da_cdms_car_type {
     * @Update Date 2564-09-10
     */
     public function get_last() {
-        $sql = "SELECT * FROM $this->table ORDER BY 'cart_id' DESC LIMIT 1";
+        $sql = "SELECT * FROM $this->table ORDER BY cart_id DESC LIMIT 1";
         return $this->db->query($sql)->getResult();
     }
 }
