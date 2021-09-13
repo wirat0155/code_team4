@@ -795,7 +795,7 @@
                 var status_container = ''
                 for (let i = 0; i < data.length; i++) {
                     status_container = `<div class="col-12 m-1 p-2 text-sm row stac_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    status_container += `<div class="col-10 stac_name${data[i]['stac_id']}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac',${data[i]['stac_id']}); edit_modal('stac',${data[i]['stac_id']})" data-dismiss="modal" > ${data[i]['stac_name']}`
+                    status_container += `<div class="col-10 stac_name" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac',${data[i]['stac_id']})" data-dismiss="modal" > ${data[i]['stac_name']}`
                     status_container += `</div>`
                     status_container += `<div class="col-2">`
                     status_container += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id',${data[i]['stac_id']})" data-dismiss="modal">`
@@ -823,7 +823,7 @@
                 var container_type = ''
                 for (let i = 0; i < data.length; i++) {
                     container_type = `<div class="col-12 m-1 p-2 text-sm row cont_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    container_type += `<div class="col-10 cont_name${data[i]['cont_id']}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont',${data[i]['cont_id']})" data-dismiss="modal" > ${data[i]['cont_name']}`
+                    container_type += `<div class="col-10 cont_name" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont',${data[i]['cont_id']})" data-dismiss="modal" > ${data[i]['cont_name']}`
                     container_type += `</div>`
                     container_type += `<div class="col-2">`
                     container_type += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id',${data[i]['cont_id']})" data-dismiss="modal">`
@@ -851,7 +851,7 @@
                 var car_type = ''
                 for (let i = 0; i < data.length; i++) {
                     car_type = `<div class="col-12 m-1 p-2 text-sm row cart_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    car_type += `<div class="col-10 cart_name${data[i]['cart_id']}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart',${data[i]['cart_id']})" data-dismiss="modal" > ${data[i]['cart_name']}`
+                    car_type += `<div class="col-10 cart_name" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart',${data[i]['cart_id']})" data-dismiss="modal" > ${data[i]['cart_name']}`
                     car_type += `</div>`
                     car_type += `<div class="col-2">`
                     car_type += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id',${data[i]['cart_id']})" data-dismiss="modal">`
