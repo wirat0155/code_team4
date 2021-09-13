@@ -21,7 +21,7 @@ class M_cdms_car_type extends Da_cdms_car_type {
     * @Update Date 2564-08-12
     */
     public function get_all() {
-        $sql = "SELECT * FROM $this->table WHERE cart_status = 1";
+        $sql = "SELECT * FROM $this->table WHERE cart_status = 1 ORDER BY cart_id DESC";
         return $this->db->query($sql)->getResult();
     }
 

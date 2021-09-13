@@ -24,7 +24,7 @@ class M_cdms_container_type extends Da_cdms_container_type {
     * @Update Date 2564-08-06
     */
     public function get_all() {
-        $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1";
+        $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1 ORDER BY cont_id DESC";
         return $this->db->query($sql)->getResult();
     }
 

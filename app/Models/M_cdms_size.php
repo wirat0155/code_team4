@@ -22,7 +22,7 @@ class M_cdms_size extends Da_cdms_size {
     * @Update Date 2564-08-06
     */
     public function get_all() {
-        $sql = "SELECT * FROM $this->table WHERE size_status = 1";
+        $sql = "SELECT * FROM $this->table WHERE size_status = 1 ORDER BY size_id DESC";
         return $this->db->query($sql)->getResult();
     }
 

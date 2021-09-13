@@ -4,7 +4,7 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="min-height: 400px; max-height: 400px; overflow: auto;">
                 <div>
-                    <div class="row p-3">
+                    <div class="row pt-3">
                         <div class="col-6 font-semibold ">ขนาดตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('size')" style="cursor: pointer;">เพิ่ม</span></div>
                         <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_size" style="cursor: pointer;" onclick="show_all_size()">ดูทั้งหมด</span></div>
@@ -34,7 +34,7 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="min-height: 400px; max-height: 400px; overflow: auto;">
                 <div>
-                    <div class="row p-3">
+                    <div class="row pt-3">
                         <div class="col-6 font-semibold ">สถานะตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('stac')" style="cursor: pointer;">เพิ่ม</span></div>
                         <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_status_container" style="cursor: pointer;" onclick="show_all_status_container()">ดูทั้งหมด</span></div>
@@ -63,7 +63,7 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="min-height: 400px; max-height: 400px; overflow: auto;">
                 <div>
-                    <div class="row p-3">
+                    <div class="row pt-3">
                         <div class="col-6 font-semibold ">ประเภทตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cont')" style="cursor: pointer;">เพิ่ม</span></div>
                         <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_container_type" style="cursor: pointer;" onclick="show_all_container_type()">ดูทั้งหมด</span></div>
@@ -92,7 +92,7 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 mt-2" style="min-height: 400px; max-height: 400px; overflow: auto;">
                 <div>
-                    <div class="row p-3">
+                    <div class="row pt-3">
                         <div class="col-6 font-semibold">ประเภทรถ</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cart')" style="cursor: pointer;">เพิ่ม</span></div>
                         <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_car_type" style="cursor: pointer;" onclick="show_all_car_type()">ดูทั้งหมด</span></div>

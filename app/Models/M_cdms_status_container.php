@@ -22,7 +22,7 @@ class M_cdms_status_container extends Da_cdms_status_container {
     * @Update Date 2564-08-06
     */
     public function get_all() {
-        $sql = "SELECT stac_id, stac_name FROM $this->table WHERE stac_status = 1";
+        $sql = "SELECT stac_id, stac_name FROM $this->table WHERE stac_status = 1 ORDER BY stac_id DESC";
         return $this->db->query($sql)->getResult();
     }
 
