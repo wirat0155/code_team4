@@ -129,6 +129,7 @@ class Dashboard extends Cdms_controller
     * @output array of size
     * @author Thanatip
     * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
     */
     public function get_all_size()
     {
@@ -144,6 +145,7 @@ class Dashboard extends Cdms_controller
     * @output array of status_container
     * @author Thanatip
     * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
     */
     public function get_all_status_container()
     {
@@ -159,6 +161,7 @@ class Dashboard extends Cdms_controller
     * @output array of container_type
     * @author Thanatip
     * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
     */
     public function get_all_container_type()
     {
@@ -174,6 +177,7 @@ class Dashboard extends Cdms_controller
     * @output array of car_type
     * @author Thanatip
     * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
     */
     public function get_all_car_type()
     {
@@ -181,7 +185,15 @@ class Dashboard extends Cdms_controller
         $data['arr_car_type'] = $m_cart->get_all();
         return json_encode($data['arr_car_type']);
     }
-
+    /*
+    * get_size_by_id
+    * ดึงข้อมูลขนาดตู้คอนเทนเนอร์
+    * @input size_id
+    * @output object size
+    * @author Wirat
+    * @Create Date 2564-09-12
+    * @Update Date 2564-09-12
+    */
     public function get_size_by_id() {
         $size_id = $this->request->getPost('size_id');
 
