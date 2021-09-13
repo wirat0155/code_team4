@@ -7,24 +7,24 @@
                     <div class="row pt-3">
                         <div class="col-6 font-semibold ">ขนาดตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('size')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_size" style="cursor: pointer;" onclick="show_all_size()">ดูทั้งหมด</span></div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_show_size" style="cursor: pointer;" onclick="show_all_size()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
                     <div class="row p-3 size_list">
-                        <?php for($i = 0; $i < count($arr_size); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'size_id' . $arr_size[$i]->size_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                        <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'size_id' . $arr_size[$i]->size_id ?>" style="background-color: #FAFAFA; border-radius: 5px;">
 
-                                <div class="col-10 size_name<?php echo $arr_size[$i]->size_id?>" data-toggle="modal" data-target="#edit_modal" onclick="get_size_information(<?php echo $arr_size[$i]->size_id?>); edit_modal('size', <?php echo $arr_size[$i]->size_id?>)">
+                                <div class="col-10 size_name<?php echo $arr_size[$i]->size_id ?>" data-toggle="modal" data-target="#edit_modal" onclick="get_size_information(<?php echo $arr_size[$i]->size_id ?>); edit_modal('size', <?php echo $arr_size[$i]->size_id ?>)">
                                     <?php echo $arr_size[$i]->size_name ?>
                                 </div>
                                 <div class="col-2">
-                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('size_id', <?php echo $arr_size[$i]->size_id?>)">
+                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('size_id', <?php echo $arr_size[$i]->size_id ?>)">
                                         <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
                                     </button>
                                 </div>
                             </div>
-                            
+
                         <?php } ?>
                     </div>
                 </div>
@@ -37,23 +37,23 @@
                     <div class="row pt-3">
                         <div class="col-6 font-semibold ">สถานะตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('stac')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_status_container" style="cursor: pointer;" onclick="show_all_status_container()">ดูทั้งหมด</span></div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_show_status_container" style="cursor: pointer;" onclick="show_all_status_container()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
                     <div class="row p-3 stac_list">
-                        <?php for($i = 0; $i < count($arr_status_container); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'stac_id' . $arr_status_container[$i]->stac_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
-                                <div class="col-10 stac_name<?php echo $arr_status_container[$i]->stac_id?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac', <?php echo $arr_status_container[$i]->stac_id?>)">
+                        <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'stac_id' . $arr_status_container[$i]->stac_id ?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                                <div class="col-10 stac_name<?php echo $arr_status_container[$i]->stac_id ?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac', <?php echo $arr_status_container[$i]->stac_id ?>)">
                                     <?php echo $arr_status_container[$i]->stac_name ?>
                                 </div>
                                 <div class="col-2">
-                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id', <?php echo $arr_status_container[$i]->stac_id?>)">
+                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id', <?php echo $arr_status_container[$i]->stac_id ?>)">
                                         <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
                                     </button>
                                 </div>
                             </div>
-                            
+
                         <?php } ?>
                     </div>
                 </div>
@@ -66,18 +66,18 @@
                     <div class="row pt-3">
                         <div class="col-6 font-semibold ">ประเภทตู้</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cont')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_container_type" style="cursor: pointer;" onclick="show_all_container_type()">ดูทั้งหมด</span></div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_show_container_type" style="cursor: pointer;" onclick="show_all_container_type()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
                     <div class="row p-3 cont_list">
-                        <?php for($i = 0; $i < count($arr_container_type); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'cont_id' . $arr_container_type[$i]->cont_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
-                                <div class="col-10 cont_name<?php echo $arr_container_type[$i]->cont_id?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont', <?php echo $arr_container_type[$i]->cont_id?>)">
+                        <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                                <div class="col-10 cont_name<?php echo $arr_container_type[$i]->cont_id ?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont', <?php echo $arr_container_type[$i]->cont_id ?>)">
                                     <?php echo $arr_container_type[$i]->cont_name ?>
                                 </div>
                                 <div class="col-2">
-                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id', <?php echo $arr_container_type[$i]->cont_id?>)">
+                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id', <?php echo $arr_container_type[$i]->cont_id ?>)">
                                         <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
                                     </button>
                                 </div>
@@ -95,28 +95,28 @@
                     <div class="row pt-3">
                         <div class="col-6 font-semibold">ประเภทรถ</div>
                         <div class="col-3 text-xs"><span data-toggle="modal" data-target="#add_modal" onclick="add_modal('cart')" style="cursor: pointer;">เพิ่ม</span></div>
-                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_car_type" style="cursor: pointer;" onclick="show_all_car_type()">ดูทั้งหมด</span></div>
+                        <div class="col-3 text-xs text-gray-600"><span data-toggle="modal" data-target="#myModal_show_car_type" style="cursor: pointer;" onclick="show_all_car_type()">ดูทั้งหมด</span></div>
                         <hr>
                     </div>
 
                     <div class="row p-3 cart_list">
-                        <?php for($i = 0; $i < count($arr_car_type); $i++) { ?>
-                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'cart_id' . $arr_car_type[$i]->cart_id?>" style="background-color: #FAFAFA; border-radius: 5px;">
-                                <div class="col-10 cart_name<?php echo $arr_car_type[$i]->cart_id?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart', <?php echo $arr_car_type[$i]->cart_id?>)">
+                        <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
+                            <div class="col-12 m-1 p-2 text-sm row <?php echo 'cart_id' . $arr_car_type[$i]->cart_id ?>" style="background-color: #FAFAFA; border-radius: 5px;">
+                                <div class="col-10 cart_name<?php echo $arr_car_type[$i]->cart_id ?>" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart', <?php echo $arr_car_type[$i]->cart_id ?>)">
                                     <?php echo $arr_car_type[$i]->cart_name ?>
                                 </div>
                                 <div class="col-2">
-                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id', <?php echo $arr_car_type[$i]->cart_id?>)">
+                                    <button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id', <?php echo $arr_car_type[$i]->cart_id ?>)">
                                         <i class="bi bi-x-circle-fill" style="color:#E91414"></i>
                                     </button>
                                 </div>
                             </div>
-                            
+
                         <?php } ?>
                     </div>
                 </div>
             </div>
-        </div>      
+        </div>
     </div>
 </div> <br>
 
@@ -160,8 +160,8 @@
 </div>
 
 <!-- Modal Show ขนาดตู้ -->
-<div class="modal fade" id="myModal_size" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade" id="myModal_show_size" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -180,8 +180,8 @@
 </div>
 
 <!-- Modal Show สถานะตู้ -->
-<div class="modal fade" id="myModal_status_container" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade" id="myModal_show_status_container" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -201,8 +201,8 @@
 </div>
 
 <!-- Modal Show ประเภทตู้ -->
-<div class="modal fade" id="myModal_container_type" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade" id="myModal_show_container_type" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -222,8 +222,8 @@
 </div>
 
 <!-- Modal Show ประเภทรถ -->
-<div class="modal fade" id="myModal_car_type" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade" id="myModal_show_car_type" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -247,44 +247,41 @@
 <script>
     $(document).ready(function() {
         // add dashboard background
-        $('main').css("background-image", "url('<?php echo base_url() . '/upload/dashboard_background.jpg'?>')");
+        $('main').css("background-image", "url('<?php echo base_url() . '/upload/dashboard_background.jpg' ?>')");
     });
+
     function add_modal(add_type) {
         console.log('add');
         $('.modal-header').empty();
         if (add_type == 'cart') {
             add_type_name = 'ประเภทรถ';
             add_function_name = 'car_type_insert';
-        }
-        else if (add_type == 'cont') {
+        } else if (add_type == 'cont') {
             add_type_name = 'ประเภทตู้';
             add_function_name = 'container_type_insert';
-        }
-        else if (add_type == 'stac') {
+        } else if (add_type == 'stac') {
             add_type_name = 'สถานะตู้';
             add_function_name = 'status_container_insert';
-        }
-        else if (add_type == 'size') {
+        } else if (add_type == 'size') {
             add_type_name = 'ขนาดตู้';
             add_function_name = 'size_insert';
         }
         modal_header = `<h5 class="modal-title">เพิ่ม${add_type_name}</h5>`;
         close_button = `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>`;
-        
+
         $('.modal-header').append(modal_header + close_button);
 
         $('.modal_content').empty();
-        
+
         modal_body = `<d class="modal-body float-cente">`;
         if (add_type != 'size') {
             modal_message = `<div class="pt-3 pb-3 pl-5 pr-5"><center><input type="text" class="block w-full mt-1 text-sm focus:outline-none form-input" name="${add_type}_name" id="${add_type}_name"></center></div>`;
-        }
-        else if (add_type == 'size') {
+        } else if (add_type == 'size') {
             modal_message = `<div class="row pl-3">`;
             modal_message += `<div class="col-3 ml-3 mt-2">`;
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ชื่อขนาด</span>`;
             modal_message += `</div>`;
-    
+
             modal_message += `<div class="col-6">`
             modal_message += `<center><input type="text" class="block w-full mt-1 text-sm focus:outline-none form-input" name="${add_type}_name" id="${add_type}_name"></center>`;
             modal_message += `</div></div>`;
@@ -301,7 +298,7 @@
             modal_message += `<input type="number" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="size_height_out" id="size_height_out">`;
             modal_message += `</div>`
             modal_message += `</div>`
-            
+
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความกว้าง (เมตร)</span>`;
@@ -320,10 +317,10 @@
             modal_message += `</div>`
             modal_message += `</div>`
             modal_message += `</div>`
-        
+
             // Input ขนาดตู้ด้านใน
             modal_message += `<div class="col-12 col-sm-6">`;
-            modal_message += `<div class="text-gray-700 dark:text-gray-400">ด้านนอก</div>`;
+            modal_message += `<div class="text-gray-700 dark:text-gray-400">ด้านใน</div>`;
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความสูง (เมตร)</span>`;
@@ -332,7 +329,7 @@
             modal_message += `<input type="number" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="size_height_in" id="size_height_in">`;
             modal_message += `</div>`
             modal_message += `</div>`
-            
+
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความกว้าง (เมตร)</span>`;
@@ -354,89 +351,85 @@
             modal_message += `</div>`;
             modal_message += `</div>`;
         }
-        
+
         modal_footer = `<div class="modal-footer">`;
         cancel_button = `<button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>`;
         add_button = `<input type="button" onclick="${add_function_name}()" data-dismiss="modal" class="btn btn-success"  value="บันทึก"></div>`;
-        
+
         modal_content = modal_body + modal_message + modal_footer + cancel_button + add_button;
         $('.modal_content').append(modal_content);
     }
+
     function delete_modal(delete_type, delete_id) {
         console.log('delete');
         $('.modal-header').empty();
         if (delete_type == 'cart_id') {
             delete_type_name = 'ประเภทรถ';
             delete_function_name = 'car_type_delete';
-        }
-        else if (delete_type == 'cont_id') {
+        } else if (delete_type == 'cont_id') {
             delete_type_name = 'ประเภทตู้';
             delete_function_name = 'container_type_delete';
-        }
-        else if (delete_type == 'stac_id') {
+        } else if (delete_type == 'stac_id') {
             delete_type_name = 'สถานะตู้';
             delete_function_name = 'status_container_delete';
-        }
-        else if (delete_type == 'size_id') {
+        } else if (delete_type == 'size_id') {
             delete_type_name = 'ขนาดตู้';
             delete_function_name = 'size_delete';
         }
         modal_header = `<h5 class="modal-title">ยืนยันการลบ${delete_type_name}</h5>`;
         close_button = `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>`;
-        
+
         $('.modal-header').append(modal_header + close_button);
-        
-        
+
+
 
         $('.modal_content').empty();
-        
+
         modal_body = `<div class="modal-body float-cente">`;
         modal_message = `<center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center></div>`;
-        
+
         modal_footer = `<div class="modal-footer">`;
         cancel_button = `<button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>`;
         delete_button = `<input type="button" onclick="${delete_function_name}(${delete_id})" data-dismiss="modal" class="btn btn-danger"  value="ลบ"></div>`;
-        
+
         modal_content = modal_body + modal_message + modal_footer + cancel_button + delete_button;
         $('.modal_content').append(modal_content);
     }
+
     function edit_modal(edit_type, edit_id) {
         $('.modal-header').empty();
         if (edit_type == 'cart') {
             edit_type_name = 'ประเภทรถ';
             edit_function_name = 'car_type_update';
             form_action = "Car_type_edit/car_type_update";
-        }
-        else if (edit_type == 'cont') {
+        } else if (edit_type == 'cont') {
             edit_type_name = 'ประเภทตู้';
             edit_function_name = 'container_type_update';
             form_action = "Container_type_edit/container_type_update";
-        }
-        else if (edit_type == 'stac') {
+        } else if (edit_type == 'stac') {
             edit_type_name = 'สถานะตู้';
             edit_function_name = 'status_container_update';
             form_action = "Container_status_edit/container_status_update";
-        }
-        else if (edit_type == 'size') {
+        } else if (edit_type == 'size') {
             edit_type_name = 'ขนาดตู้';
             edit_function_name = 'size_update';
             form_action = "Size_edit/size_update";
         }
         modal_header = `<h5 class="modal-title">แก้ไข${edit_type_name}</h5>`;
         close_button = `<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>`;
-        
+
         $('.modal-header').append(modal_header + close_button);
 
         $('.modal_content').empty();
-        
+
         modal_body = `<d class="modal-body float-cente">`;
-        
+
         // เข้าถึงชื่อสถานะตู้ ประเภทตู้ หรือประเภทรถ จาก ID ที่ส่งมา
         var edit_name = $(`.${edit_type}_name${edit_id}`).text();
         edit_name = edit_name.trim();
         console.log(edit_name);
-        
-        modal_message = `<form action="<?php echo base_url() . '/public/${form_action}'?>" method="POST">`;
+
+        modal_message = `<form action="<?php echo base_url() . '/public/${form_action}' ?>" method="POST">`;
         // แก้ไขประเภทตู้ สถานะตู้ หรือประเภทรถ
         if (edit_type != 'size') {
             modal_message += `<div class="pt-3 pb-3 pl-5 pr-5"><input name="${edit_type}_id" value="${edit_id}" hidden/><center>
@@ -448,7 +441,7 @@
             modal_message += `<div class="col-3 ml-3 mt-2">`;
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ชื่อขนาด</span>`;
             modal_message += `</div>`;
-    
+
             // ไอดีของขนาดตู้
             modal_message += `<div class="col-6"><input name="size_id" readonly hidden>`;
 
@@ -469,8 +462,8 @@
             modal_message += `<input type="number" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="size_height_out" id="size_height_out">`;
             modal_message += `</div>`
             modal_message += `</div>`
-            
-             // กรอกความกว้างของตู้คอนเทนเนอร์
+
+            // กรอกความกว้างของตู้คอนเทนเนอร์
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความกว้าง (เมตร)</span>`;
@@ -480,7 +473,7 @@
             modal_message += `</div>`
             modal_message += `</div>`
 
-             // กรอกความยาวของตู้คอนเทนเนอร์
+            // กรอกความยาวของตู้คอนเทนเนอร์
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความยาว (เมตร)</span>`;
@@ -490,11 +483,11 @@
             modal_message += `</div>`
             modal_message += `</div>`
             modal_message += `</div>`
-        
+
             // กรอกขนาดของตู้คอนเทนเนอร์ ด้านใน
             // กรอกความสูงของตู้คอนเทนเนอร์
             modal_message += `<div class="col-12 col-sm-6">`;
-            modal_message += `<div class="text-gray-700 dark:text-gray-400">ด้านนอก</div>`;
+            modal_message += `<div class="text-gray-700 dark:text-gray-400">ด้านใน</div>`;
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความสูง (เมตร)</span>`;
@@ -503,7 +496,7 @@
             modal_message += `<input type="number" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="size_height_in" id="size_height_in">`;
             modal_message += `</div>`
             modal_message += `</div>`
-            
+
             // กรอกความกว้างของตู้คอนเทนเนอร์
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
@@ -514,7 +507,7 @@
             modal_message += `</div>`
             modal_message += `</div>`
 
-             // กรอกความยาวของตู้คอนเทนเนอร์
+            // กรอกความยาวของตู้คอนเทนเนอร์
             modal_message += `<div class="row mt-3">`
             modal_message += `<div class="col-6">`
             modal_message += `<span class="text-gray-700 dark:text-gray-400 text-sm">ความยาว (เมตร)</span>`;
@@ -532,11 +525,11 @@
         modal_footer = `<div class="modal-footer">`;
         cancel_button = `<button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>`;
         edit_button = `<input type="submit" class="btn btn-success" value="บันทึกการแก้ไข"></div>`;
-        
+
         modal_content = modal_body + modal_message + modal_footer + cancel_button + edit_button;
         $('.modal_content').append(modal_content);
     }
-    
+
     // ดึงข้อมุลขนาดตู้ตาม size_id เมื่อต้องการแก้ไขขนาดตู้
     function get_size_information(size_id = null) {
         // ดึงค่าขนาดตู้จากฐานข้อมูล โดยใช้ ajax
@@ -565,7 +558,7 @@
                 var size_height_in = edit_size[0]['size_height_in'];
                 var size_width_in = edit_size[0]['size_width_in'];
                 var size_length_in = edit_size[0]['size_length_in'];
-                
+
                 // นำค่าตัวแปร size ไปแสดงที่กล่องบันทึกข้อความ แก้ไขขนาดตู้
                 $('input[name="size_id"]').val(size_id);
                 $('input[name="size_name"]').val(size_name);
@@ -580,6 +573,7 @@
             }
         });
     }
+
     function size_insert() {
         var size_name = $('input[name="size_name"]').val();
 
@@ -592,7 +586,7 @@
         var size_length_in = $('input[name="size_length_in"]').val();
         console.log('')
         $.ajax({
-            url: '<?php echo base_url() . '/public/Size_input/size_insert'?>',
+            url: '<?php echo base_url() . '/public/Size_input/size_insert' ?>',
             method: 'POST',
             data: {
                 size_name: size_name,
@@ -609,7 +603,7 @@
                 console.log(typeof last_size);
                 const last_size_id = last_size[0]['size_id'];
 
-                var size = '<div class="col-12 m-1 p-2 text-sm row size_id' + last_size_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                var size = '<div class="col-12 m-1 p-2 text-sm row size_id' + last_size_id + '" style="background-color: #FAFAFA; border-radius: 5px;">';
                 size += `<div class="col-10 size_name${last_size_id}" data-toggle="modal" data-target="#edit_modal" onclick="get_size_information(${last_size_id}); edit_modal('size', ${last_size_id})">${size_name}</div>`;
                 size += `<div class="col-2">`;
                 size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('size_id', ${last_size_id})">`;
@@ -620,10 +614,11 @@
             }
         });
     }
+
     function status_container_insert() {
         var stac_name = $('input[name="stac_name"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Container_status_input/container_status_insert'?>',
+            url: '<?php echo base_url() . '/public/Container_status_input/container_status_insert' ?>',
             method: 'POST',
             data: {
                 stac_name: stac_name
@@ -632,7 +627,7 @@
                 const last_stac = JSON.parse(data);
                 const last_stac_id = last_stac[0]['stac_id'];
 
-                var stac = '<div class="col-12 m-1 p-2 text-sm row stac_id' + last_stac_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                var stac = '<div class="col-12 m-1 p-2 text-sm row stac_id' + last_stac_id + '" style="background-color: #FAFAFA; border-radius: 5px;">';
                 stac += `<div class="col-10 stac_name${last_stac_id}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac', ${last_stac_id})">${stac_name}</div>`;
                 stac += `<div class="col-2">`;
                 stac += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id', ${last_stac_id})">`;
@@ -643,10 +638,11 @@
             }
         });
     }
+
     function container_type_insert() {
         var cont_name = $('input[name="cont_name"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Container_type_input/container_type_insert'?>',
+            url: '<?php echo base_url() . '/public/Container_type_input/container_type_insert' ?>',
             method: 'POST',
             data: {
                 cont_name: cont_name
@@ -655,7 +651,7 @@
                 const last_cont = JSON.parse(data);
                 const last_cont_id = last_cont[0]['cont_id'];
 
-                var cont = '<div class="col-12 m-1 p-2 text-sm row cont_id' + last_cont_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                var cont = '<div class="col-12 m-1 p-2 text-sm row cont_id' + last_cont_id + '" style="background-color: #FAFAFA; border-radius: 5px;">';
                 cont += `<div class="col-10 cont_name${last_cont_id}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont', ${last_cont_id})">${cont_name}</div>`;
                 cont += `<div class="col-2">`;
                 cont += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id', ${last_cont_id})">`;
@@ -666,10 +662,11 @@
             }
         });
     }
+
     function car_type_insert() {
         var cart_name = $('input[name="cart_name"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Car_type_input/car_type_insert'?>',
+            url: '<?php echo base_url() . '/public/Car_type_input/car_type_insert' ?>',
             method: 'POST',
             data: {
                 cart_name: cart_name
@@ -678,7 +675,7 @@
                 const last_cart = JSON.parse(data);
                 const last_cart_id = last_cart[0]['cart_id'];
 
-                var cart = '<div class="col-12 m-1 p-2 text-sm row cart_id' + last_cart_id +'" style="background-color: #FAFAFA; border-radius: 5px;">';
+                var cart = '<div class="col-12 m-1 p-2 text-sm row cart_id' + last_cart_id + '" style="background-color: #FAFAFA; border-radius: 5px;">';
                 cart += `<div class="col-10 cart_name${last_cart_id}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart', ${last_cart_id})">${cart_name}</div>`;
                 cart += `<div class="col-2">`;
                 cart += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id', ${last_cart_id})">`;
@@ -689,7 +686,7 @@
             }
         });
     }
-    
+
     function car_type_delete(cart_id) {
         // console.log('car_type_delete', cart_id);
         $.ajax({
@@ -755,6 +752,7 @@
     }
 
     function show_all_size() {
+        $('.modal-title').text('ขนาดตู้ทั้งหมด');
         $.ajax({
             url: 'get_all_size',
             method: 'POST',
@@ -766,22 +764,26 @@
                 var size = ''
                 for (let i = 0; i < data.length; i++) {
                     size = `<div class="col-12 m-1 p-2 text-sm row size_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    size += `<div class="col-10"> ${data[i]['size_name']}`
+                    size += `<div class="col-10 size_name${data[i]['size_id']}" data-toggle="modal" data-target="#edit_modal" onclick="get_size_information(${data[i]['size_id']}); edit_modal('size',${data[i]['size_id']})" data-dismiss="modal" > ${data[i]['size_name']}`
                     size += `</div>`
-                    // size += `<div class="col-2">`
-                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('size_id')">`
-                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
-                    // size += `</button>`
-                    // size += `</div>`
+                    size += `<div class="col-2">`
+                    size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('size_id',${data[i]['size_id']})" data-dismiss="modal">`
+                    size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    size += `</button>`
+                    size += `</div>`
                     size += `</div>`
                     $('#show_size').append(size);
+
+
                 }
 
             }
         });
     }
 
+
     function show_all_status_container() {
+        $('.modal-title').text('สถานะตู้ทั้งหมด');
         $.ajax({
             url: 'get_all_status_container',
             method: 'POST',
@@ -793,13 +795,13 @@
                 var status_container = ''
                 for (let i = 0; i < data.length; i++) {
                     status_container = `<div class="col-12 m-1 p-2 text-sm row stac_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    status_container += `<div class="col-10"> ${data[i]['stac_name']}`
+                    status_container += `<div class="col-10 stac_name${data[i]['stac_id']}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('stac',${data[i]['stac_id']}); edit_modal('stac',${data[i]['stac_id']})" data-dismiss="modal" > ${data[i]['stac_name']}`
                     status_container += `</div>`
-                    // size += `<div class="col-2">`
-                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id')">`
-                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
-                    // size += `</button>`
-                    // size += `</div>`
+                    status_container += `<div class="col-2">`
+                    status_container += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('stac_id',${data[i]['stac_id']})" data-dismiss="modal">`
+                    status_container += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    status_container += `</button>`
+                    status_container += `</div>`
                     status_container += `</div>`
                     $('#show_status_container').append(status_container);
                 }
@@ -809,6 +811,7 @@
     }
 
     function show_all_container_type() {
+        $('.modal-title').text('ประเภทตู้ทั้งหมด');
         $.ajax({
             url: 'get_all_container_type',
             method: 'POST',
@@ -820,13 +823,13 @@
                 var container_type = ''
                 for (let i = 0; i < data.length; i++) {
                     container_type = `<div class="col-12 m-1 p-2 text-sm row cont_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    container_type += `<div class="col-10"> ${data[i]['cont_name']}`
+                    container_type += `<div class="col-10 cont_name${data[i]['cont_id']}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cont',${data[i]['cont_id']})" data-dismiss="modal" > ${data[i]['cont_name']}`
                     container_type += `</div>`
-                    // size += `<div class="col-2">`
-                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id')">`
-                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
-                    // size += `</button>`
-                    // size += `</div>`
+                    container_type += `<div class="col-2">`
+                    container_type += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cont_id',${data[i]['cont_id']})" data-dismiss="modal">`
+                    container_type += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    container_type += `</button>`
+                    container_type += `</div>`
                     container_type += `</div>`
                     $('#show_container_type').append(container_type);
                 }
@@ -836,6 +839,7 @@
     }
 
     function show_all_car_type() {
+        $('.modal-title').text('ประเภทรถทั้งหมด');
         $.ajax({
             url: 'get_all_car_type',
             method: 'POST',
@@ -847,13 +851,13 @@
                 var car_type = ''
                 for (let i = 0; i < data.length; i++) {
                     car_type = `<div class="col-12 m-1 p-2 text-sm row cart_id" style="background-color: #FAFAFA; border-radius: 5px;">`
-                    car_type += `<div class="col-10"> ${data[i]['cart_name']}`
+                    car_type += `<div class="col-10 cart_name${data[i]['cart_id']}" data-toggle="modal" data-target="#edit_modal" onclick="edit_modal('cart',${data[i]['cart_id']})" data-dismiss="modal" > ${data[i]['cart_name']}`
                     car_type += `</div>`
-                    // size += `<div class="col-2">`
-                    // size += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id')">`
-                    // size += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
-                    // size += `</button>`
-                    // size += `</div>`
+                    car_type += `<div class="col-2">`
+                    car_type += `<button class="mt-1" data-toggle="modal" data-target="#delete_modal" onclick="delete_modal('cart_id',${data[i]['cart_id']})" data-dismiss="modal">`
+                    car_type += `<i class="bi bi-x-circle-fill" style="color:#E91414"></i>`
+                    car_type += `</button>`
+                    car_type += `</div>`
                     car_type += `</div>`
                     $('#show_car_type').append(car_type);
                 }
