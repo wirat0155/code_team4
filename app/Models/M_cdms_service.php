@@ -68,7 +68,7 @@ class M_cdms_service extends Da_cdms_service {
                 LEFT JOIN cdms_customer 
                 on ser_cus_id = cus_id
                 WHERE ser_status = 1
-                AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
+                AND ser_actual_departure_date BETWEEN '$start_date' AND '$end_date'
                 ORDER BY ser_id DESC";
         return $this->db->query($sql)->getResult();
     }
@@ -90,7 +90,7 @@ class M_cdms_service extends Da_cdms_service {
                 INNER JOIN cdms_status_container ON con_stac_id = stac_id
                 INNER JOIN cdms_agent ON con_agn_id = agn_id
                 WHERE ser_status=1
-                AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
+                AND ser_actual_departure_date BETWEEN '$start_date' AND '$end_date'
                 GROUP BY ser_id
                 ORDER BY ser_id DESC";
         return $this->db->query($sql)->getResult();

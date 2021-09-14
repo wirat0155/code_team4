@@ -34,7 +34,7 @@
                 Download Excel
             </a>
         <!-- Date -->
-            <input class="pl-2 shadow-sm rounded" type="text" name="daterange" id="daterange" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
+            <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
         </form>
     </div>
 
@@ -266,7 +266,7 @@
         );
 
         //วันที่ Date Range Picker
-        $('input[name="daterange"]').daterangepicker({
+        $('input[name="date_range"]').daterangepicker({
             "locale": {
                 "format": 'DD/MM/YYYY',
                 "customRangeLabel": "Custom",

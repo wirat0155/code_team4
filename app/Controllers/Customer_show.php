@@ -28,16 +28,16 @@ class Customer_show extends Cdms_controller {
         $m_cus = new M_cdms_customer();
         $m_ser = new M_cdms_service();
 
-        if(isset($_POST['daterange'])){
-            $daterange = $this->request->getPost('daterange');
-            $start = substr($daterange,6,4).'-'.substr($daterange,3,2).'-'.(substr($daterange,0,2)) . ' ' . '00:00:00';
-            $end = substr($daterange,19,4).'-'.substr($daterange,16,2).'-'.(substr($daterange,13,2)) . ' ' . '23:59:59';
+        if(isset($_POST['date_range'])){
+            $date_range = $this->request->getPost('date_range');
+            $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
+            $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
             //Data Customer
             $data['arr_customer'] = $m_cus->get_by_date($start, $end);
             //Data Service
             $data['arr_service'] = $m_ser->get_by_date_customer($start, $end);
             
-            $data['arrivals_date'] = $daterange;
+            $data['arrivals_date'] = $date_range;
         }else{
 
             //Data Customer
