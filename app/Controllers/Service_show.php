@@ -11,6 +11,9 @@ use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 
 /*
@@ -121,4 +124,176 @@ class Service_show extends Cdms_controller {
         // call service input view
         $this->output('v_service_show_information', $data);
     }
+
+        /*
+    * export_customer
+    * export รายงาน Customer
+    * @input array_customer
+    * @output File Report Customer
+    * @author  Kittipod
+    * @Create Date 2564-09-15
+    * @Update Date 2564-09-15
+    */
+    public function export_service() {
+
+        $m_ser = new M_cdms_service();
+
+        $arr_service = $m_ser->get_all();
+        $index = count($arr_service)-1;
+        $start = $arr_service[$index]->ser_arrivals_date;
+        $end = $arr_service[0]->ser_arrivals_date;
+        $arrivals_date =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
+                            ' - '. date("d-m-Y");
+
+        $date_range = $this->request->getPost('date_range_excel');
+
+        if($date_range != $arrivals_date){
+
+            $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
+            $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
+            $arr_service = $m_ser->get_by_date($start, $end);
+
+        }
+
+        $file_name = 'service_report.xlsx';
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $style = array(
+            'alignment' => array(
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            )
+        );
+
+        $thead_report = array(
+            'font' => [
+                'name' => 'TH SarabunPSK',
+                'bold' => true,
+            ],
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => [
+                    'argb' => 'CCFFFF',
+                ],
+                'endColor' => [
+                    'argb' => 'CCFFFF',
+                ],
+            ],
+        );
+
+        $thead_cus = array(
+            'font' => [
+                'name' => 'TH SarabunPSK',
+                'bold' => true,
+            ],
+            'alignment' => array(
+                'horizontal' => Alignment::HORIZONTAL_CENTER,
+            ),
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => [
+                    'argb' => 'CCFFFF',
+                ],
+                'endColor' => [
+                    'argb' => 'CCFFFF',
+                ],
+            ],
+        );
+        
+        $sheet->getStyle('A:Z')->getFont()->setName('TH SarabunPSK')->setSize (16);
+        $sheet->getStyle('B')->getFont()->setBold(true);
+    
+        $sheet->getStyle("B2:B4")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
+        $sheet->getStyle("C2:C4")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
+
+        $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
+        $sheet->setCellValue('B2', 'ตู้เข้า');
+        $sheet->setCellValue('C2', ($count_import != 0) ? $count_import : '0');
+        
+        $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
+        $sheet->setCellValue('B3', 'ตู้ออก');
+        $sheet->setCellValue('C3', ($count_export != 0) ? $count_export : '0');
+
+        $count_drop = array_count_values(array_column($arr_service, 'ser_type'))[3];
+        $sheet->setCellValue('B4', 'ตู้ดรอป');
+        $sheet->setCellValue('C4', ($count_drop != 0) ? $count_drop : '0');
+
+        $sheet->getStyle('B2:C4')->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+        $sheet->getStyle("B6:H6")->applyFromArray($thead_cus)->getFont()->setSize (18);
+        $sheet->setCellValue('B6', 'หมายเลขตู้');
+        $sheet->setCellValue('C6', 'สถานะตู้');
+        $sheet->setCellValue('D6', 'ประเภท');
+        $sheet->setCellValue('E6', 'ประเภทตู้');
+        $sheet->setCellValue('F6', 'CUT-OFF');
+        $sheet->setCellValue('G6', 'เอเย่นต์');
+        $sheet->setCellValue('H6', 'ลูกค้า');
+        
+        $count = 7;
+
+        for ($i = 0; $i < count($arr_service); $i++)
+		{
+
+			$sheet->setCellValue('B' . $count, ' ' . $arr_service[$i]->con_number);
+
+			$sheet->setCellValue('C' . $count, ' ' . $arr_service[$i]->stac_name);
+
+            if ($arr_service[$i]->ser_type == '1') {
+                $cont_stac ="ตู้เข้า";
+            } else if ($arr_service[$i]->ser_type == '2') {
+                $cont_stac = "ตู้ออก";
+            } else if ($arr_service[$i]->ser_type == '3') {
+                $cont_stac = "ตู้ดรอป";
+            }
+			$sheet->setCellValue('D' . $count, $cont_stac);
+
+            $sheet->getStyle('D'.$count)->applyFromArray($style);
+
+            $sheet->setCellValue('E' . $count, ' ' . $arr_service[$i]->cont_name);
+
+			$sheet->setCellValue('F' . $count, date_thai($arr_service[$i]->ser_departure_date));
+            $sheet->getStyle('F'.$count)->applyFromArray($style);
+
+            $sheet->setCellValue('G' . $count, ' ' . $arr_service[$i]->agn_company_name);
+
+            $company_name = $arr_service[$i]->cus_company_name;
+            if($arr_service[$i]->cus_branch != null) { 
+                $company_name = $company_name . ' (' . $arr_service[$i]->cus_branch . ') ';
+            }
+            $sheet->setCellValue('H' . $count, ' ' . $company_name);
+
+			$count++;
+		}
+
+        $sheet->getStyle('B6:H'.($count-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+        foreach(range('B','H') as $columnID)
+        {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);
+        }
+        
+        $writer = new Xlsx($spreadsheet);
+
+		$writer->save($file_name);
+
+		header("Content-Type: application/vnd.ms-excel");
+
+		header('Content-Disposition: attachment; filename="' . basename($file_name) . '"');
+
+		header('Expires: 0');
+
+		header('Cache-Control: must-revalidate');
+
+		header('Pragma: public');
+
+		header('Content-Length:' . filesize($file_name));
+
+		flush();
+
+		readfile($file_name);
+
+		exit;
+        return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+    }
+
 }
