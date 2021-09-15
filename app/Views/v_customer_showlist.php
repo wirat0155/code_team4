@@ -27,13 +27,20 @@
 
     <!-- Excel and date -->
     <div class="text-right mb-2">
-        <form id='form_date' action="<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>" method="post">
+        
         <!-- Download Excel -->
-            <a href="" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
+        <form id='form_Excel' action="<?php echo base_url(). '/public/Customer_show/export_customer' ?>" method="post" hidden>
+            <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
+        </form>
+        <form id='form_date' action="<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>" method="post">
+            
+            <button type="submit" form="form_Excel" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
                 <i class="bi bi-file-arrow-down mr-1"></i>
-                Download Excel
-            </a>
-        <!-- Date -->
+                    Download Excel
+            </button>
+        
+            <!-- Date -->
+        
             <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
         </form>
     </div>
