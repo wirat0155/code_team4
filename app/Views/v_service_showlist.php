@@ -30,6 +30,13 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
+    }   
+    span.add_cost_input {
+        color: blue;
+        cursor: pointer;
+    }
+    span.add_cost_input:hover {
+        color: darkblue;
     }
 </style>
 <div class="container px-6 mx-auto grid">
@@ -202,7 +209,7 @@
                         <!-- ดำเนินการ -->
                         <td class="px-4 py-3 text-sm text-center">
                             <!-- ปุ่มคิดค่าบริการ -->
-                            <a href="" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></a>
+                            <button data-toggle="modal" data-target="#cost_modal" onclick="cost_modal(<?php echo $arr_service[$i]->ser_id?>)" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></button>
                             <!-- ปุ่มแก้ไข -->
                             <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                             <!-- ปุ่มลบ -->
@@ -218,6 +225,34 @@
     </div>
 
 </div>
+
+<!-- Modal คิดค่าบริการ -->
+<div class="modal fade" id="cost_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">ค่าใช้จ่าย</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="cost-modal-body float-center">
+                <!-- เก็บ Service Id -->
+                
+                <div class="cost_input_list">
+                </div>
+                <div class="add_cost_input p-3">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">พิมพ์ใบแจ้งหนี้</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal ยืนยันการลบ -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -293,5 +328,112 @@
 
     function service_detail(ser_id) {
         window.location = '<?php echo base_url('') . '/public/Service_show/service_detail/' ?>' + ser_id;
+    }
+
+    var number_cost_input = 1;
+    function cost_modal(ser_id) {
+        $('.cost_input_list').empty();
+        $('.add_cost_input').empty();
+
+        // ดึงค่าใช้จ่ายเดิม
+        var data = [{cosd_id: 56, cosd_name: 'ค่าบริการ'}, {cosd_id: 57, cosd_name: 'ค่าทำสี'}];
+        var number_cost = data.length;
+        // ถ้ามี วนลูปแสดง
+
+        
+        var modal_message = `<input name="cosd_ser_id" id="cosd_ser_id" type="hidden" value="${ser_id}">`;
+        // ถ้าไม่มี สร้าง 1 รายการ
+        if (number_cost == 0) {
+            number_cost_input = 1;
+            modal_message += `<div class="row m-3" name="cost_input1">`;
+            modal_message += `<div class="col-12">`;
+            modal_message += `<div class="row mt-3">`;
+            modal_message += `<div class="col-7">`;
+            modal_message += `<input type="text" onchange="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name1">`;
+            modal_message += `</div>`;
+            modal_message += `<div class="col-4">`;
+            modal_message += `<input type="number" onchange="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost1"></div>`;
+            modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn1" onclick="cost_delete(1,'new')"><i class="bi bi-x-circle-fill" style="color:#E91414" ></i></button></div>`;
+            modal_message += `</div></div>`;
+            $('.cost_input_list').append(modal_message);
+            $('.add_cost_input').append(`<span class="add_cost_input text-sm p-5" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span>`);
+        }
+        else {
+            // วน loop แสดงข้อมูล
+            for (var i = 0; i < number_cost; i++) {
+                console.log(i);
+                modal_message = '';
+                modal_message += `<div class="row m-3" name="cost_input_id${data[i]['cosd_id']}">`;
+                modal_message += `<div class="col-12">`;
+                modal_message += `<div class="row mt-3">`;
+                modal_message += `<div class="col-7">`;
+                modal_message += `<input type="text" onchange="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">`;
+                modal_message += `</div>`;
+                modal_message += `<div class="col-4">`;
+                modal_message += `<input type="number" onchange="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost_id${data[i]['cosd_id']}"></div>`;
+                modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn_id${data[i]['cosd_id']}" onclick="cost_delete(${data[i]['cosd_id']},'old')"><i class="bi bi-x-circle-fill" style="color:#E91414;" ></i></button></div>`;
+                modal_message += `</div></div></div>`;
+                $('.cost_input_list').append(modal_message);
+            }
+            $('.add_cost_input').append(`<span class="add_cost_input text-sm p-5" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span>`);
+        }
+    }
+    function add_cost_input() {
+        
+        ++number_cost_input;
+        var cost = `<div class="row m-3" name="cost_input${number_cost_input}">`;
+        cost += `<div class="col-12">`;
+        cost += `<div class="row mt-3">`;
+        cost += `<div class="col-7">`;
+        cost += `<input type="text" onchange="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name${number_cost_input}">`;
+        cost += `</div>`;
+        cost += `<div class="col-4">`;
+        cost += `<input type="number" onchange="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost${number_cost_input}"></div>`;
+        cost += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn${number_cost_input}" onclick="cost_delete(${number_cost_input},'new')"><i class="bi bi-x-circle-fill" style="color:#E91414" ></i></button></div>`;
+        cost += `</div>`;
+        cost += `</div></div>`;
+        $('.cost_input_list').append(cost);
+    }
+    function cost_insert(input_order) {
+        var cosd_ser_id = $('#cosd_ser_id').val();
+        var cosd_name = $('input[name="cosd_name' + input_order +'"]').val();
+        var cosd_cost = $('input[name="cosd_cost' + input_order +'"]').val();
+        console.log(cosd_ser_id, cosd_name, cosd_cost, input_order);
+        
+        var return_id = 33;
+        $('input[name="cosd_name' + input_order +'"]').attr('onchange', `cost_update(${return_id})`);
+        $('input[name="cosd_name' + input_order +'"]').attr('name', `cosd_name_id${return_id}`);
+        
+        $('input[name="cosd_cost' + input_order +'"]').attr('onchange', `cost_update(${return_id})`);
+        $('input[name="cosd_cost' + input_order +'"]').attr('name', `cosd_cost_id${return_id}`);
+        
+        $('button[name="cost_delete_btn' + input_order +'"]').attr('onclick', `cost_delete(${return_id},'old')`);
+        $('button[name="cost_delete_btn' + input_order +'"]').attr('name', `cost_delete_btn_id${return_id}`);
+
+        $('div[name="cost_input'+ input_order +'"]').attr('name', `cost_input_id${return_id}`);
+        // $.ajax({
+            //     url: 'cost_insert',
+            //     method: 'POST',
+        //     dataType: 'JSON',
+        //     data: {
+
+        //     }
+        // });
+    }
+    function cost_update(cosd_id) {
+        var cosd_name = $('input[name="cosd_name_id' + cosd_id +'"]').val();
+        var cosd_cost = $('input[name="cosd_cost_id' + cosd_id +'"]').val();
+        console.log(cosd_name, cosd_cost, cosd_id);
+    }
+    function cost_delete(delete_id, input_type = 'new') {
+        console.log(delete_id, input_type);
+        // ลบ input ที่ยังไม่ถูก insert
+        if (input_type == 'new') {
+            $('div[name="cost_input' + delete_id +'"]').remove();
+        }
+        // ลบ input ที่ insert ไปแล้ว
+        else if (input_type == 'old') {
+            $('div[name="cost_input_id' + delete_id +'"]').remove();
+        }
     }
 </script>
