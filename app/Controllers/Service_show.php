@@ -11,6 +11,7 @@ use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
+use App\Models\M_cdms_cost_detail;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -36,6 +37,8 @@ class Service_show extends Cdms_controller {
     public function service_show_ajax() {
         $_SESSION['menu'] = 'Service_show';
         $m_ser = new M_cdms_service();
+
+        
 
         if(isset($_POST['date_range'])){
             $date_range = $this->request->getPost('date_range');
@@ -125,6 +128,49 @@ class Service_show extends Cdms_controller {
         $this->output('v_service_show_information', $data);
     }
 
+    
+    public function get_cost_ajax() {
+        $m_cosd = new M_cdms_cost_detail();
+        $ser_id = $this->request->getPost('ser_id');
+        $arr_service_cost = $m_cosd->get_by_ser_id($ser_id);
+
+        echo json_encode($arr_service_cost);
+    }
+
+    public function cost_insert() {
+        $m_cosd = new M_cdms_cost_detail();
+        
+        $cosd_ser_id = $this->request->getPost('cosd_ser_id');
+        $cosd_name = $this->request->getPost('cosd_name');
+        $cosd_cost = $this->request->getPost('cosd_cost');
+        $cosd_payment_date = date("Y-m-d", strtotime("+7 day"));
+        
+        $m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_payment_date, $cosd_ser_id);
+
+        echo json_encode('insert complete');
+    }
+
+    public function cost_update() {
+        $m_cosd = new M_cdms_cost_detail();
+
+        $cosd_id = $this->request->getPost('cosd_id');
+        $cosd_name = $this->request->getPost('cosd_name');
+        $cosd_cost = $this->request->getPost('cosd_cost');
+        
+        $m_cosd->cost_update($cosd_id, $cosd_name, $cosd_cost);
+
+        echo json_encode('update complete');
+    }
+
+    public function cost_delete() {
+        $m_cosd = new M_cdms_cost_detail();
+
+        $cosd_id = $this->request->getPost('cosd_id');
+    
+        $m_cosd->delete($cosd_id);
+
+        echo json_encode('delete complete');
+    }
         /*
     * export_customer
     * export รายงาน Customer

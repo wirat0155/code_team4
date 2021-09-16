@@ -30,12 +30,14 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-    }   
+    }
+
     span.add_cost_input {
         color: #3966AA;
         cursor: pointer;
         transition: color 0.2s;
     }
+
     span.add_cost_input:hover {
         color: skyblue;
     }
@@ -54,18 +56,18 @@
     <!-- Excel and date -->
     <div class="text-right mb-2">
         <!-- Download Excel -->
-        <form id='form_Excel' action="<?php echo base_url(). '/public/Service_show/export_service' ?>" method="post" hidden>
+        <form id='form_Excel' action="<?php echo base_url() . '/public/Service_show/export_service' ?>" method="post" hidden>
             <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
         </form>
 
         <form id='form_date' action="<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>" method="post">
-            
+
             <button type="submit" form="form_Excel" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
                 <i class="bi bi-file-arrow-down mr-1"></i>
                 Download Excel
             </button>
-            
-        <!-- Date -->
+
+            <!-- Date -->
             <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
         </form>
     </div>
@@ -210,7 +212,7 @@
                         <!-- ดำเนินการ -->
                         <td class="px-4 py-3 text-sm text-center">
                             <!-- ปุ่มคิดค่าบริการ -->
-                            <button data-toggle="modal" data-target="#cost_modal" onclick="cost_modal(<?php echo $arr_service[$i]->ser_id?>)" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></button>
+                            <button data-toggle="modal" data-target="#cost_modal" onclick="get_service_cost(<?php echo $arr_service[$i]->ser_id ?>)" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></button>
                             <!-- ปุ่มแก้ไข -->
                             <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                             <!-- ปุ่มลบ -->
@@ -239,7 +241,7 @@
             </div>
             <div class="cost-modal-body float-center">
                 <!-- เก็บ Service Id -->
-                
+
                 <div class="cost_input_list pl-5 pr-5">
                 </div>
                 <div class="add_cost_input p-3 row">
@@ -290,7 +292,7 @@
                 "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
                 "sSearch": "ค้นหา :"
             },
-            "order" : []
+            "order": []
         });
         $("#DataTables_Table_0_filter").append(
             "<a href='<?php echo base_url() . '/public/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
@@ -319,8 +321,11 @@
                 .format('YYYY-MM-DD'));
         });
 
-        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>\'');
-        $('.applyBtn').attr({type: 'submit', form: 'form_date'});
+        $('.cancelBtn').attr('onclick', 'location.href = \'<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>\'');
+        $('.applyBtn').attr({
+            type: 'submit',
+            form: 'form_date'
+        });
     });
 
     function get_id(ser_id) {
@@ -332,18 +337,33 @@
     }
 
     var number_cost_input = 1;
-    function cost_modal(ser_id) {
+
+    function get_service_cost(ser_id) {
+        console.log(ser_id);
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Service_show/get_cost_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                ser_id: ser_id
+            },
+            success: function(data) {
+                console.log(data);
+                cost_modal(ser_id, data)
+            }
+        });
+    }
+
+    function cost_modal(ser_id, data) {
         $('.cost_input_list').empty();
         $('.add_cost_input').empty();
 
         // ดึงค่าใช้จ่ายเดิม
-        var data = [{cosd_id: 56, cosd_name: 'ค่าบริการ', cosd_cost: 100}, {cosd_id: 57, cosd_name: 'ค่าทำสี', cosd_cost: 200}];
         var number_cost = data.length;
         // ถ้ามี วนลูปแสดง
 
-        
         var modal_message = `<input name="cosd_ser_id" id="cosd_ser_id" type="hidden" value="${ser_id}">`;
-        
+
         var modal_footer = ``;
         // ถ้าไม่มี สร้าง 1 รายการ
         if (number_cost == 0) {
@@ -356,10 +376,10 @@
             modal_message += `</div>`;
             modal_message += `<div class="row mt-3">`;
             modal_message += `<div class="col-7">`;
-            modal_message += `<input type="text" oninput="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name1">`;
+            modal_message += `<input type="text" onchange="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name1">`;
             modal_message += `</div>`;
             modal_message += `<div class="col-4">`;
-            modal_message += `<input type="number" oninput="cost_insert(1)" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost1"></div>`;
+            modal_message += `<input type="number" onchange="cost_insert(1)" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost1"></div>`;
             modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn1" onclick="cost_delete(1,'new')"><i class="bi bi-x-circle-fill" style="color:#E91414"></i></button></div>`;
             modal_message += `</div></div>`;
             $('.cost_input_list').append(modal_message);
@@ -368,8 +388,7 @@
             modal_footer += `<div class="col-6">รวมทั้งสิ้น XXX บาท</div>`;
             $('.add_cost_input').append(modal_footer);
             cal_total_cost();
-        }
-        else {
+        } else {
             modal_message += `<div class="row mt-3">`;
             modal_message += `<div class="col-7 font-semibold">ค่าใช้จ่าย</div>`;
             modal_message += `<div class="col-5 font-semibold">จำนวนเงิน</div>`;
@@ -382,10 +401,10 @@
                 modal_message += `<div class="col-12">`;
                 modal_message += `<div class="row mt-3">`;
                 modal_message += `<div class="col-7">`;
-                modal_message += `<input type="text" oninput="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">`;
+                modal_message += `<input type="text" onchange="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">`;
                 modal_message += `</div>`;
                 modal_message += `<div class="col-4">`;
-                modal_message += `<input type="number" oninput="cost_update(${data[i]['cosd_id']})" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost_id${data[i]['cosd_id']}" value="${data[i]['cosd_cost']}"></div>`;
+                modal_message += `<input type="number" onchange="cost_update(${data[i]['cosd_id']})" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost_id${data[i]['cosd_id']}" value="${data[i]['cosd_cost']}"></div>`;
                 modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn_id${data[i]['cosd_id']}" onclick="cost_delete(${data[i]['cosd_id']},'old')"><i class="bi bi-x-circle-fill" style="color:#E91414;" ></i></button></div>`;
                 modal_message += `</div></div></div>`;
                 $('.cost_input_list').append(modal_message);
@@ -396,68 +415,102 @@
             cal_total_cost();
         }
     }
+
     function add_cost_input() {
-        
+
         ++number_cost_input;
         var cost = `<div class="row" name="cost_input${number_cost_input}">`;
         cost += `<div class="col-12">`;
         cost += `<div class="row mt-3">`;
         cost += `<div class="col-7">`;
-        cost += `<input type="text" oninput="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name${number_cost_input}">`;
+        cost += `<input type="text" onchange="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name${number_cost_input}">`;
         cost += `</div>`;
         cost += `<div class="col-4">`;
-        cost += `<input type="number" oninput="cost_insert(${number_cost_input})" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost${number_cost_input}"></div>`;
+        cost += `<input type="number" onchange="cost_insert(${number_cost_input})" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost${number_cost_input}"></div>`;
         cost += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn${number_cost_input}" onclick="cost_delete(${number_cost_input},'new')"><i class="bi bi-x-circle-fill" style="color:#E91414" ></i></button></div>`;
         cost += `</div>`;
         cost += `</div></div>`;
         $('.cost_input_list').append(cost);
         cal_total_cost();
     }
+
     function cost_insert(input_order) {
         var cosd_ser_id = $('#cosd_ser_id').val();
-        var cosd_name = $('input[name="cosd_name' + input_order +'"]').val();
-        var cosd_cost = $('input[name="cosd_cost' + input_order +'"]').val();
-        console.log(cosd_ser_id, cosd_name, cosd_cost, input_order);
-        
+        var cosd_name = $('input[name="cosd_name' + input_order + '"]').val();
+        var cosd_cost = $('input[name="cosd_cost' + input_order + '"]').val();
+        console.log("เข้า insert: " + cosd_ser_id, cosd_name, cosd_cost, input_order);
+
         var return_id = 33;
-        $('input[name="cosd_name' + input_order +'"]').attr('oninput', `cost_update(${return_id})`);
-        $('input[name="cosd_name' + input_order +'"]').attr('name', `cosd_name_id${return_id}`);
-        
-        $('input[name="cosd_cost' + input_order +'"]').attr('oninput', `cost_update(${return_id})`);
-        $('input[name="cosd_cost' + input_order +'"]').attr('name', `cosd_cost_id${return_id}`);
-        
-        $('button[name="cost_delete_btn' + input_order +'"]').attr('onclick', `cost_delete(${return_id},'old')`);
-        $('button[name="cost_delete_btn' + input_order +'"]').attr('name', `cost_delete_btn_id${return_id}`);
+        $('input[name="cosd_name' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+        $('input[name="cosd_name' + input_order + '"]').attr('name', `cosd_name_id${return_id}`);
 
-        $('div[name="cost_input'+ input_order +'"]').attr('name', `cost_input_id${return_id}`);
-        // $.ajax({
-            //     url: 'cost_insert',
-            //     method: 'POST',
-        //     dataType: 'JSON',
-        //     data: {
+        $('input[name="cosd_cost' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+        $('input[name="cosd_cost' + input_order + '"]').attr('name', `cosd_cost_id${return_id}`);
 
-        //     }
-        // });
+        $('button[name="cost_delete_btn' + input_order + '"]').attr('onclick', `cost_delete(${return_id},'old')`);
+        $('button[name="cost_delete_btn' + input_order + '"]').attr('name', `cost_delete_btn_id${return_id}`);
+
+        $('div[name="cost_input' + input_order + '"]').attr('name', `cost_input_id${return_id}`);
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Service_show/cost_insert' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                cosd_ser_id: cosd_ser_id,
+                cosd_name: cosd_name,
+                cosd_cost: cosd_cost,
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        });
         cal_total_cost();
     }
+
     function cost_update(cosd_id) {
-        var cosd_name = $('input[name="cosd_name_id' + cosd_id +'"]').val();
-        var cosd_cost = $('input[name="cosd_cost_id' + cosd_id +'"]').val();
-        console.log(cosd_name, cosd_cost, cosd_id);
+        var cosd_name = $('input[name="cosd_name_id' + cosd_id + '"]').val();
+        var cosd_cost = $('input[name="cosd_cost_id' + cosd_id + '"]').val();
+        console.log("เข้า update: " + cosd_name, cosd_cost, cosd_id, cosd_ser_id);
+        $.ajax({
+            url: '<?php echo base_url() . '/public/Service_show/cost_update' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                cosd_id: cosd_id,
+                cosd_name: cosd_name,
+                cosd_cost: cosd_cost
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        });
         cal_total_cost();
     }
+
     function cost_delete(delete_id, input_type = 'new') {
         console.log(delete_id, input_type);
         // ลบ input ที่ยังไม่ถูก insert
         if (input_type == 'new') {
-            $('div[name="cost_input' + delete_id +'"]').remove();
+            $('div[name="cost_input' + delete_id + '"]').remove();
         }
         // ลบ input ที่ insert ไปแล้ว
         else if (input_type == 'old') {
-            $('div[name="cost_input_id' + delete_id +'"]').remove();
+            $.ajax({
+                url: '<?php echo base_url() . '/public/Service_show/cost_delete' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    cosd_id: delete_id
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+            $('div[name="cost_input_id' + delete_id + '"]').remove();
         }
         cal_total_cost();
     }
+
     function cal_total_cost() {
         var total_cost = 0;
         var cost_input = document.getElementsByClassName('cost')
