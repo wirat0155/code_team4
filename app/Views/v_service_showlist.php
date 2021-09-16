@@ -32,11 +32,12 @@
         display: inline-block;
     }   
     span.add_cost_input {
-        color: blue;
+        color: #3966AA;
         cursor: pointer;
+        transition: color 0.2s;
     }
     span.add_cost_input:hover {
-        color: darkblue;
+        color: skyblue;
     }
 </style>
 <div class="container px-6 mx-auto grid">
@@ -231,7 +232,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">ค่าใช้จ่าย</h5>
+                <h5 class="modal-title font-semibold" id="exampleModalLongTitle">ค่าใช้จ่าย</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -239,9 +240,9 @@
             <div class="cost-modal-body float-center">
                 <!-- เก็บ Service Id -->
                 
-                <div class="cost_input_list">
+                <div class="cost_input_list pl-5 pr-5">
                 </div>
-                <div class="add_cost_input p-3">
+                <div class="add_cost_input p-3 row">
 
                 </div>
 
@@ -336,63 +337,81 @@
         $('.add_cost_input').empty();
 
         // ดึงค่าใช้จ่ายเดิม
-        var data = [{cosd_id: 56, cosd_name: 'ค่าบริการ'}, {cosd_id: 57, cosd_name: 'ค่าทำสี'}];
+        var data = [{cosd_id: 56, cosd_name: 'ค่าบริการ', cosd_cost: 100}, {cosd_id: 57, cosd_name: 'ค่าทำสี', cosd_cost: 200}];
         var number_cost = data.length;
         // ถ้ามี วนลูปแสดง
 
         
         var modal_message = `<input name="cosd_ser_id" id="cosd_ser_id" type="hidden" value="${ser_id}">`;
+        
+        var modal_footer = ``;
         // ถ้าไม่มี สร้าง 1 รายการ
         if (number_cost == 0) {
             number_cost_input = 1;
-            modal_message += `<div class="row m-3" name="cost_input1">`;
+            modal_message += `<div class="row" name="cost_input1">`;
             modal_message += `<div class="col-12">`;
+            modal_message += `<div class="row">`;
+            modal_message += `<div class="col-7">ค่าใช้จ่าย</div>`;
+            modal_message += `<div class="col-5">จำนวนเงิน</div>`;
+            modal_message += `</div>`;
             modal_message += `<div class="row mt-3">`;
             modal_message += `<div class="col-7">`;
-            modal_message += `<input type="text" onchange="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name1">`;
+            modal_message += `<input type="text" oninput="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name1">`;
             modal_message += `</div>`;
             modal_message += `<div class="col-4">`;
-            modal_message += `<input type="number" onchange="cost_insert(1)" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost1"></div>`;
-            modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn1" onclick="cost_delete(1,'new')"><i class="bi bi-x-circle-fill" style="color:#E91414" ></i></button></div>`;
+            modal_message += `<input type="number" oninput="cost_insert(1)" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost1"></div>`;
+            modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn1" onclick="cost_delete(1,'new')"><i class="bi bi-x-circle-fill" style="color:#E91414"></i></button></div>`;
             modal_message += `</div></div>`;
             $('.cost_input_list').append(modal_message);
-            $('.add_cost_input').append(`<span class="add_cost_input text-sm p-5" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span>`);
+
+            modal_footer += `<div class="col-6"><span class="add_cost_input text-sm p-5" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span></div>`;
+            modal_footer += `<div class="col-6">รวมทั้งสิ้น XXX บาท</div>`;
+            $('.add_cost_input').append(modal_footer);
+            cal_total_cost();
         }
         else {
+            modal_message += `<div class="row mt-3">`;
+            modal_message += `<div class="col-7 font-semibold">ค่าใช้จ่าย</div>`;
+            modal_message += `<div class="col-5 font-semibold">จำนวนเงิน</div>`;
+            modal_message += `</div>`;
+            $('.cost_input_list').append(modal_message);
             // วน loop แสดงข้อมูล
             for (var i = 0; i < number_cost; i++) {
-                console.log(i);
                 modal_message = '';
-                modal_message += `<div class="row m-3" name="cost_input_id${data[i]['cosd_id']}">`;
+                modal_message += `<div class="row" name="cost_input_id${data[i]['cosd_id']}">`;
                 modal_message += `<div class="col-12">`;
                 modal_message += `<div class="row mt-3">`;
                 modal_message += `<div class="col-7">`;
-                modal_message += `<input type="text" onchange="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">`;
+                modal_message += `<input type="text" oninput="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">`;
                 modal_message += `</div>`;
                 modal_message += `<div class="col-4">`;
-                modal_message += `<input type="number" onchange="cost_update(${data[i]['cosd_id']})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost_id${data[i]['cosd_id']}"></div>`;
+                modal_message += `<input type="number" oninput="cost_update(${data[i]['cosd_id']})" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost_id${data[i]['cosd_id']}" value="${data[i]['cosd_cost']}"></div>`;
                 modal_message += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn_id${data[i]['cosd_id']}" onclick="cost_delete(${data[i]['cosd_id']},'old')"><i class="bi bi-x-circle-fill" style="color:#E91414;" ></i></button></div>`;
                 modal_message += `</div></div></div>`;
                 $('.cost_input_list').append(modal_message);
             }
-            $('.add_cost_input').append(`<span class="add_cost_input text-sm p-5" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span>`);
+            modal_footer += `<div class="col-12 col-sm-6"><span class="add_cost_input text-sm" style="padding-left: 1rem" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span></div>`;
+            modal_footer += `<div class="col-12 col-sm-6 text-sm" style="text-align: right; padding-right: 3rem;">รวมทั้งสิ้น <span id="total_cost">XXX</span> บาท</div>`;
+            $('.add_cost_input').append(modal_footer);
+            cal_total_cost();
         }
     }
     function add_cost_input() {
         
         ++number_cost_input;
-        var cost = `<div class="row m-3" name="cost_input${number_cost_input}">`;
+        var cost = `<div class="row" name="cost_input${number_cost_input}">`;
         cost += `<div class="col-12">`;
         cost += `<div class="row mt-3">`;
         cost += `<div class="col-7">`;
-        cost += `<input type="text" onchange="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name${number_cost_input}">`;
+        cost += `<input type="text" oninput="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_name${number_cost_input}">`;
         cost += `</div>`;
         cost += `<div class="col-4">`;
-        cost += `<input type="number" onchange="cost_insert(${number_cost_input})" class="block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost${number_cost_input}"></div>`;
+        cost += `<input type="number" oninput="cost_insert(${number_cost_input})" class="cost block w-full mt-1 text-sm focus:outline-none form-input" step="0.01" name="cosd_cost${number_cost_input}"></div>`;
         cost += `<div class="col-1"><button style="position: relative; top:1rem" name="cost_delete_btn${number_cost_input}" onclick="cost_delete(${number_cost_input},'new')"><i class="bi bi-x-circle-fill" style="color:#E91414" ></i></button></div>`;
         cost += `</div>`;
         cost += `</div></div>`;
         $('.cost_input_list').append(cost);
+        cal_total_cost();
     }
     function cost_insert(input_order) {
         var cosd_ser_id = $('#cosd_ser_id').val();
@@ -401,10 +420,10 @@
         console.log(cosd_ser_id, cosd_name, cosd_cost, input_order);
         
         var return_id = 33;
-        $('input[name="cosd_name' + input_order +'"]').attr('onchange', `cost_update(${return_id})`);
+        $('input[name="cosd_name' + input_order +'"]').attr('oninput', `cost_update(${return_id})`);
         $('input[name="cosd_name' + input_order +'"]').attr('name', `cosd_name_id${return_id}`);
         
-        $('input[name="cosd_cost' + input_order +'"]').attr('onchange', `cost_update(${return_id})`);
+        $('input[name="cosd_cost' + input_order +'"]').attr('oninput', `cost_update(${return_id})`);
         $('input[name="cosd_cost' + input_order +'"]').attr('name', `cosd_cost_id${return_id}`);
         
         $('button[name="cost_delete_btn' + input_order +'"]').attr('onclick', `cost_delete(${return_id},'old')`);
@@ -419,11 +438,13 @@
 
         //     }
         // });
+        cal_total_cost();
     }
     function cost_update(cosd_id) {
         var cosd_name = $('input[name="cosd_name_id' + cosd_id +'"]').val();
         var cosd_cost = $('input[name="cosd_cost_id' + cosd_id +'"]').val();
         console.log(cosd_name, cosd_cost, cosd_id);
+        cal_total_cost();
     }
     function cost_delete(delete_id, input_type = 'new') {
         console.log(delete_id, input_type);
@@ -435,5 +456,16 @@
         else if (input_type == 'old') {
             $('div[name="cost_input_id' + delete_id +'"]').remove();
         }
+        cal_total_cost();
+    }
+    function cal_total_cost() {
+        var total_cost = 0;
+        var cost_input = document.getElementsByClassName('cost')
+        for (var i = 0; i < cost_input.length; i++) {
+            if (cost_input[i].value) {
+                total_cost += parseFloat(cost_input[i].value);
+            }
+        }
+        $('#total_cost').text(total_cost.toLocaleString());
     }
 </script>
