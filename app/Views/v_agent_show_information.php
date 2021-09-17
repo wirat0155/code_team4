@@ -36,7 +36,7 @@
                     <div class="container px-10 mb-auto">
                         <!-- บริษัท -->
                         <div class="px-3 form-group row">
-                            <label for="cus_company_name" class="col-sm-3 col-form-label font-weight-bold">บริษัท</label>
+                            <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                             <div class="col-sm-9">
                                 <p id="agn_company_name" name="agn_company_name"> <?php echo $arr_agent[0]->agn_company_name ?></p>
                                 <p id="agn_address" name="agn_address"> <?php echo $arr_agent[0]->agn_address ?></p>
@@ -46,7 +46,7 @@
 
                         <!-- หมายเลขผู้เสียภาษี -->
                         <div class="px-3 form-group row">
-                            <label for="cus_tax" class="col-sm-3 col-form-label font-weight-bold">หมายเลขผู้เสียภาษี</label>
+                            <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                             <div class="col-sm-9">
                                 <p id="agn_tax" name="agn_tax"><?php echo $arr_agent[0]->agn_tax ?></p>
                             </div>
@@ -55,7 +55,7 @@
 
                         <!-- ผู้รับผิดชอบ -->
                         <div class="px-3 mt-3 form-group row">
-                            <label for="cus_tax" class="col-sm-3 col-form-label font-weight-bold">ผู้รับผิดชอบ</label>
+                            <label for="cus_tax" class="col-sm-3 col-form-label">ผู้รับผิดชอบ</label>
                             <div class="col-sm-9">
                                 <p><?php echo $arr_agent[0]->agn_firstname . " " . $arr_agent[0]->agn_lastname ?>
                                 <p>
@@ -65,7 +65,7 @@
 
                         <!-- เบอร์ติดต่อ -->
                         <div class="px-3 form-group row">
-                            <label for="cus_tel" class="col-sm-3 col-form-label font-weight-bold">ติดต่อ</label>
+                            <label for="cus_tel" class="col-sm-3 col-form-label">ติดต่อ</label>
                             <div class="col-sm-9">
                                 <p id="agn_tel" name="agn_tel" ><?php echo tel_format($arr_agent[0]->agn_tel) ?></p>
                                 <p id="agn_email" name="agn_email"><?php echo $arr_agent[0]->agn_email ?></p>

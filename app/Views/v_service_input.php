@@ -1,6 +1,6 @@
 <style>
     span {
-        font-weight: bold;
+        /* font-weight: bold; */
     }
 </style>
 <div class="container px-6 mx-auto grid">

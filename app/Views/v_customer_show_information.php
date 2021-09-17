@@ -45,7 +45,7 @@
                 <div class="container">
                     <!-- บริษัท -->
                     <div class="px-3 form-group row">
-                        <label for="cus_company_name" class="col-sm-3 col-form-label"><b>บริษัท</b></label>
+                        <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
                         <div class="col-sm-9">
                             <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_company_name ;
                                                         if($arr_customer[0]->cus_branch != '') 
@@ -56,7 +56,7 @@
 
                     <!-- หมายเลขผู้เสียภาษี -->
                     <div class="px-3 form-group row">
-                        <label for="cus_tax" class="col-sm-3 col-form-label"><b>หมายเลขผู้เสียภาษี</b></label>
+                        <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
                         <div class="col-sm-9">
                             <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_tax ?></p>
                         </div>
@@ -64,7 +64,7 @@
 
                     <!-- ผู้รับผิดชอบ -->
                     <div class="px-3 form-group row">
-                        <label for="cus_firstname" class="col-sm-3 col-form-label"><b>ผู้รับผิดชอบ</b></label>
+                        <label for="cus_firstname" class="col-sm-3 col-form-label">ผู้รับผิดชอบ</label>
                         <div class="col-sm-9">
                             <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_firstname . ' ' . $arr_customer[0]->cus_lastname ?></p>
                         </div>
@@ -72,7 +72,7 @@
 
                     <!-- ติดต่อ -->
                     <div class="px-3 form-group row">
-                        <label for="cus_tel" class="col-sm-3 col-form-label"><b>ติดต่อ</b></label>
+                        <label for="cus_tel" class="col-sm-3 col-form-label">ติดต่อ</label>
                         <div class="col-sm-9">
                             <p class="block w-full mt-2"><?php echo tel_format($arr_customer[0]->cus_tel) ?></p>
                             <p class="block w-full mt-2"> <?php echo $arr_customer[0]->cus_email ?> </p>

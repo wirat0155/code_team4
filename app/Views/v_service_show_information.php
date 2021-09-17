@@ -403,10 +403,9 @@
                                 <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_tax ?></p>
                             </div>
                         </div>
-                        <hr class="mb-3">
-                        <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                        <h4 class="mt-3">ผู้รับผิดชอบ (ตัวแทน)</h4>
                         <!-- ชื่อจริง -->
-                        <div class="row mt-1">
+                        <div class="row">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
                                     <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
@@ -515,9 +514,9 @@
                             </div>
                         </div>
 
-                        <h4>ผู้รับผิดชอบ (ตัวแทน)</h4>
+                        <h4 class="mt-3">ผู้รับผิดชอบ (ตัวแทน)</h4>
                         <!-- ชื่อจริง -->
-                        <div class="row mt-3">
+                        <div class="row">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
                                     <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
