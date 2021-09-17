@@ -39,7 +39,7 @@
                         </td>
 
                         <!-- รถประจำตัว -->
-                        <td class="px-4 py-3 text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                             <?php echo $arr_driver[$i]->dri_car_id ?>
                         </td>
 
@@ -49,12 +49,12 @@
                         </td>
 
                         <!-- เลขใบขับขี่ -->
-                        <td class="px-4 py-3 text-sm " onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                             <?php echo $arr_driver[$i]->dri_license ?>
                         </td>
 
                         <!-- เบอร์โทร -->
-                        <td class="px-4 py-3 text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                             <?php echo tel_format($arr_driver[$i]->dri_tel) ?>
                         </td>
 
