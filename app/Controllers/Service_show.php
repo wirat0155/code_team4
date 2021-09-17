@@ -146,8 +146,9 @@ class Service_show extends Cdms_controller {
         $cosd_payment_date = date("Y-m-d", strtotime("+7 day"));
         
         $m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_payment_date, $cosd_ser_id);
+        $last_cost = $m_cosd->get_last();
 
-        echo json_encode('insert complete');
+        echo json_encode($last_cost);
     }
 
     public function cost_update() {

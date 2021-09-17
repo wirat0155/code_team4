@@ -384,8 +384,8 @@
             modal_message += `</div></div>`;
             $('.cost_input_list').append(modal_message);
 
-            modal_footer += `<div class="col-6"><span class="add_cost_input text-sm p-5" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span></div>`;
-            modal_footer += `<div class="col-6">รวมทั้งสิ้น XXX บาท</div>`;
+            modal_footer += `<div class="col-6"><span class="add_cost_input text-sm" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span></div>`;
+            modal_footer += `<div class="col-6">รวมทั้งสิ้น <span class="total_cost"></span> บาท</div>`;
             $('.add_cost_input').append(modal_footer);
             cal_total_cost();
         } else {
@@ -410,7 +410,7 @@
                 $('.cost_input_list').append(modal_message);
             }
             modal_footer += `<div class="col-12 col-sm-6"><span class="add_cost_input text-sm" style="padding-left: 1rem" onclick="add_cost_input()">เพิ่มค่าใช้จ่าย</span></div>`;
-            modal_footer += `<div class="col-12 col-sm-6 text-sm" style="text-align: right; padding-right: 3rem;">รวมทั้งสิ้น <span id="total_cost">XXX</span> บาท</div>`;
+            modal_footer += `<div class="col-12 col-sm-6 text-sm" style="text-align: right; padding-right: 3rem;">รวมทั้งสิ้น <span class="total_cost"></span> บาท</div>`;
             $('.add_cost_input').append(modal_footer);
             cal_total_cost();
         }
@@ -440,17 +440,6 @@
         var cosd_cost = $('input[name="cosd_cost' + input_order + '"]').val();
         console.log("เข้า insert: " + cosd_ser_id, cosd_name, cosd_cost, input_order);
 
-        var return_id = 33;
-        $('input[name="cosd_name' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
-        $('input[name="cosd_name' + input_order + '"]').attr('name', `cosd_name_id${return_id}`);
-
-        $('input[name="cosd_cost' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
-        $('input[name="cosd_cost' + input_order + '"]').attr('name', `cosd_cost_id${return_id}`);
-
-        $('button[name="cost_delete_btn' + input_order + '"]').attr('onclick', `cost_delete(${return_id},'old')`);
-        $('button[name="cost_delete_btn' + input_order + '"]').attr('name', `cost_delete_btn_id${return_id}`);
-
-        $('div[name="cost_input' + input_order + '"]').attr('name', `cost_input_id${return_id}`);
         $.ajax({
             url: '<?php echo base_url() . '/public/Service_show/cost_insert' ?>',
             method: 'POST',
@@ -461,7 +450,18 @@
                 cosd_cost: cosd_cost,
             },
             success: function(data) {
-                console.log(data);
+                console.log(data[0]['cosd_id']);
+                var return_id = data[0]['cosd_id'];
+                $('input[name="cosd_name' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+                $('input[name="cosd_name' + input_order + '"]').attr('name', `cosd_name_id${return_id}`);
+
+                $('input[name="cosd_cost' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+                $('input[name="cosd_cost' + input_order + '"]').attr('name', `cosd_cost_id${return_id}`);
+
+                $('button[name="cost_delete_btn' + input_order + '"]').attr('onclick', `cost_delete(${return_id},'old')`);
+                $('button[name="cost_delete_btn' + input_order + '"]').attr('name', `cost_delete_btn_id${return_id}`);
+
+                $('div[name="cost_input' + input_order + '"]').attr('name', `cost_input_id${return_id}`);
             }
         });
         cal_total_cost();
@@ -513,12 +513,12 @@
 
     function cal_total_cost() {
         var total_cost = 0;
-        var cost_input = document.getElementsByClassName('cost')
+        var cost_input = document.getElementsByClassName('cost');
         for (var i = 0; i < cost_input.length; i++) {
             if (cost_input[i].value) {
                 total_cost += parseFloat(cost_input[i].value);
             }
         }
-        $('#total_cost').text(total_cost.toLocaleString());
+        $('span.total_cost').text(total_cost.toLocaleString());
     }
 </script>

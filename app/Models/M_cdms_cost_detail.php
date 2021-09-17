@@ -38,4 +38,8 @@ class M_cdms_cost_detail extends Da_cdms_cost_detail
                 ORDER BY cosd_id DESC";
         return $this->db->query($sql)->getResult();
     }
+    public function get_last() {
+        $sql = "SELECT * FROM $this->table ORDER BY cosd_id DESC LIMIT 1";
+        return $this->db->query($sql)->getResult();
+    }
 }
