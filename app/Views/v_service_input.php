@@ -274,7 +274,7 @@
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_in" disabled>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                             <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
-                                                <?php echo $arr_car[$i]->car_code ?></option>
+                                                <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -322,7 +322,7 @@
                                     <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="ser_car_id_out" disabled>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                             <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
-                                                <?php echo $arr_car[$i]->car_code ?></option>
+                                                <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\M_cdms_driver;
+use App\Models\M_cdms_car;
+
 
 /*
 * Driver_show
@@ -24,7 +26,9 @@ class Driver_input extends Cdms_controller {
     */
     public function driver_input() {
         $_SESSION['menu'] = 'Driver_show';
-        $this->output('v_driver_input');
+        $m_car = new M_cdms_car();
+        $data['arr_car'] = $m_car->get_all();
+        $this->output('v_driver_input', $data);
     }
 
     /*

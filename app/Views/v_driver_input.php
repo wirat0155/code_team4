@@ -100,7 +100,12 @@
                     <div class="px-3 form-group row">
                         <label for="dri_car_id" class="col-sm-3 col-form-label">หมายเลขรถ</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="dri_car_id" name="dri_car_id">
+                            <select class="block w-full mt-1 text-sm focus:outline-none form-input" id="dri_car_id" name="dri_car_id">
+                                <option selected disabled>เลือกหมายเลขรถ</option>
+                                <?php for($i = 0; $i < count($arr_car); $i++) { ?>
+                                    <option value="<?php echo $arr_car[$i]->car_id?>"><?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                     </div>
 

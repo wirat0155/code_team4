@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\M_cdms_driver;
+use App\Models\M_cdms_car;
 
 /*
 * Driver_update
@@ -26,6 +27,9 @@ class driver_edit extends Cdms_controller {
         $_SESSION['menu'] = 'Driver_show';
         $m_dri = new M_cdms_driver;
         $data['arr_driver'] = $m_dri->get_by_id($dri_id);
+
+        $m_car = new M_cdms_car();
+        $data['arr_car'] = $m_car->get_all();
         $this->output('v_driver_edit', $data);
     }
 
