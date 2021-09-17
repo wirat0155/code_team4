@@ -72,17 +72,17 @@
                         </td>
 
                         <!-- ทะเบียนรถ -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                        <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                             <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
                         </td>
 
                         <!-- ประเภทรถ-->
-                        <td class="px-4 py-3 text-sm text-center" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                        <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                             <?php echo $arr_car[$i]->cart_name ?>
                         </td>
 
                         <!-- ยี่ห้อ -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                        <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                             <?php echo $arr_car[$i]->car_brand ?>
                         </td>
 

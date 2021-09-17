@@ -44,12 +44,12 @@
                         </td>
 
                         <!-- ประเภทรถ -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                        <td class="px-4 py-3 text-sm " onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                             <?php echo $arr_driver[$i]->cart_name ?>
                         </td>
 
                         <!-- เลขใบขับขี่ -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                        <td class="px-4 py-3 text-sm " onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                             <?php echo $arr_driver[$i]->dri_license ?>
                         </td>
 

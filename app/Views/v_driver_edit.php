@@ -68,7 +68,7 @@
                     <div class="px-3 form-group row">
                         <label for="dri_name" class="col-sm-3 col-form-label">ชื่อ-นามสกุล</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="dri_name" name="dri_name" value="<?php echo $arr_driver[0]->dri_name ?>">
+                            <input type="text" class="form-control form-input" id="dri_name" name="dri_name" placeholder="ชื่อจริง นามสกุล" value="<?php echo $arr_driver[0]->dri_name ?>">
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                     <div class="px-3 form-group row">
                         <label for="dri_card_number" class="col-sm-3 col-form-label">หมายเลขบัตรประชาชน</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="dri_card_number" name="dri_card_number" value="<?php echo $arr_driver[0]->dri_card_number ?>">
+                            <input type="text" class="form-control form-input" id="dri_card_number" name="dri_card_number" placeholder="หมายเลขบัตรประชาชน" value="<?php echo $arr_driver[0]->dri_card_number ?>">
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                     <div class="px-3 form-group row">
                         <label for="dri_license" class="col-sm-3 col-form-label">หมายเลขใบขับขี่</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="dri_license" name="dri_license" value="<?php echo $arr_driver[0]->dri_license ?>">
+                            <input type="text" class="form-control form-input" id="dri_license" name="dri_license" placeholder="หมายเลขใบขับขี่" value="<?php echo $arr_driver[0]->dri_license ?>">
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@
                     <div class="px-3 form-group row">
                         <label for="dri_tel" class="col-sm-3 col-form-label">เบอร์โทร</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="dri_tel" name="dri_tel" value="<?php echo $arr_driver[0]->dri_tel ?>">
+                            <input type="text" class="form-control form-input" id="dri_tel" name="dri_tel" placeholder="0812345678" value="<?php echo $arr_driver[0]->dri_tel ?>">
                         </div>
                     </div>
                     <!-- หมายเลขรถ -->

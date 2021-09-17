@@ -83,7 +83,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="08x-xxx-xxxx" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_agent[0]->agn_tel ?>">
+                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="0812345678" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_agent[0]->agn_tel ?>">
                         </div>
                     </div>
 

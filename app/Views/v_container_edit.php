@@ -272,7 +272,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" tyle="tel" name="agn_tel" value="<?php echo $arr_agent[0]->agn_tel ?>" placeholder="เบอร์ติดต่อ">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" tyle="tel" name="agn_tel" value="<?php echo $arr_agent[0]->agn_tel ?>" placeholder="0812345678">
                                 </div>
                             </div>
 

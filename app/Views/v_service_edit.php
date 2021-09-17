@@ -455,7 +455,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_agent[0]->agn_tel ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="0812345678" value="<?php echo $obj_agent[0]->agn_tel ?>">
                                 </div>
                             </div>
 
@@ -575,7 +575,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="เบอร์ติดต่อ" value="<?php echo $obj_customer[0]->cus_tel ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_tel" placeholder="0812345678" value="<?php echo $obj_customer[0]->cus_tel ?>">
                                 </div>
                             </div>
 

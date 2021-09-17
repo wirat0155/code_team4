@@ -93,7 +93,7 @@
                     <div class="px-3 form-group row">
                         <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
                         <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="cus_tel" name="cus_tel" placeholder="0123456789">
+                            <input type="tel" class="form-control form-input" id="cus_tel" name="cus_tel" placeholder="0812345678">
                         </div>
                     </div>
 

@@ -444,7 +444,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="เบอร์ติดต่อ">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_tel" placeholder="0812345678">
                                 </div>
                             </div>
 
@@ -562,7 +562,7 @@
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="tel" name="cus_tel" placeholder="เบอร์ติดต่อ">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="tel" name="cus_tel" placeholder="0812345678">
                                 </div>
                             </div>
 
