@@ -106,11 +106,11 @@
                             <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
                         </label> -->
 
-                            <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
+                            <!-- ปริมาตรสุทธิ (คิวบิกเมตร) -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-6">
                                     <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
+                                        <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิวบิกเมตร)</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-6">

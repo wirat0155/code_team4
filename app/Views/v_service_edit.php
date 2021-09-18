@@ -126,11 +126,11 @@
                                 </div>
                             </div>
 
-                            <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
+                            <!-- ปริมาตรสุทธิ (คิวบิกเมตร) -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-7">
                                     <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
+                                        <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิวบิกเมตร)</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-5">
