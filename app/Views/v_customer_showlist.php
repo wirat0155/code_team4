@@ -158,6 +158,7 @@
         <table class="w-full whitespace-no-wrap table ">
             <thead>
                 <tr class="text-xs font-semibold tracking-wide text-center text-white uppercase bg-dark ">
+                    <th class="px-4 py-3">ลำดับ</th>
                     <th class="px-4 py-3">บริษัท</th>
                     <th class="px-4 py-3">ผู้รับผิดชอบ</th>
                     <th class="px-4 py-3">จำนวนตู้ที่กำลังใช้</th>
@@ -170,6 +171,7 @@
                 <?php for ($i = 0; $i < count($arr_customer); $i++) { ?>
                     <tr class="text-gray-700 dark:text-gray-400">
 
+                        <td class="px-5 py-3 text-sm">  </td>
                         <!-- บริษัท -->
                         <td class="px-4 py-3" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                             <div class="flex items-center text-sm">
@@ -255,7 +257,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.table').DataTable({
+        var t = $('.table').DataTable({
             "oLanguage": {
                 "sLengthMenu": "แสดง _MENU_ รายการ",
                 "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
@@ -264,8 +266,20 @@
                 "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
                 "sSearch": "ค้นหา :"
             },
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            } ],
             "order" : []
         });
+
+        //ลำดับ
+        t.on( 'order.dt search.dt', function () {
+            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1+'.';
+            } );
+        } ).draw();
 
         // แทรกปุ่ม เพิ่มลูกค้า
         $("#DataTables_Table_0_filter").append(
