@@ -440,11 +440,11 @@
                             </div>
                         </div>
 
-                        <!-- อีเมล์ -->
+                        <!-- อีเมล -->
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                    <span class="text-gray-700 dark:text-gray-400">อีเมล</span>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
@@ -551,11 +551,11 @@
                             </div>
                         </div>
 
-                        <!-- อีเมล์ -->
+                        <!-- อีเมล -->
                         <div class="row mt-3">
                             <div class="col-12 col-sm-4">
                                 <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                    <span class="text-gray-700 dark:text-gray-400">อีเมล</span>
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">

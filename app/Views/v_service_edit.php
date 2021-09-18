@@ -459,15 +459,15 @@
                                 </div>
                             </div>
 
-                            <!-- อีเมล์ -->
+                            <!-- อีเมล -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-4">
                                     <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                        <span class="text-gray-700 dark:text-gray-400">อีเมล</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล์" value="<?php echo $obj_agent[0]->agn_email ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_email" placeholder="อีเมล" value="<?php echo $obj_agent[0]->agn_email ?>">
                                 </div>
                             </div>
                         </div>
@@ -579,15 +579,15 @@
                                 </div>
                             </div>
 
-                            <!-- อีเมล์ -->
+                            <!-- อีเมล -->
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-4">
                                     <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">อีเมล์</span>
+                                        <span class="text-gray-700 dark:text-gray-400">อีเมล</span>
                                     </label>
                                 </div>
                                 <div class="col-12 col-sm-8">
-                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล์" value="<?php echo $obj_customer[0]->cus_email ?>">
+                                    <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_email" placeholder="อีเมล" value="<?php echo $obj_customer[0]->cus_email ?>">
                                 </div>
                             </div>
                         </div>

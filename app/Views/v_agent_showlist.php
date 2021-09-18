@@ -17,7 +17,7 @@
                     <th class="px-4 py-3">ผู้รับผิดชอบ</th>
                     <th class="px-4 py-3">จำนวนตู้ที่กำลังใช้</th>
                     <th class="px-4 py-3">เบอร์โทรศัพท์</th>
-                    <th class="px-4 py-3">email</th>
+                    <th class="px-4 py-3">อีเมล</th>
                     <th class="px-4 py-3">ดำเนินการ</th>
                 </tr>
             </thead>
