@@ -355,7 +355,7 @@ class Service_show extends Cdms_controller {
     public function get_change_service(){
         $ser_id_change = $this->request->getPost('ser_id_change');
         $m_ser = new M_cdms_service();
-        $data['obj_service'] = $m_ser->get_by_id_change(1);
+        $data['obj_service'] = $m_ser->get_by_id_change($ser_id_change);
         $data['arr_service']=array();
         $i = 0;
         array_push($data['arr_service'], $data['obj_service']);

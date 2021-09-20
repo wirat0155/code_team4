@@ -41,6 +41,10 @@
                 ข้อมูลบริการ
             </h2>
             <div class="float-right">
+                
+                <!-- ปุ่มตรวจสอบประวัติ -->
+                <button type="button" class="btn btn-success px-2 text-sm" data-toggle="modal" data-target="#check_change_history" onclick="get_change_service(<?php echo $obj_service[0]->ser_id_change ?>)">ตรวจสอบประวัติ
+                </button>
                 <!-- ปุ่มแก้ไข -->
                 <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <!-- ปุ่มลบ -->
@@ -49,6 +53,34 @@
             </div>
         </div>
     </di>
+
+    <script >
+        function get_change_service(ser_id_change) {
+            console.log(ser_id_change)
+            
+        $.ajax({
+            url: '<?php echo base_url() . "/public/Service_show/get_change_service" ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                ser_id_change: ser_id_change
+            },
+            success: function(data) {
+                console.log(data);
+                var modal_content="";
+                for(var i=0;i<data.lenth;i++){
+                    modal_content=`<div  class="container border border-secondary col-4 row">`;
+                    modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
+                           
+                    modal_content+=`<div class="col-6 text-sm">หมายเลขตู้เก่า : AACD 12565 1 <br> บริษัทเอเย่นต์เก่า : เซเว่น จำกัด</div> `;
+                        
+                    modal_content+=`<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
+                    $('.modal-body').append(modal_content);
+                }   
+            }
+        });
+    }
+    </script>
 
     <div class="row">
         <!-- Start container form -->
@@ -569,6 +601,23 @@
         <!-- end customer form -->
     </div>
     <!-- end row -->
+</div>
+
+<!-- Modal ตรวจสอบประวัติ -->
+<div class="modal fade" id="check_change_history" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">ประวัติการเปลี่ยนตู้</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body float-center">
+            
+            </div>       
+        </div>
+    </div>
 </div>
 
 <!-- Modal ยืนยันการลบ -->
