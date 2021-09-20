@@ -343,4 +343,28 @@ class Service_show extends Cdms_controller {
         return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
     }
 
+       /*
+    * get_change_service
+    * ดูประวัติการเปลี่ยนตู้
+    * @input ser_id_change
+    * @output  arr_service
+    * @author  Tadsawan
+    * @Create Date 2564-09-20
+    * @Update Date 2564-09-20
+    */
+    public function get_change_service(){
+        $ser_id_change = $this->request->getPost('ser_id_change');
+        $m_ser = new M_cdms_service();
+        $data['obj_service'] = $m_ser->get_by_id_change(1);
+        $data['arr_service']=array();
+        $i = 0;
+        array_push($data['arr_service'], $data['obj_service']);
+        while($data['arr_service'][$i]->ser_id_change){
+            $data['obj_service'] = $m_ser->get_by_id_change($data['arr_service'][$i]->ser_id_change);
+            array_push($data['arr_service'], $data['obj_service']);
+            $i++;
+        }
+        echo json_encode($data['arr_service']);
+    }
+
 }
