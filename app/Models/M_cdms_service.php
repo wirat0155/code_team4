@@ -9,7 +9,7 @@ use App\Models\Da_cdms_service;
 * ดึงข้อมูลบริการ
 * @author Natdanai Worarat
 * @Create Date 2564-07-29
-* @Update Date 2564-08-08
+* @Update Date 2564-09-20
 */
 
 class M_cdms_service extends Da_cdms_service {
@@ -97,5 +97,22 @@ class M_cdms_service extends Da_cdms_service {
                 GROUP BY ser_id
                 ORDER BY ser_id DESC";
         return $this->db->query($sql)->getResult();
+    }
+
+     /*
+    *get_by_date
+    * ค้นหาตามวันที่
+    * @input ser_id_change
+    * @output ser_arrivals_date , con_number , agn_company_name , ser_id_change
+    * @author Warisara
+    * @Create Date 2564-09-20
+    * @Update Date 2564-09-20
+    */
+    public function get_by_id_change($ser_id_change){
+        $sql = "SELECT ser_arrivals_date , con_number , agn_company_name , ser_id_change FROM  cdms_service 
+        INNER JOIN cdms_container ON ser_con_id=con_id
+        INNER JOIN cdms_agent ON agn_id=con_agn_id
+        WHERE ser_id='$ser_id_change'";
+        return $this->db->query($sql)->getRow();
     }
 }
