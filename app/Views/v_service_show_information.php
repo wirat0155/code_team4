@@ -66,16 +66,32 @@
                 ser_id_change: ser_id_change
             },
             success: function(data) {
+                $('.modal-body').empty();
                 console.log(data);
                 var modal_content="";
-                for(var i=0;i<data.length;i++){
-                    modal_content=`<div  class="container border border-secondary col-4 row">`;
-                    modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
-                           
-                    modal_content+=`<div class="col-6 text-sm">หมายเลขตู้เก่า : AACD 12565 1 <br> บริษัทเอเย่นต์เก่า : เซเว่น จำกัด</div> `;
-                        
-                    modal_content+=`<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
-                    $('.modal-body').append(modal_content);
+                var length = data.length;
+                var old_con_number = $('#con_number').text();
+                var old_agn_company_name = $('#agn_company_name').text();
+                for(var i = length - 1; i >= 0; i--){
+                    if (i == 0) {
+                        // last div
+                        modal_content=`<div  class="container border border-secondary col-4 row">`;
+                        modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
+                               
+                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้เก่า : ${old_con_number} <br> บริษัทเอเย่นต์เก่า : ${old_agn_company_name}</div> `;
+                            
+                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
+                        $('.modal-body').append(modal_content);
+                    } 
+                    else {
+                        modal_content=`<div  class="container border border-secondary col-4 row">`;
+                        modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
+                               
+                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้เก่า : ${data[i - 1]["con_number"]} <br> บริษัทเอเย่นต์เก่า : ${data[i - 1]["agn_company_name"]}</div> `;
+                            
+                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
+                        $('.modal-body').append(modal_content);
+                    }
                 }   
             }
         });
@@ -101,7 +117,7 @@
                             </div>
 
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $obj_container[0]->con_number ?></p>
+                                <p class="block w-full mt-3 text-sm" id="con_number"><?php echo $obj_container[0]->con_number ?></p>
                             </div>
                         </div>
 
@@ -408,7 +424,7 @@
                                 </label>
                             </div>
                             <div class="col-12 col-sm-8">
-                                <p class="block w-full mt-3 text-sm"><?php echo $obj_agent[0]->agn_company_name ?></p>
+                                <p class="block w-full mt-3 text-sm" id="agn_company_name"><?php echo $obj_agent[0]->agn_company_name ?></p>
                             </div>
                         </div>
 
