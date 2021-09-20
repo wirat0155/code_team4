@@ -68,7 +68,7 @@
             success: function(data) {
                 console.log(data);
                 var modal_content="";
-                for(var i=0;i<data.lenth;i++){
+                for(var i=0;i<data.length;i++){
                     modal_content=`<div  class="container border border-secondary col-4 row">`;
                     modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
                            
