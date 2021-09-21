@@ -31,6 +31,44 @@
     text-decoration: none;
     display: inline-block;
 }
+
+.change_service_new {
+    background-color: #ECFFF7;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+}
+
+.change_service_old {
+    background-color: #DFDFDF;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+}
+
+.text-change-ser-new {
+    background-color: #83F14C;
+    border: none;
+    border-radius: 8px;
+    width: 35px;
+    height: 15px;
+    padding: 5px 10px;
+    position: relative;
+    right: -415px;
+}
+
+.text-change-ser-old {
+    background-color: #798275;
+    border: none;
+    border-radius: 8px;
+    width: 35px;
+    height: 15px;
+    padding: 5px 10px;
+    position: relative;
+    right: -415px;
+}
 </style>
 <div class="container px-6 mx-auto grid">
 
@@ -41,7 +79,7 @@
                 ข้อมูลบริการ
             </h2>
             <div class="float-right">
-                
+
                 <!-- ปุ่มตรวจสอบประวัติ -->
                 <button type="button" class="btn btn-success px-2 text-sm" data-toggle="modal" data-target="#check_change_history" onclick="get_change_service(<?php echo $obj_service[0]->ser_id_change ?>)">ตรวจสอบประวัติ
                 </button>
@@ -54,10 +92,10 @@
         </div>
     </di>
 
-    <script >
-        function get_change_service(ser_id_change) {
-            console.log(ser_id_change)
-            
+    <script>
+    function get_change_service(ser_id_change) {
+        console.log(ser_id_change)
+
         $.ajax({
             url: '<?php echo base_url() . "/public/Service_show/get_change_service" ?>',
             method: 'POST',
@@ -68,31 +106,43 @@
             success: function(data) {
                 $('.modal-body').empty();
                 console.log(data);
-                var modal_content="";
+                var modal_content = "";
                 var length = data.length;
                 var old_con_number = $('#con_number').text();
                 var old_agn_company_name = $('#agn_company_name').text();
-                for(var i = length - 1; i >= 0; i--){
+                for (var i = length - 1; i >= 0; i--) {
                     if (i == 0) {
                         // last div
-                        modal_content=`<div  class="container border border-secondary col-4 row">`;
-                        modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
-                               
-                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้เก่า : ${old_con_number} <br> บริษัทเอเย่นต์เก่า : ${old_agn_company_name}</div> `;
-                            
-                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
+                        modal_content = `<div  class="border border-secondary row change_service_old">`;
+                        modal_content += `<div class="text-change-ser-old"></div>`;
+                        modal_content += `<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
+
+                        modal_content += `<div class="col-6 text-sm">หมายเลขตู้เก่า : ${old_con_number} <br> บริษัทเอเย่นต์เก่า : ${old_agn_company_name}</div> `;
+
+                        modal_content += `<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
                         $('.modal-body').append(modal_content);
-                    } 
-                    else {
-                        modal_content=`<div  class="container border border-secondary col-4 row">`;
-                        modal_content+=`<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
-                               
-                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้เก่า : ${data[i - 1]["con_number"]} <br> บริษัทเอเย่นต์เก่า : ${data[i - 1]["agn_company_name"]}</div> `;
-                            
-                        modal_content+=`<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
-                        $('.modal-body').append(modal_content);
+                    } else {
+                        if (i == length - 1) {
+                            modal_content = `<div  class="border border-secondary row change_service_new">`;
+                            modal_content += `<div class="text-change-ser-new"></div>`;
+                            modal_content += `<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
+
+                            modal_content += `<div class="col-6 text-sm">หมายเลขตู้เก่า : ${data[i - 1]["con_number"]} <br> บริษัทเอเย่นต์เก่า : ${data[i - 1]["agn_company_name"]}</div> `;
+
+                            modal_content += `<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
+                            $('.modal-body').append(modal_content);
+                        } else {
+                            modal_content = `<div  class="border border-secondary row change_service_old">`;
+                            modal_content += `<div class="text-change-ser-old"></div>`;
+                            modal_content += `<div class="col-12"> วันที่เข้าลาน : ${data[i]["ser_arrivals_date"]}</div>`;
+
+                            modal_content += `<div class="col-6 text-sm">หมายเลขตู้เก่า : ${data[i - 1]["con_number"]} <br> บริษัทเอเย่นต์เก่า : ${data[i - 1]["agn_company_name"]}</div> `;
+
+                            modal_content += `<div class="col-6 text-sm">หมายเลขตู้ใหม่ : ${data[i]["con_number"]} <br> บริษัทเอเย่นต์ใหม่ : ${data[i]["agn_company_name"]}</div></div>`;
+                            $('.modal-body').append(modal_content);
+                        }
                     }
-                }   
+                }
             }
         });
     }
@@ -629,9 +679,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body float-center">
-            
-            </div>       
+            <div class="modal-body float-center p-4">
+
+            </div>
         </div>
     </div>
 </div>
