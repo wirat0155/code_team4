@@ -24,10 +24,6 @@ class Agent_input extends Cdms_controller {
     */
     public function agent_input() {
         $_SESSION['menu'] = 'Agent_show';
-
-        $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_all();
-
         $this->output('v_agent_input', $data);
     }
 
