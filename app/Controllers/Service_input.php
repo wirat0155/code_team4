@@ -9,7 +9,7 @@ use App\Models\M_cdms_service;
 use App\Models\M_cdms_customer;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
-use App\Models\M_cdms_Car;
+use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
 
 /*
@@ -52,7 +52,7 @@ class Service_input extends Cdms_controller {
         $data['arr_driver'] = $m_dri->get_all();
 
         // car name
-        $m_car = new M_cdms_Car();
+        $m_car = new M_cdms_car();
         $data['arr_car'] = $m_car->get_all();
 
         // service
