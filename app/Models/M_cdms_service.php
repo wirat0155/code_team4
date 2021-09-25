@@ -100,8 +100,8 @@ class M_cdms_service extends Da_cdms_service {
     }
 
      /*
-    *get_by_date
-    * ค้นหาตามวันที่
+    *get_by_id_change
+    * ดูประวัติการปลี่ยนตู้
     * @input ser_id_change
     * @output ser_arrivals_date , con_number , agn_company_name , ser_id_change
     * @author Warisara
