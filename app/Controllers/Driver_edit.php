@@ -13,7 +13,7 @@ use App\Models\M_cdms_car;
 * @Update Date 2564-08-07
 */
 
-class driver_edit extends Cdms_controller {
+class Driver_edit extends Cdms_controller {
     /*   
     * driver_update
     * แสดงหน้าจอ driver_update
