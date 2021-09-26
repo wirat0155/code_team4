@@ -36,6 +36,7 @@
 											<div class="form-group">
 												<label for="cus_company_name">Company name <span class="text-danger">*</span></label>
 												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
+                                                <small class="form-text text-muted">not more than 40 character & not duplicate</small>
 											</div>
 										</div>
                                     </div>
@@ -51,7 +52,7 @@
 											<div class="form-group">
 												<label for="email2">Email Address <span class="text-danger">*</span></label>
 												<input type="email" class="form-control" id="email2" placeholder="Enter Email">
-												<small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
+												<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 											</div>
 										</div>
                                         <div class="col-md-6 col-lg-4">
@@ -66,7 +67,7 @@
                                                     <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
                                                 </div>
                                             </div>
-										</div>
+										</div>		
                                         <script>
                                             $('.ui.fluid.search.selection.dropdown').dropdown();
                                         </script>

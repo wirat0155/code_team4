@@ -61,8 +61,9 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
-				<a href="../index.html" class="logo">
-					<img src="http://localhost/code_team4/Assets/img/logo.svg" alt="navbar brand" class="navbar-brand">
+				<a href="../index.html" class="logo text-white">
+					<img src="http://localhost/code_team4/upload/Logo_IBS.jpg" alt="navbar brand" class="navbar-brand" style="width:5vh; border-radius: 0.25rem;">
+					Container Drop
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -249,6 +250,21 @@
 										</a>
 									</li>
 							</ul>
+						</li>
+
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Setting</h4>
+						</li>
+
+						<!-- Setting menu -->
+						<li class="nav-item <?php if($_SESSION['menu'] == 'Setting') echo 'active'?>">
+							<a href="<?php echo base_url() . '/Setting/setting_show'?>">
+								<i class="fas fa-cog"></i>
+								<p>Setting</p>
+							</a>
 						</li>
 					</ul>
 				</div>
