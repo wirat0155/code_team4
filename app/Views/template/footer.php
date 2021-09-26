@@ -64,5 +64,9 @@
 			});
 		});
 	</script>
+
+	<script>
+		$('.ui.dropdown').dropdown();   // make it dropdown
+	</script>
 </body>
 </html>
