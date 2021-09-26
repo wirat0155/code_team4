@@ -47,7 +47,7 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#service_list_table').DataTable({});
+			$('#service_list_table').DataTable({"order": []});
 			if ($('#add_customer_form').length > 0) {
 				console.log($('#add_customer_form').length);
 				$('#add_customer_form').validate({
