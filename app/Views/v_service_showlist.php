@@ -28,12 +28,14 @@
                                 <table id="multi-filter-select" class="display table table-striped table-hover" >
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No.</th>
+                                            <th>Con. number</th>
+                                            <th>Status</th>
+                                            <th>Type</th>
+                                            <th>Con. type</th>
+                                            <th>Agent</th>
+                                            <th>Customer</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -44,6 +46,8 @@
                                             <th>Age</th>
                                             <th>Start date</th>
                                             <th>Salary</th>
+                                            <th>Customer</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                 </table>
