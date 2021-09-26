@@ -103,7 +103,7 @@
 				<div class="sidebar-content">
 					<ul class="nav nav-primary">
 						<!-- Dashboard menu -->
-						<li class="nav-item <?php if($_SESSION['menu'] == 'Dashboard') echo 'active'?>"">
+						<li class="nav-item <?php if($_SESSION['menu'] == 'Dashboard') echo 'active'?>">
 							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
 								<i class="fas fa-chart-line"></i>
 								<p>Dashboard</p>
@@ -132,7 +132,7 @@
 						</li>
 
 						<!-- Service menu -->
-						<li class="nav-item">
+						<li class="nav-item <?php if($_SESSION['menu'] == 'Service_show') echo 'active'?>">
 							<a data-toggle="collapse" href="#service">
 								<i class="fas fa-warehouse"></i>
 								<p>Service</p>
@@ -154,7 +154,7 @@
 						</li>
 
 						<!-- Customer menu -->
-						<li class="nav-item">
+						<li class="nav-item <?php if($_SESSION['menu'] == 'Customer_show') echo 'active'?>">
 							<a data-toggle="collapse" href="#customer">
 								<i class="fa fa-users"></i>
 								<p>Customer</p>
@@ -176,7 +176,7 @@
 						</li>
 
 						<!-- Agent menu -->
-						<li class="nav-item">
+						<li class="nav-item  <?php if($_SESSION['menu'] == 'Agent_show') echo 'active'?>">
 							<a data-toggle="collapse" href="#agent">
 								<i class="fa fa-user-secret"></i>
 								<p>Agent</p>
@@ -196,7 +196,9 @@
 									</li>
 							</ul>
 						</li>
-						<li class="nav-item">
+
+						<!-- Container menu -->
+						<li class="nav-item <?php if($_SESSION['menu'] == 'Container_show') echo 'active'?>">
 							<a data-toggle="collapse" href="#container">
 								<i class="fas fa-truck-loading"></i>
 								<p>Container</p>
@@ -216,7 +218,9 @@
 									</li>
 							</ul>
 						</li>
-						<li class="nav-item">
+
+						<!-- Driver menu -->
+						<li class="nav-item  <?php if($_SESSION['menu'] == 'Driver_show') echo 'active'?>">
 							<a data-toggle="collapse" href="#driver">
 								<i class="far fa-address-card"></i>
 								<p>Driver</p>
@@ -238,7 +242,7 @@
 						</li>
 
 						<!-- Car menu -->
-						<li class="nav-item">
+						<li class="nav-item  <?php if($_SESSION['menu'] == 'Car_show') echo 'active'?>">
 							<a data-toggle="collapse" href="#car">
 								<i class="fas fa-truck"></i>
 								<p>Car</p>
