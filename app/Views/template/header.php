@@ -103,7 +103,7 @@
 				<div class="sidebar-content">
 					<ul class="nav nav-primary">
 						<!-- Dashboard menu -->
-						<li class="nav-item">
+						<li class="nav-item <?php if($_SESSION['menu'] == 'Dashboard') echo 'active'?>"">
 							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
 								<i class="fas fa-chart-line"></i>
 								<p>Dashboard</p>
