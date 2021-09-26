@@ -102,27 +102,13 @@
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<ul class="nav nav-primary">
+
 						<!-- Dashboard menu -->
 						<li class="nav-item <?php if($_SESSION['menu'] == 'Dashboard') echo 'active'?>">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+							<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
 								<i class="fas fa-chart-line"></i>
 								<p>Dashboard</p>
-								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="dashboard">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="../../demo1/index.html">
-											<span class="sub-item">Dashboard 1</span>
-										</a>
-									</li>
-									<li>
-										<a href="../../demo2/index.html">
-											<span class="sub-item">Dashboard 2</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</li>
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
@@ -141,13 +127,13 @@
 							<div class="collapse" id="service">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+										<a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">
+											<span class="sub-item">Service list</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+										<a href="<?php echo base_url() . '/Service_input/service_input'?>">
+											<span class="sub-item">Add service</span>
 										</a>
 									</li>
 							</ul>
@@ -163,13 +149,13 @@
 							<div class="collapse" id="customer">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+										<a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">
+											<span class="sub-item">Customer list</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+										<a href="<?php echo base_url() . '/Customer_input/customer_input'?>">
+											<span class="sub-item">Add customer</span>
 										</a>
 									</li>
 							</ul>
@@ -185,13 +171,13 @@
 							<div class="collapse" id="agent">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+										<a href="<?php echo base_url() . '/Agent_show/aget_show_ajax'?>">
+											<span class="sub-item">Agent list</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+										<a href="<?php echo base_url() . '/Agent_input/agent_input'?>">
+											<span class="sub-item">Add agent</span>
 										</a>
 									</li>
 							</ul>
@@ -207,13 +193,13 @@
 							<div class="collapse" id="container">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+										<a href="<?php echo base_url() . '/Container_show/container_show_ajax'?>">
+											<span class="sub-item">Container list</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+										<a href="<?php echo base_url() . '/Container_input/container_input'?>">
+											<span class="sub-item">Add container</span>
 										</a>
 									</li>
 							</ul>
@@ -229,13 +215,13 @@
 							<div class="collapse" id="driver">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+										<a href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">
+											<span class="sub-item">Driver list</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+										<a href="<?php echo base_url() . '/Driver_input/driver_input'?>">
+											<span class="sub-item">Add driver</span>
 										</a>
 									</li>
 							</ul>
@@ -251,13 +237,13 @@
 							<div class="collapse" id="car">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../components/avatars.html">
-											<span class="sub-item">Avatars</span>
+										<a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">
+											<span class="sub-item">Car list</span>
 										</a>
 									</li>
 									<li>
-										<a href="../components/buttons.html">
-											<span class="sub-item">Buttons</span>
+										<a href="<?php echo base_url() . '/Car_input/car_input'?>">
+											<span class="sub-item">Add car</span>
 										</a>
 									</li>
 							</ul>

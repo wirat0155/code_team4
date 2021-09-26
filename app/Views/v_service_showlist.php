@@ -18,7 +18,7 @@
                 </ul>
             </div>
             <div class="container-fluid mb-3">
-                <a class="btn btn-primary btn-border">
+                <a href="<?php echo base_url() . '/Service_input/service_input'?>" class="btn btn-primary btn-border">
                     <i class="fas fa-plus"></i>
                     <b>Add service</b>
                 </a>
