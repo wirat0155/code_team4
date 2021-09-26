@@ -2,7 +2,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Service List</h4>
+                <h4 class="page-title">Service list</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -17,7 +17,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid mb-3">
                 <a class="btn btn-primary btn-border">
                     <i class="fas fa-plus"></i>
                     <b>Add service</b>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="multi-filter-select" class="display table table-hover" >
+                                <table id="service_list_table" class="display table table-hover" >
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -39,8 +39,8 @@
                                             <th>Status</th>
                                             <th>Type</th>
                                             <th>Con. type</th>
+                                            <th style="width: 15%">Cut-off</th>
                                             <th>Agent</th>
-                                            <th>Cut-off</th>
                                             <th>Customer</th>
                                             <th>Action</th>
                                         </tr>
@@ -52,8 +52,8 @@
                                             <th>Status</th>
                                             <th>Type</th>
                                             <th>Con. type</th>
-                                            <th>Agent</th>
                                             <th>Cut-off</th>
+                                            <th>Agent</th>
                                             <th>Customer</th>
                                             <th>Action</th>
                                         </tr>
@@ -79,11 +79,11 @@
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php
                                                 if ($arr_service[$i]->ser_type == '1') {
-                                                    echo '<span class="text-con-in">ตู้เข้า</span>';
+                                                    echo '<span class="text-con-in">Import</span>';
                                                 } else if ($arr_service[$i]->ser_type == '2') {
-                                                    echo '<span class="text-con-out">ตู้ออก</span>';
+                                                    echo '<span class="text-con-out">Export</span>';
                                                 } else if ($arr_service[$i]->ser_type == '3') {
-                                                    echo '<span class="text-con-drop">ตู้ดรอป</span>';
+                                                    echo '<span class="text-con-drop">Drop</span>';
                                                 }
                                                 ?>
                                             </td>
@@ -112,7 +112,7 @@
                                             <script>
                                                 $('.ui.dropdown').dropdown();   // make it dropdown
                                             </script>
-                                            <td>
+                                            <td class="text-right">
                                                 <div class="ui dropdown">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu">
