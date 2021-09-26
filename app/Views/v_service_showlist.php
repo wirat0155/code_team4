@@ -17,6 +17,12 @@
                     </li>
                 </ul>
             </div>
+            <div class="container-fluid">
+                <a class="btn btn-primary btn-border">
+                    <i class="fas fa-plus"></i>
+                    <b>Add service</b>
+                </a>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -34,18 +40,20 @@
                                             <th>Type</th>
                                             <th>Con. type</th>
                                             <th>Agent</th>
+                                            <th>Cut-off</th>
                                             <th>Customer</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No.</th>
+                                            <th>Con. number</th>
+                                            <th>Status</th>
+                                            <th>Type</th>
+                                            <th>Con. type</th>
+                                            <th>Agent</th>
+                                            <th>Cut-off</th>
                                             <th>Customer</th>
                                             <th>Action</th>
                                         </tr>
@@ -53,6 +61,10 @@
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_service); $i++) { ?>
                                         <tr>
+                                            <!-- Order -->
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                <?php echo $i + 1; ?>
+                                            </td>
                                             <!-- Container number -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->con_number; ?>
@@ -127,36 +139,10 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.themekita.com">
-                            ThemeKita
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Help
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright ml-auto">
-                2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
-            </div>				
-        </div>
-    </footer>
-</div>
+    
 
-<script>
-    function change_location(url) {
-        window.location = "https://www.google.com";
-    }
-</script>
+    <script>
+        function change_location(url) {
+            window.location = "https://www.google.com";
+        }
+    </script>

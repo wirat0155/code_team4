@@ -42,6 +42,10 @@
 
     <!-- Font Awesome 5 -->
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
+	<!-- Bootstrap 4 -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 </head>
 <body>
 	<div class="wrapper">
@@ -92,9 +96,10 @@
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<ul class="nav nav-primary">
+						<!-- Dashboard menu -->
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
+								<i class="fas fa-chart-line"></i>
 								<p>Dashboard</p>
 								<span class="caret"></span>
 							</a>
@@ -119,9 +124,11 @@
 							</span>
 							<h4 class="text-section">Modules</h4>
 						</li>
+
+						<!-- Service menu -->
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
+								<i class="fas fa-warehouse"></i>
 								<p>Service</p>
 								<span class="caret"></span>
 							</a>
@@ -139,9 +146,11 @@
 									</li>
 							</ul>
 						</li>
+
+						<!-- Customer menu -->
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
+								<i class="fa fa-users"></i>
 								<p>Customer</p>
 								<span class="caret"></span>
 							</a>
@@ -159,123 +168,89 @@
 									</li>
 							</ul>
 						</li>
-						
+
+						<!-- Agent menu -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
-								<p>Sidebar Layouts</p>
+							<a data-toggle="collapse" href="#base">
+								<i class="fa fa-user-secret"></i>
+								<p>Agent</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="sidebarLayouts">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../sidebar-style-1.html">
-											<span class="sub-item">Sidebar Style 1</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Avatars</span>
 										</a>
 									</li>
 									<li>
-										<a href="../overlay-sidebar.html">
-											<span class="sub-item">Overlay Sidebar</span>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Buttons</span>
 										</a>
 									</li>
-									<li>
-										<a href="../compact-sidebar.html">
-											<span class="sub-item">Compact Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="../static-sidebar.html">
-											<span class="sub-item">Static Sidebar</span>
-										</a>
-									</li>
-									<li>
-										<a href="../icon-menu.html">
-											<span class="sub-item">Icon Menu</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+							</ul>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
-								<p>Forms</p>
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-truck-loading"></i>
+								<p>Container</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="forms">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../forms/forms.html">
-											<span class="sub-item">Basic Form</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Avatars</span>
 										</a>
 									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item active submenu">
-							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
-								<p>Tables</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse show" id="tables">
-								<ul class="nav nav-collapse">
 									<li>
-										<a href="../tables/tables.html">
-											<span class="sub-item">Basic Table</span>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Buttons</span>
 										</a>
 									</li>
-									<li class="active">
-										<a href="../tables/datatables.html">
-											<span class="sub-item">Datatables</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+							</ul>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
-								<p>Maps</p>
+							<a data-toggle="collapse" href="#base">
+								<i class="far fa-address-card"></i>
+								<p>Driver</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="maps">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../maps/jqvmap.html">
-											<span class="sub-item">JQVMap</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Avatars</span>
 										</a>
 									</li>
-								</ul>
-							</div>
+									<li>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Buttons</span>
+										</a>
+									</li>
+							</ul>
 						</li>
+
+						<!-- Car menu -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#charts">
-								<i class="far fa-chart-bar"></i>
-								<p>Charts</p>
+							<a data-toggle="collapse" href="#base">
+								<i class="fas fa-truck"></i>
+								<p>Car</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="charts">
+							<div class="collapse" id="base">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../charts/charts.html">
-											<span class="sub-item">Chart Js</span>
+										<a href="../components/avatars.html">
+											<span class="sub-item">Avatars</span>
 										</a>
 									</li>
 									<li>
-										<a href="../charts/sparkline.html">
-											<span class="sub-item">Sparkline</span>
+										<a href="../components/buttons.html">
+											<span class="sub-item">Buttons</span>
 										</a>
 									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a href="../widgets.html">
-								<i class="fas fa-desktop"></i>
-								<p>Widgets</p>
-								<span class="badge badge-success">4</span>
-							</a>
+							</ul>
 						</li>
 					</ul>
 				</div>
