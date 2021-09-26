@@ -42,9 +42,74 @@
 	<script src="http://localhost/code_team4/Assets/js/atlantis.min.js"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="http://localhost/code_team4/Assets/js/setting-demo2.js"></script>
-	<script >
+	<!-- jQuery Validation -->
+
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+	<script>
 		$(document).ready(function() {
 			$('#service_list_table').DataTable({});
+			if ($('#add_customer_form').length > 0) {
+				console.log($('#add_customer_form').length);
+				$('#add_customer_form').validate({
+					rules: {
+						cus_company_name: {
+							required: true
+						},
+						cus_tax: {
+							required: true,
+							minlength: 13,
+							maxlength: 13
+						},
+						cus_address: {
+							required: true
+						},
+						cus_firstname: {
+							required: true
+						},
+						cus_lastname: {
+							required: true
+						},
+						cus_tel: {
+							required: true,
+							minlength: 10,
+							maxlength: 10
+						},
+						cus_email: {
+							required: true,
+							email: true
+						}
+
+					},
+					messages: {
+						cus_company_name: {
+							required: 'Please enter a company name.'
+						},
+						cus_tax: {
+							required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+							minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
+							maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+						},
+						cus_address: {
+							required: 'กรุณากรอกที่อยู่'
+						},
+						cus_firstname: {
+							required: 'กรุณากรอกชื่อจริง'
+						},
+						cus_lastname: {
+							required: 'กรุณากรอกนามสกุล'
+						},
+						cus_tel: {
+							required: 'กรุณากรอกเบอร์โทรศัพท์',
+							minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+							maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+						},
+						cus_email: {
+							required: 'กรุณากรอกอีเมล',
+							email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+						}
+					}
+				})
+			}
 		});
 	</script>
 

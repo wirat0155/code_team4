@@ -23,7 +23,7 @@
 							</li>
 						</ul>
 					</div>
-                    <form action="<?php echo base_url() . '/Customer_input/customer_insert'?>" id="add_container_form" method="POST">
+                    <form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert'?>" method="POST">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -34,8 +34,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
 											<div class="form-group">
-												<label for="email">Company name<span class="text-danger">*</span></label>
-												<input type="email" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
+												<label for="cus_company_name">Company name <span class="text-danger">*</span></label>
+												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
 											</div>
 										</div>
                                     </div>
@@ -86,69 +86,3 @@
                     </form>
 				</div>
 			</div>
-<script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_container_form').length > 0) {
-            $('#add_container_form').validate({
-                rules: {
-                    cus_company_name: {
-                        required: true
-                    },
-                    cus_tax: {
-                        required: true,
-                        minlength: 13,
-                        maxlength: 13
-                    },
-                    cus_address: {
-                        required: true
-                    },
-                    cus_firstname: {
-                        required: true
-                    },
-                    cus_lastname: {
-                        required: true
-                    },
-                    cus_tel: {
-                        required: true,
-                        minlength: 10,
-                        maxlength: 10
-                    },
-                    cus_email: {
-                        required: true,
-                        email: true
-                    }
-
-                },
-                messages: {
-                    cus_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัท'
-                    },
-                    cus_tax: {
-                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
-                    },
-                    cus_address: {
-                        required: 'กรุณากรอกที่อยู่'
-                    },
-                    cus_firstname: {
-                        required: 'กรุณากรอกชื่อจริง'
-                    },
-                    cus_lastname: {
-                        required: 'กรุณากรอกนามสกุล'
-                    },
-                    cus_tel: {
-                        required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
-                    },
-                    cus_email: {
-                        required: 'กรุณากรอกอีเมล',
-                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
-                    }
-                }
-            })
-        }
-    });
-</script>
