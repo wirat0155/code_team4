@@ -20,7 +20,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="edit_customer_form" action="<?php echo base_url() . '/public/Customer_edit/customer_update' ?>" method="post">
+        <form id="edit_customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update' ?>" method="post">
             <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
             <!-- เพิ่มลูกค้า -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">

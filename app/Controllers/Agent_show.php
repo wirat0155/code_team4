@@ -8,7 +8,7 @@ use App\Models\M_cdms_container;
 /*
 * Agent_show
 * แสดงรายชื่อเอเย่นต์ และลบรายชื่อเอเย่นต์
-* @author Klayuth,Preechaya
+* @author Klayuth Preechaya
 * @Create Date 2564-07-30
 * @Update Date 2564-08-17
 */
@@ -48,7 +48,7 @@ class Agent_show extends Cdms_controller {
         $m_agn = new M_cdms_agent();
         $m_agn->delete($this->request->getPost('agn_id'));
 
-        return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
+        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
     }
 
     /*

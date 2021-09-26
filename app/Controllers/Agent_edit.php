@@ -1,16 +1,14 @@
 <?php
-
-namespace App\controllers;
-
+namespace App\Controllers;
 use App\Models\M_cdms_agent;
 
-    /*
-    * Agent_edit
-    * แสดงหน้าจอแก้ไขเอเย่นต์ และแก้ไขเอเย่นต์
-    * @author Klayuth, Preechaya
-    * @Create Date 2021-08-06
-    * @Update Date 2021-08-06
-    */
+/*
+* Agent_edit
+* แสดงหน้าจอแก้ไขเอเย่นต์ และแก้ไขเอเย่นต์
+* @author Klayuth Preechaya
+* @Create Date 2021-08-06
+* @Update Date 2021-08-06
+*/
 class Agent_edit extends Cdms_controller {
 
     /*
@@ -18,7 +16,7 @@ class Agent_edit extends Cdms_controller {
     * แสดงหน้าจอแก้ไขเอเย่นต์
     * @input agn_id
     * @output แสดงข้อมูลหน้าที่จะแก้ไข
-    * @author Klayuth, Preechaya
+    * @author Klayuth Preechaya
     * @Create Date 2021-08-06
     * @Update Date 2021-08-06
     */
@@ -36,7 +34,7 @@ class Agent_edit extends Cdms_controller {
     * แก้ไขข้อมูลเอเย่นต์
     * @input agent information
     * @output เพิ่มข้อมูลเอเย่นต์
-    * @author Klayuth,Preechaya
+    * @author Klayuth Preechaya
     * @Create Date 2021-08-06
     * @Update Date 2021-08-06
     */
@@ -53,6 +51,6 @@ class Agent_edit extends Cdms_controller {
         $agn_email = $this->request->getPost('agn_email');
 
         $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-        return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
+        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
     }
 }

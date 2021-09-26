@@ -42,7 +42,7 @@
         </div>
     </di>
 
-    <form id="add_car_form" action="<?php echo base_url() . '/public/Car_edit/car_update' ?>" enctype="multipart/form-data" method="POST">
+    <form id="add_car_form" action="<?php echo base_url() . '/Car_edit/car_update' ?>" enctype="multipart/form-data" method="POST">
         <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
 
         <div class="container-sm col-12 col-xl-7">

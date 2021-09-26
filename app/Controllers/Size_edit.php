@@ -41,6 +41,6 @@ class Size_edit extends Cdms_controller {
         $m_cart->size_update($size_id, $size_name, $size_width_in, $size_length_in, $size_height_in, $size_width_out, $size_length_out, $size_height_out);
 
         // กลับไปหน้าจอแดชบอร์ด
-        $this->response->redirect(base_url() . '/public/Dashboard/dashboard_show');
+        $this->response->redirect(base_url() . '/Dashboard/dashboard_show');
     }
 }

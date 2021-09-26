@@ -54,7 +54,7 @@
 
                         <!-- ปุ่มแก้ไข/ลบ -->
                         <td class="px-4 py-3 text-sm text-center">
-                            <a href="<?php echo base_url() . '/public/Container_edit/container_edit/' . $arr_container[$i]->con_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <a href="<?php echo base_url() . '/Container_edit/container_edit/' . $arr_container[$i]->con_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                             <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[$i]->con_id ?>)">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -78,7 +78,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Container_show/container_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Container_show/container_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Container Id -->
                     <input name="con_id" id="con_id" type="hidden">
@@ -107,7 +107,7 @@
             "order" : []
         });
 
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Container_input/container_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มตู้</a>");
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/Container_input/container_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มตู้</a>");
 
     });
 
@@ -117,6 +117,6 @@
 
     function container_detail(con_id) {
         // console.log(con_id);
-        window.location = '<?php echo base_url('') . '/public/Container_show/container_detail/' ?>' + con_id;
+        window.location = '<?php echo base_url('') . '/Container_show/container_detail/' ?>' + con_id;
     }
 </script>

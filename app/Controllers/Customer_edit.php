@@ -24,6 +24,13 @@ class Customer_edit extends Cdms_controller {
     */
     public function customer_edit($cus_id) {
         $_SESSION['menu'] = 'Customer_show';
+        if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
+            $_SESSION['cus_branch_error'] = '';
+        }
+        if (!isset($_SESSION['cus_company_name_error']) || $_SESSION['cus_company_name_error'] == '') {
+            $_SESSION['cus_company_name_error'] = '';
+        }
+        
         $m_cus = new M_cdms_customer;
         $data['arr_customer'] = $m_cus->get_by_id($cus_id);
         $this->output('v_customer_edit', $data);
@@ -77,7 +84,7 @@ class Customer_edit extends Cdms_controller {
             $_SESSION['cus_branch_error'] = '';
             $_SESSION['cus_company_name_error'] = '';
 
-            return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+            return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
         }
     }
 }

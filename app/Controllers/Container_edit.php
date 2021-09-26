@@ -31,6 +31,9 @@ class Container_edit extends Cdms_controller {
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
         }
+        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
+            $_SESSION['agn_company_name_error'] = '';
+        }
 
         // get container data
         $m_con = new M_cdms_container();
@@ -131,6 +134,6 @@ class Container_edit extends Cdms_controller {
         // update container
         $_SESSION['con_number_error'] = '';
         $m_con->container_update($con_id, $con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-        $this->response->redirect(base_url() . '/public/Container_show/container_show_ajax');
+        $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }
 }

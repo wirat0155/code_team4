@@ -20,7 +20,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="add_container_form" action="<?php echo base_url() . '/public/Customer_input/customer_insert' ?>" method="post">
+        <form id="add_container_form" action="<?php echo base_url() . '/Customer_input/customer_insert' ?>" method="post">
 
             <!-- เพิ่มลูกค้า -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">

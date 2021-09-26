@@ -20,7 +20,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="add_agent_form" action="<?php echo base_url() . '/public/Agent_edit/agent_update' ?>" method="post">
+        <form id="add_agent_form" action="<?php echo base_url() . '/Agent_edit/agent_update' ?>" method="post">
             <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
             <!-- เพิ่มลูกค้า -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">

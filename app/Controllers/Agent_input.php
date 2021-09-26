@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Models\M_cdms_agent;
 
     /*
@@ -53,11 +51,11 @@ class Agent_input extends Cdms_controller {
         // then back to v_agent_showlist
         for ($i = 0; $i < count($arr_agn); $i++) {
             if ($arr_agn[$i]->agn_company_name == $agn_company_name) {
-                return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
+                return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
             }
         }
 
         $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-        return $this->response->redirect(base_url('/public/Agent_show/agent_show_ajax'));
+        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
     }
 }

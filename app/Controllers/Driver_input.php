@@ -67,6 +67,6 @@ class Driver_input extends Cdms_controller {
         // เพิ่มข้อมูลพนักงาน
         $m_dri->insert($dri_name, $dri_tel, $dri_card_number, $dri_license, $dri_license_type, $dri_profile_image, $dri_status, $dri_date_start, $dri_date_end, $dri_car_id);
 
-        return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
+        return $this->response->redirect(base_url('/Driver_show/driver_show_ajax'));
     }
 }

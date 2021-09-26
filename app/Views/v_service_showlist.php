@@ -56,11 +56,11 @@
     <!-- Excel and date -->
     <div class="text-right mb-2">
         <!-- Download Excel -->
-        <form id='form_Excel' action="<?php echo base_url() . '/public/Service_show/export_service' ?>" method="post" hidden>
+        <form id='form_Excel' action="<?php echo base_url() . '/Service_show/export_service' ?>" method="post" hidden>
             <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
         </form>
 
-        <form id='form_date' action="<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>" method="post">
+        <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post">
 
             <button type="submit" form="form_Excel" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
                 <i class="bi bi-file-arrow-down mr-1"></i>
@@ -214,7 +214,7 @@
                             <!-- ปุ่มคิดค่าบริการ -->
                             <button data-toggle="modal" data-target="#cost_modal" onclick="get_service_cost(<?php echo $arr_service[$i]->ser_id ?>)" class="btn btn-info p-2"><i class="bi bi-cash-coin"></i></button>
                             <!-- ปุ่มแก้ไข -->
-                            <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <a href="<?php echo base_url() . '/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                             <!-- ปุ่มลบ -->
                             <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_service[$i]->ser_id ?>)">
                                 <i class="bi bi-trash"></i>
@@ -266,7 +266,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Service_show/service_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Service Id -->
                     <input name="ser_id" id="ser_id" type="hidden">
@@ -295,7 +295,7 @@
             "order": []
         });
         $("#DataTables_Table_0_filter").append(
-            "<a href='<?php echo base_url() . '/public/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
+            "<a href='<?php echo base_url() . '/Service_input/service_input' ?>'class='shadow-sm px-2 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มบริการ </a>"
         );
 
         //วันที่ Date Range Picker
@@ -321,7 +321,7 @@
                 .format('YYYY-MM-DD'));
         });
 
-        $('.cancelBtn').attr('onclick', 'location.href = \'<?php echo base_url() . '/public/Service_show/service_show_ajax' ?>\'');
+        $('.cancelBtn').attr('onclick', 'location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
         $('.applyBtn').attr({
             type: 'submit',
             form: 'form_date'
@@ -333,7 +333,7 @@
     }
 
     function service_detail(ser_id) {
-        window.location = '<?php echo base_url('') . '/public/Service_show/service_detail/' ?>' + ser_id;
+        window.location = '<?php echo base_url('') . '/Service_show/service_detail/' ?>' + ser_id;
     }
 
     var number_cost_input = 1;
@@ -341,7 +341,7 @@
     function get_service_cost(ser_id) {
         console.log(ser_id);
         $.ajax({
-            url: '<?php echo base_url() . '/public/Service_show/get_cost_ajax' ?>',
+            url: '<?php echo base_url() . '/Service_show/get_cost_ajax' ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {
@@ -441,7 +441,7 @@
         console.log("เข้า insert: " + cosd_ser_id, cosd_name, cosd_cost, input_order);
 
         $.ajax({
-            url: '<?php echo base_url() . '/public/Service_show/cost_insert' ?>',
+            url: '<?php echo base_url() . '/Service_show/cost_insert' ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {
@@ -472,7 +472,7 @@
         var cosd_cost = $('input[name="cosd_cost_id' + cosd_id + '"]').val();
         console.log("เข้า update: " + cosd_name, cosd_cost, cosd_id, cosd_ser_id);
         $.ajax({
-            url: '<?php echo base_url() . '/public/Service_show/cost_update' ?>',
+            url: '<?php echo base_url() . '/Service_show/cost_update' ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {
@@ -496,7 +496,7 @@
         // ลบ input ที่ insert ไปแล้ว
         else if (input_type == 'old') {
             $.ajax({
-                url: '<?php echo base_url() . '/public/Service_show/cost_delete' ?>',
+                url: '<?php echo base_url() . '/Service_show/cost_delete' ?>',
                 method: 'POST',
                 dataType: 'JSON',
                 data: {

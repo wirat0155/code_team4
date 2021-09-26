@@ -7,7 +7,7 @@
             </h2>
         </div>
     </div>
-    <form id="update_container_form" action="<?php echo base_url() . '/public/Container_edit/container_update' ?>" method="POST">
+    <form id="update_container_form" action="<?php echo base_url() . '/Container_edit/container_update' ?>" method="POST">
         <div class="row">
             <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -423,7 +423,7 @@ $(document).ready(function() {
 function get_size_information() {
     let size_id = $('select[name="con_size_id"]').val();
     $.ajax({
-        url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+        url: '<?php echo base_url() . '/Size_show/get_size_ajax' ?>',
         method: 'POST',
         dataType: 'JSON',
         data: {
@@ -450,7 +450,7 @@ function get_agent_information() {
     if (agn_id != 'new') {
         $('input[name="agn_company_name"]').prop('hidden', true);
         $.ajax({
-            url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
+            url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {

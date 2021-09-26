@@ -43,7 +43,7 @@
         </div>
     </di>
 
-    <form id="add_car_form" action="<?php echo base_url() . '/public/Car_input/car_insert' ?>" enctype="multipart/form-data" method="POST">
+    <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert' ?>" enctype="multipart/form-data" method="POST">
         <div class="container-sm col-12 col-xl-7">
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
                 <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ข้อมูลรถ</h2>

@@ -15,7 +15,7 @@
                     ข้อมูลเอเย่นต์
                 </h2>
                 <div class="float-right">
-                    <a href="<?php echo base_url() . '/public/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขเอเย่นต์</a>
+                    <a href="<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขเอเย่นต์</a>
                     <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[0]->agn_id ?>)">ลบเอเย่นต์
                     </button>
                 </div>
@@ -24,7 +24,7 @@
 
         <div class="container-sm mb-8 ">
 
-            <form id="add_agent_form" action="<?php echo base_url() . '/public/Agent_edit/agent_update' ?>" method="post">
+            <form id="add_agent_form" action="<?php echo base_url() . '/Agent_edit/agent_update' ?>" method="post">
                 <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
                 <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
 
@@ -87,7 +87,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?php echo base_url() . '/public/Agent_show/agent_delete' ?>" method="post">
+                <form action="<?php echo base_url() . '/Agent_show/agent_delete' ?>" method="post">
                     <div class="modal-body float-center">
                         <!-- เก็บ Agent Id -->
                         <input name="agn_id" id="agn_id" type="hidden">

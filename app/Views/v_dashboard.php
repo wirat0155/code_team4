@@ -247,7 +247,7 @@
 <script>
     $(document).ready(function() {
         // add dashboard background
-        $('main').css("background-image", "url('<?php echo base_url() . '/upload/dashboard_background.jpg' ?>')");
+        $('main').css("background-image", "url(http://localhost/code_team4/upload/dashboard_background.jpg)");
     });
 
     function add_modal(add_type) {
@@ -429,11 +429,10 @@
         edit_name = edit_name.trim();
         console.log(edit_name);
 
-        modal_message = `<form action="<?php echo base_url() . '/public/${form_action}' ?>" method="POST">`;
+        modal_message = `<form action="<?php echo base_url() . '/${form_action}' ?>" method="POST">`;
         // แก้ไขประเภทตู้ สถานะตู้ หรือประเภทรถ
         if (edit_type != 'size') {
-            modal_message += `<div class="pt-3 pb-3 pl-5 pr-5"><input name="${edit_type}_id" value="${edit_id}" hidden/><center>
-            <input type="text" class="block w-full mt-1 text-sm focus:outline-none form-input" name="${edit_type}_name" value="${edit_name}"></center></div>`;
+            modal_message += `<div class="pt-3 pb-3 pl-5 pr-5"><input name="${edit_type}_id" value="${edit_id}" hidden/><center><input type="text" class="block w-full mt-1 text-sm focus:outline-none form-input" name="${edit_type}_name" value="${edit_name}"></center></div>`;
         }
         // แก้ไขขนาดตู้ ต้องดึงข้อมูลความยาว ความสูง ความกว้างด้านนอก และด้านใน
         else if (edit_type == 'size') {
@@ -586,7 +585,7 @@
         var size_length_in = $('input[name="size_length_in"]').val();
         console.log('')
         $.ajax({
-            url: '<?php echo base_url() . '/public/Size_input/size_insert' ?>',
+            url: '<?php echo base_url() . '/Size_input/size_insert' ?>',
             method: 'POST',
             data: {
                 size_name: size_name,
@@ -618,7 +617,7 @@
     function status_container_insert() {
         var stac_name = $('input[name="stac_name"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Container_status_input/container_status_insert' ?>',
+            url: '<?php echo base_url() . '/Container_status_input/container_status_insert' ?>',
             method: 'POST',
             data: {
                 stac_name: stac_name
@@ -642,7 +641,7 @@
     function container_type_insert() {
         var cont_name = $('input[name="cont_name"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Container_type_input/container_type_insert' ?>',
+            url: '<?php echo base_url() . '/Container_type_input/container_type_insert' ?>',
             method: 'POST',
             data: {
                 cont_name: cont_name
@@ -666,7 +665,7 @@
     function car_type_insert() {
         var cart_name = $('input[name="cart_name"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Car_type_input/car_type_insert' ?>',
+            url: '<?php echo base_url() . '/Car_type_input/car_type_insert' ?>',
             method: 'POST',
             data: {
                 cart_name: cart_name

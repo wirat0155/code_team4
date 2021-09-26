@@ -68,7 +68,7 @@
                 ข้อมูลพนักงานขับรถ
             </h2>
             <div class="float-right">
-                <a href="<?php echo base_url() . '/public/Driver_edit/driver_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
+                <a href="<?php echo base_url() . '/Driver_edit/driver_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[0]->dri_id ?>)">ลบข้อมูล
                 </button>
             </div>
@@ -77,7 +77,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_info/driver_show_info' ?>" enctype="multipart/form-data" method="POST">
+        <form id="add_driver_form" action="<?php echo base_url() . '/Driver_info/driver_show_info' ?>" enctype="multipart/form-data" method="POST">
             <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">
             <!-- เพิ่มพนักงาน -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -93,7 +93,7 @@
 
                     <div class="picture-container">
                         <div class="picture">
-                            <img src="<?php echo base_url() . '/public/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
+                            <img src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
                         </div>
                     </div><br>
 
@@ -203,7 +203,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Driver_show/driver_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Driver_show/driver_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Driver Id -->
                     <input name="dri_id" id="dri_id" type="hidden">

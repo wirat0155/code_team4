@@ -1,4 +1,5 @@
-<?php namespace App\Controllers;
+<?php 
+namespace App\Controllers;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_car_type;
 use App\Models\M_cdms_province;
@@ -10,6 +11,7 @@ use App\Models\M_cdms_province;
 * @Create Date 2564-08-06
 * @Update Date 2564-08-08
 */
+
 class Car_input extends Cdms_controller {
     /*
     * car_input
@@ -21,6 +23,7 @@ class Car_input extends Cdms_controller {
     * @Update Date 2564-08-08
     */
     public function car_input() {
+        $_SESSION['menu'] = 'Car_show';
         // call car input view
         $data = [];
 
@@ -71,6 +74,6 @@ class Car_input extends Cdms_controller {
 
         // เพิ่มข้อมูลรถ
         $m_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id);
-        $this->response->redirect(base_url() . '/public/Car_show/car_show_ajax');
+        $this->response->redirect(base_url() . '/Car_show/car_show_ajax');
     }
 }

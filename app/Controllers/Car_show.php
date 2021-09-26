@@ -42,7 +42,7 @@ class Car_show extends Cdms_controller {
     public function car_delete() {
         $m_car = new M_cdms_car();
         $m_car->delete($this->request->getPost('car_id'));
-        return $this->response->redirect(base_url('/public/Car_show/car_show_ajax'));
+        return $this->response->redirect(base_url('/Car_show/car_show_ajax'));
     }
 
     /*
@@ -55,6 +55,8 @@ class Car_show extends Cdms_controller {
     * @Update Date 2564-08-13
     */
     public function car_detail($car_id) {
+        $_SESSION['menu'] = 'Car_show';
+        
         $m_car = new M_cdms_car();
         $data['arr_car'] = $m_car->get_by_id($car_id);
 

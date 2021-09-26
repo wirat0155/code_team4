@@ -52,7 +52,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="add_driver_form" action="<?php echo base_url() . '/public/Driver_input/driver_insert' ?>" enctype="multipart/form-data" method="POST">
+        <form id="add_driver_form" action="<?php echo base_url() . '/Driver_input/driver_insert' ?>" enctype="multipart/form-data" method="POST">
 
             <!-- เพิ่มพนักงาน -->
             <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">

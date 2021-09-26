@@ -72,7 +72,7 @@ class Service_show extends Cdms_controller {
     public function service_delete() {
         $m_ser = new M_cdms_service();
         $m_ser->delete($this->request->getPost('ser_id'));
-        return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
+        return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 
     /*
@@ -340,7 +340,7 @@ class Service_show extends Cdms_controller {
 		readfile($file_name);
 
 		exit;
-        return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+        return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
     }
 
        /*

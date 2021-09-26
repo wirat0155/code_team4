@@ -33,6 +33,9 @@ class Container_input extends Cdms_controller
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
         }
+        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
+            $_SESSION['agn_company_name_error'] = '';
+        }
         // get dropdown
         // container size
         $m_size = new M_cdms_size();
@@ -130,7 +133,7 @@ class Container_input extends Cdms_controller
             // insert container
             $_SESSION['con_number_error'] = '';
             $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-            $this->response->redirect(base_url() . '/public/Container_show/container_show_ajax');
+            $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
         }
         echo 'name';
     }

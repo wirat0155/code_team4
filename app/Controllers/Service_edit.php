@@ -34,6 +34,15 @@ class Service_edit extends Cdms_controller
     public function service_edit($ser_id)
     {
         $_SESSION['menu'] = 'Service_show';
+        if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
+            $_SESSION['con_number_error'] = '';
+        }
+        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
+            $_SESSION['agn_company_name_error'] = '';
+        }
+        if (!isset($_SESSION['cus_company_name_error']) || $_SESSION['cus_company_name_error'] == '') {
+            $_SESSION['cus_company_name_error'] = '';
+        }
         // size name
         $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_all();
@@ -216,6 +225,6 @@ class Service_edit extends Cdms_controller
         }
 
         $m_ser->service_update($ser_id, $ser_type, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
-        return $this->response->redirect(base_url('/public/Service_show/service_show_ajax'));
+        return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 }

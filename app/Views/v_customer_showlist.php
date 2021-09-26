@@ -29,10 +29,10 @@
     <div class="text-right mb-2">
         
         <!-- Download Excel -->
-        <form id='form_Excel' action="<?php echo base_url(). '/public/Customer_show/export_customer' ?>" method="post" hidden>
+        <form id='form_Excel' action="<?php echo base_url(). '/Customer_show/export_customer' ?>" method="post" hidden>
             <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
         </form>
-        <form id='form_date' action="<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>" method="post">
+        <form id='form_date' action="<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>" method="post">
             
             <button type="submit" form="form_Excel" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
                 <i class="bi bi-file-arrow-down mr-1"></i>
@@ -215,7 +215,7 @@
                         <!-- ดำเนินการ -->
                         <td class="px-4 py-3 text-sm text-center">
                             <!-- ปุ่มแก้ไข -->
-                            <a href="<?php echo base_url() . '/public/Customer_edit/customer_edit/' . $arr_customer[$i]->cus_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <a href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $arr_customer[$i]->cus_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                             <!-- ปุ่มลบ -->
                             <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#Modal_Confirm" onclick="get_id(<?php echo $arr_customer[$i]->cus_id ?>)">
                                 <i class="bi bi-trash"></i>
@@ -240,7 +240,7 @@
                 </button>
             </div>
 
-            <form action="<?php echo base_url() . '/public/Customer_show/customer_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Customer_show/customer_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
                     <input name="cus_id" id="cus_id" type="hidden">
@@ -283,7 +283,7 @@
 
         // แทรกปุ่ม เพิ่มลูกค้า
         $("#DataTables_Table_0_filter").append(
-            "<a href='<?php echo base_url() . '/public/Customer_input/customer_input' ?>' class='button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </a>"
+            "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='button shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'> เพิ่มลูกค้า </a>"
         );
 
         //วันที่ Date Range Picker
@@ -309,7 +309,7 @@
                 .format('YYYY-MM-DD'));
         });
 
-        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/public/Customer_show/customer_show_ajax' ?>\'');
+        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>\'');
         $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     });
 
@@ -321,6 +321,6 @@
     
 
     function customer_detail(cus_id) {
-        window.location = '<?php echo base_url('') . '/public/Customer_show/customer_detail/' ?>' + cus_id;
+        window.location = '<?php echo base_url('') . '/Customer_show/customer_detail/' ?>' + cus_id;
     }
 </script>

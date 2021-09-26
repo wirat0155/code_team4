@@ -65,7 +65,7 @@
                         <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                             <div class="flex items-center text-sm">
                                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/public/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
+                                    <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
                                     <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                                 </div>
                                 <?php echo $arr_car[$i]->car_number ?>
@@ -101,7 +101,7 @@
                         <!-- ดำเนินการ -->
                         <td class="px-4 py-3 text-sm text-center">
                             <!-- ปุ่มแก้ไข -->
-                            <a href="<?php echo base_url() . '/public/Car_edit/car_edit/' . $arr_car[$i]->car_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
+                            <a href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[$i]->car_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
                             <!-- ปุ่มลบ -->
                             <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_car[$i]->car_id ?>)">
                                 <i class="bi bi-trash"></i>
@@ -127,7 +127,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Car_show/car_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Car_show/car_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Car Id -->
                     <input name="car_id" id="car_id" type="hidden">
@@ -155,7 +155,7 @@
             },
             "order" : []
         });
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/public/Car_input/car_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มรถ</a>");
+        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/Car_input/car_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มรถ</a>");
         $('input[name="daterange"]').daterangepicker({
             opens: 'left'
         }, function(start, end, label) {
@@ -168,6 +168,6 @@
     }
 
     function car_detail(car_id) {
-        window.location = '<?php echo base_url('') . '/public/Car_show/car_detail/' ?>' + car_id;
+        window.location = '<?php echo base_url('') . '/Car_show/car_detail/' ?>' + car_id;
     }
 </script>

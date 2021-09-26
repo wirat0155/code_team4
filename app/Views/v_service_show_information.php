@@ -84,7 +84,7 @@
                 <button type="button" class="btn btn-success px-2 text-sm" data-toggle="modal" data-target="#check_change_history" onclick="get_change_service(<?php echo $obj_service[0]->ser_id_change ?>)">ตรวจสอบประวัติ
                 </button>
                 <!-- ปุ่มแก้ไข -->
-                <a href="<?php echo base_url() . '/public/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
+                <a href="<?php echo base_url() . '/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <!-- ปุ่มลบ -->
                 <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $obj_service[0]->ser_id ?>)">ลบข้อมูล
                 </button>
@@ -97,7 +97,7 @@
         console.log(ser_id_change)
 
         $.ajax({
-            url: '<?php echo base_url() . "/public/Service_show/get_change_service" ?>',
+            url: '<?php echo base_url() . "/Service_show/get_change_service" ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {
@@ -696,7 +696,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Service_show/service_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Service Id -->
                     <input name="ser_id" id="ser_id" type="hidden">

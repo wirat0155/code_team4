@@ -27,6 +27,6 @@ class Container_type_edit extends Cdms_controller {
 
         $m_cont = new M_cdms_container_type();
         $m_cont->container_type_update($cont_id, $cont_name);
-        $this->response->redirect(base_url() . '/public/Dashboard/dashboard_show');
+        $this->response->redirect(base_url() . '/Dashboard/dashboard_show');
     }
 }

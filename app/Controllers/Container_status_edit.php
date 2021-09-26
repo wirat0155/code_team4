@@ -27,6 +27,6 @@ class Container_status_edit extends Cdms_controller {
 
         $m_stac = new M_cdms_status_container();
         $m_stac->status_container_update($stac_id, $stac_name);
-        $this->response->redirect(base_url() . '/public/Dashboard/dashboard_show');
+        $this->response->redirect(base_url() . '/Dashboard/dashboard_show');
     }
 }

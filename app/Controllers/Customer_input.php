@@ -77,7 +77,7 @@ class Customer_input extends Cdms_controller {
             $_SESSION['cus_branch_error'] = '';
             $_SESSION['cus_company_name_error'] = '';
 
-            return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+            return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
         }
     }
 }

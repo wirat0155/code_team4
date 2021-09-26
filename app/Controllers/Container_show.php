@@ -88,7 +88,7 @@ class Container_show extends Cdms_controller {
         $m_con = new M_cdms_container();
         $con_id = $this->request->getPost('con_id');
         $m_con->delete($con_id);
-        return $this->response->redirect(base_url('/public/Container_show/container_show_ajax'));
+        return $this->response->redirect(base_url('/Container_show/container_show_ajax'));
     }
 
     /*

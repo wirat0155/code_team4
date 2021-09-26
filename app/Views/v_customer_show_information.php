@@ -17,7 +17,7 @@
             </h2>
             <div class="float-right">
                 <!-- ปุ่มแก้ไข -->
-                <a href="<?php echo base_url() . '/public/Customer_edit/customer_edit/' . $arr_customer[0]->cus_id ?>"
+                <a href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $arr_customer[0]->cus_id ?>"
                     class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <!-- ปุ่มลบ -->
                 <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal"
@@ -30,7 +30,7 @@
 
     <div class="container-sm mb-8">
 
-        <form id="edit_customer_form" action="<?php echo base_url() . '/public/Customer_edit/customer_update' ?>"
+        <form id="edit_customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update' ?>"
             method="post">
             <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
             <!-- เพิ่มลูกค้า -->
@@ -99,7 +99,7 @@
                 </button>
             </div>
 
-            <form action="<?php echo base_url() . '/public/Customer_show/customer_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Customer_show/customer_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Customer Id -->
                     <input name="cus_id" id="cus_id" type="hidden">

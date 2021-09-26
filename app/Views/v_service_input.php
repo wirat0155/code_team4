@@ -14,7 +14,7 @@
         </div>
     </di>
 
-    <form id="add_service_form" action="<?php echo base_url() . '/public/Service_input/service_insert' ?>" method="POST">
+    <form id="add_service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" method="POST">
         <div class="row">
             <!-- Start container form -->
             <div class="col-12 col-xl-7">
@@ -794,7 +794,7 @@
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
         $.ajax({
-            url: '<?php echo base_url() . '/public/Size_show/get_size_ajax' ?>',
+            url: '<?php echo base_url() . '/Size_show/get_size_ajax' ?>',
             method: 'POST',
             dataType: 'JSON',
             data: {
@@ -820,7 +820,7 @@
         if (status == 1) {
             if (ser_dri_id_in != '') {
                 $.ajax({
-                    url: '<?php echo base_url() . '/public/Driver_show/get_driver_ajax' ?>',
+                    url: '<?php echo base_url() . '/Driver_show/get_driver_ajax' ?>',
                     method: 'POST',
                     dataType: 'JSON',
                     data: {
@@ -837,7 +837,7 @@
         } else {
             if (ser_dri_id_out != '') {
                 $.ajax({
-                    url: '<?php echo base_url() . '/public/Driver_show/get_driver_ajax' ?>',
+                    url: '<?php echo base_url() . '/Driver_show/get_driver_ajax' ?>',
                     method: 'POST',
                     dataType: 'JSON',
                     data: {
@@ -876,7 +876,7 @@
         if (con_id != '' && con_id != "new") {
             $('input[name="con_number"]').prop('hidden', true);
             $.ajax({
-                url: '<?php echo base_url() . '/public/Container_show/get_container_ajax' ?>',
+                url: '<?php echo base_url() . '/Container_show/get_container_ajax' ?>',
                 method: 'POST',
                 dataType: 'JSON',
                 data: {
@@ -928,7 +928,7 @@
         if (agn_id != '' && agn_id != "new") {
             $('input[name="agn_company_name"]').prop('hidden', true);
             $.ajax({
-                url: '<?php echo base_url() . '/public/Agent_show/get_agent_ajax' ?>',
+                url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
                 method: 'POST',
                 dataType: 'JSON',
                 data: {
@@ -973,7 +973,7 @@
         if (cus_id != '' && cus_id != "new") {
             $('input[name="cus_company_name"]').prop('hidden', true);
             $.ajax({
-                url: '<?php echo base_url() . '/public/Customer_show/get_customer_ajax' ?>',
+                url: '<?php echo base_url() . '/Customer_show/get_customer_ajax' ?>',
                 method: 'POST',
                 dataType: 'JSON',
                 data: {

@@ -8,13 +8,13 @@
 
             <!-- ปุ่มแก้ไข/ลบ -->
             <div class="float-right">
-                <a href="<?php echo base_url() . '/public/Container_edit/container_edit/' . $arr_container[0]->con_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
+                <a href="<?php echo base_url() . '/Container_edit/container_edit/' . $arr_container[0]->con_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
                 <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[0]->con_id ?>)">ลบข้อมูล </button>
             </div>
         </div>
     </div>
 
-    <form id="update_container_form" action="<?php echo base_url() . '/public/Container_show/container_detail' ?>" method="POST">
+    <form id="update_container_form" action="<?php echo base_url() . '/Container_show/container_detail' ?>" method="POST">
         <div class="row">
             <div class="col-12 col-xl-7">
                 <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
@@ -376,7 +376,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Container_show/container_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Container_show/container_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Container Id -->
                     <input name="con_id" id="con_id" type="hidden">

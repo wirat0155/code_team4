@@ -27,6 +27,6 @@ class Car_type_edit extends Cdms_controller {
 
         $m_cart = new M_cdms_car_type();
         $m_cart->car_type_update($cart_id, $cart_name);
-        $this->response->redirect(base_url() . '/public/Dashboard/dashboard_show');
+        $this->response->redirect(base_url() . '/Dashboard/dashboard_show');
     }
 }

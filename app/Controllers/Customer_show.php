@@ -70,7 +70,7 @@ class Customer_show extends Cdms_controller {
     public function customer_delete() {
         $m_cus = new M_cdms_customer();
         $m_cus->delete($this->request->getPost('cus_id'));
-        return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+        return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
     }
 
     /*
@@ -284,6 +284,6 @@ class Customer_show extends Cdms_controller {
 		readfile($file_name);
 
 		exit;
-        return $this->response->redirect(base_url('/public/Customer_show/customer_show_ajax'));
+        return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
     }
 }

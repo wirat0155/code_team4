@@ -78,6 +78,6 @@ class Driver_edit extends Cdms_controller {
         //print_r($this->request->getFile('dri_profile_image'));
         //print_r($this->request->getPost());
 
-        return $this->response->redirect(base_url('/public/Driver_show/driver_show_ajax'));
+        return $this->response->redirect(base_url('/Driver_show/driver_show_ajax'));
     }
 }

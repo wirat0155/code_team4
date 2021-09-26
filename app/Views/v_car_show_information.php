@@ -61,14 +61,14 @@
                 ข้อมูลรถ
             </h2>
             <div class="float-right">
-                <a href="<?php echo base_url() . '/public/Car_edit/car_edit/' . $arr_car[0]->car_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขข้อมูล</a>
+                <a href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[0]->car_id ?>" class="btn btn-warning px-2 mr-1 text-sm">แก้ไขข้อมูล</a>
                 <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_car[0]->car_id ?>)">ลบข้อมูล
                 </button>
             </div>
         </div>
     </div>
 
-    <form id="add_car_form" action="<?php echo base_url() . '/public/Car_show/car_detail' ?>" enctype="multipart/form-data" method="POST">
+    <form id="add_car_form" action="<?php echo base_url() . '/Car_show/car_detail' ?>" enctype="multipart/form-data" method="POST">
         <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
 
         <div class="container-sm col-12 col-xl-7">
@@ -78,7 +78,7 @@
 
                 <div class="picture-container">
                     <div class="picture">
-                        <img src=<?php echo base_url() . '/public/car_image/' . $arr_car[0]->car_image ?>>
+                        <img src=<?php echo base_url() . '/car_image/' . $arr_car[0]->car_image ?>>
                     </div>
                 </div>
 
@@ -258,7 +258,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?php echo base_url() . '/public/Car_show/car_delete' ?>" method="post">
+            <form action="<?php echo base_url() . '/Car_show/car_delete' ?>" method="post">
                 <div class="modal-body float-center">
                     <!-- เก็บ Car Id -->
                     <input name="car_id" id="car_id" type="hidden">

@@ -12,14 +12,14 @@
 
     
 
-    <link rel="stylesheet" href="<?php echo base_url() . '/assets/css/tailwind.output.css'?>">
+    <link rel="stylesheet" href="<?php echo 'http://localhost/code_team4//Assets/css/tailwind.output.css'?>">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer=""></script>
-    <script src="<?php echo base_url() . '/assets/js/init-alpine.js'?>"></script>
+    <script src="<?php echo 'http://localhost/code_team4//Assets/js/init-alpine.js'?>"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer=""></script>
-    <script src="<?php echo base_url() . '/assets/js/charts-lines.js'?>" defer=""></script>
-    <script src="<?php echo base_url() . '/assets/js/charts-pie.js'?>" defer=""></script>
-    <link rel="stylesheet" href="<?php echo base_url() . '/assets/css/index.css'?>">
+    <script src="<?php echo 'http://localhost/code_team4//Assets/js/charts-lines.js'?>" defer=""></script>
+    <script src="<?php echo 'http://localhost/code_team4//Assets/js/charts-pie.js'?>" defer=""></script>
+    <link rel="stylesheet" href="<?php echo 'http://localhost/code_team4//Assets/css/index.css'?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -125,7 +125,7 @@
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a class="text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
             <div class="justify-content-center flex items-center pl-1">
-                  <img class="shadow rounded" src="<?= base_url('/upload').'/'.'Logo_IBS.jpg'?>" alt="" style="width: 3rem; height: 3rem; object-fit: cover;">
+                  <img class="shadow rounded" src="http://localhost/code_team4/upload/Logo_IBS.jpg" alt="" style="width: 3rem; height: 3rem; object-fit: cover;">
                   <div class="pl-3 items-center">
                         ระบบจัดการ <br>
                         ตู้คอนเทนเนอร์
