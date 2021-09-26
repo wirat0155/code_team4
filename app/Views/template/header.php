@@ -133,12 +133,12 @@
 
 						<!-- Service menu -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#service">
 								<i class="fas fa-warehouse"></i>
 								<p>Service</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="service">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -155,12 +155,12 @@
 
 						<!-- Customer menu -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#customer">
 								<i class="fa fa-users"></i>
 								<p>Customer</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="customer">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -177,12 +177,12 @@
 
 						<!-- Agent menu -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#agent">
 								<i class="fa fa-user-secret"></i>
 								<p>Agent</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="agent">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -197,12 +197,12 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#container">
 								<i class="fas fa-truck-loading"></i>
 								<p>Container</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="container">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -217,12 +217,12 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#driver">
 								<i class="far fa-address-card"></i>
 								<p>Driver</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="driver">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
@@ -239,12 +239,12 @@
 
 						<!-- Car menu -->
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#base">
+							<a data-toggle="collapse" href="#car">
 								<i class="fas fa-truck"></i>
 								<p>Car</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="base">
+							<div class="collapse" id="car">
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="../components/avatars.html">
