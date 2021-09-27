@@ -41,4 +41,32 @@
       return substr($string, 0, 10) . 'T' . substr($string, 11); 
   }
 
+  function show_add_customer_form() {
+    $elem = '<div class="container row">';
+		$elem .= '<center>';
+		$elem .= '<div class="form-group">';
+		$elem .= '<label class="form-label">Step</label>';
+		$elem .= '<div class="selectgroup w-100">';
+		$elem .= '<label class="selectgroup-item">';
+		$elem .= '<input type="radio" name="value" value="50" class="selectgroup-input" checked="">';
+		$elem .= '<span class="selectgroup-button">Container</span>';
+		$elem .= '</label>';
+		$elem .= '<label class="selectgroup-item">';
+		$elem .= '<input type="radio" name="value" value="100" class="selectgroup-input">';
+		$elem .= '<span class="selectgroup-button">Service</span>';
+		$elem .= '</label>';
+		$elem .= '<label class="selectgroup-item">';
+		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_form_section(\'customer_section\')">';
+		$elem .= '<span class="selectgroup-button">Agent</span>';
+		$elem .= '</label>';
+		$elem .= '<label class="selectgroup-item">';
+		$elem .= '<input type="radio" name="value" value="200" class="selectgroup-input">';
+		$elem .= '<span class="selectgroup-button">Customer</span>';
+		$elem .= '</label>';
+		$elem .= '</div>';
+		$elem .= '</div>';
+		$elem .= '</center>';
+		$elem .= '</div>';
+    return $elem;
+  }
 ?>
