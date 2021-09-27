@@ -39,7 +39,7 @@
 									<span class="selectgroup-button">Service</span>
 								</label>
 								<label class="selectgroup-item">
-									<input type="radio" name="value" value="150" class="selectgroup-input">
+									<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_form_section('customer_section')">
 									<span class="selectgroup-button">Agent</span>
 								</label>
 								<label class="selectgroup-item">
@@ -51,7 +51,7 @@
 						</center>
 					</div>
                     <form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert'?>" method="POST">
-					<div class="row">
+					<div class="row" id="customer_section" style="display: none">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
@@ -145,4 +145,9 @@
 					</div>
                     </form>
 				</div>
+				<script>
+					function show_form_section(section) {
+						$('#customer_section').toggle();
+					}
+				</script>
 			</div>
