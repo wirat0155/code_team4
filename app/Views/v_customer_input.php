@@ -40,7 +40,7 @@
                                         <div class="col-md-8">
 											<div class="form-group">
 												<label for="cus_company_name">Company name</label>
-												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
+												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Not more than 40 character">
                                                 <small class="form-text text-muted">not more than 40 character, unique value</small>
 											</div>
 										</div>
@@ -51,8 +51,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="cus_branch">Branch <small class="text-info">(Optional)</small></label>
-												<input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch">
-                                                <small class="form-text text-muted">not more than 40 character</small>
+												<input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Not more than 40 character">
 											</div>
 										</div>
 
@@ -79,7 +78,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="cus_firstname">Firstname</label>
-												<input class="form-control" id="cus_firstname" name="cus_firstname" placeholder="Firstname" />
+												<input class="form-control" id="cus_firstname" name="cus_firstname" placeholder="Not more than 40 character" />
 											</div>
 										</div>
 
@@ -87,7 +86,7 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="cus_lastname">Lastname</label>
-												<input class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Lastname" />
+												<input class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Not more than 40 character" />
 											</div>
 										</div>
 
@@ -95,7 +94,7 @@
                                         <div class="col-md-8">
 											<div class="form-group">
 												<label for="cus_email">Email address</label>
-												<input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="Enter email">
+												<input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="you_address@mail.com">
 												<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 											</div>
 										</div>
@@ -104,7 +103,7 @@
 										<div class="col-md-4">
 											<div class="form-group">
 												<label for="cus_tel">Tel. number</label>
-												<input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="Enter telephone number">
+												<input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="0812345678">
 											</div>
 										</div>
 									</div>
