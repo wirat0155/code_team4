@@ -36,7 +36,7 @@
 											<div class="form-group">
 												<label for="cus_company_name">Company name <span class="text-danger">*</span></label>
 												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
-                                                <small class="form-text text-muted">not more than 40 character & not duplicate</small>
+                                                <small class="form-text text-muted">not more than 40 character, unique value</small>
 											</div>
 										</div>
                                     </div>
