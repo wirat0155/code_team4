@@ -1,19 +1,33 @@
 <div class="ui modal">
         <i class="close icon"></i>
         <div class="header">
-            Remove service
+            Remove service ?
         </div>
         <div class="content">
-            <input type="text" id="ser_id">
+            <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
+                <input type="hidden" id="ser_id" name="ser_id">
+            
+            <p style="font-size: 1rem">Are you sure to remove the service</p>
+            
+            <div class="ui info message">
+                <div class="header">
+                    What happening after remove the service
+                </div>
+                <ul class="list">
+                    <li>The service still ramain in database,</li>
+                    <li>But you cannot see the service anymore</li>
+                </ul>
+            </div>
         </div>
         <div class="actions">
-            <div class="ui black deny button">
-                Nope
-            </div>
-            <div class="ui positive right labeled icon button">
-                Yep, that's me
-                <i class="checkmark icon"></i>
-            </div>
+            <button type="button" class="ui test button">
+                No, keep it
+            </button>
+            <button type="submit" class="ui negative right labeled icon button">
+                Yes, remove it
+                <i class="minus circle icon"></i>
+            </button>
+            </form>
         </div>
     </div>
 <div class="main-panel">
@@ -52,7 +66,7 @@
                                 <table id="service_list_table" class="display table table-hover" >
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
+                                            <th>Id.</th>
                                             <th>Con. number</th>
                                             <th>Status</th>
                                             <th>Type</th>
@@ -65,7 +79,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No.</th>
+                                            <th>Id.</th>
                                             <th>Con. number</th>
                                             <th>Status</th>
                                             <th>Type</th>
@@ -81,7 +95,7 @@
                                         <tr>
                                             <!-- Order -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php echo $i + 1; ?>
+                                                <?php echo $arr_service[$i]->ser_id ?>
                                             </td>
                                             <!-- Container number -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
@@ -144,7 +158,7 @@
                                                             Remove
                                                         </div>
                                                         <script>
-                                                            $('.ui.modal').modal('attach events', '.test.button', 'show');
+                                                            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
                                                 </div>

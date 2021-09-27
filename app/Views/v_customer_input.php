@@ -107,7 +107,7 @@
 									</div>
 
 								<div class="card-action">
-                                    <input type="reset" class="ui button" value="Cancel">
+                                    <input type="reset" class="ui button" value="Reset form">
                                     <button type="submit" class="ui positive button">
 										<i class="plus icon"></i>
 										Add customer

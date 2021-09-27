@@ -48,7 +48,7 @@
 		}
 		.ui.modal {
 			min-width: 360px;
-			min-height: 190px;
+			min-height: 300px;
 			height: 20%;
 			top: 135px;
 			max-width: 800px;
@@ -64,7 +64,7 @@
 			.ui.modal {
 				width: 95%;
 				margin: 0;
-				left: 10vw;
+				left: 2.5vw;
 			}
 		}
 		@media only screen and (min-width: 1000px) {
