@@ -4,7 +4,7 @@
             Remove service
         </div>
         <div class="content">
-            test
+            <input type="text" id="ser_id">
         </div>
         <div class="actions">
             <div class="ui black deny button">
@@ -140,7 +140,7 @@
                                                         <div class="item" onclick="change_location('google')">
                                                             Edit
                                                         </div>
-                                                        <div class="item test button" onclick="get_ser_id('ser_id', <?php echo $arr_service[$i]->ser_id?>)">
+                                                        <div class="item test button" onclick="get_id(<?php echo $arr_service[$i]->ser_id?>)">
                                                             Remove
                                                         </div>
                                                         <script>
@@ -165,5 +165,7 @@
         function change_location(url) {
             window.location = "https://www.google.com";
         }
-        function get_ser_id()
+        function get_id(ser_id) {
+            $('#ser_id').val(ser_id);
+        }
     </script>
