@@ -55,10 +55,10 @@
 											</div>
 										</div>
 
-										<!-- Tax -->
+										<!-- Tax number -->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="cus_tax">Tax</label>
+												<label for="cus_tax">Tax number</label>
 												<input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="1234567890123">
 											</div>
 										</div>
