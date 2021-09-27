@@ -31,55 +31,87 @@
 									<div class="card-title">Customer form</div>
 								</div>
 								<div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
+									<h3>1. Customer information</h3>
+									<div class="row">
+										<!-- Company name -->
+                                        <div class="col-md-8">
 											<div class="form-group">
-												<label for="cus_company_name">Company name <span class="text-danger">*</span></label>
+												<label for="cus_company_name">Company name</label>
 												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
                                                 <small class="form-text text-muted">not more than 40 character, unique value</small>
 											</div>
 										</div>
                                     </div>
+
 									<div class="row">
-										<div class="col-md-6 col-lg-4">
-											<div class="form-group form-floating-label">
-												<input id="" type="text" class="form-control input-border-bottom" required>
-												<label for="inputFloatingLabel" class="placeholder">Company name</label>
+										<!-- Branch (optional) -->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="cus_branch">Branch <small class="text-info">(Optional)</small></label>
+												<input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch">
+                                                <small class="form-text text-muted">not more than 40 character</small>
 											</div>
 										</div>
 
-                                        <div class="col-md-6 col-lg-4">
+										<!-- Tax -->
+										<div class="col-md-6">
 											<div class="form-group">
-												<label for="email2">Email Address <span class="text-danger">*</span></label>
-												<input type="email" class="form-control" id="email2" placeholder="Enter Email">
+												<label for="cus_tax">Tax</label>
+												<input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="1234567890123">
+											</div>
+										</div>
+
+										<!-- Address -->
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="cus_address">Company address</label>
+												<textarea class="form-control" id="cus_address" name="cus_address" placeholder="54/1 หมู่ 4 ต.นาป่า อ.เมืองชลบุรี จ.ชลุบรี"></textarea>
+											</div>
+										</div>
+									</div>
+
+									<h3>2. Contact information</h3>
+									<div class="row">
+										<!-- Firstname -->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="cus_firstname">Firstname</label>
+												<input class="form-control" id="cus_firstname" name="cus_firstname" placeholder="Firstname" />
+											</div>
+										</div>
+
+										<!-- Lastname -->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="cus_lastname">Lastname</label>
+												<input class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Lastname" />
+											</div>
+										</div>
+
+										<!-- Email address -->
+                                        <div class="col-md-8">
+											<div class="form-group">
+												<label for="cus_email">Email address</label>
+												<input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="Enter email">
 												<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 											</div>
 										</div>
-                                        <div class="col-md-6 col-lg-4">
-											<div class="form-group form-floating-label">
-                                                <label for="country">Country <span class="text-danger">*</span></label>
-												<div class="ui fluid search selection dropdown">
-                                                    <input type="hidden" name="country" id="country">
-                                                    <i class="dropdown icon"></i>
-                                                    <div class="default text">Select Country</div>
-                                                    <div class="menu">
-                                                    <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-                                                    <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-                                                </div>
-                                            </div>
-										</div>		
-                                        <script>
-                                            $('.ui.fluid.search.selection.dropdown').dropdown();
-                                        </script>
 
-
-                                        
-
+										<!-- Telephone number -->
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="cus_tel">Tel. number</label>
+												<input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="Enter telephone number">
+											</div>
+										</div>
 									</div>
-								</div>
+
 								<div class="card-action">
                                     <input type="reset" class="ui button" value="Cancel">
-                                    <input type="submit" class="ui positive button" value="Submit">
+                                    <button type="submit" class="ui positive button">
+										<i class="plus icon"></i>
+										Add customer
+									</button>
 								</div>
 							</div>
 						</div>

@@ -1,3 +1,21 @@
+<div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Remove service
+        </div>
+        <div class="content">
+            test
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -122,9 +140,12 @@
                                                         <div class="item" onclick="change_location('google')">
                                                             Edit
                                                         </div>
-                                                        <div class="item">
+                                                        <div class="item test button" onclick="get_ser_id('ser_id', <?php echo $arr_service[$i]->ser_id?>)">
                                                             Remove
                                                         </div>
+                                                        <script>
+                                                            $('.ui.modal').modal('attach events', '.test.button', 'show');
+                                                        </script>
                                                     </div>
                                                 </div>
                                             </td>
@@ -140,9 +161,9 @@
         </div>
     </div>
     
-
     <script>
         function change_location(url) {
             window.location = "https://www.google.com";
         }
+        function get_ser_id()
     </script>

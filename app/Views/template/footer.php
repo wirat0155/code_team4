@@ -85,27 +85,27 @@
 							required: 'Please enter a company name.'
 						},
 						cus_tax: {
-							required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-							minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-							maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+							required: 'Please enter a tax number',
+							minlength: 'Tax number should not less than 13 digits',
+							maxlength: 'Tax number should not more than 13 digits',
 						},
 						cus_address: {
-							required: 'กรุณากรอกที่อยู่'
+							required: 'Please enter an address'
 						},
 						cus_firstname: {
-							required: 'กรุณากรอกชื่อจริง'
+							required: 'Please enter a firstname'
 						},
 						cus_lastname: {
-							required: 'กรุณากรอกนามสกุล'
+							required: 'Please enter a lastname'
 						},
 						cus_tel: {
-							required: 'กรุณากรอกเบอร์โทรศัพท์',
-							minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-							maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+							required: 'Please enter a tel number',
+							minlength: 'Tel. number should not less than 10 digits',
+							maxlength: 'Tel. number should not more than 10 digits'
 						},
 						cus_email: {
-							required: 'กรุณากรอกอีเมล',
-							email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+							required: 'Please enter an email address',
+							email: 'Please enter a valid email address'
 						}
 					}
 				})
@@ -116,6 +116,5 @@
 	<script>
 		$('.ui.dropdown').dropdown();   // make it dropdown
 	</script>
-
 </body>
 </html>

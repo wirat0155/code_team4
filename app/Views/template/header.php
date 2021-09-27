@@ -24,6 +24,12 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="http://localhost/code_team4/Assets/css/demo.css">
 
+    <!-- Font Awesome 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+    <!-- Font Awesome 5 -->
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
 	<!-- jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -36,34 +42,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
         integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Font Awesome 4 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Font Awesome 5 -->
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-
-
-
-	<!-- Bootstrap 4 -->
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-	
 	<style>
 		body {
 			color: #444444;
 		}
+		.ui.modal {
+			min-width: 360px;
+			min-height: 190px;
+			height: 20%;
+			top: 135px;
+			max-width: 800px;
+		}
+		@media only screen and (max-width: 767px) {
+			.ui.modal {
+				width: 95%;
+				margin: 0;
+				left: 2vw
+			}
+		}
+		@media only screen and (min-width: 768px) {
+			.ui.modal {
+				width: 95%;
+				margin: 0;
+				left: 10vw;
+			}
+		}
+		@media only screen and (min-width: 1000px) {
+			.ui.modal {
+				left: 13vw;
+			}
+		}
+		@media only screen and (min-width: 1280px) {
+			.ui.modal {
+				left: 20vw;
+			}
+		}
+		@media only screen and (min-width: 1368px) {
+			.ui.modal {
+				left: vw;
+			}
+		}
+		@media only screen and (min-width: 1600px) {
+			.ui.modal {
+				left: 30vw;
+			}
+		}
+		@media only screen and (min-width: 1920px) {
+			.ui.modal {
+				left: 30vw;
+			}
+		}
+		
 	</style>
 </head>
 <body>
+	<!-- <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Profile Picture
+        </div>
+        <div class="content">
+            test
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div> -->
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="blue">
 				
-				<a href="../index.html" class="logo text-white">
-					<img src="http://localhost/code_team4/upload/Logo_IBS.jpg" alt="navbar brand" class="navbar-brand" style="width:5vh; border-radius: 0.25rem;">
-					Container Drop
+				<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>" class="logo text-white">
+					<img src="http://localhost/code_team4/upload/Logo_IBS.svg" alt="navbar brand" class="navbar-brand" style="width:10vh">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -101,7 +158,6 @@
 		</div>
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2">
-			
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<ul class="nav nav-primary">
@@ -118,6 +174,7 @@
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
 							<h4 class="text-section">Modules</h4>
+							<!-- <button class="test button">click</button> -->
 						</li>
 
 						<!-- Service menu -->
@@ -270,3 +327,6 @@
 				</div>
 			</div>
 		</div>
+    <!-- <script>
+        $('.ui.modal').modal('attach events', '.test.button', 'show');
+    </script> -->
