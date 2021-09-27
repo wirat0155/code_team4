@@ -5,7 +5,7 @@
 						<h4 class="page-title">Add customer</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
-								<a href="#">
+								<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
 									<i class="flaticon-home"></i>
 								</a>
 							</li>
@@ -22,6 +22,33 @@
 								<a href="<?php echo base_url() . '/Customer_input/customer_input'?>">Add customer</a>
 							</li>
 						</ul>
+					</div>
+
+
+					<div class="container row">
+						<center>
+						<div class="form-group">
+							<label class="form-label">Step</label>
+							<div class="selectgroup w-100">
+								<label class="selectgroup-item">
+									<input type="radio" name="value" value="50" class="selectgroup-input" checked="">
+									<span class="selectgroup-button">Container</span>
+								</label>
+								<label class="selectgroup-item">
+									<input type="radio" name="value" value="100" class="selectgroup-input">
+									<span class="selectgroup-button">Service</span>
+								</label>
+								<label class="selectgroup-item">
+									<input type="radio" name="value" value="150" class="selectgroup-input">
+									<span class="selectgroup-button">Agent</span>
+								</label>
+								<label class="selectgroup-item">
+									<input type="radio" name="value" value="200" class="selectgroup-input">
+									<span class="selectgroup-button">Customer</span>
+								</label>
+							</div>
+						</div>
+						</center>
 					</div>
                     <form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert'?>" method="POST">
 					<div class="row">

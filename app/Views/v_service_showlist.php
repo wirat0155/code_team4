@@ -37,7 +37,7 @@
                 <h4 class="page-title">Service list</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
-                        <a href="#">
+                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Service</a>
+                        <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service</a>
                     </li>
                 </ul>
             </div>
