@@ -40,8 +40,8 @@
                                         <div class="col-md-8">
 											<div class="form-group">
 												<label for="cus_company_name">Company name</label>
-												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Not more than 40 character">
-                                                <small class="form-text text-muted">not more than 40 character, unique value</small>
+												<input type="text" class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name">
+                                                <small class="form-text text-muted">Not more than 40 character, unique value</small>
 											</div>
 										</div>
                                     </div>
