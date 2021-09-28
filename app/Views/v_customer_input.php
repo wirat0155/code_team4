@@ -94,7 +94,7 @@
                                         <div class="col-md-8">
 											<div class="form-group">
 												<label for="cus_email">Email address</label>
-												<input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="you_address@mail.com">
+												<input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="your_address@mail.com">
 												<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 											</div>
 										</div>
