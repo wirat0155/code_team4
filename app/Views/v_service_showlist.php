@@ -142,12 +142,21 @@
 
                                             <!-- Action -->
                                             <script>
-                                                $('.ui.dropdown').dropdown();   // make it dropdown
+                                                function show_service_menu(ser_id) {
+                                                    $('.menu').css('display', 'none');
+                                                    $('.menu.ser_id_' + ser_id).show();
+                                                }   // make it dropdown
+                                                $(document).click(function() {
+                                                    var container = $(".menu");
+                                                    if (!container.is(event.target) && !container.has(event.target).length) {
+                                                        container.hide();
+                                                    }
+                                                });
                                             </script>
-                                            <td class="text-right">
-                                                <div class="ui dropdown">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                    <div class="menu">
+                                            <td class="text-left">
+                                                <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                    test
+                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>">
                                                         <div class="item" onclick="change_location('google')">
                                                             Charge billing
                                                         </div>
