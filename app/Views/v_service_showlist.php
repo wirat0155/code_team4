@@ -155,7 +155,7 @@
                                             </script>
                                             <td class="text-left">
                                                 <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                    test
+                                                    <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>">
                                                         <div class="item" onclick="change_location('google')">
                                                             Charge billing
