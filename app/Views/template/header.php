@@ -139,43 +139,43 @@
 
           <ul class="mt-6">
             <li class="relative" <?php if($_SESSION['menu'] == 'Dashboard') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Dashboard') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Dashboard/dashboard_show'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Dashboard') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                 <span class="ml-4">หน้าหลัก</span>
               </a>
             </li>
 
             <li class="relative" <?php if($_SESSION['menu'] == 'Service_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Service_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Service_show/service_show_ajax'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Service_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">
                 <span class="ml-4">ข้อมูลบริการ</span>
               </a>
             </li>
 
             <li class="relative" <?php if($_SESSION['menu'] == 'Customer_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Customer_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Customer_show/customer_show_ajax'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Customer_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">
                 <span class="ml-4">ข้อมูลลูกค้า</span>
               </a>
             </li>
 
             <li class="relative" <?php if($_SESSION['menu'] == 'Agent_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Agent_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Agent_show/agent_show_ajax'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Agent_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">
                 <span class="ml-4">ข้อมูลเอเย่นต์</span>
               </a>
             </li>
 
             <li class="relative" <?php if($_SESSION['menu'] == 'Container_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Container_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Container_show/container_show_ajax'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Container_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Container_show/container_show_ajax'?>">
                 <span class="ml-4">ข้อมูลตู้คอนเทนเนอร์</span>
               </a>
             </li>
             
             <li class="relative" <?php if($_SESSION['menu'] == 'Driver_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Driver_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Driver_show/driver_show_ajax'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Driver_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">
                 <span class="ml-4">ข้อมูลพนักงานขับรถ</span>
               </a>
             </li>
 
             <li class="relative" <?php if($_SESSION['menu'] == 'Car_show') echo 'style="background-color: #D2D5DA"'?>>
-              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Car_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/public/Car_show/car_show_ajax'?>">
+              <a style="height: 3.5rem;" class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100 <?php if($_SESSION['menu'] == 'Car_show') echo 'text-gray-800'?>" href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">
                 <span class="ml-4">ข้อมูลรถ</span>
               </a>
             </li>
