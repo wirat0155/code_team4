@@ -1,125 +1,179 @@
-<div class="container px-6 mx-auto grid">
-    <!-- หัวข้อ -->
-    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
-                ข้อมูลพนักงานขับรถ
-            </h2>
-        </div>
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Remove service ?
     </div>
+    <div class="content">
+        <form action="<?php echo base_url() . '/Driver_show/driver_delete' ?>" method="post">
+            <input type="hidden" id="dri_id" name="dri_id">
 
-    <!-- ตารางพนักงานขับรถ -->
-    <div class="w-full overflow-x-auto mb-5 ">
-        <table class="w-full whitespace-no-wrap table ">
-            <thead>
-                <tr class="text-xs font-semibold tracking-wide text-center text-white uppercase bg-dark ">
-                    <th class="px-4 py-3">ชื่อ-สกุล</th>
-                    <th class="px-4 py-3">รถประจำตัว</th>
-                    <th class="px-4 py-3">ประเภทรถ</th>
-                    <th class="px-4 py-3">เลขใบขับขี่</th>
-                    <th class="px-4 py-3">เบอร์โทร</th>
-                    <th class="px-4 py-3">ดำเนินการ</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                    <tr class="text-gray-700 dark:text-gray-400">
+            <p style="font-size: 1rem">Are you sure to remove the service</p>
 
-                        <!-- ชื่อ-สกุล -->
-                        <td class="px-4 py-3" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                            <div class="flex items-center text-sm">
-                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                    <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
-                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                </div>
-
-                                <div class="flex items-center text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                    <?php echo $arr_driver[$i]->dri_name ?>
-                                </div>
-                        </td>
-
-                        <!-- รถประจำตัว -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                            <?php echo $arr_driver[$i]->dri_car_id ?>
-                        </td>
-
-                        <!-- ประเภทรถ -->
-                        <td class="px-4 py-3 text-sm " onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                            <?php echo $arr_driver[$i]->cart_name ?>
-                        </td>
-
-                        <!-- เลขใบขับขี่ -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                            <?php echo $arr_driver[$i]->dri_license ?>
-                        </td>
-
-                        <!-- เบอร์โทร -->
-                        <td class="px-4 py-3 text-sm text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                            <?php echo tel_format($arr_driver[$i]->dri_tel) ?>
-                        </td>
-
-
-                        <td class="px-4 py-3 text-sm text-center">
-                            <!-- ปุ่มแก้ไข -->
-                            <a href="<?php echo base_url() . '/Driver_edit/driver_edit/' . $arr_driver[$i]->dri_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                            <!-- ปุ่มลบ -->
-                            <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-
-</div>
-
-<!-- Modal ยืนยันการลบ -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบพนักงานขับรถ</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="ui info message">
+                <div class="header">
+                    What happening after remove the service
+                </div>
+                <ul class="list">
+                    <li>The service still ramain in database,</li>
+                    <li>But you cannot see the service anymore</li>
+                </ul>
             </div>
-            <form action="<?php echo base_url() . '/Driver_show/driver_delete' ?>" method="post">
-                <div class="modal-body float-center">
-                    <input name="dri_id" id="dri_id" type="hidden">
-                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <input type="submit" class="btn btn-danger" value="ลบ">
-                </div>
-            </form>
-        </div>
+    </div>
+    <div class="actions">
+        <button type="button" class="ui test button">
+            No, keep it
+        </button>
+        <button type="submit" class="ui negative right labeled icon button">
+            Yes, remove it
+            <i class="minus circle icon"></i>
+        </button>
+        </form>
     </div>
 </div>
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Driver list</h4>
+                <ul class="breadcrumbs">
+                    <li class="nav-home">
+                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax' ?>">Driver</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="container-fluid mb-3">
+                <a href="<?php echo base_url() . '/Driver_input/driver_input' ?>" class="btn btn-primary btn-border">
+                    <i class="fas fa-plus"></i>
+                    <b>Add driver</b>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Driver table</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="service_list_table" class="display table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Id.</th>
+                                            <th>Driver name</th>
+                                            <th>Identity car</th>
+                                            <th>Car type</th>
+                                            <th>Driver license number</th>
+                                            <th>Tel.</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id.</th>
+                                            <th>Driver name</th>
+                                            <th>Identity car</th>
+                                            <th>Car type</th>
+                                            <th>Driver license number</th>
+                                            <th>Tel.</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
+                                            <tr>
+                                                <!-- Order -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->dri_id ?>
+                                                </td>
 
-<script>
-    $(document).ready(function() {
-        $('.table').DataTable({
-            "oLanguage": {
-                "sLengthMenu": "แสดง _MENU_ รายการ",
-                "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
-                "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
-                "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
-                "sSearch": "ค้นหา :"
-            },
-            "order" : []
-        });
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/Driver_input/driver_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มคนขับรถ</a>");
-    });
+                                                <td class="px-4 py-3" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <div class="flex items-center text-sm">
+                                                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                            <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
+                                                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                                        </div>
 
-    function get_id(dri_id) {
-        $('#dri_id').val(dri_id);
-    }
+                                                        <div class="flex items-center text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                            <?php echo $arr_driver[$i]->dri_name ?>
+                                                        </div>
+                                                </td>
+                                                <!-- name -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->dri_car_id; ?>
+                                                </td>
+                                                <!-- name -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->cart_name; ?>
+                                                </td>
+                                                <!-- license number -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->dri_license; ?>
+                                                </td>
+                                                <!-- license number -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->dri_tel; ?>
+                                                </td>
 
-    function driver_detail(dri_id) {
-        window.location = '<?php echo base_url('') . '/Driver_show/driver_detail/' ?>' + dri_id;
-    }
-</script>
+
+
+                                                <!-- Action -->
+                                                <script>
+                                                    function show_driver_menu(dri_id) {
+                                                        $('.menu').css('display', 'none');
+                                                        $('.menu.dri_id_' + dri_id).show();
+                                                    } // make it dropdown
+                                                    $(document).click(function() {
+                                                        var container = $(".menu");
+                                                        if (!container.is(event.target) && !container.has(event.target).length) {
+                                                            container.hide();
+                                                        }
+                                                    });
+                                                </script>
+                                                <td class="text-left">
+                                                    <div class="ui dropdown" onclick="show_driver_menu(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                        <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>">
+                                                            <div class="item" onclick="change_location('google')">
+                                                                Charge billing
+                                                            </div>
+                                                            <div class="item" onclick="change_location('google')">
+                                                                Edit
+                                                            </div>
+                                                            <div class="item test button" onclick="get_id(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                                Remove
+                                                            </div>
+                                                            <script>
+                                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function change_location(url) {
+            window.location = "https://www.google.com";
+        }
+
+        function get_id(dri_id) {
+            $('#dri_id').val(dri_id);
+        }
+    </script>
