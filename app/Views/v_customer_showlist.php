@@ -59,11 +59,11 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" >
                                 <table id="customer_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important">
+                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
-                                        <tr style="background-color: #999999; color: white;">
+                                        <tr style="background-color: #999999; color: white; ">
                                             <th class="text-center">No</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>
