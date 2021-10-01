@@ -1,7 +1,4 @@
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -55,25 +52,8 @@
                 </li>
             </ul>
     
-            <!-- Excel and date -->
-            <div class="text-right mb-2">
-                
-                <!-- Download Excel -->
-                <form id='form_Excel' action="<?php echo base_url(). '/Customer_show/export_customer' ?>" method="post" hidden>
-                    <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
-                </form>
-                <form id='form_date' action="<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>" method="post">
-                    
-                    <button type="submit" form="form_Excel" class="shadow-sm btn btn-white text-success bg-white" style=" height: 40px; width: 180px; margin-bottom: 5">
-                        <i class="bi bi-file-arrow-down mr-1"></i>
-                            Download Excel
-                    </button>
-                
-                    <!-- Date -->
-                
-                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 200px;">
-                </form>
-            </div>
+            
+            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
 
             <div class="row">
                 <div class="col-md-12">
@@ -94,7 +74,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for ($i = 0; $i < count($arr_service); $i++) { ?>
+                                        <?php for ($i = 0; $i < count($arr_customer); $i++) { ?>
                                         <tr>
 
                                             <!-- ลำดับ -->
@@ -191,6 +171,7 @@
 
     <script>
     $(document).ready(function() {
+
         // แทรกปุ่ม เพิ่มลูกค้า
         var cus_table = $('#customer_list_table').DataTable({
             "columnDefs": [ {
@@ -212,32 +193,15 @@
             "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
         );
 
-        //วันที่ Date Range Picker
-        $('input[name="date_range"]').daterangepicker({
-            "locale": {
-                "format": 'DD/MM/YYYY',
-                "customRangeLabel": "Custom",
-                "daysOfWeek": [
-                    "อา", "จ", "อ", "พ",
-                    "พฤ", "ศ", "ส"
-                ],
-                "monthNames": [
-                    "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
-                    "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
-                    "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-                ],
-                "firstDay": 1
-            },
-            language: 'th',
+        $('input[name="daterange"]').daterangepicker({
             opens: 'left'
         }, function(start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end
-                .format('YYYY-MM-DD'));
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
         });
 
-        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>\'');
-        $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     });
+
+
 
     function change_location(url) {
         window.location = "https://www.google.com";

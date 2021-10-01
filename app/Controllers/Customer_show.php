@@ -31,30 +31,33 @@ class Customer_show extends Cdms_controller {
         $m_cus = new M_cdms_customer();
         $m_ser = new M_cdms_service();
 
-        if(isset($_POST['date_range'])){
-            $date_range = $this->request->getPost('date_range');
-            $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
-            $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
-            //Data Customer
-            $data['arr_customer'] = $m_cus->get_by_date($start, $end);
-            //Data Service
-            $data['arr_service'] = $m_ser->get_by_date($start, $end);
+        // if(isset($_POST['date_range'])){
+        //     $date_range = $this->request->getPost('date_range');
+        //     $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
+        //     $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
+        //     //Data Customer
+        //     $data['arr_customer'] = $m_cus->get_by_date($start, $end);
+        //     //Data Service
+        //     $data['arr_service'] = $m_ser->get_by_date($start, $end);
             
-            $data['arrivals_date'] = $date_range;
-        }else{
+        //     $data['arrivals_date'] = $date_range;
+        // }else{
 
             //Data Customer
             $data['arr_customer'] = $m_cus->get_all();
             //Data Service
             $data['arr_service'] = $m_ser->get_all();
 
-            $index = count($data['arr_service'])-1;
-            $start = $data['arr_service'][$index]->ser_arrivals_date;
-            $end = $data['arr_service'][0]->ser_arrivals_date;
-            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
-                                    ' - '. date("d-m-Y");
-        }
-
+        //     $index = count($data['arr_service'])-1;
+        //     $start = $data['arr_service'][$index]->ser_arrivals_date;
+        //     $end = $data['arr_service'][0]->ser_arrivals_date;
+        //     $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
+        //                             ' - '. date("d-m-Y");
+        // }
+        // echo "<pre>";
+        // print_r($data['arr_service'][0]);
+        // print_r($data['arr_customer'] [0]);
+        // echo "</pre>";
         $this->output('v_customer_showlist', $data);
     }
 
