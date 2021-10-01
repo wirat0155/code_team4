@@ -1,109 +1,194 @@
-<div class="container px-6 mx-auto grid">
+<style>
+th{
+  color: white;
+  background: rgb(153, 153, 153);
+}
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+hr {
+  border-top: 1px solid #041F47;
+}
+.hiddenli {
+ list-style-type: none;
+ color: black;
+}
+</style>
 
-    <!-- หัวข้อ -->
-    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
-                ข้อมูลเอเย่นต์
-            </h2>
+
+
+<div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Remove agent ?
         </div>
-    </div>
-
-    <div class="w-full overflow-x-auto">
-        <table class="w-full whitespace-no-wrap table">
-            <thead>
-                <tr class="text-xs font-semibold tracking-wide text-center text-white uppercase bg-dark">
-                    <th class="px-4 py-3">บริษัท</th>
-                    <th class="px-4 py-3">ผู้รับผิดชอบ</th>
-                    <th class="px-4 py-3">จำนวนตู้ที่กำลังใช้</th>
-                    <th class="px-4 py-3">เบอร์โทรศัพท์</th>
-                    <th class="px-4 py-3">อีเมล</th>
-                    <th class="px-4 py-3">ดำเนินการ</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                <?php
-                for ($i = 0; $i < count($arr_agent); $i++) {
-                ?>
-                    <tr class="text-gray-700 dark:text-gray-400">
-                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
-                            <?php echo $arr_agent[$i]->agn_company_name ?></p>
-                        </td>
-
-                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
-                            <?php echo $arr_agent[$i]->agn_firstname . " " . $arr_agent[$i]->agn_lastname ?>
-                        </td>
-
-                        <td class="px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
-                            <?php
-                            $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
-                            echo ($count_container != 0) ? $count_container : '0';
-                            ?>
-                        </td>
-
-                        <td class="phone px-4 py-3 text-sm text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
-                            <?php echo tel_format($arr_agent[$i]->agn_tel) ?>
-                        </td>
-
-                        <td class="px-4 py-3 text-sm" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
-                            <?php echo $arr_agent[$i]->agn_email ?>
-                        </td>
-
-                        <!-- ดำเนินการ -->
-                        <td class="px-4 py-3 text-sm text-center">
-                            <!-- ปุ่มแก้ไข -->
-                            <a href="<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>" class="btn btn-warning p-2"><i class="bi bi-pencil-square"></i></a>
-                            <!-- ปุ่มลบ -->
-                            <button type="button" class="btn btn-danger p-2" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_agent[$i]->agn_id ?>)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-
-</div>
-<!-- Modal ยืนยันการลบ -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบเอเย่นต์</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="content">
+            <form action="<?php echo base_url() . '/Agent_show/Agent_delete' ?>" method="post">
+                <input type="hidden" id="agn_id" name="agn_id">
+            
+            <p style="font-size: 1rem">Are you sure to remove the agent</p>
+            
+            <div class="ui info message">
+                <div class="header">
+                    What happening after remove the agent
+                </div>
+                <ul class="list">
+                    <li>The agent still ramain in database,</li>
+                    <li>But you cannot see the agent anymore</li>
+                </ul>
             </div>
-            <form action="<?php echo base_url() . '/Agent_show/agent_delete' ?>" method="post">
-                <div class="modal-body float-center">
-                    <!-- เก็บ Agent Id -->
-                    <input name="agn_id" id="agn_id" type="hidden">
-                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <input type="submit" class="btn btn-danger" value="ลบ">
-                </div>
+        </div>
+        <div class="actions">
+            <button type="button" class="ui test button">
+                No, keep it
+            </button>
+            <button type="submit" class="ui negative right labeled icon button">
+                Yes, remove it
+                <i class="minus circle icon"></i>
+            </button>
             </form>
         </div>
     </div>
-</div>
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-header">
+                <h4 class="page-title">Agent list</h4>
+                
+            </div>
+            <hr>
+            
+                <li class="nav-home hiddenli">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>" style="color: black">
+                        <i class="flaticon-home"></i>&nbsp;
+                    </a>
+                    <i class="flaticon-right-arrow" style="color: black"></i>&nbsp;
+                    <a href="<?php echo base_url() . '/Agent_show/Agent_show_ajax'?>">Agent</a>
+                </li>
+        
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            <table id="Agent_list_table" class="display table table-hover cell-border"
+                                    style="border-collapse: collapse !important">
+                                    <thead>
+                                        <tr>
+                                            <th>Id.</th>
+                                            <th>Con. name</th>
+                                            <th>Responsible person</th>
+                                            <th>Amount of con.</th>
+                                            <th>Tel</th>
+                                            <th style="width: 15%">Email</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <?php for ($i = 0; $i < count($arr_agent); $i++) { ?>
+                                        <tr>
+                                            <!-- Order -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php echo $arr_agent[$i]->agn_id; ?>
+                                            </td>
+                                            <!-- Container number -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php echo $arr_agent[$i]->agn_company_name; ?>
+                                            </td>
 
+                                            <!-- Status container -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php echo $arr_agent[$i]->agn_firstname . " " . $arr_agent[$i]->agn_lastname; ?>
+                                            </td>
+
+                                            <!-- Container type -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php
+                                                    $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
+                                                    echo ($count_container != 0) ? $count_container : '0';
+                                                ?>
+                                            </td>
+
+                                            <!-- Cut-off -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php echo tel_format($arr_agent[$i]->agn_tel) ?>
+                                            </td>
+
+                                            <!-- Agent -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php echo $arr_agent[$i]->agn_email ?>
+                                            </td>
+
+                                            <!-- Action -->
+                                            <script>
+                                                function show_agent_menu(agn_id) {
+                                                    $('.menu').css('display', 'none');
+                                                    $('.menu.agn_id_' + agn_id).show();
+                                                }   // make it dropdown
+                                                $(document).click(function() {
+                                                    var container = $(".menu");
+                                                    if (!container.is(event.target) && !container.has(event.target).length) {
+                                                        container.hide();
+                                                    }
+                                                });
+                                            </script>
+                                            <td class="text-center">
+                                                <div class="ui dropdown" onclick="show_agent_menu(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                    <div class="menu agn_id_<?php echo $arr_agent[$i]->agn_id ?>">
+                                                        
+                                                        <div class="item" onclick="location.href='<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>';">
+                                                            Edit
+                                                        </div>
+                                                        <div class="item test button" onclick="get_id(<?php echo $arr_agent[$i]->agn_id?>)">
+                                                            Remove
+                                                        </div>
+                                                        <script>
+                                                            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 <script>
     $(document).ready(function() {
-        $('.table').DataTable({
-            "oLanguage": {
-                "sLengthMenu": "แสดง _MENU_ รายการ",
-                "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ รายการ",
-                "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
-                "sInfoFiltered": "(จากรายการทั้งหมด _MAX_ รายการ)",
-                "sSearch": "ค้นหา :"
-            },
-            "order" : []
+
+        // แทรกปุ่ม เพิ่มลูกค้า
+        var cus_table = $('#Agent_list_table').DataTable({
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": [0,6]
+            } ],
+            "order": []
         });
-        $("#DataTables_Table_0_filter").append("<a href='<?php echo base_url() . '/Agent_input/agent_input' ?>' class='shadow-sm px-4 py-2 text-sm font-medium leading-5 text-white bg-success rounded-lg ml-2'>เพิ่มเอเย่นต์</a>");
+
+        //ลำดับ
+        cus_table.on( 'order.dt search.dt', function () {
+            cus_table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1+'.';
+            } );
+        } ).draw();
+
+        $("#Agent_list_table_filter").append(
+            "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
+        );
+
     });
 
     function get_id(agn_id) {
