@@ -231,7 +231,7 @@
 							<div class="collapse" id="agent">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Agent_show/aget_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">
 											<span class="sub-item">Agent list</span>
 										</a>
 									</li>
