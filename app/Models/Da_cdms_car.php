@@ -7,9 +7,9 @@ use CodeIgniter\Model;
 /*
 * Da_cdms_car
 * เพิ่ม ลบ แก้ไขข้อมุลรถ
-* @author Nattanan Tadsawan
+* @author Nattanan Tadsawan Warisara
 * @Create Date 2564-07-29
-* @Update Date 2564-08-09
+* @Update Date 2564-10-01
 */
 
 class Da_cdms_car extends Model {
