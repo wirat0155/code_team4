@@ -2,21 +2,21 @@
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
-        Remove service ?
+        Remove Customer ?
     </div>
     <div class="content">
-        <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
+        <form action="<?php echo base_url() . '/Customer_show/customer_delete' ?>" method="post">
             <input type="hidden" id="cus_id" name="cus_id">
 
-            <p style="font-size: 1rem">Are you sure to remove the service</p>
+            <p style="font-size: 1rem">Are you sure to remove the Customer</p>
 
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the service
+                    What happening after remove the Customer
                 </div>
                 <ul class="list">
-                    <li>The service still ramain in database,</li>
-                    <li>But you cannot see the service anymore</li>
+                    <li>The customer still ramain in database,</li>
+                    <li>But you cannot see the customer anymore</li>
                 </ul>
             </div>
     </div>
@@ -192,12 +192,6 @@
         $("#customer_list_table_filter").append(
             "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
         );
-
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-        }, function(start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-        });
 
     });
 
