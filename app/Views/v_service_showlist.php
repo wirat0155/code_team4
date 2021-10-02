@@ -35,21 +35,21 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="pl-3 page-title">SERVICE INFORMATION</h4>
-                <ul class="pl-2 breadcrumbs">
-                    <li class="nav-home">
-                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
-                            <i class="flaticon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service</a>
-                    </li>
-                </ul>
             </div>
             <hr width="95%" color="696969">
+            <ul class="pl-2 breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service</a>
+                </li>
+            </ul>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -204,5 +204,9 @@
 
     function get_id(ser_id) {
         $('#ser_id').val(ser_id);
+    }
+
+    function service_detail(ser_id) {
+        window.location = '<?php echo base_url('') . '/Service_show/service_detail/' ?>' + ser_id;
     }
     </script>
