@@ -39,7 +39,7 @@
             <hr width="95%" color="696969">
             <ul class="pl-2 breadcrumbs">
                 <li class="nav-home">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -47,11 +47,11 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">Driver</a>
+                    <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax' ?>">Driver</a>
                 </li>
             </ul>
-    
-            
+
+
 
 
             <div class="row">
@@ -59,11 +59,11 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="driver_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important">
+                                <table id="driver_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
                                             <th>Id.</th>
+                                            <th>Image</th>
                                             <th>Driver name</th>
                                             <th>Identity car</th>
                                             <th>Car type</th>
@@ -72,31 +72,33 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-            
+
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                             <tr>
-                                                <!-- Order -->
-                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                    <?php echo $arr_driver[$i]->dri_id ?>
-                                                </td>
+                                                <!-- ลำดับ -->
+                                                <td> </td>
 
-                                                <td class="px-4 py-3" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                    <!-- <div class="flex items-center text-sm">
-                                                        <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                                            <img class="object-cover w-full h-full rounded-full" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
-                                                            <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                                        </div> -->
-
-                                                    <div class="flex items-center text-sm" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                        <?php echo $arr_driver[$i]->dri_name ?>
+                                                <!-- รูปภาพ -->
+                                                <td class="px-4 py-3">
+                                                    <div class="avatar avatar-lg">
+                                                        <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
+                                                    </div>
+                                                    <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
                                                     </div>
                                                 </td>
+
                                                 <!-- name -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->dri_name ?>
+                                                </td>
+
+
+                                                <!-- car id -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->dri_car_id; ?>
                                                 </td>
-                                                <!-- name -->
+                                                <!-- car type name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->cart_name; ?>
                                                 </td>
@@ -104,7 +106,7 @@
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->dri_license; ?>
                                                 </td>
-                                                <!-- license number -->
+                                                <!-- tel -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->dri_tel; ?>
                                                 </td>
@@ -118,9 +120,9 @@
                                                         $('.menu.dri_id_' + dri_id).show();
                                                     } // make it dropdown
                                                     $(document).click(function() {
-                                                        var container = $(".menu");
-                                                        if (!container.is(event.target) && !container.has(event.target).length) {
-                                                            container.hide();
+                                                        var driver = $(".menu");
+                                                        if (!driver.is(event.target) && !container.has(event.target).length) {
+                                                            driver.hide();
                                                         }
                                                     });
                                                 </script>
@@ -128,9 +130,6 @@
                                                     <div class="ui dropdown" onclick="show_driver_menu(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                         <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>">
-                                                            <div class="item" onclick="change_location('google')">
-                                                                Charge billing
-                                                            </div>
                                                             <div class="item" onclick="change_location('google')">
                                                                 Edit
                                                             </div>
@@ -190,5 +189,9 @@
 
         function get_id(dri_id) {
             $('#dri_id').val(dri_id);
+        }
+
+        function driver_detail(dri_id) {
+            window.location = '<?php echo base_url('') . '/Driver_show/driver_detail/' ?>' + dri_id;
         }
     </script>
