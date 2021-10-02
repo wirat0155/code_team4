@@ -63,20 +63,21 @@
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
-                                            <th class="text-center">Nember</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Number</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">type</th>
                                             <th class="text-center">Size</th>
                                             <th class="text-center">Agent</th>
-                                            <th class="text-center">Action</th>
                                             <th class="text-center"></th>
+
                                         </tr>
                                     </thead>
 
                                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                                         <?php for ($i = 0; $i < count($arr_container); $i++) { ?>
                                         <tr class="text-gray-700 dark:text-gray-400">
-
+                                            <td></td>
                                             <!-- หมายเลขตู้ -->
                                             <td class="px-4 py-3"
                                                 onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
