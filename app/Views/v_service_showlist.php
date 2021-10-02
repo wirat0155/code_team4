@@ -1,14 +1,14 @@
 <div class="ui modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Remove service ?
-        </div>
-        <div class="content">
-            <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
-                <input type="hidden" id="ser_id" name="ser_id">
-            
+    <i class="close icon"></i>
+    <div class="header">
+        Remove service ?
+    </div>
+    <div class="content">
+        <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
+            <input type="hidden" id="ser_id" name="ser_id">
+
             <p style="font-size: 1rem">Are you sure to remove the service</p>
-            
+
             <div class="ui info message">
                 <div class="header">
                     What happening after remove the service
@@ -18,24 +18,24 @@
                     <li>But you cannot see the service anymore</li>
                 </ul>
             </div>
-        </div>
-        <div class="actions">
-            <button type="button" class="ui test button">
-                No, keep it
-            </button>
-            <button type="submit" class="ui negative right labeled icon button">
-                Yes, remove it
-                <i class="minus circle icon"></i>
-            </button>
-            </form>
-        </div>
     </div>
+    <div class="actions">
+        <button type="button" class="ui test button">
+            No, keep it
+        </button>
+        <button type="submit" class="ui negative right labeled icon button">
+            Yes, remove it
+            <i class="minus circle icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Service list</h4>
-                <ul class="breadcrumbs">
+                <h4 class="pl-3 page-title">SERVICE INFORMATION</h4>
+                <ul class="pl-2 breadcrumbs">
                     <li class="nav-home">
                         <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                             <i class="flaticon-home"></i>
@@ -49,63 +49,46 @@
                     </li>
                 </ul>
             </div>
-            <div class="container-fluid mb-3">
-                <a href="<?php echo base_url() . '/Service_input/service_input'?>" class="btn btn-primary btn-border">
-                    <i class="fas fa-plus"></i>
-                    <b>Add service</b>
-                </a>
-            </div>
+            <hr width="95%" color="696969">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Service table</h4>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="service_list_table" class="display table table-hover" >
+                                <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
-                                        <tr>
-                                            <th>Id.</th>
-                                            <th>Con. number</th>
-                                            <th>Status</th>
-                                            <th>Type</th>
-                                            <th>Con. type</th>
-                                            <th style="width: 15%">Cut-off</th>
-                                            <th>Agent</th>
-                                            <th>Customer</th>
-                                            <th>Action</th>
+                                        <tr style="background-color: #999999; color: white; ">
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Con. number</th>
+                                            <th class="text-center">Con. status</th>
+                                            <th class="text-center">Con. type</th>
+                                            <th class="text-center" style="width: 15%">Cut-off</th>
+                                            <th class="text-center">Act. dep.</th>
+                                            <th class="text-center">Agent</th>
+                                            <th class="text-center">Customer</th>
+                                            <th class="text-center"></th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Id.</th>
-                                            <th>Con. number</th>
-                                            <th>Status</th>
-                                            <th>Type</th>
-                                            <th>Con. type</th>
-                                            <th>Cut-off</th>
-                                            <th>Agent</th>
-                                            <th>Customer</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
+
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_service); $i++) { ?>
                                         <tr>
-                                            <!-- Order -->
+                                            <!-- ลำดับ -->
+                                            <td> </td>
+
+                                            <!-- Order 
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->ser_id ?>
-                                            </td>
+                                            </td> -->
                                             <!-- Container number -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->con_number; ?>
                                             </td>
 
-                                            <!-- Status container -->
+                                            <!-- Status container 
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->stac_name; ?>
-                                            </td>
+                                            </td> -->
 
                                             <!-- Service type -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
@@ -129,6 +112,10 @@
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo date_thai($arr_service[$i]->ser_departure_date) ?>
                                             </td>
+                                            <!-- Act. dep. -->
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                <?php echo date_thai($arr_service[$i]->ser_departure_date) ?>
+                                            </td>
 
                                             <!-- Agent -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
@@ -142,21 +129,21 @@
 
                                             <!-- Action -->
                                             <script>
-                                                function show_service_menu(ser_id) {
-                                                    $('.menu').css('display', 'none');
-                                                    $('.menu.ser_id_' + ser_id).show();
-                                                }   // make it dropdown
-                                                $(document).click(function() {
-                                                    var container = $(".menu");
-                                                    if (!container.is(event.target) && !container.has(event.target).length) {
-                                                        container.hide();
-                                                    }
-                                                });
+                                            function show_service_menu(ser_id) {
+                                                $('.menu').css('display', 'none');
+                                                $('.menu.ser_id_' + ser_id).show();
+                                            } // make it dropdown
+                                            $(document).click(function() {
+                                                var container = $(".menu");
+                                                if (!container.is(event.target) && !container.has(event.target).length) {
+                                                    container.hide();
+                                                }
+                                            });
                                             </script>
                                             <td class="text-left">
                                                 <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
-                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>">
+                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
                                                             Charge billing
                                                         </div>
@@ -167,7 +154,7 @@
                                                             Remove
                                                         </div>
                                                         <script>
-                                                            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                        $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
                                                 </div>
@@ -183,12 +170,39 @@
             </div>
         </div>
     </div>
-    
+
     <script>
-        function change_location(url) {
-            window.location = "https://www.google.com";
-        }
-        function get_id(ser_id) {
-            $('#ser_id').val(ser_id);
-        }
+    $(document).ready(function() {
+        // แทรกปุ่ม เพิ่มบริการ
+        var ser_table = $('#service_list_table').DataTable({
+            "columnDefs": [{
+                "searchable": false,
+                "orderable": false,
+                "targets": [0, 8]
+            }],
+            "order": []
+        });
+
+        //ลำดับ
+        ser_table.on('order.dt search.dt', function() {
+            ser_table.column(0, {
+                search: 'applied',
+                order: 'applied'
+            }).nodes().each(function(cell, i) {
+                cell.innerHTML = i + 1 + '.';
+            });
+        }).draw();
+
+        $("#service_list_table_filter").append(
+            "<a href='<?php echo base_url() . '/Service_input/service_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
+        );
+    });
+
+    function change_location(url) {
+        window.location = "https://www.google.com";
+    }
+
+    function get_id(ser_id) {
+        $('#ser_id').val(ser_id);
+    }
     </script>
