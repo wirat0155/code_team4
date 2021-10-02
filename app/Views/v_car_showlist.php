@@ -14,8 +14,8 @@
                     What happening after remove the Car
                 </div>
                 <ul class="list">
-                    <li>The customer still ramain in database,</li>
-                    <li>But you cannot see the customer anymore</li>
+                    <li>The car still ramain in database,</li>
+                    <li>But you cannot see the car anymore</li>
                 </ul>
             </div>
     </div>
@@ -47,19 +47,20 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Car</a>
+                    <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Driver</a>
                 </li>
             </ul>
     
-           
+        
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="car_list_table" class="display table table-hover" >
+                                <table id="car_list_table" class="display table table-hover cell-border"
+                                    style="border-collapse: collapse !important">
                                     <thead>
-                                        <tr>
+                                        <tr style="background-color: #999999; color: white;">
                                             <th>Car ID.</th>
                                             <th>Image</th>
                                             <th>Car code.</th>
@@ -69,17 +70,6 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Car ID.</th>
-                                            <th>Image</th>
-                                            <th>Car code.</th>
-                                            <th>Cartype name.</th>
-                                            <th>Brand.</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                    
                                     <tbody 
                                         class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -91,7 +81,9 @@
 
                                                 <!-- รูปภาพ -->
                                                     <td class="px-4 py-3">
-                                                            <img src=" " class="img-circle" alt=" " width="304" height="236" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
+                                                        <div class = "avatar avatar-lg">
+                                                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
+                                                        </div>
                                                             <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
                                                             </div>
                                                     </td>
