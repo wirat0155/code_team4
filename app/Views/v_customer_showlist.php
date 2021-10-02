@@ -1,4 +1,3 @@
-
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -51,17 +50,16 @@
                     <a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Customer</a>
                 </li>
             </ul>
-    
-            
+
+
 
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive" >
-                                <table id="customer_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                            <div class="table-responsive">
+                                <table id="customer_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white; ">
                                             <th class="text-center">No</th>
@@ -78,7 +76,7 @@
                                         <tr>
 
                                             <!-- ลำดับ -->
-                                            <td>  </td>
+                                            <td> </td>
 
                                             <!-- ชื่อบริษัท -->
                                             <td onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
@@ -94,8 +92,7 @@
                                             </td>
 
                                             <!-- จำนวนตู้ที่ใช้ -->
-                                            <td class="text-center"
-                                                onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                                            <td class="text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                 <?php
                                                     $count_container = 0;
                                                     for ($j = 0; $j < count($arr_service); $j++) {
@@ -134,20 +131,18 @@
                                             });
                                             </script>
                                             <td class="text-left">
-                                                <div class="ui dropdown"
-                                                    onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)">
+                                                <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu cus_id_<?php echo $arr_customer[$i]->cus_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
-                                                            <i class='far fa-money-bill-alt' style="font-size: 110%;"> </i> &nbsp; 
+                                                            <i class='far fa-money-bill-alt' style="font-size: 110%;"> </i> &nbsp;
                                                             Charge billing
                                                         </div>
                                                         <div class="item" onclick="change_location('google')">
-                                                            <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
-                                                            Edit 
+                                                            <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
+                                                            Edit
                                                         </div>
-                                                        <div class="item test button"
-                                                            onclick="get_id(<?php echo $arr_customer[$i]->cus_id?>)">
+                                                        <div class="item test button" onclick="get_id(<?php echo $arr_customer[$i]->cus_id?>)">
                                                             <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
                                                             Remove
                                                         </div>
@@ -174,20 +169,23 @@
 
         // แทรกปุ่ม เพิ่มลูกค้า
         var cus_table = $('#customer_list_table').DataTable({
-            "columnDefs": [ {
+            "columnDefs": [{
                 "searchable": false,
                 "orderable": false,
-                "targets": [0,6]
-            } ],
+                "targets": [0, 6]
+            }],
             "order": []
         });
 
         //ลำดับ
-        cus_table.on( 'order.dt search.dt', function () {
-            cus_table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                cell.innerHTML = i+1+'.';
-            } );
-        } ).draw();
+        cus_table.on('order.dt search.dt', function() {
+            cus_table.column(0, {
+                search: 'applied',
+                order: 'applied'
+            }).nodes().each(function(cell, i) {
+                cell.innerHTML = i + 1 + '.';
+            });
+        }).draw();
 
         $("#customer_list_table_filter").append(
             "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
