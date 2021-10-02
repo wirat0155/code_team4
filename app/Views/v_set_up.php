@@ -62,7 +62,7 @@
                                         <p class="card-category"> Container type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
-                                        <p class="card-text text-right mt-3"><a href="#" class="text-muted">Set Up ></a>
+                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                         <hr width="70%" color="696969" align="left">
                                         <p class="card-category"> Container status set up such as,
                                             new status, and switch on-off </p>
-                                        <p class="card-text text-right mt-3"><a href="#" class="text-muted">Set Up ></a>
+                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                         <p class="card-category"> Container size set up such as,
                                             new size, width, length, height,
                                             upload image and switch on-off </p>
-                                        <p class="card-text text-right mt-3"><a href="#" class="text-muted">Set Up ></a>
+                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
@@ -130,8 +130,7 @@
                                         <p class="card-category"> Car type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
-                                        <p class="card-text text-right mt-3"><a href="#" class="text-muted">Set Up ></a>
-                                        </p>
+                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
                                     </div>
                                 </div>
                             </div>
