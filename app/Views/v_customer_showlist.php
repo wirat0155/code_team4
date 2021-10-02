@@ -172,7 +172,7 @@
     <script>
     $(document).ready(function() {
 
-        // แทรกปุ่ม เพิ่มลูกค้า
+        // แทรกปุ่ม เพิ่มรถ
         var cus_table = $('#customer_list_table').DataTable({
             "columnDefs": [ {
                 "searchable": false,
