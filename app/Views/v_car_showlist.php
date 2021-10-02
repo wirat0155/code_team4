@@ -67,7 +67,7 @@
                                             <th>Cartype name.</th>
                                             <th>Brand.</th>
                                             <th>Status</th>
-                                            <th>Action</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                    
@@ -117,33 +117,38 @@
 
                                                 <!-- Action -->
                                                 <script>
-                                                    function show_car_menu(car_id) {
+                                                    function show_service_menu(car_id) {
                                                         $('.menu').css('display', 'none');
                                                         $('.menu.car_id_' + car_id).show();
-                                                    }   // make it dropdown
+                                                    } // make it dropdown
                                                     $(document).click(function() {
                                                         var container = $(".menu");
-                                                        if (!container.is(event.target) && !container.has(event.target).length) {
-                                                        container.hide();
+                                                        if (!container.is(event.target) && !container.has(event.target)
+                                                            .length) {
+                                                            container.hide();
                                                         }
                                                     });
-                                                </script>
+                                            </script>
 
                                                 <td class="text-left">
-                                                    <div class="ui dropdown" onclick="show_car_menu(<?php echo $arr_car[$i]->car_id ?>)">
+                                                    <div class="ui dropdown"
+                                                        onclick="show_service_menu(<?php echo $arr_car[$i]->car_id ?>)">
                                                         <i class="fas fa-ellipsis-v"></i>
-                                                        <div class="menu car_id_<?php echo $arr_car[$i]->car_id ?>">
-
+                                                        <div class="menu car_id_<?php echo $arr_car[$i]->car_id ?>" style="right: 0;left: auto;">
+                                                            <!-- Button Edit -->
                                                             <div class="item" onclick="change_location('google')">
-                                                            Edit
+                                                                <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
+                                                                Edit 
                                                             </div>
-
-                                                            <div class="item test button" onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
-                                                            Remove
+                                                            <!-- Button Remove -->
+                                                            <div class="item test button"
+                                                                onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
+                                                                <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
+                                                                Remove
                                                             </div>
-                                                                <script>
+                                                            <script>
                                                             $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                                </script>
+                                                            </script>
                                                         </div>
                                                     </div>
                                                 </td>

@@ -1,68 +1,53 @@
-<style>
-    .upload-file {
-        background-color: #eeeee4;
-        border: none;
-        color: black;
-        border-radius: 8px;
-        font-size: 14px;
-        padding: 8px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
+<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title">Add car</h4>
+						<ul class="breadcrumbs">
+							<li class="nav-home">
+								<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+									<i class="flaticon-home"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Car</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="<?php echo base_url() . '/Customer_input/customer_input'?>">Add car</a>
+							</li>
+						</ul>
+					</div>
 
-    .input-image {
-        height: 0;
-        width: 0;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        cursor: pointer;
-    }
+                    <?php echo show_add_customer_form(); ?>
+                    <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert' ?>" enctype="multipart/form-data" method="POST">
+                        <div class="row" id="customer_section" style="display: none">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="card-title">Car form</div>
+                                    </div>
+                                    <div class="card-body">
+                                    <h3>1. Car information</h3>
 
-    #file_name {
-        display: block;
-        /* or inline-block */
-        text-overflow: ellipsis;
-        word-wrap: break-word;
-        overflow: hidden;
-        max-height: 100%;
-        line-height: 1.5em;
-        margin-top: 10;
-    }
-</style>
-
-<div class="container px-3 mx-auto grid">
-
-    <!-- หัวข้อ -->
-    <di class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
-                เพิ่มข้อมูลรถ
-            </h2>
-        </div>
-    </di>
-
-    <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert' ?>" enctype="multipart/form-data" method="POST">
-        <div class="container-sm col-12 col-xl-7">
-            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ข้อมูลรถ</h2>
-                <hr class="mb-1">
-
-                <div class="row">
-                    <!-- car form left -->
-                    <div class="col-12 col-md-6">
-                        <!-- หมายเลขรถ -->
-                        <div class="row mt-3">
-                            <div class="col-12 col-sm-4">
-                                <label class="block text-sm mt-3">
-                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-sm-8">
-                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" placeholder="10">
-                            </div>
-                        </div>
+                                    <div class="row">
+                                        <!-- หมายเลขรถ -->
+                                        <div class="row mt-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label class="block text-sm mt-3">
+                                                    <span class="text-gray-700 dark:text-gray-400">หมายเลขรถ</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 col-sm-8">
+                                                <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="car_number" placeholder="10">
+                                            </div>
+                                        </div>
+                                    </div>
 
                         <!-- ทะเบียน -->
                         <div class="row mt-3">
