@@ -17,58 +17,61 @@ hr {
 }
 </style>
 
-
-
 <div class="ui modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Remove agent ?
-        </div>
-        <div class="content">
-            <form action="<?php echo base_url() . '/Agent_show/Agent_delete' ?>" method="post">
-                <input type="hidden" id="agn_id" name="agn_id">
-            
-            <p style="font-size: 1rem">Are you sure to remove the agent</p>
-            
+    <i class="close icon"></i>
+    <div class="header">
+        Remove Agent ?
+    </div>
+    <div class="content">
+        <form action="<?php echo base_url() . '/Agent_show/agent_delete' ?>" method="post">
+            <input type="hidden" id="cus_id" name="cus_id">
+
+            <p style="font-size: 1rem">Are you sure to remove the Agent</p>
+
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the agent
+                    What happening after remove the Agent
                 </div>
                 <ul class="list">
-                    <li>The agent still ramain in database,</li>
-                    <li>But you cannot see the agent anymore</li>
+                    <li>The Agent still ramain in database,</li>
+                    <li>But you cannot see the Agent anymore</li>
                 </ul>
             </div>
-        </div>
-        <div class="actions">
-            <button type="button" class="ui test button">
-                No, keep it
-            </button>
-            <button type="submit" class="ui negative right labeled icon button">
-                Yes, remove it
-                <i class="minus circle icon"></i>
-            </button>
-            </form>
-        </div>
     </div>
+    <div class="actions">
+        <button type="button" class="ui test button">
+            No, keep it
+        </button>
+        <button type="submit" class="ui negative right labeled icon button">
+            Yes, remove it
+            <i class="minus circle icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="page-header">
-                <h4 class="page-title">Agent list</h4>
-                
+            <div class="pl-4 mt-4 page-header mb-0">
+                <h4 class="pl-3 page-title">AGENT INFORMATION</h4>
             </div>
-            <hr>
-            
-                <li class="nav-home hiddenli">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>" style="color: black">
-                        <i class="flaticon-home"></i>&nbsp;
+            <hr width="95%" color="696969">
+            <ul class="pl-2 breadcrumbs">
+                <li class="nav-home">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                        <i class="flaticon-home"></i>
                     </a>
-                    <i class="flaticon-right-arrow" style="color: black"></i>&nbsp;
-                    <a href="<?php echo base_url() . '/Agent_show/Agent_show_ajax'?>">Agent</a>
                 </li>
-        
-            </div>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent</a>
+                </li>
+            </ul>
+
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -78,13 +81,13 @@ hr {
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Company</th>
-                                            <th>Responsible person</th>
-                                            <th>Number container</th>
-                                            <th>Tel.</th>
-                                            <th>Email</th>
-                                            <th> </th>
+                                            <th class="text-center">No.</th>
+                                            <th class="text-center">Company</th>
+                                            <th class="text-center">Responsible person</th>
+                                            <th class="text-center">Number container</th>
+                                            <th class="text-center">Tel.</th>
+                                            <th class="text-center">Email</th>
+                                            <th > </th>
                                         </tr>
                                     </thead>
                                     
@@ -92,7 +95,7 @@ hr {
                                         <?php for ($i = 0; $i < count($arr_agent); $i++) { ?>
                                         <tr>
                                             <!-- Order -->
-                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                            <td class="text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php echo $arr_agent[$i]->agn_id; ?>
                                             </td>
                                             <!-- Container number -->
@@ -106,7 +109,7 @@ hr {
                                             </td>
 
                                             <!-- Container type -->
-                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                            <td class="text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php
                                                     $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
                                                     echo ($count_container != 0) ? $count_container : '0';
@@ -181,24 +184,19 @@ hr {
             } ],
             "order": []
         });
-
         //ลำดับ
         cus_table.on( 'order.dt search.dt', function () {
             cus_table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
                 cell.innerHTML = i+1+'.';
             } );
         } ).draw();
-
         $("#Agent_list_table_filter").append(
             "<a href='<?php echo base_url() . '/Agent_input/agent_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
         );
-
     });
-
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
-
     function agent_detail(agn_id) {
         window.location = '<?php echo base_url('') . '/Agent_show/agent_detail/' ?>' + agn_id;
     }
