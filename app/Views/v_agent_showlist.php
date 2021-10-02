@@ -78,13 +78,13 @@ hr {
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr>
-                                            <th>Id.</th>
-                                            <th>Con. name</th>
+                                            <th>No.</th>
+                                            <th>Company</th>
                                             <th>Responsible person</th>
-                                            <th>Amount of con.</th>
-                                            <th>Tel</th>
-                                            <th style="width: 15%">Email</th>
-                                            <th class="text-center">Action</th>
+                                            <th>Number container</th>
+                                            <th>Tel.</th>
+                                            <th>Email</th>
+                                            <th> </th>
                                         </tr>
                                     </thead>
                                     
@@ -125,30 +125,34 @@ hr {
 
                                             <!-- Action -->
                                             <script>
-                                                function show_agent_menu(agn_id) {
-                                                    $('.menu').css('display', 'none');
-                                                    $('.menu.agn_id_' + agn_id).show();
-                                                }   // make it dropdown
-                                                $(document).click(function() {
-                                                    var container = $(".menu");
-                                                    if (!container.is(event.target) && !container.has(event.target).length) {
-                                                        container.hide();
-                                                    }
-                                                });
+                                            function show_agent_menu(agn_id) {
+                                                $('.menu').css('display', 'none');
+                                                $('.menu.agn_id_' + agn_id).show();
+                                            } // make it dropdown
+                                            $(document).click(function() {
+                                                var container = $(".menu");
+                                                if (!container.is(event.target) && !container.has(event.target)
+                                                    .length) {
+                                                    container.hide();
+                                                }
+                                            });
                                             </script>
                                             <td class="text-center">
-                                                <div class="ui dropdown" onclick="show_agent_menu(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <div class="ui dropdown"
+                                                    onclick="show_agent_menu(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
-                                                    <div class="menu agn_id_<?php echo $arr_agent[$i]->agn_id ?>">
-                                                        
+                                                    <div class="menu agn_id_<?php echo $arr_agent[$i]->agn_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="location.href='<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>';">
-                                                            Edit
+                                                            <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
+                                                            Edit 
                                                         </div>
-                                                        <div class="item test button" onclick="get_id(<?php echo $arr_agent[$i]->agn_id?>)">
+                                                        <div class="item test button"
+                                                            onclick="get_id(<?php echo $arr_agent[$i]->agn_id?>)">
+                                                            <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
                                                             Remove
                                                         </div>
                                                         <script>
-                                                            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                        $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
                                                 </div>
@@ -186,7 +190,7 @@ hr {
         } ).draw();
 
         $("#Agent_list_table_filter").append(
-            "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
+            "<a href='<?php echo base_url() . '/Agent_input/agent_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
         );
 
     });
