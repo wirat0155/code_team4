@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>IBS - Container Drop</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="http://localhost/code_team4/Assets/img/icon.ico" type="image/x-icon"/>
-	
+	<link rel="icon" href="http://localhost/code_team4/Assets/img/icon.ico" type="image/x-icon" />
+
 	<!-- Fonts and icons -->
 	<script src="http://localhost/code_team4/Assets/js/plugin/webfont/webfont.min.js"></script>
 	<script>
 		WebFont.load({
-			google: {"families":["Lato:300,400,700,900"]},
-			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['http://localhost/code_team4/Assets/css/fonts.min.css']},
+			google: {
+				"families": ["Lato:300,400,700,900"]
+			},
+			custom: {
+				"families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+				urls: ['http://localhost/code_team4/Assets/css/fonts.min.css']
+			},
 			active: function() {
 				sessionStorage.fonts = true;
 			}
@@ -24,35 +30,34 @@
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="http://localhost/code_team4/Assets/css/demo.css">
 
-    <!-- Font Awesome 4 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-    <!-- Font Awesome 5 -->
-    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+	<!-- Font Awesome 4 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!-- Font Awesome 5 -->
+	<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 	<!-- jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Semantic UI CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Semantic UI CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Semantic UI JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
-        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- Semantic UI JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<style>
 		body {
 			color: #444444;
 		}
+
 		.ui.modal {
 			min-width: 360px;
 			min-height: 300px;
 			height: 20%;
 			top: 135px;
 			max-width: 800px;
+			margin-left: 250px;
 		}
+
 		@media only screen and (max-width: 767px) {
 			.ui.modal {
 				width: 95%;
@@ -60,6 +65,7 @@
 				left: 2vw
 			}
 		}
+
 		@media only screen and (min-width: 768px) {
 			.ui.modal {
 				width: 95%;
@@ -67,95 +73,72 @@
 				left: 2.5vw;
 			}
 		}
+
 		@media only screen and (min-width: 1000px) {
 			.ui.modal {
 				left: 13vw;
 			}
 		}
+
 		@media only screen and (min-width: 1280px) {
 			.ui.modal {
 				left: 20vw;
 			}
 		}
+
 		@media only screen and (min-width: 1368px) {
 			.ui.modal {
 				left: vw;
 			}
 		}
+
 		@media only screen and (min-width: 1600px) {
 			.ui.modal {
 				left: 30vw;
 			}
 		}
+
 		@media only screen and (min-width: 1920px) {
 			.ui.modal {
 				left: 30vw;
 			}
 		}
-		
+
+		.navbar-color {
+			background-color: #041F47;
+		}
+
+		.content {
+			margin-left: 250px;
+		}
 	</style>
 </head>
+
 <body>
-	<!-- <div class="ui modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Profile Picture
-        </div>
-        <div class="content">
-            test
-        </div>
-        <div class="actions">
-            <div class="ui black deny button">
-                Nope
-            </div>
-            <div class="ui positive right labeled icon button">
-                Yep, that's me
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div> -->
-	<div class="wrapper">
+	<div class="wrapper overlay-sidebar is-show">
 		<div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="blue">
-				
-				<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>" class="logo text-white">
+			<div class="logo-header navbar-color">
+
+				<button class="btn btn-toggle sidenav-overlay-toggler" onclick="slide_bar()" style="margin-right:20px;">
+					<i class="icon-menu"></i>
+				</button>
+
+				<a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>" class="logo text-white">
 					<img src="http://localhost/code_team4/upload/Logo_IBS.svg" alt="navbar brand" class="navbar-brand" style="width:10vh">
 				</a>
-				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon">
-						<i class="icon-menu"></i>
-					</span>
-				</button>
-				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
-				<div class="nav-toggle">
-					<button class="btn btn-toggle toggle-sidebar">
-						<i class="icon-menu"></i>
-					</button>
-				</div>
 			</div>
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-				
+			<nav class="navbar navbar-header navbar-expand-lg navbar-color">
+
 				<div class="container-fluid">
-					<div class="collapse" id="search-nav">
-						<form class="navbar-left navbar-form nav-search mr-md-3">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<button type="submit" class="btn btn-search pr-1">
-										<i class="fa fa-search search-icon"></i>
-									</button>
-								</div>
-								<input type="text" placeholder="Search ..." class="form-control">
-							</div>
-						</form>
-					</div>
 				</div>
 			</nav>
 			<!-- End Navbar -->
 		</div>
+
 		<!-- Sidebar -->
 		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -163,170 +146,172 @@
 					<ul class="nav nav-primary">
 
 						<!-- Dashboard menu -->
-						<li class="nav-item <?php if($_SESSION['menu'] == 'Dashboard') echo 'active'?>">
-							<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+						<li class="nav-item <?php if ($_SESSION['menu'] == 'Dashboard') echo 'active' ?>">
+							<a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
 								<i class="fas fa-chart-line"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
-						<li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Modules</h4>
-							<!-- <button class="test button">click</button> -->
-						</li>
 
 						<!-- Service menu -->
-						<li class="nav-item <?php if($_SESSION['menu'] == 'Service_show') echo 'active'?>">
+						<li class="nav-item <?php if ($_SESSION['menu'] == 'Service_show') echo 'active' ?>">
 							<a data-toggle="collapse" href="#service">
 								<i class="fas fa-warehouse"></i>
-								<p>Service</p>
+								<p>Service Information</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="service">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Service_show/service_show_ajax' ?>">
 											<span class="sub-item">Service list</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url() . '/Service_input/service_input'?>">
+										<a href="<?php echo base_url() . '/Service_input/service_input' ?>">
 											<span class="sub-item">Add service</span>
 										</a>
 									</li>
-							</ul>
+								</ul>
 						</li>
 
 						<!-- Customer menu -->
-						<li class="nav-item <?php if($_SESSION['menu'] == 'Customer_show') echo 'active'?>">
+						<li class="nav-item <?php if ($_SESSION['menu'] == 'Customer_show') echo 'active' ?>">
 							<a data-toggle="collapse" href="#customer">
-								<i class="fa fa-users"></i>
-								<p>Customer</p>
+								<i class="fas fa-user-alt"></i>
+								<p>Customer Information</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="customer">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>">
 											<span class="sub-item">Customer list</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url() . '/Customer_input/customer_input'?>">
+										<a href="<?php echo base_url() . '/Customer_input/customer_input' ?>">
 											<span class="sub-item">Add customer</span>
 										</a>
 									</li>
-							</ul>
+								</ul>
 						</li>
 
 						<!-- Agent menu -->
-						<li class="nav-item  <?php if($_SESSION['menu'] == 'Agent_show') echo 'active'?>">
+						<li class="nav-item  <?php if ($_SESSION['menu'] == 'Agent_show') echo 'active' ?>">
 							<a data-toggle="collapse" href="#agent">
-								<i class="fa fa-user-secret"></i>
-								<p>Agent</p>
+								<i class="fas fa-user-friends"></i>
+								<p>Agent Information</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="agent">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Agent_show/agent_show_ajax' ?>">
 											<span class="sub-item">Agent list</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url() . '/Agent_input/agent_input'?>">
+										<a href="<?php echo base_url() . '/Agent_input/agent_input' ?>">
 											<span class="sub-item">Add agent</span>
 										</a>
 									</li>
-							</ul>
+								</ul>
 						</li>
 
 						<!-- Container menu -->
-						<li class="nav-item <?php if($_SESSION['menu'] == 'Container_show') echo 'active'?>">
+						<li class="nav-item <?php if ($_SESSION['menu'] == 'Container_show') echo 'active' ?>">
 							<a data-toggle="collapse" href="#container">
 								<i class="fas fa-truck-loading"></i>
-								<p>Container</p>
+								<p>Container Information</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="container">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Container_show/container_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Container_show/container_show_ajax' ?>">
 											<span class="sub-item">Container list</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url() . '/Container_input/container_input'?>">
+										<a href="<?php echo base_url() . '/Container_input/container_input' ?>">
 											<span class="sub-item">Add container</span>
 										</a>
 									</li>
-							</ul>
+								</ul>
 						</li>
 
 						<!-- Driver menu -->
-						<li class="nav-item  <?php if($_SESSION['menu'] == 'Driver_show') echo 'active'?>">
+						<li class="nav-item  <?php if ($_SESSION['menu'] == 'Driver_show') echo 'active' ?>">
 							<a data-toggle="collapse" href="#driver">
 								<i class="far fa-address-card"></i>
-								<p>Driver</p>
+								<p>Driver Information</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="driver">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Driver_show/driver_show_ajax' ?>">
 											<span class="sub-item">Driver list</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url() . '/Driver_input/driver_input'?>">
+										<a href="<?php echo base_url() . '/Driver_input/driver_input' ?>">
 											<span class="sub-item">Add driver</span>
 										</a>
 									</li>
-							</ul>
+								</ul>
 						</li>
 
 						<!-- Car menu -->
-						<li class="nav-item  <?php if($_SESSION['menu'] == 'Car_show') echo 'active'?>">
+						<li class="nav-item  <?php if ($_SESSION['menu'] == 'Car_show') echo 'active' ?>">
 							<a data-toggle="collapse" href="#car">
 								<i class="fas fa-truck"></i>
-								<p>Car</p>
+								<p>Car Information</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="car">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">
+										<a href="<?php echo base_url() . '/Car_show/car_show_ajax' ?>">
 											<span class="sub-item">Car list</span>
 										</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url() . '/Car_input/car_input'?>">
+										<a href="<?php echo base_url() . '/Car_input/car_input' ?>">
 											<span class="sub-item">Add car</span>
 										</a>
 									</li>
-							</ul>
+								</ul>
 						</li>
 
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
-							<h4 class="text-section">Setting</h4>
+							<!-- <h4 class="text-section" style="margin-top:200px">Set Up</h4> -->
 						</li>
 
-						<!-- Setting menu -->
-						<li class="nav-item <?php if($_SESSION['menu'] == 'Setting') echo 'active'?>">
-							<a href="<?php echo base_url() . '/Setting/setting_show'?>">
+						<!-- Setup menu -->
+						<li class="nav-item <?php if ($_SESSION['menu'] == 'Setting') echo 'active' ?>">
+							<a href="<?php echo base_url() . '/Setting/setting_show' ?>" style="margin-top:270px">
 								<i class="fas fa-cog"></i>
-								<p>Setting</p>
+								<p>Set Up</p>
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-    <!-- <script>
-        $('.ui.modal').modal('attach events', '.test.button', 'show');
-    </script> -->
+
+		<script>
+			// ย่อ ขยายหน้า ตอนกด slide bar
+			function slide_bar() {
+				console.log($('.toggled').length);
+				if ($('.toggled').length == 0) {
+					document.getElementsByClassName('content')[0].style.marginLeft = "250px";
+				} else {
+					document.getElementsByClassName('content')[0].style.marginLeft = "0px";
+				}
+			}
+		</script>
