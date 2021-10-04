@@ -58,13 +58,13 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="car_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important">
+                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
-                                            <th>Car ID.</th>
+                                            <th>No.</th>
                                             <th>Image</th>
-                                            <th>Car code.</th>
-                                            <th>Cartype name.</th>
+                                            <th>Car code</th>
+                                            <th>Cartype</th>
                                             <th>Brand.</th>
                                             <th>Status</th>
                                             <th></th>
