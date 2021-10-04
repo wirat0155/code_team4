@@ -63,10 +63,10 @@
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
-                                            <th class="text-center">No</th>
+                                            <th class="text-center">No.</th>
                                             <th class="text-center">Number</th>
                                             <th class="text-center">Status</th>
-                                            <th class="text-center">type</th>
+                                            <th class="text-center">Type</th>
                                             <th class="text-center">Size</th>
                                             <th class="text-center">Agent</th>
                                             <th class="text-center"></th>
