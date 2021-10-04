@@ -69,7 +69,7 @@
                                             <th class="text-center">Car type</th>
                                             <th class="text-center">Driver license number</th>
                                             <th class="text-center">Tel.</th>
-                                            <th class="text-center">Action</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
 
