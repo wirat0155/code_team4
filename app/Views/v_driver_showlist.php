@@ -7,15 +7,15 @@
         <form action="<?php echo base_url() . '/Driver_show/driver_delete' ?>" method="post">
             <input type="hidden" id="dri_id" name="dri_id">
 
-            <p style="font-size: 1rem">Are you sure to remove the Customer</p>
+            <p style="font-size: 1rem">Are you sure to remove the Driver</p>
 
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the Customer
+                    What happening after remove the Driver
                 </div>
                 <ul class="list">
                     <li>The customer still ramain in database,</li>
-                    <li>But you cannot see the customer anymore</li>
+                    <li>But you cannot see the driver anymore</li>
                 </ul>
             </div>
     </div>
@@ -39,7 +39,7 @@
             <hr width="95%" color="696969">
             <ul class="pl-2 breadcrumbs">
                 <li class="nav-home">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax' ?>">Driver</a>
+                    <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">Driver</a>
                 </li>
             </ul>
 
@@ -59,17 +59,17 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="driver_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important">
+                                <table id="driver_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
-                                        <tr style="background-color: #999999; color: white;">
-                                            <th>Id.</th>
-                                            <th>Image</th>
-                                            <th>Driver name</th>
-                                            <th>Identity car</th>
-                                            <th>Car type</th>
-                                            <th>Driver license number</th>
-                                            <th>Tel.</th>
-                                            <th>Action</th>
+                                        <tr style="background-color: #999999; color: white; ">
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">Image</th>
+                                            <th class="text-center">Driver name</th>
+                                            <th class="text-center">Identity car</th>
+                                            <th class="text-center">Car type</th>
+                                            <th class="text-center">Driver license number</th>
+                                            <th class="text-center">Tel.</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
 
@@ -157,7 +157,7 @@
     <script>
         $(document).ready(function() {
 
-            // แทรกปุ่ม เพิ่มลูกค้า
+            // แทรกปุ่ม เพิ่มพนักงานขับรถ
             var dri_table = $('#driver_list_table').DataTable({
                 "columnDefs": [{
                     "searchable": false,
