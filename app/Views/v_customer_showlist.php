@@ -62,12 +62,12 @@
                                 <table id="customer_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white; ">
-                                            <th class="text-center">No</th>
+                                            <th class="text-center">No.</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>
                                             <th class="text-center">Number Container</th>
-                                            <th class="text-center">TEL.</th>
-                                            <th class="text-center">EMAIL</th>
+                                            <th class="text-center">Tel.</th>
+                                            <th class="text-center">Email</th>
                                             <th class="text-center"></th>
                                         </tr>
                                     </thead>
