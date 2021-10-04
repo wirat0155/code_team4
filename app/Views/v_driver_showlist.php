@@ -96,7 +96,7 @@
 
                                                 <!-- car id -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                    <?php echo $arr_driver[$i]->dri_car_id; ?>
+                                                    <?php echo $arr_driver[$i]->car_number; ?>
                                                 </td>
                                                 <!-- car type name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
