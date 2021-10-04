@@ -62,8 +62,7 @@
                                 <table id="driver_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white; ">
-                                            <th class="text-center">No</th>
-                                            <th class="text-center">Image</th>
+                                            <th class="text-center">No.</th>
                                             <th class="text-center">Driver name</th>
                                             <th class="text-center">Identity car</th>
                                             <th class="text-center">Car type</th>
@@ -79,18 +78,20 @@
                                                 <!-- ลำดับ -->
                                                 <td> </td>
 
-                                                <!-- รูปภาพ -->
-                                                <td class="px-4 py-3">
-                                                    <div class="avatar avatar-lg">
-                                                        <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
-                                                    </div>
-                                                    <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
-                                                    </div>
-                                                </td>
+                                             
 
                                                 <!-- name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                    <?php echo $arr_driver[$i]->dri_name ?>
+                                                <div class = "avatar avatar-lg">
+                                                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>" alt="" loading="lazy">
+                                                        </div>
+                                                        <?php echo $arr_driver[$i]->dri_name ?>
+                                                            <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
+                                                            </div>
+                                                   
+
+
+                                                    
                                                 </td>
 
 
@@ -108,7 +109,7 @@
                                                 </td>
                                                 <!-- tel -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                    <?php echo $arr_driver[$i]->dri_tel; ?>
+                                                    <?php echo tel_format($arr_driver[$i]->dri_tel); ?>
                                                 </td>
 
 
