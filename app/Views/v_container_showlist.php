@@ -63,10 +63,10 @@
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
-                                            <th class="text-center">No</th>
+                                            <th class="text-center">No.</th>
                                             <th class="text-center">Number</th>
                                             <th class="text-center">Status</th>
-                                            <th class="text-center">type</th>
+                                            <th class="text-center">Type</th>
                                             <th class="text-center">Size</th>
                                             <th class="text-center">Agent</th>
                                             <th class="text-center"></th>
@@ -130,13 +130,14 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu con_id_<?php echo $arr_container[$i]->con_id ?>"
                                                         style="right: 0;left: auto;">
+                                                        <!-- Button Edit -->
                                                         <div class="item" onclick="change_location('google')">
-                                                            <i class='far fa-money-bill-alt' style="font-size: 110%;">
-                                                            </i> &nbsp;
+                                                            <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
                                                             Edit
                                                         </div>
+                                                        <!-- Button Remove -->
                                                         <div class="item test button"
-                                                            onclick="get_id(<?php echo $arr_container[$i]->con_id ?>)">
+                                                            onclick="get_id(<?php echo $arr_car[$i]->car_id ?>)">
                                                             <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
                                                             &nbsp; &nbsp;
                                                             Remove
