@@ -61,38 +61,30 @@
                                     style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
-                                            <th>No.</th>
-                                            <th>Image</th>
-                                            <th>Car code</th>
-                                            <th>Cartype</th>
-                                            <th>Brand.</th>
-                                            <th>Status</th>
+                                            <th class="text-center">No.</th>
+                                            <th class="text-center">Car code</th>
+                                            <th class="text-center">Cartype</th>
+                                            <th class="text-center">Brand</th>
+                                            <th class="text-center">Status</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                    
-                                    <tbody 
-                                        class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                                    <tbody>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                            <tr class="text-gray-700 dark:text-gray-400">
-
+                                            <tr>
                                                 <!-- ลำดับ -->
                                                 <td>  </td>
 
-                                                <!-- รูปภาพ -->
-                                                    <td class="px-4 py-3">
+                                                <!-- รูปภาพ ทะเบียน -->
+                                                    <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                                                         <div class = "avatar avatar-lg">
                                                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
                                                         </div>
-                                                            <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
-                                                            </div>
-                                                    </td>
-                            
-                                                <!-- Car code -->
-                                                    <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                                                         <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
                                                     </td>
 
+                                                    
                                                 <!-- Cartype name-->
                                                     <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                                                         <?php echo $arr_car[$i]->cart_name ?>
@@ -129,7 +121,6 @@
                                                         }
                                                     });
                                             </script>
-
                                                 <td class="text-left">
                                                     <div class="ui dropdown"
                                                         onclick="show_service_menu(<?php echo $arr_car[$i]->car_id ?>)">
@@ -172,7 +163,7 @@
             "columnDefs": [ {
                 "searchable": false,
                 "orderable": false,
-                "targets": [0,6]
+                "targets": [0,5]
             } ],
             "order": []
         });
