@@ -145,7 +145,7 @@
             <div class="logo-header navbar-color">
 
                 <a href="index.html" class="logo">
-                    <img src="http://localhost/code_team4/upload/Logo_IBS.svg" alt="navbar brand" class="navbar-brand"
+                    <img src="http://localhost/code_team4/public/upload/Logo_IBS.svg" alt="navbar brand" class="navbar-brand"
                         style="width:10vh;">
                 </a>
 
@@ -165,7 +165,7 @@
                 <i class="icon-menu" onclick="show_full_bar();"
                     style="font-size: 25px; cursor: pointer; margin-right: 10px"></i>
 
-                <img src="http://localhost/code_team4/upload/Logo_IBS.svg" alt="navbar brand"
+                <img src="http://localhost/code_team4/public/upload/Logo_IBS.svg" alt="navbar brand"
                     class="navbar-brand" style="width:10vh">
 
             </nav>
