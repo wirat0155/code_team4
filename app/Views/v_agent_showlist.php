@@ -81,7 +81,7 @@ hr {
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">No.</th>
+                                            <th>No.</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>
                                             <th class="text-center">Number container</th>
@@ -94,21 +94,21 @@ hr {
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_agent); $i++) { ?>
                                         <tr>
-                                            <!-- Order -->
-                                            <td class="text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                            <!-- No. -->
+                                            <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php echo $arr_agent[$i]->agn_id; ?>
                                             </td>
-                                            <!-- Container number -->
+                                            <!-- Agent company name -->
                                             <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php echo $arr_agent[$i]->agn_company_name; ?>
                                             </td>
 
-                                            <!-- Status container -->
+                                            <!-- Agent Name -->
                                             <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php echo $arr_agent[$i]->agn_firstname . " " . $arr_agent[$i]->agn_lastname; ?>
                                             </td>
 
-                                            <!-- Container type -->
+                                            <!-- Number Container -->
                                             <td class="text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php
                                                     $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
@@ -116,17 +116,17 @@ hr {
                                                 ?>
                                             </td>
 
-                                            <!-- Cut-off -->
+                                            <!-- Agent Tel. -->
                                             <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php echo tel_format($arr_agent[$i]->agn_tel) ?>
                                             </td>
 
-                                            <!-- Agent -->
+                                            <!-- Agent Email -->
                                             <td onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php echo $arr_agent[$i]->agn_email ?>
                                             </td>
 
-                                            <!-- Action -->
+                                            <!-- Agent Action  -->
                                             <script>
                                             function show_agent_menu(agn_id) {
                                                 $('.menu').css('display', 'none');
@@ -145,10 +145,12 @@ hr {
                                                     onclick="show_agent_menu(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu agn_id_<?php echo $arr_agent[$i]->agn_id ?>" style="right: 0;left: auto;">
+                                                        <!-- Agent Edite  -->
                                                         <div class="item" onclick="location.href='<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>';">
                                                             <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
                                                             Edit 
                                                         </div>
+                                                        <!-- Agent Delete  -->
                                                         <div class="item test button"
                                                             onclick="get_id(<?php echo $arr_agent[$i]->agn_id?>)">
                                                             <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
@@ -197,6 +199,7 @@ hr {
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
+    //ดูข้อมูลเอเย่นต์
     function agent_detail(agn_id) {
         window.location = '<?php echo base_url('') . '/Agent_show/agent_detail/' ?>' + agn_id;
     }
