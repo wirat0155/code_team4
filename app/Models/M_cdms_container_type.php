@@ -23,8 +23,26 @@ class M_cdms_container_type extends Da_cdms_container_type {
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
     */
-    public function get_all() {
-        $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1 ORDER BY cont_id DESC";
+    public function get_all($type = 1) {
+        if($type == 1){
+            $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1 ORDER BY cont_id DESC";
+        }else if($type == 2){
+            $sql = "SELECT cont_id, cont_name FROM $this->table ORDER BY cont_id DESC";
+        }
+        return $this->db->query($sql)->getResult();
+    }
+
+     /*
+    * get_all_type
+    * ดึงข้อมูลประเภทตู้คอนเทนเนอร์ทั้งหมด
+    * @input  -
+    * @output array of container_type
+    * @author Tadsawan
+    * @Create Date 2564-10-04
+    * @Update Date 2564-10-04
+    */
+    public function get_all_type() {
+        $sql = "SELECT * FROM $this->table ORDER BY cont_id DESC";
         return $this->db->query($sql)->getResult();
     }
 

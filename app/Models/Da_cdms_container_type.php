@@ -54,4 +54,18 @@ class Da_cdms_container_type extends Model {
         $sql = "UPDATE $this->table SET cont_status = 2 WHERE cont_id = '$cont_id'";
         $this->db->query($sql);
     }
+
+     /*
+    * restore
+    * ลบประเภทตู้คอนเทนเนอร์
+    * @input cont_id
+    * @output restore ประเภทตู้คอนเทนเนอร์
+    * @author Tadsawan
+    * @Create Date 2564-10-04
+    * @Update Date 2564-10-04
+    */
+    public function restore($cont_id = NULL) {
+        $sql = "UPDATE $this->table SET cont_status = 1 WHERE cont_id = '$cont_id'";
+        $this->db->query($sql);
+    }
 }
