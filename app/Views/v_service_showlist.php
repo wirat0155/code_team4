@@ -58,7 +58,7 @@
                                 <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white; ">
-                                            <th class="text-center">No.</th>
+                                            <th>No.</th>
                                             <th class="text-center">Con. number</th>
                                             <th class="text-center">Con. status</th>
                                             <th class="text-center">Con. type</th>
@@ -114,8 +114,14 @@
                                             </td>
                                             <!-- Act. dep. -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php echo date_thai($arr_service[$i]->ser_actual_departure_date) ?>
+                                                <?php if($arr_service[$i]->ser_actual_departure_date==" "){
+                                                       echo "-";
+                                                }else{
+                                                        echo date_thai($arr_service[$i]->ser_actual_departure_date);
+                                                }?>
                                             </td>
+
+
 
                                             <!-- Agent -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
