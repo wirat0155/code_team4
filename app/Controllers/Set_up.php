@@ -21,6 +21,7 @@ class Set_up extends Cdms_controller {
     * @Update Date 2564-10-2
     */
     public function set_up_show() {
+        $_SESSION['menu'] = 'Set_up';
         $this->output('v_set_up');
     }
 }
