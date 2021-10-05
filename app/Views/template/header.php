@@ -135,6 +135,10 @@
     .page-inner > .row {
         margin: 15px;
     }
+
+    .caret{
+        margin-right: 0px !important;
+    }
     </style>
 </head>
 
@@ -174,7 +178,7 @@
 
         <!-- Sidebar -->
         <div class="sidebar sidebar-style-2" style="padding-right:10px">
-            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="scroll-wrapper sidebar-wrapper scrollbar scrollbar-inner">
                 <div class="sidebar-content">
                     <ul class="nav nav-primary">
 
@@ -326,8 +330,8 @@
                         </li>
 
                         <!-- Setup menu -->
-                        <li class="nav-item <?php if ($_SESSION['menu'] == 'Set_up') echo 'active' ?>">
-                            <a href="<?php echo base_url() . '/Set_up/set_up_show' ?>" style="margin-top:270px">
+                        <li class="nav-item <?php if ($_SESSION['menu'] == 'Set_up') echo 'active' ?>" style="position:absolute; bottom:0; width: 100%;">
+                            <a href="<?php echo base_url() . '/Set_up/set_up_show' ?>">
                                 <i class="fas fa-cog"></i>
                                 <p>Set Up</p>
                             </a>
