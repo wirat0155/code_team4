@@ -326,8 +326,8 @@
                         </li>
 
                         <!-- Setup menu -->
-                        <li class="nav-item <?php if ($_SESSION['menu'] == 'Setting') echo 'active' ?>">
-                            <a href="<?php echo base_url() . '/Setting/setting_show' ?>" style="margin-top:270px">
+                        <li class="nav-item <?php if ($_SESSION['menu'] == 'Set_up') echo 'active' ?>">
+                            <a href="<?php echo base_url() . '/Set_up/set_up_show' ?>" style="margin-top:270px">
                                 <i class="fas fa-cog"></i>
                                 <p>Set Up</p>
                             </a>
