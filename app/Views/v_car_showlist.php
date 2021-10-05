@@ -51,7 +51,6 @@
                 </li>
             </ul>
     
-        
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -61,7 +60,7 @@
                                     style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
-                                            <th class="text-center">No.</th>
+                                            <th>No.</th>
                                             <th class="text-center">Car code</th>
                                             <th class="text-center">Cartype</th>
                                             <th class="text-center">Brand</th>
@@ -96,7 +95,7 @@
                                                     </td>
 
                                                 <!-- Status -->
-                                                    <td class="px-4 py-3 text-sm text-center">
+                                                    <td class="px-4 py-3 text-sm">
                                                         <?php
                                                             if ($arr_car[$i]->car_status == 1) {
                                                                 echo '<span class="text-con-ready">พร้อมใช้</span>';
@@ -120,7 +119,7 @@
                                                             container.hide();
                                                         }
                                                     });
-                                            </script>
+                                                </script>
                                                 <td class="text-left">
                                                     <div class="ui dropdown"
                                                         onclick="show_service_menu(<?php echo $arr_car[$i]->car_id ?>)">
