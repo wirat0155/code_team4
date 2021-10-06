@@ -17,6 +17,17 @@
     -ms-filter: "FlipH";
 }
 
+.card-stats {
+    border-radius: 20px;
+    box-shadow: rgba(136, 165, 191, 0.48) 0px 12px 16px 0px, rgba(255, 255, 255, 0.8) 0px -2px 16px 0px;
+}
+
+.icon-info{
+    border-radius: 20px;
+    box-shadow: rgb(0, 120, 204) 3px 3px 6px 0px inset;
+    background-color: #1EAFEE !important;
+}
+
 </style>
 
 <div class="main-panel">
@@ -52,13 +63,13 @@
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="box-img col-4 icon-big text-center icon-info">
-                                    <i class="img-setup fas fa-box"></i>
+                                <div class="box-img col-4 icon-big text-center icon-info" style="border-radius: 20px;">
+                                    <img src="http://localhost/code_team4/public/upload/container_1.png" style="width:90px;"></img>
                                 </div>
                                 <div class="col-8 col-stats ml-auto">
                                     <div class="numbers">
                                         <h4 class="card-title">Container type</h4>
-                                        <hr width="70%" color="696969" align="left">
+                                        <hr class="mt-1"  width="70%" color="696969" align="left"  style="height: 1px">
                                         <p class="card-category"> Container type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
@@ -74,15 +85,15 @@
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="box-img col-4 icon-big text-center icon-info">
+                                <div class="box-img col-4 icon-big text-center icon-info"  style="border-radius: 20px">
                                     <i class="img-setup fas fa-link"></i>
                                 </div>
                                 <div class="col-8 col-stats ml-auto">
                                     <div class="numbers">
                                         <h4 class="card-title">Container status</h4>
-                                        <hr width="70%" color="696969" align="left">
+                                        <hr class="mt-1" width="70%" color="696969" align="left" style="height: 1px">
                                         <p class="card-category"> Container status set up such as,
-                                            new status, and switch on-off </p>
+                                            new status, and switch on-off  <?php echo "            " ?> </p>
                                         <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
@@ -98,16 +109,15 @@
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="box-img col-4 icon-big text-center icon-info">
+                                <div class="box-img col-4 icon-big text-center icon-info"  style="border-radius: 20px">
                                     <i class="img-setup fas fa-wrench"></i>
                                 </div>
                                 <div class="col-8 col-stats ml-auto">
                                     <div class="numbers">
                                         <h4 class="card-title">Container size</h4>
-                                        <hr width="70%" color="696969" align="left">
+                                        <hr class="mt-1"  width="70%" color="696969" align="left"  style="height: 1px">
                                         <p class="card-category"> Container size set up such as,
-                                            new size, width, length, height,
-                                            upload image and switch on-off </p>
+                                            new size, upload image and switch on-off </p>
                                         <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
@@ -120,13 +130,13 @@
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <div class="box-img col-4 icon-big text-center icon-info">
+                                <div class="box-img col-4 icon-big text-center icon-info"  style="border-radius: 20px">
                                     <i class="img-setup fas fa-truck"></i>
                                 </div>
                                 <div class="col-8 col-stats ml-auto">
                                     <div class="numbers">
                                         <h4 class="card-title">Car type</h4>
-                                        <hr width="70%" color="696969" align="left">
+                                        <hr class="mt-1"  width="70%" color="696969" align="left"  style="height: 1px">
                                         <p class="card-category"> Car type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
