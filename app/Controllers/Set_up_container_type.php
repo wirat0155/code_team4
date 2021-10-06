@@ -24,7 +24,8 @@ class Set_up_container_type extends Cdms_controller
     */
     public function container_type_show()
     {
-        $_SESSION['menu'] = 'container_type';
+        $_SESSION['menu'] = 'Set_up';
+        $_SESSION['menu_set_up'] = 'container_type';
         
         // get container type
         $m_cont = new M_cdms_container_type();

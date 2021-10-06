@@ -5,9 +5,9 @@
 }
 
 .font-setup {
-    font-size: 14px;
-    color: #46474b;
-    margin: -20px 0px 0px 40px;
+    /* font-size: 14px;
+    color: #46474b; */
+    margin: -25px 0px 40px 35px;
 }
 
 .switch {
@@ -30,7 +30,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #09F600;
+    background-color: #21ba45;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -49,11 +49,11 @@
 }
 
 input:checked+.slider {
-    background-color: #F60000;
+    background-color: #db2828;
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #21ba45;
 }
 
 input:checked+.slider:before {
@@ -75,9 +75,8 @@ input:checked+.slider:before {
 .menu-ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    width: 250px;
-    /* background-color: #f1f1f1; */
+    padding: 0px 10px;
+    width: 100%;
 }
 
 .menu-li a {
@@ -90,13 +89,13 @@ input:checked+.slider:before {
 .menu-li a.active {
     background-color: #041F47;
     color: white;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .menu-li a:hover:not(.active) {
     background-color: #041F47;
     color: white;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 </style>
 
@@ -133,86 +132,82 @@ input:checked+.slider:before {
                 </li>
             </ul>
 
-            <div class="page-inner py-5">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card full-height">
-                            <div class="card-header">
-                                <div class="card-title">JUMP TO</div>
-                            </div>
-                            <div class="card-body">
-                                <!-- menu -->
-                                <ul class="menu-ul">
-                                    <li class="menu-li">
-                                        <a class="<?php if ($_SESSION['menu'] == 'container_type') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container type</a>
-                                    </li>
-                                    <li class="menu-li">
-                                        <a class="<?php if ($_SESSION['menu'] == 'container_status') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container status</a>
-                                    </li>
-                                    <li class="menu-li">
-                                        <a class="<?php if ($_SESSION['menu'] == 'container_size') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container size</a>
-                                    </li>
-                                    <li class="menu-li">
-                                        <a class="<?php if ($_SESSION['menu'] == 'car_type') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Car type</a>
-                                    </li>
-                                </ul>
+            <div class="row mt-5">
+                <div class="col-md-3">
+                    <div class="card full-height">
+                        <div class="card-header">
+                            <div class="card-title">JUMP TO</div>
+                        </div>
+                        <div class="card-body">
+                            <!-- menu -->
+                            <ul class="menu-ul">
+                                <li class="menu-li pb-1">
+                                    <a class="<?php if ($_SESSION['menu_set_up'] == 'container_type') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container type</a>
+                                </li>
+                                <li class="menu-li pb-1">
+                                    <a class="<?php if ($_SESSION['menu_set_up'] == 'container_status') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container status</a>
+                                </li>
+                                <li class="menu-li pb-1">
+                                    <a class="<?php if ($_SESSION['menu_set_up'] == 'container_size') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container size</a>
+                                </li>
+                                <li class="menu-li pb-1">
+                                    <a class="<?php if ($_SESSION['menu_set_up'] == 'car_type') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Car type</a>
+                                </li>
+                            </ul>
 
-                            </div>
                         </div>
                     </div>
-
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">Set up container type</div>
-                            </div>
-                            <div class="card-body">
-                                Container type set up such as, new type, upload image and switch on-off type
-
-                                <div class="col-3 mt-3">
-                                    <i class="icon-setup fas fa-plus">
-                                        <div class="font-setup">Add new type</div>
-                                    </i>
-                                </div>
-
-                                <table class="table mt-3">
-                                    <tbody>
-                                        <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                        <tr>
-                                            <div <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>>
-                                                <!-- ลบ -->
-                                                <td></td>
-
-                                                <!-- รูปภาพ -->
-                                                <td>
-                                                    <div class="avatar avatar-lg">
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' .'unnamed.jpg' ?>" alt="" loading="lazy">
-                                                    </div>
-                                                </td>
-
-                                                <!-- ชื่อประเภทตู้ -->
-                                                <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></td>
-
-                                                <!-- Switch -->
-                                                <td>
-                                                    <label class="switch">
-                                                        <input id="cont_id<?php echo $arr_container_type[$i]->cont_id ?>" type="checkbox" onclick="check_status_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)" <?php if($arr_container_type[$i]->cont_status == 2)echo " checked" ?>>
-                                                        <span class="slider round"></span>
-                                                    </label>
-                                                </td>
-                                            </div>
-                                        </tr>
-                                        <?php } ?>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Set up container type</div>
+                        </div>
+                        <div class="card-body">
+                            Container type set up such as, new type, upload image and switch on-off type
+
+                            <div class="col-6 mt-3">
+                                <i class="icon-setup fas fa-plus"></i>
+                                <div class="font-setup">Add new type</div>
+                            </div>
+
+                            <table class="table mt-3">
+                                <tbody>
+                                    <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
+                                    <tr>
+                                        <div <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>>
+                                            <!-- ลบ -->
+                                            <td></td>
+
+                                            <!-- รูปภาพ -->
+                                            <td>
+                                                <div class="avatar avatar-lg">
+                                                    <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' .'unnamed.jpg' ?>" alt="" loading="lazy">
+                                                </div>
+                                            </td>
+
+                                            <!-- ชื่อประเภทตู้ -->
+                                            <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></td>
+
+                                            <!-- Switch -->
+                                            <td>
+                                                <label class="switch">
+                                                    <input id="cont_id<?php echo $arr_container_type[$i]->cont_id ?>" type="checkbox" onclick="check_status_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)" <?php if($arr_container_type[$i]->cont_status == 2)echo " checked" ?>>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                    <?php } ?>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
