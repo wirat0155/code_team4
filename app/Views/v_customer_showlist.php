@@ -51,7 +51,9 @@
                 </li>
             </ul>
 
-
+            
+            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                                
 
 
             <div class="row">
@@ -164,7 +166,11 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
+
     $(document).ready(function() {
 
         // แทรกปุ่ม เพิ่มรถ
@@ -191,6 +197,8 @@
             "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
         );
 
+        
+
     });
 
 
@@ -206,4 +214,5 @@
     function customer_detail(cus_id) {
         window.location = '<?php echo base_url('') . '/Customer_show/customer_detail/' ?>' + cus_id;
     }
+
     </script>
