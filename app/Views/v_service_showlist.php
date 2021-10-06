@@ -37,7 +37,7 @@
                 <h4 class="pl-3 page-title">SERVICE INFORMATION</h4>
             </div>
             <hr width="95%" color="696969">
-            <ul class="pl-2 breadcrumbs">
+            <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;" >
                 <li class="nav-home">
                     <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                         <i class="flaticon-home"></i>
@@ -49,8 +49,25 @@
                 <li class="nav-item">
                     <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service</a>
                 </li>
+                <li class="ml-md-auto">
+                    <!-- Download Excel -->
+                    <form id='form_Excel' action="<?php echo base_url(). '/Service_show/export_service' ?>" method="post" hidden>
+                        <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
+                    </form>
+                    <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post">
+                        
+                        <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border mr-3" style=" height: 40px; width: 160px; margin-bottom: 5">
+                            <i class="fas fa-file-download mr-1"></i>
+                                Download Excel
+                        </button>
+                    
+                    <!-- Date -->
+                    
+                        <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
+                    </form>
+                </li>
             </ul>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
@@ -202,6 +219,9 @@
         $("#service_list_table_filter").append(
             "<a href='<?php echo base_url() . '/Service_input/service_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
         );
+
+        //Reset Daterange
+        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
     });
 
     function change_location(url) {

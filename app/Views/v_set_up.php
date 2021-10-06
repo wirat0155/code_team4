@@ -73,7 +73,7 @@
                                         <p class="card-category"> Container type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
-                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
+                                        <a href="http://localhost/code_team4/public/Set_up_container_type/container_type_show" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
