@@ -120,11 +120,18 @@
         }
     });
 
-    $('input[name="daterange"]').daterangepicker({
+    $('input[name="date_range"]').daterangepicker({
+        "locale": {
+            "format": 'DD/MM/YYYY',
+            "firstDay": 1
+        },
         opens: 'left'
         }, function(start, end, label) {
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
     });
+
+    $('.applyBtn').attr({type: 'submit', form: 'form_date'});
+    
 	</script>
 
 	<script>

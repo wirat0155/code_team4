@@ -144,6 +144,12 @@
     .caret{
         margin-right: 0px !important;
     }
+
+    .btn-border.btn-success, #date_range{
+        border: 0px !important;
+        box-shadow: rgb(0 0 0 / 17%) 1px 2px 3px !important;
+    }
+
     </style>
 </head>
 
