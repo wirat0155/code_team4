@@ -132,11 +132,9 @@
 
     $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     
+    $('.ui.dropdown').attr("data-toggle", "dropdown"); // make it dropdown
 	</script>
-
-	<script>
-        $('.ui.dropdown').dropdown(); // make it dropdown
-	</script>
+    
 	</body>
 
 	</html>
