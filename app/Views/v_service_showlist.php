@@ -114,7 +114,7 @@
                                             </td>
                                             <!-- Act. dep. -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php if($arr_service[$i]->ser_actual_departure_date==" "){
+                                                <?php if($arr_service[$i]->ser_actual_departure_date== "0000-00-00 00:00:00"){
                                                        echo "-";
                                                 }else{
                                                         echo date_thai($arr_service[$i]->ser_actual_departure_date);
