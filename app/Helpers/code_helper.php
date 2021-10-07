@@ -56,11 +56,11 @@
 		$elem .= '<span class="selectgroup-button">Service</span>';
 		$elem .= '</label>';
 		$elem .= '<label class="selectgroup-item">';
-		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_form_section(\'customer_section\')">';
+		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_agent_form()">';
 		$elem .= '<span class="selectgroup-button">Agent</span>';
 		$elem .= '</label>';
 		$elem .= '<label class="selectgroup-item">';
-		$elem .= '<input type="radio" name="value" value="200" class="selectgroup-input">';
+		$elem .= '<input type="radio" name="value" value="200" class="selectgroup-input" onclick="show_customer_form()">';
 		$elem .= '<span class="selectgroup-button">Customer</span>';
 		$elem .= '</label>';
 		$elem .= '</div>';
