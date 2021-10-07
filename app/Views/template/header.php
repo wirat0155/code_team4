@@ -115,7 +115,7 @@
         }
     }
 
-    @media only screen and (max-width: 973.60px) {
+    @media only screen and (max-width: 989.60px) {
         .logo-header {
             display: inline !important;
         }
@@ -191,7 +191,7 @@
                     style="font-size: 25px; cursor: pointer; margin-right: 10px"></i>
 
                 <img src="http://localhost/code_team4/public/upload/Logo_IBS.svg" alt="navbar brand"
-                    class="navbar-brand" style="width:10vh">
+                    class="navbar-brand mr-md-auto" style="width:10vh">
 
             </nav>
             <!-- End Navbar -->
