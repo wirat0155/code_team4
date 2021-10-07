@@ -165,11 +165,21 @@
                 </a>
 
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation" onclick="show_bar_shot_screen()">
                     <span class="navbar-toggler-icon" style="color:white;">
                         <i class="icon-menu"></i>
                     </span>
                 </button>
+
+                <script>
+                    function show_bar_shot_screen(){
+                        if($("html").hasClass("nav_open")){
+                            $('html').removeClass('nav_open');
+                        }else{
+                            $('html').addClass('nav_open');
+                        }
+                    }
+                </script>
 
             </div>
             <!-- End Logo Header -->
