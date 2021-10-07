@@ -1,3 +1,14 @@
+<style>
+.input-group {
+    appearance: none;
+    padding: 5px;
+    background-color: #4834d4;
+    color: white;
+    border: none;
+    font-family: inherit;
+    outline: none;
+}
+</style>
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -37,7 +48,7 @@
                 <h4 class="pl-3 page-title">CUSTOMER INFORMATION</h4>
             </div>
             <hr width="95%" color="696969">
-            <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;" >
+            <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
                 <li class="nav-home">
                     <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                         <i class="flaticon-home"></i>
@@ -51,20 +62,26 @@
                 </li>
                 <li class="ml-md-auto">
                     <!-- Download Excel -->
-                    <form id='form_Excel' action="<?php echo base_url(). '/Customer_show/export_customer' ?>" method="post" hidden>
-                        <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
+                    <form id='form_Excel' action="<?php echo base_url(). '/Customer_show/export_customer' ?>"
+                        method="post" hidden>
+                        <input type="hidden" name="date_range_excel" id="date_range_excel"
+                            value="<?php echo $arrivals_date ?>">
                     </form>
-                    <form id='form_date' action="<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>" method="post">
-                        
-                        <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border mr-3" style=" height: 40px; width: 160px; margin-bottom: 5">
+                    <form id='form_date' action="<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>"
+                        method="post">
+
+                        <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border mr-3"
+                            style=" height: 40px; width: 160px; margin-bottom: 5">
                             <i class="fas fa-file-download mr-1"></i>
-                                Download Excel
+                            Download Excel
                         </button>
-                
-                    <!-- Date -->
-                
-                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
-                </form>
+
+                        <!-- Date -->
+
+                        <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range"
+                            value="<?php echo $arrivals_date ?>"
+                            style=" height: 43px; width: 180px; text-align: center;">
+                    </form>
                 </li>
             </ul>
 
@@ -73,7 +90,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="customer_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                                <table id="customer_list_table" class="display table table-hover cell-border"
+                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white; ">
                                             <th class="text-center">No.</th>
@@ -106,7 +124,8 @@
                                             </td>
 
                                             <!-- จำนวนตู้ที่ใช้ -->
-                                            <td class="text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
+                                            <td class="text-center"
+                                                onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                 <?php
                                                     $count_container = 0;
                                                     for ($j = 0; $j < count($arr_service); $j++) {
@@ -145,7 +164,32 @@
                                             });
                                             </script>
                                             <td class="text-left">
-                                                <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)" >
+
+                                                <div class="dropdown">
+
+                                                    <!--Trigger-->
+                                                    <a type="button" id="dropdownMenu2" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)"><i
+                                                            class="fas fa-ellipsis-v"></i></a>
+
+                                                    <!--Menu-->
+                                                    <div class="dropdown-menu dropdown-primary mr-5 cus_id_<?php echo $arr_customer[$i]->cus_id ?>">
+                                                        <a class="dropdown-item row pl-3" href="#" onclick="change_location('google')">
+                                                            <i class='far fa-money-bill-alt col-1' style="font-size: 110%;"> </i>
+                                                            Charge billing
+                                                        </a>
+                                                        <a class="dropdown-item row pl-3" href="#">
+                                                            <i class='far fa-edit col-1' style="font-size: 130%;"> </i>
+                                                            Edit
+                                                        </a>
+                                                        <a class="dropdown-item row pl-3" href="#">
+                                                            <i class='fas fa-trash-alt col-1' style="font-size: 130%;"></i> 
+                                                            Remove
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)" >
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu cus_id_<?php echo $arr_customer[$i]->cus_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
@@ -164,7 +208,7 @@
                                                         $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -182,7 +226,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
-
     $(document).ready(function() {
 
         // แทรกปุ่ม เพิ่มรถ
@@ -210,7 +253,8 @@
         );
 
         //Reset Daterange
-        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>\'');
+        $('.cancelBtn').attr('onclick',
+            'location.href = \'<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>\'');
 
     });
 
@@ -227,5 +271,4 @@
     function customer_detail(cus_id) {
         window.location = '<?php echo base_url('') . '/Customer_show/customer_detail/' ?>' + cus_id;
     }
-
     </script>
