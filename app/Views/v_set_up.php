@@ -28,6 +28,11 @@
     background-color: #1EAFEE !important;
 }
 
+.card-body{
+    height: 153px;
+    width: 456px;
+}
+
 </style>
 
 <div class="main-panel">
@@ -58,8 +63,8 @@
             </ul>
 
 
-            <div class="row mt-5">
-                <div class="col-sm-6 col-md-5 ml-auto">
+            <div class="row mt-5 justify-content-center align-items-center">
+                <div class=" d-flex mr-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -81,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-5 mr-auto">
+                <div class=" d-flex mr-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -104,8 +109,8 @@
                 </div>
             </div>
 
-            <div class="row mt-2">
-                <div class="col-sm-6 col-md-5 ml-auto">
+            <div class="row mt-2 justify-content-center align-items-center">
+                <div class=" d-flex mr-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -126,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-5 mr-auto">
+                <div class=" d-flex mr-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
