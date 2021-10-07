@@ -1,14 +1,3 @@
-<style>
-.input-group {
-    appearance: none;
-    padding: 5px;
-    background-color: #4834d4;
-    color: white;
-    border: none;
-    font-family: inherit;
-    outline: none;
-}
-</style>
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -164,31 +153,6 @@
                                             });
                                             </script>
                                             <td class="text-left">
-
-                                                <!-- <div class="dropdown"> -->
-
-                                                    <!--Trigger-->
-                                                    <!-- <a type="button" id="dropdownMenu2" data-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)"><i
-                                                            class="fas fa-ellipsis-v"></i></a> -->
-
-                                                    <!--Menu-->
-                                                    <!-- <div class="dropdown-menu dropdown-primary mr-5 cus_id_<?php echo $arr_customer[$i]->cus_id ?>">
-                                                        <a class="dropdown-item row pl-3" href="#" onclick="change_location('google')">
-                                                            <i class='far fa-money-bill-alt col-1' style="font-size: 110%;"> </i>
-                                                            Charge billing
-                                                        </a>
-                                                        <a class="dropdown-item row pl-3" href="#">
-                                                            <i class='far fa-edit col-1' style="font-size: 130%;"> </i>
-                                                            Edit
-                                                        </a>
-                                                        <a class="dropdown-item row pl-3" href="#">
-                                                            <i class='fas fa-trash-alt col-1' style="font-size: 130%;"></i> 
-                                                            Remove
-                                                        </a>
-                                                    </div>
-                                                </div> -->
-
                                                 <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)" >
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu cus_id_<?php echo $arr_customer[$i]->cus_id ?>" style="right: 0;left: auto;">
@@ -222,9 +186,6 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
     $(document).ready(function() {
 
