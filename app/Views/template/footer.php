@@ -26,6 +26,10 @@
 	</footer>
 	</div>
 
+    <script>
+        $('.ui.dropdown').dropdown();
+    </script>
+
 	<!--   Core JS Files   -->
 	<script src="http://localhost/code_team4/Assets/js/core/jquery.3.2.1.min.js"></script>
 	<script src="http://localhost/code_team4/Assets/js/core/popper.min.js"></script>
@@ -138,7 +142,6 @@
 
     $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     
-    $('.ui.dropdown').attr("data-toggle","dropdown");
 	</script>
     
 	</body>
