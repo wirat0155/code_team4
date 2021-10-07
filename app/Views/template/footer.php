@@ -85,6 +85,9 @@
                     cus_email: {
                         required: true,
                         email: true
+                    },
+                    agn_company_name: {
+                        required: true
                     }
 
                 },
@@ -114,7 +117,10 @@
                     cus_email: {
                         required: 'Please enter an email address',
                         email: 'Please enter a valid email address'
-                    }
+                    },
+                    agn_company_name: {
+                        required: 'Please enter a company name.'
+                    },
                 }
             })
         }
