@@ -165,15 +165,15 @@
                                             </script>
                                             <td class="text-left">
 
-                                                <div class="dropdown">
+                                                <!-- <div class="dropdown"> -->
 
                                                     <!--Trigger-->
-                                                    <a type="button" id="dropdownMenu2" data-toggle="dropdown"
+                                                    <!-- <a type="button" id="dropdownMenu2" data-toggle="dropdown"
                                                         aria-haspopup="true" aria-expanded="false" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)"><i
-                                                            class="fas fa-ellipsis-v"></i></a>
+                                                            class="fas fa-ellipsis-v"></i></a> -->
 
                                                     <!--Menu-->
-                                                    <div class="dropdown-menu dropdown-primary mr-5 cus_id_<?php echo $arr_customer[$i]->cus_id ?>">
+                                                    <!-- <div class="dropdown-menu dropdown-primary mr-5 cus_id_<?php echo $arr_customer[$i]->cus_id ?>">
                                                         <a class="dropdown-item row pl-3" href="#" onclick="change_location('google')">
                                                             <i class='far fa-money-bill-alt col-1' style="font-size: 110%;"> </i>
                                                             Charge billing
@@ -187,9 +187,9 @@
                                                             Remove
                                                         </a>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
-                                                <!-- <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)" >
+                                                <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)" >
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu cus_id_<?php echo $arr_customer[$i]->cus_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
@@ -208,7 +208,7 @@
                                                         $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                             </td>
                                         </tr>
                                         <?php } ?>

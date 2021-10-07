@@ -138,7 +138,7 @@
 
     $('.applyBtn').attr({type: 'submit', form: 'form_date'});
     
-    $('.ui.dropdown').dropdown('toggle'); // make it dropdown
+    $('.ui.dropdown').attr("data-toggle","dropdown");
 	</script>
     
 	</body>
