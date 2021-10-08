@@ -69,7 +69,7 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="box-img col-4 icon-big text-center icon-info" style="border-radius: 20px;">
-                                    <img src="http://localhost/code_team4/public/upload/container_1.png" style="width:90px;"></img>
+                                    <img src="<?php echo base_url() . '/upload/container_1.png' ?>" style="width:90px;"></img>
                                 </div>
                                 <div class="col-8 col-stats ml-auto">
                                     <div class="numbers">
@@ -78,7 +78,7 @@
                                         <p class="card-category"> Container type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
-                                        <a href="http://localhost/code_team4/public/Set_up_container_type/container_type_show" ><p class=" text-right mt-3">Set Up ></p></a>
+                                        <a href="<?php echo base_url() . '/Set_up_container_type/container_type_show' ?>" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
