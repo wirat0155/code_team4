@@ -164,8 +164,10 @@
                                             });
                                             </script>
                                             <td class="text-left">
-                                                <div class="ui dropdown" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                <div class="ui dropdown p-1" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                    <center>
                                                     <i class="fas fa-ellipsis-v"></i>
+                                                    </center>
                                                     <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
                                                             Charge billing
@@ -180,6 +182,7 @@
                                                         $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
+                                                    
                                                 </div>
                                             </td>
                                         </tr>

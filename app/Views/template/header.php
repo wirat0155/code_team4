@@ -152,6 +152,9 @@
     .button.primary{
         background-color: #1572e8 !important;
     }
+    div.ui.dropdown:hover {
+        background-color: #ddd;
+    }
 
     </style>
 </head>
@@ -164,7 +167,7 @@
 
                 <a href="index.html" class="logo">
                     <img src="http://localhost/code_team4/public/upload/Logo_IBS.svg" alt="navbar brand" class="navbar-brand"
-                        style="width:15vh;">
+                        style="width:10vh;">
                 </a>
 
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
