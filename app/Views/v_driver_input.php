@@ -141,7 +141,7 @@
 
                                     <!-- Start Date -->
                                     <div class="col-md-6">
-                                        <div class="px-3 form-group row">
+                                        <div class="form-group form-inline">
                                             <label for="dri_date_start" class="col-form-label mr-auto">Start Date</label>
                                             <div class="col-md-9 p-0">
                                             <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start">
@@ -155,8 +155,14 @@
                                         <div class="form-group form-inline">
                                             <label for="dri_profile_image" class="col-form-label mr-auto">Picture</label>
                                             <div class="col-md-8 p-0">
+                                                <div class="input-group mb-3">
+													<input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
+													<div class="input-group-append" style="cursor: pointer;" onclick="$('#dri_profile_image').click();">
+														<span class="input-group-text" id="show_browse">Browse</span>
+													</div>
+												</div>
                                                 <input type="file" class="form-control-file input-full" id="dri_profile_image"
-                                                    name="dri_profile_image">
+                                                    name="dri_profile_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -164,7 +170,7 @@
 
                                     <!-- Resign Date -->
                                     <div class="col-md-6">
-                                        <div class="px-3 form-group row">
+                                        <div class="form-group form-inline">
                                             <label for="dri_date_end" class="col-form-label mr-auto">Resign Date</label>
                                             <div class="col-md-9 p-0">
                                             <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end">
@@ -273,7 +279,7 @@
 
     function get_image() {
         var dri_profile_image = $('#dri_profile_image').val();
-        $('#file_name').html(dri_profile_image.substr(12));
+        $('#input_show_browse').val(dri_profile_image.substr(12));
         $('#dri_profile_image-error').remove();
     }
 </script>
