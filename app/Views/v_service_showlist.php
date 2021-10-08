@@ -37,42 +37,49 @@
                 <h4 class="pl-3 page-title">SERVICE INFORMATION</h4>
             </div>
             <hr width="95%" color="696969">
-            <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;" >
-                <li class="nav-home">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
-                        <i class="flaticon-home"></i>
-                    </a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service</a>
-                </li>
-                <li class="ml-md-auto">
-                    <!-- Download Excel -->
-                    <form id='form_Excel' action="<?php echo base_url(). '/Service_show/export_service' ?>" method="post" hidden>
-                        <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
-                    </form>
-                    <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post">
-                        
-                        <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border mr-3" style=" height: 40px; width: 160px; margin-bottom: 5">
-                            <i class="fas fa-file-download mr-1"></i>
-                                Download Excel
-                        </button>
-                    
+            <div class="row">
+                <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
+                    <li class="nav-home">
+                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service</a>
+                    </li>
+                </ul>
+
+                <!-- Download Excel -->
+                <form id='form_Excel' action="<?php echo base_url(). '/Service_show/export_service' ?>" method="post"
+                    hidden>
+                    <input type="hidden" name="date_range_excel" id="date_range_excel"
+                        value="<?php echo $arrivals_date ?>">
+                </form>
+                <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post"
+                    class="ml-auto mr-3">
+
+                    <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border mr-3"
+                        style=" height: 40px; width: 160px; margin-bottom: 5">
+                        <i class="fas fa-file-download mr-1"></i>
+                        Download Excel
+                    </button>
+
                     <!-- Date -->
-                    
-                        <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
-                    </form>
-                </li>
-            </ul>
+
+                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range"
+                        value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
+                </form>
+            </div>
             <div class="row mt-5">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                                <table id="service_list_table" class="display table table-hover cell-border"
+                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999; color: #fff; ">
                                             <th>No.</th>
@@ -158,31 +165,36 @@
                                             } // make it dropdown
                                             $(document).click(function() {
                                                 var container = $(".menu");
-                                                if (!container.is(event.target) && !container.has(event.target).length) {
+                                                if (!container.is(event.target) && !container.has(event.target)
+                                                    .length) {
                                                     container.hide();
                                                 }
                                             });
                                             </script>
                                             <td class="text-left">
-                                                <div class="ui dropdown p-1" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                <div class="ui dropdown p-1"
+                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
+                                                    onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <center>
-                                                    <i class="fas fa-ellipsis-v"></i>
+                                                        <i class="fas fa-ellipsis-v"></i>
                                                     </center>
-                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>" style="right: 0;left: auto;">
+                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>"
+                                                        style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
                                                             Charge billing
                                                         </div>
                                                         <div class="item" onclick="change_location('google')">
                                                             Edit
                                                         </div>
-                                                        <div class="item test button" onclick="get_id(<?php echo $arr_service[$i]->ser_id?>)">
+                                                        <div class="item test button"
+                                                            onclick="get_id(<?php echo $arr_service[$i]->ser_id?>)">
                                                             Remove
                                                         </div>
                                                         <script>
                                                         $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </td>
                                         </tr>
@@ -220,12 +232,13 @@
         }).draw();
 
         $("#service_list_table_filter").append(
-            
+
             "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Service_input/service_input' ?>'><i class='left plus icon'></i>Add</a>"
         );
 
         //Reset Daterange
-        $('.cancelBtn').attr('onclick','location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
+        $('.cancelBtn').attr('onclick',
+            'location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
     });
 
     function change_location(url) {
