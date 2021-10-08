@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=" d-flex mr-3">
+                <div class="d-flex mr-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">

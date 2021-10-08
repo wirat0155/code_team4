@@ -59,9 +59,9 @@
                         value="<?php echo $arrivals_date ?>">
                 </form>
                 <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post"
-                    class="ml-auto mr-3">
+                    class="ml-auto mr-3 text-right">
 
-                    <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border mr-3"
+                    <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border"
                         style=" height: 40px; width: 160px; margin-bottom: 5">
                         <i class="fas fa-file-download mr-1"></i>
                         Download Excel
