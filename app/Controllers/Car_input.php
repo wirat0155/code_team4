@@ -62,6 +62,7 @@ class Car_input extends Cdms_controller {
 
         $car_prov_id = $this->request->getPost('car_prov_id');
         $car_cart_id = $this->request->getPost('car_cart_id');
+        $car_status = $this->request->getPost('car_status');
         
         // upload image
         $file = $this->request->getFile('car_image');
@@ -73,7 +74,7 @@ class Car_input extends Cdms_controller {
         $car_image = $imageName;
 
         // เพิ่มข้อมูลรถ
-        $m_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id);
+        $m_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id, $car_status);
         $this->response->redirect(base_url() . '/Car_show/car_show_ajax');
     }
 }

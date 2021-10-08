@@ -27,7 +27,7 @@
                 </ul>
             </div>
 
-            <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" method="POST">
+            <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -106,7 +106,7 @@
                                     <!-- Chassis number -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="car_chassis_number" class="col-form-label mr-auto">Chassis
+                                            <label for="car_chassis_number" class="col-form-label mr-auto pull-right">Chassis
                                                 number</label>
                                             <div class="col-md-9 p-0">
                                                 <input type="text" class="form-control input-full"
@@ -183,7 +183,7 @@
                                             <label for="car_image" class="col-form-label mr-auto">Image</label>
                                             <div class="col-md-10 p-0">
                                                 <input type="file" class="form-control-file input-full" id="car_image"
-                                                    name="car_image">
+                                                    name="car_image" >
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -204,13 +204,13 @@
                                 </div>
                             </div>
 
-                            <div class="card-action" id="customer_action" style>
+                            <div class="card-action" id="car_action" style>
                                 <button type="reset" class="ui grey button pull-left">
                                     Cancel
                                 </button>
                                 <button type="submit" class="ui positive button pull-right">
                                     <i class="plus icon"></i>
-                                    Add customer
+                                    Add car
                                 </button>
                             </div>
                         </div>
@@ -218,7 +218,82 @@
                 </div>
             </form>
         </div>
-        <script>
 
+        <script>
+        $(document).ready(function() {
+            // jQuery Validation
+            if ($('#add_car_form').length > 0) {
+                $('#add_car_form').validate({
+                    rules: {
+                        car_number: {
+                            required: true
+                        },
+                        car_code: {
+                            required: true
+                        },
+                        car_brand: {
+                            required: true
+                        },
+                        car_branch: {
+                            required: true
+                        },
+                        car_chassis_number: {
+                            required: true
+                        },
+                        car_register_year: {
+                            required: true
+                        },
+                        car_weight: {
+                            required: true,
+                            min: 0
+                        },
+                        car_fuel_type: {
+                            required: true
+                        },
+                        car_image: {
+                            required: true
+                        },
+
+                    },
+                    messages: {
+                        car_number: {
+                            required: 'กรุณากรอกหมายเลขรถ'
+                        },
+                        car_code: {
+                            required: 'กรุณากรอกทะเบียนรถ'
+                        },
+                        car_brand: {
+                            required: 'กรุณากรอกยี่ห้อรถ'
+                        },
+                        car_branch: {
+                            required: 'กรุณากรอกสาขา'
+                        },
+                        car_chassis_number: {
+                            required: 'กรุณากรอกหมายเลขโครงรถ'
+                        },
+                        car_register_year: {
+                            required: 'กรุณากรอกปีที่จดทะเบียน'
+                        },
+                        car_weight: {
+                            required: 'กรุณากรอกน้ำหนักรถ',
+                            min: 'กรุณากรอกอย่างน้อย 0'
+                        },
+                        car_fuel_type: {
+                            required: 'กรุณากรอกชนิดน้ำมัน'
+                        },
+                        car_image: {
+                            required: 'กรุณาเลือกไฟล์รูป'
+                        },
+
+                    }
+                })
+            }
+        });
+
+        function get_image() {
+            var car_img = $('#car_image').val();
+            $('#file_name').html(car_img.substr(12));
+            $('#car_image-error').remove();
+        }
         </script>
     </div>

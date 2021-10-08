@@ -68,7 +68,7 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                   
+                                
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                             <tr>
@@ -77,7 +77,7 @@
 
                                                 <!-- รูปภาพ ทะเบียน -->
                                                     <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
-                                                        <div class = "avatar avatar-lg">
+                                                        <div class = "avatar avatar-lg mr-4">
                                                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>" alt="" loading="lazy">
                                                         </div>
                                                         <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
