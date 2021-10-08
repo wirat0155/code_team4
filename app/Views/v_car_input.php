@@ -1,3 +1,4 @@
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -182,8 +183,14 @@
                                         <div class="form-group form-inline">
                                             <label for="car_image" class="col-form-label mr-auto">Image</label>
                                             <div class="col-md-10 p-0">
+                                                <div class="input-group mb-3">
+													<input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
+													<div class="input-group-append" style="cursor: pointer;" onclick="$('#car_image').click();">
+														<span class="input-group-text" id="show_browse">Browse</span>
+													</div>
+												</div>
                                                 <input type="file" class="form-control-file input-full" id="car_image"
-                                                    name="car_image" >
+                                                    name="car_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -292,7 +299,7 @@
 
         function get_image() {
             var car_img = $('#car_image').val();
-            $('#file_name').html(car_img.substr(12));
+            $('#input_show_browse').val(car_img.substr(12));
             $('#car_image-error').remove();
         }
         </script>
