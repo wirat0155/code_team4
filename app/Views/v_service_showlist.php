@@ -74,7 +74,7 @@
                             <div class="table-responsive">
                                 <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
-                                        <tr style="background-color: #999999; color: white; ">
+                                        <tr style="background-color: #999; color: #fff; ">
                                             <th>No.</th>
                                             <th class="text-center">Con. number</th>
                                             <th class="text-center">Con. status</th>
@@ -217,7 +217,8 @@
         }).draw();
 
         $("#service_list_table_filter").append(
-            "<a href='<?php echo base_url() . '/Service_input/service_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
+            
+            "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Service_input/service_input' ?>'><i class='left plus icon'></i>Add</a>"
         );
 
         //Reset Daterange

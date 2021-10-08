@@ -134,7 +134,7 @@
     }
 
     .navbar-color {
-        background-color: #041F47;
+        background-color: #0b2f63;
     }
 
     .page-inner > .row {
@@ -149,6 +149,9 @@
         border: 0px !important;
         box-shadow: rgb(0 0 0 / 17%) 1px 2px 3px !important;
     }
+    .button.primary{
+        background-color: #1572e8 !important;
+    }
 
     </style>
 </head>
@@ -161,7 +164,7 @@
 
                 <a href="index.html" class="logo">
                     <img src="http://localhost/code_team4/public/upload/Logo_IBS.svg" alt="navbar brand" class="navbar-brand"
-                        style="width:10vh;">
+                        style="width:15vh;">
                 </a>
 
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"

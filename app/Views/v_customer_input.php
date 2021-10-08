@@ -181,13 +181,17 @@
 
 
 								<div class="card-action" id="agent_action">
-                                    <input type="reset" class="ui button" value="Reset form">
-                                    <button type="button" class="ui primary button" onclick="show_customer_form()">
+                                    <input type="reset" class="ui button" value="Reset form" onclick="show_reset()">
+                                    <button type="button" class="ui right labeled primary icon button" onclick="show_customer_form()">
+										<i class="right arrow icon"></i>
 										Next
 									</button>
 								</div>
 								<div class="card-action" id="customer_action" style="display: none">
-                                    <input type="reset" class="ui button" value="Prev">
+                                    <button type="reset" class="ui labeled icon primary basic button" onclick="show_agent_form()">
+										<i class="left arrow icon"></i>
+										Prev
+									</button>
                                     <button onclick="show_all_form(); check_form()" type="submit" class="ui positive button">
 										<i class="plus icon"></i>
 										Add customer
@@ -199,6 +203,9 @@
                     </form>
 				</div>
 				<script>
+					$(document).ready(function() {
+						$('#agent_step').click();
+					})
 					function show_all_form() {
 						$('#customer_section').show();
 						$('#agent_section').show();
@@ -206,19 +213,23 @@
 					}
 					function check_form() {
 						if ($('#agent_section .error').length > 0) {
-							$('#agent_action').show();
-							$('#customer_section').hide();
-							$('#customer_action').hide();
+							// $('#agent_action').show();
+							// $('#customer_section').hide();
+							// $('#customer_action').hide();
+							$('#agent_step').click();
 						}
 						else if ($('#customer_section .error').length > 0) {
-							$('#agent_section').hide();
-							$('#agent_action').hide();
-							$('#customer_action').show();
+							// $('#agent_section').hide();
+							// $('#agent_action').hide();
+							// $('#customer_action').show();
+							$('#customer_step').click();
 						}
 					}
 					function show_agent_form() {
 						$('#agent_section').show();
 						$('#customer_section').hide();
+						$('#customer_action').hide();
+						$('#agent_action').show();
 					}
 					function show_customer_form() {
 						$('#customer_section').show();
