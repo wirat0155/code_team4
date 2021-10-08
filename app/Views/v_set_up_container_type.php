@@ -168,9 +168,31 @@ input:checked+.slider:before {
                             Container type set up such as, new type, upload image and switch on-off type
 
                             <div class="col-6 mt-3">
-                                <i class="icon-setup fas fa-plus"></i>
+                                <i onclick="container_type_insert()" class="icon-setup fas fa-plus"></i>
                                 <div class="font-setup">Add new type</div>
                             </div>
+
+                            <!-- <form id="add_container_type_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST"> -->
+                            <div class="row">
+                                <div class="col-md-7 mb-3">
+                                    <!-- New type -->
+                                    <input type="text" id="" class="form-control" placeholder="New type">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <!-- Img container_type -->
+                                        <input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
+                                        <div class="input-group-append" style="cursor: pointer;" onclick="$('#container_type_image').click();">
+                                            <span class="input-group-text" id="show_browse">Browse</span>
+                                        </div>
+                                    </div>
+                                    <input type="file" class="form-control-file input-full" id="container_type_image" name="container_type_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
+                                </div>
+
+                                <!-- Add container_type -->
+                                <button type="submit" class="ui positive button pull-right">Add</button>
+                            </div>
+                            <!-- </form> -->
 
                             <table class="table mt-3">
                                 <tbody>
@@ -243,5 +265,20 @@ input:checked+.slider:before {
                 cont_id: cont_id
             }
         });
+    }
+
+    function container_type_insert() {
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "text");
+        x.setAttribute("value", "New type");
+        document.body.appendChild(x);
+
+        // $('#container_type_form')
+    }
+
+    function get_image() {
+        var container_type_img = $('#container_type_image').val();
+        $('#input_show_browse').val(car_img.substr(12));
+        $('#container_type_image-error').remove();
     }
     </script>
