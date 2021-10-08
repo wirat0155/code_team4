@@ -167,13 +167,13 @@ input:checked+.slider:before {
                         <div class="card-body">
                             Container type set up such as, new type, upload image and switch on-off type
 
-                            <div class="col-6 mt-3">
+                            <div class="col-6 mt-4" style="cursor: pointer;" id="btn_add" onclick="show_input();">
                                 <i onclick="container_type_insert()" class="icon-setup fas fa-plus"></i>
                                 <div class="font-setup">Add new type</div>
                             </div>
 
                             <!-- <form id="add_container_type_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST"> -->
-                            <div class="row">
+                            <div class="row my-4" id="input_add">
                                 <div class="col-md-7 mb-3">
                                     <!-- New type -->
                                     <input type="text" id="" class="form-control" placeholder="New type">
@@ -235,6 +235,8 @@ input:checked+.slider:before {
 
     <script>
     // check สถานะของประเภทตู้
+    $('#input_add').hide();
+
     function check_status_container_type(cont_id) {
         if ($('#cont_id' + cont_id).prop('checked')) {
             container_type_delete(cont_id);
@@ -278,7 +280,12 @@ input:checked+.slider:before {
 
     function get_image() {
         var container_type_img = $('#container_type_image').val();
-        $('#input_show_browse').val(car_img.substr(12));
+        $('#input_show_browse').val(container_type_img.substr(12));
         $('#container_type_image-error').remove();
+    }
+
+    function show_input() {
+        $('#input_add').show();
+        $('#btn_add').hide();
     }
     </script>
