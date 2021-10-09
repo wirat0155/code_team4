@@ -113,7 +113,6 @@
                                                 </td>
 
 
-
                                                 <!-- Action -->
                                                 <script>
                                                     function show_driver_menu(dri_id) {
@@ -130,11 +129,16 @@
                                                 <td class="text-left">
                                                     <div class="ui dropdown" onclick="show_driver_menu(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                         <i class="fas fa-ellipsis-v"></i>
-                                                        <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>">
+                                                        <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>" style="right: 0;left: auto;">
+                                                            <!-- Button Edit -->
                                                             <div class="item" onclick="change_location('google')">
-                                                                Edit
+                                                                <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
+                                                                Edit 
                                                             </div>
-                                                            <div class="item test button" onclick="get_id(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                            <!-- Button Remove -->
+                                                            <div class="item test button"
+                                                                onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
+                                                                <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
                                                                 Remove
                                                             </div>
                                                             <script>
