@@ -168,31 +168,31 @@ input:checked+.slider:before {
                             Container type set up such as, new type, upload image and switch on-off type
 
                             <div class="col-6 mt-4" style="cursor: pointer;" id="btn_add" onclick="show_input();">
-                                <i onclick="container_type_insert()" class="icon-setup fas fa-plus"></i>
+                                <i class="icon-setup fas fa-plus"></i>
                                 <div class="font-setup">Add new type</div>
                             </div>
 
-                            <!-- <form id="add_container_type_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST"> -->
-                            <div class="row my-4" id="input_add">
-                                <div class="col-md-7 mb-3">
-                                    <!-- New type -->
-                                    <input type="text" id="" class="form-control" placeholder="New type">
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="input-group">
-                                        <!-- Img container_type -->
-                                        <input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
-                                        <div class="input-group-append" style="cursor: pointer;" onclick="$('#container_type_image').click();">
-                                            <span class="input-group-text" id="show_browse">Browse</span>
-                                        </div>
+                            <form id="add_container_type_form" action="<?php echo base_url() . '/Set_up_container_type/container_type_insert'?>" enctype="multipart/form-data" method="POST">
+                                <div class="row my-4" id="input_add">
+                                    <div class="col-md-7 mb-3">
+                                        <!-- New type -->
+                                        <input type="text" id="cont_name" name="cont_name" class="form-control" placeholder="New type">
                                     </div>
-                                    <input type="file" class="form-control-file input-full" id="container_type_image" name="container_type_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
-                                </div>
+                                    <div class="col-md-7">
+                                        <div class="input-group">
+                                            <!-- Img container type -->
+                                            <input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
+                                            <div class="input-group-append" style="cursor: pointer;" onclick="$('#cont_image').click();">
+                                                <span class="input-group-text" id="show_browse">Browse</span>
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control-file input-full" id="cont_image" name="cont_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
+                                    </div>
 
-                                <!-- Add container_type -->
-                                <button type="submit" class="ui positive button pull-right">Add</button>
-                            </div>
-                            <!-- </form> -->
+                                    <!-- Add container type -->
+                                    <button type="submit" class="ui positive button pull-right">Add</button>
+                                </div>
+                            </form>
 
                             <table class="table mt-3">
                                 <tbody>
@@ -205,7 +205,7 @@ input:checked+.slider:before {
                                             <!-- รูปภาพ -->
                                             <td>
                                                 <div class="avatar avatar-lg">
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' .'unnamed.jpg' ?>" alt="" loading="lazy">
+                                                    <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' .$arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
                                                 </div>
                                             </td>
 
@@ -234,6 +234,30 @@ input:checked+.slider:before {
     </div>
 
     <script>
+    $(document).ready(function() {
+        // jQuery Validation
+        if ($('#add_container_type_form').length > 0) {
+            $('#add_container_type_form').validate({
+                rules: {
+                    cont_name: {
+                        required: true
+                    },
+                    cont_image: {
+                        required: true
+                    },
+                },
+                messages: {
+                    cont_name: {
+                        required: 'กรุณากรอกชื่อประเภทตู้'
+                    },
+                    cont_image: {
+                        required: 'กรุณาเลือกไฟล์รูป'
+                    },
+                }
+            })
+        }
+    });
+
     // check สถานะของประเภทตู้
     $('#input_add').hide();
 
@@ -269,19 +293,10 @@ input:checked+.slider:before {
         });
     }
 
-    function container_type_insert() {
-        var x = document.createElement("INPUT");
-        x.setAttribute("type", "text");
-        x.setAttribute("value", "New type");
-        document.body.appendChild(x);
-
-        // $('#container_type_form')
-    }
-
     function get_image() {
-        var container_type_img = $('#container_type_image').val();
-        $('#input_show_browse').val(container_type_img.substr(12));
-        $('#container_type_image-error').remove();
+        var cont_image = $('#cont_image').val();
+        $('#input_show_browse').val(cont_image.substr(12));
+        $('#cont_image-error').remove();
     }
 
     function show_input() {

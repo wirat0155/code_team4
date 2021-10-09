@@ -12,7 +12,7 @@ use CodeIgniter\Model;
 class Da_cdms_container_type extends Model {
     protected $table = 'cdms_container_type';
     protected $primaryKey = 'cont_id';
-    protected $allowedFields = ['cont_name', 'cont_status'];
+    protected $allowedFields = ['cont_name', 'cont_status', 'cont_image'];
 
     /*
     * insert
@@ -23,8 +23,8 @@ class Da_cdms_container_type extends Model {
     * @Create Date 2564-09-10
     * @Update Date  2564-09-10
     */
-    public function insert($cont_name = NULL, bool $return_ID = true) {
-        $sql = "INSERT INTO $this->table VALUES(NULL, '$cont_name', 1)";
+    public function insert($cont_name = NULL, $cont_image = NULL) {
+        $sql = "INSERT INTO $this->table(cont_name, cont_status, cont_image) VALUES('$cont_name', 1, '$cont_image')";
         $this->db->query($sql);
     }
 

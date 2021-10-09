@@ -86,4 +86,34 @@ class Set_up_container_type extends Cdms_controller
         return json_encode('pass');
     }
 
+     /*
+    * container_type_insert
+    * เพิ่มประเภทตู้
+    * @input ข้อมูลประเภทตู้
+    * @output เพิ่มรถ
+    * @author Tadsawan
+    * @Create Date 2564-08-06
+    * @Update Date 2564-08-08
+    */
+    public function container_type_insert() {
+        $m_container_type = new M_cdms_container_type();
+
+        // container type information
+        $cont_name = $this->request->getPost('cont_name');
+        $cont_image = $this->request->getPost('cont_image');
+        
+        // upload image
+        $file = $this->request->getFile('cont_image');
+        if($file->isValid() && ! $file->hasMoved()){
+            $imageName = $file->getRandomName();
+            $file->move('./container_type_image', $imageName);
+        }
+        
+        $cont_image = $imageName;
+
+        // เพิ่มข้อมูลประเเภทตู้
+        $m_container_type->insert($cont_name, $cont_image);
+        $this->response->redirect(base_url() . '/Set_up_container_type/container_type_show');
+    }
+
 }
