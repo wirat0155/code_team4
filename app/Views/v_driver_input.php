@@ -27,7 +27,7 @@
                 </ul>
             </div>
 
-            <form id="add_driver_form" action="<?php echo base_url() . '/Driver_input/driver_insert'?>" method="POST">
+            <form id="add_driver_form" action="<?php echo base_url() . '/Driver_input/driver_insert'?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -35,7 +35,7 @@
                                 <div class="card-title">Driver Information</div>
                             </div>
 
-                            <div class="card-body" id="car_section">
+                            <div class="card-body" id="driver_section">
                                 <div class="row px-5">
 
                                     <!-- Name-Surmame -->
@@ -182,7 +182,7 @@
                                 </div>
                             </div>
 
-                            <div class="card-action" id="car_action" style>
+                            <div class="card-action" id="driver_action" style>
                                 <button type="reset" class="ui grey button pull-left" onclick="window.location = '<?php echo base_url() . '/Driver_show/driver_show_ajax'?>';">
                                     Cancel
                                 </button>
@@ -196,90 +196,88 @@
                 </div>
             </form>
         </div>
-        <script>
+       
 
+
+        <script>
+            $(document).ready(function() {
+                // jQuery Validation
+                if ($('#add_driver_form').length > 0) {
+                    $('#add_driver_form').validate({
+                        rules: {
+                            dri_name: {
+                                required: true
+                            },
+                            dri_card_number: {
+                                required: true,
+                                maxlength: 13
+                            },
+                            dri_license: {
+                                required: true,
+                                maxlength: 8
+                            },
+                            dri_tel: {
+                                required: true,
+                                maxlength: 10
+                            },
+                            dri_car_id: {
+                                required: true,
+                            },
+                            dri_license_type: {
+                                required: true,
+                            },
+                            dri_status: {
+                                required: true,
+                            },
+                            dri_date_start: {
+                                required: true
+                            },
+                            dri_profile_image: {
+                                required: true
+                            }
+                        },
+                        messages: {
+                            dri_name: {
+                                required: 'กรุณากรอกชื่อ'
+                            },
+                            dri_card_number: {
+                                required: 'กรุณากรอกหมายเลขบัตรประชาชน',
+                                maxlength: 'กรุณากรอกไม่เกิน 13'
+                            },
+                            dri_license: {
+                                required: 'กรุณากรอกหมายเลขใบขับขี่',
+                                maxlength: 'กรุณากรอกไม่เกิน 8'
+                            },
+                            dri_tel: {
+                                required: 'กรุณากรอกหมายเลขโทรศัพท์',
+                                maxlength: 'กรุณากรอกไม่เกิน 10'
+                            },
+                            dri_car_id: {
+                                required: 'กรุณากรอกหมายเลขรถ'
+                            },
+                            dri_license_type: {
+                                required: 'กรุณากรอกประเภทใบขับขี่'
+                            },
+                            dri_status: {
+                                required: 'กรุณากรอกสถานะพนักงานขับรถ'
+                            },
+                            dri_date_start: {
+                                required: 'กรุณาเลือกวันที่เข้าทำงาน'
+                            },
+                            dri_profile_image: {
+                                required: 'กรุณาเลือกไฟล์รูป'
+                            },
+
+                        }
+                    })
+                }
+            });
+
+            function get_image() {
+                var dri_profile_image = $('#dri_profile_image').val();
+                $('#input_show_browse').val(dri_profile_image.substr(12));
+                $('#dri_profile_image-error').remove();
+            }
         </script>
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_driver_form').length > 0) {
-            $('#add_driver_form').validate({
-                rules: {
-                    dri_name: {
-                        required: true
-                    },
-                    dri_card_number: {
-                        required: true,
-                        maxlength: 13
-                    },
-                    dri_license: {
-                        required: true,
-                        maxlength: 8
-                    },
-                    dri_tel: {
-                        required: true,
-                        maxlength: 10
-                    },
-                    dri_car_id: {
-                        required: true,
-                    },
-                    dri_license_type: {
-                        required: true,
-                    },
-                    dri_status: {
-                        required: true,
-                    },
-                    dri_date_start: {
-                        required: true
-                    },
-                    dri_profile_image: {
-                        required: true
-                    }
-                },
-                messages: {
-                    dri_name: {
-                        required: 'กรุณากรอกชื่อ'
-                    },
-                    dri_card_number: {
-                        required: 'กรุณากรอกหมายเลขบัตรประชาชน',
-                        maxlength: 'กรุณากรอกไม่เกิน 13'
-                    },
-                    dri_license: {
-                        required: 'กรุณากรอกหมายเลขใบขับขี่',
-                        maxlength: 'กรุณากรอกไม่เกิน 8'
-                    },
-                    dri_tel: {
-                        required: 'กรุณากรอกหมายเลขโทรศัพท์',
-                        maxlength: 'กรุณากรอกไม่เกิน 10'
-                    },
-                    dri_car_id: {
-                        required: 'กรุณากรอกหมายเลขรถ'
-                    },
-                    dri_license_type: {
-                        required: 'กรุณากรอกประเภทใบขับขี่'
-                    },
-                    dri_status: {
-                        required: 'กรุณากรอกสถานะพนักงานขับรถ'
-                    },
-                    dri_date_start: {
-                        required: 'กรุณาเลือกวันที่เข้าทำงาน'
-                    },
-                    dri_profile_image: {
-                        required: 'กรุณาเลือกไฟล์รูป'
-                    }
-
-                }
-            })
-        }
-    });
-
-    function get_image() {
-        var dri_profile_image = $('#dri_profile_image').val();
-        $('#input_show_browse').val(dri_profile_image.substr(12));
-        $('#dri_profile_image-error').remove();
-    }
-</script>

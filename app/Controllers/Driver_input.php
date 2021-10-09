@@ -57,16 +57,17 @@ class Driver_input extends Cdms_controller {
 
         // upload image
         $file = $this->request->getFile('dri_profile_image');
-        if ($file->isValid() && !$file->hasMoved()) {
+        if($file->isValid() && ! $file->hasMoved()){
             $imageName = $file->getRandomName();
             $file->move('./dri_profile_image', $imageName);
         }
 
         $dri_profile_image = $imageName;
 
+
         // เพิ่มข้อมูลพนักงาน
         $m_dri->insert($dri_name, $dri_tel, $dri_card_number, $dri_license, $dri_license_type, $dri_profile_image, $dri_status, $dri_date_start, $dri_date_end, $dri_car_id);
 
-        return $this->response->redirect(base_url('/Driver_show/driver_show_ajax'));
+        $this->response->redirect(base_url('/Driver_show/driver_show_ajax'));
     }
 }
