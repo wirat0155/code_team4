@@ -113,7 +113,7 @@
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->stac_name; ?>
                                             </td>
-                                          
+
                                             <!-- Container type -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->cont_name ?>
@@ -158,13 +158,11 @@
                                                 }
                                             });
                                             </script>
-                                            <td class="text-left">
-                                                <div class="ui dropdown p-1"
+                                            <td class="text-left" width='15px'>
+                                                <div class="ui dropdown text-center p-2"
                                                     style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
                                                     onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                    <center>
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </center>
+                                                    <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>"
                                                         style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">

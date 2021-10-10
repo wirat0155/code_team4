@@ -120,8 +120,9 @@
                                                         }
                                                     });
                                                 </script>
-                                                <td class="text-left">
-                                                    <div class="ui dropdown"
+                                                <td class="text-left" width='15px'>
+                                                <div class="ui dropdown text-center p-2"
+                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
                                                         onclick="show_service_menu(<?php echo $arr_car[$i]->car_id ?>)">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                         <div class="menu car_id_<?php echo $arr_car[$i]->car_id ?>" style="right: 0;left: auto;">

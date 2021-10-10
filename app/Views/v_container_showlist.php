@@ -60,7 +60,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="container_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important">
+                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
                                             <th>No.</th>
@@ -127,8 +127,8 @@
                                                 }
                                             });
                                             </script>
-                                            <td class="text-left">
-                                                <div class="ui dropdown"
+                                            <td class="text-left" width='15px'>
+                                                <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
                                                     onclick="show_container_menu(<?php echo $arr_container[$i]->con_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu con_id_<?php echo $arr_container[$i]->con_id ?>"
@@ -148,6 +148,9 @@
                                                         <script>
                                                         $('.ui.modal').modal('attach events', '.test.button', 'toggle');
                                                         </script>
+                                                    </div>
+                                                </div>
+                                            </td>
 
                                         </tr>
                                         <?php } ?>

@@ -10,17 +10,16 @@
     background-color: gray;
 }
 
-.d-flex.mr-2 > .card {
+.d-flex.mr-2>.card {
     margin-top: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     height: 150px;
     width: 230px;
 }
 
-.carousel-item > .row {
+.carousel-item>.row {
     padding-left: 8px;
 }
-
 </style>
 <div class="ui modal">
     <i class="close icon"></i>
@@ -62,7 +61,8 @@
             </div>
             <hr width="95%" color="696969">
             <div class="row">
-                <ul class="pl-2 mr-5 breadcrumbs d-flex mr-2 align-items-left align-items-md-center" style="height: 30px;">
+                <ul class="pl-2 mr-5 breadcrumbs d-flex mr-2 align-items-left align-items-md-center"
+                    style="height: 30px;">
                     <li class="nav-home">
                         <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                             <i class="flaticon-home"></i>
@@ -465,8 +465,9 @@
                                                 }
                                             });
                                             </script>
-                                            <td class="text-left">
-                                                <div class="ui dropdown"
+                                            <td class="text-left" width='15px'>
+                                                <div class="ui dropdown text-center p-2"
+                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
                                                     onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu cus_id_<?php echo $arr_customer[$i]->cus_id ?>"

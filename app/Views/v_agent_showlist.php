@@ -1,19 +1,22 @@
 <style>
-th{
-  color: white;
-  background: rgb(153, 153, 153);
+th {
+    color: white;
+    background: rgb(153, 153, 153);
 }
+
 table {
-  border-collapse: collapse;
-  border-radius: 1em;
-  overflow: hidden;
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
 }
+
 hr {
-  border-top: 1px solid #041F47;
+    border-top: 1px solid #041F47;
 }
+
 .hiddenli {
- list-style-type: none;
- color: black;
+    list-style-type: none;
+    color: black;
 }
 </style>
 
@@ -77,7 +80,7 @@ hr {
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                            <table id="Agent_list_table" class="display table table-hover cell-border"
+                                <table id="Agent_list_table" class="display table table-hover cell-border"
                                     style="border-collapse: collapse !important">
                                     <thead>
                                         <tr>
@@ -87,10 +90,10 @@ hr {
                                             <th class="text-center">Number container</th>
                                             <th class="text-center">Tel.</th>
                                             <th class="text-center">Email</th>
-                                            <th > </th>
+                                            <th> </th>
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_agent); $i++) { ?>
                                         <tr>
@@ -109,7 +112,8 @@ hr {
                                             </td>
 
                                             <!-- Number Container -->
-                                            <td class="text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                            <td class="text-center"
+                                                onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                 <?php
                                                     $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
                                                     echo ($count_container != 0) ? $count_container : '0';
@@ -140,20 +144,24 @@ hr {
                                                 }
                                             });
                                             </script>
-                                            <td class="text-center">
-                                                <div class="ui dropdown"
+                                            <td class="text-left" width='15px'>
+                                                <div class="ui dropdown text-center p-2"
+                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
                                                     onclick="show_agent_menu(<?php echo $arr_agent[$i]->agn_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
-                                                    <div class="menu agn_id_<?php echo $arr_agent[$i]->agn_id ?>" style="right: 0;left: auto;">
+                                                    <div class="menu agn_id_<?php echo $arr_agent[$i]->agn_id ?>"
+                                                        style="right: 0;left: auto;">
                                                         <!-- Agent Edite  -->
-                                                        <div class="item" onclick="location.href='<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>';">
-                                                            <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
-                                                            Edit 
+                                                        <div class="item"
+                                                            onclick="location.href='<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[$i]->agn_id ?>';">
+                                                            <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
+                                                            Edit
                                                         </div>
                                                         <!-- Agent Delete  -->
                                                         <div class="item test button"
                                                             onclick="get_id(<?php echo $arr_agent[$i]->agn_id?>)">
-                                                            <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
+                                                            <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
+                                                            &nbsp; &nbsp;
                                                             Remove
                                                         </div>
                                                         <script>
@@ -173,29 +181,33 @@ hr {
             </div>
         </div>
     </div>
-    
-<script>
+
+    <script>
     $(document).ready(function() {
 
         // แทรกปุ่ม เพิ่มลูกค้า
         var cus_table = $('#Agent_list_table').DataTable({
-            "columnDefs": [ {
+            "columnDefs": [{
                 "searchable": false,
                 "orderable": false,
-                "targets": [0,6]
-            } ],
+                "targets": [0, 6]
+            }],
             "order": []
         });
         //ลำดับ
-        cus_table.on( 'order.dt search.dt', function () {
-            cus_table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                cell.innerHTML = i+1+'.';
-            } );
-        } ).draw();
+        cus_table.on('order.dt search.dt', function() {
+            cus_table.column(0, {
+                search: 'applied',
+                order: 'applied'
+            }).nodes().each(function(cell, i) {
+                cell.innerHTML = i + 1 + '.';
+            });
+        }).draw();
         $("#Agent_list_table_filter").append(
             "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Agent_input/agent_input' ?>'><i class='left plus icon'></i>Add</a>"
         );
     });
+
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
@@ -203,4 +215,4 @@ hr {
     function agent_detail(agn_id) {
         window.location = '<?php echo base_url('') . '/Agent_show/agent_detail/' ?>' + agn_id;
     }
-</script>
+    </script>
