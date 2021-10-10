@@ -156,6 +156,10 @@
         background-color: #ddd;
     }
 
+    label.error {
+        float: left !important;
+    }
+
     </style>
 </head>
 
