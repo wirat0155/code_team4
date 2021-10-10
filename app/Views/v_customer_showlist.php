@@ -528,7 +528,7 @@
         }).draw();
 
         $("#customer_list_table_filter").append(
-            "<a href='<?php echo base_url() . '/Customer_input/customer_input' ?>' class='btn ml-3' style='background-color: #4B75D8; color: white;'> <i class='fas fa-plus mr-1'></i> ADD </a>"
+            "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Customer_input/customer_input' ?>'><i class='left plus icon'></i>Add</a>"
         );
 
         //Reset Daterange
