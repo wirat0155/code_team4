@@ -17,7 +17,7 @@ class Da_cdms_service extends Model {
     protected $primaryKey = 'ser_id';
     public $allowedFields = [
         'ser_arrivals_location', 'ser_arrivals_date', 'ser_departure_date',
-        'ser_actual_departure_date', 'ser_departure_location', 'ser_weight', 'ser_status', 'ser_con_id', 'ser_type',
+        'ser_actual_departure_date', 'ser_departure_location', 'ser_weight', 'ser_status', 'ser_con_id', 'ser_stac_id',
         'ser_cus_id', 'ser_id_change', 'ser_dri_id_in', 'ser_dri_id_out', 'ser_car_id_in', 'ser_car_id_out'
     ];
     /*
@@ -37,18 +37,18 @@ class Da_cdms_service extends Model {
     /*
     * service_insert
     * เพิ่มบริการ
-    * @input $ser_type, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id
+    * @input $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id
     * @output เพิ่มบริการ
     * @author Natdanai
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
     */
-    public function service_insert($ser_type = NULL, $ser_departure_date = NULL, $ser_car_id_in = NULL, $ser_arrivals_date = NULL, $ser_dri_id_in = NULL, $ser_actual_departure_date = NULL, $ser_dri_id_out = NULL, $ser_car_id_out = NULL, $ser_arrivals_location = NULL, $ser_departure_location = NULL, $ser_weight = NULL, $ser_con_id = NULL, $ser_cus_id = NULL) {
+    public function service_insert($ser_departure_date = NULL, $ser_car_id_in = NULL, $ser_arrivals_date = NULL, $ser_dri_id_in = NULL, $ser_actual_departure_date = NULL, $ser_dri_id_out = NULL, $ser_car_id_out = NULL, $ser_arrivals_location = NULL, $ser_departure_location = NULL, $ser_weight = NULL, $ser_con_id = NULL, $ser_cus_id = NULL) {
         $sql = "INSERT INTO $this->table(ser_arrivals_location, ser_arrivals_date, ser_departure_date, ser_actual_departure_date, 
-                ser_departure_location, ser_weight, ser_con_id, ser_type, ser_cus_id, ser_id_change, ser_dri_id_in, 
+                ser_departure_location, ser_weight, ser_con_id, ser_stac_id, ser_cus_id, ser_id_change, ser_dri_id_in, 
                 ser_dri_id_out, ser_car_id_in, ser_car_id_out) 
         VALUES ('$ser_arrivals_location', '$ser_arrivals_date', '$ser_departure_date', '$ser_actual_departure_date', 
-                '$ser_departure_location', '$ser_weight', '$ser_con_id', '$ser_type', '$ser_cus_id', 
+                '$ser_departure_location', '$ser_weight', '$ser_con_id', '1', '$ser_cus_id', 
                  NULL, '$ser_dri_id_in', '$ser_dri_id_out', '$ser_car_id_in', '$ser_car_id_out')";
         $this->db->query($sql);
     }

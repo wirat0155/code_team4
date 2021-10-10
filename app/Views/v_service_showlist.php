@@ -109,24 +109,11 @@
                                                 <?php echo $arr_service[$i]->con_number; ?>
                                             </td>
 
-                                            <!-- Status container 
+                                            <!-- Status container  -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->stac_name; ?>
-                                            </td> -->
-
-                                            <!-- Service type -->
-                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php
-                                                if ($arr_service[$i]->ser_type == '1') {
-                                                    echo '<span class="text-con-in">Import</span>';
-                                                } else if ($arr_service[$i]->ser_type == '2') {
-                                                    echo '<span class="text-con-out">Export</span>';
-                                                } else if ($arr_service[$i]->ser_type == '3') {
-                                                    echo '<span class="text-con-drop">Drop</span>';
-                                                }
-                                                ?>
                                             </td>
-
+                                          
                                             <!-- Container type -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->cont_name ?>

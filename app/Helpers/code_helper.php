@@ -41,12 +41,22 @@
       return substr($string, 0, 10) . 'T' . substr($string, 11); 
   }
 
-  function show_add_customer_form() {
+  function show_add_service_form() {
     $elem = '<div class="container row">';
 		$elem .= '<center>';
 		$elem .= '<div class="form-group">';
 		$elem .= '<label class="form-label">Step</label>';
 		$elem .= '<div class="selectgroup w-100">';
+    $elem .= '<label class="selectgroup-item">';
+		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_service_form()" id="service_step">';
+		$elem .= '<span class="selectgroup-button selectgroup-button-icon">';
+    $elem .= '<i class="flaticon-home"></i>';
+    $elem .= '</span>';
+		$elem .= '</label>';
+    $elem .= '<label class="selectgroup-item">';
+		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_container_form()" id="container_step">';
+		$elem .= '<span class="selectgroup-button">Container</span>';
+		$elem .= '</label>';
 		$elem .= '<label class="selectgroup-item">';
 		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_agent_form()" id="agent_step">';
 		$elem .= '<span class="selectgroup-button">Agent</span>';

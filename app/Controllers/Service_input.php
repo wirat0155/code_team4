@@ -135,7 +135,6 @@ class Service_input extends Cdms_controller {
         $agn_email = $this->request->getPost('agn_email');
 
         // service information
-        $ser_type = $this->request->getPost('ser_type');
         $ser_departure_date = $this->request->getPost('ser_departure_date');
         $ser_arrivals_date = $this->request->getPost('ser_arrivals_date');
         $ser_dri_id_in = $this->request->getPost('ser_dri_id_in');
@@ -219,7 +218,7 @@ class Service_input extends Cdms_controller {
         
 
         //insert service
-        $m_ser->service_insert($ser_type, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
+        $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 }

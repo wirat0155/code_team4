@@ -128,6 +128,197 @@
                 }
             })
         }
+
+        if ($('#add_service_form').length > 0) {
+            $('#add_service_form').validate({
+                rules: {
+                    con_number: {
+                        required: true,
+                        maxlength: 12
+                    },
+                    con_max_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_tare_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_net_weight: {
+                        required: true,
+                        min: 0,
+                        max: 40
+                    },
+                    con_cube: {
+                        required: true,
+                        min: 0,
+                        max: 100
+                    },
+                    agn_company_name: {
+                        required: true
+                    },
+                    agn_tax: {
+                        required: true,
+                        minlength: 13,
+                        maxlength: 13
+                    },
+                    agn_address: {
+                        required: true
+                    },
+                    agn_firstname: {
+                        required: true
+                    },
+                    agn_lastname: {
+                        required: true
+                    },
+                    agn_tel: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+                    agn_email: {
+                        required: true,
+                        email: true
+                    },
+                    cus_company_name: {
+                        required: true
+                    },
+                    cus_tax: {
+                        required: true,
+                        minlength: 13,
+                        maxlength: 13
+                    },
+                    cus_address: {
+                        required: true
+                    },
+                    cus_firstname: {
+                        required: true
+                    },
+                    cus_lastname: {
+                        required: true
+                    },
+                    cus_tel: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+                    cus_email: {
+                        required: true,
+                        email: true
+                    },
+                    ser_weight: {
+                        required: true
+                    },
+                    ser_arrivals_date: {
+                        required: true
+                    },
+                    ser_departure_date: {
+                        required: true
+                    },
+                    ser_arrivals_location: {
+                        required: true
+                    },
+                    ser_departure_location: {
+                        required: true
+                    }
+                },
+                messages: {
+                    con_number: {
+                        required: 'กรุณากรอกหมายเลขตู้',
+                        maxlength: 'กรุณากรอกตามฟอร์แมต'
+                    },
+                    con_max_weight: {
+                        required: 'กรุณากรอกน้ำหนักสูงสุด',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_tare_weight: {
+                        required: 'กรุณากรอกน้ำหนักตู้เปล่า',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_net_weight: {
+                        required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 40'
+                    },
+                    con_cube: {
+                        required: 'กรุณากรอกหมายเลขตู้',
+                        min: 'กรุณากรอกอย่างน้อย 0',
+                        max: 'กรุณากรอกไม่เกิน 100'
+                    },
+                    agn_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท'
+                    },
+                    agn_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    },
+                    agn_address: {
+                        required: 'กรุณากรอกที่อยู่'
+                    },
+                    agn_firstname: {
+                        required: 'กรุณากรอกชื่อจริง'
+                    },
+                    agn_lastname: {
+                        required: 'กรุณากรอกนามสกุล'
+                    },
+                    agn_tel: {
+                        required: 'กรุณากรอกเบอร์โทรศัพท์',
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    },
+                    agn_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    },
+                    cus_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท'
+                    },
+                    cus_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    },
+                    cus_address: {
+                        required: 'กรุณากรอกที่อยู่'
+                    },
+                    cus_firstname: {
+                        required: 'กรุณากรอกชื่อจริง'
+                    },
+                    cus_lastname: {
+                        required: 'กรุณากรอกนามสกุล'
+                    },
+                    cus_tel: {
+                        required: 'กรุณากรอกเบอร์โทรศัพท์',
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    },
+                    cus_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    },
+                    ser_weight: {
+                        required: 'กรุณากรอกน้ำหนักปัจจุบัน'
+                    },
+                    ser_arrivals_date: {
+                        required: 'กรุณาเลือกวันที่ตู้เข้าลาน'
+                    },
+                    ser_departure_date: {
+                        required: 'กรุณาเลือกวันที่ตู้ออกลาน'
+                    },
+                    ser_arrivals_location: {
+                        required: 'กรุณากรอกสถานที่ต้นทาง'
+                    },
+                    ser_departure_location: {
+                        required: 'กรุณากรอกสถานที่ปลายทาง'
+                    }
+                }
+            })
+        }
     });
 
     $('input[name="date_range"]').daterangepicker({
