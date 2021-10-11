@@ -319,6 +319,67 @@
                 }
             })
         }
+
+        if ($('#add_agent_form').length > 0) {
+            $('#add_agent_form').validate({
+                rules: {
+                    agn_company_name: {
+                        required: true
+                    },
+                    agn_tax: {
+                        required: true,
+                        minlength: 13,
+                        maxlength: 13
+                    },
+                    agn_address: {
+                        required: true
+                    },
+                    agn_firstname: {
+                        required: true
+                    },
+                    agn_lastname: {
+                        required: true
+                    },
+                    agn_tel: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    },
+                    agn_email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    agn_company_name: {
+                        required: 'กรุณากรอกชื่อบริษัท'
+                    },
+                    agn_tax: {
+                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    },
+                    agn_address: {
+                        required: 'กรุณากรอกที่อยู่'
+                    },
+                    agn_firstname: {
+                        required: 'กรุณากรอกชื่อจริง'
+                    },
+                    agn_lastname: {
+                        required: 'กรุณากรอกนามสกุล'
+                    },
+                    agn_tel: {
+                        required: 'กรุณากรอกเบอร์โทรศัพท์',
+                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
+                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    },
+                    agn_email: {
+                        required: 'กรุณากรอกอีเมล',
+                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    }
+                }
+            })
+        }
     });
 
     $('input[name="date_range"]').daterangepicker({

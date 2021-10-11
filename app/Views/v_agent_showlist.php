@@ -27,7 +27,7 @@ hr {
     </div>
     <div class="content">
         <form action="<?php echo base_url() . '/Agent_show/agent_delete' ?>" method="post">
-            <input type="hidden" id="cus_id" name="cus_id">
+            <input type="hidden" id="agn_id" name="agn_id">
 
             <p style="font-size: 1rem">Are you sure to remove the Agent</p>
 

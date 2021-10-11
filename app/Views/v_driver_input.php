@@ -22,7 +22,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Driver_input/driver_input'?>">Add Driver</a>
+                        <a href="<?php echo base_url() . '/Driver_input/driver_input'?>">Add driver</a>
                     </li>
                 </ul>
             </div>

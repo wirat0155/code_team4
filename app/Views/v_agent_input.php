@@ -1,172 +1,225 @@
 <style>
-    @media (min-width: 1200px) {
-        .container-sm {
-            max-width: 900px;
+    .stepper-wrapper {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .stepper-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+
+        @media (max-width: 768px) {
+            font-size: 12px;
+        }
+    }
+
+    .stepper-item::before {
+        position: absolute;
+        content: "";
+        border-bottom: 2px solid #ccc;
+        width: 100%;
+        top: 20px;
+        left: -50%;
+        z-index: 2;
+    }
+
+    .stepper-item::after {
+        position: absolute;
+        content: "";
+        border-bottom: 2px solid #ccc;
+        width: 100%;
+        top: 20px;
+        left: 50%;
+        z-index: 2;
+    }
+
+    .stepper-item .step-counter {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #ccc;
+        margin-bottom: 6px;
+        cursor: pointer;
+    }
+
+    .step-counter.active {
+        background-color: #041F47;
+        color: #FFFFFF;
+    }
+
+    .step-counter.false {
+        background-color: #FF2C2C;
+        color: #FFFFFF;
+    }
+
+    .step-counter.completed {
+        background-color: #0ec20e;
+        color: #FFFFFF;
+    }
+
+    .stepper-item.completed::after {
+        position: absolute;
+        content: "";
+        border-bottom: 2px solid #E6EBF3;
+        width: 100%;
+        top: 20px;
+        left: 50%;
+        z-index: 3;
+    }
+
+    .stepper-item:first-child::before {
+        content: none;
+    }
+
+    .stepper-item:last-child::after {
+        content: none;
+    }
+    .input-label {
+        margin-left: 0%;
+    }
+    @media only screen and (min-width: 768px) {
+        .input-label {
+            margin-left: 15%;
         }
     }
 </style>
 
-<div class="container px-6 mx-auto grid">
-
-    <!-- หัวข้อ -->
-    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md foagn:outline-none foagn:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
-                เพิ่มข้อมูลเอเย่นต์
-            </h2>
-        </div>
-    </div>
 
 
-    <div class="container-sm mb-8">
 
-        <form id="add_agent_form" action="<?php echo base_url() . '/Agent_input/agent_insert' ?>" method="post">
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="pl-4 mt-4 page-header mb-0">
+                <h4 class="page-title">ADD AGENT</h4>
+            </div>
+            <hr width="95%" color="696969">
+            <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
+                <li class="nav-home">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent list</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url() . '/Agent_input/agent_input'?>">Add agent</a>
+                </li>
+            </ul>
 
-            <!-- เพิ่มลูกค้า -->
-            <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+            <form id="add_agent_form" action="<?php echo base_url() . '/Agent_input/agent_insert' ?>" method="POST">
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div id="agent_section">
+                                <div class="card-header">
+                                    <div class="card-title">Agent Information</div>
+                                </div>
+                                <div class="card-body">
+                                    <h3>1. Agent information</h3>
+                                    <div class="row">
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_company_name">Company name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " style="margin-right: 10%;">
+                                            <input class="form-control" name="agn_company_name" placeholder="Company name">
+                                        </div>
 
-                <h4 class="px-3 my-4 text-xl font-semibold">
-                    เอเย่นต์
-                </h4>
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_tax">Tax number </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " style="margin-right: 10%;">
+                                            <input type="text" class="form-control" id="agn_tax" name="agn_tax" placeholder="12345678">
+                                        </div>
 
-                <div class="mb-4 container border-bottom"></div>
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_address">Company location </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " style="margin-right: 10%;">
+                                            <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location"></textarea>
+                                        </div>
+                                    </div>
+                                    <h3>2. Contact information</h3>
+                                    <div class="row">
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_firstname">First name </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " style="margin-right: 10%;">
+                                            <input type="text" class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name">
+                                        </div>
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_lastname">Last name </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 " style="margin-right: 10%;">
+                                            <input type="text" class="form-control" id="agn_lastname" name="agn_lastname" placeholder="Last name">
+                                        </div>
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_tel">Contact number </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <div class="input-group" style="margin-right: 10%;">
+                                                <div class="input-group-prepend ">
+                                                    <span class="input-group-text "><i class="fas fa-phone"></i></span>
+                                                </div>
+                                                <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx ">
+                                            </div>
+                                        </div>
 
-                <div class="container">
-                    <!-- บริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_company_name" class="col-sm-3 col-form-label">บริษัท</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_company_name" name="agn_company_name" placeholder="บริษัท">
-                        </div>
-                    </div>
-
-                    <!-- ที่ตั้งบริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control form-input" id="agn_address" name="agn_address" placeholder="ที่ตั้งบริษัท" rows="3"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- หมายเลขผู้เสียภาษี -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_tax" name="agn_tax" placeholder="หมายเลขผู้เสียภาษี">
-                        </div>
-                    </div>
-
-                    <!-- ผู้รับผิดชอบ -->
-                    <div class="px-3 mt-3 form-group row">
-                        <div class="col-sm-12">
-                            ผู้รับผิดชอบ (ตัวแทน)
-                        </div>
-                    </div>
-
-                    <!-- ชื่อจริง -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_firstname" name="agn_firstname" placeholder="ชื่อจริง">
-                        </div>
-                    </div>
-
-                    <!-- นามสกุล -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="agn_lastname" name="agn_lastname" placeholder="นามสกุล">
-                        </div>
-                    </div>
-
-                    <!-- เบอร์ติดต่อ -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
-                        <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="agn_tel" name="agn_tel" placeholder="0812345678">
-                        </div>
-                    </div>
-
-                    <!-- อีเมล -->
-                    <div class="px-3 form-group row">
-                        <label for="agn_email" class="col-sm-3 col-form-label">อีเมล</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control form-input" id="agn_email" name="agn_email" placeholder="อีเมล">
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_email">Email </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group" style="margin-right: 10%;">
+                                                <div class="input-group-prepend ">
+                                                    <span class="input-group-text "><i class="fas fa-envelope"></i></span>
+                                                </div>
+                                                <input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">
+                                <button type="submit" class="ui positive button pull-right">
+                                    <i class="plus icon"></i>
+                                    Add agent
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="float-right">
-                <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="button" value="ยกเลิก" onclick="window.history.back();">
-                <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึก">
-            </div>
-        </form>
+            </form>
+        </>
     </div>
-</div>
-
-<script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_agent_form').length > 0) {
-            $('#add_agent_form').validate({
-                rules: {
-                    agn_company_name: {
-                        required: true
-                    },
-                    agn_tax: {
-                        required: true,
-                        minlength: 13,
-                        maxlength: 13
-                    },
-                    agn_address: {
-                        required: true
-                    },
-                    agn_firstname: {
-                        required: true
-                    },
-                    agn_lastname: {
-                        required: true
-                    },
-                    agn_tel: {
-                        required: true,
-                        minlength: 10,
-                        maxlength: 10
-                    },
-                    agn_email: {
-                        required: true,
-                        email: true
-                    }
-
-                },
-                messages: {
-                    agn_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัท'
-                    },
-                    agn_tax: {
-                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
-                    },
-                    agn_address: {
-                        required: 'กรุณากรอกที่อยู่'
-                    },
-                    agn_firstname: {
-                        required: 'กรุณากรอกชื่อจริง'
-                    },
-                    agn_lastname: {
-                        required: 'กรุณากรอกนามสกุล'
-                    },
-                    agn_tel: {
-                        required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
-                    },
-                    agn_email: {
-                        required: 'กรุณากรอกอีเมล',
-                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
-                    }
-                }
-            })
-        }
-    });
-</script>
