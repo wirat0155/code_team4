@@ -166,6 +166,14 @@
         margin-left: -10px;
     }
 
+    ::-webkit-scrollbar-thumb {
+        background: #dbdbdb !important; 
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b8b8b8 !important; 
+    }
+
     </style>
 </head>
 
@@ -215,7 +223,7 @@
 
         <!-- Sidebar -->
         <div class="sidebar sidebar-style-2" style="padding-right:10px">
-            <div class="scroll-wrapper sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="scroll-wrapper sidebar-wrapper scrollbar scrollbar-inner " style="overflow:auto !important;">
                 <div class="sidebar-content">
                     <ul class="nav nav-primary">
 
@@ -226,6 +234,13 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+
+                        <li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Information</h4>
+						</li>
 
                         <!-- Service menu -->
                         <li class="nav-item <?php if ($_SESSION['menu'] == 'Service_show') echo 'active' ?>">
@@ -360,14 +375,14 @@
                         </li>
 
                         <li class="nav-section">
-                            <span class="sidebar-mini-icon">
-                                <i class="fa fa-ellipsis-h"></i>
-                            </span>
-                            <!-- <h4 class="text-section" style="margin-top:200px">Set Up</h4> -->
-                        </li>
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Settings</h4>
+						</li>
 
                         <!-- Setup menu -->
-                        <li class="nav-item <?php if ($_SESSION['menu'] == 'Set_up') echo 'active' ?>" style="position:absolute; bottom:0; width: 100%;">
+                        <li class="nav-item <?php if ($_SESSION['menu'] == 'Set_up') echo 'active' ?>">
                             <a href="<?php echo base_url() . '/Set_up/set_up_show' ?>">
                                 <i class="fas fa-cog"></i>
                                 <p>Set Up</p>
