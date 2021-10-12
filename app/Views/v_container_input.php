@@ -196,54 +196,57 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="agent_section" style="display: none">
-                            <div class="card-header">
-                                <div class="card-title">Agent Information</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>1. Agent information</h3>
-                                <div class="row">
-                                    <!-- Container number -->
-                                    <div class="col-md-2 input-label">
-                                        <div class="form-group">
-                                            <label for="agn_company_name">Company name </label>
+
+                            <div id="agent_section" style="display: none">
+                                <div class="card-header">
+                                    <div class="card-title">Agent Information</div>
+                                </div>
+                                <div class="card-body">
+                                    <h3>1. Agent information</h3>
+                                    <div class="row">
+                                        <!-- Container number -->
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="agn_company_name">Company name </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6" style="margin-right: 10%;">
-                                        <select class="form-control" name="agn_id" onclick="get_agent_information()">
-                                            <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                            <option value="<?php echo $arr_agn[$i]->agn_id ?>">
-                                                <?php echo $arr_agn[$i]->agn_company_name ?></option>
-                                            <?php } ?>
-                                            <option value="new">เอเย่นต์ใหม่</option>
-                                        </select>
-                                        <input class="form-control" name="agn_company_name" placeholder="Company name"
-                                            hidden>
-                                    </div>
+                                        <div class="col-md-6" style="margin-right: 10%;">
+                                            <select class="form-control" name="agn_id"
+                                                onclick="get_agent_information()">
+                                                <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                                <option value="<?php echo $arr_agn[$i]->agn_id ?>">
+                                                    <?php echo $arr_agn[$i]->agn_company_name ?></option>
+                                                <?php } ?>
+                                                <option value="new">เอเย่นต์ใหม่</option>
+                                            </select>
+                                            <input class="form-control" name="agn_company_name"
+                                                placeholder="Company name" hidden>
+                                        </div>
 
-                                    <?php echo show_agent_form(); ?>
-                                    <div class="card-action" id="first_from_action">
-                                        <input type="button" class="ui button" value="Cancel"
-                                            onclick="window.history.back();">
-                                        <button type="button" class="ui right labeled primary icon button pull-right"
-                                            id="next_sub" onclick="show_agent_form()">
-                                            <i class="right arrow icon"></i>
-                                            Next
-                                        </button>
-                                    </div>
-                                    <div class="card-action" id="last_from_action" style="display: none">
-                                        <button type="button" class="ui labeled icon primary basic button"
-                                            onclick="show_container_form()">
-                                            <i class="left arrow icon"></i>
-                                            Prev
-                                        </button>
-                                        <button onclick="show_all_form();" type="submit"
-                                            class="ui positive button pull-right">
-                                            <i class="plus icon"></i>
-                                            Add container
-                                        </button>
+                                        <?php echo show_agent_form(); ?>
+                                        <div class="card-action" id="first_from_action">
+                                            <input type="button" class="ui button" value="Cancel"
+                                                onclick="window.history.back();">
+                                            <button type="button"
+                                                class="ui right labeled primary icon button pull-right" id="next_sub"
+                                                onclick="show_agent_form()">
+                                                <i class="right arrow icon"></i>
+                                                Next
+                                            </button>
+                                        </div>
+                                        <div class="card-action" id="last_from_action" style="display: none">
+                                            <button type="button" class="ui labeled icon primary basic button"
+                                                onclick="show_container_form()">
+                                                <i class="left arrow icon"></i>
+                                                Prev
+                                            </button>
+                                            <button onclick="show_all_form();" type="submit"
+                                                class="ui positive button pull-right">
+                                                <i class="plus icon"></i>
+                                                Add container
+                                            </button>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
