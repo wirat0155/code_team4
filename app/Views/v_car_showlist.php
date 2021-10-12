@@ -64,7 +64,7 @@
                                             <th class="text-center">Car code</th>
                                             <th class="text-center">Cartype</th>
                                             <th class="text-center">Brand</th>
-                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Status</th>>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -95,14 +95,15 @@
                                                     </td>
 
                                                 <!-- Status -->
-                                                    <td class="px-4 py-3 text-sm">
+                                                    <td class="px-4 py-3 text-sm text-center">
                                                         <?php
                                                             if ($arr_car[$i]->car_status == 1) {
-                                                                echo '<span class="text-con-ready">พร้อมใช้</span>';
+                                                                echo '<span class="text-con-ready bg-success text-white">ready</span>'
+                                                                ;
                                                             } else if ($arr_car[$i]->car_status == 2) {
-                                                                echo '<span class="text-con-damaged">เสียหาย</span>';
+                                                                echo '<span class="text-con-damaged bg-danger text-white">damaged</span>';
                                                             } else if ($arr_car[$i]->car_status == 3) {
-                                                                echo '<span class="text-con-repair">กำลังซ่อม</span>';
+                                                                echo '<span class="text-con-repair bg-warning text-white">repair</span>';
                                                         } ?>
                                                     </td>
 
