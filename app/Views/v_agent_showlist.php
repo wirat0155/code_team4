@@ -1,25 +1,3 @@
-<style>
-th {
-    color: white;
-    background: rgb(153, 153, 153);
-}
-
-table {
-    border-collapse: collapse;
-    border-radius: 1em;
-    overflow: hidden;
-}
-
-hr {
-    border-top: 1px solid #041F47;
-}
-
-.hiddenli {
-    list-style-type: none;
-    color: black;
-}
-</style>
-
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
