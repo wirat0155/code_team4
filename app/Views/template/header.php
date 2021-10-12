@@ -173,6 +173,14 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #b8b8b8 !important; 
     }
+    .input-label {
+        margin-left: 0%;
+    }
+    @media only screen and (min-width: 768px) {
+        .input-label {
+            margin-left: 15%;
+        }
+    }
 
     </style>
 </head>
