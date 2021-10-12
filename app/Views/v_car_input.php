@@ -17,7 +17,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Car list</a>
+                        <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Car information</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>

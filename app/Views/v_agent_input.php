@@ -15,7 +15,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent list</a>
+                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>

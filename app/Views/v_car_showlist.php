@@ -98,12 +98,12 @@
                                                     <td class="px-4 py-3 text-sm text-center">
                                                         <?php
                                                             if ($arr_car[$i]->car_status == 1) {
-                                                                echo '<span class="text-con-ready bg-success text-white">ready</span>'
+                                                                echo '<span class="text-con-ready bg-success text-white p-2" style="border-radius: 5px;">Ready</span>'
                                                                 ;
                                                             } else if ($arr_car[$i]->car_status == 2) {
-                                                                echo '<span class="text-con-damaged bg-danger text-white">damaged</span>';
+                                                                echo '<span class="text-con-damaged bg-danger text-white p-2" style="border-radius: 5px;">Damaged</span>';
                                                             } else if ($arr_car[$i]->car_status == 3) {
-                                                                echo '<span class="text-con-repair bg-warning text-white">repair</span>';
+                                                                echo '<span class="text-con-repair bg-warning text-white p-2" style="border-radius: 5px;">Repair</span>';
                                                         } ?>
                                                     </td>
 
