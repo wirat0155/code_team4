@@ -193,7 +193,7 @@
 
                 <a href="index.html" class="logo">
                     <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand" class="navbar-brand"
-                        style="width:15vh;">
+                        style="width:100px;">
                 </a>
 
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
@@ -220,10 +220,10 @@
             <nav class="navbar navbar-header navbar-expand-lg navbar-color f_logo" style="color:white;">
 
                 <i class="icon-menu" onclick="show_full_bar();"
-                    style="font-size: 25px; cursor: pointer; margin-right: 10px"></i>
+                    style="font-size: 20px; cursor: pointer; margin-right: 10px"></i>
 
                 <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand"
-                    class="navbar-brand mr-md-auto" style="width:15vh">
+                    class="navbar-brand mr-md-auto" style="width:100px">
 
             </nav>
             <!-- End Navbar -->
