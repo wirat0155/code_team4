@@ -98,7 +98,7 @@
             <hr width="95%" color="696969">
             <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
                 <li class="nav-home">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -106,18 +106,18 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <u><a href="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" style="color: #1244B9;">Service information</a></u>
+                    <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    Add service
+                    <a href="<?php echo base_url() . '/Service_input/service_input'?>">Add service</a>
                 </li>
             </ul>
 
 
-            <div class="stepper-wrapper">
+            <div class="stepper-wrapper mt-4">
                 <div class="stepper-item">
                     <div class="step-counter" id="service_step" onclick="show_service_form()"><i class="fas fa-warehouse"></i></div>
                     <div class="step-name">Service</div>
