@@ -21,6 +21,15 @@
             text-align: center;
         }
     }
+
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
     .cl-blue {
         color: #1244B9 !important;
     }
