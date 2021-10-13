@@ -230,8 +230,7 @@
         //Reset Daterange
         $('.cancelBtn').attr('onclick',
             'location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
-
-        $('.ranges th')
+        $('.cancelBtn').removeClass('btn-default');
     });
 
     function change_location(url) {
