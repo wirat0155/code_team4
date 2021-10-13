@@ -949,10 +949,11 @@
                     cus_name = cus_temp_name.substring(0, cus_temp_name.search("สาขา"));
                     cus_branch = cus_temp_name.substring((cus_temp_name.search("สาขา") + 4));
                 } else {
-                    cus_name = $('div.text').text();
+                    cus_name = $('#customer_section div.text').text();
                     cus_branch = '';
                 }
-
+                console.log("cus_name = " + cus_name);
+                console.log("cus_branch = " + cus_branch);
                 if (cus_name != '' && cus_name != "+ New customer") {
                     $('input[name="cus_company_name"]').prop('hidden', true);
                     $.ajax({
