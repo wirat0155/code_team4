@@ -92,7 +92,9 @@
 
                                             <input class="form-control" name="con_number"
                                                 pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
+                                                <label class="error"><?php echo $_SESSION['con_number_error']?></label>
                                         </div>
+                                        
                                     </div>
 
                                     <div class="row">
@@ -325,8 +327,8 @@
     }
 
     function check_container_form() {
-        $('#container_section label.error').remove();
-        if ($('#container_section .error').length > 0) {
+        // $('#container_section label.error').remove();
+        if ($('#container_section .form-control.error').length > 0) {
             console.log('container' + $('#container_section .error').length);
             $('#container_step').addClass("false");
         } else {
@@ -340,8 +342,8 @@
     }
 
     function check_agent_form() {
-        $('#agent_section label.error').remove();
-        if ($('#agent_section .error').length > 0) {
+        // $('#agent_section label.error').remove();
+        if ($('#agent_section .form-control.error').length > 0) {
             // console.log('service' + $('#service_section .error').length);
             $('#agent_step').addClass("false");
         } else {
@@ -356,11 +358,11 @@
 
     function check_all_form() {
 
-        if ($('#container_section .error').length > 0) {
+        if ($('#container_section .form-control.error').length > 0) {
             console.log('container' + $('#container_section .error').length);
             $('#container_step').addClass("false");
             $('#container_step').click();
-        } else if ($('#agent_section .error').length > 0) {
+        } else if ($('#agent_section .form-control.error').length > 0) {
             console.log('agent' + $('#agent_section .error').length);
             $('#agent_step').addClass("false");
             $('#agent_step').click();
