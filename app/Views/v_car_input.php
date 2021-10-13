@@ -1,4 +1,9 @@
 
+<style>
+    .cl-blue {
+        color: #1244B9 !important;
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -17,13 +22,13 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Car information</a>
+                        <a class="cl-blue" href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Car information</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Car_input/car_input'?>">Add car</a>
+                        <a href="#">Add car</a>
                     </li>
                 </ul>
             </div>

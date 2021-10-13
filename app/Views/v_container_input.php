@@ -21,6 +21,9 @@
             text-align: center;
         }
     }
+    .cl-blue {
+        color: #1244B9 !important;
+    }
 </style>
 
 <div class="main-panel">
@@ -40,13 +43,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Container_show/container_show_ajax' ?>">Container information</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Container_show/container_show_ajax' ?>">Container information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Container_input/container_input' ?>">Add container</a>
+                    <a href="#">Add container</a>
                 </li>
             </ul>
             <div class="stepper-wrapper mt-4">

@@ -1,3 +1,8 @@
+<style>
+    .cl-blue {
+        color: #1244B9 !important;
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -15,13 +20,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent information</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Agent_input/agent_input'?>">Add agent</a>
+                    <a href="#">Add agent</a>
                 </li>
             </ul>
 

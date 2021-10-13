@@ -52,12 +52,6 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">Dashboard</a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
                     <a href="<?php echo base_url() . '/Set_up/set_up_show'?>">Set up</a>
                 </li>
             </ul>
