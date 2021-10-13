@@ -151,12 +151,12 @@
     $elem .='<input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch">';
     $elem .='</div>';
 
-    $elem .='<div class="col-md-2">';
+    $elem .='<div class="col-md-1">';
     $elem .='<div class="form-group">';
     $elem .='<label for="cus_tax">Tax number </label>';
     $elem .='</div>';
     $elem .='</div>';
-    $elem .='<div class="col-md-2">';
+    $elem .='<div class="col-md-3">';
     $elem .='<input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="12345678">';
     $elem .='</div>';
 

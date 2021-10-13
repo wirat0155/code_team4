@@ -21,6 +21,15 @@
             text-align: center;
         }
     }
+
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -448,12 +457,12 @@
                                             <input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch">
                                         </div>
 
-                                        <div class="col-md-2">
+                                        <div class="col-md-1">
                                             <div class="form-group">
                                                 <label for="cus_tax">Tax number </label>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="12345678">
                                         </div>
 
