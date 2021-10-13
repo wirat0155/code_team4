@@ -10,11 +10,11 @@
         <form action="<?php echo base_url() . '/Customer_show/customer_delete' ?>" method="post">
             <input type="hidden" id="cus_id" name="cus_id">
 
-            <p style="font-size: 1rem">Are you sure to remove the Customer</p>
+            <p style="font-size: 1rem">Are you sure to remove the customer</p>
 
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the Customer
+                    What happening after remove the customer
                 </div>
                 <ul class="list">
                     <li>The customer still ramain in database,</li>

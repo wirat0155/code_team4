@@ -7,11 +7,11 @@
         <form action="<?php echo base_url() . '/Container_show/Container_delete' ?>" method="post">
             <input type="hidden" id="con_id" name="con_id">
 
-            <p style="font-size: 1rem">Are you sure to remove the Container</p>
+            <p style="font-size: 1rem">Are you sure to remove the container</p>
 
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the Container
+                    What happening after remove the container
                 </div>
                 <ul class="list">
                     <li>The container still ramain in database,</li>
@@ -140,7 +140,7 @@
                                                         </div>
                                                         <!-- Button Remove -->
                                                         <div class="item test button"
-                                                            onclick="get_id(<?php echo $arr_car[$i]->car_id ?>)">
+                                                            onclick="get_id(<?php echo $arr_container[$i]->con_id ?>)">
                                                             <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
                                                             &nbsp; &nbsp;
                                                             Remove

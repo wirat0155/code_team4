@@ -7,15 +7,15 @@
         <form action="<?php echo base_url() . '/Agent_show/agent_delete' ?>" method="post">
             <input type="hidden" id="agn_id" name="agn_id">
 
-            <p style="font-size: 1rem">Are you sure to remove the Agent</p>
+            <p style="font-size: 1rem">Are you sure to remove the agent</p>
 
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the Agent
+                    What happening after remove the agent
                 </div>
                 <ul class="list">
                     <li>The Agent still ramain in database,</li>
-                    <li>But you cannot see the Agent anymore</li>
+                    <li>But you cannot see the agent anymore</li>
                 </ul>
             </div>
     </div>

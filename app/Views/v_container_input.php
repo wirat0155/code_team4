@@ -1,3 +1,28 @@
+<style>
+    .ms-md-30 {
+        margin-left: 0%;
+        text-align: left;
+    }
+    .md-none {
+        display: none;
+    }
+    .md-center {
+        text-align: left;
+    }
+    @media only screen and (min-width: 768px) {
+        .ms-md-30 {
+            margin-left: 30%;
+            text-align: center;
+        }
+        .md-none {
+            display: block;
+        }
+        .md-center {
+            text-align: center;
+        }
+    }
+</style>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -55,7 +80,7 @@
                                     <h3>1. Container information</h3>
                                     <div class="row">
                                         <!-- Container number -->
-                                        <div class="col-md-2" style="margin-left: 15%;">
+                                        <div class="col-md-2 input-label">
                                             <div class="form-group">
                                                 <label for="con_number">Container number</label>
                                             </div>
@@ -69,7 +94,7 @@
 
                                     <div class="row">
                                         <!-- Container type -->
-                                        <div class="col-md-2" style="margin-left: 15%;">
+                                        <div class="col-md-2 input-label">
                                             <div class="form-group">
                                                 <label for="con_cont_id">Container type</label>
                                             </div>
@@ -86,7 +111,7 @@
 
                                     <div class="row">
                                         <!-- Container status -->
-                                        <div class="col-md-2" style="margin-left: 15%;">
+                                        <div class="col-md-2 input-label">
                                             <div class="form-group">
                                                 <label for="con_stac_id">Container status</label>
                                             </div>
@@ -104,7 +129,7 @@
                                     <h3>2. Weight</h3>
                                     <div class="row">
                                         <!-- Max Weight (t) -->
-                                        <div class="col-md-2" style="margin-left: 15%;">
+                                        <div class="col-md-2 input-label">
                                             <div class="form-group">
                                                 <label for="con_max_weight">Max Weight (t)</label>
                                             </div>
@@ -117,7 +142,7 @@
 
                                     <div class="row">
                                         <!-- Tare Weight (t) -->
-                                        <div class="col-md-2" style="margin-left: 15%;">
+                                        <div class="col-md-2 input-label">
                                             <div class="form-group">
                                                 <label for="con_tare_weight">Tare Weight (t)</label>
                                             </div>
@@ -139,7 +164,7 @@
                                         </div>
 
                                         <!-- Cube(CBM) -->
-                                        <div class="col-md-2" style="margin-left: 15%;">
+                                        <div class="col-md-2 input-label">
                                             <div class="form-group ">
                                                 <label for="con_cube">Cube (CBM)</label>
                                             </div>
@@ -149,52 +174,52 @@
                                                 placeholder="10">
                                         </div>
                                     </div>
-                                </div>
-
-                                <h3>3. Size</h3>
-                                <div class="row">
-                                    <!-- Max Weight (t) -->
-                                    <div class="col-md-2" style="margin-left: 15%;">
-                                        <div class="form-group">
-                                            <label for="con_size_id">Container size</label>
+                                    <h3>3. Size</h3>
+                                    <div class="row">
+                                        <!-- Container size (t) -->
+                                        <div class="col-md-2 input-label">
+                                            <div class="form-group">
+                                                <label for="con_size_id">Container size</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="margin-right: 10%;">
+                                            <select class="form-control" name="con_size_id"
+                                                onclick="get_size_information()">
+                                                <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
+                                                <option value="<?php echo $arr_size[$i]->size_id ?>"
+                                                    <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
+                                                    <?php echo $arr_size[$i]->size_name ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6" style="margin-right: 10%;">
-                                        <select class="form-control" name="con_size_id"
-                                            oninput="get_size_information()">
-                                            <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                            <option value="<?php echo $arr_size[$i]->size_id ?>"
-                                                <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
-                                                <?php echo $arr_size[$i]->size_name ?></option>
-                                            <?php } ?>
-                                        </select>
+                                    
+                                    <div class="row">
+                                        <!-- Width(m) -->
+                                        <div class="form-group col-sm-6 col-md-2 ms-md-30">
+                                            <label for="size_width_out">Width (m)</label>
+                                            <input type="number" class="form-control" id="size_width_out"
+                                                name="size_width_out" placeholder="10">
+                                        </div>
+                                        <div class="col-md-0">
+                                            <label style="margin-top: 45px;" class="md-none"> X </label>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-md-2 md-center">
+                                            <label for="size_length_out">Length (m)</label>
+                                            <input type="number" class="form-control" id="size_length_out"
+                                                name="size_length_out" placeholder="10">
+                                        </div>
+                                        <div class="col-md-0">
+                                            <label style="margin-top: 45px;" class="md-none"> X </label>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-md-2 md-center">
+                                            <label for="size_height_out">Height (m)</label>
+                                            <input type="number" class="form-control" id="size_height_out"
+                                                name="size_height_out" placeholder="10">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <!-- Width(m) -->
-                                    <div class="form-group col-sm-6 col-md-2"
-                                        style="text-align: center; margin-left: 30%;">
-                                        <label for="size_width_out">Width (m)</label>
-                                        <input type="number" class="form-control" id="size_width_out"
-                                            name="size_width_out" placeholder="10">
-                                    </div>
-                                    <div class="col-md-0">
-                                        <label style="margin-top: 45px;"> X </label>
-                                    </div>
-                                    <div class="form-group col-sm-6 col-md-2" style="text-align: center;">
-                                        <label for="size_length_out">Length (m)</label>
-                                        <input type="number" class="form-control" id="size_length_out"
-                                            name="size_length_out" placeholder="10">
-                                    </div>
-                                    <div class="col-md-0">
-                                        <label style="margin-top: 45px;"> X </label>
-                                    </div>
-                                    <div class="form-group col-sm-6 col-md-2" style="text-align: center;">
-                                        <label for="size_height_out">Height (m)</label>
-                                        <input type="number" class="form-control" id="size_height_out"
-                                            name="size_height_out" placeholder="10">
-                                    </div>
-                                </div>
+
                             </div>
 
                             <div id="agent_section" style="display: none">

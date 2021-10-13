@@ -1,17 +1,17 @@
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
-        Remove Driver ?
+        Remove driver ?
     </div>
     <div class="content">
         <form action="<?php echo base_url() . '/Driver_show/driver_delete' ?>" method="post">
             <input type="hidden" id="dri_id" name="dri_id">
 
-            <p style="font-size: 1rem">Are you sure to remove the Driver</p>
+            <p style="font-size: 1rem">Are you sure to remove the driver</p>
 
             <div class="ui info message">
                 <div class="header">
-                    What happening after remove the Driver
+                    What happening after remove the driver
                 </div>
                 <ul class="list">
                     <li>The customer still ramain in database,</li>
@@ -84,9 +84,8 @@
                                             <!-- name -->
                                             <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                 <div class="avatar avatar-lg">
-                                                    <img class="avatar-img rounded-circle"
-                                                        src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>"
-                                                        alt="" loading="lazy">
+                                                    <img class="avatar-img rounded-circle" 
+                                                        src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>">
                                                 </div>
                                                 <?php echo $arr_driver[$i]->dri_name ?>
                                                 <div class="absolute inset-0 rounded-full   shadow-inner"
@@ -146,7 +145,7 @@
                                                         </div>
                                                         <!-- Button Remove -->
                                                         <div class="item test button"
-                                                            onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
+                                                            onclick="get_id(<?php echo $arr_driver[$i]->dri_id?>)">
                                                             <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
                                                             &nbsp; &nbsp;
                                                             Remove

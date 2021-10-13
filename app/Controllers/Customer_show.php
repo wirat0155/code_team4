@@ -91,8 +91,9 @@ class Customer_show extends Cdms_controller {
 
     public function get_customer_ajax() {
         $m_cus = new M_cdms_customer();
-        $cus_id = $this->request->getPost('cus_id');
-        $cus_information = $m_cus->get_by_id($cus_id);
+        $cus_name = $this->request->getPost('cus_name'); // ใช้ cus_id เปลี่ยนแล้วพัง
+        $cus_branch = $this->request->getPost('cus_branch');
+        $cus_information = $m_cus->get_by_name($cus_name, $cus_branch);
 
         echo json_encode($cus_information);
     }
