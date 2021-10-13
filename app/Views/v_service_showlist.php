@@ -1,8 +1,8 @@
 <style>
-    .ranges th {
-        color: black !important;
-        background-color: white !important;
-    }
+.ranges th {
+    color: black !important;
+    background-color: white !important;
+}
 </style>
 <div class="ui modal">
     <i class="close icon"></i>
@@ -59,24 +59,19 @@
                 </ul>
 
                 <!-- Download Excel -->
-                <form id='form_Excel' action="<?php echo base_url(). '/Service_show/export_service' ?>" method="post"
-                    hidden>
-                    <input type="hidden" name="date_range_excel" id="date_range_excel"
-                        value="<?php echo $arrivals_date ?>">
+                <form id='form_Excel' action="<?php echo base_url(). '/Service_show/export_service' ?>" method="post" hidden>
+                    <input type="hidden" name="date_range_excel" id="date_range_excel" value="<?php echo $arrivals_date ?>">
                 </form>
-                <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post"
-                    class="ml-auto mr-3 text-right">
+                <form id='form_date' action="<?php echo base_url() . '/Service_show/service_show_ajax' ?>" method="post" class="ml-auto mr-3 text-right">
 
-                    <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border"
-                        style=" height: 40px; width: 160px; margin-bottom: 5">
+                    <button type="submit" form="form_Excel" class="shadow-sm btn btn-success btn-border" style=" height: 40px; width: 160px; margin-bottom: 5">
                         <i class="fas fa-file-download mr-1"></i>
                         Download Excel
                     </button>
 
                     <!-- Date -->
 
-                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range"
-                        value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
+                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
                 </form>
             </div>
             <div class="row mt-5">
@@ -84,8 +79,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="service_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                                <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999; color: #fff; ">
                                             <th>No.</th>
@@ -117,7 +111,15 @@
 
                                             <!-- Status container  -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php echo $arr_service[$i]->stac_name; ?>
+                                                <?php 
+                                                if($arr_service[$i]->ser_stac_id== "1"){
+                                                    echo '<span class="btn btn-info">Import<span>';
+                                                }else if($arr_service[$i]->ser_stac_id== "2"){
+                                                    echo '<span class="btn btn-success">Export<span>';
+                                                }else if($arr_service[$i]->ser_stac_id== "3"){
+                                                    echo '<span class="btn btn-warning">Drop<span>';
+                                                } ?>
+
                                             </td>
 
                                             <!-- Container type -->
@@ -165,20 +167,16 @@
                                             });
                                             </script>
                                             <td class="text-left" width='15px'>
-                                                <div class="ui dropdown text-center p-2"
-                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
-                                                    onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <i class="fas fa-ellipsis-v"></i>
-                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>"
-                                                        style="right: 0;left: auto;">
+                                                    <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
                                                             Charge billing
                                                         </div>
                                                         <div class="item" onclick="change_location('google')">
                                                             Edit
                                                         </div>
-                                                        <div class="item test button"
-                                                            onclick="get_id(<?php echo $arr_service[$i]->ser_id?>)">
+                                                        <div class="item test button" onclick="get_id(<?php echo $arr_service[$i]->ser_id?>)">
                                                             Remove
                                                         </div>
                                                         <script>
