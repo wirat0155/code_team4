@@ -1,14 +1,17 @@
 <style>   
-.fa-phone {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-}
-</style>
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
 
+    .cl-blue {
+        color: #1244B9 !important;
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -26,13 +29,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Customer information</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Customer information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Customer_input/customer_input'?>">Add customer</a>
+                    <a href="#">Add customer</a>
                 </li>
             </ul>
 

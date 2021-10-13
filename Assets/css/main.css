@@ -355,3 +355,7 @@ input:checked+.slider:before {
     color: white;
     border-radius: 10px;
 }
+
+.cl-blue {
+    color: #1244b9 !important;
+}

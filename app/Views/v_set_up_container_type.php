@@ -1,3 +1,8 @@
+<style>
+    .cl-blue {
+        color: #1244B9 !important;
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -15,19 +20,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">Dashboard</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Set_up/set_up_show'?>">Set up</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Set_up/set_up_show'?>">Set up</a>
-                </li>
-                <li class="separator">
-                    <i class="flaticon-right-arrow"></i>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container type</a>
+                    <a href="#">Container type</a>
                 </li>
             </ul>
 

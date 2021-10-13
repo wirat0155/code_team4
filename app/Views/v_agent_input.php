@@ -1,12 +1,15 @@
 <style>   
-.fa-phone {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-}
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+    .cl-blue {
+        color: #1244B9 !important;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -25,13 +28,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent information</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Agent_input/agent_input'?>">Add agent</a>
+                    <a href="#">Add agent</a>
                 </li>
             </ul>
 

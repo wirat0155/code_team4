@@ -30,6 +30,9 @@
         filter: FlipH;
         -ms-filter: "FlipH";
     }
+    .cl-blue {
+        color: #1244B9 !important;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -48,13 +51,13 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service information</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Service_show/service_show_ajax'?>">Service information</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Service_input/service_input'?>">Add service</a>
+                    <a href="#">Add service</a>
                 </li>
             </ul>
 

@@ -1,3 +1,8 @@
+<style>
+    .cl-blue {
+        color: #1244B9 !important;
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -16,13 +21,13 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">Driver information</a>
+                        <a class="cl-blue" href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">Driver information</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo base_url() . '/Driver_input/driver_input'?>">Add driver</a>
+                        <a href="#">Add driver</a>
                     </li>
                 </ul>
             </div>
