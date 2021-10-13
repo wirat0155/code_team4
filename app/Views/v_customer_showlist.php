@@ -515,7 +515,7 @@
         //Reset Daterange
         $('.cancelBtn').attr('onclick',
             'location.href = \'<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>\'');
-
+        $('.cancelBtn').removeClass('btn-default');
     });
 
 
