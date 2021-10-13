@@ -124,10 +124,10 @@ label.error {
     margin-left: 15%;
   }
 }
-th {
+/* th {
   color: white;
   background: rgb(153, 153, 153);
-}
+} */
 
 table {
   border-collapse: collapse;

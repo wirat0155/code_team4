@@ -1,3 +1,9 @@
+<style>
+    .ranges th {
+        color: black !important;
+        background-color: white !important;
+    }
+</style>
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -224,6 +230,8 @@
         //Reset Daterange
         $('.cancelBtn').attr('onclick',
             'location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
+
+        $('.ranges th')
     });
 
     function change_location(url) {

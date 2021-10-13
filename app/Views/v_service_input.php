@@ -431,8 +431,7 @@
 
                                         <style>
                                             .branch-div {
-                                                margin-top: 15px;
-                                                
+                                                margin-top: 35px;
                                             }
                                             @media only screen and (min-width: 768px) {
                                                 .branch-div {
@@ -477,7 +476,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="First name">
+                                            <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="First name" readonly>
                                         </div>
                                         <div class="col-md-2 input-label">
                                             <div class="form-group">
@@ -485,7 +484,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Last name">
+                                            <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Last name" readonly>
                                         </div>
                                         <div class="col-md-2 input-label">
                                             <div class="form-group">
@@ -567,11 +566,12 @@
                 $('#container_section .dropdown.icon').click();
                 $('#container_section div.item').first().click();
 
-                $('#customer_section .dropdown.icon').click();
-                $('#customer_section div.item').first().click();
-
                 $('#agent_section .dropdown.icon').click();
                 $('#agent_section div.item').first().click();
+
+                // $('#customer_section .dropdown.icon').click();
+                // $('#customer_section div.item').first().click();
+
                 $('#service_step').click();
             })
 
