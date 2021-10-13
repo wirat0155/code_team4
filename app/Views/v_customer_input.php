@@ -1,16 +1,16 @@
-<style>   
-    .fa-phone {
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-    }
+<style>
+.fa-phone {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
 
-    .cl-blue {
-        color: #1244B9 !important;
-    }
+.cl-blue {
+    color: #1244B9 !important;
+}
 </style>
 <div class="main-panel">
     <div class="content">
@@ -43,7 +43,7 @@
 
 
             <form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert' ?>" method="POST">
-                <div class="row">
+                <div class="row mx-4">
                     <div class="col-md-12">
                         <div class="card">
                             <div id="customer_section">

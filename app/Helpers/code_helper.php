@@ -144,7 +144,7 @@
   function show_customer_form() {
     $elem = '<div class="col-md-2 input-label">';
     $elem .='<div class="form-group">';
-    $elem .='<label for="cus_branch">Branch <p style="color: #0F7EEA;">(Optional)</p></label>';
+    $elem .='<label for="cus_branch">Branch <b style="color: #0F7EEA;">(Optional)</b></label>';
     $elem .='</div>';
     $elem .='</div>';
     $elem .='<div class="col-md-2">';
