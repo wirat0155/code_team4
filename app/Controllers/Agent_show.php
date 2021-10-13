@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 * แสดงรายชื่อเอเย่นต์ และลบรายชื่อเอเย่นต์
 * @author Klayuth Preechaya
 * @Create Date 2564-07-30
-* @Update Date 2564-08-17
+* @Update Date 2564-10-13
 */
 
 class Agent_show extends Cdms_controller {
@@ -61,12 +61,12 @@ class Agent_show extends Cdms_controller {
     * @output agn_information
     * @author Preechaya
     * @Create Date 2564-08-07
-    * @Update Date 2564-08-0ึ7
+    * @Update Date 2564-10-13
     */
     public function get_agent_ajax() {
         $m_agn = new M_cdms_agent();
-        $agn_id = $this->request->getPost('agn_id');
-        $agn_information = $m_agn->get_by_id($agn_id);
+        $agn_company_name = $this->request->getPost('agn_company_name');
+        $agn_information = $m_agn->get_by_company_name($agn_company_name);
 
         echo json_encode($agn_information);
     }

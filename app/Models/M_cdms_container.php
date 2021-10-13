@@ -9,7 +9,7 @@ use App\Models\Da_cdms_container;
 * ดึงข้อมูลตู้คอนเทนเนอร์
 * @author Wirat
 * @Create Date 2564-07-29
-* @Update Date 2564-08-07
+* @Update Date 2564-10-13
 */
 
 class M_cdms_container extends Da_cdms_container {
@@ -21,20 +21,38 @@ class M_cdms_container extends Da_cdms_container {
     * @output array of container
     * @author Wirat
     * @Create Date 2564-07-29
-    * @Update Date
+    * @Update Date 2564-10-13
     */
-    public function get_all() {
-        $sql = "SELECT * FROM $this->table 
-                LEFT JOIN cdms_size 
-                ON con_size_id = size_id 
-                LEFT JOIN cdms_container_type 
-                ON con_cont_id = cont_id 
-                LEFT JOIN cdms_agent 
-                ON con_agn_id = agn_id 
-                LEFT JOIN cdms_status_container 
-                ON con_stac_id = stac_id 
-                WHERE con_status=1
-                ORDER BY con_id DESC" ;
+    public function get_all($type = 1) {
+
+        // Sort by con_id descending
+        if ($type == 1) {
+            $sql = "SELECT * FROM $this->table 
+                    LEFT JOIN cdms_size 
+                    ON con_size_id = size_id 
+                    LEFT JOIN cdms_container_type 
+                    ON con_cont_id = cont_id 
+                    LEFT JOIN cdms_agent 
+                    ON con_agn_id = agn_id 
+                    LEFT JOIN cdms_status_container 
+                    ON con_stac_id = stac_id 
+                    WHERE con_status=1
+                    ORDER BY con_id DESC" ;
+        }
+        // Sort by con_number ascending
+        else if ($type == 2) {
+            $sql = "SELECT * FROM $this->table 
+                    LEFT JOIN cdms_size 
+                    ON con_size_id = size_id 
+                    LEFT JOIN cdms_container_type 
+                    ON con_cont_id = cont_id 
+                    LEFT JOIN cdms_agent 
+                    ON con_agn_id = agn_id 
+                    LEFT JOIN cdms_status_container 
+                    ON con_stac_id = stac_id 
+                    WHERE con_status=1
+                    ORDER BY CONVERT(con_number USING tis620) ASC" ;
+        }
         return $this->db->query($sql)->getResult();
     }
 

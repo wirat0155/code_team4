@@ -6,9 +6,9 @@ use App\Models\Da_cdms_agent;
 /*
         * M_cdms_agent
         * นำเข้าข้อมูลรายชื่อเอเย่นต์
-        * @author Klayuth
+        * @author Klayuth, Wirat
         * @Create Date 2564-07-30
-        * @Update Date 2564-08-07
+        * @Update Date 2564-10-13
     */
 
 class M_cdms_agent extends Da_cdms_agent {
@@ -17,14 +17,24 @@ class M_cdms_agent extends Da_cdms_agent {
         * ดึงข้อมูลเอเย่นต์
         * @input
         * @output array of agent
-        * @author Klayuth
+        * @author Klayuth, Wirat
         * @Create Date 2564-07-30
-        * @Update Date 2564-08-02
+        * @Update Date 2564-10-13
     */
-    public function get_all() {
-        $sql = "SELECT * FROM $this->table
-                WHERE agn_status = 1
-                ORDER BY agn_id DESC" ;
+    public function get_all($type = 1) {
+
+        // Sort by agn_id descending
+        if ($type == 1) {
+            $sql = "SELECT * FROM $this->table
+                    WHERE agn_status = 1
+                    ORDER BY agn_id DESC" ;
+        }
+        // Sort by agn_company_name ascending
+        else if ($type == 2) {
+            $sql = "SELECT * FROM $this->table
+                    WHERE agn_status = 1
+                    ORDER BY CONVERT(agn_company_name USING tis620) ASC" ;
+        }
         return $this->db->query($sql)->getResult();
     }
     /*

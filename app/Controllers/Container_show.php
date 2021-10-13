@@ -35,8 +35,8 @@ class Container_show extends Cdms_controller {
 
     public function get_container_ajax() {
         $m_con = new M_cdms_container();
-        $con_id = $this->request->getPost('con_id');
-        $con_information = $m_con->get_by_id($con_id);
+        $con_number = $this->request->getPost('con_number');
+        $con_information = $m_con->get_by_con_number($con_number);
 
         echo json_encode($con_information);
     }

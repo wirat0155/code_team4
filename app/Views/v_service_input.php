@@ -205,14 +205,21 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_id" onclick="get_container_information()">
-                                                <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
-                                                    <option value="<?php echo $arr_con[$i]->con_id ?>">
-                                                        <?php echo $arr_con[$i]->con_number ?></option>
-                                                <?php } ?>
-                                                <option value="new">ตู้ใหม่</option>
-                                            </select>
-                                            <input class="form-control" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                                <input type="hidden" name="con_option" onchange="get_container_information()">
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">Select container</div>
+                                                <div class="menu">
+                                                    <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
+                                                        <div class="item" value="<?php echo $arr_con[$i]->con_number ?>"><?php echo $arr_con[$i]->con_number;?>
+                                                        </div>
+                                                    <?php } ?>
+                                                    <div class="item" value="new">+ New container</div>
+                                                </div>
+                                            </div>
+                                            <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0">
+                                            
+                                            <input type="hidden" name="con_id" class="mt-5">
                                         </div>
                                     </div>
 
@@ -367,14 +374,21 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="agn_id" onclick="get_agent_information()">
-                                                <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                                    <option value="<?php echo $arr_agn[$i]->agn_id ?>">
-                                                        <?php echo $arr_agn[$i]->agn_company_name ?></option>
-                                                <?php } ?>
-                                                <option value="new">เอเย่นต์ใหม่</option>
-                                            </select>
-                                            <input class="form-control" name="agn_company_name" placeholder="Company name" hidden>
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                                <input type="hidden" name="agn_name" onchange="get_agent_information()">
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">Select agent</div>
+                                                <div class="menu">
+                                                    <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                                        <div class="item" value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                                        </div>
+                                                    <?php } ?>
+                                                    <div class="item" value="new">+ New agent</div>
+                                                </div>
+                                            </div>
+                                            <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                            
+                                            <input type="hidden" name="agn_id" class="mt-5">
                                         </div>
 
                                         <?php echo show_agent_form(); ?>
@@ -413,10 +427,6 @@
                                             <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
                                             
                                             <input type="hidden" name="cus_id" class="mt-5">
-                                        </div>
-
-                                        <div class="">
-                                            
                                         </div>
 
                                         <style>
@@ -554,8 +564,14 @@
         </div>
         <script>
             $(document).ready(function() {
-                $('.dropdown.icon').click();
-                $('div.item').first().click();
+                $('#container_section .dropdown.icon').click();
+                $('#container_section div.item').first().click();
+
+                $('#customer_section .dropdown.icon').click();
+                $('#customer_section div.item').first().click();
+
+                $('#agent_section .dropdown.icon').click();
+                $('#agent_section div.item').first().click();
                 $('#service_step').click();
             })
 
@@ -796,16 +812,17 @@
             }
 
             function get_container_information() {
-                let con_id = $('select[name="con_id"]').val();
+                $('#container_section label.error').remove();
+                let con_option = $('#container_section div.text').text();
 
-                if (con_id != '' && con_id != "new") {
+                if (con_option != '' && con_option != "+ New container") {
                     $('input[name="con_number"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Container_show/get_container_ajax' ?>',
                         method: 'POST',
                         dataType: 'JSON',
                         data: {
-                            con_id: con_id
+                            con_number: con_option
                         },
                         success: function(data) {
                             console.log(data);
@@ -813,7 +830,7 @@
                         }
                     });
                 }
-                if (con_id == "new") {
+                if (con_option == "+ New container") {
                     $('input[name="con_number"]').prop('hidden', false);
                     clear_container_information();
                 }
@@ -821,6 +838,7 @@
 
 
             function show_container_information(container) {
+                $('input[name="con_id"]').val(container[0]['con_id']);
                 $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
                 $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
                 $('input[name="con_max_weight"]').val(container[0]['con_max_weight']);
@@ -833,13 +851,19 @@
 
 
             function clear_container_information() {
-                $('select[name="con_cont_id"]').val('');
-                $('select[name="con_stac_id"]').val('');
+                $('input[name="con_id"]').val('');
+
+                $('select[name="con_cont_id"]').val($('select[name="con_cont_id"] option:first').val());
+
+                $('select[name="con_stac_id"]').val($('select[name="con_stac_id"] option:first').val());
+
                 $('input[name="con_max_weight"]').val('');
                 $('input[name="con_tare_weight"]').val('');
                 $('input[name="con_net_weight"]').val('');
                 $('input[name="con_cube"]').val('');
-                $('select[name="con_size_id"]').val('');
+
+                get_size_information();
+
                 $('input[name="size_height_out"]').val('');
                 $('input[name="size_width_out"]').val('');
                 $('input[name="size_length_out"]').val('');
@@ -869,24 +893,24 @@
             }
 
             function get_agent_information() {
-                let agn_id = $('select[name="agn_id"]').val();
-                // console.log("agn_name :" + agn_company_name);
-                if (agn_id != '' && agn_id != "new") {
+                $('#agent_section label.error').remove();
+                let agn_name = $('#agent_section div.text').text();
+
+                if (agn_name != '' && agn_name != "+ New agent") {
                     $('input[name="agn_company_name"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
                         method: 'POST',
                         dataType: 'JSON',
                         data: {
-                            agn_id: agn_id
+                            agn_company_name: agn_name
                         },
                         success: function(data) {
-                            console.log(data);
                             show_agent_information(data);
                         }
                     });
                 }
-                if (agn_id == "new") {
+                if (agn_name == "+ New agent") {
                     $('input[name="agn_company_name"]').prop('hidden', false);
                     clear_agent_information();
                 }
@@ -894,6 +918,7 @@
 
             // show agent information when input agn_company_name
             function show_agent_information(agent) {
+                $('input[name="agn_id"]').val(agent[0]['agn_id']);
                 $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
                 $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
                 $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
@@ -904,6 +929,7 @@
 
             // clear agent information when delete input agn_company_name
             function clear_agent_information() {
+                $('input[name="agn_id"]').val('');
                 $('textarea[name="agn_address"]').val('');
                 $('input[name="agn_tax"]').val('');
                 $('input[name="agn_firstname"]').val('');
@@ -914,7 +940,7 @@
 
             function get_customer_information() {
                 $('#customer_section label.error').remove();
-                let cus_name = $('div.text').text();
+                let cus_name = $('#customer_section div.text').text();
                 let cus_temp_name = cus_name;
                 let cus_branch = '';
                 console.log(cus_name.search("สาขา"));
@@ -926,10 +952,7 @@
                     cus_name = $('div.text').text();
                     cus_branch = '';
                 }
-                console.log('cus_name = ' + cus_name);
-                console.log('cus_branch = ' + cus_branch);
 
-                // console.log("agn_name :" + agn_company_name);
                 if (cus_name != '' && cus_name != "+ New customer") {
                     $('input[name="cus_company_name"]').prop('hidden', true);
                     $.ajax({
@@ -966,6 +989,7 @@
 
             // clear agent information when delete input agn_company_name
             function clear_customer_information() {
+                $('input[name="cus_id"]').val('');
                 $('input[name="cus_branch"]').val('');
                 $('textarea[name="cus_address"]').val('');
                 $('input[name="cus_tax"]').val('');

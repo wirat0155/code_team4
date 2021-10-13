@@ -9,7 +9,7 @@ use App\Models\Da_cdms_customer;
 * ดึงข้อมูลลูกค้า
 * @author  วรรัตน์
 * @Create Date 2564-07-29
-* @Update Date 2564-08-13
+* @Update Date 2564-10-13
 */
 class M_cdms_customer extends Da_cdms_customer {
     /*
@@ -17,14 +17,24 @@ class M_cdms_customer extends Da_cdms_customer {
     * ดึงข้อมูล ชื่อบริษัท สาขา ผู้รับผิดชอบ จำนวนตู้ที่กำลังใช้ เบอร์โทรศัพท์ สถานะ และอีเมล
     * @input
     * @output array of customer
-    * @author Kittipod
+    * @author Kittipod, Wirat
     * @Create Date 2564-07-30
-    * @Update Date 2564-08-02
+    * @Update Date 2564-10-13
     */
-    public function get_all() {
-        $sql = "SELECT * FROM $this->table
-                WHERE cus_status = 1
-                ORDER BY cus_id DESC";
+    public function get_all($type = 1) {
+
+        // Sort by cus_id descending
+        if ($type == 1) {
+            $sql = "SELECT * FROM $this->table
+                    WHERE cus_status = 1
+                    ORDER BY cus_id DESC";
+        }
+        // Sort by cus_company_name ascending
+        else if ($type == 2) {
+            $sql = "SELECT * FROM $this->table
+                    WHERE cus_status = 1
+                    ORDER BY CONVERT(cus_company_name USING tis620) ASC";
+        }
         return $this->db->query($sql)->getResult();
     }
 

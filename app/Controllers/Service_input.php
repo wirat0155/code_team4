@@ -71,15 +71,15 @@ class Service_input extends Cdms_controller {
 
         // container
         $m_con = new M_cdms_container();
-        $data['arr_con'] = $m_con->get_all();
+        $data['arr_con'] = $m_con->get_all(2);
 
         // agent
         $m_agn = new M_cdms_agent();
-        $data['arr_agn'] = $m_agn->get_all();
+        $data['arr_agn'] = $m_agn->get_all(2);
 
         // customer
         $m_cus = new M_cdms_customer();
-        $data['arr_cus'] = $m_cus->get_all();
+        $data['arr_cus'] = $m_cus->get_all(2);
 
         // call service input view
         $this->output('v_service_input', $data);
