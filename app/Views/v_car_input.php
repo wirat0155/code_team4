@@ -212,9 +212,7 @@
                             </div>
 
                             <div class="card-action" id="car_action" style>
-                                <button type="reset" class="ui grey button pull-left" onclick="window.location = '<?php echo base_url() . '/Car_show/car_show_ajax'?>';">
-                                    Cancel
-                                </button>
+                                <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">
                                 <button type="submit" class="ui positive button pull-right">
                                     <i class="plus icon"></i>
                                     Add car
