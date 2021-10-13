@@ -234,7 +234,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_cont_id">
+                                            <select class="form-control" name="con_cont_id" readonly>
                                                 <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
                                                     <option value="<?php echo $arr_container_type[$i]->cont_id ?>">
                                                         <?php echo $arr_container_type[$i]->cont_name ?></option>
@@ -251,7 +251,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_stac_id">
+                                            <select class="form-control" name="con_stac_id" readonly>
                                                 <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
                                                     <option value="<?php echo $arr_status_container[$i]->stac_id ?>">
                                                         <?php echo $arr_status_container[$i]->stac_name ?></option>
@@ -269,7 +269,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <input type="number" class="form-control" id="con_max_weight" name="con_max_weight" placeholder="10">
+                                            <input type="number" class="form-control" id="con_max_weight" name="con_max_weight" placeholder="10" readonly>
                                         </div>
                                     </div>
 
@@ -281,7 +281,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="number" class="form-control" id="con_tare_weight" name="con_tare_weight" placeholder="10">
+                                            <input type="number" class="form-control" id="con_tare_weight" name="con_tare_weight" placeholder="10" readonly>
                                         </div>
 
                                         <!-- Net Weight (t) -->
@@ -291,7 +291,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="number" class="form-control" id="con_net_weight" name="con_net_weight" placeholder="10">
+                                            <input type="number" class="form-control" id="con_net_weight" name="con_net_weight" placeholder="10" readonly>
                                         </div>
                                     </div>
 
@@ -303,7 +303,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="number" class="form-control" id="ser_weight" name="ser_weight" placeholder="10">
+                                            <input type="number" class="form-control" id="ser_weight" name="ser_weight" placeholder="10" readonly>
                                         </div>
 
                                         <!-- Cube(CBM) -->
@@ -313,7 +313,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="number" class="form-control" id="con_cube" name="con_cube" placeholder="10">
+                                            <input type="number" class="form-control" id="con_cube" name="con_cube" placeholder="10" readonly>
                                         </div>
                                     </div>
 
@@ -327,7 +327,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <select class="form-control" name="con_size_id"
-                                                onclick="get_size_information()">
+                                                onclick="get_size_information()" readonly>
                                                 <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                                                 <option value="<?php echo $arr_size[$i]->size_id ?>"
                                                     <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
@@ -342,7 +342,7 @@
                                         <div class="form-group col-sm-6 col-md-2 ms-md-30">
                                             <label for="size_width_out">Width (m)</label>
                                             <input type="number" class="form-control" id="size_width_out"
-                                                name="size_width_out" placeholder="10">
+                                                name="size_width_out" placeholder="10" readonly>
                                         </div>
                                         <div class="col-md-0">
                                             <label style="margin-top: 45px;" class="md-none"> X </label>
@@ -350,7 +350,7 @@
                                         <div class="form-group col-sm-6 col-md-2 md-center">
                                             <label for="size_length_out">Length (m)</label>
                                             <input type="number" class="form-control" id="size_length_out"
-                                                name="size_length_out" placeholder="10">
+                                                name="size_length_out" placeholder="10" readonly>
                                         </div>
                                         <div class="col-md-0">
                                             <label style="margin-top: 45px;" class="md-none"> X </label>
@@ -358,7 +358,7 @@
                                         <div class="form-group col-sm-6 col-md-2 md-center">
                                             <label for="size_height_out">Height (m)</label>
                                             <input type="number" class="form-control" id="size_height_out"
-                                                name="size_height_out" placeholder="10">
+                                                name="size_height_out" placeholder="10" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -394,7 +394,8 @@
                                             <input type="hidden" name="agn_id" class="mt-5">
                                         </div>
 
-                                        <?php echo show_agent_form(); ?>
+                                        <!-- Agent form with readonly -->
+                                        <?php echo show_agent_form(2); ?>
                             <div id="customer_section" style="display: none">
                                 <div class="card-header">
                                     <div class="card-title">Customer Information</div>
@@ -442,84 +443,9 @@
                                                 }
                                             }
                                         </style>
-                                        <div class="col-md-2 input-label branch-div">
-                                            <div class="form-group">
-                                                <label for="cus_branch">Branch <p style="color: #0F7EEA;">(Optional)</p></label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch">
-                                        </div>
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="cus_tax">Tax number </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="12345678">
-                                        </div>
-
-
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="cus_address">Company location </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <h3>2. Contact information</h3>
-                                    <div class="row">
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="cus_firstname">First name </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="First name" readonly>
-                                        </div>
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="cus_lastname">Last name </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Last name" readonly>
-                                        </div>
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="cus_tel">Contact number </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group" style="margin-right: 10%;">
-                                                <div class="input-group-prepend ">
-                                                    <span class="input-group-text "><i class="fas fa-phone"></i></span>
-                                                </div>
-                                                <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx ">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="cus_email">Email </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group" style="margin-right: 10%;">
-                                                <div class="input-group-prepend ">
-                                                    <span class="input-group-text "><i class="fas fa-envelope"></i></span>
-                                                </div>
-                                                <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
+                                        
+                                        <!-- For form with readonly -->
+                                        <?php echo show_customer_form(2) ?>
 
                             <div class="card-action" id="first_from_action">
                                 <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">
@@ -566,15 +492,6 @@
         </div>
         <script>
             $(document).ready(function() {
-                $('#container_section .dropdown.icon').click();
-                $('#container_section div.item').first().click();
-
-                $('#agent_section .dropdown.icon').click();
-                $('#agent_section div.item').first().click();
-
-                // $('#customer_section .dropdown.icon').click();
-                // $('#customer_section div.item').first().click();
-
                 $('#service_step').click();
             })
 
@@ -591,7 +508,7 @@
             }
 
             function check_service_form() {
-                // $('#service_section label.error').remove();
+                $('#service_section label.error').remove();
                 if ($('#service_section .error').length > 0) {
                     // console.log('service' + $('#service_section .error').length);
                     $('#service_step').addClass("false");
@@ -601,7 +518,7 @@
             }
 
             function check_container_form() {
-                // $('#container_section label.error').remove();
+                $('#container_section label.error').remove();
                 if ($('#container_section .error').length > 0) {
                     console.log('container' + $('#container_section .error').length);
                     $('#container_step').addClass("false");
@@ -616,7 +533,7 @@
             }
 
             function check_agent_form() {
-                // $('#agent_section label.error').remove();
+                $('#agent_section label.error').remove();
                 if ($('#agent_section .error').length > 0) {
                     // console.log('service' + $('#service_section .error').length);
                     $('#agent_step').addClass("false");
@@ -631,7 +548,7 @@
             }
 
             function check_customer_form() {
-                // $('#customer_section label.error').remove();
+                $('#customer_section label.error').remove();
                 if ($('#customer_section .error').length > 0) {
                     console.log('customer' + $('#customer_section .error').length);
                     $('#customer_step').addClass("false");
@@ -816,6 +733,7 @@
 
             function get_container_information() {
                 $('#container_section label.error').remove();
+                remove_form_attr('readonly', '#container_section');
                 let con_option = $('#container_section div.text').text();
 
                 if (con_option != '' && con_option != "+ New container") {
@@ -897,6 +815,7 @@
 
             function get_agent_information() {
                 $('#agent_section label.error').remove();
+                remove_form_attr('readonly', '#agent_section');
                 let agn_name = $('#agent_section div.text').text();
 
                 if (agn_name != '' && agn_name != "+ New agent") {
@@ -941,8 +860,17 @@
                 $('input[name="agn_email"]').val('');
             }
 
+            function remove_form_attr(attr, target) {
+                $(target + ' *[readonly]').removeAttr(attr);
+            }
+
             function get_customer_information() {
+                // Remove jQuery validation error
                 $('#customer_section label.error').remove();
+
+                // Remove readonly in customer_section div
+                remove_form_attr('readonly', '#customer_section');
+
                 let cus_name = $('#customer_section div.text').text();
                 let cus_temp_name = cus_name;
                 let cus_branch = '';
