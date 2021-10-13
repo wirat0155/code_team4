@@ -492,7 +492,6 @@
                                     <i class="plus icon"></i>
                                     Add service
                                 </button>
-
                             </div>
                         </div>
                     </div>
@@ -517,8 +516,8 @@
             }
 
             function check_service_form() {
-                $('#service_section label.error').remove();
-                if ($('#service_section .error').length > 0) {
+                // $('#service_section label.error').remove();
+                if ($('#service_section .form-control.error').length != 0) {
                     // console.log('service' + $('#service_section .error').length);
                     $('#service_step').addClass("false");
                 } else {
@@ -527,8 +526,8 @@
             }
 
             function check_container_form() {
-                $('#container_section label.error').remove();
-                if ($('#container_section .error').length > 0) {
+                // $('#container_section label.error').remove();
+                if ($('#container_section .form-control.error').length > 0) {
                     console.log('container' + $('#container_section .error').length);
                     $('#container_step').addClass("false");
                 } else {
@@ -542,8 +541,8 @@
             }
 
             function check_agent_form() {
-                $('#agent_section label.error').remove();
-                if ($('#agent_section .error').length > 0) {
+                // $('#agent_section label.error').remove();
+                if ($('#agent_section .form-control.error').length > 0) {
                     // console.log('service' + $('#service_section .error').length);
                     $('#agent_step').addClass("false");
                 } else {
@@ -557,8 +556,8 @@
             }
 
             function check_customer_form() {
-                $('#customer_section label.error').remove();
-                if ($('#customer_section .error').length > 0) {
+                // $('#customer_section label.error').remove();
+                if ($('#customer_section .form-control.error').length > 0) {
                     console.log('customer' + $('#customer_section .error').length);
                     $('#customer_step').addClass("false");
                 } else {
@@ -571,21 +570,21 @@
             }
 
             function check_all_form() {
-                if ($('#service_section .error').length > 0) {
+                if ($('#service_section .form-control.error').length > 0) {
                     console.log('service' + $('#service_section .error').length);
-                    $('#service_step').addClass("false");
+                    // $('#service_step').addClass("false");
                     $('#service_step').click();
-                } else if ($('#container_section .error').length > 0) {
+                } else if ($('#container_section .form-control.error').length > 0) {
                     console.log('container' + $('#container_section .error').length);
-                    $('#container_step').addClass("false");
+                    // $('#container_step').addClass("false");
                     $('#container_step').click();
-                } else if ($('#agent_section .error').length > 0) {
+                } else if ($('#agent_section .form-control.error').length > 0) {
                     console.log('agent' + $('#agent_section .error').length);
-                    $('#agent_step').addClass("false");
+                    // $('#agent_step').addClass("false");
                     $('#agent_step').click();
-                } else if ($('#customer_section .error').length > 0) {
+                } else if ($('#customer_section .form-control.error').length > 0) {
                     console.log('customer' + $('#customer_section .error').length);
-                    $('#customer_step').addClass("false");
+                    // $('#customer_step').addClass("false");
                     $('#customer_step').click();
                 }
             }
