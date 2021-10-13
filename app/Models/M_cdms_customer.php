@@ -56,7 +56,7 @@ class M_cdms_customer extends Da_cdms_customer {
     public function get_by_name($cus_company_name, $cus_branch) {
         if ($cus_branch == '') {
             $sql = "SELECT * FROM $this->table
-                WHERE cus_company_name = '$cus_company_name' AND cus_branch IS NULL";
+                WHERE cus_company_name = '$cus_company_name'";
         } else {
             $sql = "SELECT * FROM $this->table
                 WHERE cus_company_name = '$cus_company_name' AND cus_branch = '$cus_branch'";

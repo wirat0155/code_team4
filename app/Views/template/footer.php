@@ -176,6 +176,9 @@ $(document).ready(function() {
                     required: true,
                     email: true
                 },
+                cus_name : {
+                    required: true
+                },
                 cus_company_name: {
                     required: true
                 },
@@ -242,6 +245,9 @@ $(document).ready(function() {
                     required: 'กรุณากรอกหมายเลขตู้',
                     min: 'กรุณากรอกอย่างน้อย 0',
                     max: 'กรุณากรอกไม่เกิน 100'
+                },
+                cus_name : {
+                    required: 'กรุณาเลือกลูกค้า'
                 },
                 agn_company_name: {
                     required: 'กรุณากรอกชื่อบริษัท'

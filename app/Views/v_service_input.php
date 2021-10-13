@@ -410,7 +410,7 @@
                                                     <div class="item" value="new">+ New customer</div>
                                                 </div>
                                             </div>
-                                            <input class="form-control mt-5" name="cus_company_name" placeholder="Company name" hidden>
+                                            <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
                                             
                                             <input type="hidden" name="cus_id" class="mt-5">
                                         </div>
@@ -554,6 +554,8 @@
         </div>
         <script>
             $(document).ready(function() {
+                $('.dropdown.icon').click();
+                $('div.item').first().click();
                 $('#service_step').click();
             })
 
@@ -570,7 +572,7 @@
             }
 
             function check_service_form() {
-                $('#service_section label.error').remove();
+                // $('#service_section label.error').remove();
                 if ($('#service_section .error').length > 0) {
                     // console.log('service' + $('#service_section .error').length);
                     $('#service_step').addClass("false");
@@ -580,7 +582,7 @@
             }
 
             function check_container_form() {
-                $('#container_section label.error').remove();
+                // $('#container_section label.error').remove();
                 if ($('#container_section .error').length > 0) {
                     console.log('container' + $('#container_section .error').length);
                     $('#container_step').addClass("false");
@@ -595,7 +597,7 @@
             }
 
             function check_agent_form() {
-                $('#agent_section label.error').remove();
+                // $('#agent_section label.error').remove();
                 if ($('#agent_section .error').length > 0) {
                     // console.log('service' + $('#service_section .error').length);
                     $('#agent_step').addClass("false");
@@ -610,7 +612,7 @@
             }
 
             function check_customer_form() {
-                $('#customer_section label.error').remove();
+                // $('#customer_section label.error').remove();
                 if ($('#customer_section .error').length > 0) {
                     console.log('customer' + $('#customer_section .error').length);
                     $('#customer_step').addClass("false");
@@ -911,18 +913,24 @@
             }
 
             function get_customer_information() {
-                let cus_name = $('input[name="cus_name"]').val();
+                $('#customer_section label.error').remove();
+                let cus_name = $('div.text').text();
                 let cus_temp_name = cus_name;
                 let cus_branch = '';
                 console.log(cus_name.search("สาขา"));
                 if (cus_name.search("สาขา") != -1) {
+                    console.log('เข้า')
                     cus_name = cus_temp_name.substring(0, cus_temp_name.search("สาขา"));
                     cus_branch = cus_temp_name.substring((cus_temp_name.search("สาขา") + 4));
+                } else {
+                    cus_name = $('div.text').text();
+                    cus_branch = '';
                 }
-                console.log(cus_name, cus_branch);
+                console.log('cus_name = ' + cus_name);
+                console.log('cus_branch = ' + cus_branch);
 
                 // console.log("agn_name :" + agn_company_name);
-                if (cus_name != '' && cus_name != "+ new customer") {
+                if (cus_name != '' && cus_name != "+ New customer") {
                     $('input[name="cus_company_name"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Customer_show/get_customer_ajax' ?>',
@@ -937,7 +945,7 @@
                         }
                     });
                 }
-                if (cus_name == "+ new customer") {
+                if (cus_name == "+ New customer") {
                     $('input[name="cus_company_name"]').prop('hidden', false);
                     clear_customer_information();
                 }
