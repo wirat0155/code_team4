@@ -254,6 +254,7 @@
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                            <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
                                             
                                             <input type="hidden" name="agn_id" class="mt-5">
                                         </div>
@@ -304,7 +305,24 @@
     </div>
     <script>
     $(document).ready(function() {
+        let section_error = '<?php echo $section_error?>';
+
+        // duplicate con_number
+        if (section_error == 1) {
             $('#container_step').click();
+            $('#container_step').addClass('false');
+        }
+
+        // duplicate agn_company_name
+        else if (section_error == 2) {
+            $('#agent_step').click();
+            $('#agent_step').addClass('false');
+        }
+
+        // default with first to the page
+        else {
+            $('#container_step').click();
+        }
     })
 
     function show_all_form(status) {
@@ -450,5 +468,17 @@
         $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
         $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
         $('input[name="agn_email"]').val(agent[0]['agn_email']);
+    }
+
+    // clear agent information when delete input agn_company_name
+    function clear_agent_information() {
+        $('input[name="agn_id"]').val('');
+        $('input[name="agn_company_name"]').val('');
+        $('textarea[name="agn_address"]').val('');
+        $('input[name="agn_tax"]').val('');
+        $('input[name="agn_firstname"]').val('');
+        $('input[name="agn_lastname"]').val('');
+        $('input[name="agn_tel"]').val('');
+        $('input[name="agn_email"]').val('');
     }
     </script>

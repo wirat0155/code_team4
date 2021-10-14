@@ -80,7 +80,7 @@ class M_cdms_container extends Da_cdms_container {
     * @Update Date 2564-08-07
     */
     public function get_by_con_number($con_number = NULL) {
-        $sql = "SELECT * FROM $this->table WHERE con_number = '$con_number'";
+        $sql = "SELECT * FROM $this->table WHERE con_number = '$con_number' AND con_status = 1";
         return $this->db->query($sql)->getResult();
     }
 
