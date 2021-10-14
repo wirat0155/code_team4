@@ -379,7 +379,7 @@
                                             <th class="text-center">No.</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>
-                                            <th class="text-center">Number Container</th>
+                                            <th class="text-center">Number container</th>
                                             <th class="text-center">Tel.</th>
                                             <th class="text-center">Email</th>
                                             <th class="text-center"></th>
@@ -453,8 +453,7 @@
                                                     <div class="menu cus_id_<?php echo $arr_customer[$i]->cus_id ?>"
                                                         style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
-                                                            <i class='far fa-money-bill-alt' style="font-size: 110%;">
-                                                            </i> &nbsp;
+                                                            <i class='far fa-money-bill-alt' style="font-size: 110%;"></i> &nbsp;
                                                             Charge billing
                                                         </div>
                                                         <div class="item" onclick="change_location('google')">

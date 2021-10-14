@@ -132,7 +132,7 @@
                                             </td>
 
                                             <!-- ขนาดตู้ -->
-                                            <td class="px-4 py-3 text-sm text-center"
+                                            <td class="px-4 py-3 text-sm"
                                                 onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
                                                 <?php echo $arr_container[$i]->size_name ?>
                                             </td>

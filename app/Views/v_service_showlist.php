@@ -155,10 +155,12 @@
                                             </td>
                                             <!-- Act. dep. -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php if($arr_service[$i]->ser_actual_departure_date== "0000-00-00 00:00:00"){
-                                                       echo "-";
-                                                }else{
-                                                        echo date_thai($arr_service[$i]->ser_actual_departure_date);
+                                                <?php
+                                                if ($arr_service[$i]->ser_actual_departure_date == "0000-00-00 00:00:00" || $arr_service[$i]->ser_actual_departure_date== NULL){
+                                                    echo "-";
+                                                }
+                                                else {
+                                                    echo date_thai($arr_service[$i]->ser_actual_departure_date);
                                                 }?>
                                             </td>
 
@@ -193,12 +195,15 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>" style="right: 0;left: auto;">
                                                         <div class="item" onclick="change_location('google')">
+                                                            <i class='far fa-money-bill-alt' style="font-size: 110%;"></i> &nbsp;
                                                             Charge billing
                                                         </div>
                                                         <div class="item" onclick="change_location('google')">
+                                                            <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
                                                             Edit
                                                         </div>
                                                         <div class="item test button" onclick="get_id(<?php echo $arr_service[$i]->ser_id?>)">
+                                                            <i class='fas fa-trash-alt' style="font-size: 130%;"></i>&nbsp; &nbsp;
                                                             Remove
                                                         </div>
                                                         <script>

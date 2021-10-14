@@ -62,7 +62,7 @@
                                         <tr style="background-color: #999999; color: white;">
                                             <th>No.</th>
                                             <th class="text-center">Car code</th>
-                                            <th class="text-center">Cartype</th>
+                                            <th class="text-center">Car type</th>
                                             <th class="text-center">Brand</th>
                                             <th class="text-center">Status</th>>
                                             <th></th>

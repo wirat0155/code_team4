@@ -46,7 +46,7 @@
                                     <!-- Name-Surmame -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_name" class="col-form-label mr-auto">Name-Surname</label>
+                                            <label for="dri_name" class="col-form-label mr-auto">Name - Surname</label>
                                             <div class="col-md-8 p-0">
                                                 <input type="text" class="form-control input-full" id="dri_name"
                                                     name="dri_name" placeholder="Name-Surname">
@@ -75,7 +75,7 @@
                                     <!-- Card Number -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_card_number" class="col-form-label mr-auto">Card Number</label>
+                                            <label for="dri_card_number" class="col-form-label mr-auto">Card number</label>
                                             <div class="col-md-8 p-0">
                                                 <input type="text" class="form-control input-full" id="dri_card_number"
                                                     name="dri_card_number" placeholder="Card Number">
@@ -87,7 +87,7 @@
                                     <!-- License Type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_license_type" class="col-form-label mr-auto">License Type</label>
+                                            <label for="dri_license_type" class="col-form-label mr-auto">License type</label>
                                             <div class="col-md-9 p-0">
                                             <select class="form-control input-full" id="dri_license_type" name="dri_license_type">
                                                 <option selected disabled>Select Driver license type</option>
@@ -104,7 +104,7 @@
                                     <!-- License Number -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_license" class="col-form-label mr-auto">License Number</label>
+                                            <label for="dri_license" class="col-form-label mr-auto">License number</label>
                                             <div class="col-md-8 p-0">
                                                 <input type="text" class="form-control input-full" id="dri_license"
                                                     name="dri_license" placeholder="License Number">
@@ -116,7 +116,7 @@
                                     <!-- Driver Status -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_status" class="col-form-label mr-auto">Driver Status</label>
+                                            <label for="dri_status" class="col-form-label mr-auto">Driver status</label>
                                             <div class="col-md-9 p-0">
                                             <select class="form-control input-full" id="dri_status"
                                                     name="dri_status">
@@ -134,7 +134,7 @@
                                     <!-- Phone Number -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_tel" class="col-form-label mr-auto">Phone Number</label>
+                                            <label for="dri_tel" class="col-form-label mr-auto">Phone number</label>
                                             <div class="col-md-8 p-0">
                                                 <input type="text" class="form-control input-full"
                                                     id="dri_tel" name="dri_tel"
@@ -147,7 +147,7 @@
                                     <!-- Start Date -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_date_start" class="col-form-label mr-auto">Start Date</label>
+                                            <label for="dri_date_start" class="col-form-label mr-auto">Start date</label>
                                             <div class="col-md-9 p-0">
                                             <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start">
                                                 <small class="form-text text-muted"> </small>
@@ -158,7 +158,7 @@
                                     <!-- Picture -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_profile_image" class="col-form-label mr-auto">Picture</label>
+                                            <label for="dri_profile_image" class="col-form-label mr-auto">Profile image</label>
                                             <div class="col-md-8 p-0">
                                                 <div class="input-group mb-3">
 													<input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
@@ -176,7 +176,7 @@
                                     <!-- Resign Date -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="dri_date_end" class="col-form-label mr-auto">Resign Date</label>
+                                            <label for="dri_date_end" class="col-form-label mr-auto">Resign date</label>
                                             <div class="col-md-9 p-0">
                                             <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end">
                                                 <small class="form-text text-muted"> </small>

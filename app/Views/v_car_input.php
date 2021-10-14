@@ -123,10 +123,10 @@
                                         </div>
                                     </div>
 
-                                    <!-- Car Type -->
+                                    <!-- Car type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="car_cart_id" class="col-form-label mr-auto">Car Type</label>
+                                            <label for="car_cart_id" class="col-form-label mr-auto">Car type</label>
                                             <div class="col-md-10 p-0">
                                                 <select class="form-control input-full" id="car_cart_id"
                                                     name="car_cart_id">
@@ -140,24 +140,25 @@
                                         </div>
                                     </div>
 
-                                    <!-- Register Year -->
+                                    <!-- Register year -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_register_year" class="col-form-label mr-auto">Register
-                                                Year</label>
+                                                year</label>
                                             <div class="col-md-9 p-0">
-                                                <input type="text" class="form-control input-full"
+                                                <input type="number" class="form-control input-full"
                                                     id="car_register_year" name="car_register_year"
-                                                    placeholder="Register Year">
+                                                    placeholder="2021"
+                                                    min="1900" max="2099" step="1">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Car Status -->
+                                    <!-- Car status  -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="car_status" class="col-form-label mr-auto">Car Status</label>
+                                            <label for="car_status" class="col-form-label mr-auto">Car status</label>
                                             <div class="col-md-10 p-0">
                                                 <select class="form-control input-full" id="car_status"
                                                     name="car_status">
@@ -204,7 +205,7 @@
                                     <!-- Fuel Type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="car_fuel_type" class="col-form-label mr-auto">Fuel Type</label>
+                                            <label for="car_fuel_type" class="col-form-label mr-auto">Fuel type</label>
                                             <div class="col-md-10 p-0">
                                                 <input type="text" class="form-control input-full" id="car_fuel_type"
                                                     name="car_fuel_type" placeholder="Fuel Type">
@@ -251,7 +252,9 @@
                             required: true
                         },
                         car_register_year: {
-                            required: true
+                            required: true,
+                            min: 1900,
+                            max: 2099
                         },
                         car_weight: {
                             required: true,
@@ -267,32 +270,34 @@
                     },
                     messages: {
                         car_number: {
-                            required: 'กรุณากรอกหมายเลขรถ'
+                            required: 'Please enter a car number'
                         },
                         car_code: {
-                            required: 'กรุณากรอกทะเบียนรถ'
+                            required: 'Please enter a car code'
                         },
                         car_brand: {
-                            required: 'กรุณากรอกยี่ห้อรถ'
+                            required: 'Please enter a brand'
                         },
                         car_branch: {
-                            required: 'กรุณากรอกสาขา'
+                            required: 'Please enter a branch'
                         },
                         car_chassis_number: {
-                            required: 'กรุณากรอกหมายเลขโครงรถ'
+                            required: 'Please enter a chassis number'
                         },
                         car_register_year: {
-                            required: 'กรุณากรอกปีที่จดทะเบียน'
+                            required: 'Please enter a register year',
+                            min: 'Minimum value is 1900',
+                            max: 'Maximum value is 2099'
                         },
                         car_weight: {
-                            required: 'กรุณากรอกน้ำหนักรถ',
-                            min: 'กรุณากรอกอย่างน้อย 0'
+                            required: 'Please enter a weight',
+                            min: 'Minimum value is 0'
                         },
                         car_fuel_type: {
-                            required: 'กรุณากรอกชนิดน้ำมัน'
+                            required: 'Please enter a fuel type'
                         },
                         car_image: {
-                            required: 'กรุณาเลือกไฟล์รูป'
+                            required: 'Please upload image'
                         },
 
                     }

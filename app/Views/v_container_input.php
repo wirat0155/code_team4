@@ -133,10 +133,10 @@
 
                                     <h3>2. Weight</h3>
                                     <div class="row">
-                                        <!-- Max Weight (t) -->
+                                        <!-- Max weight (t) -->
                                         <div class="col-md-2 input-label">
                                             <div class="form-group">
-                                                <label for="con_max_weight">Max Weight (t)</label>
+                                                <label for="con_max_weight">Max weight (t)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
@@ -146,10 +146,10 @@
                                     </div>
 
                                     <div class="row">
-                                        <!-- Tare Weight (t) -->
+                                        <!-- Tare weight (t) -->
                                         <div class="col-md-2 input-label">
                                             <div class="form-group">
-                                                <label for="con_tare_weight">Tare Weight (t)</label>
+                                                <label for="con_tare_weight">Tare weight (t)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -157,10 +157,10 @@
                                                 name="con_tare_weight" placeholder="10">
                                         </div>
 
-                                        <!-- Net Weight (t) -->
+                                        <!-- Net weight (t) -->
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label for="con_net_weight">Net Weight (t)</label>
+                                                <label for="con_net_weight">Net weight (t)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -168,10 +168,10 @@
                                                 name="con_net_weight" placeholder="10">
                                         </div>
 
-                                        <!-- Cube(CBM) -->
+                                        <!-- Cube(cbm) -->
                                         <div class="col-md-2 input-label">
                                             <div class="form-group ">
-                                                <label for="con_cube">Cube (CBM)</label>
+                                                <label for="con_cube">Cube (cbm)</label>
                                             </div>
                                         </div>
                                         <div class="col-md-2">

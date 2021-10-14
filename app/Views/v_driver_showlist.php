@@ -65,9 +65,9 @@
                                         <tr style="background-color: #999999; color: white; ">
                                             <th class="text-center">No.</th>
                                             <th class="text-center">Driver name</th>
-                                            <th class="text-center">Identity car</th>
+                                            <th class="text-center">Car ID</th>
                                             <th class="text-center">Car type</th>
-                                            <th class="text-center">Driver license number</th>
+                                            <th class="text-center">License number</th>
                                             <th class="text-center">Tel.</th>
                                             <th></th>
                                         </tr>

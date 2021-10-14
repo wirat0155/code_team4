@@ -61,7 +61,6 @@ $(document).ready(function() {
 
 
     if ($('#add_customer_form').length > 0) {
-        console.log($('#add_customer_form').length);
         $('#add_customer_form').validate({
             rules: {
                 cus_company_name: {
@@ -83,41 +82,40 @@ $(document).ready(function() {
                 },
                 cus_tel: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 cus_email: {
                     required: true,
                     email: true
                 }
-
             },
             messages: {
                 cus_company_name: {
-                    required: 'กรุณากรอกชื่อบริษัท'
+                    required: 'Please enter a company name'
                 },
                 cus_tax: {
-                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    required: 'Please enter a tax number',
+                    minlength: 'Please enter 13 digit long',
+                    maxlength: 'Please enter 13 digit long'
                 },
                 cus_address: {
-                    required: 'กรุณากรอกที่อยู่'
+                    required: 'Please enter a tax number'
                 },
                 cus_firstname: {
-                    required: 'กรุณากรอกชื่อจริง'
+                    required: 'Please enter a first name'
                 },
                 cus_lastname: {
-                    required: 'กรุณากรอกนามสกุล'
+                    required: 'Please enter a last name'
                 },
                 cus_tel: {
-                    required: 'กรุณากรอกเบอร์โทรศัพท์',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    required: 'Please enter a contact number',
+                    minlength: 'Please enter 9 digit long',
+                    maxlength: 'Please enter 10 digit long'
                 },
                 cus_email: {
-                    required: 'กรุณากรอกอีเมล',
-                    email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    required: 'Please enter an email',
+                    email: 'Please enter a valid email'
                 }
             }
         })
@@ -169,7 +167,7 @@ $(document).ready(function() {
                 },
                 agn_tel: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 agn_email: {
@@ -198,7 +196,7 @@ $(document).ready(function() {
                 },
                 cus_tel: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 cus_email: {
@@ -223,102 +221,103 @@ $(document).ready(function() {
             },
             messages: {
                 con_number: {
-                    required: 'กรุณากรอกหมายเลขตู้',
-                    maxlength: 'กรุณากรอกตามฟอร์แมต'
+                    required: 'Please enter a container number',
+                    maxlength: 'Too long container number'
                 },
                 con_max_weight: {
-                    required: 'กรุณากรอกน้ำหนักสูงสุด',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 40'
+                    required: 'Please enter a max weight',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 40'
                 },
                 con_tare_weight: {
-                    required: 'กรุณากรอกน้ำหนักตู้เปล่า',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 40'
+                    required: 'Please enter a tare weight',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 40'
                 },
                 con_net_weight: {
-                    required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 40'
+                    required: 'Please enter a net weight',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 40'
                 },
                 con_cube: {
-                    required: 'กรุณากรอกหมายเลขตู้',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 100'
-                },
-                cus_name : {
-                    required: 'กรุณาเลือกลูกค้า'
+                    required: 'Please enter a cube',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 100'
                 },
                 agn_company_name: {
-                    required: 'กรุณากรอกชื่อบริษัท'
+                    required: 'Please enter a company name'
                 },
                 agn_tax: {
-                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    required: 'Please enter a tax number',
+                    minlength: 'Please enter 13 digit long',
+                    maxlength: 'Please enter 13 digit long'
                 },
                 agn_address: {
-                    required: 'กรุณากรอกที่อยู่'
+                    required: 'Please enter an address'
                 },
                 agn_firstname: {
-                    required: 'กรุณากรอกชื่อจริง'
+                    required: 'Please enter a first name'
                 },
                 agn_lastname: {
-                    required: 'กรุณากรอกนามสกุล'
+                    required: 'Please enter a last name'
                 },
                 agn_tel: {
-                    required: 'กรุณากรอกเบอร์โทรศัพท์',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    required: 'Please enter a contact number',
+                    minlength: 'Please enter 9 digit long',
+                    maxlength: 'Please enter 10 digit long'
                 },
                 agn_email: {
-                    required: 'กรุณากรอกอีเมล',
-                    email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    required: 'Please enter an email',
+                    email: 'Please enter a valid email'
+                },
+                cus_name : {
+                    required: 'Please select a customer'
                 },
                 cus_company_name: {
-                    required: 'กรุณากรอกชื่อบริษัท'
+                    required: 'Please enter a company name'
                 },
                 cus_tax: {
-                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    required: 'Please enter a tax number',
+                    minlength: 'Please enter 13 digit long',
+                    maxlength: 'Please enter 13 digit long'
                 },
                 cus_address: {
-                    required: 'กรุณากรอกที่อยู่'
+                    required: 'Please enter a tax number'
                 },
                 cus_firstname: {
-                    required: 'กรุณากรอกชื่อจริง'
+                    required: 'Please enter a first name'
                 },
                 cus_lastname: {
-                    required: 'กรุณากรอกนามสกุล'
+                    required: 'Please enter a last name'
                 },
                 cus_tel: {
-                    required: 'กรุณากรอกเบอร์โทรศัพท์',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    required: 'Please enter a contact number',
+                    minlength: 'Please enter 9 digit long',
+                    maxlength: 'Please enter 10 digit long'
                 },
                 cus_email: {
-                    required: 'กรุณากรอกอีเมล',
-                    email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    required: 'Please enter an email',
+                    email: 'Please enter a valid email'
                 },
                 ser_weight: {
-                    required: 'กรุณากรอกน้ำหนักปัจจุบัน'
+                    required: 'Please enter a current weight'
                 },
                 ser_arrivals_date: {
-                    required: 'กรุณาเลือกวันที่ตู้เข้าลาน'
+                    required: 'Please enter an arrivals date'
                 },
                 ser_departure_date: {
-                    required: 'กรุณาเลือกวันที่ตู้ออกลาน'
+                    required: 'Please enter a departure date'
                 },
                 ser_arrivals_location: {
-                    required: 'กรุณากรอกสถานที่ต้นทาง'
+                    required: 'Please enter an arrivals location'
                 },
                 ser_departure_location: {
-                    required: 'กรุณากรอกสถานที่ปลายทาง'
+                    required: 'Please enter a departure location'
                 }
             }
         })
     }
+
     if ($('#add_container_form').length > 0) {
         $('#add_container_form').validate({
             rules: {
@@ -365,67 +364,66 @@ $(document).ready(function() {
                 },
                 agn_tel: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 agn_email: {
                     required: true,
                     email: true
-                },
+                }
 
             },
             messages: {
                 con_number: {
-                    required: 'กรุณากรอกหมายเลขตู้',
-                    maxlength: 'กรุณากรอกตามฟอร์แมต'
+                    required: 'Please enter a container number',
+                    maxlength: 'Too long container number'
                 },
                 con_max_weight: {
-                    required: 'กรุณากรอกน้ำหนักสูงสุด',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 40'
+                    required: 'Please enter a max weight',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 40'
                 },
                 con_tare_weight: {
-                    required: 'กรุณากรอกน้ำหนักตู้เปล่า',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 40'
+                    required: 'Please enter a tare weight',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 40'
                 },
                 con_net_weight: {
-                    required: 'กรุณากรอกน้ำหนักสินค้าสูงสุด',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 40'
+                    required: 'Please enter a net weight',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 40'
                 },
                 con_cube: {
-                    required: 'กรุณากรอกหมายเลขตู้',
-                    min: 'กรุณากรอกอย่างน้อย 0',
-                    max: 'กรุณากรอกไม่เกิน 100'
+                    required: 'Please enter a cube',
+                    min: 'Minimum value is 0',
+                    max: 'Maximum value is 100'
                 },
                 agn_company_name: {
-                    required: 'กรุณากรอกชื่อบริษัท'
+                    required: 'Please enter a company name'
                 },
                 agn_tax: {
-                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    required: 'Please enter a tax number',
+                    minlength: 'Please enter 13 digit long',
+                    maxlength: 'Please enter 13 digit long'
                 },
                 agn_address: {
-                    required: 'กรุณากรอกที่อยู่'
+                    required: 'Please enter an address'
                 },
                 agn_firstname: {
-                    required: 'กรุณากรอกชื่อจริง'
+                    required: 'Please enter a first name'
                 },
                 agn_lastname: {
-                    required: 'กรุณากรอกนามสกุล'
+                    required: 'Please enter a last name'
                 },
                 agn_tel: {
-                    required: 'กรุณากรอกเบอร์โทรศัพท์',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    required: 'Please enter a contact number',
+                    minlength: 'Please enter 9 digit long',
+                    maxlength: 'Please enter 10 digit long'
                 },
                 agn_email: {
-                    required: 'กรุณากรอกอีเมล',
-                    email: 'กรุณากรอกอีเมลให้ถูกต้อง'
-                },
-
+                    required: 'Please enter an email',
+                    email: 'Please enter a valid email'
+                }
             }
         })
     }
@@ -451,7 +449,7 @@ $(document).ready(function() {
                 },
                 agn_tel: {
                     required: true,
-                    minlength: 10,
+                    minlength: 9,
                     maxlength: 10
                 },
                 agn_email: {
@@ -461,30 +459,30 @@ $(document).ready(function() {
             },
             messages: {
                 agn_company_name: {
-                    required: 'กรุณากรอกชื่อบริษัท'
+                    required: 'Please enter a company name'
                 },
                 agn_tax: {
-                    required: 'กรุณากรอกหมายเลขผู้เสียภาษี',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 13 ตัวอักษร'
+                    required: 'Please enter a tax number',
+                    minlength: 'Please enter 13 digit long',
+                    maxlength: 'Please enter 13 digit long'
                 },
                 agn_address: {
-                    required: 'กรุณากรอกที่อยู่'
+                    required: 'Please enter an address'
                 },
                 agn_firstname: {
-                    required: 'กรุณากรอกชื่อจริง'
+                    required: 'Please enter a first name'
                 },
                 agn_lastname: {
-                    required: 'กรุณากรอกนามสกุล'
+                    required: 'Please enter a last name'
                 },
                 agn_tel: {
-                    required: 'กรุณากรอกเบอร์โทรศัพท์',
-                    minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                    maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
+                    required: 'Please enter a contact number',
+                    minlength: 'Please enter 9 digit long',
+                    maxlength: 'Please enter 10 digit long'
                 },
                 agn_email: {
-                    required: 'กรุณากรอกอีเมล',
-                    email: 'กรุณากรอกอีเมลให้ถูกต้อง'
+                    required: 'Please enter an email',
+                    email: 'Please enter a valid email'
                 }
             }
         })
