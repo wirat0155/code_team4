@@ -92,7 +92,7 @@
 
                                             <input class="form-control" name="con_number"
                                                 pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
-                                                <label class="error"><?php echo $_SESSION['con_number_error']?></label>
+                                            <label class="error"><?php echo $_SESSION['con_number_error']?></label>
                                         </div>
                                         
                                     </div>

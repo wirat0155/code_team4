@@ -92,7 +92,7 @@ class Container_input extends Cdms_controller
         // check con_number duplicate
         $arr_container = $m_con->is_con_number_exist($con_number);
         if (count($arr_container) >= 1) {
-            $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
+            $_SESSION['con_number_error'] = 'The container number has already used';
             $this->container_input();
         } else {
             // agent information

@@ -30,7 +30,7 @@ class Service_input extends Cdms_controller {
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
     */
-    public function service_input() {
+    public function service_input($section_error = '') {
         $_SESSION['menu'] = 'Service_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
@@ -80,6 +80,12 @@ class Service_input extends Cdms_controller {
         // customer
         $m_cus = new M_cdms_customer();
         $data['arr_cus'] = $m_cus->get_all(2);
+
+        // Return service input page with section_error
+        // 1 = Container number dubplicate
+        // 2 = Agent duplicate
+        // 3 = Customer dublicate
+        $data['section_error'] = $section_error;
 
         // call service input view
         $this->output('v_service_input', $data);
@@ -173,8 +179,8 @@ class Service_input extends Cdms_controller {
                 $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
                 $ser_cus_id = $get_ser_cus_id[0]->cus_id;
             } else {
-                $_SESSION['cus_company_name_error'] = 'มีลูกค้ารายนี้แล้ว';
-                $this->service_input();
+                $_SESSION['cus_company_name_error'] = 'The customer has already used';
+                $this->service_input(4);
             }
         }
         
@@ -193,29 +199,42 @@ class Service_input extends Cdms_controller {
                 $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
                 $con_agn_id = $get_ser_agn_id[0]->agn_id;
             } else {
-                $_SESSION['agn_company_name_error'] = 'มีเอเย่นต์รายนี้แล้ว';
-                $this->service_input();
+                $_SESSION['agn_company_name_error'] = 'The agent has already used';
+                $this->service_input(3);
+                exit;
             }
         }
         
 
-        //check container
+        // Select container form dropdown
         if($con_number == ''){
             $ser_con_id = $con_id;
             $con_number = $m_con->get_by_id($con_id);
             $m_con->container_update($ser_con_id,$con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-        }else{
+        }
+        // New container
+        else {
+            
             $get_ser_con_id = $m_con->get_by_con_number($con_number);
+
+            // New container not duplicate with database
+            // Insert container
             if (count($get_ser_con_id)  == 0) {
-                //new container
                 //insert new container
                 $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-                //get new con_id
+
+                // Get new con_id
                 $get_ser_con_id = $m_con->get_by_con_number($con_number);
                 $ser_con_id = $get_ser_con_id[0]->con_id;
-            }else{
-                $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
-                $this->service_input();
+            }
+
+            // New container duplicate
+            // Set session error
+            // return to add service page
+            else {
+                $_SESSION['con_number_error'] = 'The container number has already used';
+                $this->service_input(2);
+                exit;
             }
         }
         

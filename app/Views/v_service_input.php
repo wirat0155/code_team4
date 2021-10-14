@@ -230,6 +230,7 @@
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0">
+                                            <label class="error"><?php echo $_SESSION['con_number_error']?></label>
                                             
                                             <input type="hidden" name="con_id" class="mt-5">
                                         </div>
@@ -262,7 +263,8 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <select class="form-control" name="con_stac_id" readonly>
                                                 <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                    <option value="<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                    <option value="<?php echo $arr_status_container[$i]->stac_id ?>" 
+                                                    <?php if ($arr_status_container[$i]->stac_name == 'Import') echo ' selected'?>>
                                                         <?php echo $arr_status_container[$i]->stac_name ?></option>
                                                 <?php } ?>
                                             </select>
@@ -500,7 +502,35 @@
         </div>
         <script>
             $(document).ready(function() {
-                $('#service_step').click();
+                // Get section error code form controller
+                let section_error = '<?php echo $section_error?>';
+
+                // Container number duplicate
+                // Go to container section
+                if (section_error == '2') {
+                    $('#container_step').click();
+                    $('#container_step').addClass('false');
+                }
+
+                // Agent duplicate
+                // Go to agent section
+                else if (section_error == '3') {
+                    $('#agent_step').click();
+                    $('#agent_step').addClass('false');
+                }
+
+                // Customer duplicate
+                // Go to customer section
+                else if (section_error == '4') {
+                    $('#customer_step').click();
+                    $('#customer_step').addClass('false');
+                }
+
+                // No error found
+                // Go to service section as default
+                else {
+                    $('#service_step').click();
+                }
             })
 
             function show_all_form(status) {
@@ -782,9 +812,9 @@
             function clear_container_information() {
                 $('input[name="con_id"]').val('');
 
-                $('select[name="con_cont_id"]').val($('select[name="con_cont_id"] option:first').val());
+                $('select[name="con_cont_id"]').val(1);
 
-                $('select[name="con_stac_id"]').val($('select[name="con_stac_id"] option:first').val());
+                $('select[name="con_stac_id"]').val(1);
 
                 $('input[name="con_max_weight"]').val('');
                 $('input[name="con_tare_weight"]').val('');
