@@ -74,7 +74,7 @@
                                 <div class="row my-4" id="input_add">
                                     <div class="col-md-7 mb-3">
                                         <!-- New type -->
-                                        <input type="text" id="cont_name" name="cont_name" class="form-control" placeholder="New type">
+                                        <input type="text" id="cont_name" name="cont_name" class="form-control" placeholder="Container type name">
                                     </div>
                                     <div class="col-md-7">
                                         <div class="input-group">
@@ -139,18 +139,12 @@
                 rules: {
                     cont_name: {
                         required: true
-                    },
-                    cont_image: {
-                        required: true
-                    },
+                    }
                 },
                 messages: {
                     cont_name: {
-                        required: 'กรุณากรอกชื่อประเภทตู้'
-                    },
-                    cont_image: {
-                        required: 'กรุณาเลือกไฟล์รูป'
-                    },
+                        required: 'Please enter a container type name'
+                    }
                 }
             })
         }
