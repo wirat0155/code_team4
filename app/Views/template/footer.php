@@ -110,8 +110,8 @@ $(document).ready(function() {
                 },
                 cus_tel: {
                     required: 'Please enter a contact number',
-                    minlength: 'Please enter 9 digit long',
-                    maxlength: 'Please enter 10 digit long'
+                    minlength: 'Please enter 9-10 digit long',
+                    maxlength: 'Please enter 9-10 digit long'
                 },
                 cus_email: {
                     required: 'Please enter an email',
@@ -263,8 +263,8 @@ $(document).ready(function() {
                 },
                 agn_tel: {
                     required: 'Please enter a contact number',
-                    minlength: 'Please enter 9 digit long',
-                    maxlength: 'Please enter 10 digit long'
+                    minlength: 'Please enter 9-10 digit long',
+                    maxlength: 'Please enter 9-10 digit long'
                 },
                 agn_email: {
                     required: 'Please enter an email',
@@ -292,8 +292,8 @@ $(document).ready(function() {
                 },
                 cus_tel: {
                     required: 'Please enter a contact number',
-                    minlength: 'Please enter 9 digit long',
-                    maxlength: 'Please enter 10 digit long'
+                    minlength: 'Please enter 9-10 digit long',
+                    maxlength: 'Please enter 9-10 digit long'
                 },
                 cus_email: {
                     required: 'Please enter an email',
@@ -417,8 +417,8 @@ $(document).ready(function() {
                 },
                 agn_tel: {
                     required: 'Please enter a contact number',
-                    minlength: 'Please enter 9 digit long',
-                    maxlength: 'Please enter 10 digit long'
+                    minlength: 'Please enter 9-10 digit long',
+                    maxlength: 'Please enter 9-10 digit long'
                 },
                 agn_email: {
                     required: 'Please enter an email',
@@ -477,13 +477,89 @@ $(document).ready(function() {
                 },
                 agn_tel: {
                     required: 'Please enter a contact number',
-                    minlength: 'Please enter 9 digit long',
-                    maxlength: 'Please enter 10 digit long'
+                    minlength: 'Please enter 9-10 digit long',
+                    maxlength: 'Please enter 9-10 digit long'
                 },
                 agn_email: {
                     required: 'Please enter an email',
                     email: 'Please enter a valid email'
                 }
+            }
+        })
+    }
+
+    if ($('#add_driver_form').length > 0) {
+        $('#add_driver_form').validate({
+            rules: {
+                dri_name: {
+                    required: true
+                },
+                dri_card_number: {
+                    required: true,
+                    minlength: 13,
+                    maxlength: 13
+                },
+                dri_license: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 8
+                },
+                dri_tel: {
+                    required: true,
+                    minlength: 9,
+                    maxlength: 10
+                },
+                dri_car_id: {
+                    required: true,
+                },
+                dri_license_type: {
+                    required: true,
+                },
+                dri_status: {
+                    required: true,
+                },
+                dri_date_start: {
+                    required: true
+                },
+                dri_profile_image: {
+                    required: true
+                }
+            },
+            messages: {
+                dri_name: {
+                    required: 'Please enter a driver name'
+                },
+                dri_card_number: {
+                    required: 'Please enter a car number',
+                    minlength: 'Please enter 13 digit long',
+                    maxlength: 'Please enter 13 digit long'
+                },
+                dri_license: {
+                    required: 'Please enter a license number',
+                    minlength: 'Please enter 8 digit long',
+                    maxlength: 'Please enter 8 digit long'
+                },
+                dri_tel: {
+                    required: 'Please enter a tel. number',
+                    minlength: 'Please enter 9-10 digit long',
+                    maxlength: 'Please enter 9-10 digit long'
+                },
+                dri_car_id: {
+                    required: 'Please select a car id'
+                },
+                dri_license_type: {
+                    required: 'Please select a license type'
+                },
+                dri_status: {
+                    required: 'Please select a driver status'
+                },
+                dri_date_start: {
+                    required: 'Please enter start date'
+                },
+                dri_profile_image: {
+                    required: 'Please upload profile image'
+                },
+
             }
         })
     }

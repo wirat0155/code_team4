@@ -149,7 +149,7 @@
                                         <div class="form-group form-inline">
                                             <label for="dri_date_start" class="col-form-label mr-auto">Start date</label>
                                             <div class="col-md-9 p-0">
-                                            <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start">
+                                                <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -205,75 +205,7 @@
         <script>
             $(document).ready(function() {
                 // jQuery Validation
-                if ($('#add_driver_form').length > 0) {
-                    $('#add_driver_form').validate({
-                        rules: {
-                            dri_name: {
-                                required: true
-                            },
-                            dri_card_number: {
-                                required: true,
-                                maxlength: 13
-                            },
-                            dri_license: {
-                                required: true,
-                                maxlength: 8
-                            },
-                            dri_tel: {
-                                required: true,
-                                maxlength: 10
-                            },
-                            dri_car_id: {
-                                required: true,
-                            },
-                            dri_license_type: {
-                                required: true,
-                            },
-                            dri_status: {
-                                required: true,
-                            },
-                            dri_date_start: {
-                                required: true
-                            },
-                            dri_profile_image: {
-                                required: true
-                            }
-                        },
-                        messages: {
-                            dri_name: {
-                                required: 'กรุณากรอกชื่อ'
-                            },
-                            dri_card_number: {
-                                required: 'กรุณากรอกหมายเลขบัตรประชาชน',
-                                maxlength: 'กรุณากรอกไม่เกิน 13'
-                            },
-                            dri_license: {
-                                required: 'กรุณากรอกหมายเลขใบขับขี่',
-                                maxlength: 'กรุณากรอกไม่เกิน 8'
-                            },
-                            dri_tel: {
-                                required: 'กรุณากรอกหมายเลขโทรศัพท์',
-                                maxlength: 'กรุณากรอกไม่เกิน 10'
-                            },
-                            dri_car_id: {
-                                required: 'กรุณากรอกหมายเลขรถ'
-                            },
-                            dri_license_type: {
-                                required: 'กรุณากรอกประเภทใบขับขี่'
-                            },
-                            dri_status: {
-                                required: 'กรุณากรอกสถานะพนักงานขับรถ'
-                            },
-                            dri_date_start: {
-                                required: 'กรุณาเลือกวันที่เข้าทำงาน'
-                            },
-                            dri_profile_image: {
-                                required: 'กรุณาเลือกไฟล์รูป'
-                            },
-
-                        }
-                    })
-                }
+                
             });
 
             function get_image() {
