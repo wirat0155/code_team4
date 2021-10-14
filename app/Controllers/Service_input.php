@@ -124,6 +124,9 @@ class Service_input extends Cdms_controller {
         $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
 
+        // service status same as container status
+        $ser_stac_id = $con_stac_id;
+
         // agent information
         $agn_id = $this->request->getPost('agn_id');
         $agn_company_name = $this->request->getPost('agn_company_name');
@@ -218,7 +221,7 @@ class Service_input extends Cdms_controller {
         
 
         //insert service
-        $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
+        $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 }
