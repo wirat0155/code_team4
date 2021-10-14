@@ -77,7 +77,7 @@
     if ($type == 2) {
       $attr = 'readonly';
     }
-    $elem = '<div class="col-md-2 input-label">';
+    $elem = '<div class="col-md-2 input-label branch-div">';
     $elem .= '<div class="form-group">';
     $elem .= '<label for="agn_tax">Tax number </label>';
     $elem .= '</div>';

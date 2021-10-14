@@ -241,19 +241,36 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="agn_id"
-                                                onclick="get_agent_information()">
-                                                <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                                <option value="<?php echo $arr_agn[$i]->agn_id ?>">
-                                                    <?php echo $arr_agn[$i]->agn_company_name ?></option>
-                                                <?php } ?>
-                                                <option value="new">เอเย่นต์ใหม่</option>
-                                            </select>
-                                            <input class="form-control" name="agn_company_name"
-                                                placeholder="Company name" hidden>
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                                <input type="hidden" name="agn_name" onchange="get_agent_information()">
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">Select agent</div>
+                                                <div class="menu">
+                                                    <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                                        <div class="item" value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                                        </div>
+                                                    <?php } ?>
+                                                    <div class="item" value="new">+ New agent</div>
+                                                </div>
+                                            </div>
+                                            <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                            
+                                            <input type="hidden" name="agn_id" class="mt-5">
                                         </div>
 
-                                        <?php echo show_agent_form(); ?>
+                                        <style>
+                                            .branch-div {
+                                                margin-top: 35px;
+                                            }
+                                            @media only screen and (min-width: 768px) {
+                                                .branch-div {
+                                                    margin-top: 0px;
+                                                }
+                                            }
+                                        </style>
+
+                                        <!-- 2 = form with readonly -->
+                                        <?php echo show_agent_form(2); ?>
                                         <div class="card-action" id="first_from_action">
                                             <input type="button" class="ui button" value="Cancel"
                                                 onclick="window.history.back();">
@@ -286,6 +303,10 @@
 
     </div>
     <script>
+    $(document).ready(function() {
+            $('#container_step').click();
+    })
+
     function show_all_form(status) {
         $('#container_section').show();
         $('#agent_section').show();
@@ -367,5 +388,67 @@
             $('#agent_step').addClass("false");
             $('#agent_step').click();
         }
+    }
+    // get size information when change con_size_id dropdown
+    function get_size_information() {
+        let size_id = $('select[name="con_size_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url() . '/Size_show/get_size_ajax' ?>',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                size_id: size_id
+            },
+            success: function(data) {
+                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
+            }
+        });
+    }
+
+    // show size information when change con_size_id dropdown
+    function show_size_information(size_height_out, size_width_out, size_length_out) {
+        $('input[name="size_height_out"]').val(size_height_out);
+        $('input[name="size_width_out"]').val(size_width_out);
+        $('input[name="size_length_out"]').val(size_length_out);
+    }
+
+    function remove_form_attr(attr, target) {
+        $(target + ' *[readonly]').removeAttr(attr);
+    }
+    
+    function get_agent_information() {
+        $('#agent_section label.error').remove();
+        remove_form_attr('readonly', '#agent_section');
+        let agn_name = $('#agent_section div.text').text();
+
+        if (agn_name != '' && agn_name != "+ New agent") {
+            $('input[name="agn_company_name"]').prop('hidden', true);
+            $.ajax({
+                url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    agn_company_name: agn_name
+                },
+                success: function(data) {
+                    show_agent_information(data);
+                }
+            });
+        }
+        if (agn_name == "+ New agent") {
+            $('input[name="agn_company_name"]').prop('hidden', false);
+            clear_agent_information();
+        }
+    }
+
+    // show agent information when input agn_company_name
+    function show_agent_information(agent) {
+        $('input[name="agn_id"]').val(agent[0]['agn_id']);
+        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
+        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
+        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
+        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
+        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
+        $('input[name="agn_email"]').val(agent[0]['agn_email']);
     }
     </script>
