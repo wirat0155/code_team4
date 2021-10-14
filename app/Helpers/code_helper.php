@@ -145,7 +145,7 @@
     $elem .= '</div>';
     return $elem;
   }
-  function show_customer_form($type = 1) {
+  function show_customer_form ($type = 1) {
     $attr = '';
     if ($type == 2) {
       $attr = 'readonly';
@@ -157,6 +157,7 @@
     $elem .='</div>';
     $elem .='<div class="col-md-2">';
     $elem .='<input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch" ' . $attr . '>';
+    $elem .='<label class="error">' . $_SESSION["cus_branch_error"] . '</label>';
     $elem .='</div>';
 
     $elem .='<div class="col-md-1">';

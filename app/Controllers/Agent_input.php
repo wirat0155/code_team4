@@ -22,6 +22,9 @@ class Agent_input extends Cdms_controller {
     */
     public function agent_input() {
         $_SESSION['menu'] = 'Agent_show';
+        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
+            $_SESSION['agn_company_name_error'] = '';
+        }
 
         $this->output('v_agent_input');
     }
@@ -33,12 +36,11 @@ class Agent_input extends Cdms_controller {
     * @output เพิ่มเอเย่นต์
     * @author Klayuth
     * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+    * @Update Date 2564-10-14
     */
     public function agent_insert() {
-        $m_agn = new M_cdms_agent();
-        $arr_agn = $m_agn->get_all();
-
+        
+        // get post value from agent_input form
         $agn_company_name = $this->request->getPost('agn_company_name');
         $agn_firstname = $this->request->getPost('agn_firstname');
         $agn_lastname = $this->request->getPost('agn_lastname');
@@ -47,15 +49,25 @@ class Agent_input extends Cdms_controller {
         $agn_tax = $this->request->getPost('agn_tax');
         $agn_email = $this->request->getPost('agn_email');
 
-        // duplicate agn_company_name
-        // then back to v_agent_showlist
-        for ($i = 0; $i < count($arr_agn); $i++) {
-            if ($arr_agn[$i]->agn_company_name == $agn_company_name) {
-                return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
-            }
-        }
+        // load agent model
+        $m_agn = new M_cdms_agent();
 
-        $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+        // Get agent by agent company name
+        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+
+        // if duplicate agent company name
+        // then go to add agent page
+        // exit function
+        if (count($arr_agent) >= 1 ) {
+            $_SESSION['agn_company_name_error'] = 'The agent has already used';
+            $this->agent_input();
+            exit;
+        }
+        // if agent company name is unique
+        // then insert the agent
+        else {
+            $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+            return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+        }
     }
 }

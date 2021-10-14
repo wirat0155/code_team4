@@ -41,6 +41,9 @@ class Service_input extends Cdms_controller {
         if (!isset($_SESSION['cus_company_name_error']) || $_SESSION['cus_company_name_error'] == '') {
             $_SESSION['cus_company_name_error'] = '';
         }
+        if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
+            $_SESSION['cus_branch_error'] = '';
+        }
 
         // size name
         $m_size = new M_cdms_size();

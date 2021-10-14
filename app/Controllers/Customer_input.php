@@ -43,9 +43,8 @@ class Customer_input extends Cdms_controller {
     * @Update Date 2564-08-05
     */
     public function customer_insert() {
-        $m_cus = new M_cdms_customer();
-
-        // เก็บข้อมูลของ ลูกค้า
+        
+        // get post value from customer_input form
         $cus_company_name = $this->request->getPost('cus_company_name');
         $cus_firstname = $this->request->getPost('cus_firstname');
         $cus_lastname = $this->request->getPost('cus_lastname');
@@ -55,28 +54,50 @@ class Customer_input extends Cdms_controller {
         $cus_tax = $this->request->getPost('cus_tax');
         $cus_email = $this->request->getPost('cus_email');
 
-        $count_cus = 0;
+        // load customer model
+        $m_cus = new M_cdms_customer();
+
+        // get customer by cus_company_name & cus_branch
         $arr_customer = $m_cus->is_cus_branch_exist($cus_company_name);
+        $count_cus = 0;
         
+        // cout number of customer that duplicate cus_company_name & cus_branch
         for($i = 0; $i < count($arr_customer);$i++){
             if($arr_customer[$i]->cus_branch == $cus_branch){
                 $count_cus++;
             }
         }
         
+        // duplicate cus_company_name & cus_branch
         if ($count_cus >= 1) {
-            if($cus_branch == '')
-                $_SESSION['cus_company_name_error'] = 'มีชื่อบริษัทอยู่แล้ว';
-            else
-                $_SESSION['cus_branch_error'] = 'มีสาขาอยู่แล้ว';
 
+            // duplicate cus_compamny_name
+            if($cus_branch == '') {
+                $_SESSION['cus_company_name_error'] = 'The company has already used';
+            }
+
+            // duplicate cus_company_name & cus_branch
+            else {
+                $_SESSION['cus_branch_error'] = 'The branch has already used';
+            }
+
+            // if duplicate
+            // then go to add customer page
             $this->customer_input();
-        } else {
-            // เพิ่มข้อมูลลูกค้า
+            exit;
+        }
+        
+        // not duplicate
+        else {
+            
+            // insert the customer
             $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+
+            // set '' to session error
             $_SESSION['cus_branch_error'] = '';
             $_SESSION['cus_company_name_error'] = '';
 
+            // go to customer list page
             return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
         }
     }

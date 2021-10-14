@@ -56,6 +56,7 @@
                                         </div>
                                         <div class="col-md-6 " style="margin-right: 10%;">
                                             <input class="form-control" name="agn_company_name" placeholder="Company name">
+                                            <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
                                         <?php echo show_agent_form(); ?>
