@@ -61,7 +61,7 @@
                                 <table id="Agent_list_table" class="display table table-hover cell-border"
                                     style="border-collapse: collapse !important">
                                     <thead>
-                                        <tr>
+                                        <tr style="background-color: #999999; color: white;">
                                             <th>No.</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>

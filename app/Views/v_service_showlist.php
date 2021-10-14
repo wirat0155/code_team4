@@ -109,17 +109,39 @@
                                                 <?php echo $arr_service[$i]->con_number; ?>
                                             </td>
 
+                                            <style>
+                                                .cl-blue {
+                                                    color: #1244b9 !important;
+                                                }
+                                                .bg-import {
+                                                    background-color: #22b7ee;
+                                                /* Dodgrblue */
+                                                }
+                                                .bg-export {
+                                                    background-color: #04e17a;
+                                                /* Springgreen */
+                                                }
+                                                .bg-drop {
+                                                    background-color: #ffa611;
+                                                /* Orange */
+                                                }
+                                            </style>
                                             <!-- Status container  -->
-                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="px-4 py-3 text-sm text-center">
                                                 <?php 
-                                                if($arr_service[$i]->ser_stac_id== "1"){
-                                                    echo '<span class="btn btn-info">Import<span>';
-                                                }else if($arr_service[$i]->ser_stac_id== "2"){
-                                                    echo '<span class="btn btn-success">Export<span>';
-                                                }else if($arr_service[$i]->ser_stac_id== "3"){
-                                                    echo '<span class="btn btn-warning">Drop<span>';
-                                                } ?>
-
+                                                // 1 = import (sky blue)
+                                                if($arr_service[$i]->ser_stac_id == '1'){
+                                                    echo '<span class="bg-import text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
+                                                }
+                                                // 4 = export (green)
+                                                else if($arr_service[$i]->ser_stac_id == '4'){
+                                                    echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
+                                                }
+                                                // else = drop (orange)
+                                                else {
+                                                    echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
+                                                }
+                                                ?>
                                             </td>
 
                                             <!-- Container type -->

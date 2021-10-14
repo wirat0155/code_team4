@@ -36,7 +36,7 @@ class M_cdms_container extends Da_cdms_container {
                     ON con_agn_id = agn_id 
                     LEFT JOIN cdms_status_container 
                     ON con_stac_id = stac_id 
-                    WHERE con_status=1
+                    WHERE con_status = 1
                     ORDER BY con_id DESC" ;
         }
         // Sort by con_number ascending

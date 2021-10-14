@@ -89,10 +89,40 @@
                                                 </div>
                                             </td>
 
-                                            <!-- สถานะตู้ -->
-                                            <td class="px-4 py-3 text-sm"
-                                                onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)">
-                                                <?php echo $arr_container[$i]->stac_name ?>
+                                            <style>
+                                                .cl-blue {
+                                                    color: #1244b9 !important;
+                                                }
+                                                .bg-import {
+                                                    background-color: #22b7ee;
+                                                /* Dodgrblue */
+                                                }
+                                                .bg-export {
+                                                    background-color: #04e17a;
+                                                /* Springgreen */
+                                                }
+                                                .bg-drop {
+                                                    background-color: #ffa611;
+                                                /* Orange */
+                                                }
+                                            </style>
+                                            
+                                            <!-- สถานะของตู้ -->
+                                            <td onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)" class="px-4 py-3 text-sm text-center">
+                                                <?php 
+                                                // 1 = import (dodgerblue)
+                                                if($arr_container[$i]->con_stac_id == '1'){
+                                                    echo '<span class="bg-import text-white p-2" style="border-radius: 5px;">' . $arr_container[$i]->stac_name . '<span>';
+                                                }
+                                                // 4 = export (springgreen)
+                                                else if($arr_container[$i]->con_stac_id == '4'){
+                                                    echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">' . $arr_container[$i]->stac_name . '<span>';
+                                                }
+                                                // else = drop (orange)
+                                                else {
+                                                    echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_container[$i]->stac_name . '<span>';
+                                                }
+                                                ?>
                                             </td>
 
                                             <!-- ประเภทตู้ -->
