@@ -167,7 +167,7 @@ class Service_input extends Cdms_controller {
         $ser_weight = $this->request->getPost('ser_weight');
 
         // check information
-        //check customer
+        // check customer
         if($cus_company_name == ''){
             $ser_cus_id = $cus_id;
             $cus_company_name = $m_cus->get_by_id($cus_id);
@@ -210,11 +210,12 @@ class Service_input extends Cdms_controller {
         
 
         // Select container form dropdown
-        if($con_number == ''){
+        if($con_id != 'new'){
             $ser_con_id = $con_id;
             $con_number = $m_con->get_by_id($con_id);
-            $m_con->container_update($ser_con_id,$con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+            $m_con->container_update($con_id, $con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
         }
+
         // New container
         else {
             
@@ -236,11 +237,13 @@ class Service_input extends Cdms_controller {
             // return to add service page
             else {
                 $_SESSION['con_number_error'] = 'The container number has already used';
+
+                // 2 = duplicate container number
+                // Go to add service page with container number error
                 $this->service_input(2);
                 exit;
             }
         }
-        
 
         //insert service
         $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);

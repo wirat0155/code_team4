@@ -218,21 +218,19 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="con_option" onchange="get_container_information()">
+                                                <input type="hidden" name="con_id" onchange="get_container_information()">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select container</div>
                                                 <div class="menu">
                                                     <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
-                                                        <div class="item" value="<?php echo $arr_con[$i]->con_number ?>"><?php echo $arr_con[$i]->con_number;?>
+                                                        <div class="item" data-value="<?php echo $arr_con[$i]->con_id ?>"><?php echo $arr_con[$i]->con_number;?>
                                                         </div>
                                                     <?php } ?>
-                                                    <div class="item" value="new">+ New container</div>
+                                                    <div class="item" data-value="new">+ New container</div>
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0">
                                             <label class="error"><?php echo $_SESSION['con_number_error']?></label>
-                                            
-                                            <input type="hidden" name="con_id" class="mt-5">
                                         </div>
                                     </div>
 
@@ -389,20 +387,18 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="agn_name" onchange="get_agent_information()">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information()">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
                                                     <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                                        <div class="item" value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                                        <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
                                                         </div>
                                                     <?php } ?>
-                                                    <div class="item" value="new">+ New agent</div>
+                                                    <div class="item" data-value="new">+ New agent</div>
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
-                                            
-                                            <input type="hidden" name="agn_id" class="mt-5">
                                         </div>
 
                                         <!-- Agent form with readonly -->
@@ -424,24 +420,22 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
  
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="cus_name" onchange="get_customer_information()">
+                                                <input type="hidden" name="cus_id" onchange="get_customer_information()">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select customer</div>
                                                 <div class="menu">
                                                     <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
-                                                        <div class="item" value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;
+                                                        <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;
                                                         if ($arr_cus[$i]->cus_branch) {
                                                             echo " สาขา" . $arr_cus[$i]->cus_branch;
                                                         }
                                                         ?>
                                                         </div>
                                                     <?php } ?>
-                                                    <div class="item" value="new">+ New customer</div>
+                                                    <div class="item" data-value="new">+ New customer</div>
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
-                                            
-                                            <input type="hidden" name="cus_id" class="mt-5">
                                         </div>
 
                                         <style>
@@ -772,16 +766,16 @@
             function get_container_information() {
                 $('#container_section label.error').remove();
                 remove_form_attr('readonly', '#container_section');
-                let con_option = $('#container_section div.text').text();
+                let con_id = $('#container_section input[name="con_id"]').val();
 
-                if (con_option != '' && con_option != "+ New container") {
+                if (con_id != '' && con_id != "new") {
                     $('input[name="con_number"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Container_show/get_container_ajax' ?>',
                         method: 'POST',
                         dataType: 'JSON',
                         data: {
-                            con_number: con_option
+                            con_id: con_id
                         },
                         success: function(data) {
                             console.log(data);
@@ -789,7 +783,7 @@
                         }
                     });
                 }
-                if (con_option == "+ New container") {
+                if (con_id == "new") {
                     $('input[name="con_number"]').prop('hidden', false);
                     clear_container_information();
                 }
@@ -797,7 +791,6 @@
 
 
             function show_container_information(container) {
-                $('input[name="con_id"]').val(container[0]['con_id']);
                 $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
                 $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
                 $('input[name="con_max_weight"]').val(container[0]['con_max_weight']);
@@ -810,8 +803,6 @@
 
 
             function clear_container_information() {
-                $('input[name="con_id"]').val('');
-
                 $('select[name="con_cont_id"]').val(1);
 
                 $('select[name="con_stac_id"]').val(1);
@@ -854,23 +845,23 @@
             function get_agent_information() {
                 $('#agent_section label.error').remove();
                 remove_form_attr('readonly', '#agent_section');
-                let agn_name = $('#agent_section div.text').text();
+                let agn_id = $('#agent_section input[name="agn_id"]').val();
 
-                if (agn_name != '' && agn_name != "+ New agent") {
+                if (agn_id != '' && agn_id != "new") {
                     $('input[name="agn_company_name"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
                         method: 'POST',
                         dataType: 'JSON',
                         data: {
-                            agn_company_name: agn_name
+                            agn_id: agn_id
                         },
                         success: function(data) {
                             show_agent_information(data);
                         }
                     });
                 }
-                if (agn_name == "+ New agent") {
+                if (agn_id == "new") {
                     $('input[name="agn_company_name"]').prop('hidden', false);
                     clear_agent_information();
                 }
@@ -909,36 +900,23 @@
                 // Remove readonly in customer_section div
                 remove_form_attr('readonly', '#customer_section');
 
-                let cus_name = $('#customer_section div.text').text();
-                let cus_temp_name = cus_name;
-                let cus_branch = '';
-                console.log(cus_name.search("สาขา"));
-                if (cus_name.search("สาขา") != -1) {
-                    console.log('เข้า')
-                    cus_name = cus_temp_name.substring(0, cus_temp_name.search("สาขา"));
-                    cus_branch = cus_temp_name.substring((cus_temp_name.search("สาขา") + 4));
-                } else {
-                    cus_name = $('#customer_section div.text').text();
-                    cus_branch = '';
-                }
-                console.log("cus_name = " + cus_name);
-                console.log("cus_branch = " + cus_branch);
-                if (cus_name != '' && cus_name != "+ New customer") {
+                let cus_id = $('#customer_section input[name="cus_id"]').val();
+
+                if (cus_id != '' && cus_id != "+ New customer") {
                     $('input[name="cus_company_name"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Customer_show/get_customer_ajax' ?>',
                         method: 'POST',
                         dataType: 'JSON',
                         data: {
-                            cus_name: cus_name,
-                            cus_branch: cus_branch
+                            cus_id: cus_id
                         },
                         success: function(data) {
                             show_customer_information(data);
                         }
                     });
                 }
-                if (cus_name == "+ New customer") {
+                if (cus_id == "new") {
                     $('input[name="cus_company_name"]').prop('hidden', false);
                     clear_customer_information();
                 }
@@ -946,8 +924,6 @@
 
             // show agent information when input agn_company_name
             function show_customer_information(customer) {
-                console.log(customer);
-                $('input[name="cus_id"]').val(customer[0]['cus_id']);
                 $('input[name="cus_branch"]').val(customer[0]['cus_branch']);
                 $('textarea[name="cus_address"]').val(customer[0]['cus_address']);
                 $('input[name="cus_tax"]').val(customer[0]['cus_tax']);
@@ -959,7 +935,6 @@
 
             // clear agent information when delete input agn_company_name
             function clear_customer_information() {
-                $('input[name="cus_id"]').val('');
                 $('input[name="cus_branch"]').val('');
                 $('textarea[name="cus_address"]').val('');
                 $('input[name="cus_tax"]').val('');
