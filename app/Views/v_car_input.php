@@ -97,13 +97,17 @@
                                         <div class="form-group form-inline">
                                             <label for="car_prov_id" class="col-form-label mr-auto"></label>
                                             <div class="col-md-10 p-0">
-                                                <select class="form-control input-full" id="car_prov_id"
-                                                    name="car_prov_id">
-                                                    <?php for ($i = 0; $i < count($arr_car_prov); $i++) { ?>
-                                                    <option value="<?php echo $arr_car_prov[$i]->prov_id ?>">
-                                                        <?php echo $arr_car_prov[$i]->prov_name ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                                <div class="ui fluid search selection dropdown mt-1" style="left: 10px;top: -10px;">
+                                                    <input type="hidden" name="car_prov_id" id="car_prov_id">
+                                                    <i class="dropdown icon"></i>
+                                                    <div class="default text">Select province</div>
+                                                    <div class="menu">
+                                                        <?php for ($i = 0; $i < count($arr_car_prov); $i++) { ?>
+                                                            <div class="item" data-value="<?php echo $arr_car_prov[$i]->prov_id ?>"><?php echo $arr_car_prov[$i]->prov_name;?>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>

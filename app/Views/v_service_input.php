@@ -230,7 +230,8 @@
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0">
-                                            <label class="error"><?php echo $_SESSION['con_number_error']?></label>
+
+                                            <label class="error"><?php if ($_SESSION['con_number_error'] != '') echo '<br/><br/>' . $_SESSION['con_number_error']?></label>
                                         </div>
                                     </div>
 
@@ -399,6 +400,8 @@
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+
+                                            <label class="error"><?php if ($_SESSION['agn_company_name_error'] != '') echo '<br/><br/>' . $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
                                         <!-- Agent form with readonly -->
@@ -436,6 +439,7 @@
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
+                                            <label class="error"><?php if ($_SESSION['cus_company_name_error'] != '') echo '<br/><br/>' . $_SESSION['cus_company_name_error']?></label>
                                         </div>
 
                                         <style>

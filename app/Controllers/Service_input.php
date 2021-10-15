@@ -166,24 +166,52 @@ class Service_input extends Cdms_controller {
         $ser_departure_location = $this->request->getPost('ser_departure_location');
         $ser_weight = $this->request->getPost('ser_weight');
 
-        // check information
-        // check customer
-        if($cus_company_name == ''){
+        // select customer form dropdown
+        // then update customer
+        if ($cus_id != 'new'){
             $ser_cus_id = $cus_id;
+
+            // get customer company name
             $cus_company_name = $m_cus->get_by_id($cus_id);
+
+            // update the customer
             $m_cus->customer_update($cus_id, $cus_company_name[0]->cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
-        }else{
-            $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);  
-            if (count($get_ser_cus_id)  == 0) {
-                //new customer
-                //insert new customer
+        }
+
+        // new customer
+        // then check duplicate customer company name
+        else {
+            
+            $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
+
+            // not duplicate cus_company_name nor cus_branch
+            // then insert the customer
+            if (count($get_ser_cus_id) == 0) {
+
+                // insert customer
                 $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+
                 //get new cus_id 
                 $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
                 $ser_cus_id = $get_ser_cus_id[0]->cus_id;
-            } else {
-                $_SESSION['cus_company_name_error'] = 'The customer has already used';
+            }
+            
+            // duplicae cus_company_name & cus_branch
+            // go to add service page with customer error
+            else {
+                // not input cus_branch
+                if ($cus_branch == '') {
+                    $_SESSION['cus_company_name_error'] = 'The customer has already used';
+                }
+
+                // input cus_branch
+                else {
+                    $_SESSION['cus_branch_error'] = 'The branch has already used';
+                }
+
+                // 4 = dupplicate cus_company_name & cus_branch
                 $this->service_input(4);
+                exit;
             }
         }
         
@@ -207,7 +235,6 @@ class Service_input extends Cdms_controller {
                 exit;
             }
         }
-        
 
         // Select container form dropdown
         if($con_id != 'new'){
@@ -239,14 +266,22 @@ class Service_input extends Cdms_controller {
                 $_SESSION['con_number_error'] = 'The container number has already used';
 
                 // 2 = duplicate container number
-                // Go to add service page with container number error
+                // go to add service page with container number error
                 $this->service_input(2);
                 exit;
             }
         }
 
+        // set free to section error session
+        $_SESSION['con_number_error'] = '';
+        $_SESSION['agn_company_name_error'] = '';
+        $_SESSION['cus_company_name_error'] = '';
+        $_SESSION['cus_branch_error'] = '';
+
         //insert service
         $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);
+
+        // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 }
