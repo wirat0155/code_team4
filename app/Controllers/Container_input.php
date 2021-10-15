@@ -117,11 +117,8 @@ class Container_input extends Cdms_controller
 
             // select agent from dropdown
             // then update agent
-            if ($agn_id != '') {
-                $agn_name = $this->request->getPost('agn_name');
-                $arr_agent = $m_agn->get_by_company_name($agn_name);
-                $con_agn_id = $arr_agent[0]->agn_id;
-                
+            if ($agn_id != 'new') {
+                $con_agn_id = $agn_id;
                 $m_agn->agent_update($agn_id, NULL, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             }
 
@@ -160,7 +157,7 @@ class Container_input extends Cdms_controller
         $_SESSION['con_number_error'] = '';
         $_SESSION['agn_company_name_error'] = '';
         $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-        $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
+        // $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }
     
 }

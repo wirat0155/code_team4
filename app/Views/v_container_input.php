@@ -242,21 +242,19 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="agn_name" onchange="get_agent_information()">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information()">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
                                                     <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                                        <div class="item" value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                                        <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
                                                         </div>
                                                     <?php } ?>
-                                                    <div class="item" value="new">+ New agent</div>
+                                                    <div class="item" data-value="new">+ New agent</div>
                                                 </div>
                                             </div>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
                                             <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
-                                            
-                                            <input type="hidden" name="agn_id" class="mt-5">
                                         </div>
 
                                         <style>
@@ -437,23 +435,24 @@
     function get_agent_information() {
         $('#agent_section label.error').remove();
         remove_form_attr('readonly', '#agent_section');
-        let agn_name = $('#agent_section div.text').text();
+        let agn_id = $('#agent_section input[name="agn_id"]').val();
 
-        if (agn_name != '' && agn_name != "+ New agent") {
+        if (agn_id != '' && agn_id != 'new') {
+            console.log(agn_id);
             $('input[name="agn_company_name"]').prop('hidden', true);
             $.ajax({
                 url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
                 method: 'POST',
                 dataType: 'JSON',
                 data: {
-                    agn_company_name: agn_name
+                    agn_id: agn_id
                 },
                 success: function(data) {
                     show_agent_information(data);
                 }
             });
         }
-        if (agn_name == "+ New agent") {
+        if (agn_id == "new") {
             $('input[name="agn_company_name"]').prop('hidden', false);
             clear_agent_information();
         }
@@ -461,7 +460,6 @@
 
     // show agent information when input agn_company_name
     function show_agent_information(agent) {
-        $('input[name="agn_id"]').val(agent[0]['agn_id']);
         $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
         $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
         $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
@@ -472,7 +470,6 @@
 
     // clear agent information when delete input agn_company_name
     function clear_agent_information() {
-        $('input[name="agn_id"]').val('');
         $('input[name="agn_company_name"]').val('');
         $('textarea[name="agn_address"]').val('');
         $('input[name="agn_tax"]').val('');
