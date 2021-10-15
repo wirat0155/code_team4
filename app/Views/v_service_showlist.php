@@ -127,7 +127,7 @@
                                                 }
                                             </style>
                                             <!-- Status container  -->
-                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="px-4 py-3 text-sm text-center">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
                                                 <?php 
                                                 // 1 = import (sky blue)
                                                 if($arr_service[$i]->ser_stac_id == '1'){

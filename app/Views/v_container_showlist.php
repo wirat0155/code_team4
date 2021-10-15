@@ -108,7 +108,7 @@
                                             </style>
                                             
                                             <!-- สถานะของตู้ -->
-                                            <td onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)" class="px-4 py-3 text-sm text-center">
+                                            <td onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)" class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
                                                 <?php 
                                                 // 1 = import (dodgerblue)
                                                 if($arr_container[$i]->con_stac_id == '1'){

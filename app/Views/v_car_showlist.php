@@ -95,7 +95,7 @@
                                                     </td>
 
                                                 <!-- Status -->
-                                                    <td class="px-4 py-3 text-sm text-center">
+                                                    <td class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
                                                         <?php
                                                             if ($arr_car[$i]->car_status == 1) {
                                                                 echo '<span class="text-con-ready bg-success text-white p-2" style="border-radius: 5px;">Ready</span>'
