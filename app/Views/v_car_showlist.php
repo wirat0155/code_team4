@@ -64,7 +64,7 @@
                                             <th class="text-center">Car code</th>
                                             <th class="text-center">Car type</th>
                                             <th class="text-center">Brand</th>
-                                            <th class="text-center">Status</th>>
+                                            <th class="text-center">Status</th>
                                             <th></th>
                                         </tr>
                                     </thead>
