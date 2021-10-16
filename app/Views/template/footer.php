@@ -323,7 +323,6 @@ $(document).ready(function() {
             rules: {
                 con_number: {
                     required: true,
-                    maxlength: 12
                 },
                 con_max_weight: {
                     required: true,
@@ -375,8 +374,7 @@ $(document).ready(function() {
             },
             messages: {
                 con_number: {
-                    required: 'Please enter a container number',
-                    maxlength: 'Too long container number'
+                    required: 'Please enter a container number'
                 },
                 con_max_weight: {
                     required: 'Please enter a max weight',

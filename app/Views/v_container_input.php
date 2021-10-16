@@ -24,6 +24,16 @@
     .cl-blue {
         color: #1244B9 !important;
     }
+    input.error, select.error, textarea.error, .form-control[readonly].error {
+        border: 1px solid red !important;
+    }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+    small.error, label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 
 <div class="main-panel">
@@ -70,7 +80,7 @@
 
 
             <form id="add_container_form" action="<?php echo base_url() . '/Container_input/container_insert' ?>"
-                method="POST">
+                method="POST" onsubmit="event.preventDefault(); validate_form();">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -91,7 +101,7 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
 
                                             <input class="form-control" name="con_number"
-                                                pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0">
+                                                pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" oninput="check_con_number()">
                                             <label class="error"><?php echo $_SESSION['con_number_error']?></label>
                                         </div>
                                         
@@ -176,7 +186,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <input type=" number" class="form-control" id="con_cube" name="con_cube"
-                                                placeholder="10">
+                                                placeholder="10" oninput="check_con_number()">
                                         </div>
                                     </div>
                                     <h3>3. Size</h3>
@@ -242,7 +252,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="agn_id" onchange="get_agent_information()">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
@@ -253,6 +263,7 @@
                                                     <div class="item" data-value="new">+ New agent</div>
                                                 </div>
                                             </div>
+                                            <label class="error"></label>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
                                             <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
                                         </div>
@@ -361,6 +372,7 @@
         $('#container_section').hide();
         $('#container_from_action').hide();
         $('#last_from_action').show();
+        $('.ui.fluid.search.selection.dropdown+label').css('display', 'block');
     }
 
     function check_container_form() {
@@ -427,6 +439,86 @@
         $('input[name="size_width_out"]').val(size_width_out);
         $('input[name="size_length_out"]').val(size_length_out);
     }
+    function validate_form() {
+        let con = check_con_number();
+        let agn = check_agn_id();
+        return con && agn;
+    }
+
+    function check_con_number() {
+        let con_number_input = $('input[name="con_number"]');
+        let con_number_warning =  $('input[name="con_number"]+label');
+
+        const con_number = con_number_input.val();
+        let con_number_pass = false;
+        let con_cube_pass = false;
+
+        if (con_number.length <= 12) {
+            if(con_number.length != 0) {
+                console.log('เข้าถูก');
+                remove_error('input', 'con_number');
+                con_number_pass = true;
+            }
+            else{
+                console.log('ไม่กรอก');
+                con_number_input.addClass('error');
+                con_number_warning.html('Please enter a container number');
+                con_number_pass = false;
+            }
+        }
+        else {
+            console.log('กรอกเกิน');
+            con_number_input.addClass('error');
+            con_number_warning.html('Please enter max 12 digit long');
+            con_number_pass = false;
+        }
+
+        let con_cube = $('input[name="con_cube"]');
+        let con_cube_warning = $('input[name="con_cube"]+label');
+        if (con_cube.val().length == 0) {
+            con_cube.addClass('error');
+            con_cube_warning.html('Please enter a con cube');
+            con_cube_pass = false;
+            con_cube_pass = false;
+        }
+        else {
+            if (con_cube.val() >= 0 && con_cube.val() <= 100) {
+                con_cube.removeClass('error');
+                con_cube_warning.html('');
+                con_cube_pass = true;
+            }
+            else {
+                con_cube.addClass('error');
+                con_cube_warning.html('Please enter a con cube')
+                con_cube_pass = false;
+            }
+        }
+        
+    }
+    function check_agn_id() {
+        let agn_id = $('input[name="agn_id"]').val();
+        let agn_id_warning = $('.ui.fluid.search.selection.dropdown+label');
+
+        if (agn_id == '') {
+            console.log('ไม่เลือกเอเย่นต์');
+            $('input.search').addClass('error');
+            agn_id_warning.addClass('error');
+            agn_id_warning.html('<br/><br/>Please select an agent');
+            return false;
+        }
+        else {
+            console.log('เลือกเอเย่นต์');
+            $('input.search').removeClass('error');
+            agn_id_warning.removeClass('error');
+            agn_id_warning.html('');
+            return true;
+        }
+    }
+
+    function remove_error(tag, name) {
+        $(tag + '[name="' + name + '"]').removeClass('error');
+        $(tag + '[name="' + name + '"]+label').html('');
+    }
 
     function remove_form_attr(attr, target) {
         $(target + ' *[readonly]').removeAttr(attr);
@@ -449,13 +541,20 @@
                 },
                 success: function(data) {
                     show_agent_information(data);
+                    valid_agent_error();
                 }
             });
         }
         if (agn_id == "new") {
             $('input[name="agn_company_name"]').prop('hidden', false);
             clear_agent_information();
+            valid_agent_error();
         }
+    }
+
+    function valid_agent_error() {
+        $('#agent_section input.error').removeClass('error');
+        $('#agent_section textarea.error').removeClass('error');
     }
 
     // show agent information when input agn_company_name
