@@ -10,6 +10,16 @@
     .cl-blue {
         color: #1244B9 !important;
     }
+    input.error, select.error, textarea.error {
+        border: 1px solid red !important;
+    }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+    small.error, label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 <div class="main-panel">
     <div class="content">

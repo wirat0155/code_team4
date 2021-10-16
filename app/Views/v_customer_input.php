@@ -1,16 +1,25 @@
 <style>
-.fa-phone {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-}
-
-.cl-blue {
-    color: #1244B9 !important;
-}
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+    .cl-blue {
+        color: #1244B9 !important;
+    }
+    input.error, select.error, textarea.error {
+        border: 1px solid red !important;
+    }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+    small.error, label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -38,9 +47,6 @@
                     <a href="#">Add customer</a>
                 </li>
             </ul>
-
-
-
 
             <form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert' ?>" method="POST">
                 <div class="row mx-4">
@@ -79,36 +85,4 @@
                             </div>
             </form>
         </div>
-
     </div>
-    <!--<div class="main-panel">
-	<div class="content">
-		<div class="page-inner">
-			<div class="page-header">
-				<h4 class="page-title">Add customer</h4>
-				<ul class="breadcrumbs">
-					<li class="nav-home">
-						<a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
-							<i class="flaticon-home"></i>
-						</a>
-					</li>
-					<li class="separator">
-						<i class="flaticon-right-arrow"></i>
-					</li>
-					<li class="nav-item">
-						<a href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Customer</a>
-					</li>
-					<li class="separator">
-						<i class="flaticon-right-arrow"></i>
-					</li>
-					<li class="nav-item">
-						<a href="<?php echo base_url() . '/Customer_input/customer_input'?>">Add customer</a>
-					</li>
-				</ul>
-			</div>
-
-			<form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert'?>" method="POST">
-
-			</form>
-		</div>
-	</div> -->
