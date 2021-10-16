@@ -3,6 +3,16 @@
     .cl-blue {
         color: #1244B9 !important;
     }
+    input.error {
+        border: 1px solid red !important;
+    }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+    small.error, label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -33,7 +43,7 @@
                 </ul>
             </div>
 
-            <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST">
+            <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault(); validate_form();">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -51,7 +61,7 @@
                                             <div class="col-md-10 p-0">
                                                 <input type="text" class="form-control input-full" id="car_number"
                                                     name="car_number" placeholder="Number">
-                                                <small class="form-text text-muted"> </small>
+                                                <small class="form-text text-muted"></small>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +108,7 @@
                                             <label for="car_prov_id" class="col-form-label mr-auto"></label>
                                             <div class="col-md-10 p-0">
                                                 <div class="ui fluid search selection dropdown mt-1" style="left: 10px;top: -10px;">
-                                                    <input type="hidden" name="car_prov_id" id="car_prov_id">
+                                                    <input type="hidden" name="car_prov_id" id="car_prov_id" onchange="check_car_prov_id()">
                                                     <i class="dropdown icon"></i>
                                                     <div class="default text">Select province</div>
                                                     <div class="menu">
@@ -108,7 +118,7 @@
                                                         <?php } ?>
                                                     </div>
                                                 </div>
-                                                <small class="form-text text-muted"> </small>
+                                                <small></small>
                                             </div>
                                         </div>
                                     </div>
@@ -252,6 +262,9 @@
                         car_branch: {
                             required: true
                         },
+                        car_prov_id: {
+                            require: true
+                        },
                         car_chassis_number: {
                             required: true
                         },
@@ -285,6 +298,9 @@
                         car_branch: {
                             required: 'Please enter a branch'
                         },
+                        car_prov_id: {
+                            require: 'Please select a province'
+                        },
                         car_chassis_number: {
                             required: 'Please enter a chassis number'
                         },
@@ -302,12 +318,32 @@
                         },
                         car_image: {
                             required: 'Please upload image'
-                        },
-
+                        }
                     }
                 })
             }
         });
+        function validate_form() {
+            return check_car_prov_id();
+        }
+
+        function check_car_prov_id() {
+            let car_prov_id = $('input[name="car_prov_id"]').val();
+            let car_prov_id_warning = $('.ui.fluid.search.selection.dropdown+small');
+
+            if (car_prov_id == '') {
+                $('input.search').addClass('error');
+                car_prov_id_warning.addClass('error');
+                car_prov_id_warning.html('<br/><br/>Please select a province');
+                return false;
+            }
+            else {
+                $('input.search').removeClass('error');
+                car_prov_id_warning.removeClass('error');
+                car_prov_id_warning.html('');
+                return true;
+            }
+        }
 
         function get_image() {
             var car_img = $('#car_image').val();
