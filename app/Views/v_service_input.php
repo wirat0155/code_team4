@@ -33,6 +33,16 @@
     .cl-blue {
         color: #1244B9 !important;
     }
+    input.error, select.error, textarea.error, .form-control[readonly].error {
+        border: 1px solid red !important;
+    }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+    small.error, label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -81,7 +91,7 @@
                 </div>
             </div>
 
-            <form id="add_service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" method="POST">
+            <form id="add_service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" method="POST" onsubmit="event.preventDefault(); validate_form();">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -218,7 +228,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="con_id" onchange="get_container_information()">
+                                                <input type="hidden" name="con_id" onchange="get_container_information(); check_con_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select container</div>
                                                 <div class="menu">
@@ -229,6 +239,7 @@
                                                     <div class="item" data-value="new">+ New container</div>
                                                 </div>
                                             </div>
+                                            <label class="error"></label>
                                             <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0">
 
                                             <label class="error"><?php if ($_SESSION['con_number_error'] != '') echo '<br/><br/>' . $_SESSION['con_number_error']?></label>
@@ -388,7 +399,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="agn_id" onchange="get_agent_information()">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
@@ -399,6 +410,7 @@
                                                     <div class="item" data-value="new">+ New agent</div>
                                                 </div>
                                             </div>
+                                            <label class="error"></label>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
 
                                             <label class="error"><?php if ($_SESSION['agn_company_name_error'] != '') echo '<br/><br/>' . $_SESSION['agn_company_name_error']?></label>
@@ -423,7 +435,7 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
  
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
-                                                <input type="hidden" name="cus_id" onchange="get_customer_information()">
+                                                <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select customer</div>
                                                 <div class="menu">
@@ -438,6 +450,7 @@
                                                     <div class="item" data-value="new">+ New customer</div>
                                                 </div>
                                             </div>
+                                            <label class="error"></label>
                                             <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
                                             <label class="error"><?php if ($_SESSION['cus_company_name_error'] != '') echo '<br/><br/>' . $_SESSION['cus_company_name_error']?></label>
                                         </div>
@@ -654,6 +667,7 @@
                 $('#agent_from_action').hide();
                 $('#customer_section').hide();
                 $('#last_from_action').hide();
+                $('#container_section .ui.fluid.search.selection.dropdown+label').css('display', 'block');
             }
 
             function show_agent_form() {
@@ -673,6 +687,7 @@
                 $('#container_from_action').hide();
                 $('#customer_section').hide();
                 $('#last_from_action').hide();
+                $('#agent_section .ui.fluid.search.selection.dropdown+label').css('display', 'block');
             }
 
             function show_customer_form() {
@@ -692,6 +707,7 @@
                 $('#agent_from_action').hide();
                 $('#container_section').hide();
                 $('#container_from_action').hide();
+                $('#customer_section .ui.fluid.search.selection.dropdown+label').css('display', 'block');
             }
 
             function get_car_information(status) {
@@ -784,13 +800,20 @@
                         success: function(data) {
                             console.log(data);
                             show_container_information(data);
+                            valid_container_error();
                         }
                     });
                 }
                 if (con_id == "new") {
                     $('input[name="con_number"]').prop('hidden', false);
                     clear_container_information();
+                    valid_container_error();
                 }
+            }
+
+            function valid_container_error() {
+                $('#container_section input.error').removeClass('error');
+                $('#container_section textarea.error').removeClass('error');
             }
 
 
@@ -862,13 +885,20 @@
                         },
                         success: function(data) {
                             show_agent_information(data);
+                            valid_agent_error();
                         }
                     });
                 }
                 if (agn_id == "new") {
                     $('input[name="agn_company_name"]').prop('hidden', false);
                     clear_agent_information();
+                    valid_agent_error();
                 }
+            }
+
+            function valid_agent_error() {
+                $('#agent_section input.error').removeClass('error');
+                $('#agent_section textarea.error').removeClass('error');
             }
 
             // show agent information when input agn_company_name
@@ -917,13 +947,20 @@
                         },
                         success: function(data) {
                             show_customer_information(data);
+                            valid_customer_error();
                         }
                     });
                 }
                 if (cus_id == "new") {
                     $('input[name="cus_company_name"]').prop('hidden', false);
                     clear_customer_information();
+                    valid_customer_error();
                 }
+            }
+
+            function valid_customer_error() {
+                $('#customer_section input.error').removeClass('error');
+                $('#customer_section textarea.error').removeClass('error');
             }
 
             // show agent information when input agn_company_name
@@ -946,6 +983,70 @@
                 $('input[name="cus_lastname"]').val('');
                 $('input[name="cus_tel"]').val('');
                 $('input[name="cus_email"]').val('');
+            }
+
+            function validate_form() {
+                const con_id_pass =  check_con_id();
+                const agn_id_pass = check_agn_id();
+                const cus_id_pass = check_cus_id();
+                return con_id_pass && agn_id_pass && cus_id_pass;
+            }
+
+            function check_con_id() {
+                const con_id_input = $('input[name="con_id"]');
+                let con_id_warning = $('#container_section .ui.fluid.search.selection.dropdown+label');
+                
+                // select container from dropdown
+                if (con_id_input.val() == '') {
+                    $('#container_section input.search').addClass('error');
+                    con_id_warning.addClass('error');
+                    con_id_warning.html('<br/><br/>Please select a container');
+                    return false;
+                }
+                else {
+                    $('#container_section input.search').removeClass('error');
+                    con_id_warning.removeClass('error');
+                    con_id_warning.html('');
+                    return true;
+                }
+            }
+
+            function check_agn_id() {
+                const agn_id_input = $('input[name="agn_id"]');
+                let agn_id_warning = $('#agent_section .ui.fluid.search.selection.dropdown+label');
+                
+                // select container from dropdown
+                if (agn_id_input.val() == '') {
+                    $('#agent_section input.search').addClass('error');
+                    agn_id_warning.addClass('error');
+                    agn_id_warning.html('<br/><br/>Please select a agent');
+                    return false;
+                }
+                else {
+                    $('#agent_section input.search').removeClass('error');
+                    agn_id_warning.removeClass('error');
+                    agn_id_warning.html('');
+                    return true;
+                }
+            }
+
+            function check_cus_id() {
+                const cus_id_input = $('input[name="cus_id"]');
+                let cus_id_warning = $('#customer_section .ui.fluid.search.selection.dropdown+label');
+                
+                // select container from dropdown
+                if (cus_id_input.val() == '') {
+                    $('#customer_section input.search').addClass('error');
+                    cus_id_warning.addClass('error');
+                    cus_id_warning.html('<br/><br/>Please select a customer');
+                    return false;
+                }
+                else {
+                    $('#customer_section input.search').removeClass('error');
+                    cus_id_warning.removeClass('error');
+                    cus_id_warning.html('');
+                    return true;
+                }
             }
         </script>
     </div>

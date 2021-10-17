@@ -455,19 +455,16 @@
 
         if (con_number.length <= 12) {
             if(con_number.length != 0) {
-                console.log('เข้าถูก');
                 remove_error('input', 'con_number');
                 con_number_pass = true;
             }
             else{
-                console.log('ไม่กรอก');
                 con_number_input.addClass('error');
                 con_number_warning.html('Please enter a container number');
                 con_number_pass = false;
             }
         }
         else {
-            console.log('กรอกเกิน');
             con_number_input.addClass('error');
             con_number_warning.html('Please enter max 12 digit long');
             con_number_pass = false;
