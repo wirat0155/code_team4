@@ -31,11 +31,6 @@ label.error {
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="float-right" style='margin-top: 10px'>
-                <a href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">Edit Info</a>
-                <button type="button" class="btn btn-danger px-2 text-sm " data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_cus[0]->cus_id ?>)">Delete
-                </button>
-            </div>
             <div class="pl-4 mt-4 page-header mb-0">
                 <h4 class="page-title">EDIT CUSTOMER</h4>
             </div>
@@ -59,7 +54,7 @@ label.error {
                     <a href="#">Edit customer</a>
                 </li>
             </ul>
-            <form id="add_customer_form" action="<?php echo base_url() . '/Customer_show/customer_detail'?>" enctype="multipart/form-data" method="POST">
+            <form id="add_customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update'?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-4">
                     <div class="col-md-12">
                         <div class="card">
