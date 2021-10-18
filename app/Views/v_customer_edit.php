@@ -1,181 +1,186 @@
 <style>
-    @media (min-width: 1200px) {
-        .container-sm {
-            max-width: 900px;
-        }
-    }
+.fa-phone {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.cl-blue {
+    color: #1244B9 !important;
+}
+
+input.error,
+select.error,
+textarea.error {
+    border: 1px solid red !important;
+}
+
+.ui.search.dropdown>input.search.error {
+    border: 1px solid red !important;
+}
+
+small.error,
+label.error {
+    color: red !important;
+    font-weight: bold;
+}
 </style>
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="float-right" style='margin-top: 10px'>
+                <a href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">Edit Info</a>
+                <button type="button" class="btn btn-danger px-2 text-sm " data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_cus[0]->cus_id ?>)">Delete
+                </button>
+            </div>
+            <div class="pl-4 mt-4 page-header mb-0">
+                <h4 class="page-title">EDIT CUSTOMER</h4>
+            </div>
+            <hr width="95%" color="696969">
+            <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
+                <li class="nav-home">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a class="cl-blue" href="<?php echo base_url() . '/Customer_show/customer_show_ajax'?>">Customer information</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Edit customer</a>
+                </li>
+            </ul>
+            <form id="add_customer_form" action="<?php echo base_url() . '/Customer_show/customer_detail'?>" enctype="multipart/form-data" method="POST">
+                <div class="row mx-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Customer Information</div>
+                            </div>
 
-<div class="container px-6 mx-auto grid">
+                            <!-- Customer Information-->
+                            <div class="card-body">
+                                <div class="row px-5">
+                                    <div class="col-md-6 col-lg-6">
+                                        <!-- Id agent -->
+                                        <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
 
-    <!-- หัวข้อ -->
-    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="flex items-center">
-            <h2 class=" text-2xl font-semibold">
-                แก้ไขลูกค้า
-            </h2>
+                                        <!-- Company name -->
+                                        <div class="form-group form-inline">
+                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name
+                                                :</label>
+                                            <div class="col-md-8 p-0">
+                                                <input class="form-control input-full" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $arr_customer[0]->cus_company_name ?>">
+                                                <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
+                                            </div>
+                                        </div>
+                                        <!-- Branch -->
+                                        <div class="form-group form-inline">
+                                            <label for="cus_branch" class="col-form-label mr-auto">Branch
+                                                :</label>
+                                            <div class="col-md-8 p-0">
+                                                <input class="form-control input-full" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $arr_customer[0]->cus_branch ?>">
+                                                <label class="error"><?php echo $_SESSION['cus_branch_error']?></label>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Company location -->
+                                        <div class="form-group">
+                                            <label for="cus_address">Company location
+                                                :</label>
+                                            <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" rows="5"><?php echo $arr_customer[0]->cus_address ?></textarea>
+                                        </div>
+
+
+                                        <!-- Taxpayer number -->
+
+                                        <div class="form-group form-inline mt-2">
+                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
+                                                :</label>
+                                            <div class="col-md-8 p-0">
+                                                <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Taxpayer number" value="<?php echo $arr_customer[0]->cus_tax ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 col-lg-6">
+                                        <!-- Responsible person -->
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Responsible person
+                                                (Representative)</label>
+                                        </div>
+
+                                        <!-- First Name -->
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">First name </label>
+                                            <div class="col-md-8 p-0">
+                                                <input class="form-control input-full" id="cus_firstname" name="cus_firstname" placeholder="First name" value="<?php echo $arr_customer[0]->cus_firstname ?>">
+                                            </div>
+                                        </div>
+
+                                        <!-- Last Name -->
+
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Last name </label>
+                                            <div class="col-md-8 p-0">
+                                                <input class="form-control input-full" id="cus_lastname" name="cus_lastname" placeholder="Last name" value="<?php echo $arr_customer[0]->cus_lastname ?>">
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Contact number -->
+                                        <div class="form-group form-inline">
+                                            <label for="agn_tel" class="col-form-label mr-auto">Contact number </label>
+                                            <div class="col-md-8 p-0">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">
+                                                            <i class="fas fa-phone"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $arr_customer[0]->cus_tel ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Email -->
+                                        <div class="form-group form-inline">
+                                            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
+                                            <div class="col-md-8 p-0">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text ">
+                                                            <i class="fas fa-envelope"></i>
+                                                        </span>
+                                                    </div>
+                                                    <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com" value="<?php echo $arr_customer[0]->cus_email ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action" id="car_action">
+                            <input type="button" class="ui button" value="Cancle" onclick="window.history.back();">
+                            <button type="submit" class="ui orange button pull-right">
+                                Confirm
+                            </button>
+                        </div>
+            </form>
         </div>
     </div>
-
-
-    <div class="container-sm mb-8">
-
-        <form id="edit_customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update' ?>" method="post">
-            <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
-            <!-- เพิ่มลูกค้า -->
-            <div class="container-sm px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-
-                <h4 class="px-3 my-4 text-xl font-semibold">
-                    ลูกค้า
-                </h4>
-
-                <div class="mb-4 container border-bottom"></div>
-
-                <div class="container">
-                    <!-- บริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_company_name" class="col-sm-3 col-form-label">บริษัท</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="cus_company_name" name="cus_company_name" placeholder="บริษัท" value="<?php echo $arr_customer[0]->cus_company_name ?>">
-                            <input type="text" class="form-control form-input" id="old_cus_company_name" name="old_cus_company_name" placeholder="บริษัท" hidden value="<?php echo $arr_customer[0]->cus_company_name ?>">
-                            <label id="cus_company_name-error" class="error" for="cus_company_name"><?php echo $_SESSION['cus_company_name_error'] ?></label>
-                        </div>
-                    </div>
-
-                    <!-- สาขา -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_branch" class="col-sm-3 col-form-label">สาขา</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="cus_branch" name="cus_branch" placeholder="สาขา" value="<?php echo $arr_customer[0]->cus_branch ?>">
-                            <input type="text" class="form-control form-input" id="old_cus_branch" name="old_cus_branch" placeholder="บริษัท" hidden value="<?php echo $arr_customer[0]->cus_branch ?>">
-                            <label id="cus_branch-error" class="error" for="cus_branch"><?php echo $_SESSION['cus_branch_error'] ?></label>
-                        </div>
-                    </div>
-
-                    <!-- ที่ตั้งบริษัท -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_address" class="col-sm-3 col-form-label">ที่ตั้งบริษัท</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control form-input" id="cus_address" name="cus_address" placeholder="ที่ตั้งบริษัท" rows="3" value="<?php echo $arr_customer[0]->cus_address ?>"><?php echo $arr_customer[0]->cus_address ?></textarea>
-                        </div>
-                    </div>
-
-                    <!-- หมายเลขผู้เสียภาษี -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_tax" class="col-sm-3 col-form-label">หมายเลขผู้เสียภาษี</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="cus_tax" name="cus_tax" placeholder="หมายเลขผู้เสียภาษี" maxlength="13" pattern="[0-9]{13}" value="<?php echo $arr_customer[0]->cus_tax ?>">
-                        </div>
-                    </div>
-
-                    <!-- ผู้รับผิดชอบ -->
-                    <div class="px-3 pt-4 pb-2 form-group row">
-                        <div class="col-sm-12">
-                            ผู้รับผิดชอบ (ตัวแทน)
-                        </div>
-                    </div>
-
-                    <!-- ชื่อจริง -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_firstname" class="col-sm-3 col-form-label">ชื่อจริง</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="cus_firstname" name="cus_firstname" placeholder="ชื่อจริง" value="<?php echo $arr_customer[0]->cus_firstname ?>">
-                        </div>
-                    </div>
-
-                    <!-- นามสกุล -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_lastname" class="col-sm-3 col-form-label">นามสกุล</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control form-input" id="cus_lastname" name="cus_lastname" placeholder="นามสกุล" value="<?php echo $arr_customer[0]->cus_lastname ?>">
-                        </div>
-                    </div>
-
-                    <!-- เบอร์ติดต่อ -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_tel" class="col-sm-3 col-form-label">เบอร์ติดต่อ</label>
-                        <div class="col-sm-9">
-                            <input type="tel" class="form-control form-input" id="cus_tel" name="cus_tel" placeholder="0812345678" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" value="<?php echo $arr_customer[0]->cus_tel ?>">
-                        </div>
-                    </div>
-
-                    <!-- อีเมล -->
-                    <div class="px-3 form-group row">
-                        <label for="cus_email" class="col-sm-3 col-form-label">อีเมล</label>
-                        <div class="col-sm-9">
-                            <input type="email" class="form-control form-input" id="cus_email" name="cus_email" placeholder="อีเมล" value="<?php echo $arr_customer[0]->cus_email ?>">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="float-right">
-                <input class="btn btn-secondary px-4 py-2 text-sm font-medium leading-5 text-white" type="button" value="ยกเลิก" onclick="window.history.back();">
-                <input class="btn btn-success px-4 py-2 text-sm font-medium leading-5 text-white" type="submit" value="บันทึกการแก้ไข">
-            </div>
-        </form>
-
-    </div>
-
 </div>
-
-<script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#edit_customer_form').length > 0) {
-            $('#edit_customer_form').validate({
-                rules: {
-                    cus_company_name: {
-                        required: true
-                    },
-                    cus_tax: {
-                        required: true
-                    },
-                    cus_address: {
-                        required: true
-                    },
-                    cus_firstname: {
-                        required: true
-                    },
-                    cus_lastname: {
-                        required: true
-                    },
-                    cus_tel: {
-                        required: true,
-                        minlength: 10,
-                        maxlength: 10
-                    },
-                    cus_email: {
-                        required: true,
-                        email: true
-                    }
-                },
-                messages: {
-                    cus_company_name: {
-                        required: 'กรุณากรอกชื่อบริษัท'
-                    },
-                    cus_tax: {
-                        required: 'กรุณากรอกหมายเลขผู้เสียภาษี'
-                    },
-                    cus_address: {
-                        required: 'กรุณากรอกที่อยู่'
-                    },
-                    cus_firstname: {
-                        required: 'กรุณากรอกชื่อจริง'
-                    },
-                    cus_lastname: {
-                        required: 'กรุณากรอกนามสกุล'
-                    },
-                    cus_tel: {
-                        required: 'กรุณากรอกเบอร์โทรศัพท์',
-                        minlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร',
-                        maxlength: 'กรุณากรอกตัวเลขจำนวน 10 ตัวอักษร'
-                    },
-                    cus_email: {
-                        required: 'กรุณากรอกอีเมล',
-                        email: 'กรุณากรอกอีเมลให้ถูกต้อง'
-                    }
-                }
-            })
-        }
-    });
-</script>
