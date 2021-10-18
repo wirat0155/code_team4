@@ -16,7 +16,8 @@ use App\Models\M_cdms_status_container;
 * @Update Date 2564-08-12
 */
 
-class Container_show extends Cdms_controller {
+class Container_show extends Cdms_controller
+{
     /*
     * container_show_ajax
     * แสดงรายการตู้คอนเทนเนอร์
@@ -26,14 +27,16 @@ class Container_show extends Cdms_controller {
     * @Create Date 2564-07-29
     * @Update Date
     */
-    public function container_show_ajax() {
+    public function container_show_ajax()
+    {
         $_SESSION['menu'] = 'Container_show';
         $m_con = new M_cdms_container();
         $data['arr_container'] = $m_con->get_all();
         $this->output('v_container_showlist', $data);
     }
 
-    public function get_container_ajax() {
+    public function get_container_ajax()
+    {
         $m_con = new M_cdms_container();
         $con_id = $this->request->getPost('con_id');
         $con_information = $m_con->get_by_id($con_id);
@@ -49,7 +52,8 @@ class Container_show extends Cdms_controller {
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
     */
-    public function container_detail($con_id) {
+    public function container_detail($con_id)
+    {
         $_SESSION['menu'] = 'Container_show';
 
         // container id
@@ -84,7 +88,8 @@ class Container_show extends Cdms_controller {
     * @Create Date 2564-07-29
     * @Update Date 2564-07-29
     */
-    public function container_delete() {
+    public function container_delete()
+    {
         $m_con = new M_cdms_container();
         $con_id = $this->request->getPost('con_id');
         $m_con->delete($con_id);
@@ -100,7 +105,8 @@ class Container_show extends Cdms_controller {
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
-    public function check_container_number() {
+    public function check_container_number()
+    {
         $m_con = new M_cdms_container();
         $con_number = $this->request->getPost('con_number');
         $arr_container = $m_con->is_con_number_exist($con_number);
