@@ -66,11 +66,20 @@
     <div class="content">
         <div class="page-inner">
         <div class="page-inner">
-                <div class="float-right" style='margin-top: 10px'>
-                    <a href="<?php echo base_url() . '/Driver_edit/driver_edit/' . $arr_driver[0]->dri_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">Edit Info</a>
-                    <button type="button" class="btn btn-danger px-2 text-sm " data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_car[0]->car_id ?>)">Delete
-                    </button>
-                </div>
+            <div class="pl-4 mt-4 page-header mb-0">
+                <h4 class="pl-3 page-title">AGENT DETAIL</h4>
+                    <div class="card-action ml-auto mr-4">
+                        <a class="ui yellow button" href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[0]->car_id ?>">
+                            <i class="far fa-edit mr-1"></i>
+                            Edit info
+                        </a>
+                        <button type="submit" class="ui red test button">
+                            <i class="trash icon m-0"></i>
+                            <i class="align left icon mr-1"></i>
+                            Delete
+                        </button>
+                    </div>
+            </div>
 
                 <div class="pl-4 mt-4 page-header mb-0">
                     <h4 class="pl-3 page-title">CAR DETAIL</h4>
