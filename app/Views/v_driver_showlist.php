@@ -39,7 +39,7 @@
             <hr width="95%" color="696969">
             <ul class="pl-2 breadcrumbs">
                 <li class="nav-home">
-                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                    <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
                         <i class="flaticon-home"></i>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax'?>">Driver</a>
+                    <a href="<?php echo base_url() . '/Driver_show/driver_show_ajax' ?>">Driver</a>
                 </li>
             </ul>
 
@@ -59,8 +59,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="driver_list_table" class="display table table-hover cell-border"
-                                    style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                                <table id="driver_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                                     <thead>
                                         <tr style="background-color: #999999; color: white; ">
                                             <th class="text-center">No.</th>
@@ -75,88 +74,81 @@
 
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                        <tr>
-                                            <!-- ลำดับ -->
-                                            <td> </td>
+                                            <tr>
+                                                <!-- ลำดับ -->
+                                                <td> </td>
 
 
 
-                                            <!-- name -->
-                                            <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                <div class="avatar avatar-lg">
-                                                    <img class="avatar-img rounded-circle" 
-                                                        src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>">
-                                                </div>
-                                                <?php echo $arr_driver[$i]->dri_name ?>
-                                                <div class="absolute inset-0 rounded-full   shadow-inner"
-                                                    aria-hidden="true">
-                                                </div>
-
-
-
-
-                                            </td>
-
-
-                                            <!-- car id -->
-                                            <td class="text-center"
-                                                onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                <?php echo $arr_driver[$i]->car_number; ?>
-                                            </td>
-                                            <!-- car type name -->
-                                            <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                <?php echo $arr_driver[$i]->cart_name; ?>
-                                            </td>
-                                            <!-- license number -->
-                                            <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                <?php echo $arr_driver[$i]->dri_license; ?>
-                                            </td>
-                                            <!-- tel -->
-                                            <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                <?php echo tel_format($arr_driver[$i]->dri_tel); ?>
-                                            </td>
-
-
-                                            <!-- Action -->
-                                            <script>
-                                            function show_driver_menu(dri_id) {
-                                                $('.menu').css('display', 'none');
-                                                $('.menu.dri_id_' + dri_id).show();
-                                            } // make it dropdown
-                                            $(document).click(function() {
-                                                var driver = $(".menu");
-                                                if (!driver.is(event.target) && !container.has(event.target)
-                                                    .length) {
-                                                    driver.hide();
-                                                }
-                                            });
-                                            </script>
-                                            <td class="text-left"  width='15px'>
-                                                <div class="ui dropdown text-center p-2"
-                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
-                                                    onclick="show_driver_menu(<?php echo $arr_driver[$i]->dri_id ?>)">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                    <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>"
-                                                        style="right: 0;left: auto;">
-                                                        <!-- Button Edit -->
-                                                        <div class="item" onclick="change_location('google')">
-                                                            <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
-                                                            Edit
-                                                        </div>
-                                                        <!-- Button Remove -->
-                                                        <div class="item test button"
-                                                            onclick="get_id(<?php echo $arr_driver[$i]->dri_id?>)">
-                                                            <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
-                                                            &nbsp; &nbsp;
-                                                            Remove
-                                                        </div>
-                                                        <script>
-                                                        $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                        </script>
+                                                <!-- name -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <div class="avatar avatar-lg">
+                                                        <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>">
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                    <?php echo $arr_driver[$i]->dri_name ?>
+                                                    <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
+                                                    </div>
+
+
+
+
+                                                </td>
+
+
+                                                <!-- car id -->
+                                                <td class="text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->car_number; ?>
+                                                </td>
+                                                <!-- car type name -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->cart_name; ?>
+                                                </td>
+                                                <!-- license number -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo $arr_driver[$i]->dri_license; ?>
+                                                </td>
+                                                <!-- tel -->
+                                                <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                    <?php echo tel_format($arr_driver[$i]->dri_tel); ?>
+                                                </td>
+
+
+                                                <!-- Action -->
+                                                <script>
+                                                    function show_driver_menu(dri_id) {
+                                                        $('.menu').css('display', 'none');
+                                                        $('.menu.dri_id_' + dri_id).show();
+                                                    } // make it dropdown
+                                                    $(document).click(function() {
+                                                        var driver = $(".menu");
+                                                        if (!driver.is(event.target) && !container.has(event.target)
+                                                            .length) {
+                                                            driver.hide();
+                                                        }
+                                                    });
+                                                </script>
+                                                <td class="text-left" width='15px'>
+                                                    <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_driver_menu(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                        <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>" style="right: 0;left: auto;">
+                                                            <!-- Button Edit -->
+                                                            <div class="item" onclick="change_location(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                                <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
+                                                                Edit
+                                                            </div>
+                                                            <!-- Button Remove -->
+                                                            <div class="item test button" onclick="get_id(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                                <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
+                                                                &nbsp; &nbsp;
+                                                                Remove
+                                                            </div>
+                                                            <script>
+                                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -169,43 +161,43 @@
     </div>
 
     <script>
-    $(document).ready(function() {
+        $(document).ready(function() {
 
-        // แทรกปุ่ม เพิ่มพนักงานขับรถ
-        var dri_table = $('#driver_list_table').DataTable({
-            "columnDefs": [{
-                "searchable": false,
-                "orderable": false,
-                "targets": [0, 6]
-            }],
-            "order": []
+            // แทรกปุ่ม เพิ่มพนักงานขับรถ
+            var dri_table = $('#driver_list_table').DataTable({
+                "columnDefs": [{
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": [0, 6]
+                }],
+                "order": []
+            });
+
+            //ลำดับ
+            dri_table.on('order.dt search.dt', function() {
+                dri_table.column(0, {
+                    search: 'applied',
+                    order: 'applied'
+                }).nodes().each(function(cell, i) {
+                    cell.innerHTML = i + 1 + '.';
+                });
+            }).draw();
+
+            $("#driver_list_table_filter").append(
+                "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Driver_input/driver_input' ?>'><i class='left plus icon'></i>Add</a>"
+            );
+
         });
 
-        //ลำดับ
-        dri_table.on('order.dt search.dt', function() {
-            dri_table.column(0, {
-                search: 'applied',
-                order: 'applied'
-            }).nodes().each(function(cell, i) {
-                cell.innerHTML = i + 1 + '.';
-            });
-        }).draw();
+        function change_location(dri_id) {
+            window.location = '<?php echo base_url('') . '/Driver_edit/driver_edit/' ?>' + dri_id;
+        }
 
-        $("#driver_list_table_filter").append(
-            "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Driver_input/driver_input' ?>'><i class='left plus icon'></i>Add</a>"
-        );
+        function get_id(dri_id) {
+            $('#dri_id').val(dri_id);
+        }
 
-    });
-
-    function change_location(url) {
-        window.location = "https://www.google.com";
-    }
-
-    function get_id(dri_id) {
-        $('#dri_id').val(dri_id);
-    }
-
-    function driver_detail(dri_id) {
-        window.location = '<?php echo base_url('') . '/Driver_show/driver_detail/' ?>' + dri_id;
-    }
+        function driver_detail(dri_id) {
+            window.location = '<?php echo base_url('') . '/Driver_show/driver_detail/' ?>' + dri_id;
+        }
     </script>
