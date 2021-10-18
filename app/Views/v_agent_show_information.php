@@ -1,7 +1,7 @@
 <style>
-.cl-blue {
-    color: #1244B9 !important;
-}
+    .cl-blue {
+        color: #1244B9 !important;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -24,7 +24,7 @@
                 <hr width="95%" color="696969">
                 <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
                     <li class="nav-home">
-                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show'?>">
+                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
                             <i class="flaticon-home"></i>
                         </a>
                     </li>
@@ -32,7 +32,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a class="cl-blue" href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent
+                        <a class="cl-blue" href="<?php echo base_url() . '/Agent_show/agent_show_ajax' ?>">Agent
                             information</a>
                     </li>
                     <li class="separator">
@@ -160,7 +160,7 @@
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Agent_show/agent_delete' ?>" method="post">
-                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $arr_agent[0]->agn_id ?>>
+                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $arr_agent[0]->agn_id ?>">
 
                         <p style=" font-size: 1rem">Are you sure to remove the agent</p>
 
@@ -186,5 +186,5 @@
                 </div>
             </div>
             <script>
-            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
             </script>
