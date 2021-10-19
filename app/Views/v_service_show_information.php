@@ -43,8 +43,30 @@
                     </li>
                 </ul>
             </div>
+            <style>
+                h1 {
+                    color: black;
+                }
+            </style>
 
-            <form>
+            <div class="row col-md-6 ml-auto mr-auto">
+                <a href="#container_information">
+                    <h1 class="col-3">Container</h1>
+                </a>
+                <a href="#service_information">
+                    <h1 class="col-3">Service</h1>
+                </a>
+                <a href="#agent_information">
+                    <h1 class="col-3">Agent</h1>
+                </a>
+                <a href="#customer_information">
+                    <h1 class="col-3">Customer</h1>
+                </a>
+            </div>
+
+
+            <form">
+            <div id="container_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -174,7 +196,9 @@
                 </div>
             </form>
 
+
             <form>
+                <div id="service_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -305,6 +329,7 @@
             </form>
 
             <form>
+            <div id="agent_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -406,6 +431,7 @@
             </form>
 
             <form>
+            <div id="customer_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
