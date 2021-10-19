@@ -44,23 +44,23 @@
                 </ul>
             </div>
             <style>
-                h1 {
+                h2 {
                     color: black;
                 }
             </style>
 
             <div class="row col-md-6 ml-auto mr-auto">
                 <a href="#container_information">
-                    <h1 class="col-3">Container</h1>
+                    <h2 class="col-3">Container</h2>
                 </a>
                 <a href="#service_information">
-                    <h1 class="col-3">Service</h1>
+                    <h2 class="col-3">Service</h2>
                 </a>
                 <a href="#agent_information">
-                    <h1 class="col-3">Agent</h1>
+                    <h2 class="col-3">Agent</h2>
                 </a>
                 <a href="#customer_information">
-                    <h1 class="col-3">Customer</h1>
+                    <h2 class="col-3">Customer</h2>
                 </a>
             </div>
 
@@ -212,7 +212,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Type:</label>
+                                            <label class="col-form-label mr-auto">Type :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p>
                                                     <?php if ($obj_service[0]->ser_type == 1) {
@@ -231,7 +231,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cut-off:</label>
+                                            <label class="col-form-label mr-auto">Cut-off :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
                                             </div>
