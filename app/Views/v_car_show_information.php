@@ -281,33 +281,43 @@
             </form>
             
 
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการลบรถ</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div class="ui modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    Remove Agent ?
+                </div>
+                <div class="content">
+                    <form action="<?php echo base_url() . '/Car_show/car_delete' ?>" method="post">
+                        <input type="hidden" id="car_id" name="car_id" value="<?php echo $arr_car[0]->car_id ?>">
+
+                        <p style=" font-size: 1rem">Are you sure to remove the agent</p>
+
+                        <div class="ui info message">
+                            <div class="header">
+                                What happening after remove the agent
+                            </div>
+                            <ul class="list">
+                                <li>The Agent still ramain in database,</li>
+                                <li>But you cannot see the agent anymore</li>
+                            </ul>
                         </div>
-                        <form action="<?php echo base_url() . '/Car_show/car_delete' ?>" method="post">
-                            <div class="modal-body float-center">
-                                <!-- เก็บ Car Id -->
-                                <input name="car_id" id="car_id" type="hidden">
-                                <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                <input type="submit" class="btn btn-danger" value="ลบ">
-                            </div>
-                        </form>
-                    </div>
+                </div>
+                <div class="actions">
+                    <button type="button" class="ui test button">
+                        No, keep it
+                    </button>
+                    <button type="submit" class="ui negative right labeled icon button">
+                        Yes, remove it
+                        <i class="minus circle icon"></i>
+                    </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
+    $('.ui.modal').modal('attach events', '.test.button', 'toggle');
     function get_image() {
         var car_image = $('#car_image').val();
         $('#file_name').html(car_image.substr(12));

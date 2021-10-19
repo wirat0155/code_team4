@@ -81,7 +81,7 @@ label.error {
                                 <div class="row px-5">
                                     <div class="col-md-6 col-lg-6">
 
-                                        <!-- Id agent -->
+                                        <!-- ID CAR -->
                                         <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
                                         
                                         <!-- Number -->
