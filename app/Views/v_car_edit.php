@@ -113,7 +113,7 @@ label.error {
                                         <div class="form-group form-inline">
                                             <label for="car_prov_id" class="col-form-label mr-auto"></label>
                                             <div class="col-md-8 p-0">
-                                            <select class="form-control input-full" name="con_cont_id">
+                                            <select class="form-control input-full" name="car_prov_id">
                                             <?php for ($i = 0; $i < count($arr_car_prov); $i++) { ?>
                                         <option value="<?php echo $arr_car_prov[$i]->prov_id ?>" <?php if ($arr_car_prov[$i]->prov_id == $arr_car[0]->car_prov_id) echo "selected" ?>>
                                             <?php echo $arr_car_prov[$i]->prov_name ?></option>
