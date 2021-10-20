@@ -363,10 +363,10 @@
                                                     <option value="new">เอเย่นต์ใหม่</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-8 p-0">
+                                            <!-- <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $obj_agent[0]->agn_company_name ?>">
                                                 <label class="error"><?php echo $_SESSION['agn_company_name_error'] ?></label>
-                                            </div>
+                                            </div> -->
                                         </div>
 
 

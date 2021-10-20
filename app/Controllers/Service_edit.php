@@ -108,6 +108,7 @@ class Service_edit extends Cdms_controller
         $m_dri = new M_cdms_driver();
 
         // customer information
+        $cus_id = $this->request->getPost('cus_id');
         $cus_company_name = $this->request->getPost('cus_company_name');
         $cus_firstname = $this->request->getPost('cus_firstname');
         $cus_lastname = $this->request->getPost('cus_lastname');
@@ -116,9 +117,9 @@ class Service_edit extends Cdms_controller
         $cus_address = $this->request->getPost('cus_address');
         $cus_tax = $this->request->getPost('cus_tax');
         $cus_email = $this->request->getPost('cus_email');
-        $cus_id = $this->request->getPost('cus_id');
 
         // container information
+        $con_id = $this->request->getPost('con_id');
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');
         $con_tare_weight = $this->request->getPost('con_tare_weight');
@@ -128,10 +129,22 @@ class Service_edit extends Cdms_controller
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
-        $con_id = $this->request->getPost('con_id');
+
+        // service status same as container status
+        $ser_stac_id = $con_stac_id;
+
+        // agent information
+        $agn_id = $this->request->getPost('agn_id');
+        $agn_company_name = $this->request->getPost('agn_company_name');
+        $agn_firstname = $this->request->getPost('agn_firstname');
+        $agn_lastname = $this->request->getPost('agn_lastname');
+        $agn_tel = $this->request->getPost('agn_tel');
+        $agn_address = $this->request->getPost('agn_address');
+        $agn_tax = $this->request->getPost('agn_tax');
+        $agn_email = $this->request->getPost('agn_email');
 
         // service information
-        $ser_stac_id = $this->request->getPost('ser_stac_id');
+        $ser_id = $this->request->getPost('ser_id');
         $ser_departure_date = $this->request->getPost('ser_departure_date');
         $ser_arrivals_date = $this->request->getPost('ser_arrivals_date');
         $ser_dri_id_in = $this->request->getPost('ser_dri_id_in');
@@ -143,43 +156,60 @@ class Service_edit extends Cdms_controller
         $ser_actual_departure_date = $this->request->getPost('ser_actual_departure_date');
         $ser_dri_id_out = $this->request->getPost('ser_dri_id_out');
         $ser_car_id_out = $this->request->getPost('ser_car_id_out');
-        if($ser_car_id_out == ''){
+        if ($ser_car_id_out == '') {
             $get_ser_car_id_out = $m_dri->get_by_id($ser_dri_id_out);
             $ser_car_id_out = $get_ser_car_id_out[0]->dri_car_id;
         }
         $ser_arrivals_location = $this->request->getPost('ser_arrivals_location');
         $ser_departure_location = $this->request->getPost('ser_departure_location');
         $ser_weight = $this->request->getPost('ser_weight');
-        $ser_id = $this->request->getPost('ser_id');
 
-        // agent information
-        $agn_company_name = $this->request->getPost('agn_company_name');
-        $agn_firstname = $this->request->getPost('agn_firstname');
-        $agn_lastname = $this->request->getPost('agn_lastname');
-        $agn_tel = $this->request->getPost('agn_tel');
-        $agn_address = $this->request->getPost('agn_address');
-        $agn_tax = $this->request->getPost('agn_tax');
-        $agn_email = $this->request->getPost('agn_email');
-        $agn_id = $this->request->getPost('agn_id');
-
-        // check information
-        //check customer
-        if ($cus_company_name == '') {
+        // select customer form dropdown
+        // then update customer
+        if ($cus_id != 'new') {
             $ser_cus_id = $cus_id;
+
+            // get customer company name
             $cus_company_name = $m_cus->get_by_id($cus_id);
+
+            // update the customer
             $m_cus->customer_update($cus_id, $cus_company_name[0]->cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
-        } else {
+        }
+
+        // new customer
+        // then check duplicate customer company name
+        else {
+
             $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
-            if (count($get_ser_cus_id)  == 0) {
-                //new customer
-                //insert new customer
+
+            // not duplicate cus_company_name nor cus_branch
+            // then insert the customer
+            if (count($get_ser_cus_id) == 0) {
+
+                // insert customer
                 $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+
                 //get new cus_id 
                 $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
                 $ser_cus_id = $get_ser_cus_id[0]->cus_id;
-            } else {
-                $_SESSION['cus_company_name_error'] = 'มีลูกค้ารายนี้แล้ว';
-                $this->service_edit($ser_id);
+            }
+
+            // duplicae cus_company_name & cus_branch
+            // go to add service page with customer error
+            else {
+                // not input cus_branch
+                if ($cus_branch == '') {
+                    $_SESSION['cus_company_name_error'] = 'The customer has already used';
+                }
+
+                // input cus_branch
+                else {
+                    $_SESSION['cus_branch_error'] = 'The branch has already used';
+                }
+
+                // 4 = dupplicate cus_company_name & cus_branch
+                $this->service_edit(4);
+                exit;
             }
         }
 
@@ -198,33 +228,58 @@ class Service_edit extends Cdms_controller
                 $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
                 $con_agn_id = $get_ser_agn_id[0]->agn_id;
             } else {
-                $_SESSION['agn_company_name_error'] = 'มีเอเย่นต์รายนี้แล้ว';
-                $this->service_edit($ser_id);
+                $_SESSION['agn_company_name_error'] = 'The agent has already used';
+                $this->service_edit(3);
+                exit;
             }
         }
 
-
-        //check container
-        if ($con_number == '') {
+        // Select container form dropdown
+        if ($con_id != 'new') {
             $ser_con_id = $con_id;
             $con_number = $m_con->get_by_id($con_id);
-            $m_con->container_update($ser_con_id, $con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-        } else {
+            $m_con->container_update($con_id, $con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+        }
+
+        // New container
+        else {
+
             $get_ser_con_id = $m_con->get_by_con_number($con_number);
+
+            // New container not duplicate with database
+            // Insert container
             if (count($get_ser_con_id)  == 0) {
-                //new container
                 //insert new container
                 $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-                //get new con_id
+
+                // Get new con_id
                 $get_ser_con_id = $m_con->get_by_con_number($con_number);
                 $ser_con_id = $get_ser_con_id[0]->con_id;
-            } else {
-                $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
-                $this->service_edit($ser_id);
+            }
+
+            // New container duplicate
+            // Set session error
+            // return to add service page
+            else {
+                $_SESSION['con_number_error'] = 'The container number has already used';
+
+                // 2 = duplicate container number
+                // go to add service page with container number error
+                $this->service_edit(2);
+                exit;
             }
         }
 
+        // set free to section error session
+        $_SESSION['con_number_error'] = '';
+        $_SESSION['agn_company_name_error'] = '';
+        $_SESSION['cus_company_name_error'] = '';
+        $_SESSION['cus_branch_error'] = '';
+
+        //update service
         $m_ser->service_update($ser_id, $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
+
+        // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 }
