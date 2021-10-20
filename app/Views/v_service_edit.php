@@ -43,15 +43,17 @@
             <style>
                 h2 {
                     color: black;
+                    right: -45px;
                 }
             </style>
 
             <div class="row col-md-6 ml-auto mr-auto">
-                <a href="#container_information">
-                    <h2 class="col-3">Container</h2>
-                </a>
+
                 <a href="#service_information">
                     <h2 class="col-3">Service</h2>
+                </a>
+                <a href="#container_information">
+                    <h2 class="col-3">Container</h2>
                 </a>
                 <a href="#agent_information">
                     <h2 class="col-3">Agent</h2>
@@ -59,6 +61,7 @@
                 <a href="#customer_information">
                     <h2 class="col-3">Customer</h2>
                 </a>
+
             </div>
 
             <form id="add_service_form" action="<?php echo base_url() . '/Service_edit/service_update' ?>" method="POST">
@@ -212,13 +215,13 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Type :</label>
+                                            <label class="form-group form-inline">Status :</label>
                                             <div class="col-12 col-sm-8">
-                                                <select class="input-full form-control col-7" name="ser_type">
-                                                    <option value="1" <?php if ($obj_service[0]->ser_type == 1) echo "selected" ?>>ตู้เข้า</option>
-                                                    <option value="2" <?php if ($obj_service[0]->ser_type == 2) echo "selected" ?>>ตู้ออก</option>
-                                                    <option value="3" <?php if ($obj_service[0]->ser_type == 3) echo "selected" ?>>ตู้ดรอป</option>
-
+                                                <select class="input-full form-control col-7" name="ser_stac_id">
+                                                    <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
+                                                        <option value="<?php echo $obj_service[$i]->ser_stac_id ?>" <?php if ($obj_service[0]->ser_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
+                                                            <?php echo $arr_status_container[$i]->stac_name ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -279,9 +282,9 @@
                                         </div>
                                     </div>
 
-                                    
+
                                     <div class="col-md-6">
-                                    <input type="checkbox" style="margin-left: 3%;" id="open" onclick="open_disable(1)"> Use not a regular car
+                                        <input type="checkbox" style="margin-left: 3%;" id="open" onclick="open_disable(1)"> Use not a regular car
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right" for="ser_car_id_in">Importer car</label>
                                             <select class="input-full form-control col-7" name="ser_car_id_in" disabled>
@@ -295,20 +298,20 @@
 
 
                                     <div class="col-md-6">
-                                    <input type="checkbox" style="margin-left: 3%;" id="open2" onclick="open_disable(2)"> Use not a regular car
+                                        <input type="checkbox" style="margin-left: 3%;" id="open2" onclick="open_disable(2)"> Use not a regular car
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right" for="ser_car_id_out">Car taken out</label>
                                             <select class="input-full form-control col-7" name="ser_car_id_out" disabled>
-                                        <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                            <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
-                                                <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
-                                        <?php } ?>
-                                    </select>
+                                                <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
+                                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
+                                                        <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
 
 
-                                 
+
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Arrivals location:</label>
@@ -317,7 +320,7 @@
                                     </div>
 
 
-                                 
+
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Departure location:</label>
@@ -351,6 +354,15 @@
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
                                             <label for="agn_company_name" class="col-form-label mr-auto">Company name :</label>
+                                            <div class="col-12 col-sm-4">
+                                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_id" onclick="get_agent_information()">
+                                                    <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                                        <option value="<?php echo $arr_agn[$i]->agn_id ?>" <?php if ($obj_agent[0]->agn_id == $arr_agn[$i]->agn_id) echo "selected" ?>>
+                                                            <?php echo $arr_agn[$i]->agn_company_name ?></option>
+                                                    <?php } ?>
+                                                    <option value="new">เอเย่นต์ใหม่</option>
+                                                </select>
+                                            </div>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $obj_agent[0]->agn_company_name ?>">
                                                 <label class="error"><?php echo $_SESSION['agn_company_name_error'] ?></label>
@@ -460,8 +472,16 @@
 
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
-                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name
-                                                :</label>
+                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name :</label>
+                                            <div class="col-12 col-sm-4">
+                                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_id" onclick="get_customer_information()">
+                                                    <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
+                                                        <option value="<?php echo $arr_cus[$i]->cus_id ?>" <?php if ($obj_customer[0]->cus_id == $arr_cus[$i]->cus_id) echo "selected" ?>>
+                                                            <?php echo $arr_cus[$i]->cus_company_name ?></option>
+                                                    <?php } ?>
+                                                    <option value="new">ลูกค้าใหม่</option>
+                                                </select>
+                                            </div>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $obj_customer[0]->cus_company_name ?>">
                                                 <label class="error"><?php echo $_SESSION['cus_company_name_error'] ?></label>

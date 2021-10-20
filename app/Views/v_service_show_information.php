@@ -1,4 +1,25 @@
 <style>
+    .picture-container {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .picture {
+        width: 200px;
+        height: 200px;
+        background-color: #999999;
+        border: 4px solid #CCCCCC;
+        color: #FFFFFF;
+        border-radius: 50%;
+        margin: auto;
+        overflow: hidden;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        text-align: center;
+    }
+
     .cl-blue {
         color: #1244B9 !important;
     }
@@ -46,15 +67,17 @@
             <style>
                 h2 {
                     color: black;
+                    right: -45px;
                 }
             </style>
 
             <div class="row col-md-6 ml-auto mr-auto">
-                <a href="#container_information">
-                    <h2 class="col-3">Container</h2>
-                </a>
+
                 <a href="#service_information">
                     <h2 class="col-3">Service</h2>
+                </a>
+                <a href="#container_information">
+                    <h2 class="col-3">Container</h2>
                 </a>
                 <a href="#agent_information">
                     <h2 class="col-3">Agent</h2>
@@ -62,16 +85,23 @@
                 <a href="#customer_information">
                     <h2 class="col-3">Customer</h2>
                 </a>
+
             </div>
 
 
-            <form">
-            <div id="container_information"></div>
+            <div class="picture-container">
+                <div class="picture">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
+                </div>
+            </div><br><br>
+
+            <form>
+                <div id="service_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">Container</div>
+                                <div class="card-title">Service information</div>
                             </div>
 
                             <div class="card-body" id="car_section">
@@ -80,7 +110,130 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container number:</label>
+                                            <label class="col-form-label mr-auto">Type :</label>
+                                            <div class="col-12 col-sm-8">
+                                              
+                                                    
+                                    
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Cut-off date :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Date arrivals:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_branch" class="col-form-label mr-auto">Importer :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_driver_in[0]->dri_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto pull-right">Exporter :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_driver_out[0]->dri_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Car type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Imported car:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_car_in[0]->car_code ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Register year -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Exported car :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_car_out[0]->car_code ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Weight -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Arrivals location:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_service[0]->ser_arrivals_location ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Fuel Type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Departure location:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_service[0]->ser_departure_location ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Date departure:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo date_thai($obj_service[0]->ser_actual_departure_date) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form>
+                <div id="container_information"></div>
+                <div class="row mx-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Container information</div>
+                            </div>
+
+                            <div class="card-body" id="car_section">
+                                <div class="row px-5">
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container number :</label>
                                             <div class="col-6 col-sm-7">
                                                 <p id="con_number"><?php echo $obj_container[0]->con_number ?></p>
                                             </div>
@@ -196,145 +349,13 @@
                 </div>
             </form>
 
-
             <form>
-                <div id="service_information"></div>
+                <div id="agent_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">Service</div>
-                            </div>
-
-                            <div class="card-body" id="car_section">
-                                <div class="row px-5">
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Type :</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p>
-                                                    <?php if ($obj_service[0]->ser_type == 1) {
-                                                        echo '<span class="text-con-in">ตู้เข้า</span>';
-                                                    } else if ($obj_service[0]->ser_type == 2) {
-                                                        echo '<span class="text-con-out">ตู้ออก</span>';
-                                                    } else if ($obj_service[0]->ser_type == 3) {
-                                                        echo '<span class="text-con-drop">ตู้ดรอป</span>';
-                                                    }
-                                                    ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cut-off :</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date arrivals:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date departure:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo date_thai($obj_service[0]->ser_actual_departure_date) ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="car_branch" class="col-form-label mr-auto">Driver In:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_driver_in[0]->dri_name ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right">Driver out:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_driver_out[0]->dri_name ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Car type -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Imported car:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_car_in[0]->car_code ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Register year -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Car taken out:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_car_out[0]->car_code ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Weight -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Arrivals location:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo $obj_service[0]->ser_arrivals_location ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Fuel Type -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Departure location:</label>
-                                            <div class="col-12 col-sm-8">
-                                                <p><?php echo $obj_service[0]->ser_departure_location ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <form>
-            <div id="agent_information"></div>
-                <div class="row mx-5">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">Agent</div>
+                                <div class="card-title">Agent information</div>
                             </div>
 
                             <div class="card-body" id="car_section">
@@ -431,12 +452,12 @@
             </form>
 
             <form>
-            <div id="customer_information"></div>
+                <div id="customer_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">Customer</div>
+                                <div class="card-title">Customer information</div>
                             </div>
 
                             <div class="card-body" id="car_section">

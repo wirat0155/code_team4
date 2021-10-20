@@ -131,7 +131,7 @@ class Service_edit extends Cdms_controller
         $con_id = $this->request->getPost('con_id');
 
         // service information
-        $ser_type = $this->request->getPost('ser_type');
+        $ser_stac_id = $this->request->getPost('ser_stac_id');
         $ser_departure_date = $this->request->getPost('ser_departure_date');
         $ser_arrivals_date = $this->request->getPost('ser_arrivals_date');
         $ser_dri_id_in = $this->request->getPost('ser_dri_id_in');
@@ -224,7 +224,7 @@ class Service_edit extends Cdms_controller
             }
         }
 
-        $m_ser->service_update($ser_id, $ser_type, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
+        $m_ser->service_update($ser_id, $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 }
