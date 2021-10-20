@@ -1,398 +1,331 @@
-<div class="container px-6 mx-auto grid">
-    <!-- หัวข้อ -->
-    <div class="flex items-center justify-between p-3 pl-4 my-8 text-sm font-semibold bg-dark text-white rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple">
-        <div class="items-center container">
-            <h2 class=" text-2xl font-semibold float-left">
-                ข้อมูลตู้คอนเทนเนอร์
-            </h2>
-
-            <!-- ปุ่มแก้ไข/ลบ -->
-            <div class="float-right">
-                <a href="<?php echo base_url() . '/Container_edit/container_edit/' . $arr_container[0]->con_id ?>" class="btn btn-warning px-2 mr-1 text-sm ">แก้ไขข้อมูล</a>
-                <button type="button" class="btn btn-danger px-2 text-sm" data-toggle="modal" data-target="#exampleModalCenter" onclick="get_id(<?php echo $arr_container[0]->con_id ?>)">ลบข้อมูล </button>
-            </div>
-        </div>
-    </div>
-
-    <form id="update_container_form" action="<?php echo base_url() . '/Container_show/container_detail' ?>" method="POST">
-        <div class="row">
-            <div class="col-12 col-xl-7">
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">ตู้คอนเทนเนอร์</h2>
-                    <hr>
-
-                    <div class="row">
-                        <!-- container form left -->
-                        <div class="col-12 col-md-6">
-                            <!-- หมายเลขตู้ -->
-                            <div class="row mt-3">
-
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขตู้</span>
-                                    </label>
-                                </div>
-
-                                <div class="col-12 col-sm-8 div_con_number_input">
-
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400"><?php echo $arr_container[0]->con_number ?></span>
-                                    </label>
-                                </div>
-                            </div>
-
-
-                            <!-- ประเภทตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ประเภทตู้</span>
-                                    </label>
-                                </div>
-
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                                <?php if ($arr_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) {
-                                                    echo $arr_container_type[$i]->cont_name;
-                                                } ?>
-                                            <?php } ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- สถานะตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">สถานะตู้</span>
-                                    </label>
-                                </div>
-
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                <?php if ($arr_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
-                                                    echo $arr_status_container[$i]->stac_name;
-                                                } ?>
-                                            <?php } ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- น้ำหนักตู้สูงสุดที่รับได้ (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้สูงสุดที่รับได้ (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_container[0]->con_max_weight ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- น้ำหนักตู้เปล่า (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักตู้เปล่า (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_container[0]->con_tare_weight ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- น้ำหนักสินค้าสูงสุด (ตัน) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าสูงสุด (ตัน)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_container[0]->con_net_weight ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- น้ำหนักสินค้าปัจจุบัน (ตัน)
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าปัจจุบัน (ตัน)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
-                        </label> -->
-
-                            <!-- ปริมาตรสุทธิ (คิกบิกเมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ปริมาตรสุทธิ (คิกบิกเมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_container[0]->con_cube ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end container form left -->
-
-
-                        <!-- container form right -->
-                        <div class="col-12 col-md-6">
-
-                            <!-- ขนาดตู้ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ขนาดตู้</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_size[0]->size_name; ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- ความสูงด้านนอก (เมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ความสูง (เมตร)</span>
-                                    </label>
-                                </div>
-
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_size[0]->size_height_out; ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- ความกว้างด้านนอก (เมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ความกว้าง (เมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_size[0]->size_width_out ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- ความยาวด้านนอก (เมตร) -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ความยาว (เมตร)</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-
-                                            <?php echo $arr_size[0]->size_length_out ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end container form right -->
+<style>
+.cl-blue {
+    color: #1244B9 !important;
+}
+</style>
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <div class="page-inner">
+                <div class="pl-4 mt-4 page-header mb-0">
+                    <h4 class="pl-3 page-title">CONTAINER DETAIL</h4>
+                    <div class="card-action ml-auto mr-4">
+                        <a class="ui yellow button"
+                            href="<?php echo base_url() . '/Container_edit/container_edit/' . $arr_container[0]->con_id ?>">
+                            <i class="far fa-edit mr-1"></i>
+                            Edit info
+                        </a>
+                        <button type="submit" class="ui red test button">
+                            <i class="trash icon m-0"></i>
+                            <i class="align left icon mr-1"></i>
+                            Delete
+                        </button>
                     </div>
-                    <!-- end container form row -->
                 </div>
+                <hr width="95%" color="696969">
+                <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
+                    <li class="nav-home">
+                        <a href="<?php echo base_url() . '/Dashboard/dashboard_show' ?>">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a class="cl-blue"
+                            href="<?php echo base_url() . '/Container_show/container_show_ajax' ?>">Container
+                            information</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Container detail</a>
+                    </li>
+                </ul>
             </div>
 
-            <!-- end container form -->
-
-            <div class="col-12 col-xl-5">
-                <!-- agent form -->
-                <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md p-3">
-                    <h2 class="my-6 text-2xl font-semibold dark:text-gray-200">เอเย่นต์</h2>
-                    <hr>
-                    <div class="row mt-3">
-                        <input type="hidden" name="agn_id" value="<?php echo $arr_agent[0]->agn_id ?>">
-                        <div class="col-12">
-
-                            <!-- บริษัท -->
-                            <div class="row">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">บริษัท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_company_name ?>
-                                        </span>
-                                    </label>
-
-                                </div>
+            <form>
+                <div class="row mx-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Container</div>
                             </div>
 
-                            <!-- ที่ตั้งบริษัท -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ที่ตั้งบริษัท</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_address ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                            <div class="card-body" id="car_section">
+                                <div class="row px-5">
 
-                            <!-- หมายเลขผู้เสียภาษี -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">หมายเลขผู้เสียภาษี</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_tax ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
 
-                            <h4 class="mt-3">ผู้รับผิดชอบ (ตัวแทน)</h4>
-                            <!-- ชื่อจริง -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">ชื่อจริง</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_firstname ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container number:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p id="con_number"><?php echo $arr_container[0]->con_number ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <!-- นามสกุล -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">นามสกุล</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_lastname ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container size:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p> <?php echo $arr_size[0]->size_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <!-- เบอร์ติดต่อ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">เบอร์ติดต่อ</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_tel ?>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container type:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
+                                                    <?php if ($arr_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) {
+                                                            echo $arr_container_type[$i]->cont_name;
+                                                        } ?>
+                                                    <?php } ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <!-- อีเมล์ -->
-                            <div class="row mt-3">
-                                <div class="col-12 col-sm-4">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">อีเมล</span>
-                                    </label>
-                                </div>
-                                <div class="col-12 col-sm-8">
-                                    <label class="block text-sm mt-3">
-                                        <span class="text-gray-700 dark:text-gray-400">
-                                            <?php echo $arr_agent[0]->agn_email ?>
-                                        </span>
-                                    </label>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Height (m):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_size[0]->size_height_out ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container status:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p> <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
+                                                    <?php if ($arr_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
+                                                            echo $arr_status_container[$i]->stac_name;
+                                                        } ?>
+                                                    <?php } ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto pull-right">Width (m):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_size[0]->size_width_out ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Max width (t):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_container[0]->con_max_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Length (m):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_size[0]->size_length_out ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Empty cabinet weight (t):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_container[0]->con_tare_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-7">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Max product weight (t):</label>
+                                            <div class="col-2 col-sm-8">
+                                                <p><?php echo $arr_container[0]->con_net_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Current product weight (t):</label>
+                                            <div class="col-2 col-sm-8">
+                                                <p><?php echo $arr_container[0]->con_net_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-7">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Net volume (CBM):</label>
+                                            <div class="col-1 col-sm-8">
+                                                <p><?php echo $arr_container[0]->con_cube ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- end agent form -->
-        </div>
-        <!-- end row -->
-    </form>
-</div>
-
-<!-- Modal ยืนยันการลบ -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">ยืนยันการตู้คอนเทนเนอร์</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?php echo base_url() . '/Container_show/container_delete' ?>" method="post">
-                <div class="modal-body float-center">
-                    <!-- เก็บ Container Id -->
-                    <input name="con_id" id="con_id" type="hidden">
-                    <center>คุณเเน่ใจหรือไม่ที่ต้องการลบ</center>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                    <input type="submit" class="btn btn-danger" value="ลบ">
                 </div>
             </form>
-        </div>
-    </div>
-</div>
+            <form>
+                <div class="row mx-5 mt-0">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Agent</div>
+                            </div>
 
-<script>
-    function get_id(con_id) {
-        $('#con_id').val(con_id);
-    }
-</script>
+                            <div class="card-body">
+                                <div class="row px-5">
+                                    <div class="col-md-6 col-lg-6">
+                                        <!-- Company name -->
+
+                                        <div class="form-group form-inline">
+                                            <label for="agn_company_name" class="col-form-label mr-auto">Company name
+                                                :</label>
+                                            <div class="col-md-8 p-0" id="agn_company_name" name="agn_company_name">
+                                                <?php echo $arr_agent[0]->agn_company_name ?>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Company location -->
+
+                                        <div class="form-group form-inline">
+                                            <label for="agn_address" class="col-form-label mr-auto">Company location
+                                                :</label>
+                                            <div class="col-md-12 p-0 pt-2" id="agn_address" name="agn_address">
+                                                <?php echo $arr_agent[0]->agn_address ?>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Taxpayer number -->
+
+                                        <div class="form-group form-inline">
+                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
+                                                :</label>
+                                            <div class="col-md-8 p-0" id="agn_tax" name="agn_tax">
+                                                <?php echo $arr_agent[0]->agn_tax ?>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6 col-lg-6">
+                                        <!-- Responsible person -->
+
+                                        <div class="form-group form-inline">
+                                            <label for="car_number" class="col-form-label mr-auto">Responsible person
+                                                (Representative)</label>
+                                        </div>
+
+
+
+
+                                        <!-- First Name -->
+
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">First name
+                                                :</label>
+                                            <div class="col-md-8 p-0" id="agn_firstname" name="agn_firstname">
+                                                <?php echo $arr_agent[0]->agn_firstname ?>
+                                            </div>
+                                        </div>
+
+                                        <!-- Last Name -->
+
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Last name
+                                                :</label>
+                                            <div class="col-md-8 p-0" id="agn_lastname" name="agn_lastname">
+                                                <?php echo $arr_agent[0]->agn_lastname ?>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Contact number -->
+
+                                        <div class="form-group form-inline">
+                                            <label for="agn_tel" class="col-form-label mr-auto">Contact number :</label>
+                                            <div class="col-md-8 p-0" id="agn_tel" name="agn_tel">
+                                                <?php echo tel_format($arr_agent[0]->agn_tel) ?>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Email -->
+
+                                        <div class="form-group form-inline">
+                                            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
+                                            <div class="col-md-8 p-0" id="agn_email" name="agn_email">
+                                                <?php echo $arr_agent[0]->agn_email ?>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- <div class="card-action" id="car_action" style>
+                                <input type="button" class="ui blue button" value="Back" onclick="window.history.back();" style="background-color : #6789B6">
+                                <button type="submit" class="ui orange button pull-right">  
+                                    Confirm
+                                </button>
+                            </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </form>
+
+            <div class="ui modal">
+                <i class="close icon"></i>
+                <div class="header">
+                    Remove Container ?
+                </div>
+                <div class="content">
+                    <form action="<?php echo base_url() . '/Container_show/container_delete' ?>" method="post">
+                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $arr_container[0]->con_id ?>>
+
+                        <p style=" font-size: 1rem">Are you sure to remove the agent</p>
+
+                        <div class="ui info message">
+                            <div class="header">
+                                What happening after remove the agent
+                            </div>
+                            <ul class="list">
+                                <li>The Agent still ramain in database,</li>
+                                <li>But you cannot see the agent anymore</li>
+                            </ul>
+                        </div>
+                </div>
+                <div class="actions">
+                    <button type="button" class="ui test button">
+                        No, keep it
+                    </button>
+                    <button type="submit" class="ui negative right labeled icon button">
+                        Yes, remove it
+                        <i class="minus circle icon"></i>
+                    </button>
+                    </form>
+                </div>
+            </div>
+            <script>
+            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+            </script>
