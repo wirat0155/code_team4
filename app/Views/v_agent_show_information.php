@@ -1,7 +1,7 @@
 <style>
-    .cl-blue {
-        color: #1244B9 !important;
-    }
+.cl-blue {
+    color: #1244B9 !important;
+}
 </style>
 <div class="main-panel">
     <div class="content">
@@ -10,7 +10,8 @@
                 <div class="pl-4 mt-4 page-header mb-0">
                     <h4 class="pl-3 page-title">AGENT DETAIL</h4>
                     <div class="card-action ml-auto mr-4">
-                        <a class="ui yellow button" href="<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>">
+                        <a class="ui yellow button"
+                            href="<?php echo base_url() . '/Agent_edit/agent_edit/' . $arr_agent[0]->agn_id ?>">
                             <i class="far fa-edit mr-1"></i>
                             Edit info
                         </a>
@@ -48,12 +49,17 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Agent</div>
+                            <div class="card-title">Agent information</div>
                         </div>
 
                         <div class="card-body">
                             <div class="row px-5">
                                 <div class="col-md-6 col-lg-6">
+
+                                    <label class="mt-3 mb-3">
+                                        <b> <h3>Company</h3> </b>
+                                    </label>
+
                                     <!-- Company name -->
 
                                     <div class="form-group form-inline">
@@ -64,6 +70,14 @@
                                         </div>
                                     </div>
 
+                                    <!-- Taxpayer number -->
+
+                                    <div class="form-group form-inline">
+                                        <label for="agn_tax" class="col-form-label mr-auto">Tax number :</label>
+                                        <div class="col-md-8 p-0" id="agn_tax" name="agn_tax">
+                                            <?php echo $arr_agent[0]->agn_tax ?>
+                                        </div>
+                                    </div>
 
                                     <!-- Company location -->
 
@@ -75,28 +89,14 @@
                                         </div>
                                     </div>
 
-
-                                    <!-- Taxpayer number -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number :</label>
-                                        <div class="col-md-8 p-0" id="agn_tax" name="agn_tax">
-                                            <?php echo $arr_agent[0]->agn_tax ?>
-                                        </div>
-                                    </div>
                                 </div>
-
 
                                 <div class="col-md-6 col-lg-6">
                                     <!-- Responsible person -->
 
-                                    <div class="form-group form-inline">
-                                        <label for="car_number" class="col-form-label mr-auto">Responsible person
-                                            (Representative)</label>
-                                    </div>
-
-
-
+                                    <label class="mt-3 mb-3">
+                                        <b> <h3>Contact</h3> </b>
+                                    </label>
 
                                     <!-- First Name -->
 
@@ -186,5 +186,5 @@
                 </div>
             </div>
             <script>
-                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
             </script>

@@ -82,6 +82,7 @@ label.error {
                                 <div class="row px-5">
                                     <div class="col-md-6 col-lg-6">
 
+                                        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
                                         <!-- Id agent -->
                                         <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
                                         
@@ -98,6 +99,17 @@ label.error {
                                             </div>
                                         </div>
 
+                                        <!-- Taxpayer number -->
+
+                                        <div class="form-group form-inline mt-2">
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
+                                                :</label>
+                                            <div class="col-md-8 p-0">
+                                                <input class="form-control input-full" id="agn_tax" name="agn_tax"
+                                                    placeholder="Taxpayer number"
+                                                    value="<?php echo $arr_agent[0]->agn_tax ?>">
+                                            </div>
+                                        </div>
 
                                         <!-- Company location -->
                                         <div class="form-group">
@@ -108,27 +120,12 @@ label.error {
                                                 rows="5"><?php echo $arr_agent[0]->agn_address ?></textarea>
                                         </div>
 
-
-                                        <!-- Taxpayer number -->
-
-                                        <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
-                                                :</label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="agn_tax" name="agn_tax"
-                                                    placeholder="Taxpayer number"
-                                                    value="<?php echo $arr_agent[0]->agn_tax ?>">
-                                            </div>
-                                        </div>
                                     </div>
 
 
                                     <div class="col-md-6 col-lg-6">
                                         <!-- Responsible person -->
-                                        <div class="form-group form-inline">
-                                            <label for="car_number" class="col-form-label mr-auto">Responsible person
-                                                (Representative)</label>
-                                        </div>
+                                        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
 
                                         <!-- First Name -->
                                         <div class="form-group form-inline">
