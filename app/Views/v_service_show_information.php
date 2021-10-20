@@ -43,8 +43,30 @@
                     </li>
                 </ul>
             </div>
+            <style>
+                h2 {
+                    color: black;
+                }
+            </style>
 
-            <form>
+            <div class="row col-md-6 ml-auto mr-auto">
+                <a href="#container_information">
+                    <h2 class="col-3">Container</h2>
+                </a>
+                <a href="#service_information">
+                    <h2 class="col-3">Service</h2>
+                </a>
+                <a href="#agent_information">
+                    <h2 class="col-3">Agent</h2>
+                </a>
+                <a href="#customer_information">
+                    <h2 class="col-3">Customer</h2>
+                </a>
+            </div>
+
+
+            <form">
+            <div id="container_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -174,7 +196,9 @@
                 </div>
             </form>
 
+
             <form>
+                <div id="service_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -188,7 +212,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Type:</label>
+                                            <label class="col-form-label mr-auto">Type :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p>
                                                     <?php if ($obj_service[0]->ser_type == 1) {
@@ -207,7 +231,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cut-off:</label>
+                                            <label class="col-form-label mr-auto">Cut-off :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
                                             </div>
@@ -305,6 +329,7 @@
             </form>
 
             <form>
+            <div id="agent_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -406,6 +431,7 @@
             </form>
 
             <form>
+            <div id="customer_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">

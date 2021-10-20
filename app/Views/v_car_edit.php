@@ -81,7 +81,7 @@ label.error {
                                 <div class="row px-5">
                                     <div class="col-md-6 col-lg-6">
 
-                                        <!-- Id agent -->
+                                        <!-- ID CAR -->
                                         <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
                                         
                                         <!-- Number -->
@@ -113,7 +113,7 @@ label.error {
                                         <div class="form-group form-inline">
                                             <label for="car_prov_id" class="col-form-label mr-auto"></label>
                                             <div class="col-md-8 p-0">
-                                            <select class="form-control input-full" name="con_cont_id">
+                                            <select class="form-control input-full" name="car_prov_id">
                                             <?php for ($i = 0; $i < count($arr_car_prov); $i++) { ?>
                                         <option value="<?php echo $arr_car_prov[$i]->prov_id ?>" <?php if ($arr_car_prov[$i]->prov_id == $arr_car[0]->car_prov_id) echo "selected" ?>>
                                             <?php echo $arr_car_prov[$i]->prov_name ?></option>
@@ -253,11 +253,89 @@ label.error {
                 </div>
             </div>
 
-            <script>
+    <script>
+        $(document).ready(function() {
+            // jQuery Validation
+            if ($('#add_car_form').length > 0) {
+                $('#add_car_form').validate({
+                    rules: {
+                        car_number: {
+                            required: true
+                        },
+                        car_code: {
+                            required: true
+                        },
+                        car_brand: {
+                            required: true
+                        },
+                        car_branch: {
+                            required: true
+                        },
+                        car_prov_id: {
+                            require: true
+                        },
+                        car_chassis_number: {
+                            required: true
+                        },
+                        car_register_year: {
+                            required: true,
+                            min: 1900,
+                            max: 2099
+                        },
+                        car_weight: {
+                            required: true,
+                            min: 0
+                        },
+                        car_fuel_type: {
+                            required: true
+                        },
+                        car_image: {
+                            required: true
+                        },
+
+                    },
+                    messages: {
+                        car_number: {
+                            required: 'Please enter a car number'
+                        },
+                        car_code: {
+                            required: 'Please enter a car code'
+                        },
+                        car_brand: {
+                            required: 'Please enter a brand'
+                        },
+                        car_branch: {
+                            required: 'Please enter a branch'
+                        },
+                        car_prov_id: {
+                            require: 'Please select a province'
+                        },
+                        car_chassis_number: {
+                            required: 'Please enter a chassis number'
+                        },
+                        car_register_year: {
+                            required: 'Please enter a register year',
+                            min: 'Minimum value is 1900',
+                            max: 'Maximum value is 2099'
+                        },
+                        car_weight: {
+                            required: 'Please enter a weight',
+                            min: 'Minimum value is 0'
+                        },
+                        car_fuel_type: {
+                            required: 'Please enter a fuel type'
+                        },
+                        car_image: {
+                            required: 'Please upload image'
+                        }
+                    }
+                })
+            }
+        });
             function get_image() {
             var car_img = $('#car_image').val();
             $('#input_show_browse').val(car_img.substr(12));
             $('#car_image-error').remove();
         }
-            </script>
+    </script>
             
