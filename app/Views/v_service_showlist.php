@@ -198,7 +198,7 @@
                                                             <i class='far fa-money-bill-alt' style="font-size: 110%;"></i> &nbsp;
                                                             Charge billing
                                                         </div>
-                                                        <div class="item" onclick="change_location('google')">
+                                                        <div class="item" onclick="location.href='<?php echo base_url() . '/Service_edit/service_edit/' . $arr_service[$i]->ser_id ?>';">
                                                             <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
                                                             Edit
                                                         </div>
