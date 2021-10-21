@@ -48,7 +48,7 @@
                 </li>
             </ul>
 
-            <form id="add_customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert' ?>" method="POST">
+            <form id="customer_form" action="<?php echo base_url() . '/Customer_input/customer_insert' ?>" method="POST">
                 <div class="row mx-4">
                     <div class="col-md-12">
                         <div class="card">

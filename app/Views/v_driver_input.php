@@ -42,7 +42,7 @@
                 </ul>
             </div>
 
-            <form id="add_driver_form" action="<?php echo base_url() . '/Driver_input/driver_insert'?>" enctype="multipart/form-data" method="POST">
+            <form id="driver_form" action="<?php echo base_url() . '/Driver_input/driver_insert'?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">

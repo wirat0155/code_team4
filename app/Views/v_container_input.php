@@ -79,7 +79,7 @@
 
 
 
-            <form id="add_container_form" action="<?php echo base_url() . '/Container_input/container_insert' ?>"
+            <form id="container_form" action="<?php echo base_url() . '/Container_input/container_insert' ?>"
                 method="POST" onsubmit="event.preventDefault(); validate_form();">
                 <div class="row">
                     <div class="col-md-12">

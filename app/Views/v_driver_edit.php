@@ -102,7 +102,7 @@
 
                 <!-- <div class="container-sm mb-8"> -->
 
-                <form id="add_driver_form" action="<?php echo base_url() . '/Driver_edit/driver_update' ?>" enctype="multipart/form-data" method="POST">
+                <form id="driver_form" action="<?php echo base_url() . '/Driver_edit/driver_update' ?>" enctype="multipart/form-data" method="POST">
                     <div class="row mx-4">
                         <div class="col-md-12">
                             <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">

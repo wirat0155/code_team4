@@ -16,7 +16,7 @@ label.error {
     color: #1244B9 !important;
 }
 
-input.error {
+input.error, textarea.error {
     border: 1px solid red !important;
 }
 
@@ -69,7 +69,7 @@ label.error {
 
                 </ul>
             </div>
-            <form id="add_agent_form" action="<?php echo base_url() . '/Container_edit/container_update' ?>"
+            <form id="container_form" action="<?php echo base_url() . '/Container_edit/container_update' ?>"
                 method="POST">
                 <div class="row mx-5 mt-0">
                     <div class="col-md-12">
@@ -99,8 +99,8 @@ label.error {
                                                 <input class="form-control" name="con_number"
                                                     pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0"
                                                     value="<?php echo $arr_container[0]->con_number ?>">
-                                                <label id="con_number-error" class="error"
-                                                    for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
+                                                <!-- <label id="con_number-error" class="error"
+                                                    for="con_number"><?php echo $_SESSION['con_number_error'] ?></label> -->
                                             </div>
                                         </div>
 

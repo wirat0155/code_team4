@@ -60,8 +60,8 @@ $('.ui.dropdown').dropdown();
 $(document).ready(function() {
 
 
-    if ($('#add_customer_form').length > 0) {
-        $('#add_customer_form').validate({
+    if ($('#customer_form').length > 0) {
+        $('#customer_form').validate({
             rules: {
                 cus_company_name: {
                     required: true
@@ -121,8 +121,8 @@ $(document).ready(function() {
         })
     }
 
-    if ($('#add_service_form').length > 0) {
-        $('#add_service_form').validate({
+    if ($('#service_form').length > 0) {
+        $('#service_form').validate({
             rules: {
                 con_number: {
                     required: true,
@@ -318,8 +318,8 @@ $(document).ready(function() {
         })
     }
 
-    if ($('#add_container_form').length > 0) {
-        $('#add_container_form').validate({
+    if ($('#container_form').length > 0) {
+        $('#container_form').validate({
             rules: {
                 con_number: {
                     required: true,
@@ -425,8 +425,8 @@ $(document).ready(function() {
             }
         })
     }
-    if ($('#add_agent_form').length > 0) {
-        $('#add_agent_form').validate({
+    if ($('#agent_form').length > 0) {
+        $('#agent_form').validate({
             rules: {
                 agn_company_name: {
                     required: true
@@ -486,8 +486,8 @@ $(document).ready(function() {
         })
     }
 
-    if ($('#add_driver_form').length > 0) {
-        $('#add_driver_form').validate({
+    if ($('#driver_form').length > 0) {
+        $('#driver_form').validate({
             rules: {
                 dri_name: {
                     required: true
@@ -556,8 +556,82 @@ $(document).ready(function() {
                 },
                 dri_profile_image: {
                     required: 'Please upload profile image'
-                },
+                }
+            }
+        })
+    }
 
+    if ($('#car_form').length > 0) {
+        $('#car_form').validate({
+            rules: {
+                car_number: {
+                    required: true
+                },
+                car_code: {
+                    required: true
+                },
+                car_brand: {
+                    required: true
+                },
+                car_branch: {
+                    required: true
+                },
+                car_prov_id: {
+                    require: true
+                },
+                car_chassis_number: {
+                    required: true
+                },
+                car_register_year: {
+                    required: true,
+                    min: 1900,
+                    max: 2099
+                },
+                car_weight: {
+                    required: true,
+                    min: 0
+                },
+                car_fuel_type: {
+                    required: true
+                },
+                car_image: {
+                    required: true
+                }
+            },
+            messages: {
+                car_number: {
+                    required: 'Please enter a car number'
+                },
+                car_code: {
+                    required: 'Please enter a car code'
+                },
+                car_brand: {
+                    required: 'Please enter a brand'
+                },
+                car_branch: {
+                    required: 'Please enter a branch'
+                },
+                car_prov_id: {
+                    require: 'Please select a province'
+                },
+                car_chassis_number: {
+                    required: 'Please enter a chassis number'
+                },
+                car_register_year: {
+                    required: 'Please enter a register year',
+                    min: 'Minimum value is 1900',
+                    max: 'Maximum value is 2099'
+                },
+                car_weight: {
+                    required: 'Please enter a weight',
+                    min: 'Minimum value is 0'
+                },
+                car_fuel_type: {
+                    required: 'Please enter a fuel type'
+                },
+                car_image: {
+                    required: 'Please upload image'
+                }
             }
         })
     }

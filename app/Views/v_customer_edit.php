@@ -61,7 +61,7 @@ label.error {
                     <a href="#">Edit customer</a>
                 </li>
             </ul>
-            <form id="add_customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update'?>" enctype="multipart/form-data" method="POST">
+            <form id="customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update'?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-4">
                     <div class="col-md-12">
                         <div class="card">

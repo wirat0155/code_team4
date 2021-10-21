@@ -16,7 +16,7 @@ label.error {
     color: #1244B9 !important;
 }
 
-input.error {
+input.error, textarea.error {
     border: 1px solid red !important;
 }
 
@@ -72,7 +72,7 @@ label.error {
             <div class="row mx-5 mt-0">
                 <div class="col-md-12">
                     <div class="card">
-                        <form id="add_agent_form" action="<?php echo base_url() . '/Agent_edit/agent_update' ?>"
+                        <form id="agent_form" action="<?php echo base_url() . '/Agent_edit/agent_update' ?>"
                             method="POST">
                             <div class="card-header">
                                 <div class="card-title">Agent information</div>

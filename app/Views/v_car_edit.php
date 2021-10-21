@@ -253,7 +253,7 @@ label.error {
                 </div>
             </div>
 
-    <script>
+        <script>
         $(document).ready(function() {
             // jQuery Validation
             if ($('#add_car_form').length > 0) {
@@ -291,8 +291,7 @@ label.error {
                         },
                         car_image: {
                             required: true
-                        },
-
+                        }
                     },
                     messages: {
                         car_number: {
@@ -332,10 +331,10 @@ label.error {
                 })
             }
         });
-            function get_image() {
+        function get_image() {
             var car_img = $('#car_image').val();
             $('#input_show_browse').val(car_img.substr(12));
             $('#car_image-error').remove();
         }
     </script>
-            
+    </div>

@@ -64,7 +64,7 @@
 
             </div>
 
-            <form id="add_service_form" action="<?php echo base_url() . '/Service_edit/service_update' ?>" method="POST">
+            <form id="service_form" action="<?php echo base_url() . '/Service_edit/service_update' ?>" method="POST">
                 <div id="container_information"></div>
                 <div class="row mx-5">
                     <div class="col-md-12">

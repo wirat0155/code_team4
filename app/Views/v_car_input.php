@@ -42,7 +42,7 @@
                 </ul>
             </div>
 
-            <form id="add_car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault(); validate_form();">
+            <form id="car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault(); validate_form();">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">
@@ -244,84 +244,6 @@
         </div>
 
         <script>
-        $(document).ready(function() {
-            // jQuery Validation
-            if ($('#add_car_form').length > 0) {
-                $('#add_car_form').validate({
-                    rules: {
-                        car_number: {
-                            required: true
-                        },
-                        car_code: {
-                            required: true
-                        },
-                        car_brand: {
-                            required: true
-                        },
-                        car_branch: {
-                            required: true
-                        },
-                        car_prov_id: {
-                            require: true
-                        },
-                        car_chassis_number: {
-                            required: true
-                        },
-                        car_register_year: {
-                            required: true,
-                            min: 1900,
-                            max: 2099
-                        },
-                        car_weight: {
-                            required: true,
-                            min: 0
-                        },
-                        car_fuel_type: {
-                            required: true
-                        },
-                        car_image: {
-                            required: true
-                        },
-
-                    },
-                    messages: {
-                        car_number: {
-                            required: 'Please enter a car number'
-                        },
-                        car_code: {
-                            required: 'Please enter a car code'
-                        },
-                        car_brand: {
-                            required: 'Please enter a brand'
-                        },
-                        car_branch: {
-                            required: 'Please enter a branch'
-                        },
-                        car_prov_id: {
-                            require: 'Please select a province'
-                        },
-                        car_chassis_number: {
-                            required: 'Please enter a chassis number'
-                        },
-                        car_register_year: {
-                            required: 'Please enter a register year',
-                            min: 'Minimum value is 1900',
-                            max: 'Maximum value is 2099'
-                        },
-                        car_weight: {
-                            required: 'Please enter a weight',
-                            min: 'Minimum value is 0'
-                        },
-                        car_fuel_type: {
-                            required: 'Please enter a fuel type'
-                        },
-                        car_image: {
-                            required: 'Please upload image'
-                        }
-                    }
-                })
-            }
-        });
         function validate_form() {
             return check_car_prov_id();
         }
