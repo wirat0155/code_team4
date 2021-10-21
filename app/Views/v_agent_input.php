@@ -48,8 +48,7 @@
                 </li>
             </ul>
 
-            <form id="
-            agent_form" action="<?php echo base_url() . '/Agent_input/agent_insert' ?>" method="POST">
+            <form id="agent_form" action="<?php echo base_url() . '/Agent_input/agent_insert' ?>" method="POST">
                 <div class="row mt-4">
                     <div class="col-md-12">
                         <div class="card">
