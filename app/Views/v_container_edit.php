@@ -156,7 +156,7 @@ label.error {
                                                 <input class="form-control" type="number" step="0.01"
                                                     name="con_max_weight"
                                                     value="<?php echo $arr_container[0]->con_max_weight ?>"
-                                                    placeholder="น้ำหนักตู้สูงสุดที่รับได้">
+                                                    placeholder="10">
                                             </div>
                                         </div>
 
@@ -173,7 +173,7 @@ label.error {
                                                 <input class="form-control" type="number" step="0.01"
                                                     name="con_tare_weight"
                                                     value="<?php echo $arr_container[0]->con_tare_weight ?>"
-                                                    placeholder="น้ำหนักตู้เปล่า">
+                                                    placeholder="10">
                                             </div>
                                         </div>
 
@@ -189,7 +189,7 @@ label.error {
                                                 <input class="form-control" type="number" step="0.01"
                                                     name="con_net_weight"
                                                     value="<?php echo $arr_container[0]->con_net_weight ?>"
-                                                    placeholder="น้ำหนักสินค้าสูงสุด">
+                                                    placeholder="10">
                                             </div>
                                         </div>
 
@@ -204,7 +204,7 @@ label.error {
                                             <div class="col-12 col-sm-6">
                                                 <input class="form-control" type="number" step="0.01" name="con_cube"
                                                     value="<?php echo $arr_container[0]->con_cube ?>"
-                                                    placeholder="ปริมาตรสุทธิ">
+                                                    placeholder="10">
                                             </div>
                                         </div>
                                     </div>
