@@ -68,17 +68,17 @@
         <div class="page-inner">
             <div class="pl-4 mt-4 page-header mb-0">
                 <h4 class="pl-3 page-title">CAR DETAIL</h4>
-                    <div class="card-action ml-auto mr-4">
-                        <a class="ui yellow button" href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[0]->car_id ?>">
-                            <i class="far fa-edit mr-1"></i>
-                            Edit info
-                        </a>
-                        <button type="submit" class="ui red test button">
-                            <i class="trash icon m-0"></i>
-                            <i class="align left icon mr-1"></i>
-                            Delete
-                        </button>
-                    </div>
+                <div class="card-action ml-auto mr-4">
+                    <a class="ui yellow button" href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[0]->car_id ?>">
+                        <i class="far fa-edit mr-1"></i>
+                        Edit info
+                    </a>
+                    <button type="submit" class="ui red test button">
+                        <i class="trash icon m-0"></i>
+                        <i class="align left icon mr-1"></i>
+                        Delete
+                    </button>
+                </div>
             </div>
 
                 <hr width="95%" color="696969">
