@@ -575,7 +575,7 @@ $(document).ready(function() {
                     required: true
                 },
                 car_prov_id: {
-                    require: true
+                    required: true
                 },
                 car_chassis_number: {
                     required: true
@@ -610,7 +610,7 @@ $(document).ready(function() {
                     required: 'Please enter a branch'
                 },
                 car_prov_id: {
-                    require: 'Please select a province'
+                    required: 'Please select a province'
                 },
                 car_chassis_number: {
                     required: 'Please enter a chassis number'
