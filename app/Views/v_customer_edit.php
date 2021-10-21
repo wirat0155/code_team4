@@ -78,17 +78,16 @@ label.error {
 
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
-                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name
-                                                :</label>
+                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $arr_customer[0]->cus_company_name ?>">
+                                                <input hidden id="old_cus_company_name" name="old_cus_company_name" value="<?php echo $arr_customer[0]->cus_company_name ?>">
                                                 <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
                                             </div>
                                         </div>
                                         <!-- Branch -->
                                         <div class="form-group form-inline">
-                                            <label for="cus_branch" class="col-form-label mr-auto">Branch
-                                                :</label>
+                                            <label for="cus_branch" class="col-form-label mr-auto">Branch</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $arr_customer[0]->cus_branch ?>">
                                                 <label class="error"><?php echo $_SESSION['cus_branch_error']?></label>
@@ -98,8 +97,7 @@ label.error {
 
                                         <!-- Company location -->
                                         <div class="form-group">
-                                            <label for="cus_address">Company location
-                                                :</label>
+                                            <label for="cus_address">Company location</label>
                                             <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" rows="5"><?php echo $arr_customer[0]->cus_address ?></textarea>
                                         </div>
 
@@ -107,8 +105,7 @@ label.error {
                                         <!-- Taxpayer number -->
 
                                         <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
-                                                :</label>
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Taxpayer number" value="<?php echo $arr_customer[0]->cus_tax ?>">
                                             </div>
@@ -159,7 +156,7 @@ label.error {
 
                                         <!-- Email -->
                                         <div class="form-group form-inline">
-                                            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
+                                            <label for="agn_email" class="col-form-label mr-auto">Email</label>
                                             <div class="col-md-8 p-0">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">

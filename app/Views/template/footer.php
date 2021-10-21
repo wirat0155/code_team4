@@ -58,8 +58,6 @@ $('.ui.dropdown').dropdown();
 
 	<script>
 $(document).ready(function() {
-
-
     if ($('#customer_form').length > 0) {
         $('#customer_form').validate({
             rules: {

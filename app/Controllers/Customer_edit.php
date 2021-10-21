@@ -73,9 +73,9 @@ class Customer_edit extends Cdms_controller {
 
         if ($count_cus >= 1) {
             if($cus_branch == '')
-                $_SESSION['cus_company_name_error'] = 'มีชื่อบริษัทอยู่แล้ว';
+                $_SESSION['cus_company_name_error'] = 'The customer has already used';
             else
-                $_SESSION['cus_branch_error'] = 'มีสาขาอยู่แล้ว';
+                $_SESSION['cus_branch_error'] = 'The branch has already used';
 
             $this->customer_edit($cus_id);
         } else {

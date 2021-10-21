@@ -128,7 +128,7 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                         <div class="menu car_id_<?php echo $arr_car[$i]->car_id ?>" style="right: 0;left: auto;">
                                                             <!-- Button Edit -->
-                                                            <div class="item" onclick="change_location('google')">
+                                                            <div class="item" onclick="location.href='<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[$i]->car_id ?>';">
                                                                 <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
                                                                 Edit 
                                                             </div>

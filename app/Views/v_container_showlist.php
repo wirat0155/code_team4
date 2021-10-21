@@ -164,7 +164,7 @@
                                                     <div class="menu con_id_<?php echo $arr_container[$i]->con_id ?>"
                                                         style="right: 0;left: auto;">
                                                         <!-- Button Edit -->
-                                                        <div class="item" onclick="change_location('google')">
+                                                        <div class="item" onclick="location.href='<?php echo base_url() . '/Container_edit/container_edit/' . $arr_container[$i]->con_id ?>';">
                                                             <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
                                                             Edit
                                                         </div>

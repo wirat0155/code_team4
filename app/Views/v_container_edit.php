@@ -35,7 +35,7 @@ label.error {
         <div class="page-inner">
             <div class="page-inner">
                 <div class="pl-4 mt-4 page-header mb-0">
-                    <h4 class="pl-3 page-title">EDIT AGENT</h4>
+                    <h4 class="pl-3 page-title">EDIT CONTAINER</h4>
                 </div>
                 <hr width="95%" color="696969">
                 <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
@@ -89,7 +89,7 @@ label.error {
                                             <div class="col-12 col-sm-4">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Container
-                                                            number:</b></span>
+                                                            number</b></span>
                                                 </label>
                                             </div>
 
@@ -110,7 +110,7 @@ label.error {
                                             <div class="col-12 col-sm-4">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Container
-                                                            type:</b>
+                                                            type</b>
                                                     </span>
                                                 </label>
                                             </div>
@@ -130,7 +130,7 @@ label.error {
                                             <div class="col-12 col-sm-4">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Container
-                                                            status:</b></span>
+                                                            status</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-8">
@@ -148,7 +148,7 @@ label.error {
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
-                                                    <span class="text-gray-700 dark:text-gray-400"><b>Max weight (t):</b>
+                                                    <span class="text-gray-700 dark:text-gray-400"><b>Max weight (t)</b>
                                                     </span>
                                                 </label>
                                             </div>
@@ -166,7 +166,7 @@ label.error {
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Tare
                                                             weight
-                                                            (t):</b></span>
+                                                            (t)</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-6">
@@ -182,7 +182,7 @@ label.error {
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Max weight
-                                                            (t):</b></span>
+                                                            (t)</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-6">
@@ -198,7 +198,7 @@ label.error {
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Cube </b>
-                                                        (CBM):</span>
+                                                        (CBM)</span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-6">
@@ -218,7 +218,7 @@ label.error {
                                             <div class="col-12 col-sm-4">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Container
-                                                            size:</b></span>
+                                                            size</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-8">
@@ -238,7 +238,7 @@ label.error {
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400">
-                                                        <b>Height (m):</b></span>
+                                                        <b>Height (m)</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-6">
@@ -253,7 +253,7 @@ label.error {
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Width
-                                                            (m):</b></span>
+                                                            (m)</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-6">
@@ -268,7 +268,7 @@ label.error {
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
                                                     <span class="text-gray-700 dark:text-gray-400"><b>Length
-                                                            (m):</b></span>
+                                                            (m)</b></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-sm-6">
@@ -307,8 +307,7 @@ label.error {
                                             <!-- Company name -->
                                             <div class="form-group form-inline">
                                                 <label for="agn_company_name" class="col-form-label mr-auto">Company
-                                                    name
-                                                    :</label>
+                                                    name</label>
                                                 <div class="col-md-8 p-0">
                                                     <input class="form-control input-full" id="agn_company_name"
                                                         name="agn_company_name" placeholder="Company name"
@@ -321,8 +320,7 @@ label.error {
 
                                             <!-- Company location -->
                                             <div class="form-group">
-                                                <label for="agn_address">Company location
-                                                    :</label>
+                                                <label for="agn_address">Company location</label>
                                                 <textarea type="text" class="form-control" id="agn_address"
                                                     name="agn_address" placeholder="Company location"
                                                     rows="5"><?php echo $arr_agent[0]->agn_address ?></textarea>
@@ -332,8 +330,7 @@ label.error {
                                             <!-- Tax number -->
 
                                             <div class="form-group form-inline mt-2">
-                                                <label for="agn_tax" class="col-form-label mr-auto">Tax number
-                                                    :</label>
+                                                <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                                 <div class="col-md-8 p-0">
                                                     <input class="form-control input-full" id="agn_tax" name="agn_tax"
                                                         placeholder="Taxpayer number"
@@ -394,8 +391,7 @@ label.error {
 
                                             <!-- Email -->
                                             <div class="form-group form-inline">
-                                                <label for="agn_email" class="col-form-label mr-auto">Email
-                                                    :</label>
+                                                <label for="agn_email" class="col-form-label mr-auto">Email</label>
                                                 <div class="col-md-8 p-0">
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">

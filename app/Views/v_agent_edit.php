@@ -88,8 +88,7 @@ label.error {
                                         
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
-                                            <label for="agn_company_name" class="col-form-label mr-auto">Company name
-                                                :</label>
+                                            <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="agn_company_name"
                                                     name="agn_company_name" placeholder="Company name"
@@ -102,8 +101,7 @@ label.error {
                                         <!-- Taxpayer number -->
 
                                         <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
-                                                :</label>
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="agn_tax" name="agn_tax"
                                                     placeholder="Taxpayer number"
@@ -113,8 +111,7 @@ label.error {
 
                                         <!-- Company location -->
                                         <div class="form-group">
-                                            <label for="agn_address">Company location
-                                                :</label>
+                                            <label for="agn_address">Company location</label>
                                             <textarea type="text" class="form-control" id="agn_address"
                                                 name="agn_address" placeholder="Company location"
                                                 rows="5"><?php echo $arr_agent[0]->agn_address ?></textarea>
@@ -166,10 +163,9 @@ label.error {
                                             </div>
                                         </div>
 
-
                                         <!-- Email -->
                                         <div class="form-group form-inline">
-                                            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
+                                            <label for="agn_email" class="col-form-label mr-auto">Email</label>
                                             <div class="col-md-8 p-0">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
