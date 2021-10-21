@@ -7,7 +7,7 @@
 * @Create Date 2564-07-30
 * @Update Date
 */
-  function tel_format(string $string)
+  function tel_format(string $string = NULL)
   {
     return substr($string, 0, 3) . '-' . substr($string, 3, 3) . '-' . substr($string, 6);
   }
@@ -18,7 +18,7 @@
 * @Create Date 2564-07-30
 * @Update Date
 */
-  function date_thai($strDate)
+  function date_thai($strDate = NULL)
   {
     $str_year = date("Y",strtotime($strDate))+543;
     $str_month= date("n",strtotime($strDate));
@@ -36,7 +36,7 @@
 * @Create Date 2564-08-08
 * @Update Date
 */
-  function datetime_format_value(string $string)
+  function datetime_format_value(string $string = NULL)
   {
       return substr($string, 0, 10) . 'T' . substr($string, 11); 
   }

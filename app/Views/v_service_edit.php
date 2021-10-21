@@ -2,6 +2,16 @@
     .cl-blue {
         color: #1244B9 !important;
     }
+    input.error, select.error, textarea.error {
+        border: 1px solid red !important;
+    }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+    small.error, label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -76,7 +86,7 @@
                                 <div class="row px-5">
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container number:</label>
+                                            <label class="col-form-label mr-auto">Container number</label>
                                             <select class="form-control input-full col-8" name="con_id" onclick="get_container_information()">
                                                 <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
                                                     <option value="<?php echo $arr_con[$i]->con_id ?>" <?php if ($obj_container[0]->con_id == $arr_con[$i]->con_id) echo "selected" ?>>
@@ -91,7 +101,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container size:</label>
+                                            <label class="col-form-label mr-auto">Container size</label>
                                             <select class="form-control input-full col-8" name="con_size_id" oninput="get_size_information()">
                                                 <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                                                     <option value="<?php echo $arr_size[$i]->size_id ?>" <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
@@ -103,7 +113,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container type:</label>
+                                            <label class="col-form-label mr-auto">Container type</label>
                                             <select class="form-control input-full col-8" name="con_cont_id">
                                                 <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
                                                     <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($obj_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
@@ -115,7 +125,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Height (m):</label>
+                                            <label class="col-form-label mr-auto">Height (m)</label>
                                             <input class="input-full form-control col-8" name="size_height_out" value="<?php echo $first_size[0]->size_height_out ?>" readonly>
                                         </div>
                                     </div>
@@ -134,7 +144,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Width (m):</label>
+                                            <label class="col-form-label mr-auto">Width (m)</label>
                                             <input class="input-full form-control col-8" name="size_width_out" value="<?php echo $first_size[0]->size_width_out ?>" readonly>
                                         </div>
                                     </div>
@@ -142,7 +152,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Max width (t):</label>
+                                            <label class="col-form-label mr-auto">Max weight (t)</label>
                                             <input class="input-full form-control col-8" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
                                         </div>
                                     </div>
@@ -151,40 +161,45 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Length (m):</label>
+                                            <label class="col-form-label mr-auto">Length (m)</label>
                                             <input class="input-full form-control col-8" name="size_length_out" value="<?php echo $first_size[0]->size_length_out ?>" readonly>
                                         </div>
                                     </div>
 
+                                    <div class="row col-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-inline">
+                                                <label class="col-form-label mr-auto">Tare weight (t)</label>
+                                                <input class="input-full form-control col-8" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_tare_weight ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-inline">
+                                                <label class="col-form-label mr-auto">Max weight (t)</label>
+                                                <input class="input-full form-control col-8" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-12">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group form-inline">
+                                                <label class="col-form-label mr-auto">Current weight (t)</label>
+    
+                                                <input class="input-full form-control col-8" type="number" step="0.01" name="ser_weight" placeholder="0.01" value="<?php echo $obj_service[0]->ser_weight ?>">
+    
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Empty cabinet weight (t):</label>
-                                            <input class="input-full form-control col-7" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_tare_weight ?>">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-7">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Max product weight (t):</label>
-                                            <input class="input-full form-control col-7" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-7">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Current product weight (t):</label>
-
-                                            <input class="input-full form-control col-7" type="number" step="0.01" name="ser_weight" placeholder="0.01" value="<?php echo $obj_service[0]->ser_weight ?>">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-7">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Net volume (CBM):</label>
-                                            <input class="input-full form-control col-7" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container[0]->con_cube ?>">
+                                            <label class="col-form-label mr-auto">Cube (CBM)</label>
+                                            <input class="input-full form-control col-8" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container[0]->con_cube ?>">
 
                                         </div>
                                     </div>
@@ -215,7 +230,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="form-group form-inline">Status :</label>
+                                            <label class="form-group form-inline">Status</label>
                                             <div class="col-12 col-sm-8">
                                                 <select class="input-full form-control col-7" name="ser_stac_id">
                                                     <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
@@ -230,7 +245,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cut-off :</label>
+                                            <label class="col-form-label mr-auto">Cut-off</label>
                                             <input class="input-full form-control col-7" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date) ?>">
                                         </div>
                                     </div>
@@ -238,7 +253,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date arrivals :</label>
+                                            <label class="col-form-label mr-auto">Date arrivals</label>
                                             <input class="input-full form-control col-7" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date) ?>">
                                         </div>
                                     </div>
@@ -246,14 +261,14 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date departure :</label>
+                                            <label class="col-form-label mr-auto">Date departure</label>
                                             <input class="input-full form-control col-7" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="car_branch" class="col-form-label mr-auto">Driver In:</label>
+                                            <label for="car_branch" class="col-form-label mr-auto">Driver In</label>
                                             <div class="col-12 col-sm-8">
                                                 <select class="input-full form-control col-7" name="ser_dri_id_in" onclick="get_car_information(1)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
@@ -270,7 +285,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right">Driver out:</label>
+                                            <label class="col-form-label mr-auto pull-right">Driver out</label>
                                             <div class="col-12 col-sm-8">
                                                 <select class="input-full form-control col-7" name="ser_dri_id_out" onclick="get_car_information(2)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
@@ -314,7 +329,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Arrivals location:</label>
+                                            <label class="col-form-label mr-auto">Arrivals location</label>
                                             <input class="input-full form-control col-7" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php echo $obj_service[0]->ser_arrivals_location ?>">
                                         </div>
                                     </div>
@@ -323,7 +338,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Departure location:</label>
+                                            <label class="col-form-label mr-auto">Departure location</label>
                                             <input class="input-full form-control col-7" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php echo $obj_service[0]->ser_departure_location ?>">
                                         </div>
                                     </div>
@@ -353,9 +368,9 @@
 
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
-                                            <label for="agn_company_name" class="col-form-label mr-auto">Company name :</label>
+                                            <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
                                             <div class="col-12 col-sm-4">
-                                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="agn_id" onclick="get_agent_information()">
+                                                <select class="block w-full mt-1 text-sm focus:outline-none form-control" name="agn_id" onclick="get_agent_information()">
                                                     <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
                                                         <option value="<?php echo $arr_agn[$i]->agn_id ?>" <?php if ($obj_agent[0]->agn_id == $arr_agn[$i]->agn_id) echo "selected" ?>>
                                                             <?php echo $arr_agn[$i]->agn_company_name ?></option>
@@ -363,10 +378,8 @@
                                                     <option value="new">เอเย่นต์ใหม่</option>
                                                 </select>
                                             </div>
-                                            <!-- <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $obj_agent[0]->agn_company_name ?>">
-                                                <label class="error"><?php echo $_SESSION['agn_company_name_error'] ?></label>
-                                            </div> -->
+
+                                            <?php echo $_SESSION['agn_company_name_error'] ?>
                                         </div>
 
 
@@ -374,7 +387,7 @@
 
                                         <!-- Company location -->
                                         <div class="form-group">
-                                            <label for="agn_address">Company location :</label>
+                                            <label for="agn_address">Company location</label>
                                             <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" rows="5"><?php echo $obj_agent[0]->agn_address ?></textarea>
                                         </div>
 
@@ -382,8 +395,7 @@
                                         <!-- Taxpayer number -->
 
                                         <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
-                                                :</label>
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="agn_tax" name="agn_tax" placeholder="Taxpayer number" value="<?php echo $obj_agent[0]->agn_tax ?>">
                                             </div>
@@ -472,9 +484,9 @@
 
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
-                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name :</label>
+                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
                                             <div class="col-12 col-sm-4">
-                                                <select class="block w-full mt-1 text-sm focus:outline-none form-input" name="cus_id" onclick="get_customer_information()">
+                                                <select class="block w-full mt-1 text-sm focus:outline-none form-control" name="cus_id" onclick="get_customer_information()">
                                                     <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
                                                         <option value="<?php echo $arr_cus[$i]->cus_id ?>" <?php if ($obj_customer[0]->cus_id == $arr_cus[$i]->cus_id) echo "selected" ?>>
                                                             <?php echo $arr_cus[$i]->cus_company_name ?></option>
@@ -482,15 +494,12 @@
                                                     <option value="new">ลูกค้าใหม่</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $obj_customer[0]->cus_company_name ?>">
-                                                <label class="error"><?php echo $_SESSION['cus_company_name_error'] ?></label>
-                                            </div>
+
+                                            <label class="error"><?php echo $_SESSION['cus_company_name_error'] ?></label>
                                         </div>
                                         <!-- Branch -->
                                         <div class="form-group form-inline">
-                                            <label for="cus_branch" class="col-form-label mr-auto">Branch
-                                                :</label>
+                                            <label for="cus_branch" class="col-form-label mr-auto">Branch</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $obj_customer[0]->cus_branch ?>">
                                                 <label class="error"><?php echo $_SESSION['cus_branch_error'] ?></label>
@@ -500,8 +509,7 @@
 
                                         <!-- Company location -->
                                         <div class="form-group">
-                                            <label for="cus_address">Company location
-                                                :</label>
+                                            <label for="cus_address">Company location</label>
                                             <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" rows="5"><?php echo $obj_customer[0]->cus_address ?></textarea>
                                         </div>
 
@@ -509,7 +517,7 @@
                                         <!-- Taxpayer number -->
 
                                         <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
                                                 :</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Taxpayer number" value="<?php echo $obj_customer[0]->cus_tax ?>">
@@ -527,7 +535,7 @@
 
                                         <!-- First Name -->
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">First name </label>
+                                            <label class="col-form-label mr-auto">First name</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_firstname" name="cus_firstname" placeholder="First name" value="<?php echo $obj_customer[0]->cus_firstname ?>">
                                             </div>
@@ -536,7 +544,7 @@
                                         <!-- Last Name -->
 
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Last name </label>
+                                            <label class="col-form-label mr-auto">Last name</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_lastname" name="cus_lastname" placeholder="Last name" value="<?php echo $obj_customer[0]->cus_lastname ?>">
                                             </div>
@@ -561,7 +569,7 @@
 
                                         <!-- Email -->
                                         <div class="form-group form-inline">
-                                            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
+                                            <label for="agn_email" class="col-form-label mr-auto">Email</label>
                                             <div class="col-md-8 p-0">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
