@@ -132,7 +132,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container status:</label>
+                                            <label class="col-form-label mr-auto">Container status</label>
                                             <select class="form-control input-full col-8" name="con_stac_id">
                                                 <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
                                                     <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
@@ -369,8 +369,8 @@
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
                                             <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
-                                            <div class="col-12 col-sm-4">
-                                                <select class="block w-full mt-1 text-sm focus:outline-none form-control" name="agn_id" onclick="get_agent_information()">
+                                            <div class="col-md-8 p-0">
+                                                <select class="form-control" name="agn_id" onclick="get_agent_information()" style="width: 100%">
                                                     <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
                                                         <option value="<?php echo $arr_agn[$i]->agn_id ?>" <?php if ($obj_agent[0]->agn_id == $arr_agn[$i]->agn_id) echo "selected" ?>>
                                                             <?php echo $arr_agn[$i]->agn_company_name ?></option>
@@ -446,7 +446,7 @@
 
                                         <!-- Email -->
                                         <div class="form-group form-inline">
-                                            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
+                                            <label for="agn_email" class="col-form-label mr-auto">Email</label>
                                             <div class="col-md-8 p-0">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
@@ -485,8 +485,8 @@
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
                                             <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
-                                            <div class="col-12 col-sm-4">
-                                                <select class="block w-full mt-1 text-sm focus:outline-none form-control" name="cus_id" onclick="get_customer_information()">
+                                            <div class="col-md-8 p-0">
+                                                <select class="form-control" name="cus_id" onclick="get_customer_information()" style="width: 100%">
                                                     <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
                                                         <option value="<?php echo $arr_cus[$i]->cus_id ?>" <?php if ($obj_customer[0]->cus_id == $arr_cus[$i]->cus_id) echo "selected" ?>>
                                                             <?php echo $arr_cus[$i]->cus_company_name ?></option>
@@ -517,8 +517,7 @@
                                         <!-- Taxpayer number -->
 
                                         <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
-                                                :</label>
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Taxpayer number" value="<?php echo $obj_customer[0]->cus_tax ?>">
                                             </div>
