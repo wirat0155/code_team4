@@ -64,7 +64,7 @@ label.error {
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Edit agent</a>
+                        <a href="#">Edit container</a>
                     </li>
 
                 </ul>
@@ -148,7 +148,7 @@ label.error {
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
-                                                    <span class="text-gray-700 dark:text-gray-400"><b>Max width (t):</b>
+                                                    <span class="text-gray-700 dark:text-gray-400"><b>Max weight (t):</b>
                                                     </span>
                                                 </label>
                                             </div>
@@ -164,7 +164,7 @@ label.error {
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
-                                                    <span class="text-gray-700 dark:text-gray-400"><b>Empty cabinet
+                                                    <span class="text-gray-700 dark:text-gray-400"><b>Tare
                                                             weight
                                                             (t):</b></span>
                                                 </label>
@@ -181,7 +181,7 @@ label.error {
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
-                                                    <span class="text-gray-700 dark:text-gray-400"><b>Max product weight
+                                                    <span class="text-gray-700 dark:text-gray-400"><b>Max weight
                                                             (t):</b></span>
                                                 </label>
                                             </div>
@@ -193,17 +193,11 @@ label.error {
                                             </div>
                                         </div>
 
-                                        <!-- น้ำหนักสินค้าปัจจุบัน (ตัน)
-                        <label class="block text-sm mt-3">
-                            <span class="text-gray-700 dark:text-gray-400">น้ำหนักสินค้าปัจจุบัน (ตัน)</span>
-                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" type="number" step="0.01">
-                        </label> -->
-
                                         <!-- ปริมาตรสุทธิ (คิวบิกเมตร) -->
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
                                                 <label class="block text-sm mt-3">
-                                                    <span class="text-gray-700 dark:text-gray-400"><b>Net volume</b>
+                                                    <span class="text-gray-700 dark:text-gray-400"><b>Cube </b>
                                                         (CBM):</span>
                                                 </label>
                                             </div>
@@ -335,10 +329,10 @@ label.error {
                                             </div>
 
 
-                                            <!-- Taxpayer number -->
+                                            <!-- Tax number -->
 
                                             <div class="form-group form-inline mt-2">
-                                                <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
+                                                <label for="agn_tax" class="col-form-label mr-auto">Tax number
                                                     :</label>
                                                 <div class="col-md-8 p-0">
                                                     <input class="form-control input-full" id="agn_tax" name="agn_tax"

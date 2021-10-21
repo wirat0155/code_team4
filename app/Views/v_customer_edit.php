@@ -107,7 +107,7 @@ label.error {
                                         <!-- Taxpayer number -->
 
                                         <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
                                                 :</label>
                                             <div class="col-md-8 p-0">
                                                 <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Taxpayer number" value="<?php echo $arr_customer[0]->cus_tax ?>">

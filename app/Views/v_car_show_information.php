@@ -67,7 +67,7 @@
         <div class="page-inner">
         <div class="page-inner">
             <div class="pl-4 mt-4 page-header mb-0">
-                <h4 class="pl-3 page-title">AGENT DETAIL</h4>
+                <h4 class="pl-3 page-title">CAR DETAIL</h4>
                     <div class="card-action ml-auto mr-4">
                         <a class="ui yellow button" href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[0]->car_id ?>">
                             <i class="far fa-edit mr-1"></i>
@@ -80,10 +80,6 @@
                         </button>
                     </div>
             </div>
-
-                <div class="pl-4 mt-4 page-header mb-0">
-                    <h4 class="pl-3 page-title">CAR DETAIL</h4>
-                </div>
 
                 <hr width="95%" color="696969">
                 <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">

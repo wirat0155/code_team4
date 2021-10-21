@@ -122,7 +122,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Max width (t):</label>
+                                            <label class="col-form-label mr-auto">Max weight (t):</label>
                                             <div class="col-6 col-sm-7">
                                                 <p><?php echo $arr_container[0]->con_max_weight ?></p>
                                             </div>
@@ -141,7 +141,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Empty cabinet weight (t):</label>
+                                            <label class="col-form-label mr-auto">Tare weight (t):</label>
                                             <div class="col-6 col-sm-7">
                                                 <p><?php echo $arr_container[0]->con_tare_weight ?></p>
                                             </div>
@@ -151,7 +151,7 @@
 
                                     <div class="col-md-7">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Max product weight (t):</label>
+                                            <label class="col-form-label mr-auto">Max weight (t):</label>
                                             <div class="col-2 col-sm-8">
                                                 <p><?php echo $arr_container[0]->con_net_weight ?></p>
                                             </div>
@@ -160,7 +160,7 @@
 
                                     <div class="col-md-7">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Current product weight (t):</label>
+                                            <label class="col-form-label mr-auto">Current weight (t):</label>
                                             <div class="col-2 col-sm-8">
                                                 <p><?php echo $arr_container[0]->con_net_weight ?></p>
                                             </div>
@@ -169,7 +169,7 @@
 
                                     <div class="col-md-7">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Net volume (CBM):</label>
+                                            <label class="col-form-label mr-auto">Cube (CBM):</label>
                                             <div class="col-1 col-sm-8">
                                                 <p><?php echo $arr_container[0]->con_cube ?></p>
                                             </div>
@@ -215,10 +215,10 @@
                                         </div>
 
 
-                                        <!-- Taxpayer number -->
+                                        <!-- Tax number -->
 
                                         <div class="form-group form-inline">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Taxpayer number
+                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number
                                                 :</label>
                                             <div class="col-md-8 p-0" id="agn_tax" name="agn_tax">
                                                 <?php echo $arr_agent[0]->agn_tax ?>
