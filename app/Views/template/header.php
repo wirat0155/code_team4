@@ -55,6 +55,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <link rel="stylesheet" href="http://localhost/code_team4/Assets/css/main.css">
+    <!-- jQuery Sparkline -->
+    <script src="http://localhost/code_team4/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 </head>
 
 <body>
