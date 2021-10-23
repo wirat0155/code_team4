@@ -155,7 +155,6 @@ class Service_input extends Cdms_controller {
             $get_ser_car_id_in = $m_dri->get_by_id($ser_dri_id_in);
             $ser_car_id_in = $get_ser_car_id_in[0]->dri_car_id;
         }
-        $ser_actual_departure_date = $this->request->getPost('ser_actual_departure_date');
         $ser_dri_id_out = $this->request->getPost('ser_dri_id_out');
         $ser_car_id_out = $this->request->getPost('ser_car_id_out');
         if($ser_car_id_out == ''){
@@ -279,7 +278,7 @@ class Service_input extends Cdms_controller {
         $_SESSION['cus_branch_error'] = '';
 
         //insert service
-        $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);
+        $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);
 
         // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));

@@ -57,6 +57,68 @@ class Service_show extends Cdms_controller {
                                     ' - '. date("d-m-Y");
         }
 
+        $arr_import_day = [];
+        $arr_drop_day = [];
+        $arr_export_day = [];
+        $arr_total_day = [];
+        $yesterday = [];
+        
+        for($i = 0; $i < 7 ; $i++){
+            $array_import = 0;
+            $yesterday[$i] = date("Y-m-d", strtotime('-'.$i.'day'));
+            //print_r($yesterday[$i]);
+            for ($j = 0; $j < count($data['arr_service']); $j++){
+                if (substr($data['arr_service'][$j]->ser_arrivals_date, 0, 10) == $yesterday[$i]) {
+                    $array_import ++;
+                }
+            }
+          array_push($arr_import_day,$array_import);    
+          
+        }
+        $data['arr_import_day'] = $arr_import_day;
+
+        for($i = 0; $i < 7 ; $i++){
+            $array_drop = 0;
+            $yesterday[$i] = date("Y-m-d", strtotime('-'.$i.'day'));
+            //print_r($yesterday[$i]);
+            for ($j = 0; $j < count($data['arr_service']); $j++){
+                if(substr($data['arr_service'][$j]->ser_arrivals_date, 0, 10) < $yesterday[$i] && substr($data['arr_service'][$j]->ser_actual_departure_date, 0, 10) == NULL){
+                    $array_drop ++;
+                }
+            }
+          array_push($arr_drop_day,$array_drop);    
+          
+        }
+        $data['arr_drop_day'] = $arr_drop_day;
+
+        for($i = 0; $i < 7 ; $i++){
+            $array_export = 0;
+            $yesterday[$i] = date("Y-m-d", strtotime('-'.$i.'day'));
+            //print_r($yesterday[$i]);
+            for ($j = 0; $j < count($data['arr_service']); $j++){
+                if (substr($data['arr_service'][$j]->ser_actual_departure_date, 0, 10) == $yesterday[$i]) {
+                    $array_export ++;
+                }
+            }
+          array_push($arr_export_day,$array_export);    
+          
+        }
+        $data['arr_export_day'] = $arr_export_day;
+
+        for($i = 0; $i < 7 ; $i++){
+            $array_total = 0;
+            $yesterday[$i] = date("Y-m-d", strtotime('-'.$i.'day'));
+            //print_r($yesterday[$i]);
+            for ($j = 0; $j < count($data['arr_service']); $j++){
+                if (substr($data['arr_service'][$j]->ser_arrivals_date, 0, 10) < $yesterday[$i]) {
+                    $array_total ++;
+                }
+            }
+          array_push($arr_total_day,$array_total);    
+          
+        }
+        $data['arr_total_day'] = $arr_total_day;
+        
         $this->output('v_service_showlist', $data);
     }
 

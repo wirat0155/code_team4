@@ -22,6 +22,67 @@
         background-color: #ffa611;
         /* Orange */
     }
+
+    .circle-import {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #16ACF0;
+        border-radius: 50%;
+    }
+
+    .circle-drop {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #FFA610;
+        border-radius: 50%;
+    }
+
+    .circle-export {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #44BB55;
+        border-radius: 50%;
+    }
+    .circle-total {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #F0168A;
+        border-radius: 50%;
+    }
+    .circle-import.float-right>img {
+        width: 35px;
+        height: 35px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    .circle-drop.float-right>img {
+        width: 35px;
+        height: 35px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    .circle-export.float-right>img {
+        width: 50px;
+        height: 35px;
+        margin-left: 8px;
+        margin-top: 13px;
+    }
+    .circle-total.float-right>img {
+        width: 35px;
+        height: 35px;
+        margin-left: 13px;
+        margin-top: 13px;
+    }
 </style>
 <div class="ui modal">
     <i class="close icon"></i>
@@ -105,148 +166,259 @@
                         <div class="carousel-item active">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-6 col-md-3">
-                                    <div class="card">
-                                        <div class="card-body pb-0">
-                                            <div class="h3">IMPORT</div>
-                                            <h2 class="mt-0 ml-3">17</h2>
-                                            <p style="color: #09F600;">Users online
-                                                <label> From yesterday</label>
-                                            </p>
+                                    <div class="card ">
+                                        <div class="card-body pb-0 ">
+                                            <div class="h3">IMPORT
+                                                <span class="circle-import float-right"><img src="<?php echo base_url() . '/upload/cargo_1.png' ?>"></span>
+                                            </div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $day = date("Y-m-d");
+                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
+                                                $count_import = 0;
+                                                $count_import_yesterday = 0;
+                                                for ($i = 0; $i < count($arr_service); $i++) {
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $day) {
+                                                        $count_import++;
+                                                    }
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $yesterday) {
+                                                        $count_import_yesterday++;
+                                                    }
+                                                }
+                                                echo $count_import;
+                                                ?>
+                                            </h2>
+                                            <?php if ($count_import - $count_import_yesterday < 0) { ?>
+                                                <p style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
+                                                    <?php echo "(" . ($count_import - $count_import_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+                                            <?php } else { ?>
+                                                <p style="color: #09F600;">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+ " . ($count_import - $count_import_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+
+                                            <?php } ?>
                                             <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart4"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
+                                                <div class="lineChart_import"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
-                                    <div class="card">
-                                        <div class="card-body pb-0">
-                                            <div class="h3">IMPORT</div>
-                                            <h2 class="mt-0 ml-3">17</h2>
-                                            <p style="color: #09F600;">Users online
-                                                <label> From yesterday</label>
-                                            </p>
+                                    <div class="card ">
+                                        <div class="card-body pb-0 ">
+                                            <div class="h3">DROP
+                                                <span class="circle-drop float-right"><img src="<?php echo base_url() . '/upload/container_2.png' ?>"></span>
+                                            </div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $day = date("Y-m-d");
+                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
+                                                $count_drop = 0;
+                                                $count_drop_yesterday = 0;
+                                                for ($i = 0; $i < count($arr_service); $i++) {
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $day && substr($arr_service[$i]->ser_actual_departure_date, 0, 10) ==  null) {
+                                                        $count_drop++;
+                                                    } 
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $yesterday && substr($arr_service[$i]->ser_actual_departure_date, 0, 10) ==  null) {
+                                                        $count_drop_yesterday++;
+                                                    }
+                                                }
+                                                echo $count_drop;
+                                                ?>
+                                            </h2>
+                                            <?php if ($count_drop - $count_drop_yesterday < 0) { ?>
+                                                <p style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
+                                                    <?php echo "(" . ($count_drop - $count_drop_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+                                            <?php } else { ?>
+                                                <p style="color: #09F600;">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+ " . ($count_drop - $count_drop_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+
+                                            <?php } ?>
                                             <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart4"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
+                                                <div class="lineChart_drop"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
-                                    <div class="card">
-                                        <div class="card-body pb-0">
-                                            <div class="h3">IMPORT</div>
-                                            <h2 class="mt-0 ml-3">17</h2>
-                                            <p style="color: #09F600;">Users online
-                                                <label> From yesterday</label>
-                                            </p>
+                                    <div class="card ">
+                                        <div class="card-body pb-0 ">
+                                            <div class="h3">EXPORT
+                                                <span class="circle-export float-right"><img src="<?php echo base_url() . '/upload/bg-export.png' ?>"></span>
+                                            </div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $day = date("Y-m-d");
+                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
+                                                $count_export = 0;
+                                                $count_export_yesterday = 0;
+                                                for ($i = 0; $i < count($arr_service); $i++) {
+                                                    if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $day) {
+                                                        $count_export++;
+                                                    }
+                                                    if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $yesterday) {
+                                                        $count_export_yesterday++;
+                                                    }
+                                                }
+                                                echo $count_export;
+                                                ?>
+                                            </h2>
+                                            <?php if ($count_export - $count_export_yesterday < 0) { ?>
+                                                <p style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
+                                                    <?php echo "(" . ($count_export - $count_export_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+                                            <?php } else { ?>
+                                                <p style="color: #09F600;">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+ " . ($count_export - $count_export_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+
+                                            <?php } ?>
                                             <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart4"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
+                                                <div class="lineChart_export"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
-                                    <div class="card">
-                                        <div class="card-body pb-0">
-                                            <div class="h3">IMPORT</div>
-                                            <h2 class="mt-0 ml-3">17</h2>
-                                            <p style="color: #09F600;">Users online
-                                                <label> From yesterday</label>
-                                            </p>
+                                    <div class="card ">
+                                        <div class="card-body pb-0 ">
+                                            <div class="h3">TOTAL SERVICE
+                                                <span class="circle-total float-right"><img src="<?php echo base_url() . '/upload/infinite.png' ?>"></span>
+                                            </div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $day = date("Y-m-d");
+                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
+                                                $count = 0;
+                                                $count_yesterday = 0;
+                                                for ($i = 0; $i < count($arr_service); $i++) {
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $day) {
+                                                        $count++;
+                                                    }
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $yesterday) {
+                                                        $count_yesterday++;
+                                                    }
+                                                }
+                                                echo count($arr_service);
+                                                ?>
+                                            </h2>
+                                            <?php if ($count - $count_yesterday < 0) { ?>
+                                                <p style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
+                                                    <?php echo "(" . ($count - $count_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+                                            <?php } else { ?>
+                                                <p style="color: #09F600;">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+ " . ($count - $count_yesterday) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+
+                                            <?php } ?>
                                             <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart4"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
+                                                <div class="lineChart_total"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item ">
                             <div class="row justify-content-center align-items-center">
-                                <div class="d-flex mr-2">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex mr-2 justify-content-between">
-                                                <div>
-                                                    <h5><b>Todays Income</b></h5>
-                                                    <p class="text-muted">All Customs Value</p>
-                                                </div>
-                                                <h3 class="text-info fw-bold">$170</h3>
-                                            </div>
-                                            <div class="progress progress-sm">
-                                                <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div class="d-flex mr-2 justify-content-between mt-2">
-                                                <p class="text-muted mb-0">Change</p>
-                                                <p class="text-muted mb-0">75%</p>
+                                        <div class="card-body pb-0">
+                                            <div class="h3">TOTAL SERVICE</div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $day = date("Y-m-d");
+                                                $count_import = 0;
+                                                for ($i = 0; $i < count($arr_service); $i++) {
+                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $day && $arr_service[$i]->ser_stac_id == 1) {
+                                                        $count_import++;
+                                                    }
+                                                }
+                                                echo $count_import;
+                                                ?>
+                                            </h2>
+                                            <p style="color: #09F600;">Users online
+                                                <label> From yesterday</label>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="card">
+                                        <div class="card-body pb-0">
+                                            <div class="h3">DROP</div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $count_import = array_count_values(array_column($arr_service, 'ser_stac_id'))[2];
+                                                echo ($count_import != 0) ? $count_import : '0';
+                                                ?>
+                                            </h2>
+                                            <p style="color: #09F600;">Users online
+                                                <label> From yesterday</label>
+                                            </p>
+                                            <div class="pull-in sparkline-fix chart-as-background">
+                                                <div class="lineChart3"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex mr-2">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex mr-2 justify-content-between">
-                                                <div>
-                                                    <h5><b>Total Revenue</b></h5>
-                                                    <p class="text-muted">All Customs Value</p>
-                                                </div>
-                                                <h3 class="text-success fw-bold">$120</h3>
-                                            </div>
-                                            <div class="progress progress-sm">
-                                                <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div class="d-flex mr-2 justify-content-between mt-2">
-                                                <p class="text-muted mb-0">Change</p>
-                                                <p class="text-muted mb-0">25%</p>
+                                        <div class="card-body pb-0">
+                                            <div class="h3">EXPORT</div>
+                                            <h2 class="mt-0 ml-3">
+                                                <?php
+                                                $count_import = array_count_values(array_column($arr_service, 'ser_stac_id'))[4];
+                                                echo ($count_import != 0) ? $count_import : '0';
+                                                ?>
+                                            </h2>
+                                            <p style="color: #09F600;">Users online
+                                                <label> From yesterday</label>
+                                            </p>
+                                            <div class="pull-in sparkline-fix chart-as-background">
+                                                <div class="lineChart4"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex mr-2">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex mr-2 justify-content-between">
-                                                <div>
-                                                    <h5><b>New Orders</b></h5>
-                                                    <p class="text-muted">Fresh Order Amount</p>
-                                                </div>
-                                                <h3 class="text-danger fw-bold">15</h3>
-                                            </div>
-                                            <div class="progress progress-sm">
-                                                <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div class="d-flex mr-2 justify-content-between mt-2">
-                                                <p class="text-muted mb-0">Change</p>
-                                                <p class="text-muted mb-0">50%</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex mr-2">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex mr-2 justify-content-between">
-                                                <div>
-                                                    <h5><b>New Users</b></h5>
-                                                    <p class="text-muted">Joined New User</p>
-                                                </div>
-                                                <h3 class="text-secondary fw-bold">12</h3>
-                                            </div>
-                                            <div class="progress progress-sm">
-                                                <div class="progress-bar bg-secondary w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                            <div class="d-flex mr-2 justify-content-between mt-2">
-                                                <p class="text-muted mb-0">Change</p>
-                                                <p class="text-muted mb-0">25%</p>
+                                        <div class="card-body pb-0">
+                                            <div class="h3">IMPORT</div>
+                                            <h2 class="mt-0 ml-3">17</h2>
+                                            <p style="color: #09F600;">Users online
+                                                <label> From yesterday</label>
+                                            </p>
+                                            <div class="pull-in sparkline-fix chart-as-background">
+                                                <div class="lineChart4"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item ">
                             <div class="row justify-content-center align-items-center">
                                 <div class="d-flex mr-2">
                                     <div class="card">
@@ -374,7 +546,8 @@
                                             </td> -->
                                                 <!-- Container number -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                    <?php echo $arr_service[$i]->con_number; ?>
+                                                    <?php echo $arr_service[$i]->con_number;
+                                                    ?>
                                                 </td>
 
 
@@ -477,14 +650,38 @@
     </div>
 
     <script>
-        $('.lineChart4').sparkline([102,109,120,99,110,105,115], {
-			type: 'line',
-			height: '70',
-			width: '100%',
-			lineWidth: '2',
-			lineColor: 'rgba(255, 255, 255, .5)',
-			fillColor: 'rgba(81, 67, 209, 0.2)'
-		});
+        $('.lineChart_import').sparkline([<?php echo $arr_import_day[6] . ',' . $arr_import_day[5] . ',' . $arr_import_day[4] . ',' .  $arr_import_day[3] . ',' . $arr_import_day[2] . ',' . $arr_import_day[1] . ',' . $arr_import_day[0] ?>], {
+            type: 'line',
+            height: '70',
+            width: '100%',
+            lineWidth: '2',
+            lineColor: 'rgba(255, 255, 255, .5)',
+            fillColor: 'rgba(81, 67, 209, 0.2)'
+        });
+        $('.lineChart_drop').sparkline([<?php echo $arr_drop_day[6] . ',' . $arr_drop_day[5] . ',' . $arr_drop_day[4] . ',' .  $arr_drop_day[3] . ',' . $arr_drop_day[2] . ',' . $arr_drop_day[1] . ',' . $arr_drop_day[0] ?>], {
+            type: 'line',
+            height: '70',
+            width: '100%',
+            lineWidth: '2',
+            lineColor: 'rgba(255, 255, 255, .5)',
+            fillColor: 'rgba(255, 166, 16, 0.2)'
+        });
+        $('.lineChart_export').sparkline([<?php echo $arr_export_day[6] . ',' . $arr_export_day[5] . ',' . $arr_export_day[4] . ',' .  $arr_export_day[3] . ',' . $arr_export_day[2] . ',' . $arr_export_day[1] . ',' . $arr_export_day[0] ?>], {
+            type: 'line',
+            height: '70',
+            width: '100%',
+            lineWidth: '2',
+            lineColor: 'rgba(255, 255, 255, .5)',
+            fillColor: 'rgba(67, 209, 120, 0.2)'
+        });
+        $('.lineChart_total').sparkline([<?php echo $arr_total_day[6] . ',' . $arr_total_day[5] . ',' . $arr_total_day[4] . ',' .  $arr_total_day[3] . ',' . $arr_total_day[2] . ',' . $arr_total_day[1] . ',' . $arr_total_day[0] ?>], {
+            type: 'line',
+            height: '70',
+            width: '100%',
+            lineWidth: '2',
+            lineColor: 'rgba(255, 255, 255, .5)',
+            fillColor: 'rgba(209, 67, 133, 0.2)'
+        });
         $(document).ready(function() {
             // แทรกปุ่ม เพิ่มบริการ
             var ser_table = $('#service_list_table').DataTable({
