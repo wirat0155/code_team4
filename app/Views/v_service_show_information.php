@@ -88,12 +88,68 @@
 
             </div>
 
+            <style>
+                .avatar {
+                    margin: auto;
+             
 
-            <div class="picture-container">
-                <div class="picture">
-                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
+                }
+
+                .avatar-img {
+                    width: 150%;
+                    height: 150%;
+                    border: 1px solid black;
+                
+                }
+                
+                .avatar:first-child::after {
+                    position: absolute;
+                    content: "";
+                    border-bottom: 3px solid #ccc;
+                    width: 380%;
+                    top: 75%;
+                    left: 2%;
+                    z-index: -3;
+                }
+                
+                .avatar:last-child::before {
+                    position: absolute;
+                    content: "";
+                    border-bottom: 3px solid #ccc;
+                    width: 504%;
+                    top: 75%;
+                    left: -355%;
+                    z-index: -3;
+                }
+
+                .button.green {
+                  position: absolute;
+                  left: 33%;
+                  width: 80px;
+                }
+                .button.blue {
+                  position: absolute;
+                  right: 29%;
+                  width: 80px;
+                }
+            </style>
+
+
+            <div class="stepper-wrapper my-5">
+                <div class="avatar avatar-xxl">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
+                   
                 </div>
-            </div><br><br>
+                <button class="ui green basic button" style="position: absolute;">Green</button>
+                <div class="avatar avatar-xxl">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
+                </div>
+                <button class="ui blue basic button" style="position: absolute;">blue</button>
+                <div class="avatar avatar-xxl">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
+                </div>
+            </div> <br><br>
+
 
             <div class="row mx-5">
                 <div class="col-md-12">
@@ -102,7 +158,7 @@
                             <div class="card-title" id="service_information">Service information</div>
                         </div>
 
-                        <div class="card-body" id="car_section">
+                        <div class="card-body">
                             <div class="row px-5">
 
 
