@@ -1,17 +1,21 @@
 <style>
-    .cl-blue {
-        color: #1244B9 !important;
-    }
-    input.error {
-        border: 1px solid red !important;
-    }
-    .ui.search.dropdown>input.search.error {
-        border: 1px solid red !important;
-    }
-    small.error, label.error {
-        color: red !important;
-        font-weight: bold;
-    }
+.cl-blue {
+    color: #1244B9 !important;
+}
+
+input.error {
+    border: 1px solid red !important;
+}
+
+.ui.search.dropdown>input.search.error {
+    border: 1px solid red !important;
+}
+
+small.error,
+label.error {
+    color: red !important;
+    font-weight: bold;
+}
 </style>
 <div class="main-panel">
     <div class="content">
@@ -51,51 +55,28 @@
                             </div>
 
                             <div class="card-body" id="car_section">
+                                <h3>1. Car information</h3>
                                 <div class="row px-5">
 
                                     <!-- Number -->
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group form-inline">
-                                            <label for="car_number" class="col-form-label mr-auto">Number</label>
-                                            <div class="col-md-10 p-0">
-                                                <input type="text" class="form-control input-full" id="car_number"
-                                                    name="car_number" placeholder="Number">
+                                            <label for="car_number" class="col-form-label mr-auto">Car Number</label>
+                                            <div class="col-md-11 p-0">
+                                                <input type="text" class="form-control input-full" id="car_number" name="car_number" placeholder="Number">
                                                 <small class="form-text text-muted"></small>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Brand -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="car_brand" class="col-form-label mr-auto">Brand</label>
-                                            <div class="col-md-10 p-0">
-                                                <input type="text" class="form-control input-full" id="car_brand"
-                                                    name="car_brand" placeholder="Brand">
-                                                <small class="form-text text-muted"> </small>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                     <!-- Code -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_code" class="col-form-label mr-auto">Code</label>
                                             <div class="col-md-10 p-0">
-                                                <input type="text" class="form-control input-full" id="car_code"
-                                                    name="car_code" placeholder="Code">
-                                                <small class="form-text text-muted"> </small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Branch -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="car_branch" class="col-form-label mr-auto">Branch</label>
-                                            <div class="col-md-10 p-0">
-                                                <input type="text" class="form-control input-full" id="car_branch"
-                                                    name="car_branch" placeholder="Branch">
+                                                <input type="text" class="form-control input-full" id="car_code" name="car_code" placeholder="Code">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -105,15 +86,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_prov_id" class="col-form-label mr-auto"></label>
-                                            <div class="col-md-10 p-0">
+                                            <div class="col-md-8 p-0">
                                                 <div class="ui fluid search selection dropdown mt-1" style="left: 10px;top: -10px;">
                                                     <input type="hidden" name="car_prov_id" id="car_prov_id" onchange="check_car_prov_id()">
                                                     <i class="dropdown icon"></i>
                                                     <div class="default text">Select province</div>
                                                     <div class="menu">
                                                         <?php for ($i = 0; $i < count($arr_car_prov); $i++) { ?>
-                                                            <div class="item" data-value="<?php echo $arr_car_prov[$i]->prov_id ?>"><?php echo $arr_car_prov[$i]->prov_name;?>
-                                                            </div>
+                                                        <div class="item" data-value="<?php echo $arr_car_prov[$i]->prov_id ?>"><?php echo $arr_car_prov[$i]->prov_name;?>
+                                                        </div>
                                                         <?php } ?>
                                                     </div>
                                                 </div>
@@ -128,9 +109,7 @@
                                             <label for="car_chassis_number" class="col-form-label mr-auto pull-right">Chassis
                                                 number</label>
                                             <div class="col-md-9 p-0">
-                                                <input type="text" class="form-control input-full"
-                                                    id="car_chassis_number" name="car_chassis_number"
-                                                    placeholder="Chassis number">
+                                                <input type="text" class="form-control input-full" id="car_chassis_number" name="car_chassis_number" placeholder="Chassis number">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -141,8 +120,7 @@
                                         <div class="form-group form-inline">
                                             <label for="car_cart_id" class="col-form-label mr-auto">Car type</label>
                                             <div class="col-md-10 p-0">
-                                                <select class="form-control input-full" id="car_cart_id"
-                                                    name="car_cart_id">
+                                                <select class="form-control input-full" id="car_cart_id" name="car_cart_id">
                                                     <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
                                                     <option value="<?php echo $arr_car_type[$i]->cart_id ?>">
                                                         <?php echo $arr_car_type[$i]->cart_name ?></option>
@@ -159,10 +137,7 @@
                                             <label for="car_register_year" class="col-form-label mr-auto">Register
                                                 year</label>
                                             <div class="col-md-9 p-0">
-                                                <input type="number" class="form-control input-full"
-                                                    id="car_register_year" name="car_register_year"
-                                                    placeholder="2021"
-                                                    min="1900" max="2099" step="1">
+                                                <input type="number" class="form-control input-full" id="car_register_year" name="car_register_year" placeholder="2021" min="1900" max="2099" step="1">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
@@ -173,8 +148,7 @@
                                         <div class="form-group form-inline">
                                             <label for="car_status" class="col-form-label mr-auto">Car status</label>
                                             <div class="col-md-10 p-0">
-                                                <select class="form-control input-full" id="car_status"
-                                                    name="car_status">
+                                                <select class="form-control input-full" id="car_status" name="car_status">
                                                     <option value="1">พร้อมใช้</option>
                                                     <option value="2">เสียหาย</option>
                                                     <option value="3">กำลังซ่อม</option>
@@ -190,44 +164,68 @@
                                         <div class="form-group form-inline">
                                             <label for="car_weight" class="col-form-label mr-auto">Weight</label>
                                             <div class="col-md-10 p-0">
-                                                <input type="text" class="form-control input-full" id="car_weight"
-                                                    name="car_weight" placeholder="Weight">
+                                                <input type="text" class="form-control input-full" id="car_weight" name="car_weight" placeholder="Weight">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Image -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="car_image" class="col-form-label mr-auto">Image</label>
-                                            <div class="col-md-10 p-0">
-                                                <div class="input-group mb-3">
-													<input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
-													<div class="input-group-append" style="cursor: pointer;" onclick="$('#car_image').click();">
-														<span class="input-group-text" id="show_browse">Browse</span>
-													</div>
-												</div>
-                                                <input type="file" class="form-control-file input-full" id="car_image"
-                                                    name="car_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
-                                                <small class="form-text text-muted"> </small>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                     <!-- Fuel Type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_fuel_type" class="col-form-label mr-auto">Fuel type</label>
                                             <div class="col-md-10 p-0">
-                                                <input type="text" class="form-control input-full" id="car_fuel_type"
-                                                    name="car_fuel_type" placeholder="Fuel Type">
+                                                <input type="text" class="form-control input-full" id="car_fuel_type" name="car_fuel_type" placeholder="Fuel Type">
+                                                <small class="form-text text-muted"> </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Image -->
+                                <div class="col-md-6">
+                                    <div class="form-group form-inline">
+                                        <label for="car_image" class="col-form-label mr-auto">Image</label>
+                                        <div class="col-md-8 p-0">
+                                            <div class="input-group mb-3">
+                                                <input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
+                                                <div class="input-group-append" style="cursor: pointer;" onclick="$('#car_image').click();">
+                                                    <span class="input-group-text" id="show_browse">Browse</span>
+                                                </div>
+                                            </div>
+                                            <input type="file" class="form-control-file input-full" id="car_image" name="car_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
+                                            <small class="form-text text-muted"> </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>2. Brand</h3>
+                                <div class="row px-5">
+                                    <!-- Brand -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_brand" class="col-form-label mr-auto">Brand</label>
+                                            <div class="col-md-10 p-0">
+                                                <input type="text" class="form-control input-full" id="car_brand" name="car_brand" placeholder="Brand">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <!-- Branch -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_branch" class="col-form-label mr-auto">Branch</label>
+                                            <div class="col-md-10 p-0">
+                                                <input type="text" class="form-control input-full" id="car_branch" name="car_branch" placeholder="Branch">
+                                                <small class="form-text text-muted"> </small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
 
                             <div class="card-action" id="car_action" style>
@@ -257,8 +255,7 @@
                 car_prov_id_warning.addClass('error');
                 car_prov_id_warning.html('<br/><br/>Please select a province');
                 return false;
-            }
-            else {
+            } else {
                 $('input.search').removeClass('error');
                 car_prov_id_warning.removeClass('error');
                 car_prov_id_warning.html('');
