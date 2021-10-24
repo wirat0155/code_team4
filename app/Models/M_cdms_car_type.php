@@ -38,4 +38,18 @@ class M_cdms_car_type extends Da_cdms_car_type {
         $sql = "SELECT * FROM $this->table ORDER BY cart_id DESC LIMIT 1";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * get_all_status
+    * ดึงข้อมูลประเภทรถทั้งหมด
+    * @input  -
+    * @output array of car type
+    * @author Tadsawan
+    * @Create Date 2564-10-23
+    * @Update Date 2564-10-23
+    */
+    public function get_all_status() {
+        $sql = "SELECT * FROM $this->table ORDER BY cart_id DESC";
+        return $this->db->query($sql)->getResult();
+    }
 }

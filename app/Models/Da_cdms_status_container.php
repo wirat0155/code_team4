@@ -55,7 +55,21 @@ class Da_cdms_status_container extends Model {
     * @Update Date 2564-08-07
     */
     public function delete($stac_id = NULL, bool $purge = false) {
-        $sql = "UPDATE $this->table SET stac_status=2 WHERE stac_id='$stac_id'";
+        $sql = "UPDATE $this->table SET stac_status = 2 WHERE stac_id = '$stac_id'";
+        $this->db->query($sql);
+    }
+
+    /*
+    * restore
+    * restore สถานะตู้
+    * @input stac_id
+    * @output restore สถานะตู้
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+    */
+    public function restore($stac_id = NULL) {
+        $sql = "UPDATE $this->table SET stac_status = 1 WHERE stac_id = '$stac_id'";
         $this->db->query($sql);
     }
 }

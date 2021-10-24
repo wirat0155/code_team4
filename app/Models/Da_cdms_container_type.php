@@ -57,7 +57,7 @@ class Da_cdms_container_type extends Model {
 
      /*
     * restore
-    * ลบประเภทตู้คอนเทนเนอร์
+    * restore ประเภทตู้คอนเทนเนอร์
     * @input cont_id
     * @output restore ประเภทตู้คอนเทนเนอร์
     * @author Tadsawan

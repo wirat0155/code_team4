@@ -53,4 +53,18 @@ class M_cdms_status_container extends Da_cdms_status_container {
         $sql = "SELECT * FROM $this->table ORDER BY stac_id DESC LIMIT 1";
         return $this->db->query($sql)->getResult();
     }
+
+     /*
+    * get_all_status
+    * ดึงข้อมูลสถานะตู้ทั้งหมด
+    * @input  -
+    * @output array of status container
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+    */
+    public function get_all_status() {
+        $sql = "SELECT * FROM $this->table ORDER BY stac_id DESC";
+        return $this->db->query($sql)->getResult();
+    }
 }

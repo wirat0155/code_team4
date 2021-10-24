@@ -23,8 +23,8 @@ class Da_cdms_car_type extends Model {
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
     */
-    public function insert($cart_name = NULL, bool $return_ID = true) {
-        $sql = "INSERT INTO $this->table VALUES(NULL, '$cart_name', 1)";
+    public function insert($cart_name = NULL, $cart_image = NULL) {
+        $sql = "INSERT INTO $this->table(cart_name, cart_status, cart_image) VALUES('$cart_name', 1, '$cart_image')";
         $this->db->query($sql);
     }
 
@@ -53,6 +53,20 @@ class Da_cdms_car_type extends Model {
     */
     public function delete($cart_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cart_status = 2 WHERE cart_id = '$cart_id'";
+        $this->db->query($sql);
+    }
+
+    /*
+    * restore
+    * restore ประเภทรถ
+    * @input cart_id
+    * @output restore ประเภทรถ
+    * @author Tadsawan
+    * @Create Date 2564-10-23
+    * @Update Date 2564-10-23
+    */
+    public function restore($cart_id = NULL) {
+        $sql = "UPDATE $this->table SET cart_status = 1 WHERE cart_id = '$cart_id'";
         $this->db->query($sql);
     }
 }

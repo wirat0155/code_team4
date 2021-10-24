@@ -21,14 +21,14 @@ class Da_cdms_size extends Model {
     /*
     * insert
     * เพิ่มขนาดตู้
-    * @input size_name, size_width_in, size_length_in, size_height_in, size_width_out, size_length_out, size_height_out
+    * @input size_name, size_width_in, size_length_in, size_height_in, size_width_out, size_length_out, size_height_out, size_image
     * @output เพิ่มขนาดตู้
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
     */
-    public function insert($size_name = NULL, $size_width_in = NULL, $size_length_in = NULL, $size_height_in = NULL, $size_width_out = NULL, $size_length_out = NULL, $size_height_out = NULL) {
-        $sql = "INSERT INTO $this->table VALUES(NULL, '$size_name', '$size_width_in', '$size_length_in', '$size_height_in', '$size_width_out', '$size_length_out', '$size_height_out', 1)";
+    public function insert($size_name = NULL, $size_width_in = NULL, $size_length_in = NULL, $size_height_in = NULL, $size_width_out = NULL, $size_length_out = NULL, $size_height_out = NULL, $size_image = NULL) {
+        $sql = "INSERT INTO $this->table VALUES(NULL, '$size_name', '$size_width_in', '$size_length_in', '$size_height_in', '$size_width_out', '$size_length_out', '$size_height_out', 1,'$size_image')";
         $this->db->query($sql);
     }
 
@@ -58,6 +58,20 @@ class Da_cdms_size extends Model {
     */
     public function delete($size_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET size_status=2 WHERE size_id='$size_id'";
+        $this->db->query($sql);
+    }
+
+    /*
+    * restore
+    * restore ขนาดตู้
+    * @input size_id
+    * @output restore ขนาดตู้
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+    */
+    public function restore($size_id = NULL) {
+        $sql = "UPDATE $this->table SET size_status = 1 WHERE size_id = '$size_id'";
         $this->db->query($sql);
     }
 }

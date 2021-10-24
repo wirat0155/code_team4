@@ -90,7 +90,7 @@ class Set_up_container_type extends Cdms_controller
     * container_type_insert
     * เพิ่มประเภทตู้
     * @input ข้อมูลประเภทตู้
-    * @output เพิ่มรถ
+    * @output เพิ่มประเภทตู้
     * @author Tadsawan
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08

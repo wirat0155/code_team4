@@ -67,4 +67,18 @@ class M_cdms_size extends Da_cdms_size {
         $sql = "SELECT * FROM $this->table WHERE size_id = '$size_id'";
         return $this->db->query($sql)->getResult();
     }
+
+      /*
+    * get_all_status
+    * ดึงข้อมูลสถานะขนาดตู้ทั้งหมด
+    * @input  -
+    * @output array of size
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+    */
+    public function get_all_status() {
+        $sql = "SELECT * FROM $this->table ORDER BY size_id DESC";
+        return $this->db->query($sql)->getResult();
+    }
 }

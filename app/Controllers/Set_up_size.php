@@ -1,0 +1,125 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\M_cdms_size;
+
+/*
+    * Set_up_size
+    * แสดงหน้าจอรายการขนาดตู้
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+*/
+class Set_up_size extends Cdms_controller
+{
+    /*
+    * size_show
+    * แสดงหน้าจอรายการขนาดตู้
+    * @input -
+    * @output array of size
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+    */
+    public function size_show()
+    {
+        $_SESSION['menu'] = 'Set_up';
+        $_SESSION['menu_set_up'] = 'container_size';
+        
+        // get size
+        $m_size = new M_cdms_size();
+        $data['arr_size'] = $m_size->get_all_status();
+
+        $this->output('v_set_up_size', $data);
+    }
+
+    /*
+    * get_all_size
+    * แสดงทั้งหมดของขนาดตู้
+    * @input -
+    * @output array of size
+    * @author Thanatip
+    * @Create Date 2564-09-10
+    * @Update Date 2564-09-10
+    */
+    public function get_all_size()
+    {
+        $m_size = new M_cdms_size();
+        $data['arr_size'] = $m_size->get_all();
+        return json_encode($data['arr_size']);
+    }
+    
+     /*
+    * size_delete
+    * ลบขนาดตู้
+    * @input size_id
+    * @output ลบประเภทรถ
+    * @author  Natadanai
+    * @Create Date 2564-08-12
+    * @Update Date 2564-08-12
+    */
+    public function size_delete()
+    {
+        $size_id = $this->request->getPost('size_id');
+        $m_size = new M_cdms_size();
+        $m_size->delete($size_id);
+
+        return json_encode('pass');
+    }
+
+     /*
+    * size_restore
+    * restore ขนาดตู้
+    * @input size_id
+    * @output restore ขนาดตู้
+    * @author Tadsawan
+    * @Create Date 2564-10-22
+    * @Update Date 2564-10-22
+    */
+    public function size_restore()
+    {
+        $size_id = $this->request->getPost('size_id');
+        $m_size = new M_cdms_size();
+        $m_size->restore($size_id);
+
+        return json_encode('pass');
+    }
+
+     /*
+    * size_insert
+    * เพิ่มขนาดตู้
+    * @input ข้อมูลขนาดตู้
+    * @output เพิ่มขนาดตู้
+    * @author Tadsawan
+    * @Create Date 2564-10-23
+    * @Update Date 2564-10-23
+    */
+    public function size_insert() {
+        $m_size = new M_cdms_size();
+
+        // size information
+        $size_name = $this->request->getPost('size_name');
+        $size_width_in = $this->request->getPost('size_width_in');
+        $size_length_in = $this->request->getPost('size_length_in');
+        $size_height_in = $this->request->getPost('size_height_in');
+        $size_width_out = $this->request->getPost('size_width_out');
+        $size_length_out = $this->request->getPost('size_length_out');
+        $size_height_out = $this->request->getPost('size_height_out');
+        $size_image = $this->request->getPost('size_image');
+        
+        // upload image
+        $file = $this->request->getFile('size_image');
+        if($file->isValid() && ! $file->hasMoved()){
+            $imageName = $file->getRandomName();
+            $file->move('./size_image', $imageName);
+        }
+        
+        $size_image = $imageName;
+
+        // เพิ่มข้อมูลขนาดตู้
+        $m_size->insert($size_name, $size_width_in, $size_length_in, $size_height_in, $size_width_out, $size_length_out, $size_height_out, $size_image);
+        $this->response->redirect(base_url() . '/Set_up_size/size_show');
+    }
+
+}
