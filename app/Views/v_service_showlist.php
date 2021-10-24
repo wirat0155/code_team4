@@ -363,9 +363,9 @@
                                                 $yesterday = date("Y-m-d", strtotime('yesterday'));
                                                 $count_import = 0;
                                                 $count_import_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_con); $i++) {
+                                                for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_import_yesterday++;
-                                                    if ($arr_con[$i]->con_cont_id == 1) {
+                                                    if ($arr_service[$i]->con_cont_id == 1) {
                                                         $count_import++;
                                                     }
                                                 }
@@ -394,9 +394,9 @@
                                                 $yesterday = date("Y-m-d", strtotime('yesterday'));
                                                 $count = 0;
                                                 $count_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_con); $i++) {
+                                                for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_yesterday++;
-                                                    if ($arr_con[$i]->con_cont_id == 2) {
+                                                    if ($arr_service[$i]->con_cont_id == 2) {
                                                         $count++;
                                                     }
                                                 }
@@ -425,9 +425,9 @@
                                                 $yesterday = date("Y-m-d", strtotime('yesterday'));
                                                 $count = 0;
                                                 $count_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_con); $i++) {
+                                                for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_yesterday++;
-                                                    if ($arr_con[$i]->con_cont_id == 4) {
+                                                    if ($arr_service[$i]->con_cont_id == 4) {
                                                         $count++;
                                                     }
                                                 }
@@ -461,9 +461,9 @@
                                                 $yesterday = date("Y-m-d", strtotime('yesterday'));
                                                 $count = 0;
                                                 $count_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_con); $i++) {
+                                                for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_yesterday++;
-                                                    if ($arr_con[$i]->con_cont_id == 5) {
+                                                    if ($arr_service[$i]->con_cont_id == 5) {
                                                         $count++;
                                                     }
                                                 }
@@ -492,9 +492,9 @@
                                                 $yesterday = date("Y-m-d", strtotime('yesterday'));
                                                 $count = 0;
                                                 $count_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_con); $i++) {
+                                                for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_yesterday++;
-                                                    if ($arr_con[$i]->con_cont_id == 3) {
+                                                    if ($arr_service[$i]->con_cont_id == 3) {
                                                         $count++;
                                                     }
                                                 }
@@ -523,9 +523,9 @@
                                                 $yesterday = date("Y-m-d", strtotime('yesterday'));
                                                 $count = 0;
                                                 $count_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_con); $i++) {
+                                                for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_yesterday++;
-                                                    if ($arr_con[$i]->con_cont_id == 6) {
+                                                    if ($arr_service[$i]->con_cont_id == 6) {
                                                         $count++;
                                                     }
                                                 }
