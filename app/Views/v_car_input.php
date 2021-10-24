@@ -46,7 +46,7 @@ label.error {
                 </ul>
             </div>
 
-            <form id="car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST" onsubmit="event.preventDefault(); validate_form();">
+            <form id="car_form" action="<?php echo base_url() . '/Car_input/car_insert'?>" enctype="multipart/form-data" method="POST" onsubmit="validate_form();">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <div class="card">

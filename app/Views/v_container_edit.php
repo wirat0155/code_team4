@@ -287,7 +287,7 @@ label.error {
                 </div>
 
                 <!-- end container form -->
-                <div class="row mx-5 mt-0">
+                <div class="row mx-5 mt-0" id="agent_section">
                     <div class="col-md-12">
                         <div class="card">
                             <form id="add_agent_form" action="<?php echo base_url() . '/Agent_edit/agent_update' ?>"
@@ -300,20 +300,25 @@ label.error {
                                     <div class="row px-5">
                                         <div class="col-md-6 col-lg-6">
 
-                                            <!-- Id agent -->
-                                            <input type='hidden' name='agn_id'
-                                                value="<?php echo $arr_agent[0]->agn_id ?>">
-
                                             <!-- Company name -->
                                             <div class="form-group form-inline">
-                                                <label for="agn_company_name" class="col-form-label mr-auto">Company
-                                                    name</label>
+                                                <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
                                                 <div class="col-md-8 p-0">
-                                                    <input class="form-control input-full" id="agn_company_name"
-                                                        name="agn_company_name" placeholder="Company name"
-                                                        value="<?php echo $arr_agent[0]->agn_company_name ?>">
-                                                    <label
-                                                        class="error"><?php echo $_SESSION['agn_company_name_error'] ?></label>
+                                                    <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
+                                                        <input type="hidden" name="agn_id" onchange="get_agent_information();">
+                                                        <i class="dropdown icon"></i>
+                                                        <div class="default text">Select agent</div>
+                                                        <div class="menu">
+                                                            <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                                                <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                                                </div>
+                                                            <?php } ?>
+                                                            <div class="item" data-value="new">+ New agent</div>
+                                                        </div>
+                                                    </div>
+                                                    <label class="error"></label>
+                                                    <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                                    <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
                                                 </div>
                                             </div>
 
@@ -564,11 +569,13 @@ label.error {
                 $('input[name="size_length_out"]').val(size_length_out);
             }
 
-            // get agent information when input agn_company_name
             function get_agent_information() {
-                let agn_id = $('select[name="agn_id"]').val();
+                // $('#agent_section label.error').remove();
+                // remove_form_attr('readonly', '#agent_section');
+                let agn_id = $('#agent_section input[name="agn_id"]').val();
+                console.log(agn_id);
 
-                if (agn_id != 'new') {
+                if (agn_id != '' && agn_id != 'new') {
                     $('input[name="agn_company_name"]').prop('hidden', true);
                     $.ajax({
                         url: '<?php echo base_url() . '/Agent_show/get_agent_ajax' ?>',
@@ -578,19 +585,25 @@ label.error {
                             agn_id: agn_id
                         },
                         success: function(data) {
-                            console.log(data);
                             show_agent_information(data);
+                            valid_agent_error();
                         }
                     });
-                } else {
+                }
+                if (agn_id == "new") {
                     $('input[name="agn_company_name"]').prop('hidden', false);
                     clear_agent_information();
+                    valid_agent_error();
                 }
+            }
+
+            function valid_agent_error() {
+                $('#agent_section input.error').removeClass('error');
+                $('#agent_section textarea.error').removeClass('error');
             }
 
             // show agent information when input agn_company_name
             function show_agent_information(agent) {
-                $('input[name="agn_id"]').val(agent[0]['agn_id']);
                 $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
                 $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
                 $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
@@ -601,12 +614,21 @@ label.error {
 
             // clear agent information when delete input agn_company_name
             function clear_agent_information() {
-                $('input[name="agn_id"]').val('');
+                $('input[name="agn_company_name"]').val('');
                 $('textarea[name="agn_address"]').val('');
                 $('input[name="agn_tax"]').val('');
                 $('input[name="agn_firstname"]').val('');
                 $('input[name="agn_lastname"]').val('');
                 $('input[name="agn_tel"]').val('');
                 $('input[name="agn_email"]').val('');
+            }
+
+            function remove_error(tag, name) {
+                $(tag + '[name="' + name + '"]').removeClass('error');
+                $(tag + '[name="' + name + '"]+label').html('');
+            }
+
+            function remove_form_attr(attr, target) {
+                $(target + ' *[readonly]').removeAttr(attr);
             }
             </script>
