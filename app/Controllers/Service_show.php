@@ -38,7 +38,9 @@ class Service_show extends Cdms_controller {
         $_SESSION['menu'] = 'Service_show';
         $m_ser = new M_cdms_service();
 
-        
+        // container
+        $m_con = new M_cdms_container();
+        $data['arr_con'] = $m_con->get_all(1);
 
         if(isset($_POST['date_range'])){
             $date_range = $this->request->getPost('date_range');
