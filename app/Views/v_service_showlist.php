@@ -199,22 +199,19 @@
                                                 ?>
                                             </h2>
                                             <?php if ($count_import - $count_import_yesterday < 0) { ?>
-                                                <p style="color: #F60029;">
+                                                <p class="mb-3" style="color: #F60029;">
                                                     <i class="fas fa-arrow-down" style="color: #F60029;"></i>
                                                     <?php echo "(" . ($count_import - $count_import_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p style="color: #09F600;">
+                                                <p class="mb-3" style="color: #09F600;">
                                                     <i class="fas fa-arrow-up"></i>
                                                     <?php echo "(+ " . ($count_import - $count_import_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
 
                                             <?php } ?>
-                                            <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart_import"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -242,22 +239,19 @@
                                                 ?>
                                             </h2>
                                             <?php if ($count_drop - $count_drop_yesterday < 0) { ?>
-                                                <p style="color: #F60029;">
+                                                <p class="mb-3" style="color: #F60029;">
                                                     <i class="fas fa-arrow-down" style="color: #F60029;"></i>
                                                     <?php echo "(" . ($count_drop - $count_drop_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p style="color: #09F600;">
+                                                <p class="mb-3" style="color: #09F600;">
                                                     <i class="fas fa-arrow-up"></i>
                                                     <?php echo "(+ " . ($count_drop - $count_drop_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
 
                                             <?php } ?>
-                                            <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart_drop"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -285,22 +279,19 @@
                                                 ?>
                                             </h2>
                                             <?php if ($count_export - $count_export_yesterday < 0) { ?>
-                                                <p style="color: #F60029;">
+                                                <p class="mb-3" style="color: #F60029;">
                                                     <i class="fas fa-arrow-down" style="color: #F60029;"></i>
                                                     <?php echo "(" . ($count_export - $count_export_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p style="color: #09F600;">
+                                                <p class="mb-3" style="color: #09F600;">
                                                     <i class="fas fa-arrow-up"></i>
                                                     <?php echo "(+ " . ($count_export - $count_export_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
 
                                             <?php } ?>
-                                            <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart_export"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -328,22 +319,19 @@
                                                 ?>
                                             </h2>
                                             <?php if ($count - $count_yesterday < 0) { ?>
-                                                <p style="color: #F60029;">
+                                                <p class="mb-3" style="color: #F60029;">
                                                     <i class="fas fa-arrow-down" style="color: #F60029;"></i>
                                                     <?php echo "(" . ($count - $count_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p style="color: #09F600;">
+                                                <p class="mb-3" style="color: #09F600;">
                                                     <i class="fas fa-arrow-up"></i>
                                                     <?php echo "(+ " . ($count - $count_yesterday) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
 
                                             <?php } ?>
-                                            <div class="pull-in sparkline-fix chart-as-background">
-                                                <div class="lineChart_total"><canvas width="337" height="70" style="display: inline-block; width: 337.693px; height: 70px; vertical-align: top;"></canvas></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -365,7 +353,7 @@
                                                 $count_import_yesterday = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_import_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 1) {
+                                                    if ($arr_service[$i]->con_cont_id == 1 && $arr_service[$i]->stac_id != 4) {
                                                         $count_import++;
                                                     }
                                                 }
@@ -396,7 +384,7 @@
                                                 $count_yesterday = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
                                                     $count_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 2) {
+                                                    if ($arr_service[$i]->con_cont_id == 2 && $arr_service[$i]->stac_id != 4) {
                                                         $count++;
                                                     }
                                                 }
@@ -692,38 +680,6 @@
     </div>
 
     <script>
-        $('.lineChart_import').sparkline([<?php echo $arr_import_day[6] . ',' . $arr_import_day[5] . ',' . $arr_import_day[4] . ',' .  $arr_import_day[3] . ',' . $arr_import_day[2] . ',' . $arr_import_day[1] . ',' . $arr_import_day[0] ?>], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: 'rgba(255, 255, 255, .5)',
-            fillColor: 'rgba(81, 67, 209, 0.2)'
-        });
-        $('.lineChart_drop').sparkline([<?php echo $arr_drop_day[6] . ',' . $arr_drop_day[5] . ',' . $arr_drop_day[4] . ',' .  $arr_drop_day[3] . ',' . $arr_drop_day[2] . ',' . $arr_drop_day[1] . ',' . $arr_drop_day[0] ?>], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: 'rgba(255, 255, 255, .5)',
-            fillColor: 'rgba(255, 166, 16, 0.2)'
-        });
-        $('.lineChart_export').sparkline([<?php echo $arr_export_day[6] . ',' . $arr_export_day[5] . ',' . $arr_export_day[4] . ',' .  $arr_export_day[3] . ',' . $arr_export_day[2] . ',' . $arr_export_day[1] . ',' . $arr_export_day[0] ?>], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: 'rgba(255, 255, 255, .5)',
-            fillColor: 'rgba(67, 209, 120, 0.2)'
-        });
-        $('.lineChart_total').sparkline([<?php echo $arr_total_day[6] . ',' . $arr_total_day[5] . ',' . $arr_total_day[4] . ',' .  $arr_total_day[3] . ',' . $arr_total_day[2] . ',' . $arr_total_day[1] . ',' . $arr_total_day[0] ?>], {
-            type: 'line',
-            height: '70',
-            width: '100%',
-            lineWidth: '2',
-            lineColor: 'rgba(255, 255, 255, .5)',
-            fillColor: 'rgba(209, 67, 133, 0.2)'
-        });
         $(document).ready(function() {
             // แทรกปุ่ม เพิ่มบริการ
             var ser_table = $('#service_list_table').DataTable({
