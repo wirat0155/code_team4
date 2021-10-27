@@ -299,13 +299,14 @@ label.error {
                                 <div class="card-body">
                                     <div class="row px-5">
                                         <div class="col-md-6 col-lg-6">
+                                            <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
 
                                             <!-- Company name -->
                                             <div class="form-group form-inline">
                                                 <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
                                                 <div class="col-md-8 p-0">
                                                     <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
-                                                        <input type="hidden" name="agn_id" onchange="get_agent_information();">
+                                                        <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $arr_agent[0]->agn_id?>">
                                                         <i class="dropdown icon"></i>
                                                         <div class="default text">Select agent</div>
                                                         <div class="menu">
@@ -346,6 +347,7 @@ label.error {
 
 
                                         <div class="col-md-6 col-lg-6">
+                                            <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
                                             <!-- Responsible person -->
                                             <div class="form-group form-inline">
                                                 <label for="car_number" class="col-form-label mr-auto">Responsible
@@ -430,6 +432,9 @@ label.error {
 
             <script>
             $(document).ready(function() {
+                
+
+
                 // jQuery Validation
                 if ($('#update_container_form').length > 0) {
                     $('#update_container_form').validate({

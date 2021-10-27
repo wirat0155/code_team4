@@ -65,8 +65,7 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            <div class="container px-6 mx-auto grid">
-                <div class="page-inner">
+            
 
                     <!-- หัวข้อ -->
                     <div class="pl-4 mt-4 page-header mb-0">
@@ -95,10 +94,9 @@
                             <i class="flaticon-right-arrow"></i>
                         </li>
                         <li class="nav-item">
-                            <a href="#">Edit driiver</a>
+                            <a href="#">Edit driver</a>
                         </li>
                     </ul>
-                </div>
 
                 <!-- <div class="container-sm mb-8"> -->
 
@@ -256,7 +254,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-inline">
                                                         <label for="dri_date_end" class="col-form-label mr-auto">Resign date</label>
-                                                        <div class="col-md-9 p-0">
+                                                        <div class="col-md-8 p-0">
                                                             <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end" value="<?php echo $arr_driver[0]->dri_date_end ?>">
                                                         </div>
                                                     </div>
@@ -303,7 +301,6 @@
                 </form>
 
                 <!-- </div> -->
-            </div>
         </div>
     </div>
 </div>

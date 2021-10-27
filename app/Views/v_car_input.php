@@ -75,7 +75,7 @@ label.error {
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_code" class="col-form-label mr-auto">Code</label>
-                                            <div class="col-md-10 p-0">
+                                            <div class="col-md-9 p-0">
                                                 <input type="text" class="form-control input-full" id="car_code" name="car_code" placeholder="Code">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
@@ -86,7 +86,7 @@ label.error {
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_prov_id" class="col-form-label mr-auto"></label>
-                                            <div class="col-md-8 p-0">
+                                            <div class="col-md-10 p-0">
                                                 <div class="ui fluid search selection dropdown mt-1" style="left: 10px;top: -10px;">
                                                     <input type="hidden" name="car_prov_id" id="car_prov_id" onchange="check_car_prov_id()">
                                                     <i class="dropdown icon"></i>
@@ -163,7 +163,7 @@ label.error {
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_weight" class="col-form-label mr-auto">Weight</label>
-                                            <div class="col-md-10 p-0">
+                                            <div class="col-md-9 p-0">
                                                 <input type="text" class="form-control input-full" id="car_weight" name="car_weight" placeholder="Weight">
                                                 <small class="form-text text-muted"> </small>
                                             </div>
@@ -182,24 +182,26 @@ label.error {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Image -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label for="car_image" class="col-form-label mr-auto">Image</label>
-                                        <div class="col-md-8 p-0">
-                                            <div class="input-group mb-3">
-                                                <input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
-                                                <div class="input-group-append" style="cursor: pointer;" onclick="$('#car_image').click();">
-                                                    <span class="input-group-text" id="show_browse">Browse</span>
+
+                                    <!-- Image -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_image" class="col-form-label mr-auto">Image</label>
+                                            <div class="col-md-9 p-0">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" id="input_show_browse" class="form-control" placeholder="...." aria-label="Recipient's username" aria-describedby="basic-addon2" disabled style="background: white !important;">
+                                                    <div class="input-group-append" style="cursor: pointer;" onclick="$('#car_image').click();">
+                                                        <span class="input-group-text" id="show_browse">Browse</span>
+                                                    </div>
                                                 </div>
+                                                <input type="file" class="form-control-file input-full" id="car_image" name="car_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
+                                                <small class="form-text text-muted"> </small>
                                             </div>
-                                            <input type="file" class="form-control-file input-full" id="car_image" name="car_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
-                                            <small class="form-text text-muted"> </small>
                                         </div>
                                     </div>
                                 </div>
+
 
                                 <h3>2. Brand</h3>
                                 <div class="row px-5">
