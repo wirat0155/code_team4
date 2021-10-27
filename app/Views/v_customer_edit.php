@@ -73,6 +73,7 @@ label.error {
                             <div class="card-body">
                                 <div class="row px-5">
                                     <div class="col-md-6 col-lg-6">
+                                        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
                                         <!-- Id agent -->
                                         <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
 
@@ -114,6 +115,7 @@ label.error {
 
 
                                     <div class="col-md-6 col-lg-6">
+                                        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
                                         <!-- Responsible person -->
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Responsible person

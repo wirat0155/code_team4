@@ -12,6 +12,13 @@
         color: red !important;
         font-weight: bold;
     }
+    h3 {
+        color: black;
+    }
+    h3.active {
+        color: #0B5B84;
+        border-bottom: 2px solid #0B5B84;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -50,33 +57,29 @@
                     </li>
                 </ul>
             </div>
-            <style>
-                h2 {
-                    color: black;
-                    right: -45px;
-                }
-            </style>
-
-            <div class="row col-md-6 ml-auto mr-auto">
-
+            
+            <div class="d-flex justify-content-center">
                 <a href="#service_information">
-                    <h2 class="col-3">Service</h2>
+                    <h3 onclick="hilight_section('service')" class="m-3 service active">Service</h3>
                 </a>
                 <a href="#container_information">
-                    <h2 class="col-3">Container</h2>
+                    <h3 onclick="hilight_section('con')" class="m-3 con">Container</h3>
                 </a>
                 <a href="#agent_information">
-                    <h2 class="col-3">Agent</h2>
+                    <h3 onclick="hilight_section('agent')" class="m-3 agent">Agent</h3>
                 </a>
                 <a href="#customer_information">
-                    <h2 class="col-3">Customer</h2>
+                    <h3 onclick="hilight_section('customer')" class="m-3 customer">Customer</h3>
                 </a>
-
             </div>
+
+            <script>
+                
+            </script>
 
             <form id="service_form" action="<?php echo base_url() . '/Service_edit/service_update' ?>" method="POST">
                 <div id="container_information"></div>
-                <div class="row mx-5">
+                <div class="row mx-5" id="container_section">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -211,11 +214,8 @@
                     </div>
                 </div>
 
-
-
-
                 <div id="service_information"></div>
-                <div class="row mx-5">
+                <div class="row mx-5" id="service_section">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -230,9 +230,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="form-group form-inline">Status</label>
-                                            <div class="col-12 col-sm-8">
-                                                <select class="input-full form-control col-7" name="ser_stac_id">
+                                            <label class="col-form-label mr-auto">Status</label>
+                                            <div class="col-12 col-sm-7 p-0">
+                                                <select class="input-full form-control" name="ser_stac_id">
                                                     <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
                                                         <option value="<?php echo $obj_service[$i]->ser_stac_id ?>" <?php if ($obj_service[0]->ser_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
                                                             <?php echo $arr_status_container[$i]->stac_name ?></option>
@@ -246,7 +246,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Cut-off</label>
-                                            <input class="input-full form-control col-7" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date) ?>">
+                                            <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date) ?>">
                                         </div>
                                     </div>
 
@@ -254,7 +254,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Date arrivals</label>
-                                            <input class="input-full form-control col-7" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date) ?>">
+                                            <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date) ?>">
                                         </div>
                                     </div>
 
@@ -262,15 +262,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Date departure</label>
-                                            <input class="input-full form-control col-7" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
+                                            <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label for="car_branch" class="col-form-label mr-auto">Driver In</label>
-                                            <div class="col-12 col-sm-8">
-                                                <select class="input-full form-control col-7" name="ser_dri_id_in" onclick="get_car_information(1)">
+                                            <div class="col-12 col-sm-7 p-0">
+                                                <select class="input-full form-control" name="ser_dri_id_in" onclick="get_car_information(1)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                                         <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_in == $arr_driver[$i]->dri_id) echo "selected" ?>>
                                                             <?php echo $arr_driver[$i]->dri_name ?></option>
@@ -286,8 +286,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right">Driver out</label>
-                                            <div class="col-12 col-sm-8">
-                                                <select class="input-full form-control col-7" name="ser_dri_id_out" onclick="get_car_information(2)">
+                                            <div class="col-12 col-sm-7 p-0">
+                                                <select class="input-full form-control" name="ser_dri_id_out" onclick="get_car_information(2)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                                         <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_out == $arr_driver[$i]->dri_id) echo "selected" ?>>
                                                             <?php echo $arr_driver[$i]->dri_name ?></option>
@@ -349,10 +349,8 @@
                     </div>
                 </div>
 
-
-
                 <div id="agent_information"></div>
-                <div class="row mx-5">
+                <div class="row mx-5" id="agent_section">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -362,28 +360,29 @@
                             <div class="card-body">
                                 <div class="row px-5">
                                     <div class="col-md-6 col-lg-6">
-
-                                        <!-- Id agent -->
-                                        <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
+                                        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
 
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
                                             <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
                                             <div class="col-md-8 p-0">
-                                                <select class="form-control" name="agn_id" onclick="get_agent_information()" style="width: 100%">
-                                                    <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                                        <option value="<?php echo $arr_agn[$i]->agn_id ?>" <?php if ($obj_agent[0]->agn_id == $arr_agn[$i]->agn_id) echo "selected" ?>>
-                                                            <?php echo $arr_agn[$i]->agn_company_name ?></option>
-                                                    <?php } ?>
-                                                    <option value="new">เอเย่นต์ใหม่</option>
-                                                </select>
+                                                <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
+                                                    <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $arr_agent[0]->agn_id?>">
+                                                    <i class="dropdown icon"></i>
+                                                    <div class="default text">Select agent</div>
+                                                    <div class="menu">
+                                                        <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                                            <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <div class="item" data-value="new">+ New agent</div>
+                                                    </div>
+                                                </div>
+                                                <label class="error"></label>
+                                                <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                                <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
                                             </div>
-
-                                            <?php echo $_SESSION['agn_company_name_error'] ?>
                                         </div>
-
-
-
 
                                         <!-- Company location -->
                                         <div class="form-group">
@@ -391,19 +390,19 @@
                                             <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" rows="5"><?php echo $obj_agent[0]->agn_address ?></textarea>
                                         </div>
 
-
-                                        <!-- Taxpayer number -->
-
+                                        <!-- Tax number -->
                                         <div class="form-group form-inline mt-2">
                                             <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                             <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="agn_tax" name="agn_tax" placeholder="Taxpayer number" value="<?php echo $obj_agent[0]->agn_tax ?>">
+                                                <input class="form-control input-full" id="agn_tax" name="agn_tax" placeholder="Tax number" value="<?php echo $obj_agent[0]->agn_tax ?>">
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-6 col-lg-6">
+                                        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
+
                                         <!-- Responsible person -->
                                         <div class="form-group form-inline">
                                             <label for="car_number" class="col-form-label mr-auto">Responsible person
@@ -466,10 +465,8 @@
                     </div>
                 </div>
 
-
-
                 <div id="customer_information"></div>
-                <div class="row mx-5">
+                <div class="row mx-5" id="customer_section">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -479,23 +476,28 @@
                             <div class="card-body">
                                 <div class="row px-5">
                                     <div class="col-md-6 col-lg-6">
-                                        <!-- Id agent -->
-                                        <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
+                                        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
 
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
                                             <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
                                             <div class="col-md-8 p-0">
-                                                <select class="form-control" name="cus_id" onclick="get_customer_information()" style="width: 100%">
-                                                    <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
-                                                        <option value="<?php echo $arr_cus[$i]->cus_id ?>" <?php if ($obj_customer[0]->cus_id == $arr_cus[$i]->cus_id) echo "selected" ?>>
-                                                            <?php echo $arr_cus[$i]->cus_company_name ?></option>
-                                                    <?php } ?>
-                                                    <option value="new">ลูกค้าใหม่</option>
-                                                </select>
+                                                <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
+                                                    <input type="hidden" name="cus_id" onchange="get_customer_information();" value="<?php echo $obj_customer[0]->cus_id?>">
+                                                    <i class="dropdown icon"></i>
+                                                    <div class="default text">Select customer</div>
+                                                    <div class="menu">
+                                                        <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
+                                                            <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;?>
+                                                            </div>
+                                                        <?php } ?>
+                                                        <div class="item" data-value="new">+ New customer</div>
+                                                    </div>
+                                                </div>
+                                                <label class="error"></label>
+                                                <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
+                                                <label class="error"><?php echo '<br><br>' . $_SESSION['cus_company_name_error']?></label>
                                             </div>
-
-                                            <label class="error"><?php echo $_SESSION['cus_company_name_error'] ?></label>
                                         </div>
                                         <!-- Branch -->
                                         <div class="form-group form-inline">
@@ -514,18 +516,19 @@
                                         </div>
 
 
-                                        <!-- Taxpayer number -->
-
+                                        <!-- Tax number -->
                                         <div class="form-group form-inline mt-2">
                                             <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
                                             <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Taxpayer number" value="<?php echo $obj_customer[0]->cus_tax ?>">
+                                                <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Tax number" value="<?php echo $obj_customer[0]->cus_tax ?>">
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <div class="col-md-6 col-lg-6">
+                                        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
+                                        
                                         <!-- Responsible person -->
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Responsible person
@@ -629,6 +632,18 @@
                     $('#service_step').click();
                 }
             })
+            
+
+            function hilight_section(section) {
+                let sections = ['service', 'con', 'agent', 'customer'];
+                $('h3.' + section).addClass('active');
+                
+                for (let i = 0; i < sections.length; i++) {
+                    if (section != sections[i]) {
+                        $('h3.' + sections[i]).removeClass('active');
+                    }
+                }
+            }
 
             function show_all_form(status) {
                 $('#service_section').show();
@@ -960,6 +975,7 @@
                 remove_form_attr('readonly', '#agent_section');
                 let agn_id = $('#agent_section input[name="agn_id"]').val();
 
+                console.log(agn_id);
                 if (agn_id != '' && agn_id != "new") {
                     $('input[name="agn_company_name"]').prop('hidden', true);
                     $.ajax({
@@ -1022,8 +1038,9 @@
 
                 let cus_id = $('#customer_section input[name="cus_id"]').val();
 
-                if (cus_id != '' && cus_id != "+ New customer") {
+                if (cus_id != '' && cus_id != "new") {
                     $('input[name="cus_company_name"]').prop('hidden', true);
+                    console.log(cus_id);
                     $.ajax({
                         url: '<?php echo base_url() . '/Customer_show/get_customer_ajax' ?>',
                         method: 'POST',

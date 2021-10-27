@@ -155,12 +155,13 @@
                                     </div>
 
                                     <!-- Start Date -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="dri_date_start" class="col-form-label mr-auto">Start date</label>
-                                            <div class="col-md-9 p-0">
+                                    <div class="col-6 pl-3 pr-3">
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3">
+                                                <label for="dri_date_start" class="col-form-label mr-auto">Start date</label>
+                                            </div>
+                                            <div class="col-12 col-md-9 pl-2 pr-2">
                                                 <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start">
-                                                <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
                                     </div>
@@ -183,13 +184,15 @@
                                         </div>
                                     </div>
 
+                                
                                     <!-- Resign Date -->
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="dri_date_end" class="col-form-label mr-auto">Resign date</label>
-                                            <div class="col-md-9 p-0">
-                                            <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end">
-                                                <small class="form-text text-muted"> </small>
+                                    <div class="col-6 pl-3 pr-3">
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-3">
+                                                <label for="dri_date_end" class="col-form-label mr-auto">Resign date</label>
+                                            </div>
+                                            <div class="col-12 col-md-9 pl-2 pr-2">
+                                                <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end">
                                             </div>
                                         </div>
                                     </div>
