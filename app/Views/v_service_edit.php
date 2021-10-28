@@ -73,146 +73,7 @@
                 </a>
             </div>
 
-            <script>
-                
-            </script>
-
             <form id="service_form" action="<?php echo base_url() . '/Service_edit/service_update' ?>" method="POST">
-                <div id="container_information"></div>
-                <div class="row mx-5" id="container_section">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-title">Container</div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row px-5">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container number</label>
-                                            <select class="form-control input-full col-8" name="con_id" onclick="get_container_information()">
-                                                <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
-                                                    <option value="<?php echo $arr_con[$i]->con_id ?>" <?php if ($obj_container[0]->con_id == $arr_con[$i]->con_id) echo "selected" ?>>
-                                                        <?php echo $arr_con[$i]->con_number ?></option>
-                                                <?php } ?>
-                                                <option value="new">ตู้ใหม่</option>
-                                            </select>
-                                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
-                                            <label id="con_number-error" class="error" for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container size</label>
-                                            <select class="form-control input-full col-8" name="con_size_id" oninput="get_size_information()">
-                                                <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                                    <option value="<?php echo $arr_size[$i]->size_id ?>" <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
-                                                        <?php echo $arr_size[$i]->size_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container type</label>
-                                            <select class="form-control input-full col-8" name="con_cont_id">
-                                                <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                                    <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($obj_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
-                                                        <?php echo $arr_container_type[$i]->cont_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Height (m)</label>
-                                            <input class="input-full form-control col-8" name="size_height_out" value="<?php echo $first_size[0]->size_height_out ?>" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container status</label>
-                                            <select class="form-control input-full col-8" name="con_stac_id">
-                                                <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                    <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
-                                                        <?php echo $arr_status_container[$i]->stac_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Width (m)</label>
-                                            <input class="input-full form-control col-8" name="size_width_out" value="<?php echo $first_size[0]->size_width_out ?>" readonly>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Max weight (t)</label>
-                                            <input class="input-full form-control col-8" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Length (m)</label>
-                                            <input class="input-full form-control col-8" name="size_length_out" value="<?php echo $first_size[0]->size_length_out ?>" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="row col-12">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-inline">
-                                                <label class="col-form-label mr-auto">Tare weight (t)</label>
-                                                <input class="input-full form-control col-8" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_tare_weight ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row col-12">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-inline">
-                                                <label class="col-form-label mr-auto">Max weight (t)</label>
-                                                <input class="input-full form-control col-8" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row col-12">
-
-                                        <div class="col-md-6">
-                                            <div class="form-group form-inline">
-                                                <label class="col-form-label mr-auto">Current weight (t)</label>
-    
-                                                <input class="input-full form-control col-8" type="number" step="0.01" name="ser_weight" placeholder="0.01" value="<?php echo $obj_service[0]->ser_weight ?>">
-    
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cube (CBM)</label>
-                                            <input class="input-full form-control col-8" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container[0]->con_cube ?>">
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
                 <div id="service_information"></div>
                 <div class="row mx-5" id="service_section">
@@ -345,6 +206,142 @@
 
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="container_information"></div>
+                <div class="row mx-5" id="container_section">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Container</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row px-5">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container number</label>
+                                            <select class="form-control input-full col-8" name="con_id" onclick="get_container_information()">
+                                                <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
+                                                    <option value="<?php echo $arr_con[$i]->con_id ?>" <?php if ($obj_container[0]->con_id == $arr_con[$i]->con_id) echo "selected" ?>>
+                                                        <?php echo $arr_con[$i]->con_number ?></option>
+                                                <?php } ?>
+                                                <option value="new">ตู้ใหม่</option>
+                                            </select>
+                                            <input class="block w-full mt-1 text-sm focus:outline-none form-input" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
+                                            <label id="con_number-error" class="error" for="con_number"><?php echo $_SESSION['con_number_error'] ?></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container size</label>
+                                            <select class="form-control input-full col-8" name="con_size_id" oninput="get_size_information()">
+                                                <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
+                                                    <option value="<?php echo $arr_size[$i]->size_id ?>" <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
+                                                        <?php echo $arr_size[$i]->size_name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container type</label>
+                                            <select class="form-control input-full col-8" name="con_cont_id">
+                                                <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
+                                                    <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($obj_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
+                                                        <?php echo $arr_container_type[$i]->cont_name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Height (m)</label>
+                                            <input class="input-full form-control col-8" name="size_height_out" value="<?php echo $first_size[0]->size_height_out ?>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container status</label>
+                                            <select class="form-control input-full col-8" name="con_stac_id">
+                                                <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
+                                                    <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
+                                                        <?php echo $arr_status_container[$i]->stac_name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Width (m)</label>
+                                            <input class="input-full form-control col-8" name="size_width_out" value="<?php echo $first_size[0]->size_width_out ?>" readonly>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Max weight (t)</label>
+                                            <input class="input-full form-control col-8" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Length (m)</label>
+                                            <input class="input-full form-control col-8" name="size_length_out" value="<?php echo $first_size[0]->size_length_out ?>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-inline">
+                                                <label class="col-form-label mr-auto">Tare weight (t)</label>
+                                                <input class="input-full form-control col-8" type="number" step="0.01" name="con_tare_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_tare_weight ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-inline">
+                                                <label class="col-form-label mr-auto">Max weight (t)</label>
+                                                <input class="input-full form-control col-8" type="number" step="0.01" name="con_max_weight" placeholder="0.01" value="<?php echo $obj_container[0]->con_max_weight ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row col-12">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group form-inline">
+                                                <label class="col-form-label mr-auto">Current weight (t)</label>
+    
+                                                <input class="input-full form-control col-8" type="number" step="0.01" name="ser_weight" placeholder="0.01" value="<?php echo $obj_service[0]->ser_weight ?>">
+    
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Cube (CBM)</label>
+                                            <input class="input-full form-control col-8" type="number" step="0.01" name="con_cube" placeholder="0.01" value="<?php echo $obj_container[0]->con_cube ?>">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -590,7 +587,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-action" id="car_action">
+                <div class="card-action"  id="car_action">
                     <input type="button" class="ui button" value="Cancle" onclick="window.history.back();">
                     <button type="submit" class="ui orange button pull-right">
                         Confirm

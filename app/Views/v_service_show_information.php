@@ -43,6 +43,7 @@
                         </button>
                     </div>
                 </div>
+
                 <hr width="95%" color="696969">
                 <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
                     <li class="nav-home">
@@ -64,34 +65,38 @@
                     </li>
                 </ul>
             </div>
+
             <style>
-                h2 {
+                h3 {
                     color: black;
-                    right: -45px;
+                }
+
+                h3.active {
+                    color: #0B5B84;
+                    border-bottom: 2px solid #0B5B84;
                 }
             </style>
 
-            <div class="row col-md-6 ml-auto mr-auto">
+            <div class="d-flex justify-content-center">
 
                 <a href="#service_information">
-                    <h2 class="col-3">Service</h2>
+                    <h3 onclick="hilight_section('service')" class="m-3 service active">Service</h3>
                 </a>
                 <a href="#container_information">
-                    <h2 class="col-3">Container</h2>
+                    <h3 onclick="hilight_section('con')" class="m-3 con">Container</h3>
                 </a>
                 <a href="#agent_information">
-                    <h2 class="col-3">Agent</h2>
+                    <h3 onclick="hilight_section('agent')" class="m-3 agent">Agent</h3>
                 </a>
                 <a href="#customer_information">
-                    <h2 class="col-3">Customer</h2>
+                    <h3 onclick="hilight_section('customer')" class="m-3 customer">Customer</h3>
                 </a>
-
             </div>
 
             <style>
                 .avatar {
                     margin: auto;
-             
+
 
                 }
 
@@ -99,9 +104,9 @@
                     width: 150%;
                     height: 150%;
                     border: 1px solid black;
-                
+
                 }
-                
+
                 .avatar:first-child::after {
                     position: absolute;
                     content: "";
@@ -111,7 +116,7 @@
                     left: 2%;
                     z-index: -3;
                 }
-                
+
                 .avatar:last-child::before {
                     position: absolute;
                     content: "";
@@ -123,14 +128,15 @@
                 }
 
                 .button.green {
-                  position: absolute;
-                  left: 33%;
-                  width: 80px;
+                    position: absolute;
+                    left: 33%;
+                    width: 80px;
                 }
+
                 .button.blue {
-                  position: absolute;
-                  right: 29%;
-                  width: 80px;
+                    position: absolute;
+                    right: 29%;
+                    width: 80px;
                 }
             </style>
 
@@ -138,7 +144,7 @@
             <div class="stepper-wrapper my-5">
                 <div class="avatar avatar-xxl">
                     <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
-                   
+
                 </div>
                 <button class="ui green basic button" style="position: absolute;">Green</button>
                 <div class="avatar avatar-xxl">
@@ -150,536 +156,513 @@
                 </div>
             </div> <br><br>
 
+            <form id="service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" enctype="multipart/form-data" method="POST">
+                <div class="row mx-5">
+                    <div class="col-md-12">
+                        <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title" id="service_information">Service information</div>
+                            </div>
 
-            <div class="row mx-5">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title" id="service_information">Service information</div>
-                        </div>
+                            <div class="card-body">
+                                <div class="row px-5">
 
-                        <div class="card-body">
-                            <div class="row px-5">
-
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Type :</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_service[0]->stac_name ?></p>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Type :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_service[0]->stac_name ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Cut-off date :</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Cut-off date :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Date arrivals:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Date arrivals:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label for="car_branch" class="col-form-label mr-auto">Importer :</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $arr_driver_in[0]->dri_name ?></p>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_branch" class="col-form-label mr-auto">Importer :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_driver_in[0]->dri_name ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
 
 
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto pull-right">Exporter :</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $arr_driver_out[0]->dri_name ?></p>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto pull-right">Exporter :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_driver_out[0]->dri_name ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Car type -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Imported car:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $arr_car_in[0]->car_code ?></p>
+                                    <!-- Car type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Imported car:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_car_in[0]->car_code ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Register year -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Exported car :</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $arr_car_out[0]->car_code ?></p>
+                                    <!-- Register year -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Exported car :</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $arr_car_out[0]->car_code ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <!-- Weight -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Arrivals location:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_service[0]->ser_arrivals_location ?></p>
+                                    <!-- Weight -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Arrivals location:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_service[0]->ser_arrivals_location ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
 
-                                <!-- Fuel Type -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Departure location:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_service[0]->ser_departure_location ?></p>
+                                    <!-- Fuel Type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Departure location:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_service[0]->ser_departure_location ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Date departure:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo date_thai($obj_service[0]->ser_actual_departure_date) ?></p>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Date departure:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo date_thai($obj_service[0]->ser_actual_departure_date) ?></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="row mx-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title" id="container_information">Container information</div>
+                            </div>
+
+                            <div class="card-body" id="car_section">
+                                <div class="row px-5">
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container number :</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p id="con_number"><?php echo $obj_container[0]->con_number ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container size:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p> <?php echo $arr_size[0]->size_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container type:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_container_type[0]->cont_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Height (m):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_size[0]->size_height_out ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container status:</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_status_container[0]->stac_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto pull-right">Width (m):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_size[0]->size_width_out ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Max weidth (t):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $obj_container[0]->con_max_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Length (m):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $arr_size[0]->size_length_out ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Tare weight (t):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $obj_container[0]->con_tare_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Net weight (t):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $obj_container[0]->con_net_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Current weight (t):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $obj_service[0]->ser_weight ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Cube (CBM):</label>
+                                            <div class="col-6 col-sm-7">
+                                                <p><?php echo $obj_container[0]->con_cube ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title" id="agent_information">Agent information</div>
+                            </div>
+
+                            <div class="card-body" id="car_section">
+                                <div class="row px-5">
+
+                                    <!-- Number -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Company name:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p id="agn_company_name"><?php echo $obj_agent[0]->agn_company_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Brand -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Responsible person (Representative):</label>
+                                            <div class="col-2 col-sm-4">
+                                                <!-- <p><?php echo $obj_agent[0]->agn_firstname ?></p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Code -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Company location:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_agent[0]->agn_address ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Branch -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">First name:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_agent[0]->agn_firstname ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Chassis number -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto pull-right">Tax number:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_agent[0]->agn_tax ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Car type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_cart_id" class="col-form-label mr-auto">Last name:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_agent[0]->agn_lastname ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Register year -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Contact number:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_agent[0]->agn_tel ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Weight -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Email:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_agent[0]->agn_email ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mx-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title" id="customer_information">Customer information</div>
+                            </div>
+
+                            <div class="card-body" id="car_section">
+                                <div class="row px-5">
+
+                                    <!-- Number -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Company name:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_company_name ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Brand -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Responsible person (Representative):</label>
+                                            <div class="col-2 col-sm-4">
+                                                <!-- <p><?php echo $obj_customer[0]->cus_firstname ?></p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Code -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Branch:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_branch ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">First name:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_firstname ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Chassis number -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto pull-right">Company location:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_address ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Car type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Last name:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_lastname ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Register year -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label for="car_register_year" class="col-form-label mr-auto">Tax number:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_tax ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Weight -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Contact number:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_tel ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Fuel Type -->
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Email:</label>
+                                            <div class="col-12 col-sm-8">
+                                                <p><?php echo $obj_customer[0]->cus_email ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        </form>
+
+        <div class="ui modal">
+            <i class="close icon"></i>
+            <div class="header">
+                Remove Service ?
             </div>
+            <div class="content">
+                <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
+                    <input type="hidden" id="ser_id" name="ser_id" value="<?php echo $obj_service[0]->ser_id ?>">
 
-            <div class="row mx-5">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title" id="container_information">Container information</div>
+                    <p style=" font-size: 1rem">Are you sure to remove the service</p>
+
+                    <div class="ui info message">
+                        <div class="header">
+                            What happening after remove the service
                         </div>
-
-                        <div class="card-body" id="car_section">
-                            <div class="row px-5">
-
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Container number :</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p id="con_number"><?php echo $obj_container[0]->con_number ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Container size:</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p> <?php echo $arr_size[0]->size_name ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Container type:</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $arr_container_type[0]->cont_name ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Height (m):</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $arr_size[0]->size_height_out ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Container status:</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $arr_status_container[0]->stac_name ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto pull-right">Width (m):</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $arr_size[0]->size_width_out ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Max weidth (t):</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $obj_container[0]->con_max_weight ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Length (m):</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $arr_size[0]->size_length_out ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Tare weight (t):</label>
-                                        <div class="col-6 col-sm-7">
-                                            <p><?php echo $obj_container[0]->con_tare_weight ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-7">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Net weight (t):</label>
-                                        <div class="col-2 col-sm-8">
-                                            <p><?php echo $obj_container[0]->con_net_weight ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-7">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Current weight (t):</label>
-                                        <div class="col-2 col-sm-8">
-                                            <p><?php echo $obj_service[0]->ser_weight ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-7">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Cube (CBM):</label>
-                                        <div class="col-1 col-sm-8">
-                                            <p><?php echo $obj_container[0]->con_cube ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                        <ul class="list">
+                            <li>The Service still ramain in database,</li>
+                            <li>But you cannot see the service anymore</li>
+                        </ul>
                     </div>
-                </div>
             </div>
-
-            <div class="row mx-5">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title" id="agent_information">Agent information</div>
-                        </div>
-
-                        <div class="card-body" id="car_section">
-                            <div class="row px-5">
-
-                                <!-- Number -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Company name:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p id="agn_company_name"><?php echo $obj_agent[0]->agn_company_name ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Brand -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Responsible person (Representative):</label>
-                                        <div class="col-2 col-sm-4">
-                                            <!-- <p><?php echo $obj_agent[0]->agn_firstname ?></p> -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Code -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Company location:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_agent[0]->agn_address ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Branch -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">First name:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_agent[0]->agn_firstname ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- Chassis number -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto pull-right">Tax number:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_agent[0]->agn_tax ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Car type -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label for="car_cart_id" class="col-form-label mr-auto">Last name:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_agent[0]->agn_lastname ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Register year -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Contact number:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_agent[0]->agn_tel ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- Weight -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Email:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_agent[0]->agn_email ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mx-5">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title" id="customer_information">Customer information</div>
-                        </div>
-
-                        <div class="card-body" id="car_section">
-                            <div class="row px-5">
-
-                                <!-- Number -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Company name:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_company_name ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Brand -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Responsible person (Representative):</label>
-                                        <div class="col-2 col-sm-4">
-                                            <!-- <p><?php echo $obj_customer[0]->cus_firstname ?></p> -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Code -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Branch:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_branch ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">First name:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_firstname ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Chassis number -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto pull-right">Company location:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_address ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Car type -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Last name:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_lastname ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Register year -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label for="car_register_year" class="col-form-label mr-auto">Tax number:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_tax ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <!-- Weight -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Contact number:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_tel ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Fuel Type -->
-                                <div class="col-md-6">
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Email:</label>
-                                        <div class="col-12 col-sm-8">
-                                            <p><?php echo $obj_customer[0]->cus_email ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="actions">
+                <button type="button" class="ui test button">
+                    No, keep it
+                </button>
+                <button type="submit" class="ui negative right labeled icon button">
+                    Yes, remove it
+                    <i class="minus circle icon"></i>
+                </button>
+                </form>
             </div>
         </div>
 
+
+
         <script>
-            $(document).ready(function() {
-                // jQuery Validation
-                if ($('#add_car_form').length > 0) {
-                    $('#add_car_form').validate({
-                        rules: {
-                            car_number: {
-                                required: true
-                            },
-                            car_code: {
-                                required: true
-                            },
-                            car_brand: {
-                                required: true
-                            },
-                            car_branch: {
-                                required: true
-                            },
-                            car_chassis_number: {
-                                required: true
-                            },
-                            car_register_year: {
-                                required: true,
-                                min: 1900,
-                                max: 2099
-                            },
-                            car_weight: {
-                                required: true,
-                                min: 0
-                            },
-                            car_fuel_type: {
-                                required: true
-                            },
-                            car_image: {
-                                required: true
-                            },
+            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
 
-                        },
-                        messages: {
-                            car_number: {
-                                required: 'Please enter a car number'
-                            },
-                            car_code: {
-                                required: 'Please enter a car code'
-                            },
-                            car_brand: {
-                                required: 'Please enter a brand'
-                            },
-                            car_branch: {
-                                required: 'Please enter a branch'
-                            },
-                            car_chassis_number: {
-                                required: 'Please enter a chassis number'
-                            },
-                            car_register_year: {
-                                required: 'Please enter a register year',
-                                min: 'Minimum value is 1900',
-                                max: 'Maximum value is 2099'
-                            },
-                            car_weight: {
-                                required: 'Please enter a weight',
-                                min: 'Minimum value is 0'
-                            },
-                            car_fuel_type: {
-                                required: 'Please enter a fuel type'
-                            },
-                            car_image: {
-                                required: 'Please upload image'
-                            },
+            function hilight_section(section) {
+                let sections = ['service', 'con', 'agent', 'customer'];
+                $('h3.' + section).addClass('active');
 
-                        }
-                    })
+                for (let i = 0; i < sections.length; i++) {
+                    if (section != sections[i]) {
+                        $('h3.' + sections[i]).removeClass('active');
+                    }
                 }
-            });
+            }
         </script>
     </div>
