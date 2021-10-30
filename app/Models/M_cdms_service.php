@@ -21,19 +21,101 @@ class M_cdms_service extends Da_cdms_service {
     * @output array of service
     * @author Natdanai
     * @Create Date 2564-07-30
-    * @Update Date  2564-07-30
+    * @Update Date  2564-10-30
     */
-    public function get_all() {
+    public function get_all($today = '') {
         $sql = "SELECT * FROM $this->table
                 INNER JOIN cdms_customer ON ser_cus_id = cus_id 
                 INNER JOIN cdms_container ON ser_con_id = con_id
                 INNER JOIN cdms_container_type ON con_cont_id = cont_id
                 INNER JOIN cdms_status_container ON ser_stac_id = stac_id
                 INNER JOIN cdms_agent ON con_agn_id = agn_id
-                WHERE ser_status=1
-                ORDER BY ser_id DESC" ;
+                WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR (ser_actual_departure_date IS NULL AND ser_stac_id != 4)) AND ser_status = 1
+                ORDER BY ser_id DESC";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * get_num_import
+    * นับจำนวนบริการที่นำเข้าในวันที่กำหนด
+    * @input $arrivals_date
+    * @output import number
+    * @author Wirat
+    * @Create Date 2564-10-30
+    * @Update Date 2564-10-30
+    */
+    public function get_num_import($arrivals_date = '') {
+        $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
+                WHERE ser_arrivals_date LIKE '$arrivals_date%' AND ser_status = 1" ;
+
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_num_all
+    * นับจำนวนบริการที่ของวันที่กำหนด
+    * @input today, yesterday_time
+    * @output all number
+    * @author Wirat
+    * @Create Date 2564-10-30
+    * @Update Date 2564-10-30
+    */
+    public function get_num_all($today = '', $yesterday_time = '') {
+        $sql = "SELECT COUNT(ser_id) AS num_all FROM $this->table
+                WHERE ser_arrivals_date < '$today' AND (ser_actual_departure_date > '$yesterday_time' OR ser_actual_departure_date IS NULL) AND ser_status = 1";
+
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_num_drop
+    * นับจำนวนบริการที่เป็นสถานะ Drop
+    * @input date, date_time, is_today
+    * @output drop number
+    * @author Wirat
+    * @Create Date 2564-10-30
+    * @Update Date 2564-10-30
+    */
+    public function get_num_drop($date = '', $date_time = '', $is_today = true) {
+        if ($is_today) {
+            $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
+                    WHERE ser_stac_id NOT IN (1, 4) AND ser_status = 1";
+        }
+        else {
+            $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
+                    WHERE ser_arrivals_date < '$date' AND (ser_actual_departure_date > '$date_time' OR ser_actual_departure_date IS NULL) AND ser_status = 1";
+        }
+        
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_num_import
+    * นับจำนวนบริการที่เป็นสถานะ export
+    * @input date, date_time
+    * @output export number
+    * @author Wirat
+    * @Create Date 2564-10-30
+    * @Update Date 2564-10-30
+    */
+    public function get_num_export($date = '', $date_time = '', $is_today = true) {
+        if ($is_today) {
+            $sql = "SELECT COUNT(ser_id) AS num_export FROM $this->table
+                    WHERE ser_actual_departure_date LIKE '$date%' AND ser_actual_departure_date <= '$date_time'
+                    AND ser_status = 1";
+        }
+        else {
+            $sql = "SELECT COUNT(ser_id) AS num_export FROM $this->table
+                    WHERE ser_actual_departure_date LIKE '$date%' AND ser_status = 1";
+        }
+        
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
     /*
     * get_by_id
     * ดึงข้อมูลตามรหัสบริการ

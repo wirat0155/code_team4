@@ -182,36 +182,24 @@
                                                 <span class="circle-import float-right"><img src="<?php echo base_url() . '/upload/cargo_1.png' ?>"></span>
                                             </div>
                                             <h2 class="mt-0 ml-3">
-                                                <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count_import = 0;
-                                                $count_import_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_service); $i++) {
-                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $day) {
-                                                        $count_import++;
-                                                    }
-                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $yesterday) {
-                                                        $count_import_yesterday++;
-                                                    }
-                                                }
-                                                echo $count_import;
-                                                ?>
+                                                <?php echo $num_import ?>
                                             </h2>
-                                            <?php if ($count_import - $count_import_yesterday < 0) { ?>
-                                                <p class="mb-3" style="color: #F60029;">
-                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
-                                                    <?php echo "(" . ($count_import - $count_import_yesterday) . ")"; ?>
-                                                    <label class="ml-3"> From yesterday</label>
-                                                </p>
-                                            <?php } else { ?>
+                                            
+                                            <?php if ($num_import >= $num_yesterday_import):?>
                                                 <p class="mb-3" style="color: #09F600;">
                                                     <i class="fas fa-arrow-up"></i>
-                                                    <?php echo "(+ " . ($count_import - $count_import_yesterday) . ")"; ?>
+                                                    <?php echo "(+" . ($num_import - $num_yesterday_import) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
+                                            <?php endif;?>
 
-                                            <?php } ?>
+                                            <?php if ($num_import < $num_yesterday_import):?>
+                                                <p class="mb-3" style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    <?php echo "(" . ($num_import - $num_yesterday_import) . ")"; ?>
+                                                    <label class="ml-3"> From yesterday</label>
+                                                </p>
+                                            <?php endif;?>
                                         </div>
                                     </div>
                                 </div>
@@ -222,35 +210,20 @@
                                                 <span class="circle-drop float-right"><img src="<?php echo base_url() . '/upload/container_2.png' ?>"></span>
                                             </div>
                                             <h2 class="mt-0 ml-3">
-                                                <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count_drop = 0;
-                                                $count_drop_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_service); $i++) {
-                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $day && substr($arr_service[$i]->ser_actual_departure_date, 0, 10) ==  null) {
-                                                        $count_drop++;
-                                                    }
-                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $yesterday && substr($arr_service[$i]->ser_actual_departure_date, 0, 10) ==  null) {
-                                                        $count_drop_yesterday++;
-                                                    }
-                                                }
-                                                echo $count_drop;
-                                                ?>
+                                                <?php echo $num_drop; ?>
                                             </h2>
-                                            <?php if ($count_drop - $count_drop_yesterday < 0) { ?>
-                                                <p class="mb-3" style="color: #F60029;">
-                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
-                                                    <?php echo "(" . ($count_drop - $count_drop_yesterday) . ")"; ?>
+                                            <?php if ($num_drop >=  $num_yesterday_drop) { ?>
+                                                <p class="mb-3" style="color: #09F600;" >
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+" . ($num_drop - $num_yesterday_drop) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p class="mb-3" style="color: #09F600;">
-                                                    <i class="fas fa-arrow-up"></i>
-                                                    <?php echo "(+ " . ($count_drop - $count_drop_yesterday) . ")"; ?>
+                                                <p class="mb-3" style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    <?php echo "(" . ($num_drop - $num_yesterday_drop) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
-
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -262,35 +235,20 @@
                                                 <span class="circle-export float-right"><img src="<?php echo base_url() . '/upload/bg-export.png' ?>"></span>
                                             </div>
                                             <h2 class="mt-0 ml-3">
-                                                <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count_export = 0;
-                                                $count_export_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_service); $i++) {
-                                                    if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $day) {
-                                                        $count_export++;
-                                                    }
-                                                    if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $yesterday) {
-                                                        $count_export_yesterday++;
-                                                    }
-                                                }
-                                                echo $count_export;
-                                                ?>
+                                                <?php echo $num_export ?>
                                             </h2>
-                                            <?php if ($count_export - $count_export_yesterday < 0) { ?>
-                                                <p class="mb-3" style="color: #F60029;">
-                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
-                                                    <?php echo "(" . ($count_export - $count_export_yesterday) . ")"; ?>
+                                            <?php if ($num_export >= $num_yesterday_export) { ?>
+                                                <p class="mb-3" style="color: #09F600;">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+" . ($num_export - $num_yesterday_export) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p class="mb-3" style="color: #09F600;">
-                                                    <i class="fas fa-arrow-up"></i>
-                                                    <?php echo "(+ " . ($count_export - $count_export_yesterday) . ")"; ?>
+                                                <p class="mb-3" style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    <?php echo "( " . ($num_export - $num_yesterday_export) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
-
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -303,31 +261,20 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count = 0;
-                                                $count_yesterday = 0;
-                                                for ($i = 0; $i < count($arr_service); $i++) {
-                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $day) {
-                                                        $count++;
-                                                    }
-                                                    if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) < $yesterday) {
-                                                        $count_yesterday++;
-                                                    }
-                                                }
-                                                echo count($arr_service);
+                                                $num_all = count($arr_service);
+                                                echo $num_all;
                                                 ?>
                                             </h2>
-                                            <?php if ($count - $count_yesterday < 0) { ?>
-                                                <p class="mb-3" style="color: #F60029;">
-                                                    <i class="fas fa-arrow-down" style="color: #F60029;"></i>
-                                                    <?php echo "(" . ($count - $count_yesterday) . ")"; ?>
+                                            <?php if ($num_all >= $num_yesterday_all) { ?>
+                                                <p class="mb-3" style="color: #09F600;">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                    <?php echo "(+" . ($num_all - $num_yesterday_all) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
                                             <?php } else { ?>
-                                                <p class="mb-3" style="color: #09F600;">
-                                                    <i class="fas fa-arrow-up"></i>
-                                                    <?php echo "(+ " . ($count - $count_yesterday) . ")"; ?>
+                                                <p class="mb-3" style="color: #F60029;">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                    <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
 
@@ -347,23 +294,22 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count_import = 0;
-                                                $count_import_yesterday = 0;
+                                                $num_cont_dry = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
-                                                    $count_import_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 1 && $arr_service[$i]->stac_id != 4) {
-                                                        $count_import++;
+                                                    if ($arr_service[$i]->con_cont_id == 1) {
+                                                        $num_cont_dry++;
                                                     }
                                                 }
-                                                echo $count_import;
+                                                echo $num_cont_dry;
                                                 ?>
                                             </h2>
                                             <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php $result = ($count_import / $count_import_yesterday) * 100;
-                                                echo number_format($result, 2, '.', '') . '%';
+                                                <?php
+                                                if ($num_all == 0) {
+                                                    $num_all = 1;
+                                                }
+                                                $percent_cont_dry = ($num_cont_dry / $num_all) * 100;
+                                                echo number_format($percent_cont_dry, 2, '.', '') . '%';
                                                 ?>
                                                 <label class="ml-3"> From all container</label>
                                             </p>
@@ -378,23 +324,19 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count = 0;
-                                                $count_yesterday = 0;
+                                                $num_cont_reefer = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
-                                                    $count_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 2 && $arr_service[$i]->stac_id != 4) {
-                                                        $count++;
+                                                    if ($arr_service[$i]->con_cont_id == 2) {
+                                                        $num_cont_reefer++;
                                                     }
                                                 }
-                                                echo $count;
+                                                echo $num_cont_reefer;
                                                 ?>
                                             </h2>
                                             <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php $result = ($count / $count_yesterday) * 100;
-                                                echo number_format($result, 2, '.', '') . '%';
+                                                <?php
+                                                $percent_cont_reefer = ($num_cont_reefer / $num_all) * 100;
+                                                echo number_format($percent_cont_reefer, 2, '.', '') . '%';
                                                 ?>
                                                 <label class="ml-3"> From all container</label>
                                             </p>
@@ -409,23 +351,19 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count = 0;
-                                                $count_yesterday = 0;
+                                                $num_cont_open_top = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
-                                                    $count_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 4) {
-                                                        $count++;
+                                                    if ($arr_service[$i]->con_cont_id == 3) {
+                                                        $num_cont_open_top++;
                                                     }
                                                 }
-                                                echo $count;
+                                                echo $num_cont_open_top;
                                                 ?>
                                             </h2>
                                             <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php $result = ($count / $count_yesterday) * 100;
-                                                echo number_format($result, 2, '.', '') . '%';
+                                                <?php
+                                                $percent_cont_open_top = ($num_cont_open_top / $num_all) * 100;
+                                                echo number_format($percent_cont_open_top, 2, '.', '') . '%';
                                                 ?>
                                                 <label class="ml-3"> From all container</label>
                                             </p>
@@ -445,23 +383,19 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count = 0;
-                                                $count_yesterday = 0;
+                                                $num_cont_flat_rack = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
-                                                    $count_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 5) {
-                                                        $count++;
+                                                    if ($arr_service[$i]->con_cont_id == 4) {
+                                                        $num_cont_flat_rack++;
                                                     }
                                                 }
-                                                echo $count;
+                                                echo $num_cont_flat_rack;
                                                 ?>
                                             </h2>
                                             <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php $result = ($count / $count_yesterday) * 100;
-                                                echo number_format($result, 2, '.', '') . '%';
+                                                <?php
+                                                $percent_cont_flat_rack = ($num_cont_flat_rack / $num_all) * 100;
+                                                echo number_format($percent_cont_flat_rack, 2, '.', '') . '%';
                                                 ?>
                                                 <label class="ml-3"> From all container</label>
                                             </p>
@@ -476,23 +410,19 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count = 0;
-                                                $count_yesterday = 0;
+                                                $num_cont_tank = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
-                                                    $count_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 3) {
-                                                        $count++;
+                                                    if ($arr_service[$i]->con_cont_id == 5) {
+                                                        $num_cont_tank++;
                                                     }
                                                 }
-                                                echo $count;
+                                                echo $num_cont_tank;
                                                 ?>
                                             </h2>
                                             <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php $result = ($count / $count_yesterday) * 100;
-                                                echo number_format($result, 2, '.', '') . '%';
+                                                <?php
+                                                $percent_cont_tank = ($num_cont_tank / $num_all) * 100;
+                                                echo number_format($percent_cont_tank, 2, '.', '') . '%';
                                                 ?>
                                                 <label class="ml-3"> From all container</label>
                                             </p>
@@ -570,10 +500,6 @@
                                                 <!-- ลำดับ -->
                                                 <td> </td>
 
-                                                <!-- Order 
-                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php echo $arr_service[$i]->ser_id ?>
-                                            </td> -->
                                                 <!-- Container number -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <?php echo $arr_service[$i]->con_number;
@@ -601,7 +527,7 @@
 
                                                 <!-- Container type -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                    <?php echo $arr_service[$i]->cont_name ?>
+                                                    <?php echo $arr_service[$i]->cont_id ?>
                                                 </td>
 
                                                 <!-- Cut-off -->

@@ -70,4 +70,26 @@ class Da_cdms_service extends Model {
 
         $this->db->query($sql);
     }
+
+    /*
+    * change_ser_stac_id
+    * เปลี่ยนสถานะ ser_stac_id ตามวันที่
+    * @input $to_ser_stac_id, $yesterday, $today_time
+    * @output -
+    * @author Wirat
+    * @Create Date 2564-10-30
+    * @Update Date 2564-10-30
+    */
+    public function change_ser_stac_id($to_ser_stac_id = 3, $yesterday = '', $today_time = '') {
+        if ($to_ser_stac_id == 3) {
+            $sql = "UPDATE $this->table SET ser_stac_id = 3 
+                    WHERE ser_arrivals_date LIKE '$yesterday%' AND ser_stac_id BETWEEN 1 AND 2";
+        }
+        else if ($to_ser_stac_id == 4) {
+            $sql = "UPDATE $this->table SET ser_stac_id = 4 
+                    WHERE ser_actual_departure_date <= '$today_time' AND ser_stac_id BETWEEN 1 AND 3";
+        }
+        // query
+        $this->db->query($sql);
+    }
 }

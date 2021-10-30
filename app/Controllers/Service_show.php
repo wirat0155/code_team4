@@ -35,8 +35,27 @@ class Service_show extends Cdms_controller {
     * @Update Date 2564-09-10
     */
     public function service_show_ajax() {
+        //set timezone
+        date_default_timezone_set('GMT');
+
+        //set an date and time to work with
+        $start = '2021-10-30 12:00:00';
+
+        //display the converted time
+
         $_SESSION['menu'] = 'Service_show';
         $m_ser = new M_cdms_service();
+
+        $today = date('Y-m-d', strtotime('+7 hour'));
+        $today_time = date('Y-m-d H:i:s', strtotime('+7 hour'));
+        $yesterday = date('Y-m-d', strtotime('-17 hour'));
+        $yesterday_time = date('Y-m-d H:i:s', strtotime('-17 hour'));
+
+        // update ser_stac_id to ready (drop) depend on today
+        $m_ser->change_ser_stac_id(3, $yesterday);
+        // update ser_stac_id to export depend on today
+        $m_ser->change_ser_stac_id(4, $yesterday, $today_time);
+
 
         // container
         $m_con = new M_cdms_container();
@@ -51,14 +70,41 @@ class Service_show extends Cdms_controller {
             $data['arrivals_date'] = $date_range;
         }
         else{
-            $data['arr_service'] = $m_ser->get_all();
+            $data['arr_service'] = $m_ser->get_all($today);
+
             $index = count($data['arr_service'])-1;
             $start = $data['arr_service'][$index]->ser_arrivals_date;
             $end = $data['arr_service'][0]->ser_arrivals_date;
-            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
-                                    ' - '. date("d-m-Y");
+            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
+
+            $date['yesterday'] = $yesterday;
+            $date['today'] = $today;
+
+            // count import service
+            // today and yesterday
+            $obj_num_import = $m_ser->get_num_import($today);
+            $obj_num_yesterday_import = $m_ser->get_num_import($yesterday);
+            $data['num_import'] = $obj_num_import->num_import;
+            $data['num_yesterday_import'] = $obj_num_yesterday_import->num_import;
+            
+            // count export service
+            // today and yesterday
+            $obj_num_export = $m_ser->get_num_export($today, $today_time, true);
+            $obj_num_yesterady_export = $m_ser->get_num_export($yesterday, $yesterday_time, false);
+            $data['num_export'] = $obj_num_export->num_export;
+            $data['num_yesterday_export'] = $obj_num_yesterady_export->num_export;
+            
+            // count drop service
+            // today and yesterday
+            $obj_num_drop = $m_ser->get_num_drop();
+            $data['num_drop'] = $obj_num_drop->num_drop;
+            $obj_num_yesterday_drop = $m_ser->get_num_drop($yesterday, $yesterday_time, false);
+            $data['num_yesterday_drop'] = $obj_num_yesterday_drop->num_drop;
+
+            // count all service yesterday
+            $obj_num_yesterday_all = $m_ser->get_num_all($today, $yesterday_time);
+            $data['num_yesterday_all'] = $obj_num_yesterday_all->num_all;
         }
-        
         $this->output('v_service_showlist', $data);
     }
 
