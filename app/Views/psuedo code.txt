@@ -112,3 +112,25 @@ cal diff all
     3.1 green color + num_all - num_yesterday_all
 4. if num_all < num_yesterday_all
     4.1 red color num_all - num_yesterday_all
+
+
+get arr_service by set date range
+1. import at start date
+2. export at end date
+3. drop
+    3.1 import before start date
+    3.2 export after end date
+4. what about service that
+    4.1 import after start date
+    4.2 export before end date
+5. what about ser_stac_id
+
+1. $start_date
+2. $end_date
+3. get arr_service
+4. if (ser_arrivals_date == $start_date OR actual_departure_date == $end_date OR (ser_arrivals_date < $start_date AND (ser_actual_departure_date > $end_date OR ser_actual_departure_date IS NULL)) OR (ser_arrivals_date > $start_date AND ser_actual_departure_date < $end_date)) AND ser_status = 1
+
+date range
+count import
+
+ 

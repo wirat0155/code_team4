@@ -63,9 +63,10 @@ class Service_show extends Cdms_controller {
 
         if(isset($_POST['date_range'])){
             $date_range = $this->request->getPost('date_range');
-            $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
-            $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
-            $data['arr_service'] = $m_ser->get_by_date($start, $end);
+            $start_date = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
+            $end_date = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
+
+            $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
             
             $data['arrivals_date'] = $date_range;
         }

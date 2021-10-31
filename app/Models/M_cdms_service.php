@@ -9,7 +9,7 @@ use App\Models\Da_cdms_service;
 * ดึงข้อมูลบริการ
 * @author Natdanai Worarat
 * @Create Date 2564-07-29
-* @Update Date 2564-09-20
+* @Update Date 2564-10-30
 */
 
 class M_cdms_service extends Da_cdms_service {
@@ -165,7 +165,7 @@ class M_cdms_service extends Da_cdms_service {
     * @output Servier or null
     * @author Kittipod
     * @Create Date 2564-09-10
-    * @Update Date 2564-09-10
+    * @Update Date 2564-10-30
     */
     public function get_by_date($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT * FROM $this->table
@@ -174,14 +174,21 @@ class M_cdms_service extends Da_cdms_service {
                 INNER JOIN cdms_container_type ON con_cont_id = cont_id
                 INNER JOIN cdms_status_container ON con_stac_id = stac_id
                 INNER JOIN cdms_agent ON con_agn_id = agn_id
-                WHERE ser_status=1
-                AND ser_arrivals_date BETWEEN '$start_date' AND '$end_date'
-                GROUP BY ser_id
+                WHERE ser_status = 1 AND (
+                    ser_arrivals_date LIKE '$start_date%' OR
+                    ser_actual_departure_date LIKE '$end_date%' OR
+                    (ser_arrivals_date < '$start_date' AND 
+                    (ser_actual_departure_date > '$end_date' OR ser_actual_departure_date IS NULL)) OR
+                    (ser_arrivals_date > '$start_date' AND
+                    ser_actual_departure_date < '$end_date')
+                )
                 ORDER BY ser_id DESC";
+        
+        // return as array
         return $this->db->query($sql)->getResult();
     }
 
-     /*
+    /*
     *get_by_id_change
     * ดูประวัติการปลี่ยนตู้
     * @input ser_id_change

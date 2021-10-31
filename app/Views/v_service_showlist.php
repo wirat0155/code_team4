@@ -437,23 +437,19 @@
                                             </div>
                                             <h2 class="mt-0 ml-3">
                                                 <?php
-                                                $day = date("Y-m-d");
-                                                $yesterday = date("Y-m-d", strtotime('yesterday'));
-                                                $count = 0;
-                                                $count_yesterday = 0;
+                                                $num_cont_ventilated = 0;
                                                 for ($i = 0; $i < count($arr_service); $i++) {
-                                                    $count_yesterday++;
-                                                    if ($arr_service[$i]->con_cont_id == 6) {
-                                                        $count++;
+                                                    if ($arr_service[$i]->con_cont_id == 5) {
+                                                        $num_cont_tank++;
                                                     }
                                                 }
-                                                echo $count;
+                                                echo $num_cont_ventilated;
                                                 ?>
                                             </h2>
                                             <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php $result = ($count / $count_yesterday) * 100;
-                                                echo number_format($result, 2, '.', '') . '%';
+                                                <?php
+                                                $percent_cont_ventilated = ($num_cont_ventilated / $num_all) * 100;
+                                                echo number_format($percent_cont_ventilated, 2, '.', '') . '%';
                                                 ?>
                                                 <label class="ml-3"> From all container</label>
                                             </p>

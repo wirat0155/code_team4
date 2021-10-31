@@ -35,7 +35,7 @@ class Database extends Config
 		'hostname' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'database' => 'cdms',
+		'database' => 'container drop management system',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,
