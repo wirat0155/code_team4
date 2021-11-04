@@ -9,16 +9,13 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class BaseController
- *
- * BaseController provides a convenient place for loading components
- * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
- *
- * For security be sure to declare any new methods as protected or private.
- */
+/*
+* Cdms_controller
+* main controller
+* @author Wirat
+* @Create Date 2564-07-29
+* @Update Date 2564-07-29
+*/
 
 class Cdms_controller extends Controller
 {

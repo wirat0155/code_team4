@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Models\M_cdms_agent;
@@ -10,8 +9,8 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 /*
 * Agent_show
-* แสดงรายชื่อเอเย่นต์ และลบรายชื่อเอเย่นต์
-* @author Klayuth Preechaya
+* show agent list, delete anget
+* @author Klayuth, Preechaya
 * @Create Date 2564-07-30
 * @Update Date 2564-10-13
 */
@@ -19,7 +18,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 class Agent_show extends Cdms_controller {
     /*
     * agent_show_ajax
-    * แสดงรายชื่อเอเย่นต์
+    * show agent list
     * @input -
     * @output array of agent
     * @author Klayuth
@@ -40,9 +39,9 @@ class Agent_show extends Cdms_controller {
 
     /*
     * agent_delete
-    * ลบรายชื่อเอเย่นต์
+    * delete agent
     * @input agn_id
-    * @output ลบเอเย่นต์
+    * @output delete agent
     * @author Preechaya
     * @Create Date 2564-07-30
     * @Update Date 2564-08-02
@@ -56,9 +55,9 @@ class Agent_show extends Cdms_controller {
 
     /*
     * get_agent_ajax
-    * ดึงข้อมูลเอเย่นต์ตามชื่อบริษัท
-    * @input agn_company_name
-    * @output agn_information
+    * get agent information
+    * @input agn_id
+    * @output agent information
     * @author Preechaya
     * @Create Date 2564-08-07
     * @Update Date 2564-10-13
@@ -73,9 +72,9 @@ class Agent_show extends Cdms_controller {
 
     /*
     * agent_detail
-    * ดูข้อมูลเอเย่นต์
+    * show agent detail page
     * @input agn_id
-    * @output แสดงหน้าจอข้อมูลเอเย่นต์
+    * @output agent information
     * @author Nattanan
     * @Create Date 2564-08-12
     * @Update Date 2564-08-17

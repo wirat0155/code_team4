@@ -10,7 +10,7 @@ use App\Models\M_cdms_status_container;
 
 /*
 * Container_input
-* เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์ และเพิ่มตู้คอนเทนเนอร์
+* show container input page, insert container
 * @author Wirat
 * @Create Date 2564-08-06
 * @Update Date 2564-10-14
@@ -20,9 +20,9 @@ class Container_input extends Cdms_controller
 {
     /*
     * container_input
-    * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์
+    * show container input page
     * @input -
-    * @output หน้าจอเพิ่มตู้คอนเทนเนอร์
+    * @output show container input page
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-10-14
@@ -51,7 +51,7 @@ class Container_input extends Cdms_controller
         // status container
         $m_stac = new M_cdms_status_container();
         $data['arr_status_container'] = $m_stac->get_all();
-        
+
         // agent
         $m_agn = new M_cdms_agent();
         $data['arr_agn'] = $m_agn->get_all();
@@ -67,9 +67,9 @@ class Container_input extends Cdms_controller
 
     /*
     * container_insert
-    * เพิ่มตู้คอนเทนเนอร์
-    * @input ข้อมูลตู้คอนเทนเนอร์ ข้อมูลเอเย่นต์
-    * @output เพิ่มตู้คอนเทนเนอร์ เพิ่มเอเย่นต์ หรือแก้ไขเอเย่นต์
+    * insert container
+    * @input container, agent information
+    * @output onsert container, agent
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-10-14
@@ -99,7 +99,7 @@ class Container_input extends Cdms_controller
             $this->container_input(1);
             exit;
         }
-        
+
         // not duplicate con_number
         else {
             // get post value agent form
@@ -159,5 +159,5 @@ class Container_input extends Cdms_controller
         $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
         // $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }
-    
+
 }

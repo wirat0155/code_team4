@@ -8,7 +8,7 @@ use App\Models\M_cdms_car;
 
 /*
 * Driver_show
-* แสดงรายการพนักงานขับรถ และลบพนักงานขับรถ
+* show driver input page, insert driver
 * @author Thanatip
 * @Create Date 2564-08-06
 * @Update Date 2564-08-07
@@ -17,10 +17,10 @@ use App\Models\M_cdms_car;
 class Driver_input extends Cdms_controller {
     /*
     * driver_input
-    * แสดงหน้าจอเพิ่มพนักงานขับรถ
+    * show driver input page
     * @input -
-    * @outpu แสดงหน้าจอเพิ่มพนักงานขับรถ
-    * @author Thanatip 
+    * @outpu show driver input page
+    * @author Thanatip
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
     */
@@ -33,10 +33,10 @@ class Driver_input extends Cdms_controller {
 
     /*
     * driver_insert
-    * เพิ่มข้อมูลพนักงานขับรถ
-    * @input dri information
-    * @output เพิ่มพนักงานขับรถ
-    * @author  Thanatip
+    * insert driver
+    * @input driver information
+    * @output insert driver
+    * @author Thanatip
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */

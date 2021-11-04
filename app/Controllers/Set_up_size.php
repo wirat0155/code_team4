@@ -5,17 +5,17 @@ namespace App\Controllers;
 use App\Models\M_cdms_size;
 
 /*
-    * Set_up_size
-    * แสดงหน้าจอรายการขนาดตู้
-    * @author Tadsawan
-    * @Create Date 2564-10-22
-    * @Update Date 2564-10-22
+* Set_up_size
+* manage size
+* @author Tadsawan
+* @Create Date 2564-10-22
+* @Update Date 2564-10-22
 */
 class Set_up_size extends Cdms_controller
 {
     /*
     * size_show
-    * แสดงหน้าจอรายการขนาดตู้
+    * show size
     * @input -
     * @output array of size
     * @author Tadsawan
@@ -26,7 +26,7 @@ class Set_up_size extends Cdms_controller
     {
         $_SESSION['menu'] = 'Set_up';
         $_SESSION['menu_set_up'] = 'container_size';
-        
+
         // get size
         $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_all_status();
@@ -36,7 +36,7 @@ class Set_up_size extends Cdms_controller
 
     /*
     * get_all_size
-    * แสดงทั้งหมดของขนาดตู้
+    * get all size
     * @input -
     * @output array of size
     * @author Thanatip
@@ -49,13 +49,13 @@ class Set_up_size extends Cdms_controller
         $data['arr_size'] = $m_size->get_all();
         return json_encode($data['arr_size']);
     }
-    
+
      /*
     * size_delete
-    * ลบขนาดตู้
+    * delete size
     * @input size_id
-    * @output ลบประเภทรถ
-    * @author  Natadanai
+    * @output delete size
+    * @author Natadanai
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
     */
@@ -70,7 +70,7 @@ class Set_up_size extends Cdms_controller
 
      /*
     * size_restore
-    * restore ขนาดตู้
+    * restore size
     * @input size_id
     * @output restore ขนาดตู้
     * @author Tadsawan
@@ -88,9 +88,9 @@ class Set_up_size extends Cdms_controller
 
      /*
     * size_insert
-    * เพิ่มขนาดตู้
-    * @input ข้อมูลขนาดตู้
-    * @output เพิ่มขนาดตู้
+    * insert size
+    * @input size information
+    * @output insert contaioner size
     * @author Tadsawan
     * @Create Date 2564-10-23
     * @Update Date 2564-10-23
@@ -107,14 +107,14 @@ class Set_up_size extends Cdms_controller
         $size_length_out = $this->request->getPost('size_length_out');
         $size_height_out = $this->request->getPost('size_height_out');
         $size_image = $this->request->getPost('size_image');
-        
+
         // upload image
         $file = $this->request->getFile('size_image');
         if($file->isValid() && ! $file->hasMoved()){
             $imageName = $file->getRandomName();
             $file->move('./size_image', $imageName);
         }
-        
+
         $size_image = $imageName;
 
         // เพิ่มข้อมูลขนาดตู้

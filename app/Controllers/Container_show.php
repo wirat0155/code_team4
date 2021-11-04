@@ -10,7 +10,7 @@ use App\Models\M_cdms_status_container;
 
 /*
 * Container_show
-* แสดงรายการตู้คอนเนอร์ และลบตู้คอนเทนเนอร์
+* show container list, delete conainer
 * @author Wirat
 * @Create Date 2564-07-29
 * @Update Date 2564-08-12
@@ -20,12 +20,12 @@ class Container_show extends Cdms_controller
 {
     /*
     * container_show_ajax
-    * แสดงรายการตู้คอนเทนเนอร์
+    * show container list
     * @input -
     * @output array of container
     * @author Wirat
     * @Create Date 2564-07-29
-    * @Update Date
+    * @Update Date 2564-07-29
     */
     public function container_show_ajax()
     {
@@ -45,9 +45,9 @@ class Container_show extends Cdms_controller
     }
     /*
     * container_detail
-    * แสดงข้อมูลตู้คอนเทนเนอร์
+    * show container detain page
     * @input con_id
-    * @output หน้าจอข้อมูลตู้คอนเทนเนอร์
+    * @output show container detain page
     * @author Preechaya
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
@@ -81,9 +81,9 @@ class Container_show extends Cdms_controller
 
     /*
     * container_delete
-    * ลบตู้คอนเทนเนอร์
+    * delete container
     * @input con_id
-    * @output ลบตู้คอนเทนเนอร์ และกลับไปแสดงรายการตู้คอนเทนเนอร์
+    * @output delete container
     * @author Wirat
     * @Create Date 2564-07-29
     * @Update Date 2564-07-29
@@ -98,9 +98,9 @@ class Container_show extends Cdms_controller
 
     /*
     * check_container_number
-    * ค้นหาหมายเลขตู้คอนเทนเนอร์
+    * serch container vy container number
     * @input con_number
-    * @output ค้นหาหมายเลขตู้คอนเทนเนอร์
+    * @output container information
     * @author Wirat
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07

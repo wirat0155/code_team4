@@ -6,7 +6,7 @@ use App\Models\M_cdms_customer;
 
 /*
 * Customer_input
-* แสดงหน้าจอเพิ่มข้อมูล และเพิ่มลูกค้า
+* show customer input page, insert customer
 * @author  Kittipod
 * @Create Date 2564-08-05
 * @Update Date 2564-08-05
@@ -14,10 +14,10 @@ use App\Models\M_cdms_customer;
 class Customer_input extends Cdms_controller {
     /*
     * customer_input
-    * แสดงหน้าจอ customer_input
+    * show customer input page
     * @input -
-    * @output แสดงหน้าจอเพิ่มลูกค้า
-    * @author  Kittipod
+    * @output show customer input page
+    * @author Kittipod
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
     */
@@ -35,15 +35,15 @@ class Customer_input extends Cdms_controller {
 
     /*
     * customer_insert
-    * เพิ่มข้อมูลลูกค้า
+    * insert customer
     * @input cus information
-    * @output เพิ่มลูกค้า
-    * @author  Kittipod
+    * @output insert customer
+    * @author Kittipod
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
     */
     public function customer_insert() {
-        
+
         // get post value from customer_input form
         $cus_company_name = $this->request->getPost('cus_company_name');
         $cus_firstname = $this->request->getPost('cus_firstname');
@@ -60,14 +60,14 @@ class Customer_input extends Cdms_controller {
         // get customer by cus_company_name & cus_branch
         $arr_customer = $m_cus->is_cus_branch_exist($cus_company_name);
         $count_cus = 0;
-        
+
         // cout number of customer that duplicate cus_company_name & cus_branch
         for($i = 0; $i < count($arr_customer);$i++){
             if($arr_customer[$i]->cus_branch == $cus_branch){
                 $count_cus++;
             }
         }
-        
+
         // duplicate cus_company_name & cus_branch
         if ($count_cus >= 1) {
 
@@ -86,10 +86,10 @@ class Customer_input extends Cdms_controller {
             $this->customer_input();
             exit;
         }
-        
+
         // not duplicate
         else {
-            
+
             // insert the customer
             $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
 

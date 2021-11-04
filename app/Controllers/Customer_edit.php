@@ -6,19 +6,19 @@ use App\Models\M_cdms_customer;
 
 /*
 * Customer_edit
-* แสดงหน้าจอเเก้ไขข้อมูลลูกค้า 
-* @author  Benapon
+* show customer edit page, update customer
+* @author Benapon
 * @Create Date 2564-08-06
 * @Update Date 2564-08-06
 */
 
 class Customer_edit extends Cdms_controller {
-    /*   
+    /*
     * customer_edit
-    * แสดงหน้าจอ customer_edit
+    * show customer edit page
     * @input -
-    * @output แสดงหน้าจอแก้ไขลูกค้า
-    * @author  Benjapon
+    * @output show customer edit page
+    * @author Benjapon
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
     */
@@ -30,17 +30,17 @@ class Customer_edit extends Cdms_controller {
         if (!isset($_SESSION['cus_company_name_error']) || $_SESSION['cus_company_name_error'] == '') {
             $_SESSION['cus_company_name_error'] = '';
         }
-        
+
         $m_cus = new M_cdms_customer;
         $data['arr_customer'] = $m_cus->get_by_id($cus_id);
         $this->output('v_customer_edit', $data);
     }
     /*
     * customer_update
-    * เเก้ไขข้อมูลลูกค้า
-    * @input cus information
-    * @output แก้ไขลูกค้า
-    * @author  Benjapon
+    * update customer information
+    * @input customer information
+    * @output update customer information
+    * @author Benjapon
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
     */
@@ -63,7 +63,7 @@ class Customer_edit extends Cdms_controller {
         $count_cus = 0;
         if($old_cus_company_name != $cus_company_name || $old_cus_branch != $cus_branch){
             $arr_customer = $m_cus->is_cus_branch_exist($cus_company_name);
-            
+
             for($i = 0; $i < count($arr_customer);$i++){
                 if($arr_customer[$i]->cus_branch == $cus_branch){
                     $count_cus++;

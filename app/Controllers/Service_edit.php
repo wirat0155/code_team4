@@ -13,8 +13,8 @@ use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
 
 /*
-* Service_show
-* แสดงรายการบริการ และลบบริการ
+* Service_edit
+* show service edit page, update service information
 * @author Natdanai, Worarat
 * @Create Date 2564-07-29
 * @Update Date 2564-07-30
@@ -24,9 +24,9 @@ class Service_edit extends Cdms_controller
 {
     /*
     * service_edit
-    * แสดงหน้าจอแก้ไขข้อมูลบริการ
+    * show service edit page
     * @input ser_id
-    * @output แสดงหน้าจอแก้ไขข้อมูลบริการ
+    * @output show service edit page
     * @author Worarat
     * @Create Date 2564-07-29
     * @Update Date 2564-08-08
@@ -74,7 +74,7 @@ class Service_edit extends Cdms_controller
         $data['obj_customer'] = $m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
         $data['arr_cus'] = $m_cus->get_all();
 
-        // get container 
+        // get container
         $m_con = new M_cdms_container();
         $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
         $data['arr_con'] = $m_con->get_all();
@@ -92,9 +92,9 @@ class Service_edit extends Cdms_controller
 
     /*
     * service_update
-    * อัพเดทข้อมูลที่ทำการแก้ไข
-    * @input ser, cus, agn, con information
-    * @output แสดงหน้าจอแก้ไขข้อมูลบริการ
+    * update service information
+    * @input service, customer, agent, container information
+    * @output update service information
     * @author Worarat
     * @Create Date 2564-07-29
     * @Update Date 2564-08-08
@@ -189,7 +189,7 @@ class Service_edit extends Cdms_controller
                 // insert customer
                 $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
 
-                //get new cus_id 
+                //get new cus_id
                 $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
                 $ser_cus_id = $get_ser_cus_id[0]->cus_id;
             }
@@ -224,7 +224,7 @@ class Service_edit extends Cdms_controller
                 //new agent
                 //insert new agent
                 $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-                //get new agn_id 
+                //get new agn_id
                 $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
                 $con_agn_id = $get_ser_agn_id[0]->agn_id;
             } else {

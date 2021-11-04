@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\Controllers;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_car_type;
@@ -6,7 +6,7 @@ use App\Models\M_cdms_province;
 
 /*
 * Car_input
-* เรียกหน้าจอเพิ่มรถ และเพิ่มรถ
+* show car input page, insert car
 * @author Tadsawan
 * @Create Date 2564-08-06
 * @Update Date 2564-08-08
@@ -15,9 +15,9 @@ use App\Models\M_cdms_province;
 class Car_input extends Cdms_controller {
     /*
     * car_input
-    * เรียกหน้าจอเพิ่มรถ
+    * show car input page
     * @input -
-    * @output  แสดงหน้าจอเพิ่มรถ
+    * @output  show car input page
     * @author Tadsawan
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
@@ -40,9 +40,9 @@ class Car_input extends Cdms_controller {
 
     /*
     * car_insert
-    * เพิ่มรถ
-    * @input ข้อมูลรถ
-    * @output เพิ่มรถ
+    * insert car
+    * @input car information
+    * @output insert car
     * @author Tadsawan
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
@@ -63,14 +63,14 @@ class Car_input extends Cdms_controller {
         $car_prov_id = $this->request->getPost('car_prov_id');
         $car_cart_id = $this->request->getPost('car_cart_id');
         $car_status = $this->request->getPost('car_status');
-        
+
         // upload image
         $file = $this->request->getFile('car_image');
         if($file->isValid() && ! $file->hasMoved()){
             $imageName = $file->getRandomName();
             $file->move('./car_image', $imageName);
         }
-        
+
         $car_image = $imageName;
 
         // เพิ่มข้อมูลรถ

@@ -8,21 +8,21 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
-    /*
-    * Customer_show
-    * แสดงรายชื่อลูกค้า และลบลูกค้า
-    * @author  Kittipod
-    * @Create Date 2564-07-29
-    * @Update Date 2564-08-14
-    */
+/*
+* Customer_show
+* show customer list, delete customer
+* @author Kittipod
+* @Create Date 2564-07-29
+* @Update Date 2564-08-14
+*/
 
 class Customer_show extends Cdms_controller {
     /*
     * customer_show_ajax
-    * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_customer และ แสดง view รายชื่อ
+    * show customer list
     * @input -
     * @output array of customer
-    * @author  Kittipod
+    * @author Kittipod
     * @Create Date 2564-07-29
     * @Update Date 2564-09-10
     */
@@ -39,7 +39,7 @@ class Customer_show extends Cdms_controller {
             $data['arr_customer'] = $m_cus->get_by_date($start, $end);
             //Data Service
             $data['arr_service'] = $m_ser->get_by_date($start, $end);
-            
+
             $data['arrivals_date'] = $date_range;
         }else{
 
@@ -54,16 +54,16 @@ class Customer_show extends Cdms_controller {
             $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
                                     ' - '. date("d-m-Y");
         }
-        
+
         $this->output('v_customer_showlist', $data);
     }
 
     /*
     * customer_delete
-    * ลบรายชื่อลูกค้าออกจากรายการ
+    * delete customer
     * @input cus_id
-    * @output เพิ่มลูกค้า
-    * @author  Benjapon
+    * @output delete customer
+    * @author Benjapon
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
     */
@@ -75,9 +75,9 @@ class Customer_show extends Cdms_controller {
 
     /*
     * customer_detail
-    * ดูข้อมูลลูกค้า
+    * show customer detail page
     * @input cus_id
-    * @output เพิ่มลูกค้า
+    * @output show customer detail page
     * @author  Natadanai
     * @Create Date 2564-08-14
     * @Update Date 2564-08-14
@@ -89,6 +89,15 @@ class Customer_show extends Cdms_controller {
         $this->output('v_customer_show_information', $data);
     }
 
+    /*
+    * get_customer_ajax
+    * get customer information by cus_id
+    * @input cus_id
+    * @output get customer information
+    * @author Natadanai
+    * @Create Date 2564-08-14
+    * @Update Date 2564-08-14
+    */
     public function get_customer_ajax() {
         $m_cus = new M_cdms_customer();
         $cus_id = $this->request->getPost('cus_id');
@@ -99,10 +108,10 @@ class Customer_show extends Cdms_controller {
 
     /*
     * export_customer
-    * export รายงาน Customer
-    * @input array_customer
-    * @output File Report Customer
-    * @author  Kittipod
+    * export customer
+    * @input array of customer
+    * @output download report customer
+    * @author Kittipod
     * @Create Date 2564-09-15
     * @Update Date 2564-09-15
     */
@@ -122,9 +131,9 @@ class Customer_show extends Cdms_controller {
                         ' - '. date("d-m-Y");
 
         $date_range = $this->request->getPost('date_range_excel');
-        
+
         if($date_range != $arrivals_date){
-        
+
             $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
             $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
             //Data Customer
@@ -178,17 +187,17 @@ class Customer_show extends Cdms_controller {
                 ],
             ],
         );
-        
+
         $sheet->getStyle('A:Z')->getFont()->setName('TH SarabunPSK')->setSize (16);
         $sheet->getStyle('B')->getFont()->setBold(true);
-    
+
         $sheet->getStyle("B2:B4")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
         $sheet->getStyle("C2:C4")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
 
         $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
         $sheet->setCellValue('B2', 'ตู้เข้า');
         $sheet->setCellValue('C2', ($count_import != 0) ? $count_import : '0');
-        
+
         $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
         $sheet->setCellValue('B3', 'ตู้ออก');
         $sheet->setCellValue('C3', ($count_export != 0) ? $count_export : '0');
@@ -222,14 +231,14 @@ class Customer_show extends Cdms_controller {
         $sheet->setCellValue('D6', 'จำนวนตู้ที่กำลังใช้');
         $sheet->setCellValue('E6', 'เบอร์โทรศัพท์');
         $sheet->setCellValue('F6', 'email');
-        
+
         $count = 7;
 
         for ($i = 0; $i < count($arr_customer); $i++)
 		{
 
             $company_name = $arr_customer[$i]->cus_company_name;
-            if($arr_customer[$i]->cus_branch != null) { 
+            if($arr_customer[$i]->cus_branch != null) {
                 $company_name = $company_name . ' (' . $arr_customer[$i]->cus_branch . ') ';
             }
 			$sheet->setCellValue('B' . $count, $company_name);
@@ -262,7 +271,7 @@ class Customer_show extends Cdms_controller {
         {
             $sheet->getColumnDimension($columnID)->setAutoSize(true);
         }
-        
+
         $writer = new Xlsx($spreadsheet);
 
 		$writer->save($file_name);

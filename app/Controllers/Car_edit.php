@@ -5,8 +5,8 @@ use App\Models\M_cdms_province;
 
 /*
 * Car_edit
-* แสดงและแก้ไขรถ
-* @author Nattanan Tadsawan
+* show car edit page, update car information
+* @author Nattanan, Tadsawan
 * @Create Date 2021-08-06
 * @Update Date 2021-08-06
 */
@@ -14,10 +14,10 @@ use App\Models\M_cdms_province;
 class Car_edit extends Cdms_controller {
     /*
     * car_edit
-    * เรียกหน้าแก้ไขรถพร้อมดึงข้อมูลของรถที่เลือก
+    * show car edit page
     * @input car_id
-    * @output แสดงหน้าจอแก้ไขรถ
-    * @author Nattanan Tadsawan
+    * @output show car edit page
+    * @author Nattanan, Tadsawan
     * @Create Date 2021-08-06
     * @Update Date 2021-08-06
     */
@@ -40,9 +40,9 @@ class Car_edit extends Cdms_controller {
 
     /*
     * car_update
-    * แก้ไขข้อมูลรถ
+    * update car information
     * @input car information
-    * @output แก้ไขข้อมูลรถ
+    * @output update car information
     * @author Nattanan, Tadsawan
     * @Create Date 2021-08-06
     * @Update Date 2021-08-06
@@ -80,7 +80,7 @@ class Car_edit extends Cdms_controller {
 
         // แก้ไขข้อมูลรถ
         $m_car->car_update($car_id,$car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_status,$car_prov_id, $car_cart_id);
-        
+
         //print_r($this->request->getPost());
         $this->response->redirect(base_url() . '/Car_show/car_show_ajax');
     }

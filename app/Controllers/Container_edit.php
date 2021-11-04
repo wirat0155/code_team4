@@ -9,8 +9,8 @@ use App\Models\M_cdms_container_type;
 use App\Models\M_cdms_status_container;
 
 /*
-* Container_input
-* เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์ และเพิ่มตู้คอนเทนเนอร์
+* container_edit
+* show container edit page, update container information
 * @author Wirat
 * @Create Date 2564-08-06
 * @Update Date 2564-09-11
@@ -19,9 +19,9 @@ use App\Models\M_cdms_status_container;
 class Container_edit extends Cdms_controller {
     /*
     * container_input
-    * เรียกหน้าจอเพิ่มตู้คอนเทนเนอร์
+    * show container edit page
     * @input con_id
-    * @output หน้าจอเพิ่มตู้คอนเทนเนอร์
+    * @output  show container edit page
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-08-07
@@ -66,9 +66,9 @@ class Container_edit extends Cdms_controller {
 
     /*
     * container_update
-    * แก้ไขตู้คอนเทนเนอร์
-    * @input ข้อมูลตู้คอนเทนเนอร์ ข้อมูลเอเย่นต์
-    * @output แก้ไขตู้คอนเทนเนอร์ เพิ่ม/แก้ไขเอเย่นต์ หรือชเพิ่ม/แก้ไขเอเย่นต์
+    * update container information
+    * @input contianer information, agent information
+    * @output update container, agent information
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-09-11

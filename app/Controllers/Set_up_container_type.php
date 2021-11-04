@@ -5,19 +5,19 @@ namespace App\Controllers;
 use App\Models\M_cdms_container_type;
 
 /*
-    * Set_up_container_type
-    * แสดงหน้าจอรายการประเภทตู้
-    * @author Tadsawan
-    * @Create Date 2564-10-01
-    * @Update Date 2564-10-04
+* Set_up_container_type
+* manage container type
+* @author Tadsawan
+* @Create Date 2564-10-01
+* @Update Date 2564-10-04
 */
 class Set_up_container_type extends Cdms_controller
 {
     /*
     * container_type_show
-    * แสดงหน้าจอรายการประเภทตู้
+    * show container type
     * @input -
-    * @output array of container_type
+    * @output array of container type
     * @author Tadsawan
     * @Create Date 2564-10-01
     * @Update Date 2564-10-04
@@ -26,7 +26,7 @@ class Set_up_container_type extends Cdms_controller
     {
         $_SESSION['menu'] = 'Set_up';
         $_SESSION['menu_set_up'] = 'container_type';
-        
+
         // get container type
         $m_cont = new M_cdms_container_type();
         $data['arr_container_type'] = $m_cont->get_all_type();
@@ -36,9 +36,9 @@ class Set_up_container_type extends Cdms_controller
 
     /*
     * get_all_container_type
-    * แสดงทั้งหมดของประเภทตู้
+    * get all container type
     * @input -
-    * @output array of container_type
+    * @output array of container type
     * @author Tadsawan
     * @Create Date 2564-10-01
     * @Update Date 2564-10-04
@@ -52,9 +52,9 @@ class Set_up_container_type extends Cdms_controller
 
      /*
     * container_type_delete
-    * ลบประเภทตู้
+    * delete container type
     * @input cont_id
-    * @output ลบประเภทตู้
+    * @output delete container type
     * @author Tadsawan
     * @Create Date 2564-10-04
     * @Update Date 2564-10-04
@@ -70,9 +70,9 @@ class Set_up_container_type extends Cdms_controller
 
      /*
     * container_type_restore
-    * ลบประเภทตู้
+    * restore container type
     * @input cont_id
-    * @output restore ประเภทตู้
+    * @output restore container type
     * @author Tadsawan
     * @Create Date 2564-10-04
     * @Update Date 2564-10-04
@@ -88,9 +88,9 @@ class Set_up_container_type extends Cdms_controller
 
      /*
     * container_type_insert
-    * เพิ่มประเภทตู้
-    * @input ข้อมูลประเภทตู้
-    * @output เพิ่มประเภทตู้
+    * insert container type
+    * @input cont_name, cont_image
+    * @output insert container type
     * @author Tadsawan
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
@@ -101,14 +101,14 @@ class Set_up_container_type extends Cdms_controller
         // container type information
         $cont_name = $this->request->getPost('cont_name');
         $cont_image = $this->request->getPost('cont_image');
-        
+
         // upload image
         $file = $this->request->getFile('cont_image');
         if($file->isValid() && ! $file->hasMoved()){
             $imageName = $file->getRandomName();
             $file->move('./container_type_image', $imageName);
         }
-        
+
         $cont_image = $imageName;
 
         // เพิ่มข้อมูลประเเภทตู้

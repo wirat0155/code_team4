@@ -19,7 +19,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 /*
 * Service_show
-* แสดงรายการบริการ และลบบริการ
+* show service list, delete service
 * @author Natdanai Worarat
 * @Create Date 2564-07-29
 * @Update Date 2564-07-30
@@ -27,10 +27,10 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 class Service_show extends Cdms_controller {
     /*
     * service_show_ajax
-    * เรียกข้อมูลจากฐานข้อมูลผ่านไฟล์ M_cdms_service และ แสดง view รายการบริการ
+    * show service list
     * @input -
     * @output array of service
-    * @author Natdanai Kittipod
+    * @author Natdanai, Kittipod
     * @Create Date 2564-07-29
     * @Update Date 2564-09-10
     */
@@ -67,7 +67,7 @@ class Service_show extends Cdms_controller {
             $end_date = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
 
             $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
-            
+
             $data['arrivals_date'] = $date_range;
         }
         else{
@@ -87,14 +87,14 @@ class Service_show extends Cdms_controller {
             $obj_num_yesterday_import = $m_ser->get_num_import($yesterday);
             $data['num_import'] = $obj_num_import->num_import;
             $data['num_yesterday_import'] = $obj_num_yesterday_import->num_import;
-            
+
             // count export service
             // today and yesterday
             $obj_num_export = $m_ser->get_num_export($today, $today_time, true);
             $obj_num_yesterady_export = $m_ser->get_num_export($yesterday, $yesterday_time, false);
             $data['num_export'] = $obj_num_export->num_export;
             $data['num_yesterday_export'] = $obj_num_yesterady_export->num_export;
-            
+
             // count drop service
             // today and yesterday
             $obj_num_drop = $m_ser->get_num_drop();
@@ -111,9 +111,9 @@ class Service_show extends Cdms_controller {
 
     /*
     * service_delete
-    * ลบรายการบริการ
+    * delete service
     * @input ser_id
-    * @output ลบรายการบริการ
+    * @output delete service
     * @author Worarat
     * @Create Date 2564-07-30
     * @Update Date 2564-07-30
@@ -126,24 +126,24 @@ class Service_show extends Cdms_controller {
 
     /*
     * service_detail
-    * แสดงหน้าจอข้อมูลบริการ
+    * show service detail page
     * @input ser_id
-    * @output แสดงหน้าจอข้อมูลบริการ
+    * @output show service detail page
     * @author Tadsawan
     * @Create Date 2564-08-12
     * @Update Date
     */
     public function service_detail($ser_id) {
         $_SESSION['menu'] = 'Service_show';
-        
+
         // get service
         $m_ser = new M_cdms_service();
         $data['obj_service'] = $m_ser->get_by_id($ser_id);
 
-         // get container 
+         // get container
          $m_con = new M_cdms_container();
          $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
-        
+
         // size name
         $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_by_id($data['obj_container'][0]->con_size_id);
@@ -177,7 +177,15 @@ class Service_show extends Cdms_controller {
         $this->output('v_service_show_information', $data);
     }
 
-    
+    /*
+    * get_cost_ajax
+    * get cost in service
+    * @input ser_id
+    * @output get cost in service
+    * @author Wirat
+    * @Create Date 2564-09-15
+    * @Update Date 2564-09-15
+    */
     public function get_cost_ajax() {
         $m_cosd = new M_cdms_cost_detail();
         $ser_id = $this->request->getPost('ser_id');
@@ -186,47 +194,74 @@ class Service_show extends Cdms_controller {
         echo json_encode($arr_service_cost);
     }
 
+    /*
+    * cost_insert
+    * insert cost in service
+    * @input cosd_ser_id, cosd_name, cosd_cost
+    * @output insert cost in service
+    * @author Natdanai
+    * @Create Date 2564-09-15
+    * @Update Date 2564-09-15
+    */
     public function cost_insert() {
         $m_cosd = new M_cdms_cost_detail();
-        
+
         $cosd_ser_id = $this->request->getPost('cosd_ser_id');
         $cosd_name = $this->request->getPost('cosd_name');
         $cosd_cost = $this->request->getPost('cosd_cost');
         $cosd_payment_date = date("Y-m-d", strtotime("+7 day"));
-        
+
         $m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_payment_date, $cosd_ser_id);
         $last_cost = $m_cosd->get_last();
 
         echo json_encode($last_cost);
     }
 
+    /*
+    * cost_update
+    * update cost in service
+    * @input cosd_id, cosd_name, cosd_cost
+    * @output update cost in service
+    * @author Natdanai
+    * @Create Date 2564-09-15
+    * @Update Date 2564-09-15
+    */
     public function cost_update() {
         $m_cosd = new M_cdms_cost_detail();
 
         $cosd_id = $this->request->getPost('cosd_id');
         $cosd_name = $this->request->getPost('cosd_name');
         $cosd_cost = $this->request->getPost('cosd_cost');
-        
+
         $m_cosd->cost_update($cosd_id, $cosd_name, $cosd_cost);
 
         echo json_encode('update complete');
     }
 
+    /*
+    * cost_delete
+    * delete cost in service
+    * @input cosd_id
+    * @output delete cost in service
+    * @author Natdanai
+    * @Create Date 2564-09-15
+    * @Update Date 2564-09-15
+    */
     public function cost_delete() {
         $m_cosd = new M_cdms_cost_detail();
 
         $cosd_id = $this->request->getPost('cosd_id');
-    
+
         $m_cosd->delete($cosd_id);
 
         echo json_encode('delete complete');
     }
-        /*
+    /*
     * export_customer
-    * export รายงาน Customer
-    * @input array_customer
-    * @output File Report Customer
-    * @author  Kittipod
+    * export service report
+    * @input array of customer
+    * @output download service report
+    * @author Kittipod
     * @Create Date 2564-09-15
     * @Update Date 2564-09-15
     */
@@ -295,17 +330,17 @@ class Service_show extends Cdms_controller {
                 ],
             ],
         );
-        
+
         $sheet->getStyle('A:Z')->getFont()->setName('TH SarabunPSK')->setSize (16);
         $sheet->getStyle('B')->getFont()->setBold(true);
-    
+
         $sheet->getStyle("B2:B4")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
         $sheet->getStyle("C2:C4")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
 
         $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
         $sheet->setCellValue('B2', 'ตู้เข้า');
         $sheet->setCellValue('C2', ($count_import != 0) ? $count_import : '0');
-        
+
         $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
         $sheet->setCellValue('B3', 'ตู้ออก');
         $sheet->setCellValue('C3', ($count_export != 0) ? $count_export : '0');
@@ -324,7 +359,7 @@ class Service_show extends Cdms_controller {
         $sheet->setCellValue('F6', 'CUT-OFF');
         $sheet->setCellValue('G6', 'เอเย่นต์');
         $sheet->setCellValue('H6', 'ลูกค้า');
-        
+
         $count = 7;
 
         for ($i = 0; $i < count($arr_service); $i++)
@@ -353,7 +388,7 @@ class Service_show extends Cdms_controller {
             $sheet->setCellValue('G' . $count, ' ' . $arr_service[$i]->agn_company_name);
 
             $company_name = $arr_service[$i]->cus_company_name;
-            if($arr_service[$i]->cus_branch != null) { 
+            if($arr_service[$i]->cus_branch != null) {
                 $company_name = $company_name . ' (' . $arr_service[$i]->cus_branch . ') ';
             }
             $sheet->setCellValue('H' . $count, ' ' . $company_name);
@@ -367,7 +402,7 @@ class Service_show extends Cdms_controller {
         {
             $sheet->getColumnDimension($columnID)->setAutoSize(true);
         }
-        
+
         $writer = new Xlsx($spreadsheet);
 
 		$writer->save($file_name);
@@ -392,11 +427,11 @@ class Service_show extends Cdms_controller {
         return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
     }
 
-       /*
+    /*
     * get_change_service
-    * ดูประวัติการเปลี่ยนตู้
+    * get change service
     * @input ser_id_change
-    * @output  arr_service
+    * @output  array of service
     * @author  Tadsawan
     * @Create Date 2564-09-20
     * @Update Date 2564-09-20

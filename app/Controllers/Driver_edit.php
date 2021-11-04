@@ -7,19 +7,19 @@ use App\Models\M_cdms_car;
 
 /*
 * Driver_update
-* แสดงหน้าจอเเก้ไขข้อมูลพนักงาน 
+* show driver edit page, update driver
 * @author  Warisara
 * @Create Date 2564-08-07
 * @Update Date 2564-08-07
 */
 
 class Driver_edit extends Cdms_controller {
-    /*   
+    /*
     * driver_update
-    * แสดงหน้าจอ driver_update
+    * show driver edit page
     * @input dri_id
-    * @output แสดงหน้าจอแก้ไขพนักงานขับรถ
-    * @author  Warisara
+    * @output show driver edit page
+    * @author Warisara
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */
@@ -35,10 +35,10 @@ class Driver_edit extends Cdms_controller {
 
     /*
     * driver_update
-    * เเก้ไขข้อมูลพนักงานขับรถ
-    * @input dri information
-    * @output แก้ไขพนักงานขับรถ
-    * @author  Warisara
+    * update driver
+    * @input driver information
+    * @output update driver
+    * @author Warisara
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
     */

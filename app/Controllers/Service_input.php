@@ -13,20 +13,20 @@ use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
 
 /*
-    * Service_input
-    * เพิ่มบริการ
-    * @author Natdanai 
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-08
+* Service_input
+* show service input page, insert service
+* @author Natdanai
+* @Create Date 2564-08-06
+* @Update Date 2564-08-08
 */
 
 class Service_input extends Cdms_controller {
     /*
-    * container_input
-    * เรียกหน้าจอเพิ่มบริการ
+    * service_input
+    * show service input page
     * @input -
-    * @output หน้าจอเพิ่มบริการ
-    * @author Natdanai 
+    * @output show service input page
+    * @author Natdanai
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
     */
@@ -96,10 +96,10 @@ class Service_input extends Cdms_controller {
 
     /*
     * service_insert
-    * เพิ่มข้อมูลบริการ
-    * @input ข้อมูลบริการ ข้อมูลตู้คอนเทรนเนอร์ ข้อมูลเอเย่นต์ ข้อมูลลูกค้า
-    * @output เพิ่มข้อมูลบริการ ข้อมูลตู้คอนเทรนเนอร์ ข้อมูลเอเย่นต์ ข้อมูลลูกค้า หรือแก้ไข ข้อมูลตู้คอนเทรนเนอร์ 
-    * @author Natdanai 
+    * insert service
+    * @input service, customer, agent, contaienr information
+    * @output insert service, customer, agent, contaienr information
+    * @author Natdanai
     * @Create Date 2564-08-06
     * @Update Date 2564-08-08
     */
@@ -180,7 +180,7 @@ class Service_input extends Cdms_controller {
         // new customer
         // then check duplicate customer company name
         else {
-            
+
             $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
 
             // not duplicate cus_company_name nor cus_branch
@@ -190,11 +190,11 @@ class Service_input extends Cdms_controller {
                 // insert customer
                 $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
 
-                //get new cus_id 
+                //get new cus_id
                 $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
                 $ser_cus_id = $get_ser_cus_id[0]->cus_id;
             }
-            
+
             // duplicae cus_company_name & cus_branch
             // go to add service page with customer error
             else {
@@ -213,7 +213,7 @@ class Service_input extends Cdms_controller {
                 exit;
             }
         }
-        
+
         //check agent
         if($agn_company_name == ''){
             $con_agn_id = $agn_id;
@@ -225,7 +225,7 @@ class Service_input extends Cdms_controller {
                 //new agent
                 //insert new agent
                 $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-                //get new agn_id 
+                //get new agn_id
                 $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
                 $con_agn_id = $get_ser_agn_id[0]->agn_id;
             } else {
@@ -244,7 +244,7 @@ class Service_input extends Cdms_controller {
 
         // New container
         else {
-            
+
             $get_ser_con_id = $m_con->get_by_con_number($con_number);
 
             // New container not duplicate with database

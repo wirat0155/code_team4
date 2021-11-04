@@ -6,7 +6,7 @@ use App\Models\M_cdms_driver;
 
 /*
 * Driver_show
-* แสดงรายการพนักงานขับรถ และลบพนักงานขับรถ
+* show drvier list, delete driver
 * @author Thanatip , Warisara
 * @Create Date 2564-07-30
 * @Update Date
@@ -15,7 +15,7 @@ class Driver_show extends Cdms_controller {
 
     /*
     * driver_show_ajax
-    * แสดงพนักงานขับรถทั้งหมด
+    * show drvier list
     * @input -
     * @output array of driver
     * @author Thanatip
@@ -31,9 +31,9 @@ class Driver_show extends Cdms_controller {
 
     /*
     * driver_delete
-    * ลบรายการพนักงานขับรถ
+    * delete driver
     * @input dri_id
-    * @output ลบพนักงานขับรถ
+    * @output delete driver
     * @author Thanatip
     * @Create Date 2564-07-30
     * @Update Date 2564-07-30
@@ -45,6 +45,15 @@ class Driver_show extends Cdms_controller {
         return $this->response->redirect(base_url('/driver_show/driver_show_ajax'));
     }
 
+    /*
+    * get_driver_ajax
+    * get driver information by ser_dri
+    * @input dri_id
+    * @output driver information
+    * @author Thanatip
+    * @Create Date 2564-07-30
+    * @Update Date 2564-07-30
+    */
     public function get_driver_ajax() {
         $m_dri = new M_cdms_driver();
         $ser_dri = $this->request->getPost('ser_dri');
@@ -52,11 +61,12 @@ class Driver_show extends Cdms_controller {
 
         echo json_encode($dri_information);
     }
+
     /*
-    * driver_delete
-    * ดูข้อมูลพนักงานขับรถ
+    * driver_detail
+    * show driver detail page
     * @input dri_id
-    * @output แสดงหน้าจอข้อมูลพนักงานขับรถ
+    * @output show driver detail page
     * @author Thanatip
     * @Create Date 2564-08-12
     * @Update Date 2564-08-17

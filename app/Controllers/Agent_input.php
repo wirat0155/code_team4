@@ -2,20 +2,19 @@
 namespace App\Controllers;
 use App\Models\M_cdms_agent;
 
-    /*
-    * Agent_input
-    * แสดงหน้าจอเพิ่มข้อมูลเอเย่นต์
-    * @author Klayuth
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
-    */
-
+/*
+* Agent_input
+* show agent input page, insert agent
+* @author Klayuth
+* @Create Date 2564-08-06
+* @Update Date 2564-08-06
+*/
 class Agent_input extends Cdms_controller {
     /*
     * agent_input
     * แสดงหน้าจอเพิ่มเอเย่นต์
     * @input -
-    * @output แสดงหน้าจอเพิ่มเอเย่นต์
+    * @output show agent input page
     * @author Klayuth
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
@@ -31,15 +30,15 @@ class Agent_input extends Cdms_controller {
 
     /*
     * agent_insert
-    * เพิ่มข้อมูลเอเย่นต์
+    * insert agent
     * @input agn information
-    * @output เพิ่มเอเย่นต์
+    * @output insert agent
     * @author Klayuth
     * @Create Date 2564-08-06
     * @Update Date 2564-10-14
     */
     public function agent_insert() {
-        
+
         // get post value from agent_input form
         $agn_company_name = $this->request->getPost('agn_company_name');
         $agn_firstname = $this->request->getPost('agn_firstname');

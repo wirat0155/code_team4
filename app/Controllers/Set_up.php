@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 /*
 * Set_up
-* หน้าจอ Set up
+* show set up page
 * @author Kittipod
 * @Create Date 2564-10-2
 * @Update Date 2564-10-2
@@ -13,12 +13,12 @@ namespace App\Controllers;
 class Set_up extends Cdms_controller {
     /*
     * set_up_show
-    * แสดงหน้าจอ Set up
+    * show set up page
     * @input -
-    * @output Set up
+    * @output show set up page
     * @author Kittipod
-    * @Create Date 2564-10-2
-    * @Update Date 2564-10-2
+    * @Create Date 2564-10-02
+    * @Update Date 2564-10-02
     */
     public function set_up_show() {
         $_SESSION['menu'] = 'Set_up';

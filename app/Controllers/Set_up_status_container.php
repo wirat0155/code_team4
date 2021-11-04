@@ -5,17 +5,17 @@ namespace App\Controllers;
 use App\Models\M_cdms_status_container;
 
 /*
-    * Set_status_container
-    * แสดงหน้าจอรายการสถานะตู้
-    * @author Tadsawan
-    * @Create Date 2564-10-22
-    * @Update Date 2564-10-22
+* Set_up_status_container
+* manage status container
+* @author Tadsawan
+* @Create Date 2564-10-22
+* @Update Date 2564-10-22
 */
-class Set_status_container extends Cdms_controller
+class Set_up_status_container extends Cdms_controller
 {
     /*
     * status_container_show
-    * แสดงหน้าจอรายการสถานะตู้
+    * show status container
     * @input -
     * @output array of status_container
     * @author Tadsawan
@@ -26,7 +26,7 @@ class Set_status_container extends Cdms_controller
     {
         $_SESSION['menu'] = 'Set_up';
         $_SESSION['menu_set_up'] = 'status_container';
-        
+
         // get status container
         $m_stac = new M_cdms_status_container();
         $data['arr_status_container'] = $m_stac->get_all_status();
@@ -36,9 +36,9 @@ class Set_status_container extends Cdms_controller
 
     /*
     * get_all_status_container
-    * แสดงทั้งหมดของสถานะตู้
+    * show status container
     * @input -
-    * @output array of status_container
+    * @output array of status container
     * @author Thanatip
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
@@ -49,13 +49,13 @@ class Set_status_container extends Cdms_controller
         $data['arr_status_container'] = $m_stac->get_all();
         return json_encode($data['arr_status_container']);
     }
-    
+
     /*
     * status_container_delete
-    * ลบสถานะตู้
+    * delete status container
     * @input stac_id
-    * @output ลบสถานะตู้
-    * @author  Natadanai
+    * @output delete status container
+    * @author Natadanai
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
     */
@@ -70,9 +70,9 @@ class Set_status_container extends Cdms_controller
 
      /*
     * status_container_restore
-    * restore สถานะตู้
+    * restore status container
     * @input cont_id
-    * @output restore สถานะตู้
+    * @output restore status container
     * @author Tadsawan
     * @Create Date 2564-22-04
     * @Update Date 2564-22-04
@@ -88,9 +88,9 @@ class Set_status_container extends Cdms_controller
 
      /*
     * status_container_insert
-    * เพิ่มสถานะตู้
-    * @input ข้อมูลสถานะตู้
-    * @output เพิ่มสถานะตู้
+    * insert status container
+    * @input stac_name
+    * @output insert status container
     * @author Tadsawan
     * @Create Date 2564-10-22
     * @Update Date 2564-10-22
@@ -100,7 +100,7 @@ class Set_status_container extends Cdms_controller
 
         // status container information
         $stac_name = $this->request->getPost('stac_name');
-        
+
         // เพิ่มข้อมูลสถานะตู้
         $m_status_container->insert($stac_name);
         $this->response->redirect(base_url() . '/Set_status_container/status_container_show');
