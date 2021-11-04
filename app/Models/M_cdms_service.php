@@ -24,14 +24,26 @@ class M_cdms_service extends Da_cdms_service {
     * @Update Date  2564-10-30
     */
     public function get_all($today = '') {
-        $sql = "SELECT * FROM $this->table
-                INNER JOIN cdms_customer ON ser_cus_id = cus_id
-                INNER JOIN cdms_container ON ser_con_id = con_id
-                INNER JOIN cdms_container_type ON con_cont_id = cont_id
-                INNER JOIN cdms_status_container ON ser_stac_id = stac_id
-                INNER JOIN cdms_agent ON con_agn_id = agn_id
-                WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR (ser_actual_departure_date IS NULL AND ser_stac_id != 4)) AND ser_status = 1
-                ORDER BY ser_id DESC";
+        if ($today != '') {
+            $sql = "SELECT * FROM $this->table
+                    INNER JOIN cdms_customer ON ser_cus_id = cus_id
+                    INNER JOIN cdms_container ON ser_con_id = con_id
+                    INNER JOIN cdms_container_type ON con_cont_id = cont_id
+                    INNER JOIN cdms_status_container ON ser_stac_id = stac_id
+                    INNER JOIN cdms_agent ON con_agn_id = agn_id
+                    WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR (ser_actual_departure_date IS NULL AND ser_stac_id != 4)) AND ser_status = 1
+                    ORDER BY ser_id DESC";
+        }
+        else {
+            $sql = "SELECT * FROM $this->table
+                    INNER JOIN cdms_customer ON ser_cus_id = cus_id
+                    INNER JOIN cdms_container ON ser_con_id = con_id
+                    INNER JOIN cdms_container_type ON con_cont_id = cont_id
+                    INNER JOIN cdms_status_container ON ser_stac_id = stac_id
+                    INNER JOIN cdms_agent ON con_agn_id = agn_id
+                    WHERE  ser_status = 1
+                    ORDER BY ser_id DESC";
+        }
         return $this->db->query($sql)->getResult();
     }
 

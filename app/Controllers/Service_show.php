@@ -72,11 +72,12 @@ class Service_show extends Cdms_controller {
         }
         else{
             $data['arr_service'] = $m_ser->get_all($today);
+            $data['arr_service_temp'] = $m_ser->get_all();
 
-            $index = count($data['arr_service'])-1;
-            $start = $data['arr_service'][$index]->ser_arrivals_date;
-            $end = $data['arr_service'][0]->ser_arrivals_date;
-            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
+            $index = count($data['arr_service_temp'])-1;
+            $start = $data['arr_service_temp'][$index]->ser_arrivals_date;
+            $end = $data['arr_service_temp'][0]->ser_arrivals_date;
+            $data['arrivals_date'] = substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
 
             $date['yesterday'] = $yesterday;
             $date['today'] = $today;
@@ -106,6 +107,7 @@ class Service_show extends Cdms_controller {
             $obj_num_yesterday_all = $m_ser->get_num_all($today, $yesterday_time);
             $data['num_yesterday_all'] = $obj_num_yesterday_all->num_all;
         }
+        // print_r($data['arr_service']);
         $this->output('v_service_showlist', $data);
     }
 

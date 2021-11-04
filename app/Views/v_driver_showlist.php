@@ -132,7 +132,7 @@
                                                         <i class="fas fa-ellipsis-v"></i>
                                                         <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>" style="right: 0;left: auto;">
                                                             <!-- Button Edit -->
-                                                            <div class="item" onclick="change_location(<?php echo $arr_driver[$i]->dri_id ?>)">
+                                                            <div class="item" onclick="location.href='<?php echo base_url() . '/driver_edit/driver_edit/' . $arr_driver[$i]->dri_id ?>';">
                                                                 <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
                                                                 Edit
                                                             </div>
