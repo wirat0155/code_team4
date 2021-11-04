@@ -284,6 +284,17 @@
 </div>
 
 <script>
+    <!--
+    /*
+    * get_image
+    * show image name
+    * @input -
+    * @output show image name
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_image() {
         var dri_profile_image = $('#dri_profile_image').val();
         $('#file_name').html(dri_profile_image.substr(12));
@@ -291,10 +302,21 @@
         $('#old_dri_profile_image').remove();
     }
 
+    <!--
+    /*
+    * get_id
+    * get dri_id in remove driver modal
+    * @input dri_id
+    * @output get dri_id in remove driver modal
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_id(dri_id) {
         $('#dri_id').val(dri_id);
     }
 
-    //เรียกmodal delete
+    //call remove driver modal
     $('.ui.modal').modal('attach events', '.test.button', 'toggle');
 </script>

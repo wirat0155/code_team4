@@ -139,6 +139,17 @@
     // check สถานะของประเภทตู้
     $('#input_add').hide();
 
+    <!--
+    /*
+    * check_status_container_type
+    * check status container type
+    * @input cont_id
+    * @output check status container type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_status_container_type(cont_id) {
         if ($('#cont_id' + cont_id).prop('checked')) {
             container_type_delete(cont_id);
@@ -146,7 +157,18 @@
             container_type_restore(cont_id);
         }
     }
-    // ลบประเภทตู้
+
+    <!--
+    /*
+    * container_type_delete
+    * delete container type
+    * @input cont_id
+    * @output delete container type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function container_type_delete(cont_id) {
         console.log('container_type_delete', cont_id);
         $.ajax({
@@ -158,7 +180,18 @@
             }
         });
     }
-    // เปลี่ยสถานะตู้จาก off เป็น on
+
+    <!--
+    /*
+    * container_type_restore
+    * restore container type
+    * @input cont_id
+    * @output restore container type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function container_type_restore(cont_id) {
         console.log('container_type_restore', cont_id);
         $.ajax({
@@ -171,12 +204,34 @@
         });
     }
 
+    <!--
+    /*
+    * get_image
+    * show image name
+    * @input -
+    * @output show image name
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_image() {
         var cont_image = $('#cont_image').val();
         $('#input_show_browse').val(cont_image.substr(12));
         $('#cont_image-error').remove();
     }
 
+    <!--
+    /*
+    * show_input
+    * show input to insert container type
+    * @input -
+    * @output show input to insert container type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

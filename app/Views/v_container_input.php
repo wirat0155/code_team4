@@ -104,7 +104,7 @@
                                                 pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" oninput="check_con_number()">
                                             <label class="error"><?php echo $_SESSION['con_number_error']?></label>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div class="row">
@@ -208,7 +208,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <!-- Width(m) -->
                                         <div class="form-group col-sm-6 col-md-2 ms-md-30">
@@ -334,6 +334,17 @@
         }
     })
 
+    <!--
+    /*
+    * show_all_form
+    * show container and agent section form
+    * @input -
+    * @output show container and agent section form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_all_form(status) {
         $('#container_section').show();
         $('#agent_section').show();
@@ -342,6 +353,17 @@
         setTimeout(check_all_form);
     }
 
+    <!--
+    /*
+    * show_container_form
+    * show container section in form
+    * @input -
+    * @output show container section in form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_container_form() {
         $('#container_section').show();
         $('#container_from_action').show();
@@ -358,6 +380,17 @@
         $('#last_from_action').hide();
     }
 
+    <!--
+    /*
+    * show_agent_form
+    * show agent section in form
+    * @input -
+    * @output show agent section in form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_agent_form() {
         $('#agent_section').show();
         $('#agent_from_action').show();
@@ -375,6 +408,17 @@
         $('.ui.fluid.search.selection.dropdown+label').css('display', 'block');
     }
 
+    <!--
+    /*
+    * check_container_form
+    * check container form contain error or not
+    * @input -
+    * @output check container form contain error or not
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_container_form() {
         // $('#container_section label.error').remove();
         if ($('#container_section .form-control.error').length > 0) {
@@ -383,13 +427,19 @@
         } else {
             $('#container_step').addClass("completed");
         }
-        // if (status == '1') {
-        //     show_service_form();
-        // } else {
-        //     show_agent_form();
-        // }
     }
 
+    <!--
+    /*
+    * check_agent_form
+    * check agent form contain error or not
+    * @input -
+    * @output check agent form contain error or not
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_agent_form() {
         // $('#agent_section label.error').remove();
         if ($('#agent_section .form-control.error').length > 0) {
@@ -398,13 +448,19 @@
         } else {
             $('#agent_step').addClass("completed");
         }
-        // if (status == '1') {
-        //     show_container_form();
-        // } else {
-        //     show_customer_form();
-        // }
     }
 
+    <!--
+    /*
+    * check_all_form
+    * check form contain error or not
+    * @input -
+    * @output check form contain error or not
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_all_form() {
 
         if ($('#container_section .form-control.error').length > 0) {
@@ -417,7 +473,18 @@
             $('#agent_step').click();
         }
     }
-    // get size information when change con_size_id dropdown
+
+    <!--
+    /*
+    * get_size_information
+    * get size information when select size option
+    * @input con_size_id
+    * @output get size information when select size option
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
         $.ajax({
@@ -433,18 +500,51 @@
         });
     }
 
-    // show size information when change con_size_id dropdown
+    <!--
+    /*
+    * show_size_information
+    * show size information when select size option
+    * @input size_height_out, size_width_out, size_length_out
+    * @output get show information when select size option
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_size_information(size_height_out, size_width_out, size_length_out) {
         $('input[name="size_height_out"]').val(size_height_out);
         $('input[name="size_width_out"]').val(size_width_out);
         $('input[name="size_length_out"]').val(size_length_out);
     }
+
+    <!--
+    /*
+    * validate_form
+    * validate form form container error or not
+    * @input -
+    * @output validate form form container error or not
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function validate_form() {
         let con = check_con_number();
         let agn = check_agn_id();
         return con && agn;
     }
 
+    <!--
+    /*
+    * check_con_number
+    * check input con_number or not
+    * @input -
+    * @output check input con_number or not
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_con_number() {
         let con_number_input = $('input[name="con_number"]');
         let con_number_warning =  $('input[name="con_number"]+label');
@@ -490,8 +590,20 @@
                 con_cube_pass = false;
             }
         }
-        
+
     }
+
+    <!--
+    /*
+    * check_agn_id
+    * check user select agent or not
+    * @input -
+    * @output check user select agent or not
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_agn_id() {
         let agn_id = $('input[name="agn_id"]').val();
         let agn_id_warning = $('.ui.fluid.search.selection.dropdown+label');
@@ -512,15 +624,48 @@
         }
     }
 
+    <!--
+    /*
+    * remove_error
+    * remove error class in form
+    * @input tag, name
+    * @output remove error class in form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function remove_error(tag, name) {
         $(tag + '[name="' + name + '"]').removeClass('error');
         $(tag + '[name="' + name + '"]+label').html('');
     }
 
+    <!--
+    /*
+    * remove_form_attr
+    * remove readonly in input when select dropdown
+    * @input attr, target
+    * @output remove readonly in input when select dropdown
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function remove_form_attr(attr, target) {
         $(target + ' *[readonly]').removeAttr(attr);
     }
-    
+
+    <!--
+    /*
+    * get_agent_information
+    * get agent information when select agent option
+    * @input agn_id
+    * @output get agent information when select agent option
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_agent_information() {
         $('#agent_section label.error').remove();
         remove_form_attr('readonly', '#agent_section');
@@ -549,12 +694,33 @@
         }
     }
 
+    <!--
+    /*
+    * valid_agent_error
+    * valid agent form input and select
+    * @input -
+    * @output valid agent form input and select
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function valid_agent_error() {
         $('#agent_section input.error').removeClass('error');
         $('#agent_section textarea.error').removeClass('error');
     }
 
-    // show agent information when input agn_company_name
+    <!--
+    /*
+    * show_agent_information
+    * show agnet information in agent section form
+    * @input agent information
+    * @output show agnet information in agent section form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_agent_information(agent) {
         $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
         $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
@@ -564,7 +730,17 @@
         $('input[name="agn_email"]').val(agent[0]['agn_email']);
     }
 
-    // clear agent information when delete input agn_company_name
+    <!--
+    /*
+    * clear_agent_information
+    * clear input in agent section form
+    * @input -
+    * @output clear input in agent section form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function clear_agent_information() {
         $('input[name="agn_company_name"]').val('');
         $('textarea[name="agn_address"]').val('');

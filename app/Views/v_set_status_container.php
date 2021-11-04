@@ -123,6 +123,17 @@
     // check สถานะของสถานะตู้
     $('#input_add').hide();
 
+    <!--
+    /*
+    * check_status_container
+    * check status container
+    * @input stac_id
+    * @output check status container
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_status_container(stac_id) {
         if ($('#stac_id' + stac_id).prop('checked')) {
             status_container_delete(stac_id);
@@ -130,7 +141,18 @@
             status_container_restore(stac_id);
         }
     }
-    // ลบสถานะตู้
+
+    <!--
+    /*
+    * status_container_delete
+    * delete status container
+    * @input stac_id
+    * @output delete status container
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function status_container_delete(stac_id) {
         console.log('status_container_delete', stac_id);
         $.ajax({
@@ -142,7 +164,18 @@
             }
         });
     }
-    // เปลี่ยสถานะตู้จาก off เป็น on
+
+    <!--
+    /*
+    * status_container_restore
+    * restore status container
+    * @input stac_id
+    * @output restore status container
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function status_container_restore(stac_id) {
         console.log('status_container_restore', stac_id);
         $.ajax({
@@ -155,7 +188,17 @@
         });
     }
 
-
+    <!--
+    /*
+    * show_input
+    * show input to insert status container
+    * @input -
+    * @output show input to insert status container
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

@@ -108,7 +108,7 @@
                     <div class="col-md-12">
                         <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
 
-    
+
                         <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                             <div class="">
                                 <div class="picture-container">
@@ -122,7 +122,7 @@
                                         <div class="card-title">Car Information</div>
                                     </div>
 
-                                    <!-- Car Information-->    
+                                    <!-- Car Information-->
                                     <div class="card-body">
                                         <div class="row px-5">
 
@@ -275,7 +275,7 @@
                     </div>
                 </div>
             </form>
-            
+
 
             <div class="ui modal">
                 <i class="close icon"></i>
@@ -314,6 +314,18 @@
 </div>
 <script>
     $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+
+    <!--
+    /*
+    * get_image
+    * show image name
+    * @input -
+    * @output show image name
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_image() {
         var car_image = $('#car_image').val();
         $('#file_name').html(car_image.substr(12));
@@ -321,6 +333,17 @@
         $('#old_car_image').remove();
     }
 
+    <!--
+    /*
+    * get_id
+    * get car_id and show in remove car modal
+    * @input -
+    * @output get car_id and show in remove car modal
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_id(car_id) {
         $('#car_id').val(car_id);
     }

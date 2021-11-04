@@ -65,8 +65,6 @@
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
-            
-
                     <!-- หัวข้อ -->
                     <div class="pl-4 mt-4 page-header mb-0">
                         <h4 class="pl-3 page-title">EDIT DRIVER</h4>
@@ -306,79 +304,17 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_driver_form').length > 0) {
-            $('#add_driver_form').validate({
-                rules: {
-                    dri_name: {
-                        required: true
-                    },
-                    dri_card_number: {
-                        required: true,
-                        maxlength: 13
-                    },
-                    dri_license: {
-                        required: true,
-                        maxlength: 8
-                    },
-                    dri_tel: {
-                        required: true,
-                        maxlength: 10
-                    },
-                    dri_car_id: {
-                        required: true,
-                    },
-                    dri_license_type: {
-                        required: true,
-                    },
-                    dri_status: {
-                        required: true,
-                    },
-                    dri_date_start: {
-                        required: true
-                    }
-                },
-                messages: {
-                    dri_name: {
-                        required: 'กรุณากรอกชื่อ'
-                    },
-                    dri_card_number: {
-                        required: 'กรุณากรอกหมายเลขบัตรประชาชน',
-                        maxlength: 'กรุณากรอกไม่เกิน 13'
-                    },
-                    dri_license: {
-                        required: 'กรุณากรอกหมายเลขใบขับขี่',
-                        maxlength: 'กรุณากรอกไม่เกิน 8'
-                    },
-                    dri_tel: {
-                        required: 'กรุณากรอกหมายเลขโทรศัพท์',
-                        maxlength: 'กรุณากรอกไม่เกิน 10'
-                    },
-                    dri_car_id: {
-                        required: 'กรุณากรอกหมายเลขรถ'
-                    },
-                    dri_license_type: {
-                        required: 'กรุณากรอกประเภทใบขับขี่'
-                    },
-                    dri_status: {
-                        required: 'กรุณากรอกสถานะพนักงานขับรถ'
-                    },
-                    dri_date_start: {
-                        required: 'กรุณาเลือกวันที่เข้าทำงาน'
-                    }
-                }
-            })
-        }
-    });
-
-    // function get_image() {
-    //     var dri_profile_image = $('#dri_profile_image').val();
-    //     $('#file_name').html(dri_profile_image.substr(12));
-    //     $('#dri_profile_image-error').remove();
-    //     $('#old_dri_profile_image').remove();
-    // }
-
+    <!--
+    /*
+    * get_image
+    * show image name in driver edit form
+    * @input -
+    * @output show image name in driver edit form
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_image() {
         var dri_profile_image = $('#dri_profile_image').val();
         $('#input_show_browse').val(dri_profile_image.substr(12));

@@ -184,7 +184,7 @@
                                             <h2 class="mt-0 ml-3">
                                                 <?php echo $num_import ?>
                                             </h2>
-                                            
+
                                             <?php if ($num_import >= $num_yesterday_import):?>
                                                 <p class="mb-3" style="color: #09F600;">
                                                     <i class="fas fa-arrow-up"></i>
@@ -634,14 +634,32 @@
             $('.cancelBtn').removeClass('btn-default');
         });
 
-        function change_location(url) {
-            window.location = "https://www.google.com";
-        }
-
+        <!--
+        /*
+        * get_id
+        * get ser_id and show in remove service form
+        * @input section
+        * @output go to get ser_id and show in remove service form
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function get_id(ser_id) {
             $('#ser_id').val(ser_id);
         }
 
+        <!--
+        /*
+        * service_detail
+        * go to service detail page
+        * @input section
+        * @output go to service detail page
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function service_detail(ser_id) {
             window.location = '<?php echo base_url('') . '/Service_show/service_detail/' ?>' + ser_id;
         }

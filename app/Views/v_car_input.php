@@ -244,19 +244,45 @@ label.error {
         </div>
 
         <script>
+        <!--
+        /*
+        * validate_form
+        * validate add car form
+        * @input -
+        * @output validate add car form
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function validate_form() {
             return check_car_prov_id();
         }
 
+        <!--
+        /*
+        * check_car_prov_id
+        * check select province or not
+        * @input -
+        * @output check select province or not
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function check_car_prov_id() {
+            // get province id value
             let car_prov_id = $('input[name="car_prov_id"]').val();
             let car_prov_id_warning = $('.ui.fluid.search.selection.dropdown+small');
 
+            // not select province
             if (car_prov_id == '') {
                 $('input.search').addClass('error');
                 car_prov_id_warning.addClass('error');
                 car_prov_id_warning.html('<br/><br/>Please select a province');
                 return false;
+
+            // select province
             } else {
                 $('input.search').removeClass('error');
                 car_prov_id_warning.removeClass('error');
@@ -265,6 +291,17 @@ label.error {
             }
         }
 
+        <!--
+        /*
+        * get_image
+        * show image name when upload car image
+        * @input -
+        * @output show image name when upload car image
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function get_image() {
             var car_img = $('#car_image').val();
             $('#input_show_browse').val(car_img.substr(12));

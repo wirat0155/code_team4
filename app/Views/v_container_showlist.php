@@ -106,10 +106,10 @@
                                                 /* Orange */
                                                 }
                                             </style>
-                                            
+
                                             <!-- สถานะของตู้ -->
                                             <td onclick="container_detail(<?php echo $arr_container[$i]->con_id ?>)" class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
-                                                <?php 
+                                                <?php
                                                 // 1 = import (dodgerblue)
                                                 if($arr_container[$i]->con_stac_id == '1'){
                                                     echo '<span class="bg-import text-white p-2" style="border-radius: 5px;">' . $arr_container[$i]->stac_name . '<span>';
@@ -223,16 +223,32 @@
 
     });
 
-
-
-    function change_location(url) {
-        window.location = "https://www.google.com";
-    }
-
+    <!--
+    /*
+    * get_id
+    * get con_id and show in remove container modal
+    * @input con_id
+    * @output get con_id and show in remove container modal
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_id(con_id) {
         $('#con_id').val(con_id);
     }
 
+    <!--
+    /*
+    * container_detail
+    * go to container detail page
+    * @input con_id
+    * @output go to container detail page
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function container_detail(con_id) {
         window.location = '<?php echo base_url('') . '/Container_show/container_detail/' ?>' + con_id;
     }

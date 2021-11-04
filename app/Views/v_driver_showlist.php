@@ -162,7 +162,6 @@
 
     <script>
         $(document).ready(function() {
-
             // แทรกปุ่ม เพิ่มพนักงานขับรถ
             var dri_table = $('#driver_list_table').DataTable({
                 "columnDefs": [{
@@ -189,14 +188,32 @@
 
         });
 
-        function change_location(dri_id) {
-            window.location = '<?php echo base_url('') . '/Driver_edit/driver_edit/' ?>' + dri_id;
-        }
-
+        <!--
+        /*
+        * get_id
+        * get dri_id in remove driver modal
+        * @input dri_id
+        * @output get dri_id in remove driver modal
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function get_id(dri_id) {
             $('#dri_id').val(dri_id);
         }
 
+        <!--
+        /*
+        * driver_detail
+        * go to driver detail page
+        * @input dri_id
+        * @output go to driver detail page
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function driver_detail(dri_id) {
             window.location = '<?php echo base_url('') . '/Driver_show/driver_detail/' ?>' + dri_id;
         }

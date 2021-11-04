@@ -139,6 +139,17 @@
     // check สถานะของประเภทรถ
     $('#input_add').hide();
 
+    <!--
+    /*
+    * check_status_car_type
+    * check status car type
+    * @input cart_id
+    * @output check status car type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_status_car_type(cart_id) {
         if ($('#cart_id' + cart_id).prop('checked')) {
             car_type_delete(cart_id);
@@ -146,7 +157,18 @@
             car_type_restore(cart_id);
         }
     }
-    // ลบประเภทรถ
+
+    <!--
+    /*
+    * car_type_delete
+    * delete car type
+    * @input cart_id
+    * @output delete car type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function car_type_delete(cart_id) {
         console.log('car_type_delete', cart_id);
         $.ajax({
@@ -158,7 +180,18 @@
             }
         });
     }
-    // เปลี่ยสถานะตู้จาก off เป็น on
+
+    <!--
+    /*
+    * car_type_restore
+    * restore car type
+    * @input cart_id
+    * @output restore car type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function car_type_restore(cart_id) {
         console.log('car_type_restore', cart_id);
         $.ajax({
@@ -171,12 +204,34 @@
         });
     }
 
+    <!--
+    /*
+    * get_image
+    * get image name
+    * @input -
+    * @output get image name
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_image() {
         var cart_image = $('#cart_image').val();
         $('#input_show_browse').val(cart_image.substr(12));
         $('#cart_image-error').remove();
     }
 
+    <!--
+    /*
+    * show_input
+    * show input to insert car type
+    * @input -
+    * @output show input to insert car type
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

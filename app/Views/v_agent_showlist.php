@@ -195,10 +195,32 @@
         );
     });
 
+    <!--
+    /*
+    * get_id
+    * get agn_id in remove agent modal
+    * @input agn_id
+    * @output get agn_id in remove agent modal
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
-    //ดูข้อมูลเอเย่นต์
+
+    <!--
+    /*
+    * agent_detail
+    * show agnet detail page when click on agent table row
+    * @input agn_id
+    * @output show agnet detail page when click on agent table row
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function agent_detail(agn_id) {
         window.location = '<?php echo base_url('') . '/Agent_show/agent_detail/' ?>' + agn_id;
     }

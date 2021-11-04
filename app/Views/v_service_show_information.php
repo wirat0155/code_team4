@@ -654,6 +654,17 @@
         <script>
             $('.ui.modal').modal('attach events', '.test.button', 'toggle');
 
+            <!--
+            /*
+            * hilight_section
+            * go to hilight section
+            * @input section
+            * @output go to hilight section
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function hilight_section(section) {
                 let sections = ['service', 'con', 'agent', 'customer'];
                 $('h3.' + section).addClass('active');

@@ -188,6 +188,17 @@
     // check สถานะของขนาดตู้
     $('#input_add').hide();
 
+    <!--
+    /*
+    * check_status_size
+    * check status size
+    * @input size_id
+    * @output check status size
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function check_status_size(size_id) {
         if ($('#size_id' + size_id).prop('checked')) {
             size_delete(size_id);
@@ -195,7 +206,18 @@
             size_restore(size_id);
         }
     }
-    // ลบขนาดตู้
+
+    <!--
+    /*
+    * size_delete
+    * delete size
+    * @input size_id
+    * @output delete size
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function size_delete(size_id) {
         console.log('size_delete', size_id);
         $.ajax({
@@ -207,7 +229,18 @@
             }
         });
     }
-    // เปลี่ยสถานะตู้จาก off เป็น on
+
+    <!--
+    /*
+    * size_restore
+    * restore size
+    * @input size_id
+    * @output restore size
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function size_restore(size_id) {
         console.log('size_restore', size_id);
         $.ajax({
@@ -220,12 +253,34 @@
         });
     }
 
+    <!--
+    /*
+    * get_image
+    * show image name
+    * @input -
+    * @output show image name
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_image() {
         var size_image = $('#size_image').val();
         $('#input_show_browse').val(size_image.substr(12));
         $('#size_image-error').remove();
     }
 
+    <!--
+    /*
+    * show_input
+    * show input to insert size
+    * @input -
+    * @output show input to insert size
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

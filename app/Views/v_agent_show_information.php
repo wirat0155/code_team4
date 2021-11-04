@@ -194,6 +194,8 @@
                     </form>
                 </div>
             </div>
+
+            
             <script>
             $('.ui.modal').modal('attach events', '.test.button', 'toggle');
             </script>

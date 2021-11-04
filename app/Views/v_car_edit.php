@@ -68,7 +68,7 @@ label.error {
 
                 </ul>
             </div>
-            
+
             <div class="row mx-5 mt-0">
                 <div class="col-md-12">
                     <div class="card">
@@ -83,7 +83,7 @@ label.error {
 
                                         <!-- ID CAR -->
                                         <input type='hidden' name='car_id' value="<?php echo $arr_car[0]->car_id ?>">
-                                        
+
                                         <!-- Number -->
                                         <div class="form-group form-inline">
                                             <label for="car_number" class="col-form-label mr-auto">Number</label>
@@ -94,7 +94,7 @@ label.error {
                                                     <label
                                                     class="error"><?php echo $_SESSION['car_number_error']?></label>
                                             </div>
-                                        </div>                                       
+                                        </div>
 
                                         <!-- Code -->
                                         <div class="form-group form-inline">
@@ -107,7 +107,7 @@ label.error {
                                                     class="error"><?php echo $_SESSION['car_code_error']?></label>
                                             </div>
                                         </div>
-                                        
+
 
                                         <!-- Province -->
                                         <div class="form-group form-inline">
@@ -120,7 +120,7 @@ label.error {
                                     <?php } ?>
                                             </select>
                                             </div>
-                                        </div>                                       
+                                        </div>
 
                                         <!-- Car type -->
                                         <div class="form-group form-inline">
@@ -135,7 +135,7 @@ label.error {
                                                 </select>
                                             </div>
                                         </div>
-                                        
+
 
                                         <!-- Car status  -->
                                         <div class="form-group form-inline">
@@ -150,7 +150,7 @@ label.error {
                                                 </select>
                                             </div>
                                         </div>
-                                        
+
 
                                         <!-- Image -->
                                         <div class="form-group form-inline">
@@ -168,7 +168,7 @@ label.error {
                                                 <small class="form-text text-muted"> </small>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
 
@@ -182,7 +182,7 @@ label.error {
                                                     value="<?php echo $arr_car[0]->car_brand ?>">
                                             </div>
                                         </div>
-                                    
+
 
                                         <!-- Branch -->
                                         <div class="form-group form-inline">
@@ -193,7 +193,7 @@ label.error {
                                                     value="<?php echo $arr_car[0]->car_branch ?>">
                                             </div>
                                         </div>
-                                    
+
 
                                         <!-- Chassis number -->
                                         <div class="form-group form-inline">
@@ -205,7 +205,7 @@ label.error {
                                                     value="<?php echo $arr_car[0]->car_chassis_number ?>">
                                             </div>
                                         </div>
-                                    
+
 
 
                                         <!-- Register year -->
@@ -254,6 +254,17 @@ label.error {
             </div>
 
         <script>
+        <!--
+        /*
+        * get_image
+        * show image name when upload car image
+        * @input -
+        * @output show image name when upload car image
+        * @author
+        * @Create Date
+        * @Update Date
+        */
+        -->
         function get_image() {
             var car_img = $('#car_image').val();
             $('#input_show_browse').val(car_img.substr(12));

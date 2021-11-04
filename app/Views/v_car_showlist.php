@@ -50,7 +50,7 @@
                     <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Driver</a>
                 </li>
             </ul>
-    
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -68,7 +68,7 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                
+
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                             <tr>
@@ -83,7 +83,7 @@
                                                         <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
                                                     </td>
 
-                                                    
+
                                                 <!-- Cartype name-->
                                                     <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                                                         <?php echo $arr_car[$i]->cart_name ?>
@@ -130,7 +130,7 @@
                                                             <!-- Button Edit -->
                                                             <div class="item" onclick="location.href='<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[$i]->car_id ?>';">
                                                                 <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
-                                                                Edit 
+                                                                Edit
                                                             </div>
                                                             <!-- Button Remove -->
                                                             <div class="item test button"
@@ -155,7 +155,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
     $(document).ready(function() {
 
@@ -182,16 +182,32 @@
 
     });
 
-
-
-    function change_location(url) {
-        window.location = "https://www.google.com";
-    }
-
+    <!--
+    /*
+    * get_id
+    * get car_id and show in remove car modal
+    * @input car_id
+    * @output get car_id and show in remove car modal
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function get_id(car_id) {
         $('#car_id').val(car_id);
     }
 
+    <!--
+    /*
+    * car_detail
+    * go to car detail page
+    * @input car_id
+    * @output go to car detail page
+    * @author
+    * @Create Date
+    * @Update Date
+    */
+    -->
     function car_detail(car_id) {
         window.location = '<?php echo base_url('') . '/Car_show/car_detail/' ?>' + car_id;
     }

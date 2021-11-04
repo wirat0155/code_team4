@@ -282,7 +282,7 @@
 
                                     <!-- <div class="card-action" id="car_action" style>
                                 <input type="button" class="ui blue button" value="Back" onclick="window.history.back();" style="background-color : #6789B6">
-                                <button type="submit" class="ui orange button pull-right">  
+                                <button type="submit" class="ui orange button pull-right">
                                     Confirm
                                 </button>
                             </div> -->
@@ -301,10 +301,8 @@
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Container_show/container_delete' ?>" method="post">
-                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $arr_container[0]->con_id ?>>
-
+                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $arr_container[0]->con_id ?>">
                         <p style=" font-size: 1rem">Are you sure to remove the agent</p>
-
                         <div class="ui info message">
                             <div class="header">
                                 What happening after remove the agent

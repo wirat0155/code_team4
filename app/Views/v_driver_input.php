@@ -184,7 +184,7 @@
                                         </div>
                                     </div>
 
-                                
+
                                     <!-- Resign Date -->
                                     <div class="col-6 pl-3 pr-3">
                                         <div class="form-group row">
@@ -212,81 +212,18 @@
                 </div>
             </form>
         </div>
-       
-
-
         <script>
-            $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_driver_form').length > 0) {
-            $('#add_driver_form').validate({
-                rules: {
-                    dri_name: {
-                        required: true
-                    },
-                    dri_card_number: {
-                        required: true,
-                        maxlength: 13
-                    },
-                    dri_license: {
-                        required: true,
-                        maxlength: 8
-                    },
-                    dri_tel: {
-                        required: true,
-                        maxlength: 10
-                    },
-                    dri_car_id: {
-                        required: true,
-                    },
-                    dri_license_type: {
-                        required: true,
-                    },
-                    dri_status: {
-                        required: true,
-                    },
-                    dri_date_start: {
-                        required: true
-                    }
-                },
-                messages: {
-                    dri_name: {
-                        required: 'Please enter your first-last name.'
-                    },
-                    dri_card_number: {
-                        required: 'Please enter your ID card number.',
-                        maxlength: 'Please enter no more than 13 digits.'
-                    },
-                    dri_license: {
-                        required: 'Please driver license number',
-                        maxlength: 'Please enter no more than 8 digits.'
-                    },
-                    dri_tel: {
-                        required: 'Please enter your phone number',
-                        maxlength: 'Please enter no more than 10 digits.'
-                    },
-                    dri_car_id: {
-                        required: 'Please enter car number'
-                    },
-                    dri_license_type: {
-                        required: 'Please select a driver license type.'
-                    },
-                    dri_status: {
-                        required: 'Please select driver status'
-                    },
-                    dri_date_start: {
-                        required: 'Please select a start date'
-                    }
-                }
-            })
-        }
-    });
-
-            $(document).ready(function() {
-                // jQuery Validation
-                
-            });
-
+            <!--
+            /*
+            * get_image
+            * show image name in driver input form
+            * @input -
+            * @output show image name in driver input form
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function get_image() {
                 var dri_profile_image = $('#dri_profile_image').val();
                 $('#input_show_browse').val(dri_profile_image.substr(12));

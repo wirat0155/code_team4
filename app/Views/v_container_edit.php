@@ -432,9 +432,6 @@ label.error {
 
             <script>
             $(document).ready(function() {
-                
-
-
                 // jQuery Validation
                 if ($('#update_container_form').length > 0) {
                     $('#update_container_form').validate({
@@ -548,7 +545,17 @@ label.error {
                 }
             });
 
-            // get size information when change con_size_id dropdown
+            <!--
+            /*
+            * get_size_information
+            * get size information when select size option
+            * @input con_size_id
+            * @output get size information when select size option
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function get_size_information() {
                 let size_id = $('select[name="con_size_id"]').val();
                 $.ajax({
@@ -566,7 +573,17 @@ label.error {
                 });
             }
 
-            // show size information when change con_size_id dropdown
+            <!--
+            /*
+            * show_size_information
+            * show size information when select size option
+            * @input size_height_out, size_width_out, size_length_out
+            * @output get show information when select size option
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function show_size_information(size_height_out, size_width_out, size_length_out) {
                 console.log(size_height_out);
                 $('input[name="size_height_out"]').val(size_height_out);
@@ -574,6 +591,17 @@ label.error {
                 $('input[name="size_length_out"]').val(size_length_out);
             }
 
+            <!--
+            /*
+            * get_agent_information
+            * get agent information when select agent option
+            * @input agn_id
+            * @output get agent information when select agent option
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function get_agent_information() {
                 // $('#agent_section label.error').remove();
                 // remove_form_attr('readonly', '#agent_section');
@@ -602,12 +630,33 @@ label.error {
                 }
             }
 
+            <!--
+            /*
+            * valid_agent_error
+            * valid agent form input and select
+            * @input -
+            * @output valid agent form input and select
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function valid_agent_error() {
                 $('#agent_section input.error').removeClass('error');
                 $('#agent_section textarea.error').removeClass('error');
             }
 
-            // show agent information when input agn_company_name
+            <!--
+            /*
+            * show_agent_information
+            * show agnet information in agent section form
+            * @input agent information
+            * @output show agnet information in agent section form
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function show_agent_information(agent) {
                 $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
                 $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
@@ -617,7 +666,17 @@ label.error {
                 $('input[name="agn_email"]').val(agent[0]['agn_email']);
             }
 
-            // clear agent information when delete input agn_company_name
+            <!--
+            /*
+            * clear_agent_information
+            * clear input in agent section form
+            * @input -
+            * @output clear input in agent section form
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function clear_agent_information() {
                 $('input[name="agn_company_name"]').val('');
                 $('textarea[name="agn_address"]').val('');
@@ -628,11 +687,33 @@ label.error {
                 $('input[name="agn_email"]').val('');
             }
 
+            <!--
+            /*
+            * remove_error
+            * remove error class in form
+            * @input tag, name
+            * @output remove error class in form
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function remove_error(tag, name) {
                 $(tag + '[name="' + name + '"]').removeClass('error');
                 $(tag + '[name="' + name + '"]+label').html('');
             }
 
+            <!--
+            /*
+            * remove_form_attr
+            * remove readonly in input when select dropdown
+            * @input attr, target
+            * @output remove readonly in input when select dropdown
+            * @author
+            * @Create Date
+            * @Update Date
+            */
+            -->
             function remove_form_attr(attr, target) {
                 $(target + ' *[readonly]').removeAttr(attr);
             }
