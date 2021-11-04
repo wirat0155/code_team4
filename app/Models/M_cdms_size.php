@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Models\Da_cdms_size;
 /*
 * M_cdms_size
-* ดึงข้อมูลขนาดตู้
+* get size
 * @author Wirat
 * @Create Date 2564-08-06
 * @Update Date 2564-08-07
@@ -14,7 +14,7 @@ use App\Models\Da_cdms_size;
 class M_cdms_size extends Da_cdms_size {
     /*
     * get_all
-    * ดึงข้อมูลขนาดตู้ทั้งหมด
+    * get all size
     * @input  -
     * @output array of size
     * @author Wirat
@@ -28,7 +28,7 @@ class M_cdms_size extends Da_cdms_size {
 
     /*
     * get_first
-    * ดึงข้อมูลขนาดตู้แรก
+    * get first size information
     * @input  -
     * @output first size information
     * @author Wirat
@@ -42,7 +42,7 @@ class M_cdms_size extends Da_cdms_size {
 
     /*
     * get_last
-    * ดึงข้อมูลขนาดตู้ล่าสุด
+    * get last size information
     * @input  -
     * @output last size information
     * @author Wirat
@@ -56,7 +56,7 @@ class M_cdms_size extends Da_cdms_size {
 
     /*
     * get_by_id
-    * ดึงข้อมูลขนาดตู้ตาม id
+    * get size by size_id
     * @input  size_id
     * @output size information
     * @author Wirat
@@ -70,7 +70,7 @@ class M_cdms_size extends Da_cdms_size {
 
       /*
     * get_all_status
-    * ดึงข้อมูลสถานะขนาดตู้ทั้งหมด
+    * get size that all status
     * @input  -
     * @output array of size
     * @author Tadsawan

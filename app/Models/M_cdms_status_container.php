@@ -6,7 +6,7 @@ use App\Models\Da_cdms_status_container;
 
 /*
 * M_cdms_status_container
-* ดึงข้อมูลสถานะตู้
+* get status container
 * @author Wirat
 * @Create Date 2564-08-06
 * @Update Date 2564-08-06
@@ -14,9 +14,9 @@ use App\Models\Da_cdms_status_container;
 class M_cdms_status_container extends Da_cdms_status_container {
     /*
     * get_all
-    * ดึงข้อมูลสถานะตู้ทั้งหมด
+    * get all status container
     * @input  -
-    * @output array of status_container
+    * @output array of status container
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
@@ -28,9 +28,9 @@ class M_cdms_status_container extends Da_cdms_status_container {
 
     /*
     * get_by_id
-    * ดึงข้อมูลสถานะตู้คอนเทนเนอร์ตาม id
+    * get status container information
     * @input  stac_id
-    * @output ข้อมูลสถานะตู้คอนเทนเนอร์
+    * @output status container information
     * @author Taddsawan
     * @Create Date 2564-08-13
     * @Update Date 2564-08-13
@@ -41,10 +41,10 @@ class M_cdms_status_container extends Da_cdms_status_container {
     }
 
     /*
-    * get_lass
-    * ดึงข้อมูลสถานะตู้สุดท้าย
+    * get_last
+    * get last status container information
     * @input -
-    * @output stac information
+    * @output status container information
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
@@ -56,7 +56,7 @@ class M_cdms_status_container extends Da_cdms_status_container {
 
      /*
     * get_all_status
-    * ดึงข้อมูลสถานะตู้ทั้งหมด
+    * get all status container all status
     * @input  -
     * @output array of status container
     * @author Tadsawan

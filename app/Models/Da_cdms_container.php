@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_container
-* เพิ่ม ลบ แก้ไขข้อมุลตู้คอนเทนเนอร์
+* insert update delete container
 * @author Wirat
 * @Create Date 2564-07-29
 * @Update Date 2564-08-08
@@ -19,9 +19,9 @@ class Da_cdms_container extends Model {
 
     /*
     * insert
-    * เพิ่มตู้คอนเทนเนอร์
+    * insert container
     * @input $con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id
-    * @output เพิ่มตู้คอนเทนเนอร์
+    * @output insert container
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date
@@ -34,9 +34,9 @@ class Da_cdms_container extends Model {
 
     /*
     * delete
-    * ลบตู้คอนเทนเนอร์
+    * delete container
     * @input con_id
-    * @output ลบตู้คอนเทนเนอร์
+    * @output delete container
     * @author Wirat
     * @Create Date 2564-07-29
     * @Update Date
@@ -48,9 +48,9 @@ class Da_cdms_container extends Model {
 
     /*
     * container_update
-    * แก้ไขตู้คอนเทนเนอร์
+    * update container
     * @input container information
-    * @output แก้ไขตู้คอนเทนเนอร์
+    * @output update container
     * @author Wirat
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07

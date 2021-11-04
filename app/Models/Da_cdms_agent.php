@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_agent
-* เพิ่ม ลบ รายชื่อเอเย่นต์
+* insert update delete agent
 * @author Klayuth,Preechaya
 * @Create Date 2564-07-30
 * @Update Date 2564-09-11
@@ -22,9 +22,9 @@ class Da_cdms_agent extends Model
 
     /*
     * delete
-    * ลบรายชื่อเอเย่นต์
+    * delete agent
     * @input agn_id
-    * @output ลบรายชื่อเอเย่นต์
+    * @output delete agent
     * @author Preechaya
     * @Create Date 2564-07-30
     * @Update Date 2564-08-02
@@ -39,9 +39,9 @@ class Da_cdms_agent extends Model
 
     /*
     * insert
-    * เพิ่มรายชื่อข้อมูลเอเย่นต์
-    * @input agn information
-    * @output เพิ่มเอเย่นต์
+    * insert agent
+    * @input agent information
+    * @output insert agent
     * @author Klayuth
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
@@ -56,9 +56,9 @@ class Da_cdms_agent extends Model
     }
     /*
     * agent_update
-    * แก้ไขข้อมูลเอเย่นต์
-    * @input agn information
-    * @output แก้ไขเอเย่นต์
+    * update agent
+    * @input agent information
+    * @output update agent
     * @author Klayuth
     * @Create Date 2564-08-07
     * @Update Date 2564-09-11

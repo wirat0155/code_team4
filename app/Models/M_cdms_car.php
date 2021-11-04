@@ -5,8 +5,8 @@ namespace App\Models;
 use App\Models\Da_cdms_car;
 
 /*
-* M_cdms_container
-* ดึงข้อมูลรถ
+* M_cdms_car
+* get car
 * @author Nattanan Tadsawan
 * @Create Date 2564-07-30
 * @Update Date
@@ -15,12 +15,12 @@ use App\Models\Da_cdms_car;
 class M_cdms_car extends Da_cdms_car {
     /*
     * get_all
-    * ดึงข้อมูลรถทั้งหมด
+    * get all car
     * @input -
     * @output array of car
-    * @author Nattanan Tadsawan
+    * @author Nattanan, Tadsawan
     * @Create Date 2564-07-30
-    * @Update Date
+    * @Update Date 2564-07-30
     */
     public function get_all() {
         $sql = "SELECT *
@@ -28,7 +28,7 @@ class M_cdms_car extends Da_cdms_car {
         LEFT JOIN cdms_province
         ON car_prov_id = prov_id
 
-        LEFT JOIN cdms_car_type 
+        LEFT JOIN cdms_car_type
         ON car_cart_id = cart_id
         WHERE NOT car_status = 4
         ORDER BY car_id DESC" ;
@@ -37,7 +37,7 @@ class M_cdms_car extends Da_cdms_car {
 
     /*
     * get_by_id
-    * ดึงข้อมูลรถตาม id
+    * get car by car_id
     * @input car_id
     * @output car_information
     * @author Nattanan

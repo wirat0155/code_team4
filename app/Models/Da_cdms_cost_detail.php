@@ -6,10 +6,10 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_cost_detail
-* เพิ่ม ลบ แก้ไขข้อมุลค่าบริการ
+* insert update delete cost in service
 * @author Natdanai
 * @Create Date 2564-09-16
-* @Update 
+* @Update
 */
 
 class Da_cdms_cost_detail extends Model {
@@ -18,25 +18,43 @@ class Da_cdms_cost_detail extends Model {
     protected $allowedFields = ['cosd_name', 'cosd_cost', 'cosd_status', 'cosd_payment_date', 'cosd_actual_payment_date', 'cosd_ser_id', 'cosd_stap_id'];
 
     /*
-    * insert
-    * เพิ่มค่าบริการ
-    * @input 
-    * @output เพิ่มค่าบริการ
+    * cost_insert
+    * insert cost
+    * @input cosd_name, cosd_cost, cosd_payment_date, cosd_ser_id
+    * @output insert cost
     * @author Natdanai
     * @Create Date 2564-09-16
-    * @Update 
+    * @Update Date 2564-09-16
     */
     public function cost_insert($cosd_name = NULL, $cosd_cost = NULL, $cosd_payment_date = NULL, $cosd_ser_id = NULL) {
         $sql = "INSERT INTO $this->table VALUES (NULL, '$cosd_name', '$cosd_cost', '1', '$cosd_payment_date', NULL, '$cosd_ser_id', '1')";
         $this->db->query($sql);
     }
 
+    /*
+    * cost_update
+    * update cost
+    * @input cosd_id, cosd_name, cosd_cost
+    * @output update cost
+    * @author Natdanai
+    * @Create Date 2564-09-16
+    * @Update Date 2564-09-16
+    */
     public function cost_update($cosd_id = NULL, $cosd_name = NULL, $cosd_cost = NULL)
     {
         $sql = "UPDATE $this->table SET cosd_name = '$cosd_name', cosd_cost = '$cosd_cost' WHERE cosd_id = '$cosd_id'";
         $this->db->query($sql);
     }
 
+    /*
+    * delete
+    * delete cost
+    * @input cosd_i
+    * @output delete cost
+    * @author Natdanai
+    * @Create Date 2564-09-16
+    * @Update Date 2564-09-16
+    */
     public function delete($cosd_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cosd_status=2 WHERE cosd_id='$cosd_id'";
         $this->db->query($sql);

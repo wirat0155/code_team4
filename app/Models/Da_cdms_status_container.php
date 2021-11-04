@@ -5,11 +5,11 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 /*
-    * Da_cdms_status_container
-    * เพิ่ม ลบ แก้ไขสถานะตู้คอนเทนเนอร์
-    * @author Wirat
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+* Da_cdms_status_container
+* insert update delete status container
+* @author Wirat
+* @Create Date 2564-08-07
+* @Update Date 2564-08-07
 */
 class Da_cdms_status_container extends Model {
     protected $table = 'cdms_status_container';
@@ -20,9 +20,9 @@ class Da_cdms_status_container extends Model {
 
     /*
     * insert
-    * เพิ่มสถานะตู้คอนเทนเนอร์
+    * insert status container
     * @input stac_name
-    * @output เพิ่มสถานะตู้คอนเทนเนอร์
+    * @output insert status container
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
@@ -34,9 +34,9 @@ class Da_cdms_status_container extends Model {
 
     /*
     * status_container_update
-    * แก้ไขสถานะตู้คอนเทนเนอร์
+    * update status container
     * @input stac_id, stac_name
-    * @output แก้ไขสถานะตู้คอนเทนเนอร์
+    * @output update status container
     * @author Wirat
     * @Create Date 2564-09-12
     * @Update Date 2564-09-12
@@ -47,9 +47,9 @@ class Da_cdms_status_container extends Model {
     }
     /*
     * delete
-    * ลบสถานะตู้
+    * delete status container
     * @input stac_id
-    * @output ลบสถานะตู้
+    * @output delete status container
     * @author Klayuth
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
@@ -61,9 +61,9 @@ class Da_cdms_status_container extends Model {
 
     /*
     * restore
-    * restore สถานะตู้
+    * restore status container
     * @input stac_id
-    * @output restore สถานะตู้
+    * @output restore status container
     * @author Tadsawan
     * @Create Date 2564-10-22
     * @Update Date 2564-10-22

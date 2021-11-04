@@ -93,7 +93,7 @@
                                         <hr class="mt-1" width="70%" color="696969" align="left" style="height: 1px">
                                         <p class="card-category"> Container status set up such as,
                                             new status, and switch on-off  <?php echo "            " ?> </p>
-                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
+                                        <a href="<?php echo base_url() . '/Set_up_status_container/status_container_show' ?>" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                         <hr class="mt-1"  width="70%" color="696969" align="left"  style="height: 1px">
                                         <p class="card-category"> Container size set up such as,
                                             new size, upload image and switch on-off </p>
-                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
+                                        <a href="<?php echo base_url() . '/Set_up_size/size_show' ?>" ><p class=" text-right mt-3">Set Up ></p></a>
                                         </p>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
                                         <p class="card-category"> Car type set up such as,
                                             new type, upload image
                                             and switch on-off </p>
-                                        <a href="#" ><p class=" text-right mt-3">Set Up ></p></a>
+                                        <a href="<?php echo base_url() . '/Set_up_car_type/car_type_show' ?>" ><p class=" text-right mt-3">Set Up ></p></a>
                                     </div>
                                 </div>
                             </div>

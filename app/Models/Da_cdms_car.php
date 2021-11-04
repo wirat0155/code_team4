@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_car
-* เพิ่ม ลบ แก้ไขข้อมุลรถ
-* @author Nattanan Tadsawan Warisara
+* insert update delete caพ
+* @author Nattanan, Tadsawan, Warisara
 * @Create Date 2564-07-29
 * @Update Date 2564-10-01
 */
@@ -22,10 +22,10 @@ class Da_cdms_car extends Model {
 
         /*
         * insert
-        * เพิ่มรถ
+        * insert car
         * @input car information
-        * @output เพิ่มรถ
-        * @author Nattanan Tadsawan
+        * @output insert
+        * @author Nattanan, Tadsawan
         * @Create Date 2564-08-07
         * @Update Date 2564-08-09
         */
@@ -49,9 +49,9 @@ class Da_cdms_car extends Model {
 
         /*
         * delete
-        * ลบรถ
+        * delete car
         * @input car_id
-        * @output ลบรถ
+        * @output delete car
         * @author Nattanan Tadsawan
         * @Create Date 2564-07-30
         * @Update Date 2564-07-30
@@ -65,9 +65,9 @@ class Da_cdms_car extends Model {
 
         /*
         * car_update
-        * แก้ไขรถ
+        * update car type
         * @input car information
-        * @output แก้ไขรถ
+        * @output update car
         * @author Nattanan Tadsawan
         * @Create Date 2564-08-06
         * @Update Date

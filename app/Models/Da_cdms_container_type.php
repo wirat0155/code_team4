@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdnms_container_type
-* เพิ่ม ลบ แก้ไขประเภทตู้คอนเทนเนอร์
+* insert update delete container type
 * @author Wirat
 * @Create Date 2564-09-10
 * @Update Date 2564-09-12
@@ -16,9 +16,9 @@ class Da_cdms_container_type extends Model {
 
     /*
     * insert
-    * เพิ่มประเภทตู้คอนเทนเนอร์
+    * insert container type
     * @input cont_name
-    * @output เพิ่มประเภทตู้คอนเทนเนอร์
+    * @output insert container type
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date  2564-09-10
@@ -30,9 +30,9 @@ class Da_cdms_container_type extends Model {
 
     /*
     * container_type_update
-    * แก้ไขประเภทตู้คอนเทนเนอร์
+    * update container type
     * @input cont_id, cont_name
-    * @output แก้ไจประเภทตู้คอนเทนเนอร์
+    * @output update container type
     * @author Wirat
     * @Create Date 2564-09-12
     * @Update Date  2564-09-12
@@ -43,9 +43,9 @@ class Da_cdms_container_type extends Model {
     }
     /*
     * delete
-    * ลบประเภทตู้คอนเทนเนอร์
+    * delete container type
     * @input cont_id
-    * @output ลบประเภทตู้คอนเทนเนอร์
+    * @output delete container type
     * @author Benjapon
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
@@ -57,9 +57,9 @@ class Da_cdms_container_type extends Model {
 
      /*
     * restore
-    * restore ประเภทตู้คอนเทนเนอร์
+    * restore container type
     * @input cont_id
-    * @output restore ประเภทตู้คอนเทนเนอร์
+    * @output restore container type
     * @author Tadsawan
     * @Create Date 2564-10-04
     * @Update Date 2564-10-04

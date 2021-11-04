@@ -1,3 +1,12 @@
+<!--
+* v_agent_show_information
+* show agent detail
+* @input agn_id
+* @output show agent detail
+* @author
+* @Create Date
+ -->
+
 <style>
 .cl-blue {
     color: #1244B9 !important;
@@ -142,7 +151,7 @@
 
                                 <!-- <div class="card-action" id="car_action" style>
                                 <input type="button" class="ui blue button" value="Back" onclick="window.history.back();" style="background-color : #6789B6">
-                                <button type="submit" class="ui orange button pull-right">  
+                                <button type="submit" class="ui orange button pull-right">
                                     Confirm
                                 </button>
                             </div> -->

@@ -6,19 +6,19 @@ use App\Models\Da_cdms_container_type;
 
 /*
 * M_cdms_container_type
-* ดึงข้อมูลประเภทตู้คอนเทนเนอร์
+* get container type
 * @author Wirat
 * @Create Date 2564-08-06
 * @Update Date 2564-09-10
 */
 
 class M_cdms_container_type extends Da_cdms_container_type {
- 
+
     /*
     * get_all
-    * ดึงข้อมูลประเภทตู้คอนเทนเนอร์ทั้งหมด
+    * get container type
     * @input  -
-    * @output array of container_type
+    * @output array of container type
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
@@ -34,9 +34,9 @@ class M_cdms_container_type extends Da_cdms_container_type {
 
      /*
     * get_all_type
-    * ดึงข้อมูลประเภทตู้คอนเทนเนอร์ทั้งหมด
+    * get all container
     * @input  -
-    * @output array of container_type
+    * @output array of container type
     * @author Tadsawan
     * @Create Date 2564-10-04
     * @Update Date 2564-10-04
@@ -48,9 +48,9 @@ class M_cdms_container_type extends Da_cdms_container_type {
 
     /*
     * get_by_id
-    * ดึงข้อมูลประเภทตู้คอนเทนเนอร์ตาม cont_id
+    * get container type by cont_id
     * @input  cont_id
-    * @output cont information
+    * @output container type information
     * @author Wirat
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
@@ -62,9 +62,9 @@ class M_cdms_container_type extends Da_cdms_container_type {
 
     /*
     * get_last
-    * ดึงข้อมูลประเภทตู้คอนเทนเนอร์รายการสุดท้าย
+    * get last container type
     * @input -
-    * @output cont information
+    * @output container type information
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10

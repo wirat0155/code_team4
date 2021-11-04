@@ -1,35 +1,44 @@
+<!--
+* v_agent_edit
+* edit agent information
+* @input -
+* @output edit agent information
+* @author
+* @Create Date
+ -->
 <style>
-label.error {
+  label.error {
     float: left !important;
-}
+  }
 
-.fa-phone {
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-    }
+  .fa-phone {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
 
-.cl-blue {
+  .cl-blue {
     color: #1244B9 !important;
-}
+  }
 
-input.error, textarea.error {
+  input.error, textarea.error {
     border: 1px solid red !important;
-}
+  }
 
-.ui.search.dropdown>input.search.error {
+  .ui.search.dropdown>input.search.error {
     border: 1px solid red !important;
-}
+  }
 
-small.error,
-label.error {
+  small.error,
+  label.error {
     color: red !important;
     font-weight: bold;
-}
+  }
 </style>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -85,7 +94,7 @@ label.error {
                                         <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
                                         <!-- Id agent -->
                                         <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
-                                        
+
                                         <!-- Company name -->
                                         <div class="form-group form-inline">
                                             <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_size
-* เพิ่ม ลบ แก้ไขขนาดตู้
+* insert update delete size
 * @author Wirat
 * @Create Date 2564-08-07
 * @Update Date 2564-09-12
@@ -20,9 +20,9 @@ class Da_cdms_size extends Model {
 
     /*
     * insert
-    * เพิ่มขนาดตู้
+    * insert size
     * @input size_name, size_width_in, size_length_in, size_height_in, size_width_out, size_length_out, size_height_out, size_image
-    * @output เพิ่มขนาดตู้
+    * @output insert size
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
@@ -34,9 +34,9 @@ class Da_cdms_size extends Model {
 
     /*
     * size_update
-    * แก้ไขขนาดตู้
+    * update size
     * @input size_name, size_width_in, size_length_in, size_height_in, size_width_out, size_length_out, size_height_out
-    * @output เพิ่มขนาดตู้
+    * @output update size
     * @author Wirat
     * @Create Date 2564-09-12
     * @Update Date 2564-09-12
@@ -49,9 +49,9 @@ class Da_cdms_size extends Model {
 
     /*
     * delete
-    * ลบขนาดตู้
+    * delete size
     * @input size_id
-    * @output ลบขนาดตู้
+    * @output delete size
     * @author Natthadanai
     * @Create Date 2564-08-07
     * @Update Date 2564-08-07
@@ -63,9 +63,9 @@ class Da_cdms_size extends Model {
 
     /*
     * restore
-    * restore ขนาดตู้
+    * restore size
     * @input size_id
-    * @output restore ขนาดตู้
+    * @output restore size
     * @author Tadsawan
     * @Create Date 2564-10-22
     * @Update Date 2564-10-22

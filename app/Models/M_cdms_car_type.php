@@ -4,7 +4,7 @@ use App\Models\Da_cdms_car_type;
 
 /*
 * M_cdms_car_type
-* ดึงข้อมูลประเภทรถ
+* get cat type
 * @author Wirat
 * @Create Date 2564-07-28
 * @Update Date 2564-09-10
@@ -13,7 +13,7 @@ class M_cdms_car_type extends Da_cdms_car_type {
 
     /*
     * get_all
-    * ดึงข้อมูลประเภทรถทั้งหมด
+    * get all car type
     * @input  -
     * @output array of car_type
     * @author Wirat
@@ -27,9 +27,9 @@ class M_cdms_car_type extends Da_cdms_car_type {
 
     /*
     * get_last
-    * ดึงข้อมูลประเภทรถ ประเภทสุดท้าย
+    * get last car type
     * @input -
-    * @output cart onformation
+    * @output cart information
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
@@ -41,7 +41,7 @@ class M_cdms_car_type extends Da_cdms_car_type {
 
     /*
     * get_all_status
-    * ดึงข้อมูลประเภทรถทั้งหมด
+    * get all car type all status
     * @input  -
     * @output array of car type
     * @author Tadsawan

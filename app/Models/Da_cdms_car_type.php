@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_car_type
-* เพิ่ม ลบ แก้ไขประเภทรถ
+* insert update delete car type
 * @author Wirat
 * @Create Date 2564-08-08
 * @Update Date 2564-09-12
@@ -16,9 +16,9 @@ class Da_cdms_car_type extends Model {
 
     /*
     * insert
-    * เพิ่มประเภทรถ
+    * insert car type
     * @input cart_name
-    * @output เพิ่มประเภทรถ
+    * @output insert car type
     * @author Wirat
     * @Create Date 2564-09-10
     * @Update Date 2564-09-10
@@ -30,9 +30,9 @@ class Da_cdms_car_type extends Model {
 
     /*
     * car_type_update
-    * แก้ไขประเภทรถ
+    * update car type
     * @input cart_id, cart_name
-    * @output แก้ไขประเภทรถ
+    * @output update car type
     * @author Wirat
     * @Create Date 2564-09-12
     * @Update Date 2564-09-12
@@ -44,9 +44,9 @@ class Da_cdms_car_type extends Model {
 
     /*
     * delete
-    * ลบประเภทรถ
+    * delete car type
     * @input cart_id
-    * @output ลบประเภทรถ
+    * @output delete car type
     * @author Wirat
     * @Create Date 2564-08-12
     * @Update Date 2564-08-12
@@ -58,9 +58,9 @@ class Da_cdms_car_type extends Model {
 
     /*
     * restore
-    * restore ประเภทรถ
+    * restore car type
     * @input cart_id
-    * @output restore ประเภทรถ
+    * @output restore car type
     * @author Tadsawan
     * @Create Date 2564-10-23
     * @Update Date 2564-10-23

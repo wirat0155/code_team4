@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_customer_show
-* เพิ่ม ลบ แก้ไขข้อมูลลูกค้า
+* insert update delete customer
 * @author  Kittipod
 * @Create Date 2564-07-29
 * @Update Date 2564-08-02
@@ -22,9 +22,9 @@ class Da_cdms_customer extends Model {
 
     /*
     * delete
-    * ลบข้อมูลลูกค้า
+    * delete customer
     * @input cus_id
-    * @output ลบลูกค้า
+    * @output delete customer
     * @author Benjapon
     * @Create Date 2564-07-29
     * @Update Date 2564-08-02
@@ -36,31 +36,33 @@ class Da_cdms_customer extends Model {
 
     /*
     * insert
-    * เพิ่มข้อมูลลูกค้า
-    * @input cus information
-    * @output เพิ่มลูกค้า
-    * @author  Kittipod
+    * insert customer
+    * @input customer information
+    * @output insert customer
+    * @author Kittipod
     * @Create Date 2564-08-05
     * @Update Date 2564-08-05
     */
     public function insert($cus_company_name = NULL, $cus_firstname = NULL, $cus_lastname = NULL, $cus_branch = NULL, $cus_tel = NULL, $cus_address = NULL, $cus_tax = NULL, $cus_email = NULL) {
         if ($cus_branch != '') {
-            $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch, 
-            cus_tel, cus_address, cus_tax, cus_email) 
+            $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch,
+            cus_tel, cus_address, cus_tax, cus_email)
             VALUES ('$cus_company_name','$cus_firstname','$cus_lastname','$cus_branch','$cus_tel','$cus_address','$cus_tax','$cus_email')";
         } else {
-            $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch, 
-            cus_tel, cus_address, cus_tax, cus_email) 
+            $sql = "INSERT INTO $this->table(cus_company_name, cus_firstname, cus_lastname, cus_branch,
+            cus_tel, cus_address, cus_tax, cus_email)
             VALUES ('$cus_company_name','$cus_firstname','$cus_lastname',NULL,'$cus_tel','$cus_address','$cus_tax','$cus_email')";
         }
 
         $this->db->query($sql);
     }
-    
+
     /*
-    * update
-    * เเก้ไขข้อมูลลูกค้า
-    * @author  Benjapon
+    * customer_update
+    * update customer
+    * @input customer information
+    * @output update customer
+    * @author Benjapon
     * @Create Date 2564-08-06
     * @Update Date 2564-08-06
     */
@@ -70,5 +72,4 @@ class Da_cdms_customer extends Model {
     WHERE cus_id='$cus_id' ";
         $this->db->query($sql);
     }
-
 }

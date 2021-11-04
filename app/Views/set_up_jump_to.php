@@ -3,7 +3,7 @@
         <a class="<?php if ($_SESSION['menu_set_up'] == 'container_type') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_container_type/container_type_show'?>">Container type</a>
     </li>
     <li class="menu-li pb-1">
-        <a class="<?php if ($_SESSION['menu_set_up'] == 'status_container') echo 'active' ?>" href="<?php echo base_url() . '/Set_status_container/status_container_show'?>">Container status</a>
+        <a class="<?php if ($_SESSION['menu_set_up'] == 'status_container') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_status_container/status_container_show'?>">Container status</a>
     </li>
     <li class="menu-li pb-1">
         <a class="<?php if ($_SESSION['menu_set_up'] == 'container_size') echo 'active' ?>" href="<?php echo base_url() . '/Set_up_size/size_show'?>">Container size</a>

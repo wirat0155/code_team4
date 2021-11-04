@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 /*
 * Da_cdms_province
-* จังหวัด
+* manange province
 * @author Tadsawan
 * @Create Date 2564-08-09
 * @Update Date 2564-08-09
