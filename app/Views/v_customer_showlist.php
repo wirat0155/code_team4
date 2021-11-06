@@ -355,7 +355,7 @@
                                             <th class="text-center">No.</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>
-                                            <th class="text-center">Number container</th>
+                                            <th class="text-center">Number of container</th>
                                             <th class="text-center">Tel.</th>
                                             <th class="text-center">Email</th>
                                             <th class="text-center"></th>

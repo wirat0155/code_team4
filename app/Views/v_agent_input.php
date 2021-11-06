@@ -77,7 +77,9 @@
                                             <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
-                                        <?php echo show_agent_form(); ?>
+                                        <?php
+                                          require_once dirname(__FILE__) . '/form/agent_form.php';
+                                        ?>
                             <div class="card-action">
                                 <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">
                                 <button type="submit" class="ui positive button pull-right">

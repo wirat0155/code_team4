@@ -70,7 +70,9 @@
                                             <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
                                         </div>
 
-                                        <?php echo show_customer_form() ?>
+                                        <?php
+                                        require_once dirname(__FILE__) . '/form/customer_form.php';
+                                        ?>
 
                                         <div class="card-action">
                                             <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">

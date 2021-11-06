@@ -98,7 +98,7 @@ $(document).ready(function() {
                     maxlength: 'Please enter 13 digit long'
                 },
                 cus_address: {
-                    required: 'Please enter a tax number'
+                    required: 'Please enter a company location'
                 },
                 cus_firstname: {
                     required: 'Please enter a first name'

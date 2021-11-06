@@ -62,100 +62,9 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="row px-5">
-                                <div class="col-md-6 col-lg-6">
-
-                                    <label class="mt-3 mb-3">
-                                        <b> <h3>Company</h3> </b>
-                                    </label>
-
-                                    <!-- Company name -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="agn_company_name" class="col-form-label mr-auto">Company name
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="agn_company_name" name="agn_company_name">
-                                            <?php echo $arr_agent[0]->agn_company_name ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- Taxpayer number -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="agn_tax" class="col-form-label mr-auto">Tax number :</label>
-                                        <div class="col-md-8 p-0" id="agn_tax" name="agn_tax">
-                                            <?php echo $arr_agent[0]->agn_tax ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- Company location -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="agn_address" class="col-form-label mr-auto">Company location
-                                            :</label>
-                                        <div class="col-md-12 p-0 pt-2" id="agn_address" name="agn_address">
-                                            <?php echo $arr_agent[0]->agn_address ?>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-6 col-lg-6">
-                                    <!-- Responsible person -->
-
-                                    <label class="mt-3 mb-3">
-                                        <b> <h3>Contact</h3> </b>
-                                    </label>
-
-                                    <!-- First Name -->
-
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">First name
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="agn_firstname" name="agn_firstname">
-                                            <?php echo $arr_agent[0]->agn_firstname ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- Last Name -->
-
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Last name
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="agn_lastname" name="agn_lastname">
-                                            <?php echo $arr_agent[0]->agn_lastname ?>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Contact number -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="agn_tel" class="col-form-label mr-auto">Contact number :</label>
-                                        <div class="col-md-8 p-0" id="agn_tel" name="agn_tel">
-                                            <?php echo tel_format($arr_agent[0]->agn_tel) ?>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Email -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="agn_email" class="col-form-label mr-auto">Email :</label>
-                                        <div class="col-md-8 p-0" id="agn_email" name="agn_email">
-                                            <?php echo $arr_agent[0]->agn_email ?>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <!-- <div class="card-action" id="car_action" style>
-                                <input type="button" class="ui blue button" value="Back" onclick="window.history.back();" style="background-color : #6789B6">
-                                <button type="submit" class="ui orange button pull-right">
-                                    Confirm
-                                </button>
-                            </div> -->
-                            </div>
+                            <?php
+                                require_once dirname(__FILE__) . '/card/agent_card.php';
+                            ?>
                         </div>
                     </div>
                     <!-- </form> -->
@@ -178,7 +87,7 @@
                                 What happening after remove the agent
                             </div>
                             <ul class="list">
-                                <li>The Agent still ramain in database,</li>
+                                <li>The agent still ramain in database,</li>
                                 <li>But you cannot see the agent anymore</li>
                             </ul>
                         </div>

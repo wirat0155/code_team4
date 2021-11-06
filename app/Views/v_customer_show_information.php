@@ -74,98 +74,9 @@ label.error {
 
                         <!-- Customer Information-->
                         <div class="card-body">
-                            <div class="row px-5">
-
-                                <div class="col-md-6 col-lg-6">
-                                    <!-- Company name -->
-                                    <div class="form-group form-inline">
-                                        <label for="cus_company_name" class="col-form-label mr-auto">Company name
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="cus_company_name" name="cus_company_name">
-                                            <?php echo $arr_customer[0]->cus_company_name ?>
-                                        </div>
-                                    </div>
-                                    <!-- Branch -->
-                                    <div class="form-group form-inline">
-                                        <label for="cus_branch" class="col-form-label mr-auto">Branch
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="cus_branch" name="cus_branch">
-                                            <?php echo $arr_customer[0]->cus_branch ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- Company location -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="cus_address" class="col-form-label mr-auto">Company location
-                                            :</label>
-                                        <div class="col-md-12 p-0 pt-2" id="cus_address" name="cus_address">
-                                            <?php echo $arr_customer[0]->cus_address ?>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Taxpayer number -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="cus_tax" class="col-form-label mr-auto">Tax number :</label>
-                                        <div class="col-md-8 p-0" id="cus_tax" name="cus_tax">
-                                            <?php echo $arr_customer[0]->cus_tax ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6 col-lg-6">
-                                    <!-- Responsible person -->
-
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Responsible person
-                                            (Representative)</label>
-                                    </div>
-
-                                    <!-- First Name -->
-
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">First name
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="cus_firstname" name="cus_firstname">
-                                            <?php echo $arr_customer[0]->cus_firstname ?>
-                                        </div>
-                                    </div>
-
-                                    <!-- Last Name -->
-
-                                    <div class="form-group form-inline">
-                                        <label class="col-form-label mr-auto">Last name
-                                            :</label>
-                                        <div class="col-md-8 p-0" id="cus_lastname" name="cus_lastname">
-                                            <?php echo $arr_customer[0]->cus_lastname ?>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Contact number -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="cus_tel" class="col-form-label mr-auto">Contact number :</label>
-                                        <div class="col-md-8 p-0" id="cus_tel" name="cus_tel">
-                                            <?php echo tel_format($arr_customer[0]->cus_tel) ?>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Email -->
-
-                                    <div class="form-group form-inline">
-                                        <label for="cus_email" class="col-form-label mr-auto">Email :</label>
-                                        <div class="col-md-8 p-0" id="cus_email" name="cus_email">
-                                            <?php echo $arr_customer[0]->cus_email ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <?php
+                            require_once dirname(__FILE__) . '/card/customer_card.php';
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -186,7 +97,7 @@ label.error {
                                 What happening after remove the customer
                             </div>
                             <ul class="list">
-                                <li>The Customer still ramain in database,</li>
+                                <li>The customer still ramain in database,</li>
                                 <li>But you cannot see the customer anymore</li>
                             </ul>
                         </div>
