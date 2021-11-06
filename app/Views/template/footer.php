@@ -526,7 +526,7 @@ $(document).ready(function() {
                     required: 'Please enter a driver name'
                 },
                 dri_card_number: {
-                    required: 'Please enter a car number',
+                    required: 'Please enter a card number',
                     minlength: 'Please enter 13 digit long',
                     maxlength: 'Please enter 13 digit long'
                 },
