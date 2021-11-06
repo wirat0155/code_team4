@@ -141,9 +141,6 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right">Driver out</label>
@@ -158,7 +155,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-6">
                                         <input type="checkbox" style="margin-left: 3%;" id="open" onclick="open_disable(1)"> Use not a regular car
                                         <div class="form-group form-inline">
@@ -171,7 +167,6 @@
                                             </select>
                                         </div>
                                     </div>
-
 
                                     <div class="col-md-6">
                                         <input type="checkbox" style="margin-left: 3%;" id="open2" onclick="open_disable(2)"> Use not a regular car
@@ -186,8 +181,6 @@
                                         </div>
                                     </div>
 
-
-
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Arrivals location</label>
@@ -195,15 +188,12 @@
                                         </div>
                                     </div>
 
-
-
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Departure location</label>
                                             <input class="input-full form-control col-7" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php echo $obj_service[0]->ser_departure_location ?>">
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -355,108 +345,10 @@
                             </div>
 
                             <div class="card-body">
-                                <div class="row px-5">
-                                    <div class="col-md-6 col-lg-6">
-                                        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
-
-                                        <!-- Company name -->
-                                        <div class="form-group form-inline">
-                                            <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
-                                            <div class="col-md-8 p-0">
-                                                <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
-                                                    <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $arr_agent[0]->agn_id?>">
-                                                    <i class="dropdown icon"></i>
-                                                    <div class="default text">Select agent</div>
-                                                    <div class="menu">
-                                                        <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                                            <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
-                                                            </div>
-                                                        <?php } ?>
-                                                        <div class="item" data-value="new">+ New agent</div>
-                                                    </div>
-                                                </div>
-                                                <label class="error"></label>
-                                                <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
-                                                <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
-                                            </div>
-                                        </div>
-
-                                        <!-- Company location -->
-                                        <div class="form-group">
-                                            <label for="agn_address">Company location</label>
-                                            <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" rows="5"><?php echo $obj_agent[0]->agn_address ?></textarea>
-                                        </div>
-
-                                        <!-- Tax number -->
-                                        <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="agn_tax" name="agn_tax" placeholder="Tax number" value="<?php echo $obj_agent[0]->agn_tax ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6 col-lg-6">
-                                        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
-
-                                        <!-- Responsible person -->
-                                        <div class="form-group form-inline">
-                                            <label for="car_number" class="col-form-label mr-auto">Responsible person
-                                                (Representative)</label>
-                                        </div>
-
-                                        <!-- First Name -->
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">First name </label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="agn_firstname" name="agn_firstname" placeholder="First name" value="<?php echo $obj_agent[0]->agn_firstname ?>">
-                                            </div>
-                                        </div>
-
-                                        <!-- Last Name -->
-
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Last name </label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="agn_lastname" name="agn_lastname" placeholder="Last name" value="<?php echo $obj_agent[0]->agn_lastname ?>">
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Contact number -->
-                                        <div class="form-group form-inline">
-                                            <label for="agn_tel" class="col-form-label mr-auto">Contact number </label>
-                                            <div class="col-md-8 p-0">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="fas fa-phone"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $obj_agent[0]->agn_tel ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Email -->
-                                        <div class="form-group form-inline">
-                                            <label for="agn_email" class="col-form-label mr-auto">Email</label>
-                                            <div class="col-md-8 p-0">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text ">
-                                                            <i class="fas fa-envelope"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com" value="<?php echo $obj_agent[0]->agn_email ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                <?php
+                                    $page = 'service_edit';
+                                    require_once dirname(__FILE__) . '/form/agent_edit_form.php';
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -471,118 +363,10 @@
                             </div>
 
                             <div class="card-body">
-                                <div class="row px-5">
-                                    <div class="col-md-6 col-lg-6">
-                                        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
-
-                                        <!-- Company name -->
-                                        <div class="form-group form-inline">
-                                            <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
-                                            <div class="col-md-8 p-0">
-                                                <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
-                                                    <input type="hidden" name="cus_id" onchange="get_customer_information();" value="<?php echo $obj_customer[0]->cus_id?>">
-                                                    <i class="dropdown icon"></i>
-                                                    <div class="default text">Select customer</div>
-                                                    <div class="menu">
-                                                        <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
-                                                            <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;?>
-                                                            </div>
-                                                        <?php } ?>
-                                                        <div class="item" data-value="new">+ New customer</div>
-                                                    </div>
-                                                </div>
-                                                <label class="error"></label>
-                                                <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
-                                                <label class="error"><?php echo '<br><br>' . $_SESSION['cus_company_name_error']?></label>
-                                            </div>
-                                        </div>
-                                        <!-- Branch -->
-                                        <div class="form-group form-inline">
-                                            <label for="cus_branch" class="col-form-label mr-auto">Branch</label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $obj_customer[0]->cus_branch ?>">
-                                                <label class="error"><?php echo $_SESSION['cus_branch_error'] ?></label>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Company location -->
-                                        <div class="form-group">
-                                            <label for="cus_address">Company location</label>
-                                            <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" rows="5"><?php echo $obj_customer[0]->cus_address ?></textarea>
-                                        </div>
-
-
-                                        <!-- Tax number -->
-                                        <div class="form-group form-inline mt-2">
-                                            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="Tax number" value="<?php echo $obj_customer[0]->cus_tax ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6 col-lg-6">
-                                        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
-
-                                        <!-- Responsible person -->
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Responsible person
-                                                (Representative)</label>
-                                        </div>
-
-                                        <!-- First Name -->
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">First name</label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="cus_firstname" name="cus_firstname" placeholder="First name" value="<?php echo $obj_customer[0]->cus_firstname ?>">
-                                            </div>
-                                        </div>
-
-                                        <!-- Last Name -->
-
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Last name</label>
-                                            <div class="col-md-8 p-0">
-                                                <input class="form-control input-full" id="cus_lastname" name="cus_lastname" placeholder="Last name" value="<?php echo $obj_customer[0]->cus_lastname ?>">
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Contact number -->
-                                        <div class="form-group form-inline">
-                                            <label for="agn_tel" class="col-form-label mr-auto">Contact number </label>
-                                            <div class="col-md-8 p-0">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">
-                                                            <i class="fas fa-phone"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $obj_customer[0]->cus_tel ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- Email -->
-                                        <div class="form-group form-inline">
-                                            <label for="agn_email" class="col-form-label mr-auto">Email</label>
-                                            <div class="col-md-8 p-0">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text ">
-                                                            <i class="fas fa-envelope"></i>
-                                                        </span>
-                                                    </div>
-                                                    <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com" value="<?php echo $obj_customer[0]->cus_email ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                <?php
+                                    $page = 'service_edit';
+                                    require_once dirname(__FILE__) . '/form/customer_edit_form.php';
+                                ?>
                             </div>
                         </div>
                     </div>

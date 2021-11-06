@@ -72,6 +72,7 @@ label.error {
                             <!-- Customer Information-->
                             <div class="card-body">
                                 <?php
+                                $page = 'customer_edit';
                                 require_once dirname(__FILE__) . "/form/customer_edit_form.php"
                                 ?>
                             </div>

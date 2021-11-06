@@ -23,7 +23,7 @@
                     What happening after remove the agent
                 </div>
                 <ul class="list">
-                    <li>The Agent still ramain in database,</li>
+                    <li>The agent still ramain in database,</li>
                     <li>But you cannot see the agent anymore</li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                                             <th>No.</th>
                                             <th class="text-center">Company</th>
                                             <th class="text-center">Responsible person</th>
-                                            <th class="text-center">Number container</th>
+                                            <th class="text-center">Number of container</th>
                                             <th class="text-center">Tel.</th>
                                             <th class="text-center">Email</th>
                                             <th> </th>

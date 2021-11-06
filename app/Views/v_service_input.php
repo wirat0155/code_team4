@@ -417,7 +417,11 @@
                                         </div>
 
                                         <!-- Agent form with readonly -->
-                                        <?php echo show_agent_form(2); ?>
+                                        <?php 
+                                        $type = 2;
+                                        require_once dirname(__FILE__) . '/form/agent_form.php';
+                                        ?>
+                                        
                             <div id="customer_section" style="display: none">
                                 <div class="card-header">
                                     <div class="card-title">Customer Information</div>
@@ -467,7 +471,10 @@
                                         </style>
 
                                         <!-- For form with readonly -->
-                                        <?php echo show_customer_form(2) ?>
+                                        <?php
+                                        $type = 2; 
+                                        require_once dirname(__FILE__) . '/form/customer_form.php';
+                                        ?>
 
                             <div class="card-action" id="first_from_action">
                                 <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">

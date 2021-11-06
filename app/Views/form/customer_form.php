@@ -1,3 +1,10 @@
+<?php
+$attr = '';
+if ($type == 2) {
+  $attr = 'readonly';
+}
+?>
+
 <div class="col-md-2 input-label branch-div">
   <div class="form-group">
     <label for="cus_branch">Branch <span style="color: #0F7EEA">(Optional)</span></label>
@@ -5,7 +12,7 @@
 </div>
 
 <div class="col-md-2">
-  <input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch">
+  <input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch" <?php echo $attr?>>
   <label class="error"></label>
 </div>
 
@@ -16,7 +23,7 @@
 </div>
 
 <div class="col-md-3">
-  <input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="1234567890123">
+  <input type="text" class="form-control" id="cus_tax" name="cus_tax" placeholder="1234567890123"  <?php echo $attr?>>
 </div>
 
 <div class="col-md-2 input-label">
@@ -26,7 +33,7 @@
 </div>
 
 <div class="col-md-6" style="margin-right: 10%">
-  <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location"></textarea>
+  <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location"  <?php echo $attr?>></textarea>
 </div>
 </div>
 
@@ -40,7 +47,7 @@
 
 
   <div class="col-md-6" style="margin-right: 10%">
-    <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="First name">
+    <input type="text" class="form-control" id="cus_firstname" name="cus_firstname" placeholder="First name"  <?php echo $attr?>>
   </div>
 
   <div class="col-md-2 input-label">
@@ -50,7 +57,7 @@
   </div>
 
   <div class="col-md-6" style="margin-right: 10%">
-  <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Last name">
+  <input type="text" class="form-control" id="cus_lastname" name="cus_lastname" placeholder="Last name"  <?php echo $attr?>>
   </div>
 
   <div class="col-md-2 input-label">
@@ -64,7 +71,7 @@
       <div class="input-group-prepend ">
         <span class="input-group-text "><i class="fas fa-phone"></i></span>
       </div>
-      <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx">
+      <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx"  <?php echo $attr?>>
     </div>
   </div>
 
@@ -79,7 +86,7 @@
       <div class="input-group-prepend ">
         <span class="input-group-text "><i class="fas fa-envelope"></i></span>
       </div>
-      <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com">
+      <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com"  <?php echo $attr?>>
     </div>
   </div>
 

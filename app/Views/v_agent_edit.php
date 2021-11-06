@@ -89,6 +89,7 @@
 
                             <div class="card-body">
                                 <?php
+                                    $page = 'agent_edit';
                                     require_once dirname(__FILE__) . '/form/agent_edit_form.php';
                                 ?>
                             </div>

@@ -20,12 +20,12 @@
 */
   function date_thai($strDate = NULL)
   {
-    $str_year = date("Y",strtotime($strDate))+543;
+    $str_year = date("Y",strtotime($strDate));
     $str_month= date("n",strtotime($strDate));
     $str_day= date("j",strtotime($strDate));
     $str_hour= date("H",strtotime($strDate));
     $str_min= date("i",strtotime($strDate));
-    $str_month_cut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+    $str_month_cut = Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
     $str_month_thai=$str_month_cut[$str_month];
     return "$str_day $str_month_thai $str_year $str_hour:$str_min";
   }

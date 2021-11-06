@@ -61,8 +61,8 @@ class Service_show extends Cdms_controller {
         $m_con = new M_cdms_container();
         $data['arr_con'] = $m_con->get_all(1);
 
-        if(isset($_POST['date_range'])){
-            $date_range = $this->request->getPost('date_range');
+        if(isset($_GET['date_range'])){
+            $date_range = $this->request->getGet('date_range');
             $start_date = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
             $end_date = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
 
@@ -143,8 +143,8 @@ class Service_show extends Cdms_controller {
         $data['obj_service'] = $m_ser->get_by_id($ser_id);
 
          // get container
-         $m_con = new M_cdms_container();
-         $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
+        $m_con = new M_cdms_container();
+        $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
 
         // size name
         $m_size = new M_cdms_size();
@@ -164,9 +164,9 @@ class Service_show extends Cdms_controller {
         $data['arr_driver_out'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_out);
 
          // car name
-         $m_car = new M_cdms_car();
-         $data['arr_car_in'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_in);
-         $data['arr_car_out'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_out);
+        $m_car = new M_cdms_car();
+        $data['arr_car_in'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_in);
+        $data['arr_car_out'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_out);
 
         // get customer
         $m_cus = new M_cdms_customer();
