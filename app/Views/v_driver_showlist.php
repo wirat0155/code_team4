@@ -14,7 +14,7 @@
                     What happening after remove the driver
                 </div>
                 <ul class="list">
-                    <li>The customer still ramain in database,</li>
+                    <li>The driver still ramain in database,</li>
                     <li>But you cannot see the driver anymore</li>
                 </ul>
             </div>
@@ -51,9 +51,6 @@
                 </li>
             </ul>
 
-
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -64,9 +61,9 @@
                                         <tr style="background-color: #999999; color: white; ">
                                             <th class="text-center">No.</th>
                                             <th class="text-center">Driver name</th>
-                                            <th class="text-center">Car ID</th>
+                                            <th class="text-center">Identity car</th>
                                             <th class="text-center">Car type</th>
-                                            <th class="text-center">License number</th>
+                                            <th class="text-center">Driver license number</th>
                                             <th class="text-center">Tel.</th>
                                             <th></th>
                                         </tr>
@@ -78,8 +75,6 @@
                                                 <!-- ลำดับ -->
                                                 <td> </td>
 
-
-
                                                 <!-- name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <div class="avatar avatar-lg">
@@ -88,21 +83,18 @@
                                                     <?php echo $arr_driver[$i]->dri_name ?>
                                                     <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
                                                     </div>
-
-
-
-
                                                 </td>
-
 
                                                 <!-- car id -->
                                                 <td class="text-center" onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->car_number; ?>
                                                 </td>
+
                                                 <!-- car type name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->cart_name; ?>
                                                 </td>
+
                                                 <!-- license number -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo $arr_driver[$i]->dri_license; ?>
@@ -111,7 +103,6 @@
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <?php echo tel_format($arr_driver[$i]->dri_tel); ?>
                                                 </td>
-
 
                                                 <!-- Action -->
                                                 <script>

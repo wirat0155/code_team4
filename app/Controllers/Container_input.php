@@ -157,7 +157,7 @@ class Container_input extends Cdms_controller
         $_SESSION['con_number_error'] = '';
         $_SESSION['agn_company_name_error'] = '';
         $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-        // $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
+        $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }
 
 }

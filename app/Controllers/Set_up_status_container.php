@@ -31,7 +31,7 @@ class Set_up_status_container extends Cdms_controller
         $m_stac = new M_cdms_status_container();
         $data['arr_status_container'] = $m_stac->get_all_status();
 
-        $this->output('v_set_status_container', $data);
+        $this->output('v_set_up_status_container', $data);
     }
 
     /*
@@ -86,7 +86,7 @@ class Set_up_status_container extends Cdms_controller
         return json_encode('pass');
     }
 
-     /*
+    /*
     * status_container_insert
     * insert status container
     * @input stac_name
@@ -103,7 +103,7 @@ class Set_up_status_container extends Cdms_controller
 
         // เพิ่มข้อมูลสถานะตู้
         $m_status_container->insert($stac_name);
-        $this->response->redirect(base_url() . '/Set_status_container/status_container_show');
+        $this->response->redirect(base_url() . '/Set_up_status_container/status_container_show');
     }
 
 }

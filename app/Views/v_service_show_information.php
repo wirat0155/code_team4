@@ -250,7 +250,6 @@
                                         </div>
                                     </div>
 
-
                                     <!-- Fuel Type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
@@ -283,121 +282,10 @@
                                 <div class="card-title" id="container_information">Container information</div>
                             </div>
 
-                            <div class="card-body" id="car_section">
-                                <div class="row px-5">
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container number :</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p id="con_number"><?php echo $obj_container[0]->con_number ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container size:</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p> <?php echo $arr_size[0]->size_name ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container type:</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $arr_container_type[0]->cont_name ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Height (m):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $arr_size[0]->size_height_out ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container status:</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $arr_status_container[0]->stac_name ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right">Width (m):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $arr_size[0]->size_width_out ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Max weidth (t):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $obj_container[0]->con_max_weight ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Length (m):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $arr_size[0]->size_length_out ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Tare weight (t):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $obj_container[0]->con_tare_weight ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Net weight (t):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $obj_container[0]->con_net_weight ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Current weight (t):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $obj_service[0]->ser_weight ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cube (CBM):</label>
-                                            <div class="col-6 col-sm-7">
-                                                <p><?php echo $obj_container[0]->con_cube ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
+                            <div class="card-body container pr-5 pl-5 pt-3 pb-3" style="max-width: 1400px">
+                                <?php
+                                require_once dirname(__FILE__) . '/card/container_card.php';
+                                ?>
                             </div>
 
                         </div>
@@ -436,7 +324,6 @@
                     </div>
                 </div>
         </div>
-
         </form>
 
         <div class="ui modal">
@@ -471,8 +358,6 @@
                 </form>
             </div>
         </div>
-
-
 
         <script>
             $('.ui.modal').modal('attach events', '.test.button', 'toggle');

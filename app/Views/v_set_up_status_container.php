@@ -56,7 +56,7 @@
                                 <div class="font-setup">Add new status</div>
                             </div>
 
-                            <form id="add_status_container_form" action="<?php echo base_url() . '/Set_status_container/status_container_insert'?>" method="POST">
+                            <form id="add_status_container_form" action="<?php echo base_url() . '/Set_up_status_container/status_container_insert'?>" method="POST">
                                 <div class="row my-4" id="input_add">
                                     <div class="col-md-7 mb-3">
                                         <!-- New status -->

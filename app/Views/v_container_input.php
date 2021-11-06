@@ -283,7 +283,7 @@
                                         <?php 
                                         $type = 2;
                                         require_once dirname(__FILE__) . '/form/agent_form.php';
-                                         ?>
+                                        ?>
                                         <div class="card-action" id="first_from_action">
                                             <input type="button" class="ui button" value="Cancel"
                                                 onclick="window.history.back();">

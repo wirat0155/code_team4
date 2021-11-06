@@ -51,9 +51,6 @@
                 </li>
             </ul>
 
-
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -79,7 +76,6 @@
                                         <tr class="text-gray-700 dark:text-gray-400">
 
                                             <td></td>
-
 
                                             <!-- หมายเลขตู้ -->
                                             <td class="px-4 py-3"
