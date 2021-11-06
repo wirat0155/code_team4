@@ -44,9 +44,10 @@ class M_cdms_driver extends Da_cdms_driver {
     * @Create Date 2564-07-30
     * @Update Date 2564-08-17
     */
-    public function get_by_id($dri_id) {
+    public function get_by_id($dri_id = '') {
         $sql = "SELECT * FROM $this->table
-                WHERE dri_id='$dri_id'";
+                LEFT JOIN `cdms_car` ON dri_car_id = car_id
+                WHERE dri_id = '$dri_id'";
         return $this->db->query($sql)->getResult();
     }
 }

@@ -47,7 +47,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Driver</a>
+                    <a href="<?php echo base_url() . '/Car_show/car_show_ajax'?>">Car</a>
                 </li>
             </ul>
 
@@ -82,7 +82,6 @@
                                                         </div>
                                                         <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
                                                     </td>
-
 
                                                 <!-- Cartype name-->
                                                     <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">

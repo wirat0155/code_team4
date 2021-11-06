@@ -57,7 +57,7 @@ label.error {
                     <li class="nav-item">
                         <a class="cl-blue"
                             href="<?php echo base_url() . '/Car_show/car_detail/' . $arr_car[0]->car_id ?>">Car
-                            detail</a>
+                            details</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
