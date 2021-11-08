@@ -97,7 +97,7 @@ class M_cdms_service extends Da_cdms_service {
         }
         else {
             $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
-                    WHERE ser_arrivals_date < '$date' AND (ser_actual_departure_date > '$date_time' OR ser_actual_departure_date IS NULL) AND ser_status = 1";
+                    WHERE ser_arrivals_date < '$date' AND (ser_actual_departure_date > '$date_time' OR ser_actual_departure_date IS NULL) AND ser_status = 1 AND ser_stac_id NOT IN(1, 4)";
         }
 
         // return as object

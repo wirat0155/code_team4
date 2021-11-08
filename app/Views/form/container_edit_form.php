@@ -1,3 +1,29 @@
+<?php
+    if ($obj_container != NULL) {
+        $con_id = $obj_container[0]->con_id;
+        $con_number = $obj_container[0]->con_number;
+        $con_stac_id = $obj_container[0]->con_stac_id;
+        $con_cont_id = $obj_container[0]->con_cont_id;
+        $con_max_weight = $obj_container[0]->con_max_weight;
+        $con_net_weight = $obj_container[0]->con_net_weight;
+        $con_tare_weight = $obj_container[0]->con_tare_weight;
+        $con_cube = $obj_container[0]->con_cube;
+        $con_size_id = $obj_container[0]->con_size_id;
+    }
+    else {
+        $con_id = $arr_container[0]->con_id;
+        $con_number = $arr_container[0]->con_number;
+        $con_stac_id = $arr_container[0]->con_stac_id;
+        $con_cont_id = $arr_container[0]->con_cont_id;
+        $con_max_weight = $arr_container[0]->con_max_weight;
+        $con_net_weight = $arr_container[0]->con_net_weight;
+        $con_tare_weight = $arr_container[0]->con_tare_weight;
+        $con_cube = $arr_container[0]->con_cube;
+        $con_size_id = $arr_container[0]->con_size_id;
+    }
+?>
+
+
 <div class="row mt-3 mb-4 ml-2">
     <h3>Container</h3>
 </div>
@@ -7,15 +33,39 @@
         <div class="col-12 col-md-6">
 
             <!-- container number -->
+            <?php if ($page == 'container_edit') : ?>
             <div class="row mb-3">
+                <input type="hidden" name="con_id" value="<?php echo $con_id ?>">
                 <div class="col-12 col-sm-6">
                     <b>Container number :</b>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input type="hidden" name="con_old_number" value="<?php echo $arr_container[0]->con_number ?>">
-                    <input class="form-control" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" value="<?php echo $arr_container[0]->con_number ?>">
+                    <input type="hidden" name="con_old_number" value="<?php echo $con_number ?>">
+                    <input class="form-control" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" value="<?php echo $con_number ?>">
                 </div>
             </div>
+
+            <?php else : ?>
+            <div class="row mb-3" style="min-height: 45px">
+                <div class="col-12 col-sm-6">
+                    <b>Container number : </b>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 90%">
+                        <input type="hidden" name="con_id" onchange="get_container_information();" value="<?php echo $con_id ?>">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select container</div>
+                        <div class="menu">
+                            <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
+                                <div class="item" data-value="<?php echo $arr_con[$i]->con_id ?>"><?php echo $arr_con[$i]->con_number;?>
+                                </div>
+                            <?php } ?>
+                            <div class="item" data-value="new">+ New container</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
 
             <!-- container status -->
             <div class="row mb-3">
@@ -26,7 +76,7 @@
                     <select class="form-control" name="con_stac_id">
                         <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
                         <option value="<?php echo $arr_status_container[$i]->stac_id ?>"
-                            <?php if ($arr_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
+                            <?php if ($con_stac_id == $arr_status_container[$i]->stac_id) echo " selected" ?>>
                             <?php echo $arr_status_container[$i]->stac_name ?></option>
                         <?php } ?>
                     </select>
@@ -45,7 +95,7 @@
                     <select class="form-control" name="con_cont_id">
                         <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
                         <option value="<?php echo $arr_container_type[$i]->cont_id ?>"
-                            <?php if ($arr_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
+                            <?php if ($con_cont_id == $arr_container_type[$i]->cont_id) echo " selected" ?>>
                             <?php echo $arr_container_type[$i]->cont_name ?></option>
                         <?php } ?>
                     </select>
@@ -64,22 +114,22 @@
         <div class="col-12 col-md-6">
 
             <!-- max weight -->
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 col-sm-6">
-                    Max weight (t) :
+                    <b>Max weight (t) :</b>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" type="number" step="0.01" name="con_max_weight" value="<?php echo $arr_container[0]->con_max_weight ?>" placeholder="10">
+                    <input class="form-control" type="number" step="0.01" name="con_max_weight" value="<?php echo $con_max_weight ?>" placeholder="10">
                 </div>
             </div>
 
             <!-- net weight :  -->
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 col-sm-6">
-                    Net weight (t) : 
+                    <b>Net weight (t) :</b> 
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" type="number" step="0.01" name="con_net_weight" value="<?php echo $arr_container[0]->con_net_weight ?>" placeholder="10">
+                    <input class="form-control" type="number" step="0.01" name="con_net_weight" value="<?php echo $con_net_weight ?>" placeholder="10">
                 </div>
             </div>
         </div>
@@ -87,22 +137,22 @@
         <div class="col-12 col-md-6">
 
             <!-- tare weight -->
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 col-sm-6">
-                    Tare weight (t) :
+                    <b>Tare weight (t) :</b>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" type="number" step="0.01" name="con_tare_weight" value="<?php echo $arr_container[0]->con_tare_weight ?>" placeholder="10">
+                    <input class="form-control" type="number" step="0.01" name="con_tare_weight" value="<?php echo $con_tare_weight ?>" placeholder="10">
                 </div>
             </div>
 
             <!-- cube :  -->
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 col-sm-6">
-                    Cube (CDM) : 
+                    <b>Cube (CDM) : </b>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" type="number" step="0.01" name="con_cube" value="<?php echo $arr_container[0]->con_cube ?>" placeholder="10">
+                    <input class="form-control" type="number" step="0.01" name="con_cube" value="<?php echo $con_cube ?>" placeholder="10">
                 </div>
             </div>
         </div>
@@ -120,13 +170,13 @@
             <!-- container size -->
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    Container size : 
+                    <b>Container size : </b>
                 </div>
                 <div class="col-12 col-sm-6">
                     <select class="form-control" name="con_size_id" oninput="get_size_information()">
                         <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                         <option value="<?php echo $arr_size[$i]->size_id ?>"
-                            <?php if ($arr_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
+                            <?php if ($con_size_id == $arr_size[$i]->size_id) echo " selected" ?>>
                             <?php echo $arr_size[$i]->size_name ?></option>
                         <?php } ?>
                     </select>

@@ -79,6 +79,7 @@ label.error {
 
                             <div class="card-body">
                                 <?php
+                                $page = 'container_edit';
                                 require_once dirname(__FILE__) . '/form/container_edit_form.php' ?>
                             </div>
                         </div>

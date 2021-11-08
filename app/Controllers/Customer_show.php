@@ -42,17 +42,23 @@ class Customer_show extends Cdms_controller {
 
             $data['arrivals_date'] = $date_range;
         }else{
-
-            //Data Customer
+            //data Customer
             $data['arr_customer'] = $m_cus->get_all();
             //Data Service
             $data['arr_service'] = $m_ser->get_all();
 
-            $index = count($data['arr_service'])-1;
-            $start = $data['arr_service'][$index]->ser_arrivals_date;
-            $end = $data['arr_service'][0]->ser_arrivals_date;
-            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
-                                    ' - '. date("d-m-Y");
+            // no customer data
+            if (count($data['arr_service']) == 0) {
+                $start = date('Y/m/d');
+                $end = date('Y/m/d');
+            }
+            // has customer data
+            else {
+                $index = count($data['arr_service']) - 1;
+                $start = $data['arr_service'][$index]->ser_arrivals_date;
+                $end = $data['arr_service'][0]->ser_arrivals_date;
+            }
+            $data['arrivals_date'] =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
         }
 
         $this->output('v_customer_showlist', $data);

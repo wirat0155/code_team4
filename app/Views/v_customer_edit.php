@@ -52,7 +52,7 @@ label.error {
                 </li>
                 <li class="nav-item">
                     <a class="cl-blue" href="<?php echo base_url() . '/Customer_show/customer_detail/' . $arr_customer[0]->cus_id ?>">Customer
-                        detail</a>
+                        details</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -61,7 +61,7 @@ label.error {
                     <a href="#">Edit customer</a>
                 </li>
             </ul>
-            <form id="customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update'?>" enctype="multipart/form-data" method="POST">
+            <form id="customer_form" action="<?php echo base_url() . '/Customer_edit/customer_update'?>" method="POST">
                 <div class="row mx-4">
                     <div class="col-md-12">
                         <div class="card">
@@ -83,6 +83,8 @@ label.error {
                                 Confirm
                             </button>
                         </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

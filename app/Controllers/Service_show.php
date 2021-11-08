@@ -71,13 +71,23 @@ class Service_show extends Cdms_controller {
             $data['arrivals_date'] = $date_range;
         }
         else{
+            // get service data upon by date
             $data['arr_service'] = $m_ser->get_all($today);
+            // get all the time service
             $data['arr_service_temp'] = $m_ser->get_all();
 
-            $index = count($data['arr_service_temp'])-1;
-            $start = $data['arr_service_temp'][$index]->ser_arrivals_date;
-            $end = $data['arr_service_temp'][0]->ser_arrivals_date;
-            $data['arrivals_date'] = substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
+            // no service data
+            if (count($data['arr_service']) == 0) {
+                $start = date('Y/m/d');
+                $end = date('Y/m/d');
+            }
+            // has service data
+            else {
+                $index = count($data['arr_service_temp']) - 1;
+                $start = $data['arr_service_temp'][$index]->ser_arrivals_date;
+                $end = $data['arr_service_temp'][0]->ser_arrivals_date;
+                $data['arrivals_date'] = substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
+            }
 
             $date['yesterday'] = $yesterday;
             $date['today'] = $today;
