@@ -25,127 +25,132 @@
         display: block;
     }
 </style>
-<div class="row px-5">
-    <div class="col-md-6 col-lg-6">
 
-        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
-        <?php if ($page == 'agent_edit') : ?>
-        <!-- Id agent -->
-        <input type='hidden' name='agn_id' value="<?php echo $arr_agent[0]->agn_id ?>">
-
-        <!-- Company name -->
-        <div class="form-group form-inline">
-            <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="agn_company_name"
-                    name="agn_company_name" placeholder="Company name"
-                    value="<?php echo $arr_agent[0]->agn_company_name ?>">
-                <label
-                    class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
+<div class="container">
+    <div class="row">
+        <!-- company information -->
+        <div class="col-12 col-md-6">
+            <div class="row mt-3 mb-4">
+                <h3>Company</h3>
             </div>
-        </div>
 
-        <?php else : ?>
-        <!-- Company name -->
-        <div class="form-group form-inline">
-            <label for="agn_company_name" class="col-form-label mr-auto">Company name</label>
-            <div class="col-md-8 p-0">
-                <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
-                    <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $agn_id?>">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Select agent</div>
-                    <div class="menu">
-                        <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                            <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
-                            </div>
-                        <?php } ?>
-                        <div class="item" data-value="new">+ New agent</div>
-                    </div>
+            <?php if ($page == 'agent_edit') : ?>
+            <!-- company name -->
+            <div class="row mb-3">
+                <!-- agent id for updating agent -->
+                <input type="hidden" name="agn_id" value="<?php echo $arr_agent[0]->agn_id ?>">
+
+                <div class="col-12 col-sm-6">
+                    <label for="agn_company_name" class="mt-2"><b>Company name : </b></label>
                 </div>
-                <label class="error"></label>
-                <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
-                <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $arr_agent[0]->agn_company_name ?>">
+                </div>
             </div>
-        </div>
-        <?php endif; ?>
-        
-        <!-- Tax number -->
-        <div class="form-group form-inline mt-2">
-            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="agn_tax" name="agn_tax"
-                    placeholder="1234567890123"
-                    value="<?php echo $agn_tax ?>">
-            </div>
-        </div>
+            <?php else : ?>
+            <div class="row mb-3" style="min-height: 60px">
+                <div class="col-12 col-sm-6">
+                    <label for="agn_company_name" class="mt-2"><b>Company name : </b></label>
+                </div>
 
-        <!-- Company location -->
-        <div class="form-group">
-            <label for="agn_address">Company location</label>
-            <textarea type="text" class="form-control" id="agn_address"
-                name="agn_address" placeholder="Company location"
-                rows="5"><?php echo $agn_address ?></textarea>
-        </div>
-    </div>
-
-
-    <div class="col-md-6 col-lg-6">
-        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
-
-        <!-- First Name -->
-        <div class="form-group form-inline">
-            <label class="col-form-label mr-auto">First name </label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="agn_firstname"
-                    name="agn_firstname" placeholder="First name"
-                    value="<?php echo $agn_firstname ?>">
-            </div>
-        </div>
-
-        <!-- Last Name -->
-        <div class="form-group form-inline">
-            <label class="col-form-label mr-auto">Last name </label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="agn_lastname"
-                    name="agn_lastname" placeholder="Last name"
-                    value="<?php echo $agn_lastname ?>">
-            </div>
-        </div>
-
-
-        <!-- Contact number -->
-        <div class="form-group form-inline">
-            <label for="agn_tel" class="col-form-label mr-auto">Contact number </label>
-            <div class="col-md-8 p-0">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                        </span>
+                <div class="col-12 col-sm-6">
+                    <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 90%">
+                        <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $agn_id?>">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select agent</div>
+                        <div class="menu">
+                            <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
+                                <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
+                                </div>
+                            <?php } ?>
+                            <div class="item" data-value="new">+ New agent</div>
+                        </div>
                     </div>
-                    <input type="tel" class="form-control" id="agn_tel" name="agn_tel"
-                        placeholder="xxx-xxx-xxxx"
-                        value="<?php echo $agn_tel ?>">
+                    <label class="error"></label>
+                    <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                    <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- tax number -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="agn_tax" class="mt-2"><b>Tax number : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control" id="agn_tax" name="agn_tax" placeholder="1234567890123" value="<?php echo $agn_tax ?>">
+                </div>
+            </div>
+
+            <!-- company address -->
+            <div class="row mb-3">
+                <div class="col-12 mb-2">
+                    <label for="agn_address" class="mt-2"><b>Company location : </b></label>
+                </div>
+                <div class="col-12">
+                    <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" rows="5"><?php echo $agn_address ?></textarea>
                 </div>
             </div>
         </div>
 
-        <!-- Email -->
-        <div class="form-group form-inline">
-            <label for="agn_email" class="col-form-label mr-auto">Email</label>
-            <div class="col-md-8 p-0">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text ">
-                            <i class="fas fa-envelope"></i>
-                        </span>
+        <!-- contact information -->
+        <div class="col-12 col-md-6">
+            <div class="row mt-3 mb-4">
+                <h3>Contact</h3>
+            </div>
+
+            <!-- first name -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="agn_firstname" class="mt-2"><b>First name : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name" value="<?php echo $agn_firstname ?>">
+                </div>
+            </div>
+
+            <!-- last name -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="agn_lastname" class="mt-2"><b>Last name : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control input-full" id="agn_lastname" name="agn_lastname" placeholder="Last name" value="<?php echo $agn_lastname ?>">
+                </div>
+            </div>
+
+            <!-- contact number -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="agn_tel" class="mt-2"><b>Contact number : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </div>
+                        <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $agn_tel ?>">
                     </div>
-                    <input type="email" class="form-control" id="agn_email"
-                        name="agn_email" placeholder="example@gmail.com"
-                        value="<?php echo $agn_email ?>">
+                </div>
+            </div>
+
+            <!-- email -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="agn_email" class="mt-2"><b>Email : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text "><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com" value="<?php echo $agn_email ?>">
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

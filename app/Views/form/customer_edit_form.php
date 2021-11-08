@@ -28,118 +28,131 @@
     }
 </style>
 
-<div class="row px-5">
-    <div class="col-md-6 col-lg-6">
-        <label class="mt-3 mb-3"><b><h3>Company</h3></b></label>
+<div class="container">
+    <div class="row">
+        <!-- company information -->
+        <div class="col-12 col-md-6">
+            <div class="row mt-3 mb-4">
+                <h3>Company</h3>
+            </div>
 
-        <?php if ($page == 'customer_edit') : ?>
-        <!-- Id agent -->
-        <input type='hidden' name='cus_id' value="<?php echo $arr_customer[0]->cus_id ?>">
+            <?php if ($page == 'customer_edit') : ?>
+            <!-- company name -->
+            <div class="row mb-3">
+                <!-- customer id for updating agent -->
+                <input type="hidden" name="cus_id" value="<?php echo $cus_id ?>">
 
-        <!-- Company name -->
-        <div class="form-group form-inline">
-            <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $arr_customer[0]->cus_company_name ?>">
-                <input hidden id="old_cus_company_name" name="old_cus_company_name" value="<?php echo $arr_customer[0]->cus_company_name ?>">
-                <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
+                <div class="col-12 col-sm-6">
+                    <label for="cus_company_name" class="mt-2"><b>Company name : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $cus_company_name ?>">
+                </div>
+            </div>
+            <?php else : ?>
+            <div class="row mb-3" style="min-height: 60px">
+                <div class="col-12 col-sm-6">
+                    <label for="cus_company_name" class="mt-2"><b>Company name : </b></label>
+                </div>
+
+                <div class="col-12 col-sm-6">
+                    <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 90%">
+                        <input type="hidden" name="cus_id" onchange="get_customer_information();" value="<?php echo $cus_id?>">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select customer</div>
+                        <div class="menu">
+                            <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
+                                <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;?>
+                                </div>
+                            <?php } ?>
+                            <div class="item" data-value="new">+ New customer</div>
+                        </div>
+                    </div>
+                    <label class="error"></label>
+                    <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
+                    <label class="error"><?php echo '<br><br>' . $_SESSION['cus_company_name_error']?></label>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- tax number -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="cus_tax" class="mt-2"><b>Tax number : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control" id="cus_tax" name="cus_tax" placeholder="1234567890123" value="<?php echo $cus_tax ?>">
+                </div>
+            </div>
+
+            <!-- company address -->
+            <div class="row mb-3">
+                <div class="col-12 mb-2">
+                    <label for="cus_address" class="mt-2"><b>Company location : </b></label>
+                </div>
+                <div class="col-12">
+                    <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" rows="5"><?php echo $cus_address ?></textarea>
+                </div>
             </div>
         </div>
-        <?php else : ?>
-        <!-- Company name -->
-        <div class="form-group form-inline">
-            <label for="cus_company_name" class="col-form-label mr-auto">Company name</label>
-            <div class="col-md-8 p-0">
-                <div class="ui fluid search selection dropdown mt-1" style="left: 10px">
-                    <input type="hidden" name="cus_id" onchange="get_customer_information();" value="<?php echo $cus_id?>">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Select customer</div>
-                    <div class="menu">
-                        <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
-                            <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;?>
-                            </div>
-                        <?php } ?>
-                        <div class="item" data-value="new">+ New customer</div>
+
+        <!-- contact information -->
+        <div class="col-12 col-md-6">
+            <div class="row mt-3 mb-4">
+                <h3>Contact</h3>
+            </div>
+
+            <!-- first name -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="cus_firstname" class="mt-2"><b>First name : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control" id="cus_firstname" name="cus_firstname" placeholder="First name" value="<?php echo $cus_firstname ?>">
+                </div>
+            </div>
+
+            <!-- last name -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="cus_lastname" class="mt-2"><b>Last name : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input class="form-control input-full" id="cus_lastname" name="cus_lastname" placeholder="Last name" value="<?php echo $cus_lastname ?>">
+                </div>
+            </div>
+
+            <!-- contact number -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="cus_tel" class="mt-2"><b>Contact number : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </div>
+                        <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $cus_tel ?>">
                     </div>
                 </div>
-                <label class="error"></label>
-                <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
-                <label class="error"><?php echo '<br><br>' . $_SESSION['cus_company_name_error']?></label>
             </div>
-        </div>
-        <?php endif; ?>
-        
-        <!-- Branch -->
-        <div class="form-group form-inline">
-            <label for="cus_branch" class="col-form-label mr-auto">Branch <span style="color: #0F7EEA">(Optional)</span></label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $arr_customer[0]->cus_branch ?>">
-                <label class="error"><?php echo $_SESSION['cus_branch_error']?></label>
-            </div>
-        </div>
 
-        <!-- Tax number -->
-        <div class="form-group form-inline mt-2">
-            <label for="agn_tax" class="col-form-label mr-auto">Tax number</label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="cus_tax" name="cus_tax" placeholder="1234567890123" value="<?php echo $cus_tax ?>">
+            <!-- email -->
+            <div class="row mb-3">
+                <div class="col-12 col-sm-6">
+                    <label for="cus_email" class="mt-2"><b>Email : </b></label>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text "><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com" value="<?php echo $cus_email ?>">
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- Company location -->
-        <div class="form-group">
-            <label for="cus_address">Company location</label>
-            <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" rows="5"><?php echo $cus_address ?></textarea>
         </div>
     </div>
-
-    <div class="col-md-6 col-lg-6">
-        <label class="mt-3 mb-3"><b><h3>Contact</h3></b></label>
-
-        <!-- First Name -->
-        <div class="form-group form-inline">
-            <label class="col-form-label mr-auto">First name </label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="cus_firstname" name="cus_firstname" placeholder="First name" value="<?php echo $cus_firstname ?>">
-            </div>
-        </div>
-
-        <!-- last Name -->
-        <div class="form-group form-inline">
-            <label class="col-form-label mr-auto">Last name </label>
-            <div class="col-md-8 p-0">
-                <input class="form-control input-full" id="cus_lastname" name="cus_lastname" placeholder="Last name" value="<?php echo $cus_lastname ?>">
-            </div>
-        </div>
-
-        <!-- Contact number -->
-        <div class="form-group form-inline">
-            <label for="agn_tel" class="col-form-label mr-auto">Contact number </label>
-            <div class="col-md-8 p-0">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                        </span>
-                    </div>
-                    <input type="tel" class="form-control" id="cus_tel" name="cus_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $cus_tel ?>">
-                </div>
-            </div>
-        </div>
-
-        <!-- Email -->
-        <div class="form-group form-inline">
-            <label for="agn_email" class="col-form-label mr-auto">Email</label>
-            <div class="col-md-8 p-0">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text ">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                    </div>
-                    <input type="email" class="form-control" id="cus_email" name="cus_email" placeholder="example@gmail.com" value="<?php echo $cus_email ?>">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</div>  
