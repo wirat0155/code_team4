@@ -30,6 +30,7 @@
         </form>
     </div>
 </div>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -61,6 +62,7 @@
                                     <thead>
                                         <tr style="background-color: #999999; color: white;">
                                             <th>No.</th>
+                                            <th>Car number</th>
                                             <th class="text-center">Car code</th>
                                             <th class="text-center">Car type</th>
                                             <th class="text-center">Brand</th>
@@ -72,41 +74,50 @@
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                             <tr>
-                                                <!-- ลำดับ -->
+                                                <!-- order -->
                                                 <td>  </td>
 
-                                                <!-- รูปภาพ ทะเบียน -->
-                                                    <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                                                <!-- car number -->
+                                                <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                                                    <div class="d-flex justify-content-start">
                                                         <div class = "avatar avatar-lg mr-4">
                                                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>">
                                                         </div>
-                                                        <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
-                                                    </td>
+                                                        <div class="mt-3">
+                                                            <?php echo $arr_car[$i]->car_number ?>
+                                                        </div>
+                                                    </div>
+                                                </td>
 
-                                                <!-- Cartype name-->
-                                                    <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
-                                                        <?php echo $arr_car[$i]->cart_name ?>
-                                                    </td>
+                                                <!-- car code -->
+                                                <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                                                    
+                                                    <?php echo $arr_car[$i]->car_code . ' ' . $arr_car[$i]->prov_name ?>
+                                                </td>
 
-                                                <!-- Brand -->
-                                                    <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
-                                                        <?php echo $arr_car[$i]->car_brand ?>
-                                                    </td>
+                                                <!-- car type name-->
+                                                <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                                                    <?php echo $arr_car[$i]->cart_name ?>
+                                                </td>
 
-                                                <!-- Status -->
-                                                    <td class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
-                                                        <?php
-                                                            if ($arr_car[$i]->car_status == 1) {
-                                                                echo '<span class="text-con-ready bg-success text-white p-2" style="border-radius: 5px;">Ready</span>'
-                                                                ;
-                                                            } else if ($arr_car[$i]->car_status == 2) {
-                                                                echo '<span class="text-con-damaged bg-danger text-white p-2" style="border-radius: 5px;">Damaged</span>';
-                                                            } else if ($arr_car[$i]->car_status == 3) {
-                                                                echo '<span class="text-con-repair bg-warning text-white p-2" style="border-radius: 5px;">Repair</span>';
-                                                        } ?>
-                                                    </td>
+                                                <!-- car brand -->
+                                                <td class="px-4 py-3 text-sm " onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
+                                                    <?php echo $arr_car[$i]->car_brand ?>
+                                                </td>
 
-                                                <!-- Action -->
+                                                <!-- car status -->
+                                                <td class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
+                                                    <?php
+                                                        if ($arr_car[$i]->car_status == 1) {
+                                                            echo '<span class="text-con-ready bg-success text-white p-2" style="border-radius: 5px;">Ready</span>'
+                                                            ;
+                                                        } else if ($arr_car[$i]->car_status == 2) {
+                                                            echo '<span class="text-con-damaged bg-danger text-white p-2" style="border-radius: 5px;">Damaged</span>';
+                                                        } else if ($arr_car[$i]->car_status == 3) {
+                                                            echo '<span class="text-con-repair bg-warning text-white p-2" style="border-radius: 5px;">Repair</span>';
+                                                    } ?>
+                                                </td>
+
                                                 <script>
                                                     function show_service_menu(car_id) {
                                                         $('.menu').css('display', 'none');
@@ -120,28 +131,30 @@
                                                         }
                                                     });
                                                 </script>
+
+                                                <!-- action button -->
                                                 <td class="text-left" width='15px'>
-                                                <div class="ui dropdown text-center p-2"
-                                                    style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
-                                                        onclick="show_service_menu(<?php echo $arr_car[$i]->car_id ?>)">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                        <div class="menu car_id_<?php echo $arr_car[$i]->car_id ?>" style="right: 0;left: auto;">
-                                                            <!-- Button Edit -->
-                                                            <div class="item" onclick="location.href='<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[$i]->car_id ?>';">
-                                                                <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
-                                                                Edit
+                                                    <div class="ui dropdown text-center p-2"
+                                                        style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%"
+                                                            onclick="show_service_menu(<?php echo $arr_car[$i]->car_id ?>)">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                            <div class="menu car_id_<?php echo $arr_car[$i]->car_id ?>" style="right: 0;left: auto;">
+                                                                <!-- Button Edit -->
+                                                                <div class="item" onclick="location.href='<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[$i]->car_id ?>';">
+                                                                    <i class='far fa-edit' style="font-size: 130%;">  </i> &nbsp;
+                                                                    Edit
+                                                                </div>
+                                                                <!-- Button Remove -->
+                                                                <div class="item test button"
+                                                                    onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
+                                                                    <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
+                                                                    Remove
+                                                                </div>
+                                                                <script>
+                                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                                </script>
                                                             </div>
-                                                            <!-- Button Remove -->
-                                                            <div class="item test button"
-                                                                onclick="get_id(<?php echo $arr_car[$i]->car_id?>)">
-                                                                <i class='fas fa-trash-alt' style="font-size: 130%;"></i> &nbsp; &nbsp;
-                                                                Remove
-                                                            </div>
-                                                            <script>
-                                                            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                            </script>
                                                         </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php } ?>

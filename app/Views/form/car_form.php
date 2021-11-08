@@ -37,8 +37,7 @@ else {
         <div class="form-group form-inline">
             <label for="car_number" class="col-form-label mr-auto">Car Number</label>
             <div class="col-md-11 p-0">
-                <input type="text" class="form-control input-full" id="car_number" name="car_number" placeholder="Number" value="<?php echo $car_number ?>">
-                <small class="form-text text-muted"></small>
+                <input type="number" min="1" class="form-control input-full" id="car_number" name="car_number" placeholder="Number" value="<?php echo $car_number ?>">
             </div>
         </div>
     </div>
@@ -49,7 +48,6 @@ else {
             <label for="car_code" class="col-form-label mr-auto">Code</label>
             <div class="col-md-9 p-0">
                 <input type="text" class="form-control input-full" id="car_code" name="car_code" placeholder="Code" value="<?php echo $car_code ?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
@@ -82,7 +80,6 @@ else {
                 number</label>
             <div class="col-md-9 p-0">
                 <input type="text" class="form-control input-full" id="car_chassis_number" name="car_chassis_number" placeholder="Chassis number" value="<?php echo $car_chassis_number ?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
@@ -99,7 +96,6 @@ else {
                         <?php echo $arr_car_type[$i]->cart_name?></option>
                     <?php } ?>
                 </select>
-                <small class="form-text text-muted"> </small>
             </div>
         </div>
     </div>
@@ -111,7 +107,6 @@ else {
                 year</label>
             <div class="col-md-9 p-0">
                 <input type="number" class="form-control input-full" id="car_register_year" name="car_register_year" placeholder="2021" min="1900" max="2099" step="1" value="<?php echo $car_register_year ?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
@@ -127,7 +122,6 @@ else {
                     <option value="3" <?php if ($car_status == 3) echo 'selected'?>>กำลังซ่อม</option>
                     <option value="4" <?php if ($car_status == 4) echo 'selected'?>>เลิกใช้แล้ว</option>
                 </select>
-                <small class="form-text text-muted"> </small>
             </div>
         </div>
     </div>
@@ -138,7 +132,6 @@ else {
             <label for="car_weight" class="col-form-label mr-auto">Weight</label>
             <div class="col-md-9 p-0">
                 <input type="text" class="form-control input-full" id="car_weight" name="car_weight" placeholder="Weight" value="<?php echo $car_weight ?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
@@ -149,7 +142,6 @@ else {
             <label for="car_fuel_type" class="col-form-label mr-auto">Fuel type</label>
             <div class="col-md-10 p-0">
                 <input type="text" class="form-control input-full" id="car_fuel_type" name="car_fuel_type" placeholder="Fuel Type" value="<?php echo $car_fuel_type?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
@@ -167,7 +159,6 @@ else {
                     </div>
                 </div>
                 <input type="file" class="form-control-file input-full" id="car_image" name="car_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
-                <small class="form-text text-muted"> </small>
             </div>
         </div>
     </div>
@@ -175,24 +166,26 @@ else {
 
 <h3 class="ml-3">2. Brand</h3>
 <div class="row px-5">
+
     <!-- Brand -->
     <div class="col-12 col-md-6">
         <div class="form-group form-inline">
-            <label for="car_brand" class="col-form-label mr-auto">Brand</label>
+            <label for="car_brand" class="col-form-label mr-auto">Car brand</label>
             <div class="col-md-10 p-0">
                 <input type="text" class="form-control input-full" id="car_brand" name="car_brand" placeholder="Brand" value="<?php echo $car_brand ?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
 
     <!-- Branch -->
     <div class="col-12 col-md-6">
-        <div class="form-group form-inline">
-            <label for="car_branch" class="col-form-label mr-auto">Branch</label>
-            <div class="col-md-10 p-0">
+        <div class="row">
+            <div class="col-12 col-sm-2">
+                <div for="car_branch" class="col-form-label"><b>Branch</b></div>
+                <div class="text-info">(Optional)</div>
+            </div>
+            <div class="col-12 col-sm">
                 <input type="text" class="form-control input-full" id="car_branch" name="car_branch" placeholder="Branch" value="<?php echo $car_branch ?>">
-                <small class="form-text text-muted"></small>
             </div>
         </div>
     </div>
