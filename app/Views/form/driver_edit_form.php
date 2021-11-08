@@ -56,11 +56,11 @@
                     ?>
 
                     <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_status" name="dri_status" value="<?php echo $arr_driver[0]->dri_status ?>">
-                        <option selected disabled>เลือกสถานะ</option>
-                        <option value="1" <?php echo  $status1 ?>>พร้อมทำงาน</option>
-                        <option value="2" <?php echo  $status2 ?>>กำลังปฏิบัติงาน</option>
-                        <option value="3" <?php echo  $status3 ?>>สำรอง</option>
-                        <option value="4" <?php echo  $status4 ?>>ลาออก</option>
+                        <option selected disabled>Select driver status</option>
+                        <option value="1" <?php echo  $status1 ?>>Ready</option>
+                        <option value="2" <?php echo  $status2 ?>>Working</option>
+                        <option value="3" <?php echo  $status3 ?>>Reserved</option>
+                        <option value="4" <?php echo  $status4 ?>>Resigned</option>
                     </select>
                 </div>
 
@@ -131,13 +131,13 @@
             </div>
             <div class="row">
                 <div class="col-12 col-md-6 mb-3">
-                    Car number :
+                    Car ID :
                 </div>
                 <div class="col-12 col-md-6 mb-3">
                     <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_car_id" name="dri_car_id" value="<?php echo $arr_driver[0]->dri_license_type ?>">
                     <option selected disabled>Choose car ID</option>
                     <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                        <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_car[$i]->car_id == $arr_driver[0]->dri_car_id) echo " selected" ?>><?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
+                        <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_car[$i]->car_id == $arr_driver[0]->dri_car_id) echo " selected" ?>><?php echo 'Car number : ' . $arr_car[$i]->car_number . ' Code ' . $arr_car[$i]->car_code ?></option>
                     <?php } ?>
                 </select>
                 </div>

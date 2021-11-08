@@ -34,7 +34,7 @@
             <label for="dri_card_number" class="mt-2"><b>Card number</b></label>
         </div>
         <div class="col-12 col-sm">
-            <input type="text" class="form-control" id="dri_card_number" name="dri_card_number" placeholder="Card Number">
+            <input type="text" class="form-control" id="dri_card_number" name="dri_card_number" placeholder="Card number">
         </div>
     </div>
 
@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-12 col-sm-6">
                     <select class="form-control input-full" id="dri_license_type" name="dri_license_type">
-                        <option selected disabled>Select Driver license type</option>
+                        <option selected disabled>Select driver license type</option>
                         <option value="1">ท.1</option>
                         <option value="2">ท.2</option>
                         <option value="3">ท.3</option>

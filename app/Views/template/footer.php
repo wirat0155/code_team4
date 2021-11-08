@@ -536,7 +536,7 @@ $(document).ready(function() {
                     maxlength: 'Please enter 8 digit long'
                 },
                 dri_tel: {
-                    required: 'Please enter a tel. number',
+                    required: 'Please enter a phone number',
                     minlength: 'Please enter 9-10 digit long',
                     maxlength: 'Please enter 9-10 digit long'
                 },
