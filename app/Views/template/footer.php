@@ -413,6 +413,7 @@ $(document).ready(function() {
             }
         })
     }
+    
     if ($('#agent_form').length > 0) {
         $('#agent_form').validate({
             rules: {

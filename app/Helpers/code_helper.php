@@ -22,11 +22,15 @@
   {
     $str_year = date("Y",strtotime($strDate));
     $str_month= date("n",strtotime($strDate));
-    $str_day= date("j",strtotime($strDate));
-    $str_hour= date("H",strtotime($strDate));
-    $str_min= date("i",strtotime($strDate));
+    $str_day = date("j",strtotime($strDate));
+    $str_hour = date("H",strtotime($strDate));
+    $str_min = date("i",strtotime($strDate));
     $str_month_cut = Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-    $str_month_thai=$str_month_cut[$str_month];
+    $str_month_thai = $str_month_cut[$str_month];
+
+    if ($str_hour == '00') {
+      return "$str_day $str_month_thai $str_year";
+    }
     return "$str_day $str_month_thai $str_year $str_hour:$str_min";
   }
 /*

@@ -51,6 +51,26 @@
         </div>
     </div>
 
+    <!-- start date -->
+    <div class="row mb-3">
+        <div class="col-12 col-sm-3">
+            <label for="dri_tel" class="mt-2"><b>Start date</b></label>
+        </div>
+        <div class="col-12 col-sm">
+            <input type="date" name="dri_date_start" class="form-control">
+        </div>
+    </div>
+
+    <!-- resign date -->
+    <div class="row mb-3">
+        <div class="col-12 col-sm-3">
+            <label for="dri_tel" class="mt-2"><b>Resign date</b></label>
+        </div>
+        <div class="col-12 col-sm">
+            <input type="date" name="dri_date_end" class="form-control">
+        </div>
+    </div>
+
     <!-- driver profile image -->
     <div class="row mb-3">
         <div class="col-12 col-sm-3">
