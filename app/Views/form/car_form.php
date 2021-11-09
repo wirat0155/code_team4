@@ -1,5 +1,6 @@
 <?php 
 if ($page == 'car_edit') {
+    $car_id = $arr_car[0]->car_id;
     $car_code = $arr_car[0]->car_code;
     $car_number = $arr_car[0]->car_number;
     $car_chassis_number = $arr_car[0]->car_chassis_number;
@@ -14,6 +15,7 @@ if ($page == 'car_edit') {
     $car_cart_id = $arr_car[0]->car_cart_id;
 }
 else {
+    $car_id = '';
     $car_code = '';
     $car_number = '';
     $car_chassis_number = '';
@@ -38,6 +40,7 @@ else {
             <label for="car_number" class="col-form-label mr-auto">Car Number</label>
             <div class="col-md-11 p-0">
                 <input type="number" min="1" class="form-control input-full" id="car_number" name="car_number" placeholder="Number" value="<?php echo $car_number ?>">
+                <input type="hidden" name="car_id" value="<?php echo $car_id ?>">
             </div>
         </div>
     </div>

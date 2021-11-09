@@ -3,16 +3,6 @@
   if ($type == 2) {
     $attr = 'readonly';
   }
-  if (isset($_SESSION['cus_company_name'])) {
-    $cus_company_name = $_SESSION['cus_company_name'];
-    $cus_branch = $_SESSION['cus_branch'];
-    $cus_firstname = $_SESSION['cus_firstname'];
-    $cus_lastname = $_SESSION['cus_lastname'];
-    $cus_tel = $_SESSION['cus_tel'];
-    $cus_address = $_SESSION['cus_address'];
-    $cus_tax = $_SESSION['cus_tax'];
-    $cus_email = $_SESSION['cus_email'];
-  }
 ?>
 
 <div class="col-md-2 input-label branch-div">
@@ -23,7 +13,7 @@
 
 <div class="col-md-2">
   <input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $cus_branch ?>" <?php echo $attr?>>
-  <label class="error"></label>
+  <label class="error"><?php echo $_SESSION['cus_branch_error'] ?></label>
 </div>
 
 <div class="col-md-1">

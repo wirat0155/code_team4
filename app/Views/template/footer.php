@@ -34,21 +34,29 @@ $(document).ready(function() {
         $('#customer_form').validate({
             rules: {
                 cus_company_name: {
-                    required: true
+                    required: true,
+                    maxlength: 255
+                },
+                cus_branch: {
+                    maxlength: 255
                 },
                 cus_tax: {
                     required: true,
+                    number: true,
                     minlength: 13,
                     maxlength: 13
                 },
                 cus_address: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 cus_firstname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 cus_lastname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 cus_tel: {
                     required: true,
@@ -57,26 +65,35 @@ $(document).ready(function() {
                 },
                 cus_email: {
                     required: true,
-                    email: true
+                    email: true,
+                    maxlength: 40
                 }
             },
             messages: {
                 cus_company_name: {
-                    required: 'Please enter a company name'
+                    required: 'Please enter a company name',
+                    maxlength: 'Please enter not more than 255 character'
+                },
+                cus_branch: {
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_tax: {
                     required: 'Please enter a tax number',
                     minlength: 'Please enter 13 digit long',
-                    maxlength: 'Please enter 13 digit long'
+                    maxlength: 'Please enter 13 digit long',
+                    number: 'Pleaser enter only number'
                 },
                 cus_address: {
-                    required: 'Please enter a company location'
+                    required: 'Please enter a company location',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_firstname: {
-                    required: 'Please enter a first name'
+                    required: 'Please enter a first name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_lastname: {
-                    required: 'Please enter a last name'
+                    required: 'Please enter a last name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_tel: {
                     required: 'Please enter a contact number',
@@ -85,7 +102,8 @@ $(document).ready(function() {
                 },
                 cus_email: {
                     required: 'Please enter an email',
-                    email: 'Please enter a valid email'
+                    email: 'Please enter a valid email',
+                    maxlength: 'Please enter not more than 40 character'
                 }
             }
         })
