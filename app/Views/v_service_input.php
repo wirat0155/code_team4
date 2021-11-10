@@ -227,7 +227,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
                                                 <input type="hidden" name="con_id" onchange="get_container_information(); check_con_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select container</div>
@@ -398,7 +398,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
                                                 <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
@@ -438,7 +438,7 @@
 
                                         <div class="col-md-6" style="margin-right: 10%;">
 
-                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
                                                 <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select customer</div>

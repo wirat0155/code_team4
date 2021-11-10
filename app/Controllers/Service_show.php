@@ -187,6 +187,9 @@ class Service_show extends Cdms_controller {
         $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
         // call service input view
         $this->output('v_service_show_information', $data);
+        // echo '<pre>';
+        // print_r($data['arr_driver_in']);
+        // echo '</pre>';
     }
 
     /*

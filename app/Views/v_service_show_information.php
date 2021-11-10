@@ -78,7 +78,6 @@
             </style>
 
             <div class="d-flex justify-content-center">
-
                 <a href="#service_information">
                     <h3 onclick="hilight_section('service')" class="m-3 service active">Service</h3>
                 </a>
@@ -95,38 +94,13 @@
 
             <style>
                 .avatar {
-                    margin: auto;
-
-
+                    margin: 0px 80px;
                 }
-
                 .avatar-img {
-                    width: 150%;
-                    height: 150%;
-                    border: 1px solid black;
-
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
                 }
-
-                .avatar:first-child::after {
-                    position: absolute;
-                    content: "";
-                    border-bottom: 3px solid #ccc;
-                    width: 380%;
-                    top: 75%;
-                    left: 2%;
-                    z-index: -3;
-                }
-
-                .avatar:last-child::before {
-                    position: absolute;
-                    content: "";
-                    border-bottom: 3px solid #ccc;
-                    width: 504%;
-                    top: 75%;
-                    left: -355%;
-                    z-index: -3;
-                }
-
                 .button.green {
                     position: absolute;
                     left: 33%;
@@ -138,36 +112,49 @@
                     right: 29%;
                     width: 80px;
                 }
+                @media only screen and (max-width: 768px) {
+                    #img-line {
+                        display: none !important;
+                    }
+                }
             </style>
 
+            <div class="d-flex justify-content-center mt-4 mb-5" id="img-line">
+                <!-- imported driver profile image -->
+                <div class="avatar avatar-xxl ml-5">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver_in[0]->dri_profile_image ?>">
+                </div>
 
-            <div class="stepper-wrapper my-5">
-                <div class="avatar avatar-xxl">
-                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
+                <div class="mt-5">
+                    <span class="bg-import text-white p-2" style="border-radius: 5px;">Import</span>
+                </div>
 
+                <!-- container image -->
+                <div class="avatar avatar-xxl ml-5">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/container_image/container_placeholder.jpg'?>">
                 </div>
-                <button class="ui green basic button" style="position: absolute;">Green</button>
-                <div class="avatar avatar-xxl">
-                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
+
+                <div class="mt-5">
+                    <span class="bg-export text-white p-2" style="border-radius: 5px;">Export</span>
                 </div>
-                <button class="ui blue basic button" style="position: absolute;">blue</button>
-                <div class="avatar avatar-xxl">
-                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . '1631801083_6d5943d455be676a2394.jfif' ?>">
+
+                <!-- exported driver profile image -->
+                <div class="avatar avatar-xxl ml-5">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver_out[0]->dri_profile_image ?>">
                 </div>
-            </div> <br><br>
+            </div>
 
             <form id="service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-5">
                     <div class="col-md-12">
                         <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
-                        <div class="card">
+                        <div class="card mt-4">
                             <div class="card-header">
                                 <div class="card-title" id="service_information">Service information</div>
                             </div>
 
                             <div class="card-body">
                                 <div class="row px-5">
-
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Type :</label>
@@ -176,8 +163,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
@@ -188,10 +173,9 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date arrivals:</label>
+                                            <label class="col-form-label mr-auto">Date arrivals :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
                                             </div>
@@ -207,9 +191,6 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right">Exporter :</label>
@@ -222,9 +203,9 @@
                                     <!-- Car type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Imported car:</label>
+                                            <label class="col-form-label mr-auto">Imported car :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_car_in[0]->car_code ?></p>
+                                                <p><?php echo $arr_car_in[0]->car_code . ' ' . $arr_car_in[0]->prov_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +215,7 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Exported car :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_car_out[0]->car_code ?></p>
+                                                <p><?php echo $arr_car_out[0]->car_code . ' ' . $arr_car_out[0]->prov_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +224,7 @@
                                     <!-- Weight -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Arrivals location:</label>
+                                            <label class="col-form-label mr-auto">Arrivals location :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p><?php echo $obj_service[0]->ser_arrivals_location ?></p>
                                             </div>
@@ -253,7 +234,7 @@
                                     <!-- Fuel Type -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Departure location:</label>
+                                            <label class="col-form-label mr-auto">Departure location :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p><?php echo $obj_service[0]->ser_departure_location ?></p>
                                             </div>
@@ -262,9 +243,16 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date departure:</label>
+                                            <label class="col-form-label mr-auto">Date departure :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo date_thai($obj_service[0]->ser_actual_departure_date) ?></p>
+                                                <p>
+                                                <?php 
+                                                if ($obj_service[0]->ser_actual_departure_date == NULL || $obj_service[0]->ser_actual_departure_date == '')
+                                                    echo 'Not export yet';
+                                                else
+                                                    echo date_thai($obj_service[0]->ser_actual_departure_date) 
+                                                ?>
+                                            </p>
                                             </div>
                                         </div>
                                     </div>
@@ -368,7 +356,7 @@
             * go to hilight section
             * @input section
             * @output go to hilight section
-            * @author
+            * @author Wirat
             * @Create Date
             * @Update Date
             */
