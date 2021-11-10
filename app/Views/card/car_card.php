@@ -96,7 +96,3 @@
         </div>
     </div>
 </div>
-
-<div class="row px-5">
-    
-</div>

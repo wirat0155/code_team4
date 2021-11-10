@@ -18,74 +18,87 @@
         $agn_email = $arr_agent[0]->agn_email;
     }
 ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="row mt-3 mb-4">
+                <h3>Company</h3>
+            </div>
 
-<div class="row px-5">
-    <div class="col-md-6 col-lg-6">
-        <h3>Company</h3>
+            <!-- company name -->
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-4">
+                    <b>Company name : </b>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <?php echo $agn_company_name ?>
+                </div>
+            </div>
 
-        <!-- Company name -->
-        <div class="form-group form-inline">
-            <label for="agn_company_name" class="col-form-label mr-auto">Company name
-                :</label>
-            <div class="col-md-8 p-0" id="agn_company_name" name="agn_company_name">
-                <?php echo $agn_company_name ?>
+            <!-- tax number -->
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-4">
+                    <b>Tax number : </b>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <?php echo $agn_tax ?>
+                </div>
+            </div>
+
+            <!-- location -->
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <b>Company location : </b>
+                </div>
+                <div class="col-12 mb-4">
+                    <?php echo $agn_address ?>
+                </div>
             </div>
         </div>
 
-        <!-- Tax number -->
-        <div class="form-group form-inline">
-            <label for="agn_tax" class="col-form-label mr-auto">Tax number :</label>
-            <div class="col-md-8 p-0" id="agn_tax" name="agn_tax">
-                <?php echo $agn_tax ?>
+        <div class="col-12 col-md-6">
+            <div class="row mt-3 mb-4">
+                <h3>Contact</h3>
             </div>
-        </div>
 
-        <!-- Company location -->
-        <div class="form-group form-inline">
-            <label for="agn_address" class="col-form-label mr-auto">Company location
-                :</label>
-            <div class="col-md-12 p-0 pt-2" id="agn_address" name="agn_address">
-                <?php echo $agn_address ?>
+            <!-- first name -->
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-4">
+                    <b>First name : </b>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <?php echo $agn_firstname ?>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="col-md-6 col-lg-6">
-        <h3>Contact</h3>
-
-        <!-- First Name -->
-        <div class="form-group form-inline">
-            <label class="col-form-label mr-auto">First name
-                :</label>
-            <div class="col-md-8 p-0" id="agn_firstname" name="agn_firstname">
-                <?php echo $agn_firstname ?>
+            <!-- last name -->
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-4">
+                    <b>Last name : </b>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <?php echo $agn_lastname ?>
+                </div>
             </div>
-        </div>
 
-        <!-- Last Name -->
-        <div class="form-group form-inline">
-            <label class="col-form-label mr-auto">Last name
-                :</label>
-            <div class="col-md-8 p-0" id="agn_lastname" name="agn_lastname">
-                <?php echo $agn_lastname ?>
+            <!-- contact number -->
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-4">
+                    <b>Contact number : </b>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <?php echo tel_format($agn_tel) ?>
+                </div>
             </div>
-        </div>
 
-
-        <!-- Contact number -->
-        <div class="form-group form-inline">
-            <label for="agn_tel" class="col-form-label mr-auto">Contact number :</label>
-            <div class="col-md-8 p-0" id="agn_tel" name="agn_tel">
-                <?php echo tel_format($agn_tel) ?>
-            </div>
-        </div>
-
-
-        <!-- Email -->
-        <div class="form-group form-inline">
-            <label for="agn_email" class="col-form-label mr-auto">Email :</label>
-            <div class="col-md-8 p-0" id="agn_email" name="agn_email">
-                <?php echo $agn_email ?>
+            <!-- email -->
+            <div class="row">
+                <div class="col-12 col-sm-6 mb-4">
+                    <b>Email : </b>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <?php echo $agn_email ?>
+                </div>
             </div>
         </div>
     </div>

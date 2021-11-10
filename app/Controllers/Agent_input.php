@@ -59,6 +59,18 @@ class Agent_input extends Cdms_controller {
         // exit function
         if (count($arr_agent) >= 1 ) {
             $_SESSION['agn_company_name_error'] = 'The agent has already used';
+
+            // if duplicate
+            // then go to add customer page
+            // return to customer edit page
+            $_SESSION['cus_company_name'] = $cus_company_name;
+            $_SESSION['cus_firstname'] = $cus_firstname;
+            $_SESSION['cus_lastname'] = $cus_lastname;
+            $_SESSION['cus_branch'] = $cus_branch;
+            $_SESSION['cus_tel'] = $cus_tel;
+            $_SESSION['cus_address'] = $cus_address;
+            $_SESSION['cus_tax'] = $cus_tax;
+            $_SESSION['cus_email'] = $cus_email;
             $this->agent_input();
             exit;
         }
@@ -68,5 +80,5 @@ class Agent_input extends Cdms_controller {
             $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
         }
-    }
+    }   
 }

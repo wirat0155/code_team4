@@ -5,7 +5,20 @@
 * @output insert agent information
 * @author
 * @Create Date
- -->
+-->
+
+<?php
+if (isset($_SESSION['agn_company_name'])) {
+    $agn_company_name = $_SESSION['agn_company_name'];
+    $agn_firstname = $_SESSION['agn_firstname'];
+    $agn_lastname = $_SESSION['agn_lastname'];
+    $agn_tel = $_SESSION['agn_tel'];
+    $agn_address = $_SESSION['agn_address'];
+    $agn_tax = $_SESSION['agn_tax'];
+    $agn_email = $_SESSION['agn_email'];
+}
+?>
+
 <style>
     .fa-phone {
         -moz-transform: scaleX(-1);
@@ -73,12 +86,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 " style="margin-right: 10%;">
-                                            <input class="form-control" name="agn_company_name" placeholder="Company name">
+                                            <input class="form-control" name="agn_company_name" placeholder="Company name" value="<?php echo $agn_company_name?>">
                                             <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
                                         <?php
-                                          require_once dirname(__FILE__) . '/form/agent_form.php';
+                                        require_once dirname(__FILE__) . '/form/agent_form.php';
                                         ?>
                             <div class="card-action">
                                 <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">
