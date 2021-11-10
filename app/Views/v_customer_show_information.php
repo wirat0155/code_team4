@@ -62,7 +62,7 @@ label.error {
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Customer detail</a>
+                    <a href="#">Customer details</a>
                 </li>
             </ul>
             <div class="row mx-5 mt-0">

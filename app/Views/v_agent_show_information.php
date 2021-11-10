@@ -49,7 +49,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Agent detail</a>
+                        <a href="#">Agent details</a>
                     </li>
                 </ul>
             </div>
