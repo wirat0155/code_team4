@@ -7,19 +7,17 @@ use App\Models\M_cdms_customer;
 /*
 * Customer_input
 * show customer input page, insert customer
-* @author  Kittipod
-* @Create Date 2564-08-05
-* @Update Date 2564-08-05
+* @author   Kittipod
+* @Create Date  2564-08-05
 */
 class Customer_input extends Cdms_controller {
     /*
     * customer_input
     * show customer input page
-    * @input -
-    * @output show customer input page
-    * @author Kittipod
-    * @Create Date 2564-08-05
-    * @Update Date 2564-08-05
+    * @input    -
+    * @output   show customer input page
+    * @author   Kittipod
+    * @Create Date  2564-08-05
     */
     public function customer_input() {
         $_SESSION['menu'] = 'Customer_show';
@@ -36,11 +34,10 @@ class Customer_input extends Cdms_controller {
     /*
     * customer_insert
     * insert customer
-    * @input cus information
-    * @output insert customer
-    * @author Kittipod
-    * @Create Date 2564-08-05
-    * @Update Date 2564-08-05
+    * @input    cus information
+    * @output   insert customer
+    * @author   Kittipod
+    * @Create Date  2564-08-0 
     */
     public function customer_insert() {
         // load customer model

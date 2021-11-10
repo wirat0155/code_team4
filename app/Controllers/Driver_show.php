@@ -7,20 +7,18 @@ use App\Models\M_cdms_driver;
 /*
 * Driver_show
 * show drvier list, delete driver
-* @author Thanatip , Warisara
-* @Create Date 2564-07-30
-* @Update Date
+* @author   Thanatip , Warisara
+* @Create Date  2564-07-30
 */
 class Driver_show extends Cdms_controller {
 
     /*
     * driver_show_ajax
     * show drvier list
-    * @input -
-    * @output array of driver
-    * @author Thanatip
-    * @Create Date 2564-07-30
-    * @Update Date 2564-07-30
+    * @input    -
+    * @output   array of driver
+    * @author   Thanatip
+    * @Create Date  2564-07-30
     */
     public function driver_show_ajax() {
         $_SESSION['menu'] = 'Driver_show';
@@ -32,11 +30,10 @@ class Driver_show extends Cdms_controller {
     /*
     * driver_delete
     * delete driver
-    * @input dri_id
-    * @output delete driver
-    * @author Thanatip
-    * @Create Date 2564-07-30
-    * @Update Date 2564-07-30
+    * @input    dri_id
+    * @output   delete driver
+    * @author   Thanatip
+    * @Create Date  2564-07-30
     */
     public function driver_delete() {
         $m_dri = new M_cdms_driver();
@@ -48,11 +45,10 @@ class Driver_show extends Cdms_controller {
     /*
     * get_driver_ajax
     * get driver information by ser_dri
-    * @input dri_id
-    * @output driver information
-    * @author Thanatip
-    * @Create Date 2564-07-30
-    * @Update Date 2564-07-30
+    * @input    dri_id
+    * @output   driver information
+    * @author   Thanatip
+    * @Create Date  2564-07-30
     */
     public function get_driver_ajax() {
         $m_dri = new M_cdms_driver();
@@ -65,11 +61,10 @@ class Driver_show extends Cdms_controller {
     /*
     * driver_detail
     * show driver detail page
-    * @input dri_id
-    * @output show driver detail page
-    * @author Thanatip
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-17
+    * @input    dri_id
+    * @output   show driver detail page
+    * @author   Thanatip
+    * @Create Date  2564-08-12
     */
     public function driver_detail($dri_id) {
         $_SESSION['menu'] = 'Driver_show';

@@ -9,20 +9,17 @@ use App\Models\M_cdms_car;
 /*
 * Driver_show
 * show driver input page, insert driver
-* @author Thanatip
-* @Create Date 2564-08-06
-* @Update Date 2564-08-07
+* @author   Thanatip
+* @Create Date  2564-08-06
 */
-
 class Driver_input extends Cdms_controller {
     /*
     * driver_input
     * show driver input page
-    * @input -
-    * @outpu show driver input page
-    * @author Thanatip
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+    * @input    -
+    * @outpu    show driver input page
+    * @author   Thanatip
+    * @Create Date  2564-08-06
     */
     public function driver_input() {
         $_SESSION['menu'] = 'Driver_show';
@@ -34,16 +31,15 @@ class Driver_input extends Cdms_controller {
     /*
     * driver_insert
     * insert driver
-    * @input driver information
-    * @output insert driver
-    * @author Thanatip
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * @input    driver information
+    * @output   insert driver
+    * @author   Thanatip
+    * @Create Date  2564-08-07
     */
     public function driver_insert() {
         $m_dri = new M_cdms_driver();
 
-        // เก็บข้อมูลพนักงานขับรถ
+        // get dirver information form driver input page
         $dri_name = $this->request->getPost('dri_name');
         $dri_tel = $this->request->getPost('dri_tel');
         $dri_card_number = $this->request->getPost('dri_card_number');
@@ -65,7 +61,7 @@ class Driver_input extends Cdms_controller {
         $dri_profile_image = $imageName;
 
 
-        // เพิ่มข้อมูลพนักงาน
+        // inserting driver
         $m_dri->insert($dri_name, $dri_tel, $dri_card_number, $dri_license, $dri_license_type, $dri_profile_image, $dri_status, $dri_date_start, $dri_date_end, $dri_car_id);
 
         $this->response->redirect(base_url('/Driver_show/driver_show_ajax'));

@@ -7,20 +7,18 @@ use App\Models\M_cdms_car_type;
 /*
 * Set_up_car_type
 * manange car type
-* @author Tadsawan
-* @Create Date 2564-10-23
-* @Update Date 2564-10-23
+* @author   Tadsawan
+* @Create Date  2564-10-23
 */
 class Set_up_car_type extends Cdms_controller
 {
     /*
     * car_type_show
     * show car type
-    * @input -
-    * @output array of car type
-    * @author Tadsawan
-    * @Create Date 2564-10-23
-    * @Update Date 2564-10-23
+    * @input    -
+    * @output   array of car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-23
     */
     public function car_type_show()
     {
@@ -37,11 +35,10 @@ class Set_up_car_type extends Cdms_controller
     /*
     * get_all_car_type
     * show car type
-    * @input -
-    * @output array of car type
-    * @author Thanatip
-    * @Create Date 2564-09-10
-    * @Update Date 2564-09-10
+    * @input    -
+    * @output   array of car type
+    * @author   Thanatip
+    * @Create Date  2564-09-10
     */
     public function get_all_car_type()
     {
@@ -53,11 +50,10 @@ class Set_up_car_type extends Cdms_controller
     /*
     * car_type_delete
     * delete car type
-    * @input cart_id
-    * @output delete car type
-    * @author Wirat
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-12
+    * @input    cart_id
+    * @output   delete car type
+    * @author   Wirat
+    * @Create Date  2564-08-12
     */
     public function car_type_delete()
     {
@@ -68,14 +64,13 @@ class Set_up_car_type extends Cdms_controller
         return json_encode('pass');
     }
 
-     /*
+    /*
     * car_type_restore
     * restore car type
-    * @input cart_id
-    * @output restore car type
-    * @author Tadsawan
-    * @Create Date 2564-10-23
-    * @Update Date 2564-10-23
+    * @input    cart_id
+    * @output   restore car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-23
     */
     public function car_type_restore()
     {
@@ -89,11 +84,10 @@ class Set_up_car_type extends Cdms_controller
     /*
     * car_type_insert
     * insert car type
-    * @input cart_name, cart_image
-    * @output insert car type
-    * @author Tadsawan
-    * @Create Date 2564-10-23
-    * @Update Date 2564-10-23
+    * @input    cart_name, cart_image
+    * @output   insert car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-23
     */
     public function car_type_insert() {
         $m_car_type = new M_cdms_car_type();

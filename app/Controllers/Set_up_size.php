@@ -7,20 +7,18 @@ use App\Models\M_cdms_size;
 /*
 * Set_up_size
 * manage size
-* @author Tadsawan
-* @Create Date 2564-10-22
-* @Update Date 2564-10-22
+* @author   Tadsawan
+* @Create Date  2564-10-22
 */
 class Set_up_size extends Cdms_controller
 {
     /*
     * size_show
     * show size
-    * @input -
-    * @output array of size
-    * @author Tadsawan
-    * @Create Date 2564-10-22
-    * @Update Date 2564-10-22
+    * @input    -
+    * @output   array of size
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     public function size_show()
     {
@@ -37,11 +35,10 @@ class Set_up_size extends Cdms_controller
     /*
     * get_all_size
     * get all size
-    * @input -
-    * @output array of size
-    * @author Thanatip
-    * @Create Date 2564-09-10
-    * @Update Date 2564-09-10
+    * @input    -
+    * @output   array of size
+    * @author   Thanatip
+    * @Create Date  2564-09-10
     */
     public function get_all_size()
     {
@@ -50,14 +47,13 @@ class Set_up_size extends Cdms_controller
         return json_encode($data['arr_size']);
     }
 
-     /*
+    /*
     * size_delete
     * delete size
-    * @input size_id
-    * @output delete size
-    * @author Natadanai
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-12
+    * @input    size_id
+    * @output   delete size
+    * @author   Natadanai
+    * @Create Date  2564-08-12
     */
     public function size_delete()
     {
@@ -68,14 +64,13 @@ class Set_up_size extends Cdms_controller
         return json_encode('pass');
     }
 
-     /*
+    /*
     * size_restore
     * restore size
-    * @input size_id
-    * @output restore ขนาดตู้
-    * @author Tadsawan
-    * @Create Date 2564-10-22
-    * @Update Date 2564-10-22
+    * @input    size_id
+    * @output   restore ขนาดตู้
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     public function size_restore()
     {
@@ -86,14 +81,13 @@ class Set_up_size extends Cdms_controller
         return json_encode('pass');
     }
 
-     /*
+    /*
     * size_insert
     * insert size
-    * @input size information
-    * @output insert contaioner size
-    * @author Tadsawan
-    * @Create Date 2564-10-23
-    * @Update Date 2564-10-23
+    * @input    size information
+    * @output   insert contaioner size
+    * @author   Tadsawan
+    * @Create Date  2564-10-23
     */
     public function size_insert() {
         $m_size = new M_cdms_size();
@@ -117,7 +111,7 @@ class Set_up_size extends Cdms_controller
 
         $size_image = $imageName;
 
-        // เพิ่มข้อมูลขนาดตู้
+        // inserting size
         $m_size->insert($size_name, $size_width_in, $size_length_in, $size_height_in, $size_width_out, $size_length_out, $size_height_out, $size_image);
         $this->response->redirect(base_url() . '/Set_up_size/size_show');
     }

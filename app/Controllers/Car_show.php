@@ -9,19 +9,17 @@ use App\Models\M_cdms_car_type;
 /*
 * Car_show
 * show car list, delete car
-* @author Warisara
-* @Create Date 2564-07-30
-* @Update Date 2564-08-13
+* @author   Warisara
+* @Create Date  2564-07-30
 */
 class Car_show extends Cdms_controller {
     /*
     * car_show_ajax
     * show car list
-    * @input -
-    * @output array of car
-    * @author Warisara
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-02
+    * @input    -
+    * @output   array of car
+    * @author   Warisara
+    * @Create Date  2564-07-30
     */
     public function car_show_ajax() {
         $_SESSION['menu'] = 'Car_show';
@@ -33,11 +31,10 @@ class Car_show extends Cdms_controller {
     /*
     * car_delete
     * delete car
-    * @input car_id
-    * @output delete car
-    * @author Warisara
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-02
+    * @input    car_id
+    * @output   delete car
+    * @author   Warisara
+    * @Create Date  2564-07-30
     */
     public function car_delete() {
         $m_car = new M_cdms_car();
@@ -48,11 +45,10 @@ class Car_show extends Cdms_controller {
     /*
     * car_deteail
     * show car detail page
-    * @input car_id
-    * @output show car detail page
-    * @author Warisara
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-13
+    * @input    car_id
+    * @output   show car detail page
+    * @author   Warisara
+    * @Create Date  2564-08-12
     */
     public function car_detail($car_id) {
         $_SESSION['menu'] = 'Car_show';

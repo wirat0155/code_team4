@@ -7,20 +7,18 @@ use App\Models\M_cdms_province;
 /*
 * Car_input
 * show car input page, insert car
-* @author Tadsawan
-* @Create Date 2564-08-06
-* @Update Date 2564-08-08
+* @author   Tadsawan
+* @Create Date  2564-08-06
 */
 
 class Car_input extends Cdms_controller {
     /*
     * car_input
     * show car input page
-    * @input -
-    * @output  show car input page
-    * @author Tadsawan
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-08
+    * @input    -
+    * @output   show car input page
+    * @author   Tadsawan
+    * @Create Date  2564-08-06
     */
     public function car_input() {
         $_SESSION['menu'] = 'Car_show';
@@ -41,11 +39,10 @@ class Car_input extends Cdms_controller {
     /*
     * car_insert
     * insert car
-    * @input car information
-    * @output insert car
-    * @author Tadsawan
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-08
+    * @input    car information
+    * @output   insert car
+    * @author   Tadsawan
+    * @Create Date  2564-08-06
     */
     public function car_insert() {
         $m_car = new M_cdms_car();
@@ -73,7 +70,7 @@ class Car_input extends Cdms_controller {
 
         $car_image = $imageName;
 
-        // เพิ่มข้อมูลรถ
+        // inserting car
         $m_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id, $car_status);
         $this->response->redirect(base_url() . '/Car_show/car_show_ajax');
     }

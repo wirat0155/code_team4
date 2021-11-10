@@ -11,20 +11,17 @@ use App\Models\M_cdms_status_container;
 /*
 * container_edit
 * show container edit page, update container information
-* @author Wirat
-* @Create Date 2564-08-06
-* @Update Date 2564-09-11
+* @author   Wirat
+* @Create Date  2564-08-06
 */
-
 class Container_edit extends Cdms_controller {
     /*
     * container_input
     * show container edit page
-    * @input con_id
-    * @output  show container edit page
-    * @author Wirat
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-07
+    * @input    con_id
+    * @output   show container edit page
+    * @author   Wirat
+    * @Create Date  2564-08-06
     */
     public function container_edit($con_id = NULL) {
         $_SESSION['menu'] = 'Container_show';
@@ -67,11 +64,10 @@ class Container_edit extends Cdms_controller {
     /*
     * container_update
     * update container information
-    * @input contianer information, agent information
-    * @output update container, agent information
-    * @author Wirat
-    * @Create Date 2564-08-06
-    * @Update Date 2564-09-11
+    * @input    contianer information, agent information
+    * @output   update container, agent information
+    * @author   Wirat
+    * @Create Date  2564-08-06
     */
     public function container_update() {
         // container information

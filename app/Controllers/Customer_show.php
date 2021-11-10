@@ -11,20 +11,17 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 /*
 * Customer_show
 * show customer list, delete customer
-* @author Kittipod
-* @Create Date 2564-07-29
-* @Update Date 2564-08-14
+* @author   Kittipod
+* @Create Date  2564-07-29
 */
-
 class Customer_show extends Cdms_controller {
     /*
     * customer_show_ajax
     * show customer list
-    * @input -
-    * @output array of customer
-    * @author Kittipod
-    * @Create Date 2564-07-29
-    * @Update Date 2564-09-10
+    * @input    -
+    * @output   array of customer
+    * @author   Kittipod
+    * @Create Date  2564-07-29
     */
     public function customer_show_ajax() {
         $_SESSION['menu'] = 'Customer_show';
@@ -67,11 +64,10 @@ class Customer_show extends Cdms_controller {
     /*
     * customer_delete
     * delete customer
-    * @input cus_id
-    * @output delete customer
-    * @author Benjapon
-    * @Create Date 2564-07-29
-    * @Update Date 2564-08-02
+    * @input    cus_id
+    * @output   delete customer
+    * @author   Benjapon
+    * @Create Date  2564-07-29
     */
     public function customer_delete() {
         $m_cus = new M_cdms_customer();
@@ -82,11 +78,10 @@ class Customer_show extends Cdms_controller {
     /*
     * customer_detail
     * show customer detail page
-    * @input cus_id
-    * @output show customer detail page
-    * @author  Natadanai
-    * @Create Date 2564-08-14
-    * @Update Date 2564-08-14
+    * @input    cus_id
+    * @output   show customer detail page
+    * @author   Natadanai
+    * @Create Date  2564-08-14
     */
     public function customer_detail($cus_id) {
         $_SESSION['menu'] = 'Customer_show';
@@ -98,11 +93,10 @@ class Customer_show extends Cdms_controller {
     /*
     * get_customer_ajax
     * get customer information by cus_id
-    * @input cus_id
-    * @output get customer information
-    * @author Natadanai
-    * @Create Date 2564-08-14
-    * @Update Date 2564-08-14
+    * @input    cus_id
+    * @output   get customer information
+    * @author   Natadanai
+    * @Create Date  2564-08-14
     */
     public function get_customer_ajax() {
         $m_cus = new M_cdms_customer();
@@ -115,11 +109,10 @@ class Customer_show extends Cdms_controller {
     /*
     * export_customer
     * export customer
-    * @input array of customer
-    * @output download report customer
-    * @author Kittipod
-    * @Create Date 2564-09-15
-    * @Update Date 2564-09-15
+    * @input    array of customer
+    * @output   download report customer
+    * @author   Kittipod
+    * @Create Date  2564-09-15
     */
     public function export_customer() {
         $m_cus = new M_cdms_customer();

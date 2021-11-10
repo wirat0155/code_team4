@@ -7,20 +7,17 @@ use App\Models\M_cdms_customer;
 /*
 * Customer_edit
 * show customer edit page, update customer
-* @author Benapon
-* @Create Date 2564-08-06
-* @Update Date 2564-08-06
+* @author   Benjapon
+* @Create Date  2564-08-06
 */
-
 class Customer_edit extends Cdms_controller {
     /*
     * customer_edit
     * show customer edit page
-    * @input -
-    * @output show customer edit page
-    * @author Benjapon
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+    * @input    -
+    * @output   show customer edit page
+    * @author   Benjapon
+    * @Create Date  2564-08-06
     */
     public function customer_edit($cus_id) {
         // load customer model
@@ -40,11 +37,10 @@ class Customer_edit extends Cdms_controller {
     /*
     * customer_update
     * update customer information
-    * @input customer information
-    * @output update customer information
-    * @author Benjapon
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+    * @input    customer information
+    * @output   update customer information
+    * @author   Benjapon
+    * @Create Date  2564-08-06
     */
     public function customer_update() {
         // load customer model

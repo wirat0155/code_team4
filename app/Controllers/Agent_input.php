@@ -5,19 +5,18 @@ use App\Models\M_cdms_agent;
 /*
 * Agent_input
 * show agent input page, insert agent
-* @author Klayuth
-* @Create Date 2564-08-06
-* @Update Date 2564-08-06
+* @author   Klayuth
+* @Create Date  2564-08-06
 */
 class Agent_input extends Cdms_controller {
     /*
     * agent_input
-    * แสดงหน้าจอเพิ่มเอเย่นต์
-    * @input -
-    * @output show agent input page
-    * @author Klayuth
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+    * go to add agent page
+    * @input    -
+    * @output   show add agent page
+    * @author   Klayuth
+    * @Create Date  2564-08-06
+
     */
     public function agent_input() {
         $_SESSION['menu'] = 'Agent_show';
@@ -31,11 +30,11 @@ class Agent_input extends Cdms_controller {
     /*
     * agent_insert
     * insert agent
-    * @input agn information
-    * @output insert agent
-    * @author Klayuth
-    * @Create Date 2564-08-06
-    * @Update Date 2564-10-14
+    * @input    agn information
+    * @output   insert agent
+    * @author   Klayuth
+    * @Create Date  2564-08-06
+
     */
     public function agent_insert() {
 

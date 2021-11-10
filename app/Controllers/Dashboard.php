@@ -11,19 +11,17 @@ use App\Models\M_cdms_container_type;
 * Dashboard
 * show dashboard page
 * @author  Wirat, Klayuth, Natthadanai, Benjapon
-* @Create Date 2564-08-12
-* @Update Date 2564-09-12
+* @Create Date  2564-08-12
 */
 class Dashboard extends Cdms_controller
 {
     /*
     * dashboard_show
     * show dashboard page
-    * @input -
-    * @output array of car_type, status_container, size, container_type
-    * @author  Wirat, Klayuth, Natthadanai, Benjapon
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-12
+    * @input    -
+    * @output   array of car_type, status_container, size, container_type
+    * @author   Wirat, Klayuth, Natthadanai, Benjapon
+    * @Create Date  2564-08-12
     */
     public function dashboard_show()
     {

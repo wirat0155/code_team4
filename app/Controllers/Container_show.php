@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_size;
@@ -11,21 +9,18 @@ use App\Models\M_cdms_status_container;
 /*
 * Container_show
 * show container list, delete conainer
-* @author Wirat
-* @Create Date 2564-07-29
-* @Update Date 2564-08-12
+* @author   Wirat
+* @Create Date  2564-07-29
 */
-
 class Container_show extends Cdms_controller
 {
     /*
     * container_show_ajax
     * show container list
-    * @input -
-    * @output array of container
-    * @author Wirat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-07-29
+    * @input    -
+    * @output   array of container
+    * @author   Wirat
+    * @Create Date  2564-07-29
     */
     public function container_show_ajax()
     {
@@ -46,11 +41,10 @@ class Container_show extends Cdms_controller
     /*
     * container_detail
     * show container detain page
-    * @input con_id
-    * @output show container detain page
-    * @author Preechaya
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-12
+    * @input    con_id
+    * @output   show container detain page
+    * @author   Preechaya
+    * @Create Date  2564-08-12
     */
     public function container_detail($con_id)
     {
@@ -82,11 +76,10 @@ class Container_show extends Cdms_controller
     /*
     * container_delete
     * delete container
-    * @input con_id
-    * @output delete container
-    * @author Wirat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-07-29
+    * @input    con_id
+    * @output   delete container
+    * @author   Wirat
+    * @Create Date  2564-07-29
     */
     public function container_delete()
     {
@@ -98,12 +91,11 @@ class Container_show extends Cdms_controller
 
     /*
     * check_container_number
-    * serch container vy container number
-    * @input con_number
-    * @output container information
-    * @author Wirat
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * serch container by container number
+    * @input    con_number
+    * @output   container information
+    * @author   Wirat
+    * @Create Date  2564-08-07
     */
     public function check_container_number()
     {

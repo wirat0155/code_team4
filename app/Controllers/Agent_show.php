@@ -10,20 +10,17 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 /*
 * Agent_show
 * show agent list, delete anget
-* @author Klayuth, Preechaya
-* @Create Date 2564-07-30
-* @Update Date 2564-10-13
+* @author   Klayuth, Preechaya
+* @Create Date  2564-07-30
 */
-
 class Agent_show extends Cdms_controller {
     /*
     * agent_show_ajax
     * show agent list
-    * @input -
-    * @output array of agent
-    * @author Klayuth
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-02
+    * @input    -
+    * @output   array of agent
+    * @author   Klayuth
+    * @Create Date  2564-07-30
     */
     public function agent_show_ajax() {
         $_SESSION['menu'] = 'Agent_show';
@@ -41,11 +38,10 @@ class Agent_show extends Cdms_controller {
     /*
     * agent_delete
     * delete agent
-    * @input agn_id
-    * @output delete agent
-    * @author Preechaya
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-02
+    * @input    agn_id
+    * @output   delete agent
+    * @author   Preechaya
+    * @Create Date  2564-07-30
     */
     public function agent_delete() {
         $m_agn = new M_cdms_agent();
@@ -57,11 +53,10 @@ class Agent_show extends Cdms_controller {
     /*
     * get_agent_ajax
     * get agent information
-    * @input agn_id
-    * @output agent information
-    * @author Preechaya
-    * @Create Date 2564-08-07
-    * @Update Date 2564-10-13
+    * @input    agn_id
+    * @output   agent information
+    * @author   Preechaya
+    * @Create Date  2564-08-07
     */
     public function get_agent_ajax() {
         $m_agn = new M_cdms_agent();
@@ -74,11 +69,10 @@ class Agent_show extends Cdms_controller {
     /*
     * agent_detail
     * show agent detail page
-    * @input agn_id
-    * @output agent information
-    * @author Nattanan
-    * @Create Date 2564-08-12
-    * @Update Date 2564-08-17
+    * @input    agn_id
+    * @output   agent information
+    * @author   Nattanan
+    * @Create Date  2564-08-12
     */
     public function agent_detail($agn_id) {
         $_SESSION['menu'] = 'Agent_show';

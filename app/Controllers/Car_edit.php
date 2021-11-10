@@ -6,20 +6,17 @@ use App\Models\M_cdms_province;
 /*
 * Car_edit
 * show car edit page, update car information
-* @author Nattanan, Tadsawan
-* @Create Date 2021-08-06
-* @Update Date 2021-08-06
+* @author   Nattanan, Tadsawan
+* @Create Date  2021-08-06
 */
-
 class Car_edit extends Cdms_controller {
     /*
     * car_edit
     * show car edit page
-    * @input car_id
-    * @output show car edit page
-    * @author Nattanan, Tadsawan
-    * @Create Date 2021-08-06
-    * @Update Date 2021-08-06
+    * @input    car_id
+    * @output   show car edit page
+    * @author   Nattanan, Tadsawan
+    * @Create Date  2021-08-06
     */
     public function car_edit($car_id) {
         $_SESSION['menu'] = 'Car_show';
@@ -41,11 +38,10 @@ class Car_edit extends Cdms_controller {
     /*
     * car_update
     * update car information
-    * @input car information
-    * @output update car information
-    * @author Nattanan, Tadsawan
-    * @Create Date 2021-08-06
-    * @Update Date 2021-08-06
+    * @input    car information
+    * @output   update car information
+    * @author   Nattanan, Tadsawan
+    * @Create Date  2021-08-06
     */
     public function car_update() {
         // load car model

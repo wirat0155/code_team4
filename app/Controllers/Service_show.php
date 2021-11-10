@@ -20,19 +20,17 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 /*
 * Service_show
 * show service list, delete service
-* @author Natdanai Worarat
-* @Create Date 2564-07-29
-* @Update Date 2564-07-30
+* @author   Natdanai Worarat
+* @Create Date  2564-07-29
 */
 class Service_show extends Cdms_controller {
     /*
     * service_show_ajax
     * show service list
-    * @input -
-    * @output array of service
-    * @author Natdanai, Kittipod
-    * @Create Date 2564-07-29
-    * @Update Date 2564-09-10
+    * @input    -
+    * @output   array of service
+    * @author   Natdanai, Kittipod
+    * @Create Date  2564-07-29
     */
     public function service_show_ajax() {
         //set timezone
@@ -124,11 +122,10 @@ class Service_show extends Cdms_controller {
     /*
     * service_delete
     * delete service
-    * @input ser_id
-    * @output delete service
-    * @author Worarat
-    * @Create Date 2564-07-30
-    * @Update Date 2564-07-30
+    * @input    ser_id
+    * @output   delete service
+    * @author   Worarat
+    * @Create Date  2564-07-30
     */
     public function service_delete() {
         $m_ser = new M_cdms_service();
@@ -139,11 +136,10 @@ class Service_show extends Cdms_controller {
     /*
     * service_detail
     * show service detail page
-    * @input ser_id
-    * @output show service detail page
-    * @author Tadsawan
-    * @Create Date 2564-08-12
-    * @Update Date
+    * @input    ser_id
+    * @output   show service detail page
+    * @author   Tadsawan
+    * @Create Date  2564-08-12
     */
     public function service_detail($ser_id) {
         $_SESSION['menu'] = 'Service_show';
@@ -195,11 +191,10 @@ class Service_show extends Cdms_controller {
     /*
     * get_cost_ajax
     * get cost in service
-    * @input ser_id
-    * @output get cost in service
-    * @author Wirat
-    * @Create Date 2564-09-15
-    * @Update Date 2564-09-15
+    * @input    ser_id
+    * @output   get cost in service
+    * @author   Wirat
+    * @Create Date  2564-09-15
     */
     public function get_cost_ajax() {
         $m_cosd = new M_cdms_cost_detail();
@@ -212,11 +207,10 @@ class Service_show extends Cdms_controller {
     /*
     * cost_insert
     * insert cost in service
-    * @input cosd_ser_id, cosd_name, cosd_cost
-    * @output insert cost in service
-    * @author Natdanai
-    * @Create Date 2564-09-15
-    * @Update Date 2564-09-15
+    * @input    cosd_ser_id, cosd_name, cosd_cost
+    * @output   insert cost in service
+    * @author   Natdanai
+    * @Create Date  2564-09-15
     */
     public function cost_insert() {
         $m_cosd = new M_cdms_cost_detail();
@@ -235,11 +229,10 @@ class Service_show extends Cdms_controller {
     /*
     * cost_update
     * update cost in service
-    * @input cosd_id, cosd_name, cosd_cost
-    * @output update cost in service
-    * @author Natdanai
-    * @Create Date 2564-09-15
-    * @Update Date 2564-09-15
+    * @input    cosd_id, cosd_name, cosd_cost
+    * @output   update cost in service
+    * @author   Natdanai
+    * @Create Date  2564-09-15
     */
     public function cost_update() {
         $m_cosd = new M_cdms_cost_detail();
@@ -256,11 +249,10 @@ class Service_show extends Cdms_controller {
     /*
     * cost_delete
     * delete cost in service
-    * @input cosd_id
-    * @output delete cost in service
-    * @author Natdanai
-    * @Create Date 2564-09-15
-    * @Update Date 2564-09-15
+    * @input    cosd_id
+    * @output   delete cost in service
+    * @author   Natdanai
+    * @Create Date  2564-09-15
     */
     public function cost_delete() {
         $m_cosd = new M_cdms_cost_detail();
@@ -274,11 +266,10 @@ class Service_show extends Cdms_controller {
     /*
     * export_customer
     * export service report
-    * @input array of customer
-    * @output download service report
-    * @author Kittipod
-    * @Create Date 2564-09-15
-    * @Update Date 2564-09-15
+    * @input    array of customer
+    * @output   download service report
+    * @author   Kittipod
+    * @Create Date  2564-09-15
     */
     public function export_service() {
 
@@ -445,11 +436,10 @@ class Service_show extends Cdms_controller {
     /*
     * get_change_service
     * get change service
-    * @input ser_id_change
-    * @output  array of service
-    * @author  Tadsawan
-    * @Create Date 2564-09-20
-    * @Update Date 2564-09-20
+    * @input    ser_id_change
+    * @output   array of service
+    * @author   Tadsawan
+    * @Create Date  2564-09-20
     */
     public function get_change_service(){
         $ser_id_change = $this->request->getPost('ser_id_change');

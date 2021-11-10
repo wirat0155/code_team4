@@ -11,21 +11,18 @@ use App\Models\M_cdms_status_container;
 /*
 * Container_input
 * show container input page, insert container
-* @author Wirat
-* @Create Date 2564-08-06
-* @Update Date 2564-10-14
+* @author   Wirat
+* @Create Date  2564-08-06
 */
-
 class Container_input extends Cdms_controller
 {
     /*
     * container_input
     * show container input page
-    * @input -
-    * @output show container input page
-    * @author Wirat
-    * @Create Date 2564-08-06
-    * @Update Date 2564-10-14
+    * @input    -
+    * @output   show container input page
+    * @author   Wirat
+    * @Create Date  2564-08-06
     */
     public function container_input($section_error = '')
     {
@@ -68,11 +65,10 @@ class Container_input extends Cdms_controller
     /*
     * container_insert
     * insert container
-    * @input container, agent information
-    * @output onsert container, agent
-    * @author Wirat
-    * @Create Date 2564-08-06
-    * @Update Date 2564-10-14
+    * @input    container, agent information
+    * @output   insert container, agent
+    * @author   Wirat
+    * @Create Date  2564-08-06
     */
     public function container_insert() {
         // get post value container form

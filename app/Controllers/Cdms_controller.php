@@ -12,11 +12,9 @@ use Psr\Log\LoggerInterface;
 /*
 * Cdms_controller
 * main controller
-* @author Wirat
-* @Create Date 2564-07-29
-* @Update Date 2564-07-29
+* @author	Wirat
+* @Create Date	2564-07-29
 */
-
 class Cdms_controller extends Controller
 {
 	/**

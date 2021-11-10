@@ -7,20 +7,18 @@ use App\Models\M_cdms_container_type;
 /*
 * Set_up_container_type
 * manage container type
-* @author Tadsawan
-* @Create Date 2564-10-01
-* @Update Date 2564-10-04
+* @author   Tadsawan
+* @Create Date  2564-10-01
 */
 class Set_up_container_type extends Cdms_controller
 {
     /*
     * container_type_show
     * show container type
-    * @input -
-    * @output array of container type
-    * @author Tadsawan
-    * @Create Date 2564-10-01
-    * @Update Date 2564-10-04
+    * @input    -
+    * @output   array of container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-01
     */
     public function container_type_show()
     {
@@ -37,11 +35,10 @@ class Set_up_container_type extends Cdms_controller
     /*
     * get_all_container_type
     * get all container type
-    * @input -
-    * @output array of container type
-    * @author Tadsawan
-    * @Create Date 2564-10-01
-    * @Update Date 2564-10-04
+    * @input    -
+    * @output   array of container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-01
     */
     public function get_all_container_type()
     {
@@ -50,14 +47,13 @@ class Set_up_container_type extends Cdms_controller
         return json_encode($data['arr_container_type']);
     }
 
-     /*
+    /*
     * container_type_delete
     * delete container type
-    * @input cont_id
-    * @output delete container type
-    * @author Tadsawan
-    * @Create Date 2564-10-04
-    * @Update Date 2564-10-04
+    * @input    cont_id
+    * @output   delete container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-04
     */
     public function container_type_delete()
     {
@@ -68,14 +64,13 @@ class Set_up_container_type extends Cdms_controller
         return json_encode('pass');
     }
 
-     /*
+    /*
     * container_type_restore
     * restore container type
-    * @input cont_id
-    * @output restore container type
-    * @author Tadsawan
-    * @Create Date 2564-10-04
-    * @Update Date 2564-10-04
+    * @input    cont_id
+    * @output   restore container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-04
     */
     public function container_type_restore()
     {
@@ -86,14 +81,13 @@ class Set_up_container_type extends Cdms_controller
         return json_encode('pass');
     }
 
-     /*
+    /*
     * container_type_insert
     * insert container type
-    * @input cont_name, cont_image
-    * @output insert container type
-    * @author Tadsawan
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-08
+    * @input    cont_name, cont_image
+    * @output   insert container type
+    * @author   Tadsawan
+    * @Create Date  2564-08-06
     */
     public function container_type_insert() {
         $m_container_type = new M_cdms_container_type();

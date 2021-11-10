@@ -15,20 +15,17 @@ use App\Models\M_cdms_agent;
 /*
 * Service_input
 * show service input page, insert service
-* @author Natdanai
-* @Create Date 2564-08-06
-* @Update Date 2564-08-08
+* @author   Natdanai
+* @Create Date  2564-08-06
 */
-
 class Service_input extends Cdms_controller {
     /*
     * service_input
     * show service input page
-    * @input -
-    * @output show service input page
-    * @author Natdanai
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-08
+    * @input    -
+    * @output   show service input page
+    * @author   Natdanai
+    * @Create Date  2564-08-06
     */
     public function service_input($section_error = '') {
         $_SESSION['menu'] = 'Service_show';
@@ -97,11 +94,10 @@ class Service_input extends Cdms_controller {
     /*
     * service_insert
     * insert service
-    * @input service, customer, agent, contaienr information
-    * @output insert service, customer, agent, contaienr information
-    * @author Natdanai
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-08
+    * @input    service, customer, agent, contaienr information
+    * @output   insert service, customer, agent, contaienr information
+    * @author   Natdanai
+    * @Create Date  2564-08-06
     */
     public function service_insert() {
         $m_ser = new M_cdms_service();

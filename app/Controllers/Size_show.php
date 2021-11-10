@@ -6,20 +6,18 @@ use App\Models\M_cdms_size;
 
 /*
 * Size_show
-* ดึงข้อมูลขนาดตู้
-* @author Wirat
-* @Create Date 2564-08-06
-* @Update Date 2564-08-06
+* get container size information
+* @author   Wirat
+* @Create Date  2564-08-06
 */
 class Size_show extends Cdms_controller {
     /*
     * get_size_ajax
-    * ดึงข้อมูลขนาดตู้
-    * @input cus information
-    * @output ดึงข้อมูลขนาดตู้
-    * @author Wirat
-    * @Create Date 2564-08-06
-    * @Update Date 2564-08-06
+    * get container size information by size_id
+    * @input    size_id
+    * @output   size information
+    * @author   Wirat
+    * @Create Date  2564-08-06
     */
     public function get_size_ajax() {
         $m_size = new M_cdms_size();

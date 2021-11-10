@@ -8,20 +8,17 @@ use App\Models\M_cdms_car;
 /*
 * Driver_update
 * show driver edit page, update driver
-* @author  Warisara
-* @Create Date 2564-08-07
-* @Update Date 2564-08-07
+* @author   Warisara
+* @Create Date  2564-08-07
 */
-
 class Driver_edit extends Cdms_controller {
     /*
     * driver_update
     * show driver edit page
-    * @input dri_id
-    * @output show driver edit page
-    * @author Warisara
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * @input    dri_id
+    * @output   show driver edit page
+    * @author   Warisara
+    * @Create Date  2564-08-07
     */
     public function driver_edit($dri_id) {
         $_SESSION['menu'] = 'Driver_show';
@@ -36,11 +33,10 @@ class Driver_edit extends Cdms_controller {
     /*
     * driver_update
     * update driver
-    * @input driver information
-    * @output update driver
-    * @author Warisara
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * @input    driver information
+    * @output   update driver
+    * @author   Warisara
+    * @Create Date  2564-08-07
     */
     public function driver_update() {
         $m_dri = new M_cdms_driver();

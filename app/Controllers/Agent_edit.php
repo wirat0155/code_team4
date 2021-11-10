@@ -7,18 +7,16 @@ use App\Models\M_cdms_agent;
 * Show agent edit page, update agent information
 * @author Klayuth, Preechaya
 * @Create Date 2021-08-06
-* @Update Date 2021-08-06
 */
 class Agent_edit extends Cdms_controller {
 
     /*
     * agent_edit
     * Show agent edit page
-    * @input agn_id
-    * @output agent edit page with agent information
-    * @author Klayuth, Preechaya
-    * @Create Date 2021-08-06
-    * @Update Date 2021-08-06
+    * @input    agn_id
+    * @output   agent edit page with agent information
+    * @author   Klayuth, Preechaya
+    * @Create Date  2021-08-06
     */
     public function agent_edit($agn_id = '') {
         $_SESSION['menu'] = 'Agent_show';
@@ -34,11 +32,10 @@ class Agent_edit extends Cdms_controller {
     /*
     * agent_update
     * update agent information
-    * @input agent information
-    * @output เพิ่มข้อมูลเอเย่นต์
-    * @author Klayuth Preechaya
-    * @Create Date 2021-08-06
-    * @Update Date 2021-10-17
+    * @input    agent information
+    * @output   updating agent information
+    * @author   Klayuth Preechaya
+    * @Create Date  2021-08-06
     */
     public function agent_update() {
         // load agent model

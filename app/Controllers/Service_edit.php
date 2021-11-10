@@ -15,21 +15,18 @@ use App\Models\M_cdms_agent;
 /*
 * Service_edit
 * show service edit page, update service information
-* @author Natdanai, Worarat
-* @Create Date 2564-07-29
-* @Update Date 2564-07-30
+* @author   Natdanai, Worarat
+* @Create Date  2564-07-29
 */
-
 class Service_edit extends Cdms_controller
 {
     /*
     * service_edit
     * show service edit page
-    * @input ser_id
-    * @output show service edit page
-    * @author Worarat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-08-08
+    * @input    ser_id
+    * @output   show service edit page
+    * @author   Worarat
+    * @Create Date  2564-07-29
     */
     public function service_edit($ser_id)
     {
@@ -93,11 +90,10 @@ class Service_edit extends Cdms_controller
     /*
     * service_update
     * update service information
-    * @input service, customer, agent, container information
-    * @output update service information
-    * @author Worarat
-    * @Create Date 2564-07-29
-    * @Update Date 2564-08-08
+    * @input    service, customer, agent, container information
+    * @output   update service information
+    * @author   Worarat
+    * @Create Date  2564-07-29
     */
     public function service_update()
     {
