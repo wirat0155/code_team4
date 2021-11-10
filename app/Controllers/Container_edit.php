@@ -99,9 +99,9 @@ class Container_edit extends Cdms_controller {
             $arr_con_number = $m_con->is_con_number_exist($con_number);
             if (count($arr_con_number) >= 1) {
                 // duplicate con_number
-                $_SESSION['con_number_error'] = 'หมายเลขตู้นี้ใช้แล้ว';
+                $_SESSION['con_number_error'] = 'The container has already used';
                 $this->container_edit($con_id);
-                exit();
+                exit(0);
             }
         }
 

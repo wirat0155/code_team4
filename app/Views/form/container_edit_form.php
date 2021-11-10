@@ -2,6 +2,7 @@
     if ($obj_container != NULL) {
         $con_id = $obj_container[0]->con_id;
         $con_number = $obj_container[0]->con_number;
+        $con_old_number = $con_number;
         $con_stac_id = $obj_container[0]->con_stac_id;
         $con_cont_id = $obj_container[0]->con_cont_id;
         $con_max_weight = $obj_container[0]->con_max_weight;
@@ -13,6 +14,7 @@
     else {
         $con_id = $arr_container[0]->con_id;
         $con_number = $arr_container[0]->con_number;
+        $con_old_number = $con_number;
         $con_stac_id = $arr_container[0]->con_stac_id;
         $con_cont_id = $arr_container[0]->con_cont_id;
         $con_max_weight = $arr_container[0]->con_max_weight;
@@ -40,8 +42,9 @@
                     <b>Container number :</b>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input type="hidden" name="con_old_number" value="<?php echo $con_number ?>">
+                    <input type="hidden" name="con_old_number" value="<?php echo $con_old_number ?>">
                     <input class="form-control" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" value="<?php echo $con_number ?>">
+                    <label class="error"><?php echo $_SESSION['con_number_error'] ?></label>
                 </div>
             </div>
 
