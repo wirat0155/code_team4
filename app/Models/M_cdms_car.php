@@ -7,20 +7,18 @@ use App\Models\Da_cdms_car;
 /*
 * M_cdms_car
 * get car
-* @author Nattanan Tadsawan
-* @Create Date 2564-07-30
-* @Update Date
+* @author   Nattanan, Tadsawan
+* @Create Date  2564-07-30
 */
-
 class M_cdms_car extends Da_cdms_car {
+
     /*
     * get_all
     * get all car
-    * @input -
-    * @output array of car
-    * @author Nattanan, Tadsawan
-    * @Create Date 2564-07-30
-    * @Update Date 2564-07-30
+    * @input    -
+    * @output   array of car
+    * @author   Nattanan, Tadsawan
+    * @Create Date  2564-07-30
     */
     public function get_all() {
         $sql = "SELECT *
@@ -40,11 +38,10 @@ class M_cdms_car extends Da_cdms_car {
     /*
     * get_by_id
     * get car by car_id
-    * @input car_id
-    * @output car_information
-    * @author Nattanan
-    * @Create Date 2564-07-30
-    * @Update Date 2565-07-30
+    * @input    car_id
+    * @output   car_information
+    * @author   Nattanan
+    * @Create Date  2564-07-30
     */
     public function get_by_id($car_id) {
         $sql = "SELECT * FROM $this->table

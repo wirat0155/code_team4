@@ -7,22 +7,17 @@ use App\Models\Da_cdms_driver;
 /*
 * M_cdms_driver
 * get driver
-* @author Thanatip
-* @Create Date 2564-07-30
-* @Update Date
+* @author   Thanatip
+* @Create Date  2564-07-30
 */
-
 class M_cdms_driver extends Da_cdms_driver {
-
     /*
     * get_all
     * get all driver
-    * @input -
-    * @output array of driver
-    * @author Thanatip
-    * @lastest author Wirat
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-30
+    * @input    -
+    * @output   array of driver
+    * @author   Thanatip
+    * @Create Dat   2564-07-30
     */
     public function get_all() {
         $sql = "SELECT * FROM cdms_driver
@@ -37,12 +32,10 @@ class M_cdms_driver extends Da_cdms_driver {
     /*
     * get_by_id
     * get driver by dri_id
-    * @input dri_id
-    * @output driver information
-    * @author Thanatip
-    * @lastest author Benjapon
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-17
+    * @input    dri_id
+    * @output   driver information
+    * @author   Thanatip
+    * @Create Date  2564-07-30
     */
     public function get_by_id($dri_id = '') {
         $sql = "SELECT * FROM $this->table

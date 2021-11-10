@@ -7,11 +7,9 @@ use CodeIgniter\Model;
 /*
 * Da_cdms_agent
 * insert update delete agent
-* @author Klayuth,Preechaya
-* @Create Date 2564-07-30
-* @Update Date 2564-09-11
+* @author   Klayuth, Preechaya
+* @Create Date  2564-07-30
 */
-
 class Da_cdms_agent extends Model
 {
     protected $table = 'cdms_agent';
@@ -23,13 +21,11 @@ class Da_cdms_agent extends Model
     /*
     * delete
     * delete agent
-    * @input agn_id
-    * @output delete agent
-    * @author Preechaya
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-02
+    * @input    agn_id
+    * @output   delete agent
+    * @author   Preechaya
+    * @Create Date  2564-07-30
     */
-
     public function delete($agn_id = NULL, bool $purge = false)
     {
         $sql = "UPDATE $this->table SET agn_status=2 
@@ -40,13 +36,11 @@ class Da_cdms_agent extends Model
     /*
     * insert
     * insert agent
-    * @input agent information
-    * @output insert agent
-    * @author Klayuth
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * @input    agent information
+    * @output   insert agent
+    * @author   Klayuth
+    * @Create Date  2564-08-07
     */
-
     public function insert($agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL)
     {
         $sql = "INSERT INTO $this->table(agn_company_name, agn_firstname, agn_lastname, 
@@ -57,11 +51,10 @@ class Da_cdms_agent extends Model
     /*
     * agent_update
     * update agent
-    * @input agent information
-    * @output update agent
-    * @author Klayuth
-    * @Create Date 2564-08-07
-    * @Update Date 2564-09-11
+    * @input    agent information
+    * @output   update agent
+    * @author   Klayuth
+    * @Create Date  2564-08-07
     */
     public function agent_update($agn_id = NULL, $agn_company_name = NULL, $agn_firstname = NULL, $agn_lastname = NULL, $agn_tel = NULL, $agn_address = NULL, $agn_tax = NULL, $agn_email = NULL)
     {

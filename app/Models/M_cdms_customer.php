@@ -7,19 +7,17 @@ use App\Models\Da_cdms_customer;
 /*
 * M_cdms_customer_show
 * get customer
-* @author  วรรัตน์
-* @Create Date 2564-07-29
-* @Update Date 2564-10-13
+* @author   Worarat
+* @Create Date  2564-07-29
 */
 class M_cdms_customer extends Da_cdms_customer {
     /*
     * get_all
     * get all customer
-    * @input
-    * @output array of customer
-    * @author Kittipod, Wirat
-    * @Create Date 2564-07-30
-    * @Update Date 2564-10-13
+    * @input    type
+    * @output   array of customer
+    * @author   Kittipod, Wirat
+    * @Create Date  2564-07-30
     */
     public function get_all($type = 1) {
 
@@ -50,11 +48,10 @@ class M_cdms_customer extends Da_cdms_customer {
     /*
     * get_by_id
     * get customer by cus_id
-    * @input cus_id
-    * @output array of customer
-    * @author Benjapon
-    * @Create Date 2564-08-02
-    * @Update Date 2564-08-02
+    * @input    cus_id
+    * @output   array of customer
+    * @author   Benjapon
+    * @Create Date  2564-08-02
     */
     public function get_by_id($cus_id) {
         $sql = "SELECT * FROM $this->table
@@ -66,11 +63,10 @@ class M_cdms_customer extends Da_cdms_customer {
     /*
     * get_by_name
     * get customer by cus_company_name
-    * @input cus_company_name, cus_branch
-    * @output array of customer
-    * @author Nathadanai, Kittipod
-    * @Create Date 2564-08-08
-    * @Update Date 2564-08-08
+    * @input    cus_company_name, cus_branch
+    * @output   array of customer
+    * @author   Nathadanai, Kittipod
+    * @Create Date  2564-08-08
     */
     public function get_by_name($cus_company_name, $cus_branch) {
         if ($cus_branch == '') {
@@ -88,11 +84,10 @@ class M_cdms_customer extends Da_cdms_customer {
     /*
     * is_cus_branch_exist
     * search customer by cus_branch
-    * @input cus_company_name
-    * @output cus_company_name cus_branch or null
-    * @author Kittipod
-    * @Create Date 2564-08-18
-    * @Update Date 2564-08-18
+    * @input    cus_company_name
+    * @output   cus_company_name cus_branch or null
+    * @author   Kittipod
+    * @Create Date  2564-08-18
     */
     public function is_cus_branch_exist($cus_company_name = NULL) {
         $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name'";
@@ -102,11 +97,10 @@ class M_cdms_customer extends Da_cdms_customer {
     /*
     * get_by_date
     * search customer that use service in date
-    * @input start_date end_date
-    * @output Customer and Servive or null
-    * @author Kittipod
-    * @Create Date 2564-09-10
-    * @Update Date 2564-09-10
+    * @input    start_date end_date
+    * @output   Customer and Servive or null
+    * @author   Kittipod
+    * @Create Date  2564-09-10
     */
     public function get_by_date($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT * FROM $this->table

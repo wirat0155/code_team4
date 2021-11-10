@@ -7,11 +7,9 @@ use CodeIgniter\Model;
 /*
 * Da_cdms_driver
 * insert update delete driver
-* @author Warisara
-* @Create Date 2564-07-30
-* @Update Date
+* @author   Warisara
+* @Create Date  2564-07-30
 */
-
 class Da_cdms_driver extends Model {
     protected $table = 'cdms_driver';
     protected $primaryKey = 'dri_id ';
@@ -20,12 +18,10 @@ class Da_cdms_driver extends Model {
     /*
     * delete
     * delete driver
-    * @input dri_id
-    * @output delete driver
-    * @author Warisara
-    * @latest author Wirat
-    * @Create Date 2564-07-30
-    * @Update Date 2564-08-03
+    * @input    dri_id
+    * @output   delete driver
+    * @author   Warisara
+    * @Create Date  2564-07-30
     */
     public function delete($dri_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table
@@ -37,11 +33,10 @@ class Da_cdms_driver extends Model {
     /*
     * insert
     * insert driver
-    * @input dri information
-    * @output insert driver
-    * @author Thanatip
-    * @Create Date 2564-08-05
-    * @Update Date 2564-08-05
+    * @input    driver information
+    * @output   insert driver
+    * @author   Thanatip
+    * @Create Date  2564-08-05
     */
     public function insert($dri_name = NULL, $dri_tel = NULL, $dri_card_number = NULL, $dri_license = NULL, $dri_license_type = NULL, $dri_profile_image = NULL, $dri_status = NULL, $dri_date_start = NULL, $dri_date_end = NULL, $dri_car_id = NULL) {
         $sql = "INSERT INTO $this->table(dri_name, dri_tel, dri_card_number, dri_license,
@@ -54,11 +49,10 @@ class Da_cdms_driver extends Model {
     /*
     * driver_update
     * update driver
-    * @input driver information
-    * @output update driver
-    * @author Warisara
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-07
+    * @input    driver information
+    * @output   update driver
+    * @author   Warisara
+    * @Create Date  2564-08-07
     */
     public function driver_update($dri_id = NULL, $dri_name = NULL, $dri_tel = NULL, $dri_card_number = NULL, $dri_license = NULL, $dri_license_type = NULL, $dri_profile_image = NULL, $dri_status = NULL, $dri_date_start = NULL, $dri_date_end = NULL, $dri_car_id = NULL) {
         if ($dri_profile_image != NULL) {

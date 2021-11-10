@@ -7,11 +7,9 @@ use CodeIgniter\Model;
 /*
 * Da_cdms_cost_detail
 * insert update delete cost in service
-* @author Natdanai
-* @Create Date 2564-09-16
-* @Update
+* @author   Natdanai
+* @Create Date  2564-09-16
 */
-
 class Da_cdms_cost_detail extends Model {
     protected $table = 'cdms_cost_detail';
     protected $primaryKey = 'cosd_id';
@@ -20,11 +18,10 @@ class Da_cdms_cost_detail extends Model {
     /*
     * cost_insert
     * insert cost
-    * @input cosd_name, cosd_cost, cosd_payment_date, cosd_ser_id
-    * @output insert cost
-    * @author Natdanai
-    * @Create Date 2564-09-16
-    * @Update Date 2564-09-16
+    * @input    cosd_name, cosd_cost, cosd_payment_date, cosd_ser_id
+    * @output   insert cost
+    * @author   Natdanai
+    * @Create Date  2564-09-16
     */
     public function cost_insert($cosd_name = NULL, $cosd_cost = NULL, $cosd_payment_date = NULL, $cosd_ser_id = NULL) {
         $sql = "INSERT INTO $this->table VALUES (NULL, '$cosd_name', '$cosd_cost', '1', '$cosd_payment_date', NULL, '$cosd_ser_id', '1')";
@@ -34,11 +31,10 @@ class Da_cdms_cost_detail extends Model {
     /*
     * cost_update
     * update cost
-    * @input cosd_id, cosd_name, cosd_cost
-    * @output update cost
-    * @author Natdanai
-    * @Create Date 2564-09-16
-    * @Update Date 2564-09-16
+    * @input    cosd_id, cosd_name, cosd_cost
+    * @output   update cost
+    * @author   Natdanai
+    * @Create Date  2564-09-16
     */
     public function cost_update($cosd_id = NULL, $cosd_name = NULL, $cosd_cost = NULL)
     {
@@ -49,11 +45,10 @@ class Da_cdms_cost_detail extends Model {
     /*
     * delete
     * delete cost
-    * @input cosd_i
-    * @output delete cost
-    * @author Natdanai
-    * @Create Date 2564-09-16
-    * @Update Date 2564-09-16
+    * @input    cosd_i
+    * @output   delete cost
+    * @author   Natdanai
+    * @Create Date  2564-09-16
     */
     public function delete($cosd_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cosd_status=2 WHERE cosd_id='$cosd_id'";

@@ -7,21 +7,18 @@ use App\Models\Da_cdms_cost_detail;
 /*
 * M_cdms_cost_detail
 * get cost detail
-* @author Nattdanai
-* @Create Date 2564-09-16
-* @Update Date 2564-09-17
+* @author   Nattdanai
+* @Create Date  2564-09-16
 */
 class M_cdms_cost_detail extends Da_cdms_cost_detail
 {
-
     /*
     * get_by_ser_id
     * get cost
-    * @input ser_id
-    * @output array of cosd
-    * @author Nattdanai
-    * @Create Date 2564-09-16
-    * @Update Date 2564-09-16
+    * @input    ser_id
+    * @output   array of cosd
+    * @author   Nattdanai
+    * @Create Date  2564-09-16
     */
     public function get_by_ser_id($ser_id){
         $sql = "SELECT * FROM $this->table
@@ -33,11 +30,10 @@ class M_cdms_cost_detail extends Da_cdms_cost_detail
     /*
     * get_by_id
     * get cost by cosd_id
-    * @input cosd_id
-    * @output array of cosd
-    * @author Nattdanai
-    * @Create Date 2564-09-16
-    * @Update Date 2564-09-16
+    * @input    cosd_id
+    * @output   array of cosd
+    * @author   Nattdanai
+    * @Create Date  2564-09-16
     */
     public function get_by_id($cosd_id) {
         $sql = "SELECT * FROM $this->table
@@ -49,11 +45,10 @@ class M_cdms_cost_detail extends Da_cdms_cost_detail
     /*
     * get_last
     * get last cost
-    * @input -
-    * @output array of cosd
-    * @author Nattdanai
-    * @Create Date 2564-09-17
-    * @Update Date 2564-09-17
+    * @input    -
+    * @output   array of cosd
+    * @author   Nattdanai
+    * @Create Date  2564-09-17
     */
     public function get_last() {
         $sql = "SELECT * FROM $this->table ORDER BY cosd_id DESC LIMIT 1";

@@ -7,21 +7,18 @@ use App\Models\Da_cdms_service;
 /*
 * M_cdms_service
 * get service
-* @author Natdanai Worarat
-* @Create Date 2564-07-29
-* @Update Date 2564-10-30
+* @author   Natdanai Worarat
+* @Create Date  2564-07-29
 */
-
 class M_cdms_service extends Da_cdms_service {
 
     /*
     * get_all
     * get all service
-    * @input
-    * @output array of service
-    * @author Natdanai
-    * @Create Date 2564-07-30
-    * @Update Date  2564-10-30
+    * @input    today
+    * @output   array of service
+    * @author   Natdanai
+    * @Create Date  2564-07-30
     */
     public function get_all($today = '') {
         if ($today != '') {
@@ -50,11 +47,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_num_import
     * get number of import service
-    * @input arrivals_date
-    * @output import number
-    * @author Wirat
-    * @Create Date 2564-10-30
-    * @Update Date 2564-10-30
+    * @input    arrivals_date
+    * @output   import number
+    * @author   Wirat
+    * @Create Date  2564-10-30
     */
     public function get_num_import($arrivals_date = '') {
         $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
@@ -67,11 +63,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_num_all
     * get number of all service
-    * @input today, yesterday_time
-    * @output all number
-    * @author Wirat
-    * @Create Date 2564-10-30
-    * @Update Date 2564-10-30
+    * @input    today, yesterday_time
+    * @output   all number
+    * @author   Wirat
+    * @Create Date  2564-10-30
     */
     public function get_num_all($today = '', $yesterday_time = '') {
         $sql = "SELECT COUNT(ser_id) AS num_all FROM $this->table
@@ -84,11 +79,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_num_drop
     * get number of drop service
-    * @input date, date_time, is_today
-    * @output drop number
-    * @author Wirat
-    * @Create Date 2564-10-30
-    * @Update Date 2564-10-30
+    * @input    date, date_time, is_today
+    * @output   drop number
+    * @author   Wirat
+    * @Create Date  2564-10-30
     */
     public function get_num_drop($date = '', $date_time = '', $is_today = true) {
         if ($is_today) {
@@ -107,11 +101,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_num_import
     * get number of export service
-    * @input date, date_time
-    * @output export number
-    * @author Wirat
-    * @Create Date 2564-10-30
-    * @Update Date 2564-10-30
+    * @input    date, date_time
+    * @output   export number
+    * @author   Wirat
+    * @Create Date  2564-10-30
     */
     public function get_num_export($date = '', $date_time = '', $is_today = true) {
         if ($is_today) {
@@ -131,11 +124,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_by_id
     * get service by ser_id
-    * @input $ser_id
-    * @output service information
-    * @author Worarat
-    * @Create Date 2564-08-07
-    * @Update Date 2564-08-08
+    * @input    ser_id
+    * @output   service information
+    * @author   Worarat
+    * @Create Date  2564-08-07
     */
     public function get_by_id($ser_id) {
         $sql = "SELECT * FROM $this->table
@@ -151,11 +143,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_by_date_customer
     * get service by customer and date
-    * @input start_date end_date
-    * @output service and caseustomer
-    * @author Kittipod
-    * @Create Date 2564-09-10
-    * @Update Date 2564-09-10
+    * @input    start_date end_date
+    * @output   service and caseustomer
+    * @author   Kittipod
+    * @Create Date  2564-09-10
     */
     public function get_by_date_customer($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT * FROM $this->table
@@ -173,11 +164,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_by_date
     * get service by date
-    * @input start_date, end_date
-    * @output array of service
-    * @author Kittipod
-    * @Create Date 2564-09-10
-    * @Update Date 2564-10-30
+    * @input    start_date, end_date
+    * @output   array of service
+    * @author   Kittipod
+    * @Create Date  2564-09-10
     */
     public function get_by_date($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT * FROM $this->table
@@ -203,11 +193,10 @@ class M_cdms_service extends Da_cdms_service {
     /*
     * get_by_id_change
     * get service that change
-    * @input ser_id_change
-    * @output ser_arrivals_date , con_number , agn_company_name , ser_id_change
-    * @author Warisara
-    * @Create Date 2564-09-20
-    * @Update Date 2564-09-20
+    * @input    ser_id_change
+    * @output   ser_arrivals_date , con_number , agn_company_name , ser_id_change
+    * @author   Warisara
+    * @Create Date  2564-09-20
     */
     public function get_by_id_change($ser_id_change){
         $sql = "SELECT ser_arrivals_date , con_number , agn_company_name , ser_id_change FROM  cdms_service
