@@ -78,17 +78,17 @@
             </style>
 
             <div class="d-flex justify-content-center">
-                <a href="#service_information">
-                    <h3 onclick="hilight_section('service')" class="m-3 service active">Service</h3>
+                <a href="#service_information" class="p-0 m-3">
+                    <h3 onclick="hilight_section('service')" class="service active">Service</h3>
                 </a>
-                <a href="#container_information">
-                    <h3 onclick="hilight_section('con')" class="m-3 con">Container</h3>
+                <a href="#container_information" class="p-0 m-3">
+                    <h3 onclick="hilight_section('con')" class="con">Container</h3>
                 </a>
-                <a href="#agent_information">
-                    <h3 onclick="hilight_section('agent')" class="m-3 agent">Agent</h3>
+                <a href="#agent_information" class="p-0 m-3">
+                    <h3 onclick="hilight_section('agent')" class="agent">Agent</h3>
                 </a>
-                <a href="#customer_information">
-                    <h3 onclick="hilight_section('customer')" class="m-3 customer">Customer</h3>
+                <a href="#customer_information" class="p-0 m-3">
+                    <h3 onclick="hilight_section('customer')" class="customer">Customer</h3>
                 </a>
             </div>
 

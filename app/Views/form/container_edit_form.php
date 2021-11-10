@@ -66,6 +66,7 @@
                             <div class="item" data-value="new">+ New container</div>
                         </div>
                     </div>
+                    <input class="form-control mt-5" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
                 </div>
             </div>
             <?php endif; ?>
