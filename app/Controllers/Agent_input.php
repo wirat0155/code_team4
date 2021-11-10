@@ -61,24 +61,32 @@ class Agent_input extends Cdms_controller {
             $_SESSION['agn_company_name_error'] = 'The agent has already used';
 
             // if duplicate
-            // then go to add customer page
-            // return to customer edit page
-            $_SESSION['cus_company_name'] = $cus_company_name;
-            $_SESSION['cus_firstname'] = $cus_firstname;
-            $_SESSION['cus_lastname'] = $cus_lastname;
-            $_SESSION['cus_branch'] = $cus_branch;
-            $_SESSION['cus_tel'] = $cus_tel;
-            $_SESSION['cus_address'] = $cus_address;
-            $_SESSION['cus_tax'] = $cus_tax;
-            $_SESSION['cus_email'] = $cus_email;
+            // then go to add agent page
+            $_SESSION['agn_company_name'] = $agn_company_name;
+            $_SESSION['agn_firstname'] = $agn_firstname;
+            $_SESSION['agn_lastname'] = $agn_lastname;
+            $_SESSION['agn_tel'] = $agn_tel;
+            $_SESSION['agn_address'] = $agn_address;
+            $_SESSION['agn_tax'] = $agn_tax;
+            $_SESSION['agn_email'] = $agn_email;
+
             $this->agent_input();
-            exit;
+            exit(0);
         }
         // if agent company name is unique
         // then insert the agent
-        else {
-            $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-            return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
-        }
+        $_SESSION['agn_company_name_error'] = '';
+        unset($_SESSION['agn_id']);
+        unset($_SESSION['agn_company_name']);
+        unset($_SESSION['agn_firstname']);
+        unset($_SESSION['agn_lastname']);
+        unset($_SESSION['agn_tel']);
+        unset($_SESSION['agn_address']);
+        unset($_SESSION['agn_tax']);
+        unset($_SESSION['agn_email']);
+
+        $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+
     }   
 }

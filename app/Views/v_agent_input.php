@@ -8,15 +8,15 @@
 -->
 
 <?php
-if (isset($_SESSION['agn_company_name'])) {
-    $agn_company_name = $_SESSION['agn_company_name'];
-    $agn_firstname = $_SESSION['agn_firstname'];
-    $agn_lastname = $_SESSION['agn_lastname'];
-    $agn_tel = $_SESSION['agn_tel'];
-    $agn_address = $_SESSION['agn_address'];
-    $agn_tax = $_SESSION['agn_tax'];
-    $agn_email = $_SESSION['agn_email'];
-}
+    if (isset($_SESSION['agn_company_name'])) {
+        $agn_company_name = $_SESSION['agn_company_name'];
+        $agn_firstname = $_SESSION['agn_firstname'];
+        $agn_lastname = $_SESSION['agn_lastname'];
+        $agn_tel = $_SESSION['agn_tel'];
+        $agn_address = $_SESSION['agn_address'];
+        $agn_tax = $_SESSION['agn_tax'];
+        $agn_email = $_SESSION['agn_email'];
+    }
 ?>
 
 <style>

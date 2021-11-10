@@ -19,6 +19,15 @@
         $agn_tel = $arr_agent[0]->agn_tel;
         $agn_email = $arr_agent[0]->agn_email;
     }
+    if (isset($_SESSION['agn_company_name'])) {
+        $agn_company_name = $_SESSION['agn_company_name'];
+        $agn_firstname = $_SESSION['agn_firstname'];
+        $agn_lastname = $_SESSION['agn_lastname'];
+        $agn_tel = $_SESSION['agn_tel'];
+        $agn_address = $_SESSION['agn_address'];
+        $agn_tax = $_SESSION['agn_tax'];
+        $agn_email = $_SESSION['agn_email'];
+    }
 ?>
 <style>
     .form-inline label {
@@ -44,7 +53,8 @@
                     <label for="agn_company_name" class="mt-2"><b>Company name : </b></label>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $arr_agent[0]->agn_company_name ?>">
+                    <input class="form-control" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $agn_company_name ?>">
+                    <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                 </div>
             </div>
             <?php else : ?>

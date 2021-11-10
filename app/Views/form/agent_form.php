@@ -12,7 +12,7 @@ if ($type == 2) {
 </div>
 
 <div class="col-md-6 " style="margin-right: 10%;">
-  <input type="text" class="form-control" id="agn_tax" name="agn_tax" placeholder="1234567890123" <?php echo $attr;?>>
+  <input type="text" class="form-control" id="agn_tax" name="agn_tax" placeholder="1234567890123" <?php echo $attr ?> value="<?php echo $agn_tax?>">
 </div>
 
 <div class="col-md-2 input-label">
@@ -22,7 +22,7 @@ if ($type == 2) {
 </div>
 
 <div class="col-md-6 " style="margin-right: 10%;">
-  <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" <?php echo $attr;?>></textarea>
+  <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" <?php echo $attr ?> ><?php echo $agn_address?></textarea>
 </div>
 
 </div>
@@ -35,7 +35,7 @@ if ($type == 2) {
   </div>
 
   <div class="col-md-6 " style="margin-right: 10%;">
-    <input type="text" class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name" <?php echo $attr;?>>
+    <input type="text" class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name" <?php echo $attr ?> value="<?php echo $agn_firstname ?>">
   </div>
 
   <div class="col-md-2 input-label">
@@ -45,7 +45,7 @@ if ($type == 2) {
   </div>
 
   <div class="col-md-6 " style="margin-right: 10%;">
-    <input type="text" class="form-control" id="agn_lastname" name="agn_lastname" placeholder="Last name" <?php echo $attr;?>>
+    <input type="text" class="form-control" id="agn_lastname" name="agn_lastname" placeholder="Last name" <?php echo $attr ?> value="<?php echo $agn_lastname ?>">
   </div>
 
   <div class="col-md-2 input-label">
@@ -59,7 +59,7 @@ if ($type == 2) {
       <div class="input-group-prepend ">
         <span class="input-group-text "><i class="fas fa-phone"></i></span>
       </div>
-      <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx" <?php echo $attr;?>>
+      <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx" <?php echo $attr ?> value="<?php echo $agn_tel ?>">
     </div>
   </div>
 
@@ -74,7 +74,7 @@ if ($type == 2) {
       <div class="input-group-prepend ">
         <span class="input-group-text "><i class="fas fa-envelope"></i></span>
       </div>
-      <input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com" <?php echo $attr;?>>
+      <input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com" <?php echo $attr ?> value="<?php echo $agn_email ?>">
     </div>
   </div>
 </div>

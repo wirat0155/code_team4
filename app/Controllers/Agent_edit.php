@@ -41,9 +41,10 @@ class Agent_edit extends Cdms_controller {
     * @Update Date 2021-10-17
     */
     public function agent_update() {
+        // load agent model
         $m_agn = new M_cdms_agent();
 
-        // get agent form agent edit page
+        // get agent information form agent edit page
         $agn_id = $this->request->getPost('agn_id');
         $agn_company_name = $this->request->getPost('agn_company_name');
         $agn_firstname = $this->request->getPost('agn_firstname');
@@ -57,11 +58,34 @@ class Agent_edit extends Cdms_controller {
         $arr_agent = $m_agn->get_by_company_name($agn_company_name);
         if (count($arr_agent) >= 1 && $arr_agent[0]->agn_id != $agn_id) {
             $_SESSION['agn_company_name_error'] = 'The agent has already used';
+            
+            // if duplicate
+            // then go to agent edit page
+            $_SESSION['agn_company_name'] = $agn_company_name;
+            $_SESSION['agn_firstname'] = $agn_firstname;
+            $_SESSION['agn_lastname'] = $agn_lastname;
+            $_SESSION['agn_tel'] = $agn_tel;
+            $_SESSION['agn_address'] = $agn_address;
+            $_SESSION['agn_tax'] = $agn_tax;
+            $_SESSION['agn_email'] = $agn_email;
+
             $this->agent_edit($agn_id);
-            exit;
-        } else {
-            $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-            return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+            exit(0);
         }
+        
+        // if agent company name is unique
+        // then updaet the agent
+        $_SESSION['agn_company_name_error'] = '';
+        unset($_SESSION['agn_id']);
+        unset($_SESSION['agn_company_name']);
+        unset($_SESSION['agn_firstname']);
+        unset($_SESSION['agn_lastname']);
+        unset($_SESSION['agn_tel']);
+        unset($_SESSION['agn_address']);
+        unset($_SESSION['agn_tax']);
+        unset($_SESSION['agn_email']);
+        $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+        
     }
 }

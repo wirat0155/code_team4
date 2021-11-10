@@ -5,38 +5,38 @@
 * @output edit agent information
 * @author
 * @Create Date
- -->
+-->
 <style>
-  label.error {
-    float: left !important;
-  }
+    label.error {
+        float: left !important;
+    }
 
-  .fa-phone {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-  }
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
 
-  .cl-blue {
-    color: #1244B9 !important;
-  }
+    .cl-blue {
+        color: #1244B9 !important;
+    }
 
-  input.error, textarea.error {
-    border: 1px solid red !important;
-  }
+    input.error, textarea.error {
+        border: 1px solid red !important;
+    }
 
-  .ui.search.dropdown>input.search.error {
-    border: 1px solid red !important;
-  }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
 
-  small.error,
-  label.error {
-    color: red !important;
-    font-weight: bold;
-  }
+    small.error,
+    label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
 
 <div class="main-panel">
@@ -66,7 +66,7 @@
                     <li class="nav-item">
                         <a class="cl-blue"
                             href="<?php echo base_url() . '/Agent_show/agent_detail/' . $arr_agent[0]->agn_id ?>">Agent
-                            detail</a>
+                            details</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
