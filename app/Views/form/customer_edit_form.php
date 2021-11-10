@@ -1,3 +1,13 @@
+<!--
+* customer_edit_form
+* Display customer edit form
+* @input    customer information
+* @output   customer edit form
+* @author   Wirat
+* @Create Date  2564-11-06
+*/
+-->
+
 <?php
     if ($obj_customer != NULL) {
         $cus_id = $obj_customer[0]->cus_id;

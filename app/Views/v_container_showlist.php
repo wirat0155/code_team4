@@ -1,3 +1,13 @@
+<!--
+* v_container_showlist
+* Display container list page
+* @input    array of container
+* @output   container list page
+* @author   Wirat
+* @Create Date  2564-07-28
+*/
+-->
+
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -193,7 +203,7 @@
     <script>
     $(document).ready(function() {
 
-        // แทรกปุ่ม เพิ่มคอนเทรนเนอร์
+        // add container button
         var con_table = $('#container_list_table').DataTable({
             "columnDefs": [{
                 "searchable": false,
@@ -203,7 +213,7 @@
             "order": []
         });
 
-        //ลำดับ
+        // order
         con_table.on('order.dt search.dt', function() {
             con_table.column(0, {
                 search: 'applied',
@@ -223,11 +233,10 @@
     /*
     * get_id
     * get con_id and show in remove container modal
-    * @input con_id
-    * @output get con_id and show in remove container modal
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    con_id
+    * @output   get con_id and show in remove container modal
+    * @author   Wirat
+    * @Create Date  2564-07-28
     */
     -->
     function get_id(con_id) {
@@ -238,11 +247,10 @@
     /*
     * container_detail
     * go to container detail page
-    * @input con_id
-    * @output go to container detail page
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    con_id
+    * @output   go to container detail page
+    * @author   Wirat
+    * @Create Date  2564-07-28
     */
     -->
     function container_detail(con_id) {

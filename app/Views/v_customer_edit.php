@@ -1,3 +1,13 @@
+<!--
+* v_customer_edit
+* Display customer edit page
+* @input    customer information
+* @output   customer edit page
+* @author   Preechaya
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
 .fa-phone {
     -moz-transform: scaleX(-1);

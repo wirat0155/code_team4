@@ -1,11 +1,12 @@
 <!--
-* v_agnet_showlist
-* show agent list
-* @input -
-* @output show agent list
-* @author
-* @Create Date
- -->
+* v_agent_showlist
+* Display agent list page
+* @input    array of agent
+* @output   agent list page
+* @author   Klayuth
+* @Create Date  2564-07-28
+*/
+-->
 
 <div class="ui modal">
     <i class="close icon"></i>
@@ -195,11 +196,10 @@
     /*
     * get_id
     * get agn_id in remove agent modal
-    * @input agn_id
-    * @output get agn_id in remove agent modal
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    agn_id
+    * @output   get agn_id in remove agent modal
+    * @author   Natthanan
+    * @Create Date  2564-08-12
     */
     -->
     function get_id(agn_id) {
@@ -210,11 +210,10 @@
     /*
     * agent_detail
     * show agnet detail page when click on agent table row
-    * @input agn_id
-    * @output show agnet detail page when click on agent table row
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    agn_id
+    * @output   show agnet detail page when click on agent table row
+    * @author   Natthanan
+    * @Create Date  2564-08-12
     */
     -->
     function agent_detail(agn_id) {

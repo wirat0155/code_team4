@@ -1,3 +1,13 @@
+<!--
+* customer_card
+* Display customer card
+* @input    customer information
+* @output   customer card
+* @author   Wirat
+* @Create Date  2564-11-06
+*/
+-->
+
 <?php
     if ($obj_customer != NULL) {
         $cus_company_name = $obj_customer[0]->cus_company_name;

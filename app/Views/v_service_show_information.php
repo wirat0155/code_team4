@@ -1,3 +1,13 @@
+<!--
+* v_service_show_information
+* Display service detail page
+* @input    service information
+* @output   service detail page
+* @author   Tadsawan
+* @Create Date  2564-08-12
+*/
+-->
+
 <style>
     .picture-container {
         display: block;
@@ -354,11 +364,10 @@
             /*
             * hilight_section
             * go to hilight section
-            * @input section
-            * @output go to hilight section
-            * @author Wirat
-            * @Create Date
-            * @Update Date
+            * @input    section
+            * @output   go to hilight section
+            * @author   Thanathip
+            * @Create Date  2564-10-14
             */
             -->
             function hilight_section(section) {

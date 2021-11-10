@@ -1,3 +1,13 @@
+<!--
+* v_car_input
+* Display car input page
+* @input    -
+* @output   car input page
+* @author   Tadsawan
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
 .cl-blue {
     color: #1244B9 !important;
@@ -79,11 +89,10 @@ label.error {
         /*
         * validate_form
         * validate add car form
-        * @input -
-        * @output validate add car form
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    -
+        * @output   validate add car form
+        * @author   Tadsawan
+        * @Create Date  2564-08-06
         */
         -->
         function validate_form() {
@@ -94,11 +103,10 @@ label.error {
         /*
         * check_car_prov_id
         * check select province or not
-        * @input -
-        * @output check select province or not
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    -
+        * @output   check select province or not
+        * @author   Tadsawan
+        * @Create Date  2564-08-06
         */
         -->
         function check_car_prov_id() {
@@ -126,11 +134,10 @@ label.error {
         /*
         * get_image
         * show image name when upload car image
-        * @input -
-        * @output show image name when upload car image
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    -
+        * @output   show image name when upload car image
+        * @author   Tadsawan
+        * @Create Date  2564-08-06
         */
         -->
         function get_image() {

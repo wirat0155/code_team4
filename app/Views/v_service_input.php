@@ -1,3 +1,13 @@
+<!--
+* v_service_input
+* Display service input page
+* @input    -
+* @output   service input page
+* @author   Natdanai
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
     .ms-md-30 {
         margin-left: 0%;
@@ -555,11 +565,10 @@
             /*
             * show_all_form
             * show all form
-            * @input -
-            * @output show all form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show all form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_all_form(status) {
@@ -578,11 +587,10 @@
             /*
             * check_service_form
             * check service form contain error or not
-            * @input -
-            * @output check service form contain error or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check service form contain error or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_service_form() {
@@ -599,11 +607,10 @@
             /*
             * check_container_form
             * check container form contain error or not
-            * @input -
-            * @output check container form contain error or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check container form contain error or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_container_form() {
@@ -620,11 +627,10 @@
             /*
             * check_agent_form
             * check agent form contain error or not
-            * @input -
-            * @output check agent form contain error or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check agent form contain error or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_agent_form() {
@@ -641,11 +647,10 @@
             /*
             * check_customer_form
             * check customer form contain error or not
-            * @input -
-            * @output check customer form contain error or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check customer form contain error or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_customer_form() {
@@ -662,11 +667,10 @@
             /*
             * check_all_form
             * check form contain error or not
-            * @input -
-            * @output check form contain error or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check form contain error or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_all_form() {
@@ -693,11 +697,10 @@
             /*
             * show_service_form
             * show service section form
-            * @input -
-            * @output show service section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show service section form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_service_form() {
@@ -724,11 +727,10 @@
             /*
             * show_container_form
             * show container section form
-            * @input -
-            * @output show container section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show container section form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_container_form() {
@@ -755,11 +757,10 @@
             /*
             * show_agent_form
             * show agent section form
-            * @input -
-            * @output show agent section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show agent section form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_agent_form() {
@@ -786,11 +787,10 @@
             /*
             * show_customer_form
             * show customer section form
-            * @input -
-            * @output show customer section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show customer section form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_customer_form() {
@@ -817,11 +817,10 @@
             /*
             * get_car_information
             * get car information by driver
-            * @input status
-            * @output get car information by driver
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    status
+            * @output   get car information by driver
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function get_car_information(status) {
@@ -869,11 +868,10 @@
             /*
             * open_disable
             * toggle dropdown car
-            * @input status
-            * @output get toggle dropdown car
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    status
+            * @output   get toggle dropdown car
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function open_disable(status) {
@@ -898,11 +896,11 @@
             /*
             * show_driver_information
             * get car by driver
-            * @input driver, status
-            * @output get car by driver
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    driver, status
+            * @output   get car by driver
+            * @author   Natdanai
+            * @Create Date  2564-08-06
+            */
             */
             -->
             function show_driver_information(driver, status) {
@@ -917,11 +915,10 @@
             /*
             * clear_driver_information
             * clear driver information
-            * @input -
-            * @output clear driver information
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   clear driver information
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function clear_driver_information() {
@@ -933,11 +930,10 @@
             /*
             * get_container_information
             * get container information when select container
-            * @input -
-            * @output get container information when select container
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   get container information when select container
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function get_container_information() {
@@ -972,11 +968,10 @@
             /*
             * valid_container_error
             * valid container error
-            * @input -
-            * @output valid container error
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   valid container error
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function valid_container_error() {
@@ -988,11 +983,10 @@
             /*
             * show_container_information
             * show container information in container section form
-            * @input container information
-            * @output show container information in container section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    container information
+            * @output   show container information in container section form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_container_information(container) {
@@ -1010,11 +1004,10 @@
             /*
             * clear_container_information
             * clear input in container section form
-            * @input -
-            * @output clear input in container section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   clear input in container section form
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function clear_container_information() {
@@ -1038,11 +1031,10 @@
             /*
             * get_size_information
             * get size information when select size
-            * @input -
-            * @output get size information when select size
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   get size information when select size
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function get_size_information() {
@@ -1065,11 +1057,10 @@
             /*
             * show_size_information
             * show size information when select size
-            * @input -
-            * @output show size information when select size
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show size information when select size
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_size_information(size_height_out, size_width_out, size_length_out) {
@@ -1083,11 +1074,10 @@
             /*
             * get_agent_information
             * show agent information when select agent
-            * @input -
-            * @output show agent information when select agent
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show agent information when select agent
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function get_agent_information() {
@@ -1121,11 +1111,10 @@
             /*
             * valid_agent_error
             * valid agent error
-            * @input -
-            * @output valid agent error
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   valid agent error
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function valid_agent_error() {
@@ -1137,11 +1126,10 @@
             /*
             * show_agent_information
             * show agent information when select agent
-            * @input agent
-            * @output show agent information when select agent
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    agent
+            * @output   show agent information when select agent
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_agent_information(agent) {
@@ -1158,11 +1146,10 @@
             /*
             * clear_agent_information
             * clear agent information
-            * @input -
-            * @output clear agent information
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   clear agent information
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function clear_agent_information() {
@@ -1179,11 +1166,10 @@
             /*
             * remove_form_attr
             * remove readonly from input
-            * @input attr, target
-            * @output remove readonly from input
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    attr, target
+            * @output   remove readonly from input
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function remove_form_attr(attr, target) {
@@ -1194,11 +1180,10 @@
             /*
             * get_customer_information
             * get customer information when select customer
-            * @input -
-            * @output get customer information when select customer
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   get customer information when select customer
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function get_customer_information() {
@@ -1236,11 +1221,10 @@
             /*
             * valid_customer_error
             * valid customer error
-            * @input -
-            * @output valid customer error
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   valid customer error
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function valid_customer_error() {
@@ -1252,11 +1236,10 @@
             /*
             * show_customer_information
             * show customer information when select customer
-            * @input customer information
-            * @output show customer information when select customer
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    customer information
+            * @output   show customer information when select customer
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function show_customer_information(customer) {
@@ -1273,11 +1256,10 @@
             /*
             * clear_customer_information
             * clear customer information
-            * @input customer information
-            * @output clear customer information
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    customer information
+            * @output   clear customer information
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function clear_customer_information() {
@@ -1294,11 +1276,10 @@
             /*
             * validate_form
             * validate form contain error or not
-            * @input -
-            * @output validate form contain error or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   validate form contain error or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function validate_form() {
@@ -1312,11 +1293,10 @@
             /*
             * check_con_id
             * check select container or not
-            * @input -
-            * @output check select container or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check select container or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_con_id() {
@@ -1342,11 +1322,10 @@
             /*
             * check_agn_id
             * check select agent or not
-            * @input -
-            * @output check select agent or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check select agent or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_agn_id() {
@@ -1372,11 +1351,10 @@
             /*
             * check_agn_id
             * check select customer or not
-            * @input -
-            * @output check select customer or not
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   check select customer or not
+            * @author   Natdanai
+            * @Create Date  2564-08-06
             */
             -->
             function check_cus_id() {

@@ -1,6 +1,16 @@
+<!--
+* v_set_up_status_container
+* Display status container list page
+* @input    array of status container
+* @output   status container list page
+* @author   Tadsawan
+* @Create Date  2564-10-22
+*/
+-->
+
 <style>
-.cl-blue {
-    color: #1244B9 !important;
+    .cl-blue {
+        color: #1244B9 !important;
 }
 </style>
 <div class="main-panel">
@@ -120,18 +130,17 @@
         }
     });
 
-    // check สถานะของสถานะตู้
+    // hide add status container form
     $('#input_add').hide();
 
     <!--
     /*
     * check_status_container
     * check status container
-    * @input stac_id
-    * @output check status container
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    stac_id
+    * @output   check status container
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function check_status_container(stac_id) {
@@ -146,11 +155,10 @@
     /*
     * status_container_delete
     * delete status container
-    * @input stac_id
-    * @output delete status container
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    stac_id
+    * @output   delete status container
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function status_container_delete(stac_id) {
@@ -169,11 +177,10 @@
     /*
     * status_container_restore
     * restore status container
-    * @input stac_id
-    * @output restore status container
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    stac_id
+    * @output   restore status container
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function status_container_restore(stac_id) {
@@ -192,11 +199,10 @@
     /*
     * show_input
     * show input to insert status container
-    * @input -
-    * @output show input to insert status container
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show input to insert status container
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function show_input() {

@@ -1,3 +1,13 @@
+<!--
+* v_car_show_information
+* Display car detail page
+* @input    car information
+* @output   car detail page
+* @author   Warisara
+* @Create Date  2564-08-12
+*/
+-->
+
 <style>
     @media (min-width: 1200px) {
         .container-sm {
@@ -168,11 +178,10 @@
     /*
     * get_image
     * show image name
-    * @input -
-    * @output show image name
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show image name
+    * @author   Warisara
+    * @Create Date  2564-08-12
     */
     -->
     function get_image() {
@@ -186,11 +195,10 @@
     /*
     * get_id
     * get car_id and show in remove car modal
-    * @input -
-    * @output get car_id and show in remove car modal
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   get car_id and show in remove car modal
+    * @author   Warisara
+    * @Create Date  2564-08-12
     */
     -->
     function get_id(car_id) {

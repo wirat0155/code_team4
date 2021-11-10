@@ -1,3 +1,13 @@
+<!--
+* footer
+* Display footer
+* @input    -
+* @output   footer page, include JS
+* @author   Wirat
+* @Create Date  2564-07-28
+*/
+-->
+
 <script>
     $('.ui.dropdown').dropdown();
 </script>

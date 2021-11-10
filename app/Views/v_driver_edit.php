@@ -1,3 +1,13 @@
+<!--
+* v_driver_edit
+* Display driver edit page
+* @input    driver information
+* @output   driver edit page
+* @author   Warisara
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
     @media (min-width: 1200px) {
         .container-sm {
@@ -154,11 +164,10 @@
     /*
     * get_image
     * show image name in driver edit form
-    * @input -
-    * @output show image name in driver edit form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show image name in driver edit form
+    * @author   Warisara
+    * @Create Date  2564-08-06
     */
     -->
     function get_image() {

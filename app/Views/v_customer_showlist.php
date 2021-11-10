@@ -1,6 +1,13 @@
-<style>
+<!--
+* v_customer_showlist
+* Display customer list page
+* @input    array of customer
+* @output   customer list page
+* @author   Kittipod
+* @Create Date  2564-07-28
+*/
+-->
 
-</style>
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -446,8 +453,7 @@
 
     <script>
     $(document).ready(function() {
-
-        // แทรกปุ่ม เพิ่มรถ
+        // add customer button
         var cus_table = $('#customer_list_table').DataTable({
             "columnDefs": [{
                 "searchable": false,
@@ -457,7 +463,7 @@
             "order": []
         });
 
-        //ลำดับ
+        // order
         cus_table.on('order.dt search.dt', function() {
             cus_table.column(0, {
                 search: 'applied',
@@ -471,7 +477,7 @@
             "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Customer_input/customer_input' ?>'><i class='left plus icon'></i>Add</a>"
         );
 
-        //Reset Daterange
+        // reset Daterange
         $('.cancelBtn').attr('onclick',
             'location.href = \'<?php echo base_url() . '/Customer_show/customer_show_ajax' ?>\'');
         $('.cancelBtn').removeClass('btn-default');
@@ -481,11 +487,10 @@
     /*
     * get_id
     * get cus_id and show in remove customer id
-    * @input con_id
-    * @output get cus_id and show in remove customer id
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    con_id
+    * @output   get cus_id and show in remove customer id
+    * @author   Kittipod
+    * @Create Date  2564-07-28
     */
     -->
     function get_id(cus_id) {
@@ -496,11 +501,10 @@
     /*
     * customer_detail
     * go to customer detail page
-    * @input con_id
-    * @output go to customer detail page
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    con_id
+    * @output   go to customer detail page
+    * @author   Kittipod
+    * @Create Date  2564-07-28
     */
     -->
     function customer_detail(cus_id) {

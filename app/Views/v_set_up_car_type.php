@@ -1,3 +1,13 @@
+<!--
+* v_set_up_car_type
+* Display car type list page
+* @input    array of car type
+* @output   car type list page
+* @author   Tadsawan
+* @Create Date  2564-10-22
+*/
+-->
+
 <style>
 .cl-blue {
     color: #1244B9 !important;
@@ -136,18 +146,17 @@
         }
     });
 
-    // check สถานะของประเภทรถ
+    // hide add car type form
     $('#input_add').hide();
 
     <!--
     /*
     * check_status_car_type
     * check status car type
-    * @input cart_id
-    * @output check status car type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    cart_id
+    * @output   check status car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function check_status_car_type(cart_id) {
@@ -162,11 +171,10 @@
     /*
     * car_type_delete
     * delete car type
-    * @input cart_id
-    * @output delete car type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    cart_id
+    * @output   delete car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function car_type_delete(cart_id) {
@@ -185,11 +193,10 @@
     /*
     * car_type_restore
     * restore car type
-    * @input cart_id
-    * @output restore car type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    cart_id
+    * @output   restore car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function car_type_restore(cart_id) {
@@ -208,11 +215,10 @@
     /*
     * get_image
     * get image name
-    * @input -
-    * @output get image name
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   get image name
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function get_image() {
@@ -225,11 +231,10 @@
     /*
     * show_input
     * show input to insert car type
-    * @input -
-    * @output show input to insert car type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show input to insert car type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22e
     */
     -->
     function show_input() {

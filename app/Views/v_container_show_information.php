@@ -1,3 +1,13 @@
+<!--
+* v_container_show_information
+* Display container detail page
+* @input    container information
+* @output   container detail page
+* @author   Preechaya
+* @Create Date  2564-08-12
+*/
+-->
+
 <style>
 .cl-blue {
     color: #1244B9 !important;

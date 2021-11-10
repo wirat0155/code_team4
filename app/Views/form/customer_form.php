@@ -1,3 +1,13 @@
+<!--
+* customer_form
+* Display customer form
+* @input    customer information
+* @output   customer form
+* @author   Wirat
+* @Create Date  2564-11-06
+*/
+-->
+
 <?php
   $attr = '';
   if ($type == 2) {

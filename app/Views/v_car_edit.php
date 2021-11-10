@@ -1,3 +1,13 @@
+<!--
+* v_car_edit
+* Display car edit page
+* @input    car information
+* @output   car edit page
+* @author   Natthanan
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
 label.error {
     float: left !important;
@@ -99,11 +109,10 @@ label.error {
         /*
         * get_image
         * show image name when upload car image
-        * @input -
-        * @output show image name when upload car image
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    -
+        * @output   show image name when upload car image
+        * @author   Natthanan
+        * @Create Date  2564-08-06
         */
         -->
         function get_image() {

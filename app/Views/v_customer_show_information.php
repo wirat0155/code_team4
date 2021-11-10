@@ -1,3 +1,13 @@
+<!--
+* v_customer_show_information
+* Display customer detail page
+* @input    customer information
+* @output   customer detail page
+* @author   Worarat
+* @Create Date  2564-08-12
+*/
+-->
+
 <style>
 .fa-phone {
     -moz-transform: scaleX(-1);

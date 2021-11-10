@@ -1,3 +1,13 @@
+<!--
+* v_customer_input
+* Display customer input page
+* @input    -
+* @output   customer input page
+* @author   Klayuth
+* @Create Date  2564-08-06
+*/
+-->
+
 <?php
 if (isset($_SESSION['cus_company_name'])) {
     $cus_company_name = $_SESSION['cus_company_name'];

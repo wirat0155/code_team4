@@ -1,3 +1,13 @@
+<!--
+* v_container_input
+* Display container input page
+* @input    -
+* @output   container input page
+* @author   Wirat
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
     .ms-md-30 {
         margin-left: 0%;
@@ -341,11 +351,10 @@
     /*
     * show_all_form
     * show container and agent section form
-    * @input -
-    * @output show container and agent section form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    status
+    * @output   show container and agent section form
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function show_all_form(status) {
@@ -360,11 +369,10 @@
     /*
     * show_container_form
     * show container section in form
-    * @input -
-    * @output show container section in form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show container section in form
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function show_container_form() {
@@ -387,11 +395,10 @@
     /*
     * show_agent_form
     * show agent section in form
-    * @input -
-    * @output show agent section in form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show agent section in form
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function show_agent_form() {
@@ -415,11 +422,10 @@
     /*
     * check_container_form
     * check container form contain error or not
-    * @input -
-    * @output check container form contain error or not
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   check container form contain error or not
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function check_container_form() {
@@ -436,11 +442,10 @@
     /*
     * check_agent_form
     * check agent form contain error or not
-    * @input -
-    * @output check agent form contain error or not
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   check agent form contain error or not
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function check_agent_form() {
@@ -457,11 +462,10 @@
     /*
     * check_all_form
     * check form contain error or not
-    * @input -
-    * @output check form contain error or not
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   check form contain error or not
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function check_all_form() {
@@ -481,11 +485,10 @@
     /*
     * get_size_information
     * get size information when select size option
-    * @input con_size_id
-    * @output get size information when select size option
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    con_size_id
+    * @output   get size information when select size option
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function get_size_information() {
@@ -507,11 +510,10 @@
     /*
     * show_size_information
     * show size information when select size option
-    * @input size_height_out, size_width_out, size_length_out
-    * @output get show information when select size option
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    size_height_out, size_width_out, size_length_out
+    * @output   get show information when select size option
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function show_size_information(size_height_out, size_width_out, size_length_out) {
@@ -524,11 +526,10 @@
     /*
     * validate_form
     * validate form form container error or not
-    * @input -
-    * @output validate form form container error or not
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   validate form form container error or not
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function validate_form() {
@@ -541,11 +542,10 @@
     /*
     * check_con_number
     * check input con_number or not
-    * @input -
-    * @output check input con_number or not
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   check input con_number or not
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function check_con_number() {
@@ -600,11 +600,10 @@
     /*
     * check_agn_id
     * check user select agent or not
-    * @input -
-    * @output check user select agent or not
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   check user select agent or not
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function check_agn_id() {
@@ -612,14 +611,12 @@
         let agn_id_warning = $('.ui.fluid.search.selection.dropdown+label');
 
         if (agn_id == '') {
-            console.log('ไม่เลือกเอเย่นต์');
             $('input.search').addClass('error');
             agn_id_warning.addClass('error');
             agn_id_warning.html('<br/><br/>Please select an agent');
             return false;
         }
         else {
-            console.log('เลือกเอเย่นต์');
             $('input.search').removeClass('error');
             agn_id_warning.removeClass('error');
             agn_id_warning.html('');
@@ -631,11 +628,10 @@
     /*
     * remove_error
     * remove error class in form
-    * @input tag, name
-    * @output remove error class in form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    tag, name
+    * @output   remove error class in form
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function remove_error(tag, name) {
@@ -647,11 +643,10 @@
     /*
     * remove_form_attr
     * remove readonly in input when select dropdown
-    * @input attr, target
-    * @output remove readonly in input when select dropdown
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    attr, target
+    * @output   remove readonly in input when select dropdown
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function remove_form_attr(attr, target) {
@@ -662,11 +657,10 @@
     /*
     * get_agent_information
     * get agent information when select agent option
-    * @input agn_id
-    * @output get agent information when select agent option
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    agn_id
+    * @output   get agent information when select agent option
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function get_agent_information() {
@@ -701,11 +695,10 @@
     /*
     * valid_agent_error
     * valid agent form input and select
-    * @input -
-    * @output valid agent form input and select
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   valid agent form input and select
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function valid_agent_error() {
@@ -717,11 +710,10 @@
     /*
     * show_agent_information
     * show agnet information in agent section form
-    * @input agent information
-    * @output show agnet information in agent section form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    agent information
+    * @output   show agnet information in agent section form
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function show_agent_information(agent) {
@@ -737,11 +729,10 @@
     /*
     * clear_agent_information
     * clear input in agent section form
-    * @input -
-    * @output clear input in agent section form
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   clear input in agent section form
+    * @author   Worarat
+    * @Create Date  2564-10-12
     */
     -->
     function clear_agent_information() {

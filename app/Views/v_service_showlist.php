@@ -1,3 +1,13 @@
+<!--
+* v_service_showlist
+* Display service list page
+* @input    array of service
+* @output   service list page
+* @author   Natdanai
+* @Create Date  2564-07-28
+*/
+-->
+
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -397,7 +407,7 @@
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_service); $i++) { ?>
                                             <tr>
-                                                <!-- ลำดับ -->
+                                                <!-- order -->
                                                 <td> </td>
 
                                                 <!-- Container number -->
@@ -507,7 +517,7 @@
 
     <script>
         $(document).ready(function() {
-            // แทรกปุ่ม เพิ่มบริการ
+            // add service button
             var ser_table = $('#service_list_table').DataTable({
                 "columnDefs": [{
                     "searchable": false,
@@ -517,7 +527,7 @@
                 "order": []
             });
 
-            //ลำดับ
+            // order
             ser_table.on('order.dt search.dt', function() {
                 ser_table.column(0, {
                     search: 'applied',
@@ -532,7 +542,7 @@
                 "<a class='ui labeled icon primary button m-2' href='<?php echo base_url() . '/Service_input/service_input' ?>'><i class='left plus icon'></i>Add</a>"
             );
 
-            //Reset Daterange
+            // reset Daterange
             $('.cancelBtn').attr('onclick',
                 'location.href = \'<?php echo base_url() . '/Service_show/service_show_ajax' ?>\'');
             $('.cancelBtn').removeClass('btn-default');
@@ -542,11 +552,10 @@
         /*
         * get_id
         * get ser_id and show in remove service form
-        * @input section
-        * @output go to get ser_id and show in remove service form
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    section
+        * @output   go to get ser_id and show in remove service form
+        * @author   Natdanai
+        * @Create Date  2564-07-28
         */
         -->
         function get_id(ser_id) {
@@ -557,11 +566,10 @@
         /*
         * service_detail
         * go to service detail page
-        * @input section
-        * @output go to service detail page
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    section
+        * @output   go to service detail page
+        * @author   Natdanai
+        * @Create Date  2564-07-28
         */
         -->
         function service_detail(ser_id) {

@@ -1,3 +1,13 @@
+<!--
+* v_set_up_size
+* Display size list page
+* @input    array of size
+* @output   size list page
+* @author   Tadsawan
+* @Create Date  2564-10-22
+*/
+-->
+
 <style>
 .cl-blue {
     color: #1244B9 !important;
@@ -185,18 +195,17 @@
         }
     });
 
-    // check สถานะของขนาดตู้
+    // hide add size form
     $('#input_add').hide();
 
     <!--
     /*
     * check_status_size
     * check status size
-    * @input size_id
-    * @output check status size
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    size_id
+    * @output   check status size
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function check_status_size(size_id) {
@@ -211,11 +220,10 @@
     /*
     * size_delete
     * delete size
-    * @input size_id
-    * @output delete size
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    size_id
+    * @output   delete size
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function size_delete(size_id) {
@@ -234,11 +242,10 @@
     /*
     * size_restore
     * restore size
-    * @input size_id
-    * @output restore size
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    size_id
+    * @output   restore size
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function size_restore(size_id) {
@@ -257,11 +264,10 @@
     /*
     * get_image
     * show image name
-    * @input -
-    * @output show image name
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show image name
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function get_image() {
@@ -274,11 +280,10 @@
     /*
     * show_input
     * show input to insert size
-    * @input -
-    * @output show input to insert size
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show input to insert size
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function show_input() {

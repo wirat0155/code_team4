@@ -1,3 +1,13 @@
+<!--
+* v_driver_input
+* Display driver input page
+* @input    -
+* @output   driver input page
+* @author   Thanathip
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
     .cl-blue {
         color: #1244B9 !important;
@@ -73,11 +83,10 @@
             /*
             * get_image
             * show image name in driver input form
-            * @input -
-            * @output show image name in driver input form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   show image name in driver input form
+            * @author   Thanathip
+            * @Create Date  2564-08-06
             */
             -->
             function get_image() {

@@ -1,3 +1,13 @@
+<!--
+* agent_edit_form
+* Display agent edit form
+* @input    agent information
+* @output   agent edit form
+* @author   Wirat
+* @Create Date  2564-11-06
+*/
+-->
+
 <?php
     if ($obj_agent != NULL) {
         $agn_id = $obj_agent[0]->agn_id;

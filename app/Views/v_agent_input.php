@@ -1,10 +1,11 @@
 <!--
 * v_agent_input
-* input agent information
-* @input -
-* @output insert agent information
-* @author
-* @Create Date
+* Display add agent page
+* @input    -
+* @output   add agent page
+* @author   klayuth
+* @Create Date  2564-08-06
+*/
 -->
 
 <?php

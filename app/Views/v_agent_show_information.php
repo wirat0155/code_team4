@@ -1,11 +1,12 @@
 <!--
 * v_agent_show_information
-* show agent detail
-* @input agn_id
-* @output show agent detail
-* @author
-* @Create Date
- -->
+* Display agent detail page
+* @input    agent information
+* @output   agent detail page
+* @author   Nattanan
+* @Create Date  2564-08-12
+*/
+-->
 
 <style>
 .cl-blue {

@@ -1,3 +1,13 @@
+<!--
+* v_container_edit
+* Display container edit page
+* @input    container information
+* @output   container edit page
+* @author   Wirat
+* @Create Date  2564-08-06
+*/
+-->
+
 <style>
 label.error {
     float: left !important;
@@ -118,11 +128,10 @@ label.error {
             /*
             * get_size_information
             * get size information when select size option
-            * @input con_size_id
-            * @output get size information when select size option
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    con_size_id
+            * @output   get size information when select size option
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function get_size_information() {
@@ -146,11 +155,10 @@ label.error {
             /*
             * show_size_information
             * show size information when select size option
-            * @input size_height_out, size_width_out, size_length_out
-            * @output get show information when select size option
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    size_height_out, size_width_out, size_length_out
+            * @output   get show information when select size option
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function show_size_information(size_height_out, size_width_out, size_length_out) {
@@ -164,11 +172,10 @@ label.error {
             /*
             * get_agent_information
             * get agent information when select agent option
-            * @input agn_id
-            * @output get agent information when select agent option
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    agn_id
+            * @output   get agent information when select agent option
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function get_agent_information() {
@@ -203,11 +210,10 @@ label.error {
             /*
             * valid_agent_error
             * valid agent form input and select
-            * @input -
-            * @output valid agent form input and select
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   valid agent form input and select
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function valid_agent_error() {
@@ -219,11 +225,10 @@ label.error {
             /*
             * show_agent_information
             * show agnet information in agent section form
-            * @input agent information
-            * @output show agnet information in agent section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    agent information
+            * @output   show agnet information in agent section form
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function show_agent_information(agent) {
@@ -239,11 +244,10 @@ label.error {
             /*
             * clear_agent_information
             * clear input in agent section form
-            * @input -
-            * @output clear input in agent section form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    -
+            * @output   clear input in agent section form
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function clear_agent_information() {
@@ -260,11 +264,10 @@ label.error {
             /*
             * remove_error
             * remove error class in form
-            * @input tag, name
-            * @output remove error class in form
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    tag, name
+            * @output   remove error class in form
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function remove_error(tag, name) {
@@ -276,11 +279,10 @@ label.error {
             /*
             * remove_form_attr
             * remove readonly in input when select dropdown
-            * @input attr, target
-            * @output remove readonly in input when select dropdown
-            * @author
-            * @Create Date
-            * @Update Date
+            * @input    attr, target
+            * @output   remove readonly in input when select dropdown
+            * @author   Worarat
+            * @Create Date  2564-10-17
             */
             -->
             function remove_form_attr(attr, target) {

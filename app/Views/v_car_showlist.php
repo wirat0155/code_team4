@@ -1,3 +1,13 @@
+<!--
+* v_car_showlist
+* Display car list page
+* @input    array of car
+* @output   car list page
+* @author   Tadsawan
+* @Create Date  2564-07-28
+*/
+-->
+
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -198,11 +208,10 @@
     /*
     * get_id
     * get car_id and show in remove car modal
-    * @input car_id
-    * @output get car_id and show in remove car modal
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    car_id
+    * @output   get car_id and show in remove car modal
+    * @author   Tadsawan
+    * @Create Date  2564-07-28
     */
     -->
     function get_id(car_id) {
@@ -213,11 +222,10 @@
     /*
     * car_detail
     * go to car detail page
-    * @input car_id
-    * @output go to car detail page
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    car_id
+    * @output   go to car detail page
+    * @author   Tadsawan
+    * @Create Date  2564-07-28
     */
     -->
     function car_detail(car_id) {

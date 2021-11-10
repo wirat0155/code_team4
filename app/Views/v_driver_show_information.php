@@ -1,3 +1,13 @@
+<!--
+* v_driver_show_information
+* Display driver detail page
+* @input    driver information
+* @output   driver detail page
+* @author   Thanathip
+* @Create Date  2564-08-12
+*/
+-->
+
 <style>
     @media (min-width: 1200px) {
         .container-sm {
@@ -182,11 +192,10 @@
     /*
     * get_image
     * show image name
-    * @input -
-    * @output show image name
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show image name
+    * @author   Thanathip
+    * @Create Date  2564-08-12
     */
     -->
     function get_image() {
@@ -200,11 +209,10 @@
     /*
     * get_id
     * get dri_id in remove driver modal
-    * @input dri_id
-    * @output get dri_id in remove driver modal
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    dri_id
+    * @output   get dri_id in remove driver modal
+    * @author   Thanathip
+    * @Create Date  2564-08-12
     */
     -->
     function get_id(dri_id) {

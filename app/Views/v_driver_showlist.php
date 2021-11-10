@@ -1,3 +1,13 @@
+<!--
+* v_driver_showlist
+* Display driver list page
+* @input    driver information
+* @output   driver list page
+* @author   Thanathip
+* @Create Date  2564-07-28
+*/
+-->
+
 <div class="ui modal">
     <i class="close icon"></i>
     <div class="header">
@@ -153,7 +163,7 @@
 
     <script>
         $(document).ready(function() {
-            // แทรกปุ่ม เพิ่มพนักงานขับรถ
+            // add driver button
             var dri_table = $('#driver_list_table').DataTable({
                 "columnDefs": [{
                     "searchable": false,
@@ -163,7 +173,7 @@
                 "order": []
             });
 
-            //ลำดับ
+            // order
             dri_table.on('order.dt search.dt', function() {
                 dri_table.column(0, {
                     search: 'applied',
@@ -183,11 +193,10 @@
         /*
         * get_id
         * get dri_id in remove driver modal
-        * @input dri_id
-        * @output get dri_id in remove driver modal
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    dri_id
+        * @output   get dri_id in remove driver modal
+        * @author   Thanathip
+        * @Create Date  2564-07-28
         */
         -->
         function get_id(dri_id) {
@@ -198,11 +207,10 @@
         /*
         * driver_detail
         * go to driver detail page
-        * @input dri_id
-        * @output go to driver detail page
-        * @author
-        * @Create Date
-        * @Update Date
+        * @input    dri_id
+        * @output   go to driver detail page
+        * @author   Thanathip
+        * @Create Date  2564-07-28
         */
         -->
         function driver_detail(dri_id) {

@@ -1,3 +1,13 @@
+<!--
+* v_set_up_container_type
+* Display container type list page
+* @input    array of container type
+* @output   container type list page
+* @author   Tadsawan
+* @Create Date  2564-10-22
+*/
+-->
+
 <style>
 .cl-blue {
     color: #1244B9 !important;
@@ -136,18 +146,17 @@
         }
     });
 
-    // check สถานะของประเภทตู้
+    // hide add container type form
     $('#input_add').hide();
 
     <!--
     /*
     * check_status_container_type
     * check status container type
-    * @input cont_id
-    * @output check status container type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    cont_id
+    * @output   check status container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function check_status_container_type(cont_id) {
@@ -162,11 +171,10 @@
     /*
     * container_type_delete
     * delete container type
-    * @input cont_id
-    * @output delete container type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    cont_id
+    * @output   delete container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function container_type_delete(cont_id) {
@@ -185,11 +193,10 @@
     /*
     * container_type_restore
     * restore container type
-    * @input cont_id
-    * @output restore container type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    cont_id
+    * @output   restore container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function container_type_restore(cont_id) {
@@ -208,11 +215,10 @@
     /*
     * get_image
     * show image name
-    * @input -
-    * @output show image name
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show image name
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function get_image() {
@@ -225,11 +231,10 @@
     /*
     * show_input
     * show input to insert container type
-    * @input -
-    * @output show input to insert container type
-    * @author
-    * @Create Date
-    * @Update Date
+    * @input    -
+    * @output   show input to insert container type
+    * @author   Tadsawan
+    * @Create Date  2564-10-22
     */
     -->
     function show_input() {

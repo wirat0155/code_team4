@@ -1,3 +1,13 @@
+<!--
+* agent_form
+* Display agent form
+* @input    agent information
+* @output   agent form
+* @author   Wirat
+* @Create Date  2564-11-06
+*/
+-->
+
 <?php
 $attr = '';
 if ($type == 2) {

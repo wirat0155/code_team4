@@ -1,11 +1,13 @@
 <!--
 * v_agent_edit
-* edit agent information
-* @input -
-* @output edit agent information
-* @author
-* @Create Date
+* Display edit agent information
+* @input    -
+* @output   edit agent information
+* @author   Preechaya
+* @Create Date  2564-08-06
+*/
 -->
+
 <style>
     label.error {
         float: left !important;
