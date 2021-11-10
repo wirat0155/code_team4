@@ -32,6 +32,8 @@ class M_cdms_car extends Da_cdms_car {
         ON car_cart_id = cart_id
         WHERE NOT car_status = 4
         ORDER BY car_id DESC" ;
+
+        // return as array
         return $this->db->query($sql)->getResult();
     }
 
@@ -46,8 +48,11 @@ class M_cdms_car extends Da_cdms_car {
     */
     public function get_by_id($car_id) {
         $sql = "SELECT * FROM $this->table
+                LEFT JOIN `cdms_province` ON car_prov_id = prov_id
+                LEFT JOIN `cdms_car_type` ON car_cart_id = cart_id
+                WHERE car_id = '$car_id'";
 
-                WHERE car_id='$car_id'";
+        // return as array
         return $this->db->query($sql)->getResult();
     }
 }

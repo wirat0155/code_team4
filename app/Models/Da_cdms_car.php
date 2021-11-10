@@ -72,26 +72,21 @@ class Da_cdms_car extends Model {
         * @Create Date 2564-08-06
         * @Update Date
         */
-        public function car_update(
-                $car_id = NULL,
-                $car_code = NULL,
-                $car_number = NULL,
-                $car_chassis_number = NULL,
-                $car_brand = NULL,
-                $car_register_year = NULL,
-                $car_weight = NULL,
-                $car_branch = NULL,
-                $car_fuel_type = NULL,
-                $car_image = NULL,
-                $car_status = NULL,
-                $car_prov_id = NULL,
-                $car_cart_id = NULL
-        ) {
-                $sql = "UPDATE $this->table
-                                SET car_code = '$car_code', car_number = '$car_number', car_chassis_number = '$car_chassis_number', car_brand = '$car_brand'
-                                        ,car_register_year = '$car_register_year', car_weight = '$car_weight', car_branch = '$car_branch', car_fuel_type = '$car_fuel_type'
-                                        , car_image = '$car_image', car_status = '$car_status', car_prov_id = '$car_prov_id', car_cart_id = '$car_cart_id'
+        public function car_update( $car_id = NULL, $car_code = NULL, $car_number = NULL, $car_chassis_number = NULL, $car_brand = NULL, $car_register_year = NULL, $car_weight = NULL, $car_branch = NULL, $car_fuel_type = NULL, $car_image = NULL, $car_status = NULL, $car_prov_id = NULL, $car_cart_id = NULL) {
+                // update car image
+                if ($car_image != NULL) {
+                        $sql = "UPDATE $this->table
+                                SET car_code = '$car_code', car_number = '$car_number', car_chassis_number = '$car_chassis_number', car_brand = '$car_brand',car_register_year = '$car_register_year', car_weight = '$car_weight', car_branch = '$car_branch', car_fuel_type = '$car_fuel_type', car_image = '$car_image', car_status = '$car_status', car_prov_id = '$car_prov_id', car_cart_id = '$car_cart_id'
                                 WHERE car_id = '$car_id' ";
+                }
+                // not update car image
+                else {
+                        $sql = "UPDATE $this->table
+                                SET car_code = '$car_code', car_number = '$car_number', car_chassis_number = '$car_chassis_number', car_brand = '$car_brand',car_register_year = '$car_register_year', car_weight = '$car_weight', car_branch = '$car_branch', car_fuel_type = '$car_fuel_type', car_status = '$car_status', car_prov_id = '$car_prov_id', car_cart_id = '$car_cart_id'
+                                WHERE car_id = '$car_id' ";
+                }
+
+                // query
                 $this->db->query($sql);
         }
 }

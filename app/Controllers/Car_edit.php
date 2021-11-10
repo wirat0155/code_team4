@@ -63,16 +63,19 @@ class Car_edit extends Cdms_controller {
         $car_fuel_type = $this->request->getPost('car_fuel_type');
 
         // user not change car image
-        if(!$this->request->getFile('car_image')->isValid()){
-            $car_image = $this->request->getPost('old_car_image');
-        }else{
-            // upload image
-            $file = $this->request->getFile('car_image');
-            if ($file->isValid() && !$file->hasMoved()) {
-                $imageName = $file->getRandomName();
-                $file->move('./car_image', $imageName);
+        if ($this->request->getFile('car_image') != NULL) {
+            if (!$this->request->getFile('car_image')->isValid()) {
+                $car_image = '';
             }
-            $car_image = $imageName;
+            else {
+                // upload image
+                $file = $this->request->getFile('car_image');
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $imageName = $file->getRandomName();
+                    $file->move('./car_image', $imageName);
+                }
+                $car_image = $imageName;
+            }
         }
 
         $car_status = $this->request->getPost('car_status');

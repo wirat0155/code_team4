@@ -60,12 +60,6 @@ class Car_show extends Cdms_controller {
         $m_car = new M_cdms_car();
         $data['arr_car'] = $m_car->get_by_id($car_id);
 
-        $m_car_prov = new M_cdms_province();
-        $data['arr_car_prov'] = $m_car_prov->get_all();
-
-        $m_cart = new M_cdms_car_type();
-        $data['arr_car_type'] = $m_cart->get_all();
-
         $this->output('v_car_show_information', $data);
     }
 }

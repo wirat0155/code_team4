@@ -74,7 +74,7 @@ label.error {
                     <div class="card">
                     <form id="car_form" action="<?php echo base_url() . '/Car_edit/car_update' ?>" enctype="multipart/form-data" method="POST">
                             <div class="card-header">
-                                <div class="card-title">Car information</div>
+                                <div class="card-title">Car Information</div>
                             </div>
 
                             <div class="card-body">

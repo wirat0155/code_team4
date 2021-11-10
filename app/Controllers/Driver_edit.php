@@ -60,7 +60,6 @@ class Driver_edit extends Cdms_controller {
         // user not change driver image
         if ($this->request->getFile('dri_profile_image') != NULL) {
             if (!$this->request->getFile('dri_profile_image')->isValid()) {
-                $dri_profile_image = $this->request->getPost('old_dri_profile_image');
                 $dri_profile_image = '';
             }
             else {

@@ -19,7 +19,7 @@
                             <b>Car code :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_code ?>
+                            <?php echo $arr_car[0]->car_code . ' ' . $arr_car[0]->prov_name ?>
                         </div>
 
                         <div class="col-12 col-sm-6 mb-4">
@@ -33,11 +33,7 @@
                             <b>Car type :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
-                            <?php if ($arr_car_type[$i]->cart_id == $arr_car[0]->car_cart_id) {
-                                echo $arr_car_type[$i]->cart_name;
-                            } ?>
-                            <?php } ?>
+                            <?php echo $arr_car[0]->cart_name ?>
                         </div>
                     </div>
                 </div>
