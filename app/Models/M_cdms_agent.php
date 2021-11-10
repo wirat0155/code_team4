@@ -26,15 +26,20 @@ class M_cdms_agent extends Da_cdms_agent {
         // Sort by agn_id descending
         if ($type == 1) {
             $sql = "SELECT * FROM $this->table
-                    WHERE agn_status = 1
-                    ORDER BY agn_id DESC" ;
+                    WHERE agn_status = 1 ORDER BY agn_id DESC" ;
         }
         // Sort by agn_company_name ascending
         else if ($type == 2) {
             $sql = "SELECT * FROM $this->table
-                    WHERE agn_status = 1
-                    ORDER BY CONVERT(agn_company_name USING tis620) ASC" ;
+                    WHERE agn_status = 1 ORDER BY CONVERT(agn_company_name USING tis620) ASC" ;
         }
+        // get number of contianer each agent
+        else if ($type == 3) {
+            $sql = "SELECT agn_id, agn_company_name, agn_firstname, agn_lastname, agn_tel, agn_address, agn_tax, agn_email, COUNT(con_id) AS num_container 
+                    FROM $this->table LEFT JOIN `cdms_container` ON agn_id = con_agn_id 
+                    WHERE agn_status = 1 GROUP BY agn_id ORDER BY agn_id DESC";
+        }
+        // return as array
         return $this->db->query($sql)->getResult();
     }
     /*

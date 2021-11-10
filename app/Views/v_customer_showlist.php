@@ -66,7 +66,6 @@
                     </button>
 
                     <!-- Date -->
-
                     <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
                 </form>
             </div>
@@ -365,10 +364,10 @@
                                         <?php for ($i = 0; $i < count($arr_customer); $i++) { ?>
                                         <tr>
 
-                                            <!-- ลำดับ -->
+                                            <!-- order -->
                                             <td> </td>
 
-                                            <!-- ชื่อบริษัท -->
+                                            <!-- customer company name -->
                                             <td onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                 <?php
                                                 echo $arr_customer[$i]->cus_company_name;
@@ -376,49 +375,39 @@
                                                 ?>
                                             </td>
 
-                                            <!-- ผู้รับผิดชอบ -->
+                                            <!-- customer responsible person -->
                                             <td onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                 <?php echo $arr_customer[$i]->cus_firstname . ' ' . $arr_customer[$i]->cus_lastname ?>
                                             </td>
 
-                                            <!-- จำนวนตู้ที่ใช้ -->
+                                            <!-- number of usage container -->
                                             <td class="text-center" onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
-                                                <?php
-                                                    $count_container = 0;
-                                                    for ($j = 0; $j < count($arr_service); $j++) {
-                                                        if ($arr_customer[$i]->cus_company_name == $arr_service[$j]->cus_company_name) {
-                                                            if ($arr_customer[$i]->cus_branch == $arr_service[$j]->cus_branch) {
-                                                                $count_container++;
-                                                            }
-                                                        }
-                                                    }
-                                                    echo $count_container;
-                                                ?>
+                                                <?php echo $arr_customer[$i]->num_service ?>
                                             </td>
 
-                                            <!-- เบอร์โทรศัพท์ -->
+                                            <!-- customer telephone number -->
                                             <td onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                 <?php echo tel_format($arr_customer[$i]->cus_tel) ?>
                                             </td>
 
-                                            <!-- อีเมล -->
+                                            <!-- customer email -->
                                             <td onclick="customer_detail(<?php echo $arr_customer[$i]->cus_id ?>)">
                                                 <?php echo $arr_customer[$i]->cus_email ?>
                                             </td>
 
-                                            <!-- Action -->
+                                            <!-- action menu -->
                                             <script>
-                                            function show_service_menu(cus_id) {
-                                                $('.menu').css('display', 'none');
-                                                $('.menu.cus_id_' + cus_id).show();
-                                            } // make it dropdown
-                                            $(document).click(function() {
-                                                var container = $(".menu");
-                                                if (!container.is(event.target) && !container.has(event.target)
-                                                    .length) {
-                                                    container.hide();
-                                                }
-                                            });
+                                                function show_service_menu(cus_id) {
+                                                    $('.menu').css('display', 'none');
+                                                    $('.menu.cus_id_' + cus_id).show();
+                                                } // make it dropdown
+                                                $(document).click(function() {
+                                                    var container = $(".menu");
+                                                    if (!container.is(event.target) && !container.has(event.target)
+                                                        .length) {
+                                                        container.hide();
+                                                    }
+                                                });
                                             </script>
                                             <td class="text-left" width='15px'>
                                                 <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)">

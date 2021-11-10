@@ -117,22 +117,34 @@ class Container_edit extends Cdms_controller {
 
         // load agent model
         $m_agn = new M_cdms_agent();
+
+        // new agent
         if ($agn_id == 'new') {
-            // new agent
+            // check agent duplicate
+            $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+
+            // duplicate agent company name
+            if (count($arr_agent) > 0) {
+                $_SESSION['agn_company_name_error'] = 'The agent has already used';
+                $this->container_edit($con_id);
+                exit(0);
+            }
             // insert agent
             $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             // get agn_id back
             $max_id_agent = $m_agn->get_max_id();
             $con_agn_id = $max_id_agent[0]->agn_id;
-        } else {
-            // old agent
-            // update agent
+        }
+        //  select old agent
+        else {
             $con_agn_id = $this->request->getPost('agn_id');
             $m_agn->agent_update($agn_id, NULL, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         }
 
-        // update container
         $_SESSION['con_number_error'] = '';
+        $_SESSION['agn_company_name_error'] = '';
+        
+        // update container
         $m_con->container_update($con_id, $con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
         $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }

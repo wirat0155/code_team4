@@ -42,9 +42,9 @@ class Customer_show extends Cdms_controller {
 
             $data['arrivals_date'] = $date_range;
         }else{
-            //data Customer
-            $data['arr_customer'] = $m_cus->get_all();
-            //Data Service
+            // 3 = get with number of service in each customer
+            $data['arr_customer'] = $m_cus->get_all(3);
+            // get all service
             $data['arr_service'] = $m_ser->get_all();
 
             // no customer data

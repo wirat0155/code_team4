@@ -251,7 +251,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
-                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px;">
+                                            <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
                                                 <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>

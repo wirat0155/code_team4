@@ -35,6 +35,15 @@ class M_cdms_customer extends Da_cdms_customer {
                     WHERE cus_status = 1
                     ORDER BY CONVERT(cus_company_name USING tis620) ASC";
         }
+        // get all customer with each number of service
+        else if ($type == 3) {
+            $sql = "SELECT cus_id, cus_company_name, cus_branch, cus_firstname, cus_lastname, cus_tel, cus_address, cus_tax, cus_email, 
+                    COUNT(ser_id) AS num_service FROM $this->table
+                    LEFT JOIN `cdms_service` ON cus_id = ser_cus_id
+                    WHERE cus_status = 1 GROUP BY cus_id ORDER BY cus_id DESC";
+        }
+        
+        // return as array
         return $this->db->query($sql)->getResult();
     }
 

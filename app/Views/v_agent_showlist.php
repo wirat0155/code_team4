@@ -99,12 +99,8 @@
                                             </td>
 
                                             <!-- Number Container -->
-                                            <td class="text-center"
-                                                onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
-                                                <?php
-                                                    $count_container = array_count_values(array_column($arr_container, 'agn_company_name'))[$arr_agent[$i]->agn_company_name];
-                                                    echo ($count_container != 0) ? $count_container : '0';
-                                                ?>
+                                            <td class="text-center" onclick="agent_detail(<?php echo $arr_agent[$i]->agn_id ?>)">
+                                                <?php echo  $arr_agent[$i]->num_container ?>
                                             </td>
 
                                             <!-- Agent Tel. -->
