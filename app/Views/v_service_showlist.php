@@ -74,8 +74,7 @@
                     </button>
 
                     <!-- Date -->
-
-                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
+                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;" hidden>
                 </form>
             </div>
             <!-- Card Report -->
@@ -191,7 +190,6 @@
                                                     <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
                                                     <label class="ml-3"> From yesterday</label>
                                                 </p>
-
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -416,7 +414,6 @@
                                                     ?>
                                                 </td>
 
-
                                                 <!-- Status container  -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
                                                     <?php
@@ -454,16 +451,17 @@
                                                     } ?>
                                                 </td>
 
-
-
-                                                <!-- Agent -->
+                                                <!-- aegnt name -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <?php echo $arr_service[$i]->agn_company_name ?>
                                                 </td>
 
-                                                <!-- Customer -->
+                                                <!-- csutomer name -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <?php echo $arr_service[$i]->cus_company_name ?>
+                                                    <?php if ($arr_service[$i]->cus_branch != NULL && $arr_service[$i]->cus_branch != '') : ?>
+                                                        <?php echo ' ' . $arr_service[$i]->cus_branch ?>
+                                                    <?php endif; ?>
                                                 </td>
 
                                                 <!-- Action -->

@@ -61,7 +61,7 @@ class M_cdms_container extends Da_cdms_container {
                     ON con_agn_id = agn_id
                     LEFT JOIN cdms_status_container
                     ON con_stac_id = stac_id
-                    WHERE con_status = 1 AND con_stac_id = 4
+                    WHERE con_status = 1 AND con_stac_id IN (0, 4)
                     ORDER BY CONVERT(con_number USING tis620) ASC" ;
         }
         return $this->db->query($sql)->getResult();

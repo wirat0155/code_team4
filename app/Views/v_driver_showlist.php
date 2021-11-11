@@ -82,10 +82,10 @@
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                             <tr>
-                                                <!-- ลำดับ -->
+                                                <!-- order -->
                                                 <td> </td>
 
-                                                <!-- name -->
+                                                <!-- driver image and name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <div class="avatar avatar-lg">
                                                         <?php if ($arr_driver[$i]->dri_profile_image != NULL && $arr_driver[$i]->dri_profile_image != '') : ?>

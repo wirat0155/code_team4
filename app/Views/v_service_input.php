@@ -409,7 +409,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information();">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
@@ -447,7 +447,6 @@
                                         </div>
 
                                         <div class="col-md-6" style="margin-right: 10%;">
-
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
                                                 <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();">
                                                 <i class="dropdown icon"></i>
@@ -973,7 +972,12 @@
             */
             function show_container_information(container) {
                 $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
+
                 $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
+                if (container[0]['con_stac_id'] == 0) {
+                    // set to import
+                    $('select[name="con_stac_id"]').val(1);
+                }
                 $('input[name="con_max_weight"]').val(container[0]['con_max_weight']);
                 $('input[name="con_tare_weight"]').val(container[0]['con_tare_weight']);
                 $('input[name="con_net_weight"]').val(container[0]['con_net_weight']);
