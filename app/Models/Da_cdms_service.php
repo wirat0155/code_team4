@@ -70,21 +70,22 @@ class Da_cdms_service extends Model {
     /*
     * change_ser_stac_id
     * change ser stac id upon to date
-    * @input    to_ser_stac_id, yesterday, today_time
+    * @input    to_ser_stac_id, today, today_time
     * @output   change service status container
     * @author   Wirat
     * @Create Date  2564-10-30
     */
-    public function change_ser_stac_id($to_ser_stac_id = 3, $yesterday = '', $today_time = '') {
+    public function change_ser_stac_id($to_ser_stac_id = 3, $today = '', $today_time = '') {
         if ($to_ser_stac_id == 3) {
             $sql = "UPDATE $this->table SET ser_stac_id = 3
-                    WHERE ser_arrivals_date < '$yesterday' AND ser_stac_id BETWEEN 1 AND 2";
+                    WHERE ser_arrivals_date < '$today' AND ser_stac_id BETWEEN 1 AND 2";
         }
         else if ($to_ser_stac_id == 4) {
             $sql = "UPDATE $this->table SET ser_stac_id = 4
                     WHERE ser_actual_departure_date <= '$today_time' AND ser_stac_id BETWEEN 1 AND 3";
         }
         // query
+        // echo $sql;
         $this->db->query($sql);
     }
 }

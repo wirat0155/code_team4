@@ -55,4 +55,21 @@ class Da_cdms_container extends Model {
         $sql = "UPDATE $this->table SET con_number = '$con_number', con_max_weight = '$con_max_weight', con_tare_weight = '$con_tare_weight', con_net_weight = '$con_net_weight', con_cube = '$con_cube', con_size_id = '$con_size_id', con_cont_id = '$con_cont_id', con_agn_id = '$con_agn_id', con_stac_id = '$con_stac_id' WHERE con_id = '$con_id'";
         $this->db->query($sql);
     }
+
+    /*
+    * change_con_stac_id
+    * change con stac id by ser stac id
+    * @input    -
+    * @output   changing con stac id by ser stac id
+    * @author   Wirat
+    * @Create Date  2564-11-11
+    */
+    public function change_con_stac_id() {
+        $sql = "UPDATE $this->table
+                LEFT JOIN `cdms_service` ON ser_con_id = con_id
+                SET con_stac_id = ser_stac_id";
+        
+        // query
+        $this->db->query($sql);
+    }
 }

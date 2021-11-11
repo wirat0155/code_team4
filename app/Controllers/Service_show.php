@@ -36,27 +36,26 @@ class Service_show extends Cdms_controller {
         //set timezone
         date_default_timezone_set('GMT');
 
-        //set an date and time to work with
-        $start = '2021-10-30 12:00:00';
-
         //display the converted time
-
         $_SESSION['menu'] = 'Service_show';
+        // load service model
         $m_ser = new M_cdms_service();
+        // load container model
+        $m_con = new M_cdms_container();
 
         $today = date('Y-m-d', strtotime('+7 hour'));
         $today_time = date('Y-m-d H:i:s', strtotime('+7 hour'));
         $yesterday = date('Y-m-d', strtotime('-17 hour'));
         $yesterday_time = date('Y-m-d H:i:s', strtotime('-17 hour'));
 
+        // it will be moved to login page when login was done
         // update ser_stac_id to ready (drop) depend on today
-        $m_ser->change_ser_stac_id(3, $yesterday);
+        $m_ser->change_ser_stac_id(3, $today);
         // update ser_stac_id to export depend on today
-        $m_ser->change_ser_stac_id(4, $yesterday, $today_time);
+        $m_ser->change_ser_stac_id(4, $today, $today_time);
+        // update con_stac_id by ser_stac_id
+        $m_con->change_con_stac_id();
 
-
-        // container
-        $m_con = new M_cdms_container();
         $data['arr_con'] = $m_con->get_all(1);
 
         if(isset($_GET['date_range'])){

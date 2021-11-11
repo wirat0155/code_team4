@@ -69,9 +69,9 @@ class Service_input extends Cdms_controller {
         $m_ser = new M_cdms_service();
         $data['arr_ser'] = $m_ser->get_all();
 
-        // container
+        // get container only export status
         $m_con = new M_cdms_container();
-        $data['arr_con'] = $m_con->get_all(2);
+        $data['arr_con'] = $m_con->get_all(3);
 
         // agent
         $m_agn = new M_cdms_agent();

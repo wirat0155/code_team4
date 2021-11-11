@@ -116,7 +116,6 @@ class M_cdms_service extends Da_cdms_service {
             $sql = "SELECT COUNT(ser_id) AS num_export FROM $this->table
                     WHERE ser_actual_departure_date LIKE '$date%' AND ser_status = 1";
         }
-
         // return as object
         return $this->db->query($sql)->getRow();
     }

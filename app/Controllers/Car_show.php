@@ -26,6 +26,9 @@ class Car_show extends Cdms_controller {
         $m_car = new M_cdms_car();
         $data['arr_car'] = $m_car->get_all();
         $this->output('v_car_showlist', $data);
+        // echo '<pre>';
+        // print_r($data['arr_car']);
+        // echo '</pre>';
     }
 
     /*

@@ -88,10 +88,14 @@
                                                 <!-- name -->
                                                 <td onclick="driver_detail(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                     <div class="avatar avatar-lg">
-                                                        <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>">
+                                                        <?php if ($arr_driver[$i]->dri_profile_image != NULL && $arr_driver[$i]->dri_profile_image != '') : ?>
+                                                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[$i]->dri_profile_image ?>">
+                                                        <?php else : ?>
+                                                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/driver_placeholder.png' ?>">
+                                                        <?php endif; ?>
                                                     </div>
                                                     <?php echo $arr_driver[$i]->dri_name ?>
-                                                    <div class="absolute inset-0 rounded-full   shadow-inner" aria-hidden="true">
+                                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
                                                     </div>
                                                 </td>
 
@@ -132,12 +136,12 @@
                                                     <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_driver_menu(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                         <div class="menu dri_id_<?php echo $arr_driver[$i]->dri_id ?>" style="right: 0;left: auto;">
-                                                            <!-- Button Edit -->
+                                                            <!-- edit button -->
                                                             <div class="item" onclick="location.href='<?php echo base_url() . '/driver_edit/driver_edit/' . $arr_driver[$i]->dri_id ?>';">
                                                                 <i class='far fa-edit' style="font-size: 130%;"> </i> &nbsp;
                                                                 Edit
                                                             </div>
-                                                            <!-- Button Remove -->
+                                                            <!-- remove button -->
                                                             <div class="item test button" onclick="get_id(<?php echo $arr_driver[$i]->dri_id ?>)">
                                                                 <i class='fas fa-trash-alt' style="font-size: 130%;"></i>
                                                                 &nbsp; &nbsp;

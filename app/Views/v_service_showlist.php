@@ -149,7 +149,7 @@
                                                 <span class="circle-export float-right"><img src="<?php echo base_url() . '/upload/bg-export.png' ?>"></span>
                                             </div>
                                             <h2 class="mt-0 ml-3">
-                                                <?php echo $num_export ?>
+                                                <?php echo $num_export?>
                                             </h2>
                                             <?php if ($num_export >= $num_yesterday_export) { ?>
                                                 <p class="mb-3" style="color: #09F600;">

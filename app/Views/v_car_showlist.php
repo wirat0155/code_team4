@@ -91,7 +91,13 @@
                                                 <td class="px-4 py-3" onclick="car_detail(<?php echo $arr_car[$i]->car_id ?>)">
                                                     <div class="d-flex justify-content-start">
                                                         <div class = "avatar avatar-lg mr-4">
-                                                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>">
+                                                            <?php if ($arr_car[$i]->car_image != NULL && $arr_car[$i]->car_image != '') : ?>
+                                                                <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[$i]->car_image ?>">
+                                                            <?php elseif ($arr_car[$i]->cart_image != NULL && $arr_car[$i]->cart_image != '') : ?>
+                                                                <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_type_image/' . $arr_car[$i]->cart_image ?>">
+                                                            <?php else : ?>
+                                                                <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
+                                                            <?php endif; ?>
                                                         </div>
                                                         <div class="mt-3">
                                                             <?php echo $arr_car[$i]->car_number ?>
