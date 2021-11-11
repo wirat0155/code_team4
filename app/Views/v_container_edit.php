@@ -124,7 +124,6 @@ label.error {
 
 
             <script>
-            <!--
             /*
             * get_size_information
             * get size information when select size option
@@ -133,7 +132,6 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function get_size_information() {
                 let size_id = $('select[name="con_size_id"]').val();
                 $.ajax({
@@ -151,7 +149,6 @@ label.error {
                 });
             }
 
-            <!--
             /*
             * show_size_information
             * show size information when select size option
@@ -160,7 +157,6 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function show_size_information(size_height_out, size_width_out, size_length_out) {
                 console.log(size_height_out);
                 $('input[name="size_height_out"]').val(size_height_out);
@@ -168,7 +164,6 @@ label.error {
                 $('input[name="size_length_out"]').val(size_length_out);
             }
 
-            <!--
             /*
             * get_agent_information
             * get agent information when select agent option
@@ -177,7 +172,6 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function get_agent_information() {
                 // $('#agent_section label.error').remove();
                 // remove_form_attr('readonly', '#agent_section');
@@ -206,7 +200,6 @@ label.error {
                 }
             }
 
-            <!--
             /*
             * valid_agent_error
             * valid agent form input and select
@@ -215,13 +208,11 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function valid_agent_error() {
                 $('#agent_section input.error').removeClass('error');
                 $('#agent_section textarea.error').removeClass('error');
             }
 
-            <!--
             /*
             * show_agent_information
             * show agnet information in agent section form
@@ -230,7 +221,6 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function show_agent_information(agent) {
                 $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
                 $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
@@ -240,7 +230,6 @@ label.error {
                 $('input[name="agn_email"]').val(agent[0]['agn_email']);
             }
 
-            <!--
             /*
             * clear_agent_information
             * clear input in agent section form
@@ -249,7 +238,6 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function clear_agent_information() {
                 $('input[name="agn_company_name"]').val('');
                 $('textarea[name="agn_address"]').val('');
@@ -260,7 +248,6 @@ label.error {
                 $('input[name="agn_email"]').val('');
             }
 
-            <!--
             /*
             * remove_error
             * remove error class in form
@@ -269,13 +256,11 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function remove_error(tag, name) {
                 $(tag + '[name="' + name + '"]').removeClass('error');
                 $(tag + '[name="' + name + '"]+label').html('');
             }
 
-            <!--
             /*
             * remove_form_attr
             * remove readonly in input when select dropdown
@@ -284,7 +269,6 @@ label.error {
             * @author   Worarat
             * @Create Date  2564-10-17
             */
-            -->
             function remove_form_attr(attr, target) {
                 $(target + ' *[readonly]').removeAttr(attr);
             }

@@ -347,7 +347,6 @@
         }
     })
 
-    <!--
     /*
     * show_all_form
     * show container and agent section form
@@ -356,7 +355,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function show_all_form(status) {
         $('#container_section').show();
         $('#agent_section').show();
@@ -365,7 +363,6 @@
         setTimeout(check_all_form);
     }
 
-    <!--
     /*
     * show_container_form
     * show container section in form
@@ -374,7 +371,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function show_container_form() {
         $('#container_section').show();
         $('#container_from_action').show();
@@ -391,7 +387,6 @@
         $('#last_from_action').hide();
     }
 
-    <!--
     /*
     * show_agent_form
     * show agent section in form
@@ -400,7 +395,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function show_agent_form() {
         $('#agent_section').show();
         $('#agent_from_action').show();
@@ -418,7 +412,6 @@
         $('.ui.fluid.search.selection.dropdown+label').css('display', 'block');
     }
 
-    <!--
     /*
     * check_container_form
     * check container form contain error or not
@@ -427,7 +420,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function check_container_form() {
         // $('#container_section label.error').remove();
         if ($('#container_section .form-control.error').length > 0) {
@@ -438,7 +430,6 @@
         }
     }
 
-    <!--
     /*
     * check_agent_form
     * check agent form contain error or not
@@ -447,7 +438,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function check_agent_form() {
         // $('#agent_section label.error').remove();
         if ($('#agent_section .form-control.error').length > 0) {
@@ -458,7 +448,6 @@
         }
     }
 
-    <!--
     /*
     * check_all_form
     * check form contain error or not
@@ -467,9 +456,7 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function check_all_form() {
-
         if ($('#container_section .form-control.error').length > 0) {
             console.log('container' + $('#container_section .error').length);
             $('#container_step').addClass("false");
@@ -481,7 +468,6 @@
         }
     }
 
-    <!--
     /*
     * get_size_information
     * get size information when select size option
@@ -490,7 +476,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function get_size_information() {
         let size_id = $('select[name="con_size_id"]').val();
         $.ajax({
@@ -506,7 +491,6 @@
         });
     }
 
-    <!--
     /*
     * show_size_information
     * show size information when select size option
@@ -515,14 +499,12 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function show_size_information(size_height_out, size_width_out, size_length_out) {
         $('input[name="size_height_out"]').val(size_height_out);
         $('input[name="size_width_out"]').val(size_width_out);
         $('input[name="size_length_out"]').val(size_length_out);
     }
 
-    <!--
     /*
     * validate_form
     * validate form form container error or not
@@ -531,14 +513,12 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function validate_form() {
         let con = check_con_number();
         let agn = check_agn_id();
         return con && agn;
     }
 
-    <!--
     /*
     * check_con_number
     * check input con_number or not
@@ -547,7 +527,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function check_con_number() {
         let con_number_input = $('input[name="con_number"]');
         let con_number_warning =  $('input[name="con_number"]+label');
@@ -596,7 +575,6 @@
 
     }
 
-    <!--
     /*
     * check_agn_id
     * check user select agent or not
@@ -605,7 +583,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function check_agn_id() {
         let agn_id = $('input[name="agn_id"]').val();
         let agn_id_warning = $('.ui.fluid.search.selection.dropdown+label');
@@ -624,7 +601,6 @@
         }
     }
 
-    <!--
     /*
     * remove_error
     * remove error class in form
@@ -633,13 +609,11 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function remove_error(tag, name) {
         $(tag + '[name="' + name + '"]').removeClass('error');
         $(tag + '[name="' + name + '"]+label').html('');
     }
 
-    <!--
     /*
     * remove_form_attr
     * remove readonly in input when select dropdown
@@ -648,12 +622,10 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function remove_form_attr(attr, target) {
         $(target + ' *[readonly]').removeAttr(attr);
     }
 
-    <!--
     /*
     * get_agent_information
     * get agent information when select agent option
@@ -662,7 +634,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function get_agent_information() {
         $('#agent_section label.error').remove();
         remove_form_attr('readonly', '#agent_section');
@@ -691,7 +662,6 @@
         }
     }
 
-    <!--
     /*
     * valid_agent_error
     * valid agent form input and select
@@ -700,13 +670,11 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function valid_agent_error() {
         $('#agent_section input.error').removeClass('error');
         $('#agent_section textarea.error').removeClass('error');
     }
 
-    <!--
     /*
     * show_agent_information
     * show agnet information in agent section form
@@ -715,7 +683,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function show_agent_information(agent) {
         $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
         $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
@@ -725,7 +692,6 @@
         $('input[name="agn_email"]').val(agent[0]['agn_email']);
     }
 
-    <!--
     /*
     * clear_agent_information
     * clear input in agent section form
@@ -734,7 +700,6 @@
     * @author   Worarat
     * @Create Date  2564-10-12
     */
-    -->
     function clear_agent_information() {
         $('input[name="agn_company_name"]').val('');
         $('textarea[name="agn_address"]').val('');

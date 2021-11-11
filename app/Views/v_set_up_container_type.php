@@ -93,20 +93,24 @@
                                     <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
                                     <tr>
                                         <div <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>>
-                                            <!-- ลบ -->
+                                            <!-- delete buntton -->
                                             <td></td>
 
-                                            <!-- รูปภาพ -->
+                                            <!-- contianer type iamge -->
                                             <td>
                                                 <div class="avatar avatar-lg">
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' .$arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
+                                                    <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
+                                                    <?php else : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
+                                                    <?php endif; ?>
                                                 </div>
                                             </td>
 
-                                            <!-- ชื่อประเภทตู้ -->
+                                            <!-- container type name -->
                                             <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></td>
 
-                                            <!-- Switch -->
+                                            <!-- switch -->
                                             <td>
                                                 <label class="switch">
                                                     <input id="cont_id<?php echo $arr_container_type[$i]->cont_id ?>" type="checkbox" onclick="check_status_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)" <?php if($arr_container_type[$i]->cont_status == 2)echo " checked" ?>>
@@ -149,7 +153,6 @@
     // hide add container type form
     $('#input_add').hide();
 
-    <!--
     /*
     * check_status_container_type
     * check status container type
@@ -158,7 +161,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function check_status_container_type(cont_id) {
         if ($('#cont_id' + cont_id).prop('checked')) {
             container_type_delete(cont_id);
@@ -167,7 +169,6 @@
         }
     }
 
-    <!--
     /*
     * container_type_delete
     * delete container type
@@ -176,7 +177,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function container_type_delete(cont_id) {
         console.log('container_type_delete', cont_id);
         $.ajax({
@@ -189,7 +189,6 @@
         });
     }
 
-    <!--
     /*
     * container_type_restore
     * restore container type
@@ -198,7 +197,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function container_type_restore(cont_id) {
         console.log('container_type_restore', cont_id);
         $.ajax({
@@ -211,7 +209,6 @@
         });
     }
 
-    <!--
     /*
     * get_image
     * show image name
@@ -220,14 +217,12 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function get_image() {
         var cont_image = $('#cont_image').val();
         $('#input_show_browse').val(cont_image.substr(12));
         $('#cont_image-error').remove();
     }
 
-    <!--
     /*
     * show_input
     * show input to insert container type
@@ -236,7 +231,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

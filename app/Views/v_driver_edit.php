@@ -160,7 +160,6 @@
 </div>
 
 <script>
-    <!--
     /*
     * get_image
     * show image name in driver edit form
@@ -169,7 +168,6 @@
     * @author   Warisara
     * @Create Date  2564-08-06
     */
-    -->
     function get_image() {
         var dri_profile_image = $('#dri_profile_image').val();
         $('#input_show_browse').val(dri_profile_image.substr(12));

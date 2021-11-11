@@ -483,7 +483,6 @@
         $('.cancelBtn').removeClass('btn-default');
     });
 
-    <!--
     /*
     * get_id
     * get cus_id and show in remove customer id
@@ -492,12 +491,10 @@
     * @author   Kittipod
     * @Create Date  2564-07-28
     */
-    -->
     function get_id(cus_id) {
         $('#cus_id').val(cus_id);
     }
 
-    <!--
     /*
     * customer_detail
     * go to customer detail page
@@ -506,7 +503,6 @@
     * @author   Kittipod
     * @Create Date  2564-07-28
     */
-    -->
     function customer_detail(cus_id) {
         window.location = '<?php echo base_url('') . '/Customer_show/customer_detail/' ?>' + cus_id;
     }

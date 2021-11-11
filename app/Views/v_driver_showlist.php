@@ -189,7 +189,6 @@
 
         });
 
-        <!--
         /*
         * get_id
         * get dri_id in remove driver modal
@@ -198,12 +197,10 @@
         * @author   Thanathip
         * @Create Date  2564-07-28
         */
-        -->
         function get_id(dri_id) {
             $('#dri_id').val(dri_id);
         }
 
-        <!--
         /*
         * driver_detail
         * go to driver detail page
@@ -212,7 +209,6 @@
         * @author   Thanathip
         * @Create Date  2564-07-28
         */
-        -->
         function driver_detail(dri_id) {
             window.location = '<?php echo base_url('') . '/Driver_show/driver_detail/' ?>' + dri_id;
         }

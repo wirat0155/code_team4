@@ -133,7 +133,6 @@
     // hide add status container form
     $('#input_add').hide();
 
-    <!--
     /*
     * check_status_container
     * check status container
@@ -142,7 +141,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function check_status_container(stac_id) {
         if ($('#stac_id' + stac_id).prop('checked')) {
             status_container_delete(stac_id);
@@ -151,7 +149,6 @@
         }
     }
 
-    <!--
     /*
     * status_container_delete
     * delete status container
@@ -160,7 +157,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function status_container_delete(stac_id) {
         console.log('status_container_delete', stac_id);
         $.ajax({
@@ -173,7 +169,6 @@
         });
     }
 
-    <!--
     /*
     * status_container_restore
     * restore status container
@@ -182,7 +177,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function status_container_restore(stac_id) {
         console.log('status_container_restore', stac_id);
         $.ajax({
@@ -195,7 +189,6 @@
         });
     }
 
-    <!--
     /*
     * show_input
     * show input to insert status container
@@ -204,7 +197,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

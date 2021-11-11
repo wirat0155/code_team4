@@ -105,7 +105,6 @@ label.error {
             </div>
 
         <script>
-        <!--
         /*
         * get_image
         * show image name when upload car image
@@ -114,7 +113,6 @@ label.error {
         * @author   Natthanan
         * @Create Date  2564-08-06
         */
-        -->
         function get_image() {
             var car_img = $('#car_image').val();
             $('#input_show_browse').val(car_img.substr(12));

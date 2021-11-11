@@ -180,8 +180,7 @@
 
     <script>
     $(document).ready(function() {
-
-        // แทรกปุ่ม เพิ่มรถ
+        // add car button
         var car_table = $('#car_list_table').DataTable({
             "columnDefs": [ {
                 "searchable": false,
@@ -191,7 +190,7 @@
             "order": []
         });
 
-        //ลำดับ
+        // order
         car_table.on( 'order.dt search.dt', function () {
             car_table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
                 cell.innerHTML = i+1+'.';
@@ -204,7 +203,6 @@
 
     });
 
-    <!--
     /*
     * get_id
     * get car_id and show in remove car modal
@@ -213,12 +211,10 @@
     * @author   Tadsawan
     * @Create Date  2564-07-28
     */
-    -->
     function get_id(car_id) {
         $('#car_id').val(car_id);
     }
 
-    <!--
     /*
     * car_detail
     * go to car detail page
@@ -227,7 +223,6 @@
     * @author   Tadsawan
     * @Create Date  2564-07-28
     */
-    -->
     function car_detail(car_id) {
         window.location = '<?php echo base_url('') . '/Car_show/car_detail/' ?>' + car_id;
     }

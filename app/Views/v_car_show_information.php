@@ -174,7 +174,6 @@
 <script>
     $('.ui.modal').modal('attach events', '.test.button', 'toggle');
 
-    <!--
     /*
     * get_image
     * show image name
@@ -183,7 +182,6 @@
     * @author   Warisara
     * @Create Date  2564-08-12
     */
-    -->
     function get_image() {
         var car_image = $('#car_image').val();
         $('#file_name').html(car_image.substr(12));
@@ -191,7 +189,6 @@
         $('#old_car_image').remove();
     }
 
-    <!--
     /*
     * get_id
     * get car_id and show in remove car modal
@@ -200,7 +197,6 @@
     * @author   Warisara
     * @Create Date  2564-08-12
     */
-    -->
     function get_id(car_id) {
         $('#car_id').val(car_id);
     }

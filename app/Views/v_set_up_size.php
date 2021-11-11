@@ -133,29 +133,33 @@
                                     <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                                     <tr>
                                         <div <?php echo 'size_id' . $arr_size[$i]->size_id ?>>
-                                            <!-- ลบ -->
+                                            <!-- delete button -->
                                             <td></td>
 
-                                            <!-- รูปภาพ -->
+                                            <!-- container size iamge -->
                                             <td>
                                                 <div class="avatar avatar-lg">
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/size_image/' .$arr_size[$i]->size_image ?>" alt="" loading="lazy">
+                                                    <?php if ($arr_size[$i]->size_image != NULL && $arr_size[$i]->size_image != '') : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                    <?php else : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                    <?php endif; ?>
                                                 </div>
                                             </td>
 
-                                            <!-- ชื่อขนาดตู้ -->
+                                            <!-- container size name -->
                                             <td class="size_name <?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_name ?></td>
 
-                                            <!-- Width in, out -->
+                                            <!-- width in, out -->
                                             <td><?php echo $arr_size[$i]->size_width_in . ', ' . $arr_size[$i]->size_width_out ?></td>
 
-                                            <!-- Length in, out -->
+                                            <!-- length in, out -->
                                             <td><?php echo $arr_size[$i]->size_length_in . ', ' . $arr_size[$i]->size_length_out ?></td>
 
-                                            <!-- Height in, out -->
+                                            <!-- height in, out -->
                                             <td><?php echo $arr_size[$i]->size_height_in . ', ' . $arr_size[$i]->size_height_out ?></td>
 
-                                            <!-- Switch -->
+                                            <!-- switch -->
                                             <td>
                                                 <label class="switch">
                                                     <input id="size_id<?php echo $arr_size[$i]->size_id ?>" type="checkbox" onclick="check_status_size(<?php echo $arr_size[$i]->size_id ?>)" <?php if($arr_size[$i]->size_status == 2)echo " checked" ?>>
@@ -165,7 +169,6 @@
                                         </div>
                                     </tr>
                                     <?php } ?>
-
                                 </tbody>
                             </table>
                         </div>
@@ -184,11 +187,47 @@
                 rules: {
                     size_name: {
                         required: true
+                    },
+                    size_width_in: {
+                        required: true
+                    },
+                    size_width_out: {
+                        required: true
+                    },
+                    size_length_in: {
+                        required: true
+                    },
+                    size_length_out: {
+                        required: true
+                    },
+                    size_height_in: {
+                        required: true
+                    },
+                    size_height_out: {
+                        required: true
                     }
                 },
                 messages: {
                     size_name: {
                         required: 'Please enter a size name'
+                    },
+                    size_width_in: {
+                        required: 'Please enter a inside width'
+                    },
+                    size_width_out: {
+                        required: 'Please enter a outside width'
+                    },
+                    size_length_in: {
+                        required: 'Please enter a inside length'
+                    },
+                    size_length_out: {
+                        required: 'Please enter a outside length'
+                    },
+                    size_height_in: {
+                        required: 'Please enter a inside height'
+                    },
+                    size_height_out: {
+                        required: 'Please enter a outside height'
                     }
                 }
             })
@@ -198,7 +237,6 @@
     // hide add size form
     $('#input_add').hide();
 
-    <!--
     /*
     * check_status_size
     * check status size
@@ -207,7 +245,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function check_status_size(size_id) {
         if ($('#size_id' + size_id).prop('checked')) {
             size_delete(size_id);
@@ -216,7 +253,6 @@
         }
     }
 
-    <!--
     /*
     * size_delete
     * delete size
@@ -225,7 +261,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function size_delete(size_id) {
         console.log('size_delete', size_id);
         $.ajax({
@@ -238,7 +273,6 @@
         });
     }
 
-    <!--
     /*
     * size_restore
     * restore size
@@ -247,7 +281,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function size_restore(size_id) {
         console.log('size_restore', size_id);
         $.ajax({
@@ -260,7 +293,6 @@
         });
     }
 
-    <!--
     /*
     * get_image
     * show image name
@@ -269,14 +301,12 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function get_image() {
         var size_image = $('#size_image').val();
         $('#input_show_browse').val(size_image.substr(12));
         $('#size_image-error').remove();
     }
 
-    <!--
     /*
     * show_input
     * show input to insert size
@@ -285,7 +315,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

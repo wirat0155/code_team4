@@ -360,7 +360,6 @@
         <script>
             $('.ui.modal').modal('attach events', '.test.button', 'toggle');
 
-            <!--
             /*
             * hilight_section
             * go to hilight section
@@ -369,7 +368,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-14
             */
-            -->
             function hilight_section(section) {
                 let sections = ['service', 'con', 'agent', 'customer'];
                 $('h3.' + section).addClass('active');

@@ -9,23 +9,7 @@
 -->
 
 <style>
-.cl-blue {
-    color: #1244B9 !important;
-}
 
-input.error {
-    border: 1px solid red !important;
-}
-
-.ui.search.dropdown>input.search.error {
-    border: 1px solid red !important;
-}
-
-small.error,
-label.error {
-    color: red !important;
-    font-weight: bold;
-}
 </style>
 <div class="main-panel">
     <div class="content">
@@ -85,7 +69,6 @@ label.error {
         </div>
 
         <script>
-        <!--
         /*
         * validate_form
         * validate add car form
@@ -94,12 +77,10 @@ label.error {
         * @author   Tadsawan
         * @Create Date  2564-08-06
         */
-        -->
         function validate_form() {
             return check_car_prov_id();
         }
 
-        <!--
         /*
         * check_car_prov_id
         * check select province or not
@@ -108,7 +89,6 @@ label.error {
         * @author   Tadsawan
         * @Create Date  2564-08-06
         */
-        -->
         function check_car_prov_id() {
             // get province id value
             let car_prov_id = $('input[name="car_prov_id"]').val();
@@ -130,7 +110,6 @@ label.error {
             }
         }
 
-        <!--
         /*
         * get_image
         * show image name when upload car image
@@ -139,7 +118,6 @@ label.error {
         * @author   Tadsawan
         * @Create Date  2564-08-06
         */
-        -->
         function get_image() {
             var car_img = $('#car_image').val();
             $('#input_show_browse').val(car_img.substr(12));

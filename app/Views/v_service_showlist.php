@@ -548,7 +548,6 @@
             $('.cancelBtn').removeClass('btn-default');
         });
 
-        <!--
         /*
         * get_id
         * get ser_id and show in remove service form
@@ -557,12 +556,10 @@
         * @author   Natdanai
         * @Create Date  2564-07-28
         */
-        -->
         function get_id(ser_id) {
             $('#ser_id').val(ser_id);
         }
 
-        <!--
         /*
         * service_detail
         * go to service detail page
@@ -571,7 +568,6 @@
         * @author   Natdanai
         * @Create Date  2564-07-28
         */
-        -->
         function service_detail(ser_id) {
             window.location = '<?php echo base_url('') . '/Service_show/service_detail/' ?>' + ser_id;
         }

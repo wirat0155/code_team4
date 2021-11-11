@@ -192,7 +192,6 @@
         );
     });
 
-    <!--
     /*
     * get_id
     * get agn_id in remove agent modal
@@ -201,12 +200,10 @@
     * @author   Natthanan
     * @Create Date  2564-08-12
     */
-    -->
     function get_id(agn_id) {
         $('#agn_id').val(agn_id);
     }
 
-    <!--
     /*
     * agent_detail
     * show agnet detail page when click on agent table row
@@ -215,7 +212,6 @@
     * @author   Natthanan
     * @Create Date  2564-08-12
     */
-    -->
     function agent_detail(agn_id) {
         window.location = '<?php echo base_url('') . '/Agent_show/agent_detail/' ?>' + agn_id;
     }

@@ -229,7 +229,6 @@
 
     });
 
-    <!--
     /*
     * get_id
     * get con_id and show in remove container modal
@@ -238,12 +237,10 @@
     * @author   Wirat
     * @Create Date  2564-07-28
     */
-    -->
     function get_id(con_id) {
         $('#con_id').val(con_id);
     }
 
-    <!--
     /*
     * container_detail
     * go to container detail page
@@ -252,7 +249,6 @@
     * @author   Wirat
     * @Create Date  2564-07-28
     */
-    -->
     function container_detail(con_id) {
         window.location = '<?php echo base_url('') . '/Container_show/container_detail/' ?>' + con_id;
     }

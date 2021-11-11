@@ -93,20 +93,24 @@
                                     <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
                                     <tr>
                                         <div <?php echo 'cart_id' . $arr_car_type[$i]->cart_id ?>>
-                                            <!-- ลบ -->
+                                            <!-- delete button -->
                                             <td></td>
 
-                                            <!-- รูปภาพ -->
+                                            <!-- catr type image -->
                                             <td>
                                                 <div class="avatar avatar-lg">
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' .$arr_car_type[$i]->cart_image ?>" alt="" loading="lazy">
+                                                    <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                    <?php else : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                    <?php endif; ?>
                                                 </div>
                                             </td>
 
-                                            <!-- ชื่อประเภทรถ -->
+                                            <!-- car type name -->
                                             <td class="cart_name <?php echo $arr_car_type[$i]->cart_id ?>"><?php echo $arr_car_type[$i]->cart_name ?></td>
 
-                                            <!-- Switch -->
+                                            <!-- switch -->
                                             <td>
                                                 <label class="switch">
                                                     <input id="cart_id<?php echo $arr_car_type[$i]->cart_id ?>" type="checkbox" onclick="check_status_car_type(<?php echo $arr_car_type[$i]->cart_id ?>)" <?php if($arr_car_type[$i]->cart_status == 2)echo " checked" ?>>
@@ -149,7 +153,6 @@
     // hide add car type form
     $('#input_add').hide();
 
-    <!--
     /*
     * check_status_car_type
     * check status car type
@@ -158,7 +161,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function check_status_car_type(cart_id) {
         if ($('#cart_id' + cart_id).prop('checked')) {
             car_type_delete(cart_id);
@@ -167,7 +169,6 @@
         }
     }
 
-    <!--
     /*
     * car_type_delete
     * delete car type
@@ -176,7 +177,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function car_type_delete(cart_id) {
         console.log('car_type_delete', cart_id);
         $.ajax({
@@ -189,7 +189,6 @@
         });
     }
 
-    <!--
     /*
     * car_type_restore
     * restore car type
@@ -198,7 +197,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function car_type_restore(cart_id) {
         console.log('car_type_restore', cart_id);
         $.ajax({
@@ -211,7 +209,6 @@
         });
     }
 
-    <!--
     /*
     * get_image
     * get image name
@@ -220,14 +217,12 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22
     */
-    -->
     function get_image() {
         var cart_image = $('#cart_image').val();
         $('#input_show_browse').val(cart_image.substr(12));
         $('#cart_image-error').remove();
     }
 
-    <!--
     /*
     * show_input
     * show input to insert car type
@@ -236,7 +231,6 @@
     * @author   Tadsawan
     * @Create Date  2564-10-22e
     */
-    -->
     function show_input() {
         $('#input_add').show();
         $('#btn_add').hide();

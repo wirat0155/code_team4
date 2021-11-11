@@ -304,7 +304,6 @@
                 }
             })
 
-            <!--
             /*
             * hilight_section
             * go to hilight section
@@ -313,7 +312,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function hilight_section(section) {
                 let sections = ['service', 'con', 'agent', 'customer'];
                 $('h3.' + section).addClass('active');
@@ -325,7 +323,6 @@
                 }
             }
 
-            <!--
             /*
             * show_all_form
             * show all form
@@ -334,7 +331,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_all_form(status) {
                 $('#service_section').show();
                 $('#container_section').show();
@@ -347,7 +343,6 @@
                 setTimeout(check_all_form);
             }
 
-            <!--
             /*
             * check_service_form
             * check service form contain error or not
@@ -356,7 +351,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_service_form() {
                 // $('#service_section label.error').remove();
                 if ($('#service_section .form-control.error').length != 0) {
@@ -367,7 +361,6 @@
                 }
             }
 
-            <!--
             /*
             * check_container_form
             * check container form contain error or not
@@ -376,7 +369,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_container_form() {
                 // $('#container_section label.error').remove();
                 if ($('#container_section .form-control.error').length > 0) {
@@ -387,7 +379,6 @@
                 }
             }
 
-            <!--
             /*
             * check_agent_form
             * check agent form contain error or not
@@ -396,7 +387,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_agent_form() {
                 // $('#agent_section label.error').remove();
                 if ($('#agent_section .form-control.error').length > 0) {
@@ -407,7 +397,6 @@
                 }
             }
 
-            <!--
             /*
             * check_customer_form
             * check customer form contain error or not
@@ -416,7 +405,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_customer_form() {
                 // $('#customer_section label.error').remove();
                 if ($('#customer_section .form-control.error').length > 0) {
@@ -427,7 +415,6 @@
                 }
             }
 
-            <!--
             /*
             * check_all_form
             * check form contain error or not
@@ -436,7 +423,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_all_form() {
                 if ($('#service_section .form-control.error').length > 0) {
                     console.log('service' + $('#service_section .error').length);
@@ -457,7 +443,6 @@
                 }
             }
 
-            <!--
             /*
             * show_service_form
             * show service section form
@@ -466,7 +451,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_service_form() {
                 $('#service_section').show();
                 $('#first_from_action').show();
@@ -487,7 +471,6 @@
                 $('#last_from_action').hide();
             }
 
-            <!--
             /*
             * show_container_form
             * show container section form
@@ -496,7 +479,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_container_form() {
                 $('#container_section').show();
                 $('#container_from_action').show();
@@ -517,7 +499,6 @@
                 $('#container_section .ui.fluid.search.selection.dropdown+label').css('display', 'block');
             }
 
-            <!--
             /*
             * show_agent_form
             * show agent section form
@@ -526,7 +507,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_agent_form() {
                 $('#agent_section').show();
                 $('#agent_from_action').show();
@@ -547,7 +527,6 @@
                 $('#agent_section .ui.fluid.search.selection.dropdown+label').css('display', 'block');
             }
 
-            <!--
             /*
             * show_customer_form
             * show customer section form
@@ -556,7 +535,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_customer_form() {
                 $('#customer_section').show();
                 $('#last_from_action').show();
@@ -577,7 +555,6 @@
                 $('#customer_section .ui.fluid.search.selection.dropdown+label').css('display', 'block');
             }
 
-            <!--
             /*
             * get_car_information
             * get car information by driver
@@ -586,7 +563,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function get_car_information(status) {
                 let ser_dri_id_in = $('select[name="ser_dri_id_in"]').val();
                 let ser_dri_id_out = $('select[name="ser_dri_id_out"]').val();
@@ -628,7 +604,6 @@
                 }
             }
 
-            <!--
             /*
             * open_disable
             * toggle dropdown car
@@ -637,7 +612,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function open_disable(status) {
                 if (status == 1) {
                     if (document.getElementById('open').checked) {
@@ -656,7 +630,6 @@
                 }
             }
 
-            <!--
             /*
             * show_driver_information
             * get car by driver
@@ -665,7 +638,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_driver_information(driver, status) {
                 if (status == 1) {
                     $('select[name="ser_car_id_in"]').val(driver[0]['dri_car_id']);
@@ -674,7 +646,6 @@
                 }
             }
 
-            <!--
             /*
             * clear_driver_information
             * clear driver information
@@ -683,13 +654,11 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function clear_driver_information() {
                 $('select[name="ser_car_id_in"]').val('');
                 $('select[name="ser_car_id_out"]').val('');
             }
 
-            <!--
             /*
             * get_container_information
             * get container information when select container
@@ -698,7 +667,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function get_container_information() {
                 $('#container_section label.error').remove();
                 remove_form_attr('readonly', '#container_section');
@@ -727,7 +695,6 @@
                 }
             }
 
-            <!--
             /*
             * valid_container_error
             * valid container error
@@ -736,13 +703,11 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function valid_container_error() {
                 $('#container_section input.error').removeClass('error');
                 $('#container_section textarea.error').removeClass('error');
             }
 
-            <!--
             /*
             * show_container_information
             * show container information in container section form
@@ -751,7 +716,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_container_information(container) {
                 $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
                 $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
@@ -763,7 +727,6 @@
                 get_size_information();
             }
 
-            <!--
             /*
             * clear_container_information
             * clear input in container section form
@@ -772,7 +735,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function clear_container_information() {
                 $('select[name="con_cont_id"]').val(1);
 
@@ -790,7 +752,6 @@
                 $('input[name="size_length_out"]').val('');
             }
 
-            <!--
             /*
             * get_size_information
             * get size information when select size
@@ -799,7 +760,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function get_size_information() {
                 let size_id = $('select[name="con_size_id"]').val();
                 $.ajax({
@@ -816,7 +776,6 @@
                 });
             }
 
-            <--
             /*
             * show_size_information
             * show size information when select size
@@ -825,7 +784,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_size_information(size_height_out, size_width_out, size_length_out) {
                 console.log(size_height_out);
                 $('input[name="size_height_out"]').val(size_height_out);
@@ -833,7 +791,6 @@
                 $('input[name="size_length_out"]').val(size_length_out);
             }
 
-            <!--
             /*
             * get_agent_information
             * show agent information when select agent
@@ -842,7 +799,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function get_agent_information() {
                 $('#agent_section label.error').remove();
                 remove_form_attr('readonly', '#agent_section');
@@ -871,7 +827,6 @@
                 }
             }
 
-            <!--
             /*
             * valid_agent_error
             * valid agent error
@@ -880,13 +835,11 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function valid_agent_error() {
                 $('#agent_section input.error').removeClass('error');
                 $('#agent_section textarea.error').removeClass('error');
             }
 
-            <!--
             /*
             * show_agent_information
             * show agent information when select agent
@@ -895,7 +848,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_agent_information(agent) {
                 $('input[name="agn_id"]').val(agent[0]['agn_id']);
                 $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
@@ -906,7 +858,6 @@
                 $('input[name="agn_email"]').val(agent[0]['agn_email']);
             }
 
-            <!--
             /*
             * clear_agent_information
             * clear agent information
@@ -915,7 +866,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function clear_agent_information() {
                 $('input[name="agn_id"]').val('');
                 $('textarea[name="agn_address"]').val('');
@@ -926,7 +876,6 @@
                 $('input[name="agn_email"]').val('');
             }
 
-            <!--
             /*
             * remove_form_attr
             * remove readonly from input
@@ -935,12 +884,10 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function remove_form_attr(attr, target) {
                 $(target + ' *[readonly]').removeAttr(attr);
             }
 
-            <!--
             /*
             * get_customer_information
             * get customer information when select customer
@@ -949,7 +896,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function get_customer_information() {
                 // Remove jQuery validation error
                 $('#customer_section label.error').remove();
@@ -982,7 +928,6 @@
                 }
             }
 
-            <!--
             /*
             * valid_customer_error
             * valid customer error
@@ -991,13 +936,11 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function valid_customer_error() {
                 $('#customer_section input.error').removeClass('error');
                 $('#customer_section textarea.error').removeClass('error');
             }
 
-            <!--
             /*
             * show_customer_information
             * show customer information when select customer
@@ -1006,7 +949,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function show_customer_information(customer) {
                 $('input[name="cus_branch"]').val(customer[0]['cus_branch']);
                 $('textarea[name="cus_address"]').val(customer[0]['cus_address']);
@@ -1017,7 +959,6 @@
                 $('input[name="cus_email"]').val(customer[0]['cus_email']);
             }
 
-            <!--
             /*
             * clear_customer_information
             * clear customer information
@@ -1026,7 +967,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function clear_customer_information() {
                 $('input[name="cus_branch"]').val('');
                 $('textarea[name="cus_address"]').val('');
@@ -1037,7 +977,6 @@
                 $('input[name="cus_email"]').val('');
             }
 
-            <!--
             /*
             * validate_form
             * validate form contain error or not
@@ -1046,7 +985,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function validate_form() {
                 const con_id_pass = check_con_id();
                 const agn_id_pass = check_agn_id();
@@ -1054,7 +992,6 @@
                 return con_id_pass && agn_id_pass && cus_id_pass;
             }
 
-            <!--
             /*
             * check_con_id
             * check select container or not
@@ -1063,7 +1000,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_con_id() {
                 const con_id_input = $('input[name="con_id"]');
                 let con_id_warning = $('#container_section .ui.fluid.search.selection.dropdown+label');
@@ -1082,7 +1018,6 @@
                 }
             }
 
-            <!--
             /*
             * check_agn_id
             * check select agent or not
@@ -1091,7 +1026,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_agn_id() {
                 const agn_id_input = $('input[name="agn_id"]');
                 let agn_id_warning = $('#agent_section .ui.fluid.search.selection.dropdown+label');
@@ -1110,7 +1044,6 @@
                 }
             }
 
-            <!--
             /*
             * check_agn_id
             * check select customer or not
@@ -1119,7 +1052,6 @@
             * @author   Thanathip
             * @Create Date  2564-10-15
             */
-            -->
             function check_cus_id() {
                 const cus_id_input = $('input[name="cus_id"]');
                 let cus_id_warning = $('#customer_section .ui.fluid.search.selection.dropdown+label');
