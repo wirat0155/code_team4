@@ -71,10 +71,10 @@ class M_cdms_customer extends Da_cdms_customer {
     public function get_by_name($cus_company_name, $cus_branch) {
         if ($cus_branch == '') {
             $sql = "SELECT * FROM $this->table
-                    WHERE cus_company_name = '$cus_company_name' AND (cus_branch = '' OR cus_branch IS NULL)";
+                    WHERE cus_company_name = '$cus_company_name' AND (cus_branch = '' OR cus_branch IS NULL) AND cus_status = 1";
         } else {
             $sql = "SELECT * FROM $this->table
-                    WHERE cus_company_name = '$cus_company_name' AND cus_branch = '$cus_branch'";
+                    WHERE cus_company_name = '$cus_company_name' AND cus_branch = '$cus_branch' AND cus_status = 1";
         }
         
         // return as array
@@ -90,7 +90,7 @@ class M_cdms_customer extends Da_cdms_customer {
     * @Create Date  2564-08-18
     */
     public function is_cus_branch_exist($cus_company_name = NULL) {
-        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name'";
+        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name' AND cus_status = 1";
         return $this->db->query($sql)->getResult();
     }
 

@@ -43,7 +43,7 @@
 </div>
 
 <div class="col-md-6" style="margin-right: 10%">
-  <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" value="<?php echo $cus_address ?>" <?php echo $attr?>></textarea>
+  <textarea type="text" class="form-control" id="cus_address" name="cus_address" placeholder="Company location" <?php echo $attr?>><?php echo $cus_address ?></textarea>
 </div>
 </div>
 

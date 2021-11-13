@@ -121,8 +121,8 @@
                                                     echo '<span class="bg-import text-white p-2" style="border-radius: 5px;">' . $arr_container[$i]->stac_name . '<span>';
                                                 }
                                                 // 4 = export (springgreen)
-                                                else if($arr_container[$i]->con_stac_id == '4'){
-                                                    echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">' . $arr_container[$i]->stac_name . '<span>';
+                                                else if($arr_container[$i]->con_stac_id == '4' || $arr_container[$i]->con_stac_id == '0' || $arr_container[$i]->con_stac_id == ''){
+                                                    echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">Export<span>';
                                                 }
                                                 // else = drop (orange)
                                                 else {

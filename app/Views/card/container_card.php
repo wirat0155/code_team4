@@ -12,10 +12,15 @@
     if ($obj_container != NULL) {
         $con_number = $obj_container[0]->con_number;
 
-        // get status container name
-        for ($i = 0; $i < count($arr_status_container); $i++) {
-            if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
-                $stac_name = $arr_status_container[$i]->stac_name;
+        if ($obj_container[0]->con_stac_id == 0 || $obj_container[0]->con_stac_id == '') {
+            $stac_name = 'Export';
+        }
+        else {
+            // get status container name
+            for ($i = 0; $i < count($arr_status_container); $i++) {
+                if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
+                    $stac_name = $arr_status_container[$i]->stac_name;
+                }
             }
         }
 
@@ -34,10 +39,15 @@
     else {
         $con_number = $arr_container[0]->con_number;
 
-        // get status container name
-        for ($i = 0; $i < count($arr_status_container); $i++) {
-            if ($arr_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
-                $stac_name = $arr_status_container[$i]->stac_name;
+        if ($arr_container[0]->con_stac_id == 0 || $arr_container[0]->con_stac_id == '') {
+            $stac_name = 'Export';
+        }
+        else {
+            // get status container name
+            for ($i = 0; $i < count($arr_status_container); $i++) {
+                if ($arr_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
+                    $stac_name = $arr_status_container[$i]->stac_name;
+                }
             }
         }
 
@@ -90,7 +100,7 @@
         <div class="row">
             <!-- Container type -->
             <div class="col-12 col-sm-6 mb-3">
-                <b>Container type</b>
+                <b>Container type :</b>
             </div>
             <div class="col-12 col-sm-6 mb-3">
                 <?php echo $cont_name ?>
@@ -140,10 +150,10 @@
         <div class="row">
             <!-- Tare weight -->
             <div class="col-12 col-sm-6 mb-3">
-                <b>Cube (CDM) :</b>
+                <b>Cube (cbm) :</b>
             </div>
             <div class="col-12 col-sm-6 mb-3">
-                <?php echo $con_cube . ' CDM' ?>
+                <?php echo $con_cube . ' cbm' ?>
             </div>
         </div>
     </div>

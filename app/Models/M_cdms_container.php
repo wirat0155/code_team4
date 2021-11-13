@@ -76,7 +76,7 @@ class M_cdms_container extends Da_cdms_container {
     * @Create Date  2564-08-07
     */
     public function is_con_number_exist($con_number = NULL) {
-        $sql = "SELECT con_id, con_number FROM $this->table WHERE con_number = '$con_number'";
+        $sql = "SELECT con_id, con_number FROM $this->table WHERE con_number = '$con_number' AND con_status = 1";
         return $this->db->query($sql)->getResult();
     }
 

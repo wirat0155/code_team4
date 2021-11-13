@@ -163,7 +163,7 @@
             <!-- cube :  -->
             <div class="row mb-3">
                 <div class="col-12 col-sm-6">
-                    <b>Cube (CDM) : </b>
+                    <b>Cube (cbm) : </b>
                 </div>
                 <div class="col-12 col-sm-6">
                     <input class="form-control" type="number" step="0.01" name="con_cube" value="<?php echo $con_cube ?>" placeholder="10">
