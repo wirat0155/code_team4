@@ -77,6 +77,7 @@
                         </div>
                     </div>
                     <input class="form-control mt-5" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
+                    <label class="error mt-5"><?php echo $_SESSION['con_number_error'] ?></label>
                 </div>
             </div>
             <?php endif; ?>

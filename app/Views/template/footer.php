@@ -147,21 +147,26 @@ $(document).ready(function() {
                     max: 100
                 },
                 agn_company_name: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_tax: {
                     required: true,
+                    number: true,
                     minlength: 13,
                     maxlength: 13
                 },
                 agn_address: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_firstname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_lastname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_tel: {
                     required: true,
@@ -170,27 +175,36 @@ $(document).ready(function() {
                 },
                 agn_email: {
                     required: true,
-                    email: true
+                    email: true,
+                    maxlength: 40
                 },
                 cus_name : {
                     required: true
                 },
                 cus_company_name: {
-                    required: true
+                    required: true,
+                    maxlength: 255
+                },
+                cus_branch: {
+                    maxlength: 255
                 },
                 cus_tax: {
                     required: true,
+                    number: true,
                     minlength: 13,
                     maxlength: 13
                 },
                 cus_address: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 cus_firstname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 cus_lastname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 cus_tel: {
                     required: true,
@@ -199,7 +213,8 @@ $(document).ready(function() {
                 },
                 cus_email: {
                     required: true,
-                    email: true
+                    email: true,
+                    maxlength: 40
                 },
                 ser_weight: {
                     required: true
@@ -243,21 +258,26 @@ $(document).ready(function() {
                     max: 'Maximum value is 100'
                 },
                 agn_company_name: {
-                    required: 'Please enter a company name'
+                    required: 'Please enter a company name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_tax: {
                     required: 'Please enter a tax number',
                     minlength: 'Please enter 13 digit long',
-                    maxlength: 'Please enter 13 digit long'
+                    maxlength: 'Please enter 13 digit long',
+                    number: 'Pleaser enter only number'
                 },
                 agn_address: {
-                    required: 'Please enter an address'
+                    required: 'Please enter an address',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_firstname: {
-                    required: 'Please enter a first name'
+                    required: 'Please enter a first name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_lastname: {
-                    required: 'Please enter a last name'
+                    required: 'Please enter a last name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_tel: {
                     required: 'Please enter a contact number',
@@ -266,27 +286,36 @@ $(document).ready(function() {
                 },
                 agn_email: {
                     required: 'Please enter an email',
-                    email: 'Please enter a valid email'
+                    email: 'Please enter a valid email',
+                    maxlength: 'Please enter not more than 40 character'
                 },
                 cus_name : {
                     required: 'Please select a customer'
                 },
                 cus_company_name: {
-                    required: 'Please enter a company name'
+                    required: 'Please enter a company name',
+                    maxlength: 'Please enter not more than 255 character'
+                },
+                cus_branch: {
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_tax: {
                     required: 'Please enter a tax number',
                     minlength: 'Please enter 13 digit long',
-                    maxlength: 'Please enter 13 digit long'
+                    maxlength: 'Please enter 13 digit long',
+                    number: 'Pleaser enter only number'
                 },
                 cus_address: {
-                    required: 'Please enter a tax number'
+                    required: 'Please enter an address',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_firstname: {
-                    required: 'Please enter a first name'
+                    required: 'Please enter a first name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_lastname: {
-                    required: 'Please enter a last name'
+                    required: 'Please enter a last name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 cus_tel: {
                     required: 'Please enter a contact number',
@@ -295,7 +324,8 @@ $(document).ready(function() {
                 },
                 cus_email: {
                     required: 'Please enter an email',
-                    email: 'Please enter a valid email'
+                    email: 'Please enter a valid email',
+                    maxlength: 'Please enter not more than 40 character'
                 },
                 ser_weight: {
                     required: 'Please enter a current weight'
@@ -428,21 +458,26 @@ $(document).ready(function() {
         $('#agent_form').validate({
             rules: {
                 agn_company_name: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_tax: {
                     required: true,
+                    number: true,
                     minlength: 13,
                     maxlength: 13
                 },
                 agn_address: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_firstname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_lastname: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 agn_tel: {
                     required: true,
@@ -451,26 +486,32 @@ $(document).ready(function() {
                 },
                 agn_email: {
                     required: true,
-                    email: true
+                    email: true,
+                    maxlength: 40
                 }
             },
             messages: {
                 agn_company_name: {
-                    required: 'Please enter a company name'
+                    required: 'Please enter a company name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_tax: {
                     required: 'Please enter a tax number',
                     minlength: 'Please enter 13 digit long',
-                    maxlength: 'Please enter 13 digit long'
+                    maxlength: 'Please enter 13 digit long',
+                    number: 'Pleaser enter only number'
                 },
                 agn_address: {
-                    required: 'Please enter an address'
+                    required: 'Please enter an address',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_firstname: {
-                    required: 'Please enter a first name'
+                    required: 'Please enter a first name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_lastname: {
-                    required: 'Please enter a last name'
+                    required: 'Please enter a last name',
+                    maxlength: 'Please enter not more than 255 character'
                 },
                 agn_tel: {
                     required: 'Please enter a contact number',
@@ -479,7 +520,8 @@ $(document).ready(function() {
                 },
                 agn_email: {
                     required: 'Please enter an email',
-                    email: 'Please enter a valid email'
+                    email: 'Please enter a valid email',
+                    maxlength: 'Please enter not more than 40 character'
                 }
             }
         })

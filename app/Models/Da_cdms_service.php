@@ -59,11 +59,16 @@ class Da_cdms_service extends Model {
     * @Create Date  2564-08-06
     */
     public function service_update($ser_id = NULL, $ser_stac_id = NULL, $ser_departure_date = NULL, $ser_car_id_in = NULL, $ser_arrivals_date = NULL, $ser_dri_id_in = NULL, $ser_actual_departure_date = NULL, $ser_dri_id_out = NULL, $ser_car_id_out = NULL, $ser_arrivals_location = NULL, $ser_departure_location = NULL, $ser_weight = NULL, $ser_con_id = NULL, $ser_cus_id = NULL) {
-        $sql = "UPDATE  $this->table SET ser_arrivals_location ='$ser_arrivals_location', ser_arrivals_date ='$ser_arrivals_date', ser_departure_date='$ser_departure_date', ser_actual_departure_date='$ser_actual_departure_date',
-                ser_departure_location='$ser_departure_location', ser_weight='$ser_weight', ser_con_id='$ser_con_id', ser_stac_id='$ser_stac_id', ser_cus_id='$ser_cus_id', ser_id_change= NULL, ser_dri_id_in='$ser_dri_id_in',
-                ser_dri_id_out='$ser_dri_id_out', ser_car_id_in='$ser_car_id_in', ser_car_id_out='$ser_car_id_out'
-                WHERE ser_id = '$ser_id' ";
-
+        if ($ser_actual_departure_date == NULL) {
+            $sql = "UPDATE  $this->table SET ser_arrivals_location ='$ser_arrivals_location', ser_arrivals_date ='$ser_arrivals_date', ser_departure_date='$ser_departure_date', 
+                    ser_actual_departure_date = NULL, ser_departure_location='$ser_departure_location', ser_weight='$ser_weight', ser_con_id='$ser_con_id', ser_stac_id='$ser_stac_id', ser_cus_id='$ser_cus_id', ser_id_change= NULL, ser_dri_id_in='$ser_dri_id_in', ser_dri_id_out='$ser_dri_id_out', ser_car_id_in='$ser_car_id_in', ser_car_id_out='$ser_car_id_out'
+                    WHERE ser_id = '$ser_id' ";
+        }
+        else {
+            $sql = "UPDATE  $this->table SET ser_arrivals_location = '$ser_arrivals_location', ser_arrivals_date = '$ser_arrivals_date', ser_departure_date = '$ser_departure_date', 
+                    ser_actual_departure_date = '$ser_actual_departure_date', ser_departure_location='$ser_departure_location', ser_weight='$ser_weight', ser_con_id='$ser_con_id', ser_stac_id='$ser_stac_id', ser_cus_id='$ser_cus_id', ser_id_change= NULL, ser_dri_id_in='$ser_dri_id_in', ser_dri_id_out='$ser_dri_id_out', ser_car_id_in='$ser_car_id_in', ser_car_id_out='$ser_car_id_out'
+                    WHERE ser_id = '$ser_id' ";
+        }
         $this->db->query($sql);
     }
 
@@ -82,7 +87,7 @@ class Da_cdms_service extends Model {
         }
         else if ($to_ser_stac_id == 4) {
             $sql = "UPDATE $this->table SET ser_stac_id = 4
-                    WHERE ser_actual_departure_date <= '$today_time' AND ser_stac_id BETWEEN 1 AND 3";
+                    WHERE ser_actual_departure_date <= '$today_time' AND ser_actual_departure_date != '0000-00-00 00:00:00' AND ser_stac_id BETWEEN 1 AND 3";
         }
         // query
         // echo $sql;

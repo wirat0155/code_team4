@@ -83,8 +83,6 @@ class Service_edit extends Cdms_controller
 
         // call service input view
         $this->output('v_service_edit', $data);
-        //print_r($data['obj_service'][0]->ser_departure_date);
-        //print_r($data['obj_agent'][0]->agn_company_name);
     }
 
     /*
@@ -150,6 +148,9 @@ class Service_edit extends Cdms_controller
             $ser_car_id_in = $get_ser_car_id_in[0]->dri_car_id;
         }
         $ser_actual_departure_date = $this->request->getPost('ser_actual_departure_date');
+        if ($ser_actual_departure_date == '') {
+            $ser_actual_departure_date = NULL;
+        }
         $ser_dri_id_out = $this->request->getPost('ser_dri_id_out');
         $ser_car_id_out = $this->request->getPost('ser_car_id_out');
         if ($ser_car_id_out == '') {
@@ -202,10 +203,8 @@ class Service_edit extends Cdms_controller
                 else {
                     $_SESSION['cus_branch_error'] = 'The branch has already used';
                 }
-
-                // 4 = dupplicate cus_company_name & cus_branch
-                $this->service_edit(4);
-                exit;
+                $this->service_edit($ser_id);
+                exit(0);
             }
         }
 
@@ -225,8 +224,8 @@ class Service_edit extends Cdms_controller
                 $con_agn_id = $get_ser_agn_id[0]->agn_id;
             } else {
                 $_SESSION['agn_company_name_error'] = 'The agent has already used';
-                $this->service_edit(3);
-                exit;
+                $this->service_edit($ser_id);
+                exit(0);
             }
         }
 
@@ -239,7 +238,6 @@ class Service_edit extends Cdms_controller
 
         // New container
         else {
-
             $get_ser_con_id = $m_con->get_by_con_number($con_number);
 
             // New container not duplicate with database
@@ -258,11 +256,8 @@ class Service_edit extends Cdms_controller
             // return to add service page
             else {
                 $_SESSION['con_number_error'] = 'The container number has already used';
-
-                // 2 = duplicate container number
-                // go to add service page with container number error
-                $this->service_edit(2);
-                exit;
+                $this->service_edit($ser_id);
+                exit(0);
             }
         }
 
