@@ -28,7 +28,7 @@ class M_cdms_service extends Da_cdms_service {
                     INNER JOIN cdms_container_type ON con_cont_id = cont_id
                     INNER JOIN cdms_status_container ON ser_stac_id = stac_id
                     INNER JOIN cdms_agent ON con_agn_id = agn_id
-                    WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR (ser_actual_departure_date IS NULL AND ser_stac_id != 4)) 
+                    WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR ser_actual_departure_date IS NULL)
                     AND ser_status = 1
                     ORDER BY ser_id DESC";
         }
