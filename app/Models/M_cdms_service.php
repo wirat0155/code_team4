@@ -203,6 +203,39 @@ class M_cdms_service extends Da_cdms_service {
         INNER JOIN cdms_container ON ser_con_id=con_id
         INNER JOIN cdms_agent ON agn_id=con_agn_id
         WHERE ser_id='$ser_id_change'";
+
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_by_ser_con_id
+    * get service that change
+    * @input    ser_con_id
+    * @output   service information
+    * @author   Warisara
+    * @Create Date  2564-09-20
+    */
+    public function get_by_ser_con_id($ser_con_id = '', $today = '') {
+        $sql = "SELECT * FROM $this->table
+                WHERE ser_con_id = '$ser_con_id' AND ser_status = 1 AND (ser_actual_departure_date IS NULL OR ser_actual_departure_date > '$today')
+                LIMIT 1";
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_max_id
+    * get max ser id
+    * @input    -
+    * @output   max ser id
+    * @author   Wirat
+    * @Create Date  2564-11-14
+    */
+    public function get_max_id() {
+        $sql = "SELECT MAX(ser_id) AS max_ser_id FROM $this->table WHERE ser_status = 1";
+
+        // return as object
         return $this->db->query($sql)->getRow();
     }
 }
