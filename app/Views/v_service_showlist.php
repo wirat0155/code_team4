@@ -482,7 +482,7 @@
                                                     <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_service_menu(<?php echo $arr_service[$i]->ser_id ?>)">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                         <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>" style="right: 0;left: auto;">
-                                                            <div class="item" onclick="change_location('google')">
+                                                            <div class="item" onclick="change_location('google')" hidden>
                                                                 <i class='far fa-money-bill-alt' style="font-size: 110%;"></i> &nbsp;
                                                                 Charge billing
                                                             </div>
