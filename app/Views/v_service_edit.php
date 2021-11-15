@@ -101,7 +101,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Status</label>
+                                            <label class="col-form-label mr-auto">Status :</label>
                                             <div class="col-12 col-sm-7 p-0">
                                                 <select class="input-full form-control" name="ser_stac_id">
                                                     <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
@@ -116,7 +116,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cut-off</label>
+                                            <label class="col-form-label mr-auto">Cut-off :</label>
                                             <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date) ?>">
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date arrivals</label>
+                                            <label class="col-form-label mr-auto">Date arrivals :</label>
                                             <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date) ?>">
                                         </div>
                                     </div>
@@ -132,14 +132,14 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date departure</label>
+                                            <label class="col-form-label mr-auto">Date departure :</label>
                                             <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label for="car_branch" class="col-form-label mr-auto">Driver In</label>
+                                            <label for="car_branch" class="col-form-label mr-auto">Driver in :</label>
                                             <div class="col-12 col-sm-7 p-0">
                                                 <select class="input-full form-control" name="ser_dri_id_in" onclick="get_car_information(1)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
@@ -153,7 +153,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right">Driver out</label>
+                                            <label class="col-form-label mr-auto pull-right">Driver out :</label>
                                             <div class="col-12 col-sm-7 p-0">
                                                 <select class="input-full form-control" name="ser_dri_id_out" onclick="get_car_information(2)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
@@ -168,7 +168,7 @@
                                     <div class="col-md-6">
                                         <input type="checkbox" style="margin-left: 3%;" id="open" onclick="open_disable(1)"> Use not a regular car
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right" for="ser_car_id_in">Importer car</label>
+                                            <label class="col-form-label mr-auto pull-right" for="ser_car_id_in">Imported car :</label>
                                             <select class="input-full form-control col-7" name="ser_car_id_in" disabled>
                                                 <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                                     <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
@@ -181,7 +181,7 @@
                                     <div class="col-md-6">
                                         <input type="checkbox" style="margin-left: 3%;" id="open2" onclick="open_disable(2)"> Use not a regular car
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right" for="ser_car_id_out">Car taken out</label>
+                                            <label class="col-form-label mr-auto pull-right" for="ser_car_id_out">Exported car :</label>
                                             <select class="input-full form-control col-7" name="ser_car_id_out" disabled>
                                                 <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                                     <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($obj_service[0]->ser_car_id_out == $arr_car[$i]->car_id) echo "selected" ?>>
@@ -193,14 +193,14 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Arrivals location</label>
+                                            <label class="col-form-label mr-auto">Arrivals location :</label>
                                             <input class="input-full form-control col-7" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php echo $obj_service[0]->ser_arrivals_location ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Departure location</label>
+                                            <label class="col-form-label mr-auto">Departure location :</label>
                                             <input class="input-full form-control col-7" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php echo $obj_service[0]->ser_departure_location ?>">
                                         </div>
                                     </div>

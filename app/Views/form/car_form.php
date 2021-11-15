@@ -23,6 +23,8 @@ if ($page == 'car_edit') {
     $car_status = $arr_car[0]->car_status;
     $car_prov_id = $arr_car[0]->car_prov_id;
     $car_cart_id = $arr_car[0]->car_cart_id;
+
+    $colon = ' :';
 }
 else {
     $car_id = '';
@@ -38,6 +40,8 @@ else {
     $car_status = '';
     $car_prov_id = '';
     $car_cart_id = '';
+
+    $colon = '';
 }
 ?>
 <div class="container">
@@ -50,7 +54,7 @@ else {
             <!-- car number -->
             <div class="row">
                 <div class="col-12 col-sm-2 mb-4">
-                    <label for="car_number" class="mt-2"><b>Car number</b></label>
+                    <label for="car_number" class="mt-2"><b>Car number <?php echo $colon ?></b></label>
                 </div>
 
                 <div class="col-12 col-sm mb-4">
@@ -64,7 +68,7 @@ else {
                 <div class="col-12 col-md-6">
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_code"><b>Code</b></label>
+                            <label for="car_code"><b>Code <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <input type="text" class="form-control" id="car_code" name="car_code" placeholder="Code" value="<?php echo $car_code ?>">
@@ -92,7 +96,7 @@ else {
                     <!-- chassis number -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_chassis_number"><b>Chassis number</b></label>
+                            <label for="car_chassis_number"><b>Chassis number <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <input type="text" class="form-control" id="car_chassis_number" name="car_chassis_number" placeholder="Chassis number" value="<?php echo $car_chassis_number ?>">
@@ -102,7 +106,7 @@ else {
                     <!-- register year -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_register_year"><b>Register year</b></label>
+                            <label for="car_register_year"><b>Register year <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <input type="number" class="form-control" id="car_register_year" name="car_register_year" placeholder="2021" min="1900" max="2099" step="1" value="<?php echo $car_register_year ?>">
@@ -112,7 +116,7 @@ else {
                     <!-- weight -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_weight"><b>Weight</b></label>
+                            <label for="car_weight"><b>Weight <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <input type="text" class="form-control" id="car_weight" name="car_weight" placeholder="Weight" value="<?php echo $car_weight ?>">
@@ -122,7 +126,7 @@ else {
                     <!-- car image -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_image"><b>Image</b></label>
+                            <label for="car_image"><b>Image <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <div class="input-group mb-3">
@@ -142,7 +146,7 @@ else {
                     <!-- car type -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_cart_id"><b>Car type</b></label>
+                            <label for="car_cart_id"><b>Car type <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <select class="form-control" id="car_cart_id" name="car_cart_id">
@@ -158,7 +162,7 @@ else {
                     <!-- car status -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_status"><b>Car type</b></label>
+                            <label for="car_status"><b>Car type <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <select class="form-control" id="car_status" name="car_status">
@@ -173,7 +177,7 @@ else {
                     <!-- fuel type -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_fuel_type"><b>Car type</b></label>
+                            <label for="car_fuel_type"><b>Fuel type <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <input type="text" class="form-control" id="car_fuel_type" name="car_fuel_type" placeholder="Fuel Type" value="<?php echo $car_fuel_type?>">
@@ -196,7 +200,7 @@ else {
 
                         <!-- car brand -->
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_brand"><b>Car brand</b></label>
+                            <label for="car_brand"><b>Car brand <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <input type="text" class="form-control" id="car_brand" name="car_brand" placeholder="Brand" value="<?php echo $car_brand ?>">
@@ -209,7 +213,7 @@ else {
 
                         <!-- car branch -->
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_branch"><b>Car brand</b></label>
+                            <label for="car_branch"><b>Car branch <?php echo $colon ?></b></label>
                             <div class="text-info">(Optional)</div>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
