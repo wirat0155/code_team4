@@ -262,7 +262,7 @@
                     </div>
                 </div>
                 <div class="card-action"  id="car_action">
-                    <input type="button" class="ui button" value="Cancle" onclick="window.history.back();">
+                    <input type="button" class="ui button" value="Cancel" onclick="window.history.back();">
                     <button type="submit" class="ui orange button pull-right">
                         Confirm
                     </button>
