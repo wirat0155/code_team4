@@ -102,7 +102,9 @@ class M_cdms_container extends Da_cdms_container {
     * @Create Date  2564-08-07
     */
     public function get_by_id($con_id = NULL) {
-        $sql = "SELECT * FROM $this->table WHERE con_id = '$con_id'";
+        $sql = "SELECT * FROM $this->table 
+                LEFT JOIN cdms_size ON size_id = con_size_id
+                WHERE con_id = '$con_id'";
         return $this->db->query($sql)->getResult();
     }
 }

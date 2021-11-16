@@ -127,7 +127,7 @@
                         <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">
 
                         <!-- edit driver -->
-                        <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                        <div class="px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">Driver Information</div>

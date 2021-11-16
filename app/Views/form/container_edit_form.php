@@ -20,6 +20,10 @@
         $con_tare_weight = $obj_container[0]->con_tare_weight;
         $con_cube = $obj_container[0]->con_cube;
         $con_size_id = $obj_container[0]->con_size_id;
+
+        $size_width_out = $obj_container[0]->size_width_out;
+        $size_length_out = $obj_container[0]->size_length_out;
+        $size_height_out = $obj_container[0]->size_height_out;
     }
     else {
         $con_id = $arr_container[0]->con_id;
@@ -32,6 +36,10 @@
         $con_tare_weight = $arr_container[0]->con_tare_weight;
         $con_cube = $arr_container[0]->con_cube;
         $con_size_id = $arr_container[0]->con_size_id;
+
+        $size_width_out = $arr_container[0]->size_width_out;
+        $size_length_out = $arr_container[0]->size_length_out;
+        $size_height_out = $arr_container[0]->size_height_out;
     }
 ?>
 
@@ -209,7 +217,7 @@
         </center>
         <br>
         <center>
-            <input class="form-control" type="number" step="0.01" name="size_width_out" value="<?php echo $arr_con_size[0]->size_width_out ?>" readonly>
+            <input class="form-control" type="number" step="0.01" name="size_width_out" value="<?php echo $size_width_out ?>" readonly>
         </center>
     </div>
     <div class="m-2 pt-5">
@@ -221,7 +229,7 @@
         </center>
         <br>
         <center>
-            <input class="form-control" type="number" step="0.01" name="size_length_out" value="<?php echo $arr_con_size[0]->size_length_out ?>" readonly>
+            <input class="form-control" type="number" step="0.01" name="size_length_out" value="<?php echo $size_length_out ?>" readonly>
         </center>
     </div>
     <div class="m-2 pt-5">
@@ -233,7 +241,7 @@
         </center>
         <br>
         <center>
-            <input class="form-control" type="number" step="0.01" name="size_height_out" value="<?php echo $arr_con_size[0]->size_height_out ?>" readonly>
+            <input class="form-control" type="number" step="0.01" name="size_height_out" value="<?php echo $size_height_out ?>" readonly>
         </center>
     </div>
 </div>

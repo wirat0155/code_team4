@@ -35,10 +35,22 @@ class M_cdms_customer extends Da_cdms_customer {
         }
         // get all customer with each number of service
         else if ($type == 3) {
-            $sql = "SELECT cus_id, cus_company_name, cus_branch, cus_firstname, cus_lastname, cus_tel, cus_address, cus_tax, cus_email, 
-                    COUNT(ser_id) AS num_service FROM $this->table
-                    LEFT JOIN `cdms_service` ON cus_id = ser_cus_id
-                    WHERE cus_status = 1 GROUP BY cus_id ORDER BY cus_id DESC";
+            $sql = "SELECT table2.cus_id, table2.cus_company_name, table2.cus_branch, table2.cus_firstname, table2.cus_lastname, table2.cus_tel,
+                    table2.cus_address, table2.cus_tax, table2.cus_email, 
+                    (CASE 
+                        WHEN table1.num_service IS NULL THEN '0'
+                        ELSE table1.num_service
+                    END) AS num_service
+                    FROM
+                    (SELECT cus_id, COUNT(ser_id) AS num_service FROM cdms_customer
+                    LEFT JOIN cdms_service ON ser_cus_id = cus_id
+                    WHERE ser_status = 1
+                    GROUP BY cus_id) table1
+                    RIGHT JOIN
+                    (SELECT cus_id, cus_company_name, cus_branch, cus_firstname, cus_lastname, cus_tel, cus_address, cus_tax, cus_email FROM cdms_customer
+                    WHERE cus_status = 1) table2
+                    ON table1.cus_id = table2.cus_id
+                    ORDER BY table2.cus_id DESC;";
         }
         
         // return as array

@@ -164,6 +164,9 @@
             color: red !important;
             font-weight: bold;
         }
+        .main-panel, .page-inner {
+            background-color: #FCFCFC;
+        }
     </style>
 </head>
 

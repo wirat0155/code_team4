@@ -17,7 +17,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="pl-4 mt-4 page-header mb-0">
-                <h4 class="pl-3 page-title">Container Size</h4>
+                <h4 class="pl-3 page-title">CONTAINER SIZE</h4>
             </div>
             <hr width="95%" color="696969">
             <ul class="pl-2 breadcrumbs">

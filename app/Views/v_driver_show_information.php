@@ -114,12 +114,20 @@
                     <div class="container mt-4 mb-3 d-flex justify-content-center" style="max-width: 800px">
                         <!-- driver profile image -->
                         <div class="picture">
+                            <?php if ($arr_driver[0]->dri_profile_image != NULL && $arr_driver[0]->dri_profile_image != '') : ?>
                             <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
+                            <?php else : ?>
+                            <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/driver_placeholder.png' ?>">
+                            <?php endif; ?>
                         </div>
 
                         <!-- car image -->
                         <div class="picture">
+                            <?php if ($arr_driver[0]->car_image != NULL && $arr_driver[0]->car_image != '') : ?>
                             <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->car_image ?>">
+                            <?php else : ?>
+                            <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
+                            <?php endif; ?>
                         </div>
                     </div>
 

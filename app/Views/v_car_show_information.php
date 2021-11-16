@@ -117,7 +117,11 @@
                 <div class="col-12">
                     <div class="picture-container">
                         <div class="picture">
+                            <?php if ($arr_car[0]->car_image != NULL && $arr_car[0]->car_image != '') : ?>
                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[0]->car_image ?>">
+                            <?php else : ?>
+                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
+                            <?php endif; ?>
                         </div>
                     </div><br>
 

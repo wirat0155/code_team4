@@ -44,9 +44,6 @@ class Service_edit extends Cdms_controller
         $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_all();
 
-        // first size information
-        $data['first_size'] = $m_size->get_first();
-
         // container type
         $m_cont = new M_cdms_container_type();
         $data['arr_container_type'] = $m_cont->get_all();
