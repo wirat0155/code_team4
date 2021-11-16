@@ -90,7 +90,6 @@ class Da_cdms_service extends Model {
                     WHERE ser_actual_departure_date <= '$today_time' AND ser_actual_departure_date != '0000-00-00 00:00:00' AND ser_stac_id BETWEEN 1 AND 3";
         }
         // query
-        // echo $sql;
         $this->db->query($sql);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\M_cdms_size;
 use App\Models\M_cdms_container_type;
 use App\Models\M_cdms_status_container;
+use App\Models\M_cdms_status_container_log;
 use App\Models\M_cdms_service;
 use App\Models\M_cdms_customer;
 use App\Models\M_cdms_container;
@@ -275,6 +276,11 @@ class Service_input extends Cdms_controller {
 
         //insert service
         $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);
+
+        $max_ser_id = $m_ser->get_max_id();
+
+        $m_scl = new M_cdms_status_container_log();
+        $m_scl->insert($max_ser_id->max_ser_id, $ser_stac_id);
 
         // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
