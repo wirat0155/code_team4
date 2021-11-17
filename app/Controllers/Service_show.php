@@ -53,8 +53,6 @@ class Service_show extends Cdms_controller {
         $m_ser->change_ser_stac_id(3, $today);
         // update ser_stac_id to export depend on today
         $m_ser->change_ser_stac_id(4, $today, $today_time);
-        // update con_stac_id by ser_stac_id
-        $m_con->change_con_stac_id();
 
         $data['arr_con'] = $m_con->get_all(1);
 

@@ -82,11 +82,15 @@ class Da_cdms_service extends Model {
     */
     public function change_ser_stac_id($to_ser_stac_id = 3, $today = '', $today_time = '') {
         if ($to_ser_stac_id == 3) {
-            $sql = "UPDATE $this->table SET ser_stac_id = 3
-                    WHERE ser_arrivals_date < '$today' AND ser_stac_id BETWEEN 1 AND 2";
+            $sql = "UPDATE $this->table
+                    INNER JOIN cdms_container ON cdms_service.ser_con_id = cdms_container.con_id
+                    SET ser_stac_id = 3, con_stac_id = 3
+                    WHERE ser_arrivals_date < '$today' AND ser_stac_id BETWEEN 1 AND 2;";
         }
         else if ($to_ser_stac_id == 4) {
-            $sql = "UPDATE $this->table SET ser_stac_id = 4
+            $sql = "UPDATE $this->table
+                    INNER JOIN cdms_container ON cdms_service.ser_con_id = cdms_container.con_id
+                    SET ser_stac_id = 4, con_stac_id = 4
                     WHERE ser_actual_departure_date <= '$today_time' AND ser_actual_departure_date != '0000-00-00 00:00:00' AND ser_stac_id BETWEEN 1 AND 3";
         }
         // query

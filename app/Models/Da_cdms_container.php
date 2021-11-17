@@ -59,15 +59,18 @@ class Da_cdms_container extends Model {
     /*
     * change_con_stac_id
     * change con stac id by ser stac id
-    * @input    -
+    * @input    today
     * @output   changing con stac id by ser stac id
     * @author   Wirat
     * @Create Date  2564-11-11
     */
-    public function change_con_stac_id() {
+    public function change_con_stac_id($today) {
         $sql = "UPDATE $this->table
-                LEFT JOIN `cdms_service` ON ser_con_id = con_id
-                SET con_stac_id = ser_stac_id";
+                LEFT JOIN cdms_service ON ser_con_id = con_id
+                SET con_stac_id = ser_stac_id
+                WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR ser_actual_departure_date IS NULL)
+                AND ser_status = 1
+                ORDER BY ser_id DESC";
         
         // query
         $this->db->query($sql);
