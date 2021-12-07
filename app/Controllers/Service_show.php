@@ -12,6 +12,7 @@ use App\Models\M_cdms_driver;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_cost_detail;
+use App\Models\M_cdms_change_container_log;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -451,6 +452,47 @@ class Service_show extends Cdms_controller {
             $i++;
         }
         echo json_encode($data['arr_service']);
+    }
+
+    /*
+    * get_change_container_log
+    * search change container line
+    * @input    ser_id
+    * @output   array of change container
+    * @author   Wirat
+    * @Create Date  2564-12-07
+    */
+    public function get_change_container_log($ser_id = NULL) {
+        if ($ser_id != NULL) {
+
+            $arr_change_container = array();
+            $m_chl = new M_cdms_change_container_log();
+            $old_ser_id = $ser_id;
+            // find next service
+            array_push($arr_change_container, $old_ser_id);
+            do {
+                $obj_change_container = $m_chl->get_next_ser_id($ser_id);
+                $ser_id = $obj_change_container->chl_new_ser_id;
+                array_push($arr_change_container, $obj_change_container);
+            }while($obj_change_container != NULL);
+            
+            
+            do {
+                $obj_change_container = $m_chl->get_prev_ser_id($old_ser_id);
+                $ser_id = $obj_change_container->chl_old_ser_id;
+                $old_ser_id = $ser_id;
+                array_unshift($arr_change_container, $obj_change_container);
+            }while($obj_change_container != NULL);
+
+            // find previous service
+            array_pop($arr_change_container);
+            array_shift($arr_change_container);
+
+            // echo "<pre>";
+            // print_r($arr_change_container);
+            // echo "</pre><br/>";
+            return $arr_change_container;
+        }
     }
 
 }
