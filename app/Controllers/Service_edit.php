@@ -12,6 +12,7 @@ use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
 use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
+use App\Models\M_cdms_change_container_log;
 
 /*
 * Service_edit
@@ -275,7 +276,25 @@ class Service_edit extends Cdms_controller
             $m_scl->insert($ser_id, $ser_stac_id);
         }
 
+        $new_ser_id = $this->request->getPost('chl_ser_id');
+        $this->change_container($ser_id, $new_ser_id);
         // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
+    }
+
+    /*
+    * change_container
+    * insert changing container in service
+    * @input    old_ser_id, new_ser_id
+    * @output   insert changing container in servicen
+    * @author   Wirat
+    * @Create Date  2564-12-07
+    */
+    private function change_container($old_ser_id = NULL, $new_ser_id = NULL) {
+        // insert changecontainer log
+        if ($old_ser_id != NULL && $new_ser_id != NULL) {
+            $m_chl = new M_cdms_change_container_log();
+            $m_chl->insert($old_ser_id, $new_ser_id);
+        }
     }
 }
