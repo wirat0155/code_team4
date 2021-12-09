@@ -43,8 +43,7 @@
                     <h4 class="pl-3 page-title">SERVICE DETAIL</h4>
                     <div class="card-action ml-auto mr-4">
                         <button class="ui history button text-white" style="background-color: #22b7ee">
-                            <i class="fas fa-history
-                            "></i>
+                            <i class="fas fa-history mr-1"></i>
                             History log
                         </button>
                         <a class="ui yellow button" href="<?php echo base_url() . '/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>">
@@ -385,12 +384,12 @@
                         <?php for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
                             if (gettype($arr_change_container[$i]) == 'string') : ?>
                                 <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
-                                    <time class="date"><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
+                                    <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
                                     <span class="text"><h4><?php echo $obj_service[0]->con_number?></h4></span>
                                 </li>
                             <?php else : ?>
                                 <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
-                                    <time class="date"><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
+                                    <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
                                     <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                         <?php 
                                         if ($arr_change_container[$i]->con_number != NULL) {
@@ -414,7 +413,7 @@
                                     echo "feed-item-secondary";
                                 }
                                 ?>">
-                                    <time class="date"><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
+                                    <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
                                     <span class="text"><h4><?php echo $obj_service[0]->con_number ?></h4></span>
                                 </li>
 
@@ -426,7 +425,7 @@
                                     echo "feed-item-secondary";
                                     }
                                     ?>">
-                                        <time class="date"><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
+                                        <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {
@@ -445,7 +444,7 @@
                                     echo "feed-item-secondary";
                                     }
                                     ?>">
-                                        <time class="date"><?php echo diff_datetime($obj_original_container->ser_arrivals_date) ?></time>
+                                        <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_original_container->ser_arrivals_date) ?></time>
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {
@@ -463,7 +462,7 @@
                                         echo "feed-item-secondary";
                                     }
                                     ?>">
-                                        <time class="date"><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
+                                        <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {

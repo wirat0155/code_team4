@@ -43,7 +43,7 @@
 </style>
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div class="main-panel">
   <div class="content">
@@ -168,7 +168,7 @@
     <div class="row d-flex justify-content-center">
       <!-- percent of container type -->
       <div class="col-sm-6 col-md-7">
-        <div class="card">
+        <div class="card p-3">
           <h2>Container Statistics 15 Day Back Chart</h2>
           <div class="chart-container">
             <canvas id="myChart">
@@ -178,7 +178,7 @@
       </div>
       <!-- percent of container type -->
       <div class="col-sm-6 col-md-4">
-        <div class="card">
+        <div class="card p-3">
           <h2>Percent of Container Type</h2>
           <div class="chart-container">
             <canvas id="myChart2"></canvas>
@@ -190,7 +190,7 @@
     <hr class="style2">
     <div class="row mt-5">
       <div class="col-md-12">
-        <div class="card">
+        <div class="card p-3">
           <div class="card-body">
             <div class="table-responsive">
               <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
@@ -273,24 +273,17 @@
 <script>
   $(document).ready(function() {
     // add service button
-    var ser_table = $('#service_list_table').DataTable({
-      "columnDefs": [{
-        "searchable": false,
-        "orderable": false,
-        "targets": [0, 8]
-      }],
-      "order": []
-    });
+    $('#service_list_table').DataTable();
   });
   //set up block
   const data = {
     labels: [
-      'Dry Con.',
-      'Reefer Con.',
-      'Open Top Con.',
-      'Flat-rack Con.',
-      'ISO Tank Con.',
-      'Ventilated Con.'
+      'Dry Con. :    300',
+      'Reefer Con. :    50',
+      'Open Top Con. :    100',
+      'Flat-rack Con. :    100',
+      'ISO Tank Con. :    20',
+      'Ventilated Con. :    30'
     ],
     datasets: [{
       label: 'My First Dataset',
@@ -311,6 +304,15 @@
   const options = {
     responsive: true,
     plugins: {
+      tooltip: {
+        callbacks: {
+          label: (context) => {
+            const percent = context.parsed / 600 * 100;
+            console.log(context);
+            return `${context.label} Containers (${percent.toFixed(2)}%)`;
+          }
+        }
+      },
       legend: {
         position: 'bottom',
         labels: {
@@ -322,8 +324,8 @@
           },
           boxWidth: 20,
           padding: 20
-        }
-      },
+        },
+      }
     }
   };
 
@@ -357,14 +359,25 @@
   gradient_dataset_3.addColorStop(0.5, 'rgba(175, 241, 180, 0.5)');
   gradient_dataset_3.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
 
+  Chart.defaults.font.weight = '600';
+  const legendMargin = {
+    id: 'legendMargin',
+    beforeInit(chart, legend, options) {
+      const fitValue = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        fitValue.bind(chart.legend)();
+        return this.height += 50;
+      }
+    }
+  };
   const myChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: ['Jul 01', 'Jul 02', 'Jul 03', 'Jul 04', 'Jul 05', 'Jul 06', 'Jul 07', 'Jul 08', 'Jul 09', 'Jul 10', 'Jul 11', 'Jul 12', 'Jul 13', 'Jul 14', 'Jul 15'],
       datasets: [{
-          label: 'IMPORT',
+          label:  [['IMPORT'], '150'],
           data: [2, 4, 8, 2, 10, 8, 10, 20, 10, 8, 10, 20, 10, 8, 10],
-          fill: true,
+          fill: false,
           tension: 0.4,
           pointBorderWidth: 2,
           pointBackgroundColor: '#16ACF0',
@@ -373,9 +386,9 @@
           backgroundColor: gradient_dataset_1
         },
         {
-          label: 'DROP',
+          label: [['DROP'], '150'],
           data: [1, 5, 10, 8, 11, 15, 5, 10, 8, 11, 15, 5, 10, 8, 11],
-          fill: true,
+          fill: false,
           tension: 0.4,
           pointBorderWidth: 2,
           pointBackgroundColor: '#F5D432',
@@ -384,9 +397,9 @@
           backgroundColor: gradient_dataset_2
         },
         {
-          label: 'EXPORT',
+          label: [['EXPORT'], '150'],
           data: [1, 1, 1, 8, 1, 5, 1, 1, 8, 1, 5, 1, 1, 8, 1],
-          fill: true,
+          fill: false,
           tension: 0.4,
           pointBorderWidth: 2,
           pointBackgroundColor: '#44BB55',
@@ -396,12 +409,21 @@
         }
       ]
     },
-
     options: {
+      plugins: {
+        legend: {
+          labels: {
+            // This more specific font property overrides the global property
+            font: {
+              color: "#44BB55",
+              size: 16
+            }
+          }
+        }
+      },
       labels: {
         font: {
-          Color: "black",
-          size: 15,
+          font: 24,
         },
         boxWidth: 20,
         padding: 20
@@ -418,7 +440,8 @@
           },
         }
       }
-    }
+    },
+    plugins: [legendMargin]
 
 
   });
