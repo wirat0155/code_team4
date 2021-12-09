@@ -1,71 +1,425 @@
 <style>
-.text-glow {
+  .text-glow {
     text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
-    font-size: 50px;
-}
-
-.text-gradient {
-  background: linear-gradient(to right, #30CFD0, #c43ad6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.main-panel {
-    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
-    text-align: center;
-}
-
-.page-inner {
-    background: none;
-    padding-top: 45%;
+    font-style: Poppins;
     color: white;
-}
 
-.text-gradient:before{
-  content:'';
-  animation: animate infinite 8s;
-}
-@keyframes animate{
-  0%{
-    content: 'C'
   }
-  10%{
-    content: 'Co'
-  }
-  20%{
-    content: 'Com'
-  }
-  30%{
-    content: 'Comi'
-  }
-  40%{
-    content: 'Comin'
-  }
-  50%{
-    content: 'Coming'
-  }
-  60%{
-    content: 'Coming S'
-  }
-  70%{
-    content: 'Coming So'
-  }
-  80%{
-    content: 'Coming Soo'
-  }
-  90%{
-    content: 'Coming Soon'
-  }
-  100%{
-    content: 'Coming Soon!'
-  }
-}
 
+  .relative {
+    padding-top: 1%;
+    position: relative;
+    top: -70px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  hr.style {
+    border-top: 1px solid #000;
+    margin-top: 2%;
+    width: 95%;
+  }
+
+  hr.style2 {
+    border-top: 1px solid #707070;
+    margin-top: 2%;
+    width: 50%;
+  }
+
+  .page-inner {
+    background-image: linear-gradient(to right, #089AD1, #0783B1, #066C93, #044D69);
+    padding-top: 3%;
+    padding-bottom: 7%;
+  }
+
+  /* .text-gradient:before {
+    content: '';
+    animation: animate infinite 8s;
+  } */
+  .chart-container {
+    width: auto;
+    height: auto;
+  }
 </style>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <div class="main-panel">
-    <div class="content col-md-6 ml-auto mr-auto">
-        <div class="page-inner">
-            <h1 class="text-glow"> <span class="text-gradient"></span></h1>
-        </div>
+  <div class="content">
+    <div class="page-inner">
+      <div class="text-glow">
+        <h1 style="font-size: 40px;"> DASHBOARD</h1>
+        <hr class="style">
+        <h3 style="font-size: 25px;">Container Statistics</h3>
+      </div>
     </div>
+    <div class="row justify-content-center align-items-center relative">
+      <div class="col-sm-6 col-md-3">
+        <div class="card ">
+          <div class="card-body pb-0 ">
+            <div class="h3">IMPORT
+              <span class="circle-import float-right"><img src="<?php echo base_url() . '/upload/cargo_1.png' ?>"></span>
+            </div>
+            <h2 class="mt-0 ml-3">
+              <?php echo 50; ?>
+              <!-- $num_import -->
+            </h2>
+
+            <?php if ($num_import >= $num_yesterday_import) : ?>
+              <p class="mb-3" style="color: #09F600;">
+                <i class="fas fa-arrow-up"></i>
+                <?php echo "(+" . ($num_import - $num_yesterday_import) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php endif; ?>
+
+            <?php if ($num_import < $num_yesterday_import) : ?>
+              <p class="mb-3" style="color: #F60029;">
+                <i class="fas fa-arrow-down"></i>
+                <?php echo "(" . ($num_import - $num_yesterday_import) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6  col-md-3">
+        <div class="card ">
+          <div class="card-body pb-0 ">
+            <div class="h3">DROP
+              <span class="circle-drop float-right"><img src="<?php echo base_url() . '/upload/container_2.png' ?>"></span>
+            </div>
+            <h2 class="mt-0 ml-3">
+              <?php echo  50; ?>
+              <!-- //$num_drop; -->
+            </h2>
+            <?php if ($num_drop >=  $num_yesterday_drop) { ?>
+              <p class="mb-3" style="color: #09F600;">
+                <i class="fas fa-arrow-up"></i>
+                <?php echo "(+" . ($num_drop - $num_yesterday_drop) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php } else { ?>
+              <p class="mb-3" style="color: #F60029;">
+                <i class="fas fa-arrow-down"></i>
+                <?php echo "(" . ($num_drop - $num_yesterday_drop) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php } ?>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6  col-md-3">
+        <div class="card ">
+          <div class="card-body pb-0 ">
+            <div class="h3">EXPORT
+              <span class="circle-export float-right"><img src="<?php echo base_url() . '/upload/bg-export.png' ?>"></span>
+            </div>
+            <h2 class="mt-0 ml-3">
+              <?php echo 50; ?>
+              <!-- //$num_export -->
+            </h2>
+            <?php if ($num_export >= $num_yesterday_export) { ?>
+              <p class="mb-3" style="color: #09F600;">
+                <i class="fas fa-arrow-up"></i>
+                <?php echo "(+" . ($num_export - $num_yesterday_export) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php } else { ?>
+              <p class="mb-3" style="color: #F60029;">
+                <i class="fas fa-arrow-down"></i>
+                <?php echo "( " . ($num_export - $num_yesterday_export) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php } ?>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6  col-md-3">
+        <div class="card ">
+          <div class="card-body pb-0 ">
+            <div class="h3">TOTAL SERVICE
+              <span class="circle-total float-right"><img src="<?php echo base_url() . '/upload/infinite.png' ?>"></span>
+            </div>
+            <h2 class="mt-0 ml-3">
+              <?php
+              // $num_all = count($arr_service);
+              echo 50;
+              ?>
+            </h2>
+            <?php if ($num_all >= $num_yesterday_all) { ?>
+              <p class="mb-3" style="color: #09F600;">
+                <i class="fas fa-arrow-up"></i>
+                <?php echo "(+" . ($num_all - $num_yesterday_all) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php } else { ?>
+              <p class="mb-3" style="color: #F60029;">
+                <i class="fas fa-arrow-down"></i>
+                <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
+                <label class="ml-3"> From yesterday</label>
+              </p>
+            <?php } ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <!-- percent of container type -->
+      <div class="col-sm-6 col-md-7">
+        <div class="card">
+          <h2>Container Statistics 15 Day Back Chart</h2>
+          <div class="chart-container">
+            <canvas id="myChart">
+            </canvas>
+          </div>
+        </div>
+      </div>
+      <!-- percent of container type -->
+      <div class="col-sm-6 col-md-4">
+        <div class="card">
+          <h2>Percent of Container Type</h2>
+          <div class="chart-container">
+            <canvas id="myChart2"></canvas>
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="style2">
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                <h1>Service time today</h1>
+                <thead>
+                  <tr style="background-color: #999; color: #fff; ">
+                    <th class="text-center">Container number</th>
+                    <th class="text-center">Con. status</th>
+                    <th class="text-center">Con. type</th>
+                    <th class="text-center">Time</th>
+                    <th class="text-center">Dep. location </th>
+                    <th class="text-center">Exporter</th>
+                    <th class="text-center">Car</th>
+                    <th class="text-center">Customer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      WFHU 51822 0
+                    </td>
+                    <td>
+                      <span class="bg-drop text-white p-2" style="border-radius: 5px;">Ready</span>
+                    </td>
+                    <td>
+                      Dry Container
+                    </td>
+                    <td>
+                      17:30
+                    </td>
+                    <td>
+                      ระยอง
+                    </td>
+                    <td>
+                      สมปอง ชีวจิต
+                    </td>
+                    <td>
+                      รถคันที่ 45
+                    </td>
+                    <td>
+                      ไอวี
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      WFHU 51822 0
+                    </td>
+                    <td>
+                    <span class="bg-drop text-white p-2" style="border-radius: 5px;">Ready</span>
+                    </td>
+                    <td>
+                      Dry Container
+                    </td>
+                    <td>
+                      17:30
+                    </td>
+                    <td>
+                      ระยอง
+                    </td>
+                    <td>
+                      สมปอง ชีวจิต
+                    </td>
+                    <td>
+                      รถคันที่ 45
+                    </td>
+                    <td>
+                      ไอวี
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    // add service button
+    var ser_table = $('#service_list_table').DataTable({
+      "columnDefs": [{
+        "searchable": false,
+        "orderable": false,
+        "targets": [0, 8]
+      }],
+      "order": []
+    });
+  });
+  //set up block
+  const data = {
+    labels: [
+      'Dry Con.',
+      'Reefer Con.',
+      'Open Top Con.',
+      'Flat-rack Con.',
+      'ISO Tank Con.',
+      'Ventilated Con.'
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [300, 50, 100, 100, 20, 30],
+      backgroundColor: [
+        '#03045E',
+        '#023E8A',
+        '#0077B6',
+        '#0096C7',
+        '#00B4D8',
+        '#48CAE4'
+      ],
+      hoverOffset: 5
+    }]
+  };
+
+  //option block
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          font: {
+            Color: "white",
+            size: 15,
+            style: 'bold',
+            textAlign: 'right'
+          },
+          boxWidth: 20,
+          padding: 20
+        }
+      },
+    }
+  };
+
+  //config block
+  const config = {
+    type: 'doughnut',
+    data,
+    options
+  };
+
+  //render block
+  window.onload = function() {
+    const myChart = new Chart($('#myChart2'), config);
+  };
+
+  // end-chart circle  
+
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const gradient_dataset_1 = ctx.createLinearGradient(0, 0, 0, 300);
+  gradient_dataset_1.addColorStop(0, 'rgba(22, 172, 240, 0.7)');
+  gradient_dataset_1.addColorStop(0.5, 'rgba(175, 212, 241, 0.5)');
+  gradient_dataset_1.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+
+  const gradient_dataset_2 = ctx.createLinearGradient(0, 0, 0, 300);
+  gradient_dataset_2.addColorStop(0, 'rgba(245, 212, 50, 0.7)');
+  gradient_dataset_2.addColorStop(0.5, 'rgba(241, 232, 175, 0.5)');
+  gradient_dataset_2.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+
+  const gradient_dataset_3 = ctx.createLinearGradient(0, 0, 0, 300);
+  gradient_dataset_3.addColorStop(0, 'rgba(68, 187, 85, 0.7)');
+  gradient_dataset_3.addColorStop(0.5, 'rgba(175, 241, 180, 0.5)');
+  gradient_dataset_3.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jul 01', 'Jul 02', 'Jul 03', 'Jul 04', 'Jul 05', 'Jul 06', 'Jul 07', 'Jul 08', 'Jul 09', 'Jul 10', 'Jul 11', 'Jul 12', 'Jul 13', 'Jul 14', 'Jul 15'],
+      datasets: [{
+          label: 'IMPORT',
+          data: [2, 4, 8, 2, 10, 8, 10, 20, 10, 8, 10, 20, 10, 8, 10],
+          fill: true,
+          tension: 0.4,
+          pointBorderWidth: 2,
+          pointBackgroundColor: '#16ACF0',
+          pointBorderColor: '#FFFFFF',
+          borderColor: '#16ACF0',
+          backgroundColor: gradient_dataset_1
+        },
+        {
+          label: 'DROP',
+          data: [1, 5, 10, 8, 11, 15, 5, 10, 8, 11, 15, 5, 10, 8, 11],
+          fill: true,
+          tension: 0.4,
+          pointBorderWidth: 2,
+          pointBackgroundColor: '#F5D432',
+          pointBorderColor: '#FFFFFF',
+          borderColor: '#F5D432',
+          backgroundColor: gradient_dataset_2
+        },
+        {
+          label: 'EXPORT',
+          data: [1, 1, 1, 8, 1, 5, 1, 1, 8, 1, 5, 1, 1, 8, 1],
+          fill: true,
+          tension: 0.4,
+          pointBorderWidth: 2,
+          pointBackgroundColor: '#44BB55',
+          pointBorderColor: '#FFFFFF',
+          borderColor: '#44BB55',
+          backgroundColor: gradient_dataset_3
+        }
+      ]
+    },
+
+    options: {
+      labels: {
+        font: {
+          Color: "black",
+          size: 15,
+        },
+        boxWidth: 20,
+        padding: 20
+      },
+      scales: {
+        x: {
+          grid: {
+            color: 'rgba(112, 112, 112, 0.1)'
+          },
+        },
+        y: {
+          grid: {
+            color: 'rgba(112, 112, 112, 0.1)'
+          },
+        }
+      }
+    }
+
+
+  });
+</script>

@@ -25,7 +25,7 @@
         }
     });
     </script>
-
+    
     <!-- CSS Files -->
     <link rel="stylesheet" href="http://localhost/code_team4/Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost/code_team4/Assets/css/atlantis.min.css">
@@ -385,7 +385,7 @@
                 </div>
             </div>
         </div>
-
+     
         <script>
         // ย่อ ขยายหน้า ตอนกด slide bar
         function slide_bar() {
@@ -405,3 +405,4 @@
             }
         }
         </script>
+        
