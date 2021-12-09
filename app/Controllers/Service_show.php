@@ -180,36 +180,9 @@ class Service_show extends Cdms_controller {
         $m_agn = new M_cdms_agent();
         $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
 
-        $arr_change_container = $this->get_change_container_log($ser_id);
-        echo "<pre>";
-        print_r($arr_change_container);
-        echo "/<pre>";
+        $data['arr_change_container'] = $this->get_change_container_log($ser_id);
 
-
-        // call service detail view
-        // $this->output('v_service_show_information', $data);
-        echo "Current container<br/>";
-        for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
-            if (gettype($arr_change_container[$i]) == 'string') {
-                echo "it's string";
-                echo "<br/>";
-                print_r($data['obj_service'][$i]->ser_arrivals_date);
-                echo "<br/>";
-                print_r($data['obj_service'][$i]->con_number);
-                echo "<br/>";
-                echo "<br/>";
-            }
-            else {
-                echo "it's " . gettype($arr_change_container[$i]);
-                echo "<br/>";
-                print_r($arr_change_container[$i]->chl_date);
-                echo "<br/>";
-                print_r($arr_change_container[$i]->con_number);
-                echo "<br/>";
-                echo "<br/>";
-            }
-        }
-
+        $this->output('v_service_show_information', $data);
     }
 
     /*
@@ -516,44 +489,54 @@ class Service_show extends Cdms_controller {
             return $arr_change_container;
         }
     }
-    public function show_time(){
-        //$handle = fopen("php://stdin","r");
-        // $date_input = fgets($handle);
-        // $date_input = trim($date_input);
+    public function diff_datetime($date_input = "2021-12-05 23:50:00"){
+        date_default_timezone_set("Asia/Bangkok");
         $date_now = Date("Y-m-d H:i:s");
-        $date_input = Date("2021-12-06 10:14:00");
-        //echo "Input date : ";
-        $sub_date =substr ($date_now,0,10);
-        $sub_date_input =substr ($date_input,0,10);
-        $datetime1 = date_create($sub_date);
-        $datetime2 = date_create($sub_date_input);
-        $diff=date_diff($datetime2,$datetime1);    
-        //$sub_date =substr ($diff,8,3);
-        //echo $diff->format("%R%a");
-        $sub_hour =substr ($date_now,10,3);
+
+        $sub_date = substr($date_now,0 , 10);
+        $sub_date_input = substr($date_input, 0, 10);
+        $datetime_now = date_create($sub_date);
+        $datetime_input = date_create($sub_date_input);
+        $diff = date_diff($datetime_input, $datetime_now);
+
+        // substring hour
+        $sub_hour = substr($date_now, 10, 3);
         intval($sub_hour);
-        $sub_hour_input =substr ($date_input,10,3);
+        $sub_hour_input = substr($date_input, 10, 3);
         intval($sub_hour_input);
-        $sub_min =substr ($date_now,14,2);
+
+        // substring minute
+        $sub_min = substr($date_now, 14, 2);
+        intval($sub_min);
+        $sub_min_input = substr($date_input, 14, 2);
         intval($sub_min_input);
-        $sub_min_input =substr ($date_input,14,2);
-        intval($sub_min_input);
-        //echo  $sub_min_input;
-        if($diff->format("%R%a") > 3){ 
-             echo $date_input ;
-        }else if($diff->format("%R%a") >=1  && $diff->format("%R%a") <=3){
-             echo $diff->format("%R%a").' '.'Days ago'.' '.'10:14:00';
-        }else if($diff->format("%R%a")==0){
+
+        $day_diff = $diff->format("%R%a");
+        $day_diff = intval($day_diff);
+
+        // more than 3 days
+        if ($day_diff > 3){ 
+             echo $date_input;
+        }
+        // 1 - 3 days
+        else if($day_diff >=1 && $day_diff <=3){
+            $day_ago = "Days ago,";
+            if ($day_diff ==1) {
+                $day_ago = "Day ago,";
+            }
+            echo $day_diff. " " . $day_ago . " " . $sub_hour_input . ":" . $sub_min_input;
+        }
+        // same day
+        else if($day_diff == 0){
             if($sub_hour-$sub_hour_input >=1){
-                echo $sub_hour-$sub_hour_input.' '.'Hours ago';
+                echo $sub_hour - $sub_hour_input . " Hours ago";
             }else{
-                echo $sub_min-$sub_min_input.' '.'Mins ago';
+                echo $sub_min - $sub_min_input . " Mins ago";
             }
         }
-        
-        //echo $sub_date_input;
-        //echo "\n";
-        //echo $date_now;
+        else {
+            echo "invalid datetime";
+        }
     }
 
 }

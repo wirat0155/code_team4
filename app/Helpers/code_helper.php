@@ -33,17 +33,77 @@
     }
     return "$str_day $str_month_thai $str_year $str_hour:$str_min";
   }
-/*
-* datetime_format_value
-* แสดงวันที่ ในรูปแบบ yyyy/mm/ddThh/mm/ss เพื่อไว้แสดง value ใน v_service_edit
-* @author Natdanai
-* @Create Date 2564-08-08
-* @Update Date
-*/
-  function datetime_format_value(string $string = NULL)
-  {
+  /*
+  * datetime_format_value
+  * แสดงวันที่ ในรูปแบบ yyyy/mm/ddThh/mm/ss เพื่อไว้แสดง value ใน v_service_edit
+  * @author Natdanai
+  * @Create Date 2564-08-08
+  */
+  function datetime_format_value(string $string = NULL) {
       return substr($string, 0, 10) . 'T' . substr($string, 11);
   }
+
+  /*
+  * diff_datetime
+  * return difference between date
+  * @author Benjapon
+  * @Create Date  2564-12-08
+  */
+  function diff_datetime($date_input = NULL) {
+    if ($date_input != NULL) {
+      date_default_timezone_set("Asia/Bangkok");
+      $date_now = Date("Y-m-d H:i:s");
+  
+      $sub_date = substr($date_now,0 , 10);
+      $sub_date_input = substr($date_input, 0, 10);
+      $datetime_now = date_create($sub_date);
+      $datetime_input = date_create($sub_date_input);
+      $diff = date_diff($datetime_input, $datetime_now);
+  
+      // substring hour
+      $sub_hour = substr($date_now, 10, 3);
+      intval($sub_hour);
+      $sub_hour_input = substr($date_input, 10, 3);
+      intval($sub_hour_input);
+  
+      // substring minute
+      $sub_min = substr($date_now, 14, 2);
+      intval($sub_min);
+      $sub_min_input = substr($date_input, 14, 2);
+      intval($sub_min_input);
+  
+      $day_diff = $diff->format("%R%a");
+      $day_diff = intval($day_diff);
+  
+      // more than 3 days
+      if ($day_diff > 3){ 
+        echo date_thai($date_input);
+      }
+      // 1 - 3 days
+      else if($day_diff >=1 && $day_diff <=3){
+        $day_ago = "Days ago,";
+        if ($day_diff ==1) {
+          $day_ago = "Day ago,";
+        }
+        echo $day_diff. " " . $day_ago . " " . $sub_hour_input . ":" . $sub_min_input;
+      }
+      // same day
+      else if($day_diff == 0){
+        if($sub_hour-$sub_hour_input >=1){
+          echo $sub_hour - $sub_hour_input . " Hours ago";
+        }else{
+          echo $sub_min - $sub_min_input . " Mins ago";
+        }
+      }
+      else {
+        echo "invalid datetime";
+      }
+    }
+    else {
+      return "";
+    }
+  }
+
 
   function show_add_service_form() {
     $elem = '<div class="container row">';

@@ -329,49 +329,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row mx-5">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-header">
-                                History log
-                            </div>
-                            <style>
-                                .feed-item-secondary::after {
-                                    background: grey !important;
-                                }
-                            </style>
-                            <div class="card-body pl-5 pt-3">
-                                <ol class="activity-feed">
-                                    <li class="feed-item feed-item-secondary">
-                                        <time class="date" datetime="9-25">Sep 25</time>
-                                        <span class="text">Responded to need <a href="#">"Volunteer opportunity"</a></span>
-                                    </li>
-                                    <li class="feed-item feed-item-secondary">
-                                        <time class="date" datetime="9-24">Sep 24</time>
-                                        <span class="text">Added an interest <a href="#">"Volunteer Activities"</a></span>
-                                    </li>
-                                    <li class="feed-item feed-item-info">
-                                        <time class="date" datetime="9-23">Sep 23</time>
-                                        <span class="text">Joined the group <a href="single-group.php">"Boardsmanship Forum"</a></span>
-                                    </li>
-                                    <li class="feed-item feed-item-warning">
-                                        <time class="date" datetime="9-21">Sep 21</time>
-                                        <span class="text">Responded to need <a href="#">"In-Kind Opportunity"</a></span>
-                                    </li>
-                                    <li class="feed-item feed-item-danger">
-                                        <time class="date" datetime="9-18">Sep 18</time>
-                                        <span class="text">Created need <a href="#">"Volunteer Opportunity"</a></span>
-                                    </li>
-                                    <li class="feed-item">
-                                        <time class="date" datetime="9-17">Sep 17</time>
-                                        <span class="text">Attending the event <a href="single-event.php">"Some New Event"</a></span>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </form>
         </div>
 
@@ -414,8 +371,52 @@
             <div class="header">
                 History log
             </div>
+            <div class="content pl-5" style="min-height: 170px;">
+                <h4>Current container</h4>
+                <style>
+                    .feed-item-secondary::after {
+                        background: grey !important;
+                    }
+                </style>
+                <ol class="activity-feed">
+                    <?php for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
+                        if (gettype($arr_change_container[$i]) == 'string') : ?>
+                            <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
+                                <time class="date"><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
+                                <span class="text"><h4><?php echo $obj_service[0]->con_number?></h4></span>
+                            </li>
+                        <?php else : ?>
+                            <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
+                                <time class="date"><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
+                                <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
+                                    <?php 
+                                    if ($arr_change_container[$i]->con_number != NULL) {
+                                        echo $arr_change_container[$i]->con_number;
+                                    }
+                                    else {
+                                        echo "Unknown container";
+                                    }
+                                    ?></a></h4>
+                                </span>
+                            </li>
+                        <?php endif; ?>
+                    <?php } ?>
+                </ol>
+
+                <script>
+                    let number_change_container = '<?php echo count($arr_change_container)?>';
+                    let height = 360;
+                    number_change_container = parseInt(number_change_container);
+
+                    console.log(typeof number_change_container);
+                    if (number_change_container != 1) {
+                        height += (number_change_container - 2) * 60;
+                        $('.ui.change_container.modal').css("height", height + "px");
+                    }
+                </script>
+            </div>
             <div class="actions">
-                <button type="button" class="ui history button"><i class='left fas fa-history'></i>
+                <button type="button" class="ui history secondary basic button"><i class='left fas fa-history'></i>
                     Full history log
                 </button>
             </div>
