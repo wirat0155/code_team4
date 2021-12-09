@@ -182,6 +182,16 @@ class Service_show extends Cdms_controller {
 
         $data['arr_change_container'] = $this->get_change_container_log($ser_id);
 
+        $data['index_ser_id'] = 0;
+        for ($i = 0; $i < count($data['arr_change_container']); $i++) {
+            if (gettype($data['arr_change_container'][$i]) == "string") {
+                $data['index_ser_id'] = $i;
+            }
+        }
+        
+        if (gettype($data['arr_change_container'][0]) != "string") {
+            $data['obj_original_container'] = $m_ser->get_arrivals_date_by_ser_id($data['arr_change_container'][0]->chl_old_ser_id);
+        }
         $this->output('v_service_show_information', $data);
     }
 
