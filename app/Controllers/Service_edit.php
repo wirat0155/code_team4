@@ -80,6 +80,10 @@ class Service_edit extends Cdms_controller
         $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
         $data['arr_agn'] = $m_agn->get_all();
 
+        $m_ser = new M_cdms_service();
+        $obj_container=$data['obj_container'];
+        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id,$obj_container[0]->con_size_id);
+        //print_r($obj_container[0]->con_size_id);
         // call service input view
         $this->output('v_service_edit', $data);
     }

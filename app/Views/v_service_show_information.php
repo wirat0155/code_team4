@@ -9,30 +9,30 @@
 -->
 
 <style>
-    .picture-container {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
+.picture-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
-    .picture {
-        width: 200px;
-        height: 200px;
-        background-color: #999999;
-        border: 4px solid #CCCCCC;
-        color: #FFFFFF;
-        border-radius: 50%;
-        margin: auto;
-        overflow: hidden;
-        transition: all 0.2s;
-        -webkit-transition: all 0.2s;
-        text-align: center;
-    }
+.picture {
+    width: 200px;
+    height: 200px;
+    background-color: #999999;
+    border: 4px solid #CCCCCC;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    text-align: center;
+}
 
-    .cl-blue {
-        color: #1244B9 !important;
-    }
+.cl-blue {
+    color: #1244B9 !important;
+}
 </style>
 <div class="main-panel">
     <div class="content">
@@ -42,11 +42,16 @@
                 <div class="pl-4 mt-4 page-header mb-0">
                     <h4 class="pl-3 page-title">SERVICE DETAIL</h4>
                     <div class="card-action ml-auto mr-4">
+                        <button class="ui history button text-white" style="background-color: #22b7ee">
+                            <i class="fas fa-history
+                            "></i>
+                            History log
+                        </button>
                         <a class="ui yellow button" href="<?php echo base_url() . '/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>">
                             <i class="far fa-edit mr-1"></i>
                             Edit info
                         </a>
-                        <button type="submit" class="ui red test button">
+                        <button type="submit" class="ui red delete button">
                             <i class="trash icon m-0"></i>
                             <i class="align left icon mr-1"></i>
                             Delete
@@ -77,14 +82,14 @@
             </div>
 
             <style>
-                h3 {
-                    color: black;
-                }
+            h3 {
+                color: black;
+            }
 
-                h3.active {
-                    color: #0B5B84;
-                    border-bottom: 2px solid #0B5B84;
-                }
+            h3.active {
+                color: #0B5B84;
+                border-bottom: 2px solid #0B5B84;
+            }
             </style>
 
             <div class="d-flex justify-content-center">
@@ -103,30 +108,33 @@
             </div>
 
             <style>
-                .avatar {
-                    margin: 0px 80px;
-                }
-                .avatar-img {
-                    width: 150px;
-                    height: 150px;
-                    object-fit: cover;
-                }
-                .button.green {
-                    position: absolute;
-                    left: 33%;
-                    width: 80px;
-                }
+            .avatar {
+                margin: 0px 80px;
+            }
 
-                .button.blue {
-                    position: absolute;
-                    right: 29%;
-                    width: 80px;
+            .avatar-img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+            }
+
+            .button.green {
+                position: absolute;
+                left: 33%;
+                width: 80px;
+            }
+
+            .button.blue {
+                position: absolute;
+                right: 29%;
+                width: 80px;
+            }
+
+            @media only screen and (max-width: 768px) {
+                #img-line {
+                    display: none !important;
                 }
-                @media only screen and (max-width: 768px) {
-                    #img-line {
-                        display: none !important;
-                    }
-                }
+            }
             </style>
 
             <div class="d-flex justify-content-center mt-4 mb-5" id="img-line">
@@ -256,13 +264,13 @@
                                             <label class="col-form-label mr-auto">Date departure :</label>
                                             <div class="col-12 col-sm-8">
                                                 <p>
-                                                <?php 
+                                                    <?php 
                                                 if ($obj_service[0]->ser_actual_departure_date == NULL || $obj_service[0]->ser_actual_departure_date == '')
                                                     echo 'Not export yet';
                                                 else
                                                     echo date_thai($obj_service[0]->ser_actual_departure_date) 
                                                 ?>
-                                            </p>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -297,8 +305,8 @@
                                 <div class="card-title" id="agent_information">Agent information</div>
                             </div>
 
-                            <div class="card-body"i>
-                            <?php
+                            <div class="card-body" i>
+                                <?php
                                 require_once dirname(__FILE__) . '/card/agent_card.php';
                                 ?>
                             </div>
@@ -324,7 +332,7 @@
         </div>
         </form>
 
-        <div class="ui modal">
+        <div class="ui modal delete">
             <i class="close icon"></i>
             <div class="header">
                 Remove Service ?
@@ -346,7 +354,7 @@
                     </div>
             </div>
             <div class="actions">
-                <button type="button" class="ui test button">
+                <button type="button" class="ui delete button">
                     No, keep it
                 </button>
                 <button type="submit" class="ui negative right labeled icon button">
@@ -357,26 +365,38 @@
             </div>
         </div>
 
+        <div class="ui change_container modal">
+            <div class="header">
+                History log
+            </div>
+            <div class="actions">
+                <button type="button" class="ui history button"><i class='left fas fa-history'></i>
+                    Full history log
+                </button>
+            </div>
+        </div>
+
         <script>
-            $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+        $('.ui.modal.delete').modal('attach events', '.delete.button', 'toggle');
+        $('.ui.modal.change_container').modal('attach events', '.history.button', 'toggle');
 
-            /*
-            * hilight_section
-            * go to hilight section
-            * @input    section
-            * @output   go to hilight section
-            * @author   Thanathip
-            * @Create Date  2564-10-14
-            */
-            function hilight_section(section) {
-                let sections = ['service', 'con', 'agent', 'customer'];
-                $('h3.' + section).addClass('active');
+        /*
+         * hilight_section
+         * go to hilight section
+         * @input    section
+         * @output   go to hilight section
+         * @author   Thanathip
+         * @Create Date  2564-10-14
+         */
+        function hilight_section(section) {
+            let sections = ['service', 'con', 'agent', 'customer'];
+            $('h3.' + section).addClass('active');
 
-                for (let i = 0; i < sections.length; i++) {
-                    if (section != sections[i]) {
-                        $('h3.' + sections[i]).removeClass('active');
-                    }
+            for (let i = 0; i < sections.length; i++) {
+                if (section != sections[i]) {
+                    $('h3.' + sections[i]).removeClass('active');
                 }
             }
+        }
         </script>
     </div>

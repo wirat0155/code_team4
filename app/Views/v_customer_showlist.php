@@ -404,17 +404,17 @@
 
                                             <!-- action menu -->
                                             <script>
-                                                function show_service_menu(cus_id) {
-                                                    $('.menu').css('display', 'none');
-                                                    $('.menu.cus_id_' + cus_id).show();
-                                                } // make it dropdown
-                                                $(document).click(function() {
-                                                    var container = $(".menu");
-                                                    if (!container.is(event.target) && !container.has(event.target)
-                                                        .length) {
-                                                        container.hide();
-                                                    }
-                                                });
+                                            function show_service_menu(cus_id) {
+                                                $('.menu').css('display', 'none');
+                                                $('.menu.cus_id_' + cus_id).show();
+                                            } // make it dropdown
+                                            $(document).click(function() {
+                                                var container = $(".menu");
+                                                if (!container.is(event.target) && !container.has(event.target)
+                                                    .length) {
+                                                    container.hide();
+                                                }
+                                            });
                                             </script>
                                             <td class="text-left" width='15px'>
                                                 <div class="ui dropdown text-center p-2" style="border: 1px solid #ddd; width: 20px; height: 20px; border-radius: 50%" onclick="show_service_menu(<?php echo $arr_customer[$i]->cus_id ?>)">
@@ -484,25 +484,25 @@
     });
 
     /*
-    * get_id
-    * get cus_id and show in remove customer id
-    * @input    con_id
-    * @output   get cus_id and show in remove customer id
-    * @author   Kittipod
-    * @Create Date  2564-07-28
-    */
+     * get_id
+     * get cus_id and show in remove customer id
+     * @input    con_id
+     * @output   get cus_id and show in remove customer id
+     * @author   Kittipod
+     * @Create Date  2564-07-28
+     */
     function get_id(cus_id) {
         $('#cus_id').val(cus_id);
     }
 
     /*
-    * customer_detail
-    * go to customer detail page
-    * @input    con_id
-    * @output   go to customer detail page
-    * @author   Kittipod
-    * @Create Date  2564-07-28
-    */
+     * customer_detail
+     * go to customer detail page
+     * @input    con_id
+     * @output   go to customer detail page
+     * @author   Kittipod
+     * @Create Date  2564-07-28
+     */
     function customer_detail(cus_id) {
         window.location = '<?php echo base_url('') . '/Customer_show/customer_detail/' ?>' + cus_id;
     }
