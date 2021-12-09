@@ -516,5 +516,44 @@ class Service_show extends Cdms_controller {
             return $arr_change_container;
         }
     }
+    public function show_time(){
+        //$handle = fopen("php://stdin","r");
+        // $date_input = fgets($handle);
+        // $date_input = trim($date_input);
+        $date_now = Date("Y-m-d H:i:s");
+        $date_input = Date("2021-12-06 10:14:00");
+        //echo "Input date : ";
+        $sub_date =substr ($date_now,0,10);
+        $sub_date_input =substr ($date_input,0,10);
+        $datetime1 = date_create($sub_date);
+        $datetime2 = date_create($sub_date_input);
+        $diff=date_diff($datetime2,$datetime1);    
+        //$sub_date =substr ($diff,8,3);
+        //echo $diff->format("%R%a");
+        $sub_hour =substr ($date_now,10,3);
+        intval($sub_hour);
+        $sub_hour_input =substr ($date_input,10,3);
+        intval($sub_hour_input);
+        $sub_min =substr ($date_now,14,2);
+        intval($sub_min_input);
+        $sub_min_input =substr ($date_input,14,2);
+        intval($sub_min_input);
+        //echo  $sub_min_input;
+        if($diff->format("%R%a") > 3){ 
+             echo $date_input ;
+        }else if($diff->format("%R%a") >=1  && $diff->format("%R%a") <=3){
+             echo $diff->format("%R%a").' '.'Days ago'.' '.'10:14:00';
+        }else if($diff->format("%R%a")==0){
+            if($sub_hour-$sub_hour_input >=1){
+                echo $sub_hour-$sub_hour_input.' '.'Hours ago';
+            }else{
+                echo $sub_min-$sub_min_input.' '.'Mins ago';
+            }
+        }
+        
+        //echo $sub_date_input;
+        //echo "\n";
+        //echo $date_now;
+    }
 
 }

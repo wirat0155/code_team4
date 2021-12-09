@@ -238,4 +238,15 @@ class M_cdms_service extends Da_cdms_service {
         // return as object
         return $this->db->query($sql)->getRow();
     }
+
+    public function get_change_service_option($cont_id,$con_size_id){
+        $sql = "SELECT con_number,cont_name,ser_id FROM cdms_container 
+        INNER JOIN cdms_service ON ser_con_id=con_id 
+        INNER JOIN cdms_status_container ON con_stac_id=stac_id 
+        INNER JOIN cdms_container_type ON con_cont_id=cont_id 
+        WHERE ser_stac_id = 1 OR ser_stac_id = 2 OR ser_stac_id = 3 
+        AND ser_departure_date IS NULL AND ser_weight = 0 
+        AND cont_id='$cont_id' AND con_size_id='$con_size_id'";
+        return $this->db->query($sql)->getResult();
+    }
 }
