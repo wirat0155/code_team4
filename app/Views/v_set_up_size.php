@@ -13,6 +13,40 @@
     color: #1244B9 !important;
 }
 </style>
+
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Remove Container size ?
+    </div>
+    <div class="content">
+        <form action="<?php echo base_url() . '/Set_up_size/delete' ?>" method="post">
+            <input type="hidden" id="size_id" name="size_id">
+
+            <p style="font-size: 1rem">Are you sure to remove the container size</p>
+
+            <div class="ui info message">
+                <div class="header">
+                    What happening after remove the container size
+                </div>
+                <ul class="list">
+                    <li>The container size still remain in database,</li>
+                    <li>But you cannot see the container size anymore</li>
+                </ul>
+            </div>
+    </div>
+    <div class="actions">
+        <button type="button" class="ui test button">
+            No, keep it
+        </button>
+        <button type="submit" class="ui negative right labeled icon button">
+            Yes, remove it
+            <i class="minus circle icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -134,15 +168,22 @@
                                     <tr>
                                         <div <?php echo 'size_id' . $arr_size[$i]->size_id ?>>
                                             <!-- delete button -->
-                                            <td></td>
+                                            <td>
+                                                <div id="btn_delete<?php echo $arr_size[$i]->size_id ?>" class="item test button" onclick="get_id(<?php echo $arr_size[$i]->size_id?>)" <?php if($arr_size[$i]->size_status == 1) echo "hidden" ?>>
+                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
+                                                </div>
+                                                <script>
+                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                </script>
+                                            </td>
 
                                             <!-- container size iamge -->
                                             <td>
                                                 <div class="avatar avatar-lg">
                                                     <?php if ($arr_size[$i]->size_image != NULL && $arr_size[$i]->size_image != '') : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                    <img class="avatar-img" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
                                                     <?php else : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                    <img class="avatar-img" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
                                                     <?php endif; ?>
                                                 </div>
                                             </td>
@@ -178,145 +219,160 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_size_form').length > 0) {
-            $('#add_size_form').validate({
-                rules: {
-                    size_name: {
-                        required: true
-                    },
-                    size_width_in: {
-                        required: true
-                    },
-                    size_width_out: {
-                        required: true
-                    },
-                    size_length_in: {
-                        required: true
-                    },
-                    size_length_out: {
-                        required: true
-                    },
-                    size_height_in: {
-                        required: true
-                    },
-                    size_height_out: {
-                        required: true
-                    }
+<script>
+$(document).ready(function() {
+    // jQuery Validation
+    if ($('#add_size_form').length > 0) {
+        $('#add_size_form').validate({
+            rules: {
+                size_name: {
+                    required: true
                 },
-                messages: {
-                    size_name: {
-                        required: 'Please enter a size name'
-                    },
-                    size_width_in: {
-                        required: 'Please enter a inside width'
-                    },
-                    size_width_out: {
-                        required: 'Please enter a outside width'
-                    },
-                    size_length_in: {
-                        required: 'Please enter a inside length'
-                    },
-                    size_length_out: {
-                        required: 'Please enter a outside length'
-                    },
-                    size_height_in: {
-                        required: 'Please enter a inside height'
-                    },
-                    size_height_out: {
-                        required: 'Please enter a outside height'
-                    }
+                size_width_in: {
+                    required: true
+                },
+                size_width_out: {
+                    required: true
+                },
+                size_length_in: {
+                    required: true
+                },
+                size_length_out: {
+                    required: true
+                },
+                size_height_in: {
+                    required: true
+                },
+                size_height_out: {
+                    required: true
                 }
-            })
+            },
+            messages: {
+                size_name: {
+                    required: 'Please enter a size name'
+                },
+                size_width_in: {
+                    required: 'Please enter a inside width'
+                },
+                size_width_out: {
+                    required: 'Please enter a outside width'
+                },
+                size_length_in: {
+                    required: 'Please enter a inside length'
+                },
+                size_length_out: {
+                    required: 'Please enter a outside length'
+                },
+                size_height_in: {
+                    required: 'Please enter a inside height'
+                },
+                size_height_out: {
+                    required: 'Please enter a outside height'
+                }
+            }
+        })
+    }
+});
+
+// hide add size form
+$('#input_add').hide();
+
+/*
+ * check_status_size
+ * check status size
+ * @input    size_id
+ * @output   check status size
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function check_status_size(size_id) {
+    if ($('#size_id' + size_id).prop('checked')) {
+        size_delete(size_id);
+        $('#btn_delete' + size_id).prop("hidden", false);
+    } else {
+        size_restore(size_id);
+        $('#btn_delete' + size_id).prop("hidden", true);
+    }
+}
+
+/*
+ * size_delete
+ * delete size
+ * @input    size_id
+ * @output   delete size
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function size_delete(size_id) {
+    console.log('size_delete', size_id);
+    $.ajax({
+        url: 'size_delete',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            size_id: size_id
         }
     });
+}
 
-    // hide add size form
-    $('#input_add').hide();
-
-    /*
-    * check_status_size
-    * check status size
-    * @input    size_id
-    * @output   check status size
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function check_status_size(size_id) {
-        if ($('#size_id' + size_id).prop('checked')) {
-            size_delete(size_id);
-        } else {
-            size_restore(size_id);
+/*
+ * size_restore
+ * restore size
+ * @input    size_id
+ * @output   restore size
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function size_restore(size_id) {
+    console.log('size_restore', size_id);
+    $.ajax({
+        url: 'size_restore',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            size_id: size_id
         }
-    }
+    });
+}
 
-    /*
-    * size_delete
-    * delete size
-    * @input    size_id
-    * @output   delete size
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function size_delete(size_id) {
-        console.log('size_delete', size_id);
-        $.ajax({
-            url: 'size_delete',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                size_id: size_id
-            }
-        });
-    }
+/*
+ * get_image
+ * show image name
+ * @input    -
+ * @output   show image name
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function get_image() {
+    var size_image = $('#size_image').val();
+    $('#input_show_browse').val(size_image.substr(12));
+    $('#size_image-error').remove();
+}
 
-    /*
-    * size_restore
-    * restore size
-    * @input    size_id
-    * @output   restore size
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function size_restore(size_id) {
-        console.log('size_restore', size_id);
-        $.ajax({
-            url: 'size_restore',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                size_id: size_id
-            }
-        });
-    }
+/*
+ * show_input
+ * show input to insert size
+ * @input    -
+ * @output   show input to insert size
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function show_input() {
+    $('#input_add').show();
+    $('#btn_add').hide();
+}
 
-    /*
-    * get_image
-    * show image name
-    * @input    -
-    * @output   show image name
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function get_image() {
-        var size_image = $('#size_image').val();
-        $('#input_show_browse').val(size_image.substr(12));
-        $('#size_image-error').remove();
-    }
-
-    /*
-    * show_input
-    * show input to insert size
-    * @input    -
-    * @output   show input to insert size
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function show_input() {
-        $('#input_add').show();
-        $('#btn_add').hide();
-    }
-    </script>
+/*
+ * get_id
+ * get size_id in remove container size modal
+ * @input    size_id
+ * @output   get size_id in remove container size modal
+ * @author   Tadsawan
+ * @Create Date  2564-12-08
+ */
+function get_id(size_id) {
+    $('#size_id').val(size_id);
+}
+</script>

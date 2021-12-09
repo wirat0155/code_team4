@@ -239,7 +239,15 @@ class M_cdms_service extends Da_cdms_service {
         return $this->db->query($sql)->getRow();
     }
 
-    public function get_change_service_option($cont_id,$con_size_id){
+    /*
+    * get_change_service_option
+    * get array service for make chamge container dropdown
+    * @input    cont_id, con_size_id
+    * @output   array of service
+    * @author   Benjapon
+    * @Create Date  2564-12-07
+    */
+    public function get_change_service_option($cont_id, $con_size_id){
         $sql = "SELECT con_number,cont_name,ser_id FROM cdms_container 
         INNER JOIN cdms_service ON ser_con_id=con_id 
         INNER JOIN cdms_status_container ON con_stac_id=stac_id 
@@ -248,5 +256,19 @@ class M_cdms_service extends Da_cdms_service {
         AND ser_departure_date IS NULL AND ser_weight = 0 
         AND cont_id='$cont_id' AND con_size_id='$con_size_id'";
         return $this->db->query($sql)->getResult();
+    }
+
+    /*
+    * get_arrivals_date_by_ser_id
+    * get arrivals date for change container modal
+    * @input    ser_id
+    * @output   arrivals date in service
+    * @author   Wirat
+    * @Create Date  2564-12-09
+    */
+    public function get_arrivals_date_by_ser_id($ser_id) {
+        $sql = "SELECT ser_arrivals_date FROM $this->table
+                WHERE ser_id = '$ser_id'";
+        return $this->db->query($sql)->getRow();
     }
 }

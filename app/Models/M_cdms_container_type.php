@@ -38,7 +38,7 @@ class M_cdms_container_type extends Da_cdms_container_type {
     * @Create Date  2564-10-04
     */
     public function get_all_type() {
-        $sql = "SELECT * FROM $this->table ORDER BY cont_id DESC";
+        $sql = "SELECT * FROM $this->table WHERE cont_status != 3 ORDER BY cont_id DESC";
         return $this->db->query($sql)->getResult();
     }
 

@@ -379,28 +379,106 @@
                     }
                 </style>
                 <ol class="activity-feed">
-                    <?php for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
-                        if (gettype($arr_change_container[$i]) == 'string') : ?>
-                            <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
-                                <time class="date"><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
-                                <span class="text"><h4><?php echo $obj_service[0]->con_number?></h4></span>
-                            </li>
-                        <?php else : ?>
-                            <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
-                                <time class="date"><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
-                                <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
-                                    <?php 
-                                    if ($arr_change_container[$i]->con_number != NULL) {
-                                        echo $arr_change_container[$i]->con_number;
+
+                    <!-- ser id original container -->
+                    <?php if ($index_ser_id == 0) :?>
+                        <?php for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
+                            if (gettype($arr_change_container[$i]) == 'string') : ?>
+                                <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
+                                    <time class="date"><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
+                                    <span class="text"><h4><?php echo $obj_service[0]->con_number?></h4></span>
+                                </li>
+                            <?php else : ?>
+                                <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
+                                    <time class="date"><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
+                                    <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
+                                        <?php 
+                                        if ($arr_change_container[$i]->con_number != NULL) {
+                                            echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                        }
+                                        else {
+                                            echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                        }
+                                        ?></a></h4>
+                                    </span>
+                                </li>
+                            <?php endif; ?>
+                        <?php } ?>
+
+                    <!-- ser id not original container -->
+                    <?php else : ?>
+                        <?php for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
+                            // service ที่เรียกดูข้อมูล
+                            if ($i == $index_ser_id): ?>
+                                <li class="feed-item <?php if ($i != count($arr_change_container) - 1) {
+                                    echo "feed-item-secondary";
+                                }
+                                ?>">
+                                    <time class="date"><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
+                                    <span class="text"><h4><?php echo $obj_service[0]->con_number ?></h4></span>
+                                </li>
+
+                            <!-- ไม่ใช่ service ที่เรียกดูข้อมูล -->
+                            <?php else: ?>
+                                <!-- service ที่เปลี่ยนหลัง service ที่เรียกดูข้อมูล -->
+                                <?php if ($i > $index_ser_id) { ?>
+                                    <li class="feed-item <?php if ($i != count($arr_change_container) - 1) {
+                                    echo "feed-item-secondary";
                                     }
-                                    else {
-                                        echo "Unknown container";
+                                    ?>">
+                                        <time class="date"><?php echo diff_datetime($arr_change_container[$i]->chl_date) ?></time>
+                                        <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
+                                            <?php
+                                            if ($arr_change_container[$i]->con_number != null) {
+                                                    echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                } else {
+                                                    echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                }
+                                                ?></a></h4>
+                                        </span>
+                                    </li>
+                                <?php } ?>
+
+                                <!-- original service -->
+                                <?php if ($i == 0) { ?>
+                                    <li class="feed-item <?php if ($i != count($arr_change_container) - 1) {
+                                    echo "feed-item-secondary";
                                     }
-                                    ?></a></h4>
-                                </span>
-                            </li>
-                        <?php endif; ?>
-                    <?php } ?>
+                                    ?>">
+                                        <time class="date"><?php echo diff_datetime($obj_original_container->ser_arrivals_date) ?></time>
+                                        <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
+                                            <?php
+                                            if ($arr_change_container[$i]->con_number != null) {
+                                                    echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                } else {
+                                                    echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                }
+                                                ?></a></h4>
+                                        </span>
+                                    </li>
+                                <?php } ?>
+
+                                <?php if ($i < $index_ser_id && $i > 0) { ?>
+                                    <li class="feed-item <?php if ($i != count($arr_change_container) - 1) {
+                                        echo "feed-item-secondary";
+                                    }
+                                    ?>">
+                                        <time class="date"><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
+                                        <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
+                                            <?php
+                                            if ($arr_change_container[$i]->con_number != null) {
+                                                    echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                } else {
+                                                    echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                }
+                                                ?></a></h4>
+                                        </span>
+                                    </li>
+                                <?php } ?>
+                            <?php endif;?>
+                        <?php }?>
+
+                    <?php endif; ?>
                 </ol>
 
                 <script>

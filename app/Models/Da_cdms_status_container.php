@@ -67,4 +67,17 @@ class Da_cdms_status_container extends Model {
         $sql = "UPDATE $this->table SET stac_status = 1 WHERE stac_id = '$stac_id'";
         $this->db->query($sql);
     }
+
+    /*
+    * status_container_delete
+    * delete status container
+    * @input    stac_id
+    * @output   delete status container
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function status_container_delete($stac_id = NULL, bool $purge = false) {
+        $sql = "UPDATE $this->table SET stac_status = 3 WHERE stac_id = '$stac_id'";
+        $this->db->query($sql);
+    }
 }

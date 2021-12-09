@@ -90,7 +90,7 @@ class Set_up_car_type extends Cdms_controller
     * @Create Date  2564-10-23
     */
     public function car_type_insert() {
-        $m_car_type = new M_cdms_car_type();
+        $m_cart = new M_cdms_car_type();
 
         // carr type information
         $cart_name = $this->request->getPost('cart_name');
@@ -106,8 +106,21 @@ class Set_up_car_type extends Cdms_controller
         $cart_image = $imageName;
 
         // insert car type
-        $m_car_type->insert($cart_name, $cart_image);
+        $m_cart->insert($cart_name, $cart_image);
         $this->response->redirect(base_url() . '/Set_up_car_type/car_type_show');
     }
 
+    /*
+    * delete
+    * delete car type
+    * @input    cart_id
+    * @output   delete car type
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function delete() {
+        $m_cart = new M_cdms_car_type();
+        $m_cart->car_type_delete($this->request->getPost('cart_id'));
+        return $this->response->redirect(base_url('/Set_up_car_type/car_type_show'));
+    }
 }

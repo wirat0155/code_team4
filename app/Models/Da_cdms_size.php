@@ -67,4 +67,17 @@ class Da_cdms_size extends Model {
         $sql = "UPDATE $this->table SET size_status = 1 WHERE size_id = '$size_id'";
         $this->db->query($sql);
     }
+
+    /*
+    * size_delete
+    * delete size
+    * @input    size_id
+    * @output   delete size
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function size_delete($size_id = NULL, bool $purge = false) {
+        $sql = "UPDATE $this->table SET size_status=3 WHERE size_id='$size_id'";
+        $this->db->query($sql);
+    }
 }
