@@ -179,11 +179,37 @@ class Service_show extends Cdms_controller {
         // get agent agent
         $m_agn = new M_cdms_agent();
         $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
-        // call service input view
-        $this->output('v_service_show_information', $data);
-        // echo '<pre>';
-        // print_r($data['arr_driver_in']);
-        // echo '</pre>';
+
+        $arr_change_container = $this->get_change_container_log($ser_id);
+        echo "<pre>";
+        print_r($arr_change_container);
+        echo "/<pre>";
+
+
+        // call service detail view
+        // $this->output('v_service_show_information', $data);
+        echo "Current container<br/>";
+        for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
+            if (gettype($arr_change_container[$i]) == 'string') {
+                echo "it's string";
+                echo "<br/>";
+                print_r($data['obj_service'][$i]->ser_arrivals_date);
+                echo "<br/>";
+                print_r($data['obj_service'][$i]->con_number);
+                echo "<br/>";
+                echo "<br/>";
+            }
+            else {
+                echo "it's " . gettype($arr_change_container[$i]);
+                echo "<br/>";
+                print_r($arr_change_container[$i]->chl_date);
+                echo "<br/>";
+                print_r($arr_change_container[$i]->con_number);
+                echo "<br/>";
+                echo "<br/>";
+            }
+        }
+
     }
 
     /*
@@ -476,7 +502,7 @@ class Service_show extends Cdms_controller {
                 array_push($arr_change_container, $obj_change_container);
             }while($obj_change_container != NULL);
             
-            
+            // find previous service
             do {
                 $obj_change_container = $m_chl->get_prev_ser_id($old_ser_id);
                 $ser_id = $obj_change_container->chl_old_ser_id;
@@ -484,13 +510,9 @@ class Service_show extends Cdms_controller {
                 array_unshift($arr_change_container, $obj_change_container);
             }while($obj_change_container != NULL);
 
-            // find previous service
             array_pop($arr_change_container);
             array_shift($arr_change_container);
 
-            // echo "<pre>";
-            // print_r($arr_change_container);
-            // echo "</pre><br/>";
             return $arr_change_container;
         }
     }
