@@ -225,9 +225,10 @@ class Service_show extends Cdms_controller {
         $cosd_ser_id = $this->request->getPost('cosd_ser_id');
         $cosd_name = $this->request->getPost('cosd_name');
         $cosd_cost = $this->request->getPost('cosd_cost');
+        $cosd_quantity = $this->request->getPost('cosd_quantity');
         $cosd_payment_date = date("Y-m-d", strtotime("+7 day"));
 
-        $m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_payment_date, $cosd_ser_id);
+        $m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_payment_date, $cosd_ser_id, $cosd_quantity);
         $last_cost = $m_cosd->get_last();
 
         echo json_encode($last_cost);
@@ -247,8 +248,9 @@ class Service_show extends Cdms_controller {
         $cosd_id = $this->request->getPost('cosd_id');
         $cosd_name = $this->request->getPost('cosd_name');
         $cosd_cost = $this->request->getPost('cosd_cost');
+        $cosd_quantity = $this->request->getPost('cosd_quantity');
 
-        $m_cosd->cost_update($cosd_id, $cosd_name, $cosd_cost);
+        $m_cosd->cost_update($cosd_id, $cosd_name, $cosd_cost, $cosd_quantity);
 
         echo json_encode('update complete');
     }
