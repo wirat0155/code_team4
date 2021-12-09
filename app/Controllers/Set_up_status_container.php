@@ -90,14 +90,28 @@ class Set_up_status_container extends Cdms_controller
     * @Create Date  2564-10-22
     */
     public function status_container_insert() {
-        $m_status_container = new M_cdms_status_container();
+        $m_stac = new M_cdms_status_container();
 
         // status container information
         $stac_name = $this->request->getPost('stac_name');
 
         // inserting status container
-        $m_status_container->insert($stac_name);
+        $m_stac->insert($stac_name);
         $this->response->redirect(base_url() . '/Set_up_status_container/status_container_show');
+    }
+
+    /*
+    * delete
+    * delete status container
+    * @input    stac_id
+    * @output   delete status container
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function delete() {
+        $m_stac = new M_cdms_status_container();
+        $m_stac->status_container_delete($this->request->getPost('stac_id'));
+        return $this->response->redirect(base_url('/Set_up_status_container/status_container_show'));
     }
 
 }

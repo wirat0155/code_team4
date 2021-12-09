@@ -63,4 +63,18 @@ class Da_cdms_container_type extends Model {
         $sql = "UPDATE $this->table SET cont_status = 1 WHERE cont_id = '$cont_id'";
         $this->db->query($sql);
     }
+
+    /*
+    * container_type_delete
+    * delete container type
+    * @input    cont_id
+    * @output   delete container type
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function container_type_delete($cont_id = NULL, bool $purge = false) {
+        $sql = "UPDATE $this->table SET cont_status = 3 WHERE cont_id = '$cont_id'";
+        $this->db->query($sql);
+    }
+
 }

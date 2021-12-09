@@ -116,4 +116,18 @@ class Set_up_size extends Cdms_controller
         $this->response->redirect(base_url() . '/Set_up_size/size_show');
     }
 
+    /*
+    * delete
+    * delete size
+    * @input    size_id
+    * @output   delete size
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function delete() {
+        $m_size = new M_cdms_size();
+        $m_size->size_delete($this->request->getPost('size_id'));
+        return $this->response->redirect(base_url('/Set_up_size/size_show'));
+    }
+
 }

@@ -13,6 +13,40 @@
     color: #1244B9 !important;
 }
 </style>
+
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Remove Car type ?
+    </div>
+    <div class="content">
+        <form action="<?php echo base_url() . '/Set_up_car_type/delete' ?>" method="post">
+            <input type="hidden" id="cart_id" name="cart_id">
+
+            <p style="font-size: 1rem">Are you sure to remove the car type</p>
+
+            <div class="ui info message">
+                <div class="header">
+                    What happening after remove the car type
+                </div>
+                <ul class="list">
+                    <li>The car type still remain in database,</li>
+                    <li>But you cannot see the car type anymore</li>
+                </ul>
+            </div>
+    </div>
+    <div class="actions">
+        <button type="button" class="ui test button">
+            No, keep it
+        </button>
+        <button type="submit" class="ui negative right labeled icon button">
+            Yes, remove it
+            <i class="minus circle icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -94,15 +128,22 @@
                                     <tr>
                                         <div <?php echo 'cart_id' . $arr_car_type[$i]->cart_id ?>>
                                             <!-- delete button -->
-                                            <td></td>
+                                            <td>
+                                                <div id="btn_delete<?php echo $arr_car_type[$i]->cart_id ?>" class="item test button" onclick="get_id(<?php echo $arr_car_type[$i]->cart_id?>)" <?php if($arr_car_type[$i]->cart_status == 1) echo "hidden" ?>>
+                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
+                                                </div>
+                                                <script>
+                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                </script>
+                                            </td>
 
-                                            <!-- catr type image -->
+                                            <!-- car type image -->
                                             <td>
                                                 <div class="avatar avatar-lg">
                                                     <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                    <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
                                                     <?php else : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                    <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
                                                     <?php endif; ?>
                                                 </div>
                                             </td>
@@ -130,109 +171,124 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_car_type_form').length > 0) {
-            $('#add_car_type_form').validate({
-                rules: {
-                    cart_name: {
-                        required: true
-                    }
-                },
-                messages: {
-                    cart_name: {
-                        required: 'Please enter a car type name'
-                    }
+<script>
+$(document).ready(function() {
+    // jQuery Validation
+    if ($('#add_car_type_form').length > 0) {
+        $('#add_car_type_form').validate({
+            rules: {
+                cart_name: {
+                    required: true
                 }
-            })
+            },
+            messages: {
+                cart_name: {
+                    required: 'Please enter a car type name'
+                }
+            }
+        })
+    }
+});
+
+// hide add car type form
+$('#input_add').hide();
+
+/*
+ * check_status_car_type
+ * check status car type
+ * @input    cart_id
+ * @output   check status car type
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function check_status_car_type(cart_id) {
+    if ($('#cart_id' + cart_id).prop('checked')) {
+        car_type_delete(cart_id);
+        $('#btn_delete' + cart_id).prop("hidden", false);
+    } else {
+        car_type_restore(cart_id);
+        $('#btn_delete' + cart_id).prop("hidden", true);
+    }
+}
+
+/*
+ * car_type_delete
+ * delete car type
+ * @input    cart_id
+ * @output   delete car type
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function car_type_delete(cart_id) {
+    console.log('car_type_delete', cart_id);
+    $.ajax({
+        url: 'car_type_delete',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            cart_id: cart_id
         }
     });
+}
 
-    // hide add car type form
-    $('#input_add').hide();
-
-    /*
-    * check_status_car_type
-    * check status car type
-    * @input    cart_id
-    * @output   check status car type
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function check_status_car_type(cart_id) {
-        if ($('#cart_id' + cart_id).prop('checked')) {
-            car_type_delete(cart_id);
-        } else {
-            car_type_restore(cart_id);
+/*
+ * car_type_restore
+ * restore car type
+ * @input    cart_id
+ * @output   restore car type
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function car_type_restore(cart_id) {
+    console.log('car_type_restore', cart_id);
+    $.ajax({
+        url: 'car_type_restore',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            cart_id: cart_id
         }
-    }
+    });
+}
 
-    /*
-    * car_type_delete
-    * delete car type
-    * @input    cart_id
-    * @output   delete car type
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function car_type_delete(cart_id) {
-        console.log('car_type_delete', cart_id);
-        $.ajax({
-            url: 'car_type_delete',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                cart_id: cart_id
-            }
-        });
-    }
+/*
+ * get_image
+ * get image name
+ * @input    -
+ * @output   get image name
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function get_image() {
+    var cart_image = $('#cart_image').val();
+    $('#input_show_browse').val(cart_image.substr(12));
+    $('#cart_image-error').remove();
+}
 
-    /*
-    * car_type_restore
-    * restore car type
-    * @input    cart_id
-    * @output   restore car type
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function car_type_restore(cart_id) {
-        console.log('car_type_restore', cart_id);
-        $.ajax({
-            url: 'car_type_restore',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                cart_id: cart_id
-            }
-        });
-    }
+/*
+ * show_input
+ * show input to insert car type
+ * @input    -
+ * @output   show input to insert car type
+ * @author   Tadsawan
+ * @Create Date  2564-10-22e
+ */
+function show_input() {
+    $('#input_add').show();
+    $('#btn_add').hide();
+}
 
-    /*
-    * get_image
-    * get image name
-    * @input    -
-    * @output   get image name
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function get_image() {
-        var cart_image = $('#cart_image').val();
-        $('#input_show_browse').val(cart_image.substr(12));
-        $('#cart_image-error').remove();
-    }
-
-    /*
-    * show_input
-    * show input to insert car type
-    * @input    -
-    * @output   show input to insert car type
-    * @author   Tadsawan
-    * @Create Date  2564-10-22e
-    */
-    function show_input() {
-        $('#input_add').show();
-        $('#btn_add').hide();
-    }
-    </script>
+/*
+ * get_id
+ * get cart_id in remove car type modal
+ * @input    cart_id
+ * @output   get cart_id in remove car type modal
+ * @author   Tadsawan
+ * @Create Date  2564-12-08
+ */
+function get_id(cart_id) {
+    $('#cart_id').val(cart_id);
+}
+</script>

@@ -59,7 +59,7 @@ class M_cdms_status_container extends Da_cdms_status_container {
     * @Create Date  2564-10-22
     */
     public function get_all_status() {
-        $sql = "SELECT * FROM $this->table ORDER BY stac_id DESC";
+        $sql = "SELECT * FROM $this->table WHERE stac_status != 3 ORDER BY stac_id DESC";
         return $this->db->query($sql)->getResult();
     }
 }

@@ -9,10 +9,44 @@
 -->
 
 <style>
-    .cl-blue {
-        color: #1244B9 !important;
+.cl-blue {
+    color: #1244B9 !important;
 }
 </style>
+
+<div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Remove Container status ?
+    </div>
+    <div class="content">
+        <form action="<?php echo base_url() . '/Set_up_status_container/delete' ?>" method="post">
+            <input type="hidden" id="stac_id" name="stac_id">
+
+            <p style="font-size: 1rem">Are you sure to remove the container status</p>
+
+            <div class="ui info message">
+                <div class="header">
+                    What happening after remove the container status
+                </div>
+                <ul class="list">
+                    <li>The container status still remain in database,</li>
+                    <li>But you cannot see the container status anymore</li>
+                </ul>
+            </div>
+    </div>
+    <div class="actions">
+        <button type="button" class="ui test button">
+            No, keep it
+        </button>
+        <button type="submit" class="ui negative right labeled icon button">
+            Yes, remove it
+            <i class="minus circle icon"></i>
+        </button>
+        </form>
+    </div>
+</div>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -85,7 +119,14 @@
                                     <tr>
                                         <div <?php echo 'stac_id' . $arr_status_container[$i]->stac_id ?>>
                                             <!-- ลบ -->
-                                            <td></td>
+                                            <td>
+                                                <div id="btn_delete<?php echo $arr_status_container[$i]->stac_id ?>" class="item test button" onclick="get_id(<?php echo $arr_status_container[$i]->stac_id?>)" <?php if($arr_status_container[$i]->stac_status == 1) echo "hidden" ?>>
+                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
+                                                </div>
+                                                <script>
+                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                </script>
+                                            </td>
 
                                             <!-- ชื่อสถานะตู้ -->
                                             <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>"><?php echo $arr_status_container[$i]->stac_name ?></td>
@@ -110,95 +151,110 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-    $(document).ready(function() {
-        // jQuery Validation
-        if ($('#add_status_container_form').length > 0) {
-            $('#add_status_container_form').validate({
-                rules: {
-                    stac_name: {
-                        required: true
-                    }
-                },
-                messages: {
-                    stac_name: {
-                        required: 'Please enter a container status name'
-                    }
+<script>
+$(document).ready(function() {
+    // jQuery Validation
+    if ($('#add_status_container_form').length > 0) {
+        $('#add_status_container_form').validate({
+            rules: {
+                stac_name: {
+                    required: true
                 }
-            })
+            },
+            messages: {
+                stac_name: {
+                    required: 'Please enter a container status name'
+                }
+            }
+        })
+    }
+});
+
+// hide add status container form
+$('#input_add').hide();
+
+/*
+ * check_status_container
+ * check status container
+ * @input    stac_id
+ * @output   check status container
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function check_status_container(stac_id) {
+    if ($('#stac_id' + stac_id).prop('checked')) {
+        status_container_delete(stac_id);
+        $('#btn_delete' + stac_id).prop("hidden", false);
+    } else {
+        status_container_restore(stac_id);
+        $('#btn_delete' + stac_id).prop("hidden", true);
+    }
+}
+
+/*
+ * status_container_delete
+ * delete status container
+ * @input    stac_id
+ * @output   delete status container
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function status_container_delete(stac_id) {
+    console.log('status_container_delete', stac_id);
+    $.ajax({
+        url: 'status_container_delete',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            stac_id: stac_id
         }
     });
+}
 
-    // hide add status container form
-    $('#input_add').hide();
-
-    /*
-    * check_status_container
-    * check status container
-    * @input    stac_id
-    * @output   check status container
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function check_status_container(stac_id) {
-        if ($('#stac_id' + stac_id).prop('checked')) {
-            status_container_delete(stac_id);
-        } else {
-            status_container_restore(stac_id);
+/*
+ * status_container_restore
+ * restore status container
+ * @input    stac_id
+ * @output   restore status container
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function status_container_restore(stac_id) {
+    console.log('status_container_restore', stac_id);
+    $.ajax({
+        url: 'status_container_restore',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            stac_id: stac_id
         }
-    }
+    });
+}
 
-    /*
-    * status_container_delete
-    * delete status container
-    * @input    stac_id
-    * @output   delete status container
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function status_container_delete(stac_id) {
-        console.log('status_container_delete', stac_id);
-        $.ajax({
-            url: 'status_container_delete',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                stac_id: stac_id
-            }
-        });
-    }
+/*
+ * show_input
+ * show input to insert status container
+ * @input    -
+ * @output   show input to insert status container
+ * @author   Tadsawan
+ * @Create Date  2564-10-22
+ */
+function show_input() {
+    $('#input_add').show();
+    $('#btn_add').hide();
+}
 
-    /*
-    * status_container_restore
-    * restore status container
-    * @input    stac_id
-    * @output   restore status container
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function status_container_restore(stac_id) {
-        console.log('status_container_restore', stac_id);
-        $.ajax({
-            url: 'status_container_restore',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                stac_id: stac_id
-            }
-        });
-    }
-
-    /*
-    * show_input
-    * show input to insert status container
-    * @input    -
-    * @output   show input to insert status container
-    * @author   Tadsawan
-    * @Create Date  2564-10-22
-    */
-    function show_input() {
-        $('#input_add').show();
-        $('#btn_add').hide();
-    }
-    </script>
+/*
+ * get_id
+ * get stac_id in remove status container modal
+ * @input    stac_id
+ * @output   get stac_id in remove status container modal
+ * @author   Tadsawan
+ * @Create Date  2564-12-08
+ */
+function get_id(stac_id) {
+    $('#stac_id').val(stac_id);
+}
+</script>

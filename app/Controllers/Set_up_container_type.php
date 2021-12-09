@@ -90,7 +90,7 @@ class Set_up_container_type extends Cdms_controller
     * @Create Date  2564-08-06
     */
     public function container_type_insert() {
-        $m_container_type = new M_cdms_container_type();
+        $m_cont = new M_cdms_container_type();
 
         // container type information
         $cont_name = $this->request->getPost('cont_name');
@@ -106,8 +106,22 @@ class Set_up_container_type extends Cdms_controller
         $cont_image = $imageName;
 
         // เพิ่มข้อมูลประเเภทตู้
-        $m_container_type->insert($cont_name, $cont_image);
+        $m_cont->insert($cont_name, $cont_image);
         $this->response->redirect(base_url() . '/Set_up_container_type/container_type_show');
+    }
+
+    /*
+    * delete
+    * delete container type
+    * @input    cont_id
+    * @output   delete container type
+    * @author   Tadsawan
+    * @Create Date  2564-12-08
+    */
+    public function delete() {
+        $m_cont = new M_cdms_container_type();
+        $m_cont->container_type_delete($this->request->getPost('cont_id'));
+        return $this->response->redirect(base_url('/Set_up_container_type/container_type_show'));
     }
 
 }

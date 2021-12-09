@@ -45,7 +45,7 @@ class M_cdms_car_type extends Da_cdms_car_type {
     * @Create Date  2564-10-23
     */
     public function get_all_status() {
-        $sql = "SELECT * FROM $this->table ORDER BY cart_id DESC";
+        $sql = "SELECT * FROM $this->table WHERE cart_status != 3 ORDER BY cart_id DESC";
         return $this->db->query($sql)->getResult();
     }
 }
