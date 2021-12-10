@@ -90,7 +90,14 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Set up container type</div>
+                            <div class="card-title">
+                                <!-- Search -->
+                                <div class="input-group">
+                                    Set up container type
+                                    <i class="fas fa-search" style="font-size: 110%; margin: 5px 10px 0px 10px;"></i>
+                                    <input type="text" id="search" class="form-control form-control-sm col-md-4" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             Container type set up such as, new type, upload image and switch on-off type
@@ -122,7 +129,7 @@
                                 </div>
                             </form>
 
-                            <table class="table mt-3">
+                            <table class="table mt-3" id="table">
                                 <tbody>
                                     <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
                                     <tr>
@@ -139,8 +146,8 @@
 
                                             <!-- container type image -->
                                             <form action="<?php echo base_url() . '/Set_up_container_type/edit_container_type'?>" method="POST" enctype="multipart/form-data">
-                                            <td>
-                                                <div class="avatar avatar-lg">
+                                                <td>
+                                                    <div class="avatar avatar-lg">
                                                         <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
                                                         <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
                                                         <?php else : ?>
@@ -156,15 +163,15 @@
                                                     <span class="cont_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
                                                     <input type="hidden" name="cont_id" value="<?php echo $arr_container_type[$i]->cont_id ?>">
                                                     <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?>" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
-                                                    <br/>
+                                                    <br />
                                                 </td>
                                                 <td>
                                                     <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
-                                                    </form>
-                                                
-                                                    <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
-                                                    <button class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)">Edit</button>
-                                                </td>
+                                            </form>
+
+                                            <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
+                                            <button class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)">Edit</button>
+                                            </td>
                                             <!-- switch -->
                                             <td>
                                                 <label class="switch">
@@ -203,6 +210,17 @@ $(document).ready(function() {
             }
         })
     }
+});
+
+// search
+var $rows = $('#table tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
 });
 
 // hide add container type form

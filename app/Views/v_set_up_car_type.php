@@ -90,7 +90,14 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Set up car type</div>
+                            <div class="card-title">
+                                <!-- Search -->
+                                <div class="input-group">
+                                    Set up car type
+                                    <i class="fas fa-search" style="font-size: 110%; margin: 5px 10px 0px 10px;"></i>
+                                    <input type="text" id="search" class="form-control form-control-sm col-md-4" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             Car type set up such as, new type, upload image and switch on-off
@@ -122,7 +129,7 @@
                                 </div>
                             </form>
 
-                            <table class="table mt-3">
+                            <table class="table mt-3" id="table">
                                 <tbody>
                                     <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
                                     <tr>
@@ -190,6 +197,17 @@ $(document).ready(function() {
             }
         })
     }
+});
+
+// search
+var $rows = $('#table tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
 });
 
 // hide add car type form
