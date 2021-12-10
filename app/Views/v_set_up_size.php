@@ -90,7 +90,14 @@
                 <div class="col-md-9">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Set up container size</div>
+                            <div class="card-title">
+                                <!-- Search -->
+                                <div class="input-group">
+                                    Set up container size
+                                    <i class="fas fa-search" style="font-size: 110%; margin: 5px 10px 0px 10px;"></i>
+                                    <input type="text" id="search" class="form-control form-control-sm col-md-4" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
                             Container size set up such as, new size, width, length, height, upload image and switch on-off
@@ -151,7 +158,7 @@
                                 </div>
                             </form>
 
-                            <table class="table mt-3">
+                            <table class="table mt-3" id="table">
                                 <thead>
                                     <tr style="text-center">
                                         <th></th>
@@ -274,6 +281,17 @@ $(document).ready(function() {
             }
         })
     }
+});
+
+// search
+var $rows = $('#table tr');
+$('#search').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
 });
 
 // hide add size form
