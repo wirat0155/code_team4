@@ -34,8 +34,13 @@ class Da_cdms_container_type extends Model {
     * @author   Wirat
     * @Create Date  2564-09-12
     */
-    public function container_type_update($cont_id = NULL, $cont_name = NULL) {
-        $sql = "UPDATE $this->table SET cont_name = '$cont_name' WHERE cont_id = '$cont_id'";
+    public function container_type_update($cont_id = NULL, $cont_name = NULL, $cont_image = NULL) {
+        if ($cont_image == NULL) {
+            $sql = "UPDATE $this->table SET cont_name = '$cont_name' WHERE cont_id = '$cont_id'";
+        }
+        else {
+            $sql = "UPDATE $this->table SET cont_name = '$cont_name', cont_image = '$cont_image' WHERE cont_id = '$cont_id'";
+        }
         $this->db->query($sql);
     }
     /*

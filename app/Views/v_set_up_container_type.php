@@ -114,7 +114,7 @@
                                                 <span class="input-group-text" id="show_browse">Browse</span>
                                             </div>
                                         </div>
-                                        <input type="file" class="form-control-file input-full" id="cont_image" name="cont_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
+                                        <input type="file" class="form-control-file input-full" id="cont_image" name="cont_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden required>
                                     </div>
 
                                     <!-- Add container type -->
@@ -138,19 +138,33 @@
                                             </td>
 
                                             <!-- container type image -->
+                                            <form action="<?php echo base_url() . '/Set_up_container_type/edit_container_type'?>" method="POST" enctype="multipart/form-data">
                                             <td>
                                                 <div class="avatar avatar-lg">
-                                                    <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
-                                                    <?php else : ?>
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
-                                                    <?php endif; ?>
-                                                </div>
-                                            </td>
+                                                        <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
+                                                        <?php else : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
+                                                        <?php endif; ?>
+                                                        <br>
+                                                        <input hidden type="file" name="cont_image_<?php echo $arr_container_type[$i]->cont_id?>" accept="image/*">
+                                                    </div>
+                                                </td>
 
-                                            <!-- container type name -->
-                                            <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></td>
-
+                                                <!-- container type name -->
+                                                <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>">
+                                                    <span class="cost_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
+                                                    <input type="hidden" name="cont_id" value="<?php echo $arr_container_type[$i]->cont_id ?>">
+                                                    <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?>" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
+                                                    <br/>
+                                                </td>
+                                                <td>
+                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
+                                                    </form>
+                                                
+                                                    <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
+                                                    <button class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)">Edit</button>
+                                                </td>
                                             <!-- switch -->
                                             <td>
                                                 <label class="switch">
@@ -289,5 +303,43 @@ function show_input() {
  */
 function get_id(cont_id) {
     $('#cont_id').val(cont_id);
+}
+
+/*
+ * open_edit_form
+ * open container type edit form
+ * @input    cont_id
+ * @output   open container type edit form
+ * @author   Wirat
+ * @Create Date  2564-12-10
+ */
+function open_edit_form(cont_id) {
+    // alert(cont_id);
+    $('input[name=cont_image_' + cont_id + ']').prop('hidden', false);
+    $('.cost_name_'+ cont_id).prop('hidden', true);
+    $('.edit_btn_'+ cont_id).prop('hidden', true);
+    $('.cont_name_input_' + cont_id).prop('hidden', false);
+    $('.confirm_btn_' + cont_id).prop('hidden', false);
+    $('.cancel_btn_' + cont_id).prop('hidden', false);
+}
+
+/*
+ * cancel_edit
+ * close container type edit form
+ * @input    cont_id
+ * @output   close container type edit form
+ * @author   Wirat
+ * @Create Date  2564-12-10
+ */
+
+function cancel_edit(cont_id) {
+    // alert(cont_id);
+    $('input[name=cont_image_' + cont_id + ']').prop('hidden', true);
+    $('.cost_name_'+ cont_id).prop('hidden', false);
+    $('.edit_btn_'+ cont_id).prop('hidden', false);
+    $('.cont_name_input_' + cont_id).prop('hidden', true);
+    $('.confirm_btn_' + cont_id).prop('hidden', true);
+    $('.cancel_btn_' + cont_id).prop('hidden', true);
+    $(".error_" + cont_id).text("");
 }
 </script>
