@@ -113,5 +113,12 @@ class Set_up_status_container extends Cdms_controller
         $m_stac->status_container_delete($this->request->getPost('stac_id'));
         return $this->response->redirect(base_url('/Set_up_status_container/status_container_show'));
     }
-
+    public function edit_status_container() {
+        $stac_id = $this->request->getPost('stac_id');
+        $stac_name = $this->request->getPost('stac_name');
+        $m_stac = new M_cdms_status_container();
+        print_r($this->request->getPost());
+        $m_stac->status_container_update($stac_id, $stac_name);
+        return $this->response->redirect(base_url('/Set_up_status_container/status_container_show'));
+    }
 }

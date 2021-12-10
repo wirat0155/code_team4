@@ -153,7 +153,7 @@
 
                                                 <!-- container type name -->
                                                 <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>">
-                                                    <span class="cost_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
+                                                    <span class="cont_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
                                                     <input type="hidden" name="cont_id" value="<?php echo $arr_container_type[$i]->cont_id ?>">
                                                     <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?>" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
                                                     <br/>
@@ -316,7 +316,7 @@ function get_id(cont_id) {
 function open_edit_form(cont_id) {
     // alert(cont_id);
     $('input[name=cont_image_' + cont_id + ']').prop('hidden', false);
-    $('.cost_name_'+ cont_id).prop('hidden', true);
+    $('.cont_name_'+ cont_id).prop('hidden', true);
     $('.edit_btn_'+ cont_id).prop('hidden', true);
     $('.cont_name_input_' + cont_id).prop('hidden', false);
     $('.confirm_btn_' + cont_id).prop('hidden', false);
@@ -335,7 +335,7 @@ function open_edit_form(cont_id) {
 function cancel_edit(cont_id) {
     // alert(cont_id);
     $('input[name=cont_image_' + cont_id + ']').prop('hidden', true);
-    $('.cost_name_'+ cont_id).prop('hidden', false);
+    $('.cont_name_'+ cont_id).prop('hidden', false);
     $('.edit_btn_'+ cont_id).prop('hidden', false);
     $('.cont_name_input_' + cont_id).prop('hidden', true);
     $('.confirm_btn_' + cont_id).prop('hidden', true);

@@ -128,9 +128,26 @@
                                                 </script>
                                             </td>
 
+                                            <!-- container type image -->
+                                            <form action="<?php echo base_url() . '/Set_up_status_container/edit_status_container'?>" method="POST">
                                             <!-- ชื่อสถานะตู้ -->
-                                            <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>"><?php echo $arr_status_container[$i]->stac_name ?></td>
+                                            <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>">
+                                                <span class="stac_name_<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                    <?php echo $arr_status_container[$i]->stac_name ?>
+                                                </span>
 
+                                                <input type="hidden" name="stac_id" value="<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                <input hidden type="text" name="stac_name" class="stac_name_input_<?php echo $arr_status_container[$i]->stac_id ?>" value="<?php echo $arr_status_container[$i]->stac_name ?>" required>
+                                                <br/>
+                                            </td>
+
+                                            <td>
+                                                <button hidden type="submit" class="confirm_btn_<?php echo $arr_status_container[$i]->stac_id ?>" onclick="edit_container_type(<?php echo $arr_status_container[$i]->stac_id ?>)">Confirm</button>
+                                                </form>
+                                            
+                                                <button hidden class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?>" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
+                                                <button class="edit_btn_<?php echo $arr_status_container[$i]->stac_id ?>" onclick="open_edit_form(<?php echo $arr_status_container[$i]->stac_id?>)">Edit</button>
+                                            </td>
                                             <!-- Switch -->
                                             <td>
                                                 <label class="switch">
@@ -256,5 +273,39 @@ function show_input() {
  */
 function get_id(stac_id) {
     $('#stac_id').val(stac_id);
+}
+
+/*
+ * open_edit_form
+ * open status container edit form
+ * @input    stac_id
+ * @output   open container type edit form
+ * @author   Wirat
+ * @Create Date  2564-12-10
+ */
+function open_edit_form(stac_id) {
+    $('.stac_name_'+ stac_id).prop('hidden', true);
+    $('.edit_btn_'+ stac_id).prop('hidden', true);
+    $('.stac_name_input_' + stac_id).prop('hidden', false);
+    $('.confirm_btn_' + stac_id).prop('hidden', false);
+    $('.cancel_btn_' + stac_id).prop('hidden', false);
+}
+
+/*
+ * cancel_edit
+ * close status container edit form
+ * @input    stac_id
+ * @output   close status container edit form
+ * @author   Wirat
+ * @Create Date  2564-12-10
+ */
+
+function cancel_edit(stac_id) {
+    $('.stac_name_'+ stac_id).prop('hidden', false);
+    $('.edit_btn_'+ stac_id).prop('hidden', false);
+    $('.stac_name_input_' + stac_id).prop('hidden', true);
+    $('.confirm_btn_' + stac_id).prop('hidden', true);
+    $('.cancel_btn_' + stac_id).prop('hidden', true);
+    $(".error_" + stac_id).text("");
 }
 </script>
