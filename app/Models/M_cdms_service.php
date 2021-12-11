@@ -56,7 +56,6 @@ class M_cdms_service extends Da_cdms_service {
     public function get_num_import($arrivals_date = '') {
         $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
                 WHERE ser_arrivals_date LIKE '$arrivals_date%' AND ser_status = 1" ;
-
         // return as object
         return $this->db->query($sql)->getRow();
     }
@@ -88,7 +87,11 @@ class M_cdms_service extends Da_cdms_service {
     public function get_num_drop($date = '', $date_time = '', $is_today = true) {
         if ($is_today) {
             $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
-                    WHERE ser_stac_id NOT IN (1, 4) AND ser_status = 1";
+                    WHERE ser_stac_id NOT IN (1, 4) 
+                    AND ser_arrivals_date < '$date'
+                    AND (ser_actual_departure_date > '$date_time' 
+                    OR ser_actual_departure_date IS NULL)
+                    AND ser_status = 1";
         }
         else {
             $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
@@ -269,6 +272,16 @@ class M_cdms_service extends Da_cdms_service {
     public function get_arrivals_date_by_ser_id($ser_id) {
         $sql = "SELECT ser_arrivals_date FROM $this->table
                 WHERE ser_id = '$ser_id'";
+        return $this->db->query($sql)->getRow();
+    }
+
+    public function get_number_cont($cont_id = '', $date_time = '') {
+        $sql = "SELECT COUNT(ser_id) AS num_cont FROM $this->table
+                LEFT JOIN cdms_container ON con_id = ser_con_id
+                LEFT JOIN cdms_container_type ON cont_id = con_cont_id
+                WHERE cont_id = '$cont_id' AND ser_status = 1 
+                AND (ser_actual_departure_date > '$date_time' OR ser_actual_departure_date IS NULL)
+                GROUP BY '$cont_id'";
         return $this->db->query($sql)->getRow();
     }
 }

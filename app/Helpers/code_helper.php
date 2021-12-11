@@ -103,6 +103,12 @@
       return "";
     }
   }
+  function short_date($date) {
+    $abbr_month = array("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+    $month = substr($date, 5, 2);
+    $date = substr($date, 8, 2);
+    return $abbr_month[$month] . " " . $date;
+  }
 
 
   function show_add_service_form() {
