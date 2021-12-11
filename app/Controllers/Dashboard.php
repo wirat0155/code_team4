@@ -26,15 +26,14 @@ class Dashboard extends Cdms_controller
     */
     public function dashboard_show()
     {
+        date_default_timezone_set("Asia/Bangkok");
         $_SESSION['menu'] = 'Dashboard';
 
         // get all car type
         $m_cart = new M_cdms_car_type();
         $data['arr_car_type'] = $m_cart->get_all();
-        // print_r($data['arr_cart_type']);
         // get container size
-
-        $m_size = new M_cdms_size();
+            $m_size = new M_cdms_size();
         $data['arr_size'] = $m_size->get_all();
 
         // get status container
@@ -71,17 +70,23 @@ class Dashboard extends Cdms_controller
         }
 
         $data['arr_num_cont'] = $this->get_number_cont();
-        // echo array_sum($data['arr_num_cont']);
-        // print_r($data['arr_num_cont']);
+        $data['today'] = date('Y-m-d');
+        $data['arr_today_service'] = $this->get_today_service();
+
         $this->output('v_dashboard', $data);
+    }
+
+    public function get_today_service() {
+        date_default_timezone_set("Asia/Bangkok");
+        $today = date('Y-m-d');
+        $m_ser = new M_cdms_service();
+        $arr_today_service = $m_ser->get_by_departure_date($today);
+        return $arr_today_service;
     }
 
     public function get_day($number_of_day = 15) {
         date_default_timezone_set("Asia/Bangkok");
         $arr_dates = array();
-        $arr_num_import = array();
-        $arr_num_export = array();
-        $arr_num_drop = array();
         for($i = 0; $i < $number_of_day; $i++) {
             array_push($arr_dates, date("Y-m-d", strtotime(($i * -1) . " day")));
         }
@@ -91,7 +96,6 @@ class Dashboard extends Cdms_controller
         $m_ser = new M_cdms_service();
         $num_import = $m_ser->get_num_import($date);
         return $num_import->num_import;
-        // return $num_import->num_import;
     }
 
     public function get_number_export($date = NULL) {

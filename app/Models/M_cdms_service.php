@@ -284,4 +284,20 @@ class M_cdms_service extends Da_cdms_service {
                 GROUP BY '$cont_id'";
         return $this->db->query($sql)->getRow();
     }
+
+    public function get_by_departure_date($date = NULL) {
+        if ($date != NULL) {
+                $sql = "SELECT con_number, stac_name, cont_name, ser_departure_date, ser_departure_location, dri_name
+                        car_number, cus_company_name FROM cdms_service
+                        LEFT JOIN cdms_container ON con_id = ser_con_id
+                        LEFT JOIN cdms_status_container ON stac_id = ser_stac_id
+                        LEFT JOIN cdms_container_type ON con_cont_id = cont_id
+                        LEFT JOIN cdms_driver ON dri_id = ser_dri_id_out
+                        LEFT JOIN cdms_car ON car_id = ser_car_id_out
+                        LEFT JOIN cdms_customer ON cus_id = ser_cus_id
+                        WHERE (ser_departure_date LIKE '$date%') OR (ser_departure_date <= '$date' AND ser_actual_departure_date IS NULL)";
+            return $this->db->query($sql)->getResult();
+        }
+
+    }
 }

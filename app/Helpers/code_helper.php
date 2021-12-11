@@ -109,6 +109,9 @@
     $date = substr($date, 8, 2);
     return $abbr_month[$month] . " " . $date;
   }
+  function short_time($date_time = "2021-12-11 13:00:00") {
+    return substr($date_time, 11, 5);
+  }
 
 
   function show_add_service_form() {

@@ -194,7 +194,7 @@
           <div class="card-body">
             <div class="table-responsive">
               <table id="service_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
-                <h1>Service time today</h1>
+                <h1>Service time today <span style="font-size: 60%"><i class="bi bi-calendar3 ml-3 mr-2"></i><?php echo date_thai($today) ?></span></h1>
                 <thead>
                   <tr style="background-color: #999; color: #fff; ">
                     <th class="text-center">Container number</th>
@@ -208,58 +208,43 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php for ($i = 0; $i < count($arr_today_service); $i++) {?>
                   <tr>
                     <td>
-                      WFHU 51822 0
+                      <?php echo $arr_today_service[$i]->con_number ?>
                     </td>
                     <td>
-                      <span class="bg-drop text-white p-2" style="border-radius: 5px;">Ready</span>
+                      <span class="bg-drop text-white p-2" style="border-radius: 5px;"><?php echo $arr_today_service[$i]->stac_name ?></span>
                     </td>
                     <td>
-                      Dry Container
+                      <?php echo $arr_today_service[$i]->cont_name ?>
                     </td>
                     <td>
-                      17:30
+                      <?php 
+                      date_default_timezone_set("Asia/Bangkok");
+                      $today = date('Y-m-d');
+                      if (substr($arr_today_service[$i]->ser_departure_date, 0, 10) == $today) {
+                        echo "Today, " . short_time($arr_today_service[$i]->ser_departure_date);
+                      }
+                      else {
+                        echo date_thai($arr_today_service[$i]->ser_departure_date);
+                      }
+                      ?>
                     </td>
                     <td>
-                      ระยอง
+                      <?php echo $arr_today_service[$i]->ser_departure_location ?>
                     </td>
                     <td>
-                      สมปอง ชีวจิต
+                      <?php echo $arr_today_service[$i]->dri_name ?>
                     </td>
                     <td>
-                      รถคันที่ 45
+                      รถคันที่ <?php echo $arr_today_service[$i]->car_number ?>
                     </td>
                     <td>
-                      ไอวี
+                      <?php echo $arr_today_service[$i]->cus_company_name ?>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      WFHU 51822 0
-                    </td>
-                    <td>
-                    <span class="bg-drop text-white p-2" style="border-radius: 5px;">Ready</span>
-                    </td>
-                    <td>
-                      Dry Container
-                    </td>
-                    <td>
-                      17:30
-                    </td>
-                    <td>
-                      ระยอง
-                    </td>
-                    <td>
-                      สมปอง ชีวจิต
-                    </td>
-                    <td>
-                      รถคันที่ 45
-                    </td>
-                    <td>
-                      ไอวี
-                    </td>
-                  </tr>
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -272,7 +257,6 @@
 
 <script>
   $(document).ready(function() {
-    // add service button
     $('#service_list_table').DataTable();
   });
   //set up block
@@ -286,7 +270,7 @@
       'Ventilated Con. :    <?php echo $arr_num_cont[5] ?>'
     ],
     datasets: [{
-      label: 'My First Dataset',
+      label: 'Current container type usage',
       data: 
       <?php
       echo "[";
