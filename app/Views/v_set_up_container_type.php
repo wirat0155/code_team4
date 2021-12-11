@@ -12,6 +12,60 @@
 .cl-blue {
     color: #1244B9 !important;
 }
+
+.input_edit {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 1.2em 0 0 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.btn_cancel {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background: #e0e1e2 none;
+    color: rgba(0, 0, 0, .6);
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    margin: 0 0 0 0.5em;
+    padding: 0.4em 0.5em 0.4em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+}
+
+.btn_confirm {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background-color: #f2711c;
+    color: #fff;
+    background-image: none;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    padding: 0.4em 0.5em 0.4em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+}
 </style>
 
 <div class="ui modal">
@@ -154,6 +208,7 @@
                                                         <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
                                                         <?php endif; ?>
                                                         <br>
+
                                                         <input hidden type="file" name="cont_image_<?php echo $arr_container_type[$i]->cont_id?>" accept="image/*">
                                                     </div>
                                                 </td>
@@ -162,15 +217,15 @@
                                                 <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>">
                                                     <span class="cont_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
                                                     <input type="hidden" name="cont_id" value="<?php echo $arr_container_type[$i]->cont_id ?>">
-                                                    <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?>" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
+                                                    <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?> input_edit" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
                                                     <br />
                                                 </td>
                                                 <td>
-                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
+                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
                                             </form>
+                                            <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
 
-                                            <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
-                                            <button class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?>" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)">Edit</button>
+                                            <i class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)"></i>
                                             </td>
                                             <!-- switch -->
                                             <td>
@@ -334,8 +389,8 @@ function get_id(cont_id) {
 function open_edit_form(cont_id) {
     // alert(cont_id);
     $('input[name=cont_image_' + cont_id + ']').prop('hidden', false);
-    $('.cont_name_'+ cont_id).prop('hidden', true);
-    $('.edit_btn_'+ cont_id).prop('hidden', true);
+    $('.cont_name_' + cont_id).prop('hidden', true);
+    $('.edit_btn_' + cont_id).prop('hidden', true);
     $('.cont_name_input_' + cont_id).prop('hidden', false);
     $('.confirm_btn_' + cont_id).prop('hidden', false);
     $('.cancel_btn_' + cont_id).prop('hidden', false);
@@ -353,11 +408,18 @@ function open_edit_form(cont_id) {
 function cancel_edit(cont_id) {
     // alert(cont_id);
     $('input[name=cont_image_' + cont_id + ']').prop('hidden', true);
-    $('.cont_name_'+ cont_id).prop('hidden', false);
-    $('.edit_btn_'+ cont_id).prop('hidden', false);
+    $('.cont_name_' + cont_id).prop('hidden', false);
+    $('.edit_btn_' + cont_id).prop('hidden', false);
     $('.cont_name_input_' + cont_id).prop('hidden', true);
     $('.confirm_btn_' + cont_id).prop('hidden', true);
     $('.cancel_btn_' + cont_id).prop('hidden', true);
     $(".error_" + cont_id).text("");
 }
+
+// button edit file
+const actualBtn = document.getElementById('actual-btn');
+const fileChosen = document.getElementById('file-chosen');
+actualBtn.addEventListener('change', function() {
+    fileChosen.textContent = this.files[0].name
+})
 </script>

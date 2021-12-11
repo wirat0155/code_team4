@@ -30,17 +30,21 @@ class Da_cdms_size extends Model {
 
     /*
     * size_update
-    * update size
-    * @input    size_name, size_width_in, size_length_in, size_height_in, size_width_out, size_length_out, size_height_out
+    * update size type
+    * @input    size_id, size_name
     * @output   update size
-    * @author   Wirat
-    * @Create Date  2564-09-12
+    * @author   Tadsawan
+    * @Create Date  2564-10-12
     */
-    public function size_update($size_id = NULL, $size_name = NULL, $size_width_in = NULL, $size_length_in = NULL, $size_height_in = NULL, $size_width_out = NULL, $size_length_out = NULL, $size_height_out = NULL) {
-        $sql = "UPDATE $this->table SET size_name = '$size_name', size_width_in = '$size_width_in', size_length_in = '$size_length_in', size_height_in = '$size_height_in', size_width_out = '$size_width_out', size_length_out = '$size_length_out', size_height_out = '$size_height_out' WHERE size_id = '$size_id'";
+    public function size_update($size_id = NULL, $size_name = NULL, $size_width_in = NULL, $size_length_in = NULL, $size_height_in = NULL, $size_width_out = NULL, $size_length_out = NULL, $size_height_out = NULL, $size_image = NULL) {
+        if ($size_image == NULL) {
+            $sql = "UPDATE $this->table SET size_name = '$size_name', size_width_in = '$size_width_in', size_length_in = '$size_length_in', size_height_in = '$size_height_in', size_width_out = '$size_width_out', size_length_out = '$size_length_out', size_height_out = '$size_height_out' WHERE size_id = '$size_id'";
+        }
+        else {
+            $sql = "UPDATE $this->table SET size_name = '$size_name', size_width_in = '$size_width_in', size_length_in = '$size_length_in', size_height_in = '$size_height_in', size_width_out = '$size_width_out', size_length_out = '$size_length_out', size_height_out = '$size_height_out', size_image = '$size_image' WHERE size_id = '$size_id'";
+        }
         $this->db->query($sql);
     }
-
 
     /*
     * delete

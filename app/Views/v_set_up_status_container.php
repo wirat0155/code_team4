@@ -12,6 +12,60 @@
 .cl-blue {
     color: #1244B9 !important;
 }
+
+.input_edit {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 1.2em 0 0 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.btn_cancel {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background: #e0e1e2 none;
+    color: rgba(0, 0, 0, .6);
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    margin: 0 0 0 0.5em;
+    padding: 0.4em 0.5em 0.4em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+}
+
+.btn_confirm {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background-color: #f2711c;
+    color: #fff;
+    background-image: none;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    padding: 0.4em 0.5em 0.4em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+}
 </style>
 
 <div class="ui modal">
@@ -137,23 +191,24 @@
 
                                             <!-- container type image -->
                                             <form action="<?php echo base_url() . '/Set_up_status_container/edit_status_container'?>" method="POST">
-                                            <!-- ชื่อสถานะตู้ -->
-                                            <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>">
-                                                <span class="stac_name_<?php echo $arr_status_container[$i]->stac_id ?>">
-                                                    <?php echo $arr_status_container[$i]->stac_name ?>
-                                                </span>
+                                                <!-- ชื่อสถานะตู้ -->
+                                                <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>">
+                                                    <span class="stac_name_<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                        <?php echo $arr_status_container[$i]->stac_name ?>
+                                                    </span>
 
-                                                <input type="hidden" name="stac_id" value="<?php echo $arr_status_container[$i]->stac_id ?>">
-                                                <input hidden type="text" name="stac_name" class="stac_name_input_<?php echo $arr_status_container[$i]->stac_id ?>" value="<?php echo $arr_status_container[$i]->stac_name ?>" required>
-                                                <br/>
-                                            </td>
+                                                    <input type="hidden" name="stac_id" value="<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                    <input hidden type="text" name="stac_name" class="stac_name_input_<?php echo $arr_status_container[$i]->stac_id ?> input_edit" value="<?php echo $arr_status_container[$i]->stac_name ?>" required>
+                                                    <br />
+                                                </td>
 
-                                            <td>
-                                                <button hidden type="submit" class="confirm_btn_<?php echo $arr_status_container[$i]->stac_id ?>" onclick="edit_container_type(<?php echo $arr_status_container[$i]->stac_id ?>)">Confirm</button>
-                                                </form>
-                                            
-                                                <button hidden class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?>" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
-                                                <button class="edit_btn_<?php echo $arr_status_container[$i]->stac_id ?>" onclick="open_edit_form(<?php echo $arr_status_container[$i]->stac_id?>)">Edit</button>
+                                                <td>
+                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_status_container[$i]->stac_id ?>)">Confirm</button>
+                                            </form>
+
+                                            <button hidden class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
+
+                                            <i class="edit_btn_<?php echo $arr_status_container[$i]->stac_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_status_container[$i]->stac_id?>)"></i>
                                             </td>
                                             <!-- Switch -->
                                             <td>
@@ -302,8 +357,8 @@ function get_id(stac_id) {
  * @Create Date  2564-12-10
  */
 function open_edit_form(stac_id) {
-    $('.stac_name_'+ stac_id).prop('hidden', true);
-    $('.edit_btn_'+ stac_id).prop('hidden', true);
+    $('.stac_name_' + stac_id).prop('hidden', true);
+    $('.edit_btn_' + stac_id).prop('hidden', true);
     $('.stac_name_input_' + stac_id).prop('hidden', false);
     $('.confirm_btn_' + stac_id).prop('hidden', false);
     $('.cancel_btn_' + stac_id).prop('hidden', false);
@@ -319,8 +374,8 @@ function open_edit_form(stac_id) {
  */
 
 function cancel_edit(stac_id) {
-    $('.stac_name_'+ stac_id).prop('hidden', false);
-    $('.edit_btn_'+ stac_id).prop('hidden', false);
+    $('.stac_name_' + stac_id).prop('hidden', false);
+    $('.edit_btn_' + stac_id).prop('hidden', false);
     $('.stac_name_input_' + stac_id).prop('hidden', true);
     $('.confirm_btn_' + stac_id).prop('hidden', true);
     $('.cancel_btn_' + stac_id).prop('hidden', true);

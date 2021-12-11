@@ -12,6 +12,61 @@
 .cl-blue {
     color: #1244B9 !important;
 }
+
+
+.input_edit {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 1.2em 0 0 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.btn_cancel {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background: #e0e1e2 none;
+    color: rgba(0, 0, 0, .6);
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    margin: 0 0 0 0.5em;
+    padding: 0.4em 0.5em 0.4em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+}
+
+.btn_confirm {
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    background-color: #f2711c;
+    color: #fff;
+    background-image: none;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    padding: 0.4em 0.5em 0.4em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+}
 </style>
 
 <div class="ui modal">
@@ -145,19 +200,34 @@
                                             </td>
 
                                             <!-- car type image -->
-                                            <td>
-                                                <div class="avatar avatar-lg">
-                                                    <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
-                                                    <?php else : ?>
-                                                    <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
-                                                    <?php endif; ?>
-                                                </div>
+                                            <form action="<?php echo base_url() . '/Set_up_car_type/edit_car_type'?>" method="POST" enctype="multipart/form-data">
+                                                <td>
+                                                    <div class="avatar avatar-lg">
+                                                        <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                        <?php else : ?>
+                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                        <?php endif; ?>
+
+                                                        <input hidden type="file" name="cart_image_<?php echo $arr_car_type[$i]->cart_id?>" accept="image/*">
+                                                    </div>
+                                                </td>
+
+                                                <!-- car type name -->
+                                                <td class="cart_name <?php echo $arr_car_type[$i]->cart_id ?>">
+                                                    <span class="cart_name_<?php echo $arr_car_type[$i]->cart_id ?>">
+                                                        <?php echo $arr_car_type[$i]->cart_name ?>
+                                                    </span>
+                                                    <input type="hidden" name="cart_id" value="<?php echo $arr_car_type[$i]->cart_id ?>">
+                                                    <input hidden type="text" name="cart_name" class="cart_name_input_<?php echo $arr_car_type[$i]->cart_id ?> input_edit" value="<?php echo $arr_car_type[$i]->cart_name ?>" required>
+                                                    <br />
+                                                </td>
+                                                <td>
+                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_car_type[$i]->cart_id ?> btn_confirm" onclick="edit_car_type(<?php echo $arr_car_type[$i]->cart_id ?>)">Confirm</button>
+                                            </form>
+                                            <button hidden class="cancel_btn_<?php echo $arr_car_type[$i]->cart_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_car_type[$i]->cart_id ?>)">Cancel</button>
+                                            <i class="edit_btn_<?php echo $arr_car_type[$i]->cart_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_car_type[$i]->cart_id?>)"></i>
                                             </td>
-
-                                            <!-- car type name -->
-                                            <td class="cart_name <?php echo $arr_car_type[$i]->cart_id ?>"><?php echo $arr_car_type[$i]->cart_name ?></td>
-
                                             <!-- switch -->
                                             <td>
                                                 <label class="switch">
@@ -308,5 +378,43 @@ function show_input() {
  */
 function get_id(cart_id) {
     $('#cart_id').val(cart_id);
+}
+
+/*
+ * open_edit_form
+ * open car type edit form
+ * @input    cart_id
+ * @output   open car type edit form
+ * @author   Tadswan
+ * @Create Date  2564-12-10
+ */
+function open_edit_form(cart_id) {
+    // alert(cart_id);
+    $('input[name=cart_image_' + cart_id + ']').prop('hidden', false);
+    $('.cart_name_' + cart_id).prop('hidden', true);
+    $('.edit_btn_' + cart_id).prop('hidden', true);
+    $('.cart_name_input_' + cart_id).prop('hidden', false);
+    $('.confirm_btn_' + cart_id).prop('hidden', false);
+    $('.cancel_btn_' + cart_id).prop('hidden', false);
+}
+
+/*
+ * cancel_edit
+ * close car type edit form
+ * @input    cart_id
+ * @output   close car type edit form
+ * @author   Tadsawan
+ * @Create Date  2564-12-10
+ */
+
+function cancel_edit(cart_id) {
+    // alert(cart_id);
+    $('input[name=cart_image_' + cart_id + ']').prop('hidden', true);
+    $('.cart_name_' + cart_id).prop('hidden', false);
+    $('.edit_btn_' + cart_id).prop('hidden', false);
+    $('.cart_name_input_' + cart_id).prop('hidden', true);
+    $('.confirm_btn_' + cart_id).prop('hidden', true);
+    $('.cancel_btn_' + cart_id).prop('hidden', true);
+    $(".error_" + cart_id).text("");
 }
 </script>

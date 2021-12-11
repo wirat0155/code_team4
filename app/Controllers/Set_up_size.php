@@ -130,4 +130,33 @@ class Set_up_size extends Cdms_controller
         return $this->response->redirect(base_url('/Set_up_size/size_show'));
     }
 
+    /*
+    * edit_size
+    * edit size
+    * @input    size_id, size_name
+    * @output   edit size
+    * @author   Tadswan
+    * @Create Date  2564-12-10
+    */
+    public function edit_size() {
+        $size_id = $this->request->getPost('size_id');
+        $size_name = $this->request->getPost('size_name');
+        $size_width_in = $this->request->getPost('size_width_in');
+        $size_length_in = $this->request->getPost('size_length_in');
+        $size_height_in = $this->request->getPost('size_height_in');
+        $size_width_out = $this->request->getPost('size_width_out');
+        $size_length_out = $this->request->getPost('size_length_out');
+        $size_height_out = $this->request->getPost('size_height_out');
+
+        // upload image
+        $file = $this->request->getFile('size_image_' . $size_id);
+        if ($file->isValid() && !$file->hasMoved()) {
+            $size_image = $file->getRandomName();
+            $file->move('./size_image', $cont_image);
+        }
+        $m_size = new M_cdms_size();
+        $m_size->size_update($size_id, $size_name, $size_width_in, $size_length_in, $size_height_in, $size_width_out, $size_length_out, $size_height_out, $size_image);
+        return $this->response->redirect(base_url('/Set_up_size/size_show'));
+    }
+
 }

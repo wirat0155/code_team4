@@ -31,11 +31,16 @@ class Da_cdms_car_type extends Model {
     * update car type
     * @input    cart_id, cart_name
     * @output   update car type
-    * @author   Wirat
-    * @Create Date  2564-09-12
+    * @author   Tadsawan
+    * @Create Date  2564-10-12
     */
-    public function car_type_update($cart_id = NULL, $cart_name = NULL) {
-        $sql = "UPDATE $this->table SET cart_name = '$cart_name' WHERE cart_id = '$cart_id'";
+    public function car_type_update($cart_id = NULL, $cart_name = NULL, $cart_image = NULL) {
+        if ($cart_image == NULL) {
+            $sql = "UPDATE $this->table SET cart_name = '$cart_name' WHERE cart_id = '$cart_id'";
+        }
+        else {
+            $sql = "UPDATE $this->table SET cart_name = '$cart_name', cart_image = '$cart_image' WHERE cart_id = '$cart_id'";
+        }
         $this->db->query($sql);
     }
 
