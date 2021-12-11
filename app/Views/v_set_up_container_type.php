@@ -204,9 +204,9 @@
                                                     <td>
                                                         <div class="avatar avatar-lg">
                                                             <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
-                                                            <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
+                                                            <img class="avatar-img img_<?php echo $arr_container_type[$i]->cont_id ?>" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
                                                             <?php else : ?>
-                                                            <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
+                                                            <img class="avatar-img img_<?php echo $arr_container_type[$i]->cont_id ?>" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
                                                             <?php endif; ?>
                                                             <br>
 
@@ -391,12 +391,14 @@ function get_id(cont_id) {
  */
 function open_edit_form(cont_id) {
     // alert(cont_id);
-    $('input[name=cont_image_' + cont_id + ']').prop('hidden', false);
     $('.cont_name_' + cont_id).prop('hidden', true);
     $('.edit_btn_' + cont_id).prop('hidden', true);
     $('.cont_name_input_' + cont_id).prop('hidden', false);
     $('.confirm_btn_' + cont_id).prop('hidden', false);
     $('.cancel_btn_' + cont_id).prop('hidden', false);
+    $('.img_' + cont_id).attr('onclick', "$('input[name=cont_image_"+ cont_id + "]').click()");
+    $('.img_' + cont_id).css("cursor", "pointer");
+
 }
 
 /*
@@ -410,13 +412,14 @@ function open_edit_form(cont_id) {
 
 function cancel_edit(cont_id) {
     // alert(cont_id);
-    $('input[name=cont_image_' + cont_id + ']').prop('hidden', true);
     $('.cont_name_' + cont_id).prop('hidden', false);
     $('.edit_btn_' + cont_id).prop('hidden', false);
     $('.cont_name_input_' + cont_id).prop('hidden', true);
     $('.confirm_btn_' + cont_id).prop('hidden', true);
     $('.cancel_btn_' + cont_id).prop('hidden', true);
     $(".error_" + cont_id).text("");
+    $('.img_' + cont_id).prop("onclick", null);
+    $('.img_' + cont_id).css("cursor", "none");
 }
 
 // button edit file
