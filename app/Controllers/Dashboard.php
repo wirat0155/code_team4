@@ -76,6 +76,14 @@ class Dashboard extends Cdms_controller
         $this->output('v_dashboard', $data);
     }
 
+    /*
+    * get_today_service
+    * get today service
+    * @input    -
+    * @output   array of service
+    * @author   Wirat
+    * @Create Date  2564-12-11
+    */
     public function get_today_service() {
         date_default_timezone_set("Asia/Bangkok");
         $today = date('Y-m-d');
@@ -84,6 +92,14 @@ class Dashboard extends Cdms_controller
         return $arr_today_service;
     }
 
+    /*
+    * get_day
+    * get date
+    * @input    number of day
+    * @output   array of date
+    * @author   Wirat
+    * @Create Date  2564-12-11
+    */
     public function get_day($number_of_day = 15) {
         date_default_timezone_set("Asia/Bangkok");
         $arr_dates = array();
@@ -92,12 +108,29 @@ class Dashboard extends Cdms_controller
         }
         return $arr_dates;
     }
+
+    /*
+    * get_number_import
+    * get number of import
+    * @input    date
+    * @output   number of import in the date
+    * @author   Wirat
+    * @Create Date  2564-12-11
+    */
     public function get_number_import($date) {
         $m_ser = new M_cdms_service();
         $num_import = $m_ser->get_num_import($date);
         return $num_import->num_import;
     }
 
+    /*
+    * get_number_export
+    * get number of export
+    * @input    date
+    * @output   number of export in the date
+    * @author   Wirat
+    * @Create Date  2564-12-11
+    */
     public function get_number_export($date = NULL) {
         date_default_timezone_set("Asia/Bangkok");
         $m_ser = new M_cdms_service();
@@ -107,6 +140,14 @@ class Dashboard extends Cdms_controller
         return $num_export->num_export;
     }
 
+    /*
+    * get_number_drop
+    * get number of drop
+    * @input    date
+    * @output   number of drop in the date
+    * @author   Wirat
+    * @Create Date  2564-12-11
+    */
     public function get_number_drop($date = NULL) {
         date_default_timezone_set("Asia/Bangkok");
         $today = date('Y-m-d');
@@ -122,6 +163,14 @@ class Dashboard extends Cdms_controller
         return $num_drop->num_drop;
     }
 
+    /*
+    * get_number_cont
+    * get number of each container type
+    * @input    -
+    * @output   array of number each container type
+    * @author   Wirat
+    * @Create Date  2564-12-11
+    */
     public function get_number_cont() {
         $arr_num_cont = array();
 
