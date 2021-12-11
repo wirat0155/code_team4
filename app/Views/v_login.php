@@ -90,6 +90,7 @@
         display: flex;
         width: 60%;
         padding: 0 !important; 
+        max-width: 920px !important;
     }
 
     .img_cdms {
