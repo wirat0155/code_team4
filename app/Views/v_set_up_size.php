@@ -14,10 +14,9 @@
 }
 
 .input_edit {
-    display: block;
     width: 100%;
     height: calc(2.25rem + 2px);
-    margin: 1.2em 0 0 0;
+    margin: 0.2em 0 0 0;
     font-size: 1rem;
     line-height: 1.5;
     color: #495057;
@@ -35,7 +34,7 @@
     color: rgba(0, 0, 0, .6);
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-    margin: 0 0 0 0.5em;
+    margin: 0.2em 0 0 0;
     padding: 0.4em 0.5em 0.4em;
     text-transform: none;
     text-shadow: none;
@@ -212,116 +211,118 @@
                                 </div>
                             </form>
 
-                            <table class="table mt-3" id="table">
-                                <thead>
-                                    <tr style="text-center">
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th>Width in, out</th>
-                                        <th>Length in, out</th>
-                                        <th>Height in, out</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                    <tr>
-                                        <div <?php echo 'size_id' . $arr_size[$i]->size_id ?>>
-                                            <!-- delete button -->
-                                            <td>
-                                                <div id="btn_delete<?php echo $arr_size[$i]->size_id ?>" class="item test button" onclick="get_id(<?php echo $arr_size[$i]->size_id?>)" <?php if($arr_size[$i]->size_status == 1) echo "hidden" ?>>
-                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
-                                                </div>
-                                                <script>
-                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                </script>
-                                            </td>
-
-                                            <!-- container size image -->
-                                            <form action="<?php echo base_url() . '/Set_up_size/edit_size'?>" method="POST" enctype="multipart/form-data">
+                            <div class="table-responsive">
+                                <table class="table mt-3" id="table">
+                                    <thead>
+                                        <tr style="text-center">
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>Width in, out</th>
+                                            <th>Length in, out</th>
+                                            <th>Height in, out</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
+                                        <tr>
+                                            <div <?php echo 'size_id' . $arr_size[$i]->size_id ?>>
+                                                <!-- delete button -->
                                                 <td>
-                                                    <div class="avatar avatar-lg">
-                                                        <?php if ($arr_size[$i]->size_image != NULL && $arr_size[$i]->size_image != '') : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
-                                                        <?php else : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
-                                                        <?php endif; ?>
-                                                        <input hidden type="file" name="size_image_<?php echo $arr_size[$i]->size_id?>" accept="image/*">
+                                                    <div id="btn_delete<?php echo $arr_size[$i]->size_id ?>" class="item test button" onclick="get_id(<?php echo $arr_size[$i]->size_id?>)" <?php if($arr_size[$i]->size_status == 1) echo "hidden" ?>>
+                                                        <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
                                                     </div>
+                                                    <script>
+                                                    $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                    </script>
                                                 </td>
 
-                                                <!-- container size name -->
-                                                <td class="size_name <?php echo $arr_size[$i]->size_id ?>">
-                                                    <span class="size_name_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_name ?></span>
+                                                <!-- container size image -->
+                                                <form action="<?php echo base_url() . '/Set_up_size/edit_size'?>" method="POST" enctype="multipart/form-data">
+                                                    <td>
+                                                        <div class="avatar avatar-lg">
+                                                            <?php if ($arr_size[$i]->size_image != NULL && $arr_size[$i]->size_image != '') : ?>
+                                                            <img class="avatar-img" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                            <?php else : ?>
+                                                            <img class="avatar-img" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                            <?php endif; ?>
+                                                            <input hidden type="file" name="size_image_<?php echo $arr_size[$i]->size_id?>" accept="image/*">
+                                                        </div>
+                                                    </td>
 
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_name" class="size_name_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_name ?>" required>
-                                                    <br />
+                                                    <!-- container size name -->
+                                                    <td class="size_name <?php echo $arr_size[$i]->size_id ?>">
+                                                        <span class="size_name_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_name ?></span>
 
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_name" class="size_name_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_name ?>" required>
+                                                        <br />
+
+                                                    </td>
+
+                                                    <!-- width in, out -->
+                                                    <td>
+                                                        <span class="size_width_in_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_width_in ?>,</span>
+                                                        <span class="size_width_out_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_width_out ?></span>
+
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_width_in" class="size_width_in_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_width_in ?>" required>
+                                                        <br />
+
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_width_out" class="size_width_out_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_width_out ?>" required>
+                                                        <br />
+                                                    </td>
+
+                                                    <!-- length in, out -->
+                                                    <td>
+                                                        <span class="size_length_in_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_length_in ?>,</span>
+                                                        <span class="size_length_out_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_length_out ?></span>
+
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_length_in" class="size_length_in_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_length_in ?>" required>
+                                                        <br />
+
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_length_out" class="size_length_out_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_length_out ?>" required>
+                                                        <br />
+                                                    </td>
+
+                                                    <!-- height in, out -->
+                                                    <td>
+                                                        <span class="size_height_in_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_height_in ?>,</span>
+                                                        <span class="size_height_out_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_height_out ?></span>
+
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_height_in" class="size_height_in_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_height_in ?>" required>
+                                                        <br />
+
+                                                        <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
+                                                        <input hidden type="text" name="size_height_out" class="size_height_out_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_height_out ?>" required>
+                                                        <br />
+                                                    </td>
+
+                                                    <td>
+                                                        <button hidden type="submit" class="confirm_btn_<?php echo $arr_size[$i]->size_id ?> btn_confirm" onclick="edit_size(<?php echo $arr_size[$i]->size_id ?>)">Confirm</button>
+                                                </form>
+                                                <button hidden class="cancel_btn_<?php echo $arr_size[$i]->size_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_size[$i]->size_id ?>)">Cancel</button>
+                                                <i class="edit_btn_<?php echo $arr_size[$i]->size_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_size[$i]->size_id?>)"></i>
                                                 </td>
-
-                                                <!-- width in, out -->
+                                                <!-- switch -->
                                                 <td>
-                                                    <span class="size_width_in_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_width_in ?>,</span>
-                                                    <span class="size_width_out_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_width_out ?></span>
-
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_width_in" class="size_width_in_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_width_in ?>" required>
-                                                    <br />
-
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_width_out" class="size_width_out_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_width_out ?>" required>
-                                                    <br />
+                                                    <label class="switch">
+                                                        <input id="size_id<?php echo $arr_size[$i]->size_id ?>" type="checkbox" onclick="check_status_size(<?php echo $arr_size[$i]->size_id ?>)" <?php if($arr_size[$i]->size_status == 2)echo " checked" ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
                                                 </td>
-
-                                                <!-- length in, out -->
-                                                <td>
-                                                    <span class="size_length_in_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_length_in ?>,</span>
-                                                    <span class="size_length_out_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_length_out ?></span>
-
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_length_in" class="size_length_in_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_length_in ?>" required>
-                                                    <br />
-
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_length_out" class="size_length_out_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_length_out ?>" required>
-                                                    <br />
-                                                </td>
-
-                                                <!-- height in, out -->
-                                                <td>
-                                                    <span class="size_height_in_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_height_in ?>,</span>
-                                                    <span class="size_height_out_<?php echo $arr_size[$i]->size_id ?>"><?php echo $arr_size[$i]->size_height_out ?></span>
-
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_height_in" class="size_height_in_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_height_in ?>" required>
-                                                    <br />
-
-                                                    <input type="hidden" name="size_id" value="<?php echo $arr_size[$i]->size_id ?>">
-                                                    <input hidden type="text" name="size_height_out" class="size_height_out_input_<?php echo $arr_size[$i]->size_id ?> input_edit" value="<?php echo $arr_size[$i]->size_height_out ?>" required>
-                                                    <br />
-                                                </td>
-
-                                                <td>
-                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_size[$i]->size_id ?> btn_confirm" onclick="edit_size(<?php echo $arr_size[$i]->size_id ?>)">Confirm</button>
-                                            </form>
-                                            <button hidden class="cancel_btn_<?php echo $arr_size[$i]->size_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_size[$i]->size_id ?>)">Cancel</button>
-                                            <i class="edit_btn_<?php echo $arr_size[$i]->size_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_size[$i]->size_id?>)"></i>
-                                            </td>
-                                            <!-- switch -->
-                                            <td>
-                                                <label class="switch">
-                                                    <input id="size_id<?php echo $arr_size[$i]->size_id ?>" type="checkbox" onclick="check_status_size(<?php echo $arr_size[$i]->size_id ?>)" <?php if($arr_size[$i]->size_status == 2)echo " checked" ?>>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                        </div>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
+                                            </div>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

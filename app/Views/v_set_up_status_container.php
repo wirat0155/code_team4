@@ -35,7 +35,7 @@
     color: rgba(0, 0, 0, .6);
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-    margin: 0 0 0 0.5em;
+    margin: 0 0 0 0.1em;
     padding: 0.4em 0.5em 0.4em;
     text-transform: none;
     text-shadow: none;
@@ -174,55 +174,57 @@
                                 </div>
                             </form>
 
-                            <table class="table mt-3" id="table">
-                                <tbody>
-                                    <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                    <tr>
-                                        <div <?php echo 'stac_id' . $arr_status_container[$i]->stac_id ?>>
-                                            <!-- ลบ -->
-                                            <td>
-                                                <div id="btn_delete<?php echo $arr_status_container[$i]->stac_id ?>" class="item test button" onclick="get_id(<?php echo $arr_status_container[$i]->stac_id?>)" <?php if($arr_status_container[$i]->stac_status == 1) echo "hidden" ?>>
-                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
-                                                </div>
-                                                <script>
-                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                </script>
-                                            </td>
-
-                                            <!-- container type image -->
-                                            <form action="<?php echo base_url() . '/Set_up_status_container/edit_status_container'?>" method="POST">
-                                                <!-- ชื่อสถานะตู้ -->
-                                                <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>">
-                                                    <span class="stac_name_<?php echo $arr_status_container[$i]->stac_id ?>">
-                                                        <?php echo $arr_status_container[$i]->stac_name ?>
-                                                    </span>
-
-                                                    <input type="hidden" name="stac_id" value="<?php echo $arr_status_container[$i]->stac_id ?>">
-                                                    <input hidden type="text" name="stac_name" class="stac_name_input_<?php echo $arr_status_container[$i]->stac_id ?> input_edit" value="<?php echo $arr_status_container[$i]->stac_name ?>" required>
-                                                    <br />
+                            <div class="table-responsive">
+                                <table class="table mt-3" id="table">
+                                    <tbody>
+                                        <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
+                                        <tr>
+                                            <div <?php echo 'stac_id' . $arr_status_container[$i]->stac_id ?>>
+                                                <!-- ลบ -->
+                                                <td>
+                                                    <div id="btn_delete<?php echo $arr_status_container[$i]->stac_id ?>" class="item test button" onclick="get_id(<?php echo $arr_status_container[$i]->stac_id?>)" <?php if($arr_status_container[$i]->stac_status == 1) echo "hidden" ?>>
+                                                        <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
+                                                    </div>
+                                                    <script>
+                                                    $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                    </script>
                                                 </td>
 
+                                                <!-- container type image -->
+                                                <form action="<?php echo base_url() . '/Set_up_status_container/edit_status_container'?>" method="POST">
+                                                    <!-- ชื่อสถานะตู้ -->
+                                                    <td class="stac_name <?php echo $arr_status_container[$i]->stac_id ?>">
+                                                        <span class="stac_name_<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                            <?php echo $arr_status_container[$i]->stac_name ?>
+                                                        </span>
+
+                                                        <input type="hidden" name="stac_id" value="<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                        <input hidden type="text" name="stac_name" class="stac_name_input_<?php echo $arr_status_container[$i]->stac_id ?> input_edit" value="<?php echo $arr_status_container[$i]->stac_name ?>" required>
+                                                        <br />
+                                                    </td>
+
+                                                    <td>
+                                                        <button hidden type="submit" class="confirm_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_status_container[$i]->stac_id ?>)">Confirm</button>
+                                                </form>
+
+                                                <button hidden class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
+
+                                                <i class="edit_btn_<?php echo $arr_status_container[$i]->stac_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_status_container[$i]->stac_id?>)"></i>
+                                                </td>
+                                                <!-- Switch -->
                                                 <td>
-                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_status_container[$i]->stac_id ?>)">Confirm</button>
-                                            </form>
+                                                    <label class="switch">
+                                                        <input id="stac_id<?php echo $arr_status_container[$i]->stac_id ?>" type="checkbox" onclick="check_status_container(<?php echo $arr_status_container[$i]->stac_id ?>)" <?php if($arr_status_container[$i]->stac_status == 2)echo " checked" ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                        <?php } ?>
 
-                                            <button hidden class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
-
-                                            <i class="edit_btn_<?php echo $arr_status_container[$i]->stac_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_status_container[$i]->stac_id?>)"></i>
-                                            </td>
-                                            <!-- Switch -->
-                                            <td>
-                                                <label class="switch">
-                                                    <input id="stac_id<?php echo $arr_status_container[$i]->stac_id ?>" type="checkbox" onclick="check_status_container(<?php echo $arr_status_container[$i]->stac_id ?>)" <?php if($arr_status_container[$i]->stac_status == 2)echo " checked" ?>>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                        </div>
-                                    </tr>
-                                    <?php } ?>
-
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

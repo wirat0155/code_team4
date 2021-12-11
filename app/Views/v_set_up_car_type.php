@@ -36,7 +36,7 @@
     color: rgba(0, 0, 0, .6);
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-    margin: 0 0 0 0.5em;
+    margin: 0 0 0 0.1em;
     padding: 0.4em 0.5em 0.4em;
     text-transform: none;
     text-shadow: none;
@@ -183,64 +183,65 @@
                                     <button type="submit" class="ui positive button pull-right">Add</button>
                                 </div>
                             </form>
-
-                            <table class="table mt-3" id="table">
-                                <tbody>
-                                    <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
-                                    <tr>
-                                        <div <?php echo 'cart_id' . $arr_car_type[$i]->cart_id ?>>
-                                            <!-- delete button -->
-                                            <td>
-                                                <div id="btn_delete<?php echo $arr_car_type[$i]->cart_id ?>" class="item test button" onclick="get_id(<?php echo $arr_car_type[$i]->cart_id?>)" <?php if($arr_car_type[$i]->cart_status == 1) echo "hidden" ?>>
-                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
-                                                </div>
-                                                <script>
-                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                </script>
-                                            </td>
-
-                                            <!-- car type image -->
-                                            <form action="<?php echo base_url() . '/Set_up_car_type/edit_car_type'?>" method="POST" enctype="multipart/form-data">
+                            <div class="table-responsive">
+                                <table class="table mt-3" id="table">
+                                    <tbody>
+                                        <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
+                                        <tr>
+                                            <div <?php echo 'cart_id' . $arr_car_type[$i]->cart_id ?>>
+                                                <!-- delete button -->
                                                 <td>
-                                                    <div class="avatar avatar-lg">
-                                                        <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
-                                                        <?php else : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
-                                                        <?php endif; ?>
-
-                                                        <input hidden type="file" name="cart_image_<?php echo $arr_car_type[$i]->cart_id?>" accept="image/*">
+                                                    <div id="btn_delete<?php echo $arr_car_type[$i]->cart_id ?>" class="item test button" onclick="get_id(<?php echo $arr_car_type[$i]->cart_id?>)" <?php if($arr_car_type[$i]->cart_status == 1) echo "hidden" ?>>
+                                                        <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
                                                     </div>
+                                                    <script>
+                                                    $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                    </script>
                                                 </td>
 
-                                                <!-- car type name -->
-                                                <td class="cart_name <?php echo $arr_car_type[$i]->cart_id ?>">
-                                                    <span class="cart_name_<?php echo $arr_car_type[$i]->cart_id ?>">
-                                                        <?php echo $arr_car_type[$i]->cart_name ?>
-                                                    </span>
-                                                    <input type="hidden" name="cart_id" value="<?php echo $arr_car_type[$i]->cart_id ?>">
-                                                    <input hidden type="text" name="cart_name" class="cart_name_input_<?php echo $arr_car_type[$i]->cart_id ?> input_edit" value="<?php echo $arr_car_type[$i]->cart_name ?>" required>
-                                                    <br />
+                                                <!-- car type image -->
+                                                <form action="<?php echo base_url() . '/Set_up_car_type/edit_car_type'?>" method="POST" enctype="multipart/form-data">
+                                                    <td>
+                                                        <div class="avatar avatar-lg">
+                                                            <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
+                                                            <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                            <?php else : ?>
+                                                            <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                            <?php endif; ?>
+
+                                                            <input hidden type="file" name="cart_image_<?php echo $arr_car_type[$i]->cart_id?>" accept="image/*">
+                                                        </div>
+                                                    </td>
+
+                                                    <!-- car type name -->
+                                                    <td class="cart_name <?php echo $arr_car_type[$i]->cart_id ?>">
+                                                        <span class="cart_name_<?php echo $arr_car_type[$i]->cart_id ?>">
+                                                            <?php echo $arr_car_type[$i]->cart_name ?>
+                                                        </span>
+                                                        <input type="hidden" name="cart_id" value="<?php echo $arr_car_type[$i]->cart_id ?>">
+                                                        <input hidden type="text" name="cart_name" class="cart_name_input_<?php echo $arr_car_type[$i]->cart_id ?> input_edit" value="<?php echo $arr_car_type[$i]->cart_name ?>" required>
+                                                        <br />
+                                                    </td>
+                                                    <td>
+                                                        <button hidden type="submit" class="confirm_btn_<?php echo $arr_car_type[$i]->cart_id ?> btn_confirm" onclick="edit_car_type(<?php echo $arr_car_type[$i]->cart_id ?>)">Confirm</button>
+                                                </form>
+                                                <button hidden class="cancel_btn_<?php echo $arr_car_type[$i]->cart_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_car_type[$i]->cart_id ?>)">Cancel</button>
+                                                <i class="edit_btn_<?php echo $arr_car_type[$i]->cart_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_car_type[$i]->cart_id?>)"></i>
                                                 </td>
+                                                <!-- switch -->
                                                 <td>
-                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_car_type[$i]->cart_id ?> btn_confirm" onclick="edit_car_type(<?php echo $arr_car_type[$i]->cart_id ?>)">Confirm</button>
-                                            </form>
-                                            <button hidden class="cancel_btn_<?php echo $arr_car_type[$i]->cart_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_car_type[$i]->cart_id ?>)">Cancel</button>
-                                            <i class="edit_btn_<?php echo $arr_car_type[$i]->cart_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_car_type[$i]->cart_id?>)"></i>
-                                            </td>
-                                            <!-- switch -->
-                                            <td>
-                                                <label class="switch">
-                                                    <input id="cart_id<?php echo $arr_car_type[$i]->cart_id ?>" type="checkbox" onclick="check_status_car_type(<?php echo $arr_car_type[$i]->cart_id ?>)" <?php if($arr_car_type[$i]->cart_status == 2)echo " checked" ?>>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                        </div>
-                                    </tr>
-                                    <?php } ?>
+                                                    <label class="switch">
+                                                        <input id="cart_id<?php echo $arr_car_type[$i]->cart_id ?>" type="checkbox" onclick="check_status_car_type(<?php echo $arr_car_type[$i]->cart_id ?>)" <?php if($arr_car_type[$i]->cart_status == 2)echo " checked" ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                        <?php } ?>
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

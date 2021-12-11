@@ -35,7 +35,7 @@
     color: rgba(0, 0, 0, .6);
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
-    margin: 0 0 0 0.5em;
+    margin: 0 0 0 0.1em;
     padding: 0.4em 0.5em 0.4em;
     text-transform: none;
     text-shadow: none;
@@ -183,62 +183,65 @@
                                 </div>
                             </form>
 
-                            <table class="table mt-3" id="table">
-                                <tbody>
-                                    <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                    <tr>
-                                        <div <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>>
-                                            <!-- delete button -->
-                                            <td>
-                                                <div id="btn_delete<?php echo $arr_container_type[$i]->cont_id ?>" class="item test button" onclick="get_id(<?php echo $arr_container_type[$i]->cont_id?>)" <?php if($arr_container_type[$i]->cont_status == 1) echo "hidden" ?>>
-                                                    <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
-                                                </div>
-                                                <script>
-                                                $('.ui.modal').modal('attach events', '.test.button', 'toggle');
-                                                </script>
-                                            </td>
-
-                                            <!-- container type image -->
-                                            <form action="<?php echo base_url() . '/Set_up_container_type/edit_container_type'?>" method="POST" enctype="multipart/form-data">
+                            <div class="table-responsive">
+                                <table class="table mt-3" id="table">
+                                    <tbody>
+                                        <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
+                                        <tr>
+                                            <div <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>>
+                                                <!-- delete button -->
                                                 <td>
-                                                    <div class="avatar avatar-lg">
-                                                        <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
-                                                        <?php else : ?>
-                                                        <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
-                                                        <?php endif; ?>
-                                                        <br>
-
-                                                        <input hidden type="file" name="cont_image_<?php echo $arr_container_type[$i]->cont_id?>" accept="image/*">
+                                                    <div id="btn_delete<?php echo $arr_container_type[$i]->cont_id ?>" class="item test button" onclick="get_id(<?php echo $arr_container_type[$i]->cont_id?>)" <?php if($arr_container_type[$i]->cont_status == 1) echo "hidden" ?>>
+                                                        <i class='fas fa-times-circle' style="font-size: 130%; color:#FF0000; cursor:pointer;"></i>
                                                     </div>
+                                                    <script>
+                                                    $('.ui.modal').modal('attach events', '.test.button', 'toggle');
+                                                    </script>
                                                 </td>
 
-                                                <!-- container type name -->
-                                                <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>">
-                                                    <span class="cont_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
-                                                    <input type="hidden" name="cont_id" value="<?php echo $arr_container_type[$i]->cont_id ?>">
-                                                    <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?> input_edit" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
-                                                    <br />
+                                                <!-- container type image -->
+                                                <form action="<?php echo base_url() . '/Set_up_container_type/edit_container_type'?>" method="POST" enctype="multipart/form-data">
+                                                    <td>
+                                                        <div class="avatar avatar-lg">
+                                                            <?php if ($arr_container_type[$i]->cont_image != NULL && $arr_container_type[$i]->cont_image != '') : ?>
+                                                            <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/' . $arr_container_type[$i]->cont_image ?>" alt="" loading="lazy">
+                                                            <?php else : ?>
+                                                            <img class="avatar-img" src="<?php echo base_url() . '/container_type_image/container_placeholder.jpg' ?>" alt="" loading="lazy">
+                                                            <?php endif; ?>
+                                                            <br>
+
+                                                            <input hidden type="file" name="cont_image_<?php echo $arr_container_type[$i]->cont_id?>" accept="image/*">
+
+                                                        </div>
+                                                    </td>
+
+                                                    <!-- container type name -->
+                                                    <td class="cont_name <?php echo $arr_container_type[$i]->cont_id ?>">
+                                                        <span class="cont_name_<?php echo $arr_container_type[$i]->cont_id ?>"><?php echo $arr_container_type[$i]->cont_name ?></span>
+                                                        <input type="hidden" name="cont_id" value="<?php echo $arr_container_type[$i]->cont_id ?>">
+                                                        <input hidden type="text" name="cont_name" class="cont_name_input_<?php echo $arr_container_type[$i]->cont_id ?> input_edit" value="<?php echo $arr_container_type[$i]->cont_name ?>" required>
+                                                        <br />
+                                                    </td>
+                                                    <td>
+                                                        <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
+                                                </form>
+                                                <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
+
+                                                <i class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)"></i>
                                                 </td>
+                                                <!-- switch -->
                                                 <td>
-                                                    <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
-                                            </form>
-                                            <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
-
-                                            <i class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)"></i>
-                                            </td>
-                                            <!-- switch -->
-                                            <td>
-                                                <label class="switch">
-                                                    <input id="cont_id<?php echo $arr_container_type[$i]->cont_id ?>" type="checkbox" onclick="check_status_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)" <?php if($arr_container_type[$i]->cont_status == 2)echo " checked" ?>>
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </td>
-                                        </div>
-                                    </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
+                                                    <label class="switch">
+                                                        <input id="cont_id<?php echo $arr_container_type[$i]->cont_id ?>" type="checkbox" onclick="check_status_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)" <?php if($arr_container_type[$i]->cont_status == 2)echo " checked" ?>>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
