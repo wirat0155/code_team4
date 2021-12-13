@@ -104,7 +104,7 @@ class Service_show extends Cdms_controller {
 
             // count drop service
             // today and yesterday
-            $obj_num_drop = $m_ser->get_num_drop();
+            $obj_num_drop = $m_ser->get_num_drop($today, $today_time, true);
             $data['num_drop'] = $obj_num_drop->num_drop;
             $obj_num_yesterday_drop = $m_ser->get_num_drop($yesterday, $yesterday_time, false);
             $data['num_yesterday_drop'] = $obj_num_yesterday_drop->num_drop;
