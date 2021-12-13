@@ -44,6 +44,69 @@ class Dashboard extends Cdms_controller
         $m_cont = new M_cdms_container_type();
         $data['arr_container_type'] = $m_cont->get_all();
 
+        $m_ser = new M_cdms_service();
+
+        $today = date('Y-m-d');
+        $today_time = date('Y-m-d H:i:s');
+        $yesterday = date('Y-m-d', strtotime('-1 Days'));
+        $yesterday_time = date('Y-m-d H:i:s', strtotime('-1 Days'));
+
+        if (isset($_GET['date_range'])) {
+            $date_range = $this->request->getGet('date_range');
+            $start_date = substr($date_range, 6, 4) . '-' . substr($date_range, 3, 2) . '-' . (substr($date_range, 0, 2));
+            $end_date = substr($date_range, 19, 4) . '-' . substr($date_range, 16, 2) . '-' . (substr($date_range, 13, 2));
+
+            $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
+
+            $data['arrivals_date'] = $date_range;
+        } else {
+            // get service data upon by date
+            $data['arr_service'] = $m_ser->get_all($today);
+            // get all the time service
+            $data['arr_service_temp'] = $m_ser->get_all();
+
+            // no service data
+            if (count($data['arr_service']) == 0) {
+                $start = date('Y/m/d');
+                $end = date('Y/m/d');
+            }
+            // has service data
+            else {
+                $index = count($data['arr_service_temp']) - 1;
+                $start = $data['arr_service_temp'][$index]->ser_arrivals_date;
+                $end = $data['arr_service_temp'][0]->ser_arrivals_date;
+                $data['arrivals_date'] = substr($start, 8, 2) . '/' . substr($start, 5, 2) . '/' . (substr($start, 0, 4)) . ' - ' . date("d-m-Y");
+            }
+
+            $date['yesterday'] = $yesterday;
+            $date['today'] = $today;
+
+            // count import service
+            // today and yesterday
+            $obj_num_import = $m_ser->get_num_import($today);
+            $obj_num_yesterday_import = $m_ser->get_num_import($yesterday);
+            $data['num_import'] = $obj_num_import->num_import;
+            $data['num_yesterday_import'] = $obj_num_yesterday_import->num_import;
+
+            // count export service
+            // today and yesterday
+            $obj_num_export = $m_ser->get_num_export($today, $today_time, true);
+            $obj_num_yesterady_export = $m_ser->get_num_export($yesterday, $yesterday_time, false);
+            $data['num_export'] = $obj_num_export->num_export;
+            $data['num_yesterday_export'] = $obj_num_yesterady_export->num_export;
+
+            // count drop service
+            // today and yesterday
+            $obj_num_drop = $m_ser->get_num_drop($today, $today_time, true);
+            $data['num_drop'] = $obj_num_drop->num_drop;
+            $obj_num_yesterday_drop = $m_ser->get_num_drop($yesterday, $yesterday_time, false);
+            $data['num_yesterday_drop'] = $obj_num_yesterday_drop->num_drop;
+
+            // count all service yesterday
+            $obj_num_yesterday_all = $m_ser->get_num_all($today, $yesterday_time);
+            $data['num_yesterday_all'] = $obj_num_yesterday_all->num_all;
+        }
+
         $number_of_day = 15;
         $data['arr_dates'] = $this->get_day($number_of_day);
 

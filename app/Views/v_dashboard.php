@@ -55,116 +55,118 @@
       </div>
     </div>
     <div class="row justify-content-center align-items-center relative">
-      <div class="col-sm-6 col-md-3">
-        <div class="card ">
-          <div class="card-body pb-0 ">
-            <div class="h3">IMPORT
-              <span class="circle-import float-right"><img src="<?php echo base_url() . '/upload/cargo_1.png' ?>"></span>
-            </div>
-            <h2 class="mt-0 ml-3">
-              <?php echo 50; ?>
-              <!-- $num_import -->
-            </h2>
+        <div class="col-sm-6 col-md-3">
+            <div class="card ">
+                <div class="card-body pb-0 ">
+                    <div class="h3">IMPORT
+                        <span class="circle-import float-right"><img
+                                src="<?php echo base_url() . '/upload/cargo_1.png' ?>"></span>
+                    </div>
+                    <h2 class="mt-0 ml-3">
+                        <?php echo $num_import ?>
+                    </h2>
 
-            <?php if ($num_import >= $num_yesterday_import) : ?>
-              <p class="mb-3" style="color: #09F600;">
-                <i class="fas fa-arrow-up"></i>
-                <?php echo "(+" . ($num_import - $num_yesterday_import) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php endif; ?>
+                    <?php if ($num_import >= $num_yesterday_import):?>
+                    <p class="mb-3" style="color: #09F600;">
+                        <i class="fas fa-arrow-up"></i>
+                        <?php echo "(+" . ($num_import - $num_yesterday_import) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php endif;?>
 
-            <?php if ($num_import < $num_yesterday_import) : ?>
-              <p class="mb-3" style="color: #F60029;">
-                <i class="fas fa-arrow-down"></i>
-                <?php echo "(" . ($num_import - $num_yesterday_import) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6  col-md-3">
-        <div class="card ">
-          <div class="card-body pb-0 ">
-            <div class="h3">DROP
-              <span class="circle-drop float-right"><img src="<?php echo base_url() . '/upload/container_2.png' ?>"></span>
+                    <?php if ($num_import < $num_yesterday_import):?>
+                    <p class="mb-3" style="color: #F60029;">
+                        <i class="fas fa-arrow-down"></i>
+                        <?php echo "(" . ($num_import - $num_yesterday_import) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php endif;?>
+                </div>
             </div>
-            <h2 class="mt-0 ml-3">
-              <?php echo  50; ?>
-              <!-- //$num_drop; -->
-            </h2>
-            <?php if ($num_drop >=  $num_yesterday_drop) { ?>
-              <p class="mb-3" style="color: #09F600;">
-                <i class="fas fa-arrow-up"></i>
-                <?php echo "(+" . ($num_drop - $num_yesterday_drop) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php } else { ?>
-              <p class="mb-3" style="color: #F60029;">
-                <i class="fas fa-arrow-down"></i>
-                <?php echo "(" . ($num_drop - $num_yesterday_drop) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php } ?>
-          </div>
         </div>
-      </div>
-      <div class="col-sm-6  col-md-3">
-        <div class="card ">
-          <div class="card-body pb-0 ">
-            <div class="h3">EXPORT
-              <span class="circle-export float-right"><img src="<?php echo base_url() . '/upload/bg-export.png' ?>"></span>
+        <div class="col-sm-6 col-md-3">
+            <div class="card ">
+                <div class="card-body pb-0 ">
+                    <div class="h3">DROP
+                        <span class="circle-drop float-right"><img
+                                src="<?php echo base_url() . '/upload/container_2.png' ?>"></span>
+                    </div>
+                    <h2 class="mt-0 ml-3">
+                        <?php echo $num_drop; ?>
+                    </h2>
+                    <?php if ($num_drop >=  $num_yesterday_drop) { ?>
+                    <p class="mb-3" style="color: #09F600;">
+                        <i class="fas fa-arrow-up"></i>
+                        <?php echo "(+" . ($num_drop - $num_yesterday_drop) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php } else { ?>
+                    <p class="mb-3" style="color: #F60029;">
+                        <i class="fas fa-arrow-down"></i>
+                        <?php echo "(" . ($num_drop - $num_yesterday_drop) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php } ?>
+                </div>
             </div>
-            <h2 class="mt-0 ml-3">
-              <?php echo 50; ?>
-              <!-- //$num_export -->
-            </h2>
-            <?php if ($num_export >= $num_yesterday_export) { ?>
-              <p class="mb-3" style="color: #09F600;">
-                <i class="fas fa-arrow-up"></i>
-                <?php echo "(+" . ($num_export - $num_yesterday_export) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php } else { ?>
-              <p class="mb-3" style="color: #F60029;">
-                <i class="fas fa-arrow-down"></i>
-                <?php echo "( " . ($num_export - $num_yesterday_export) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php } ?>
-          </div>
         </div>
-      </div>
-      <div class="col-sm-6  col-md-3">
-        <div class="card ">
-          <div class="card-body pb-0 ">
-            <div class="h3">TOTAL SERVICE
-              <span class="circle-total float-right"><img src="<?php echo base_url() . '/upload/infinite.png' ?>"></span>
+        <div class="col-sm-6 col-md-3">
+            <div class="card ">
+                <div class="card-body pb-0 ">
+                    <div class="h3">EXPORT
+                        <span class="circle-export float-right"><img
+                                src="<?php echo base_url() . '/upload/bg-export.png' ?>"></span>
+                    </div>
+                    <h2 class="mt-0 ml-3">
+                        <?php echo $num_export?>
+                    </h2>
+                    <?php if ($num_export >= $num_yesterday_export) { ?>
+                    <p class="mb-3" style="color: #09F600;">
+                        <i class="fas fa-arrow-up"></i>
+                        <?php echo "(+" . ($num_export - $num_yesterday_export) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php } else { ?>
+                    <p class="mb-3" style="color: #F60029;">
+                        <i class="fas fa-arrow-down"></i>
+                        <?php echo "( " . ($num_export - $num_yesterday_export) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php } ?>
+                </div>
             </div>
-            <h2 class="mt-0 ml-3">
-              <?php
-              // $num_all = count($arr_service);
-              echo 50;
-              ?>
-            </h2>
-            <?php if ($num_all >= $num_yesterday_all) { ?>
-              <p class="mb-3" style="color: #09F600;">
-                <i class="fas fa-arrow-up"></i>
-                <?php echo "(+" . ($num_all - $num_yesterday_all) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php } else { ?>
-              <p class="mb-3" style="color: #F60029;">
-                <i class="fas fa-arrow-down"></i>
-                <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
-                <label class="ml-3"> From yesterday</label>
-              </p>
-            <?php } ?>
-          </div>
         </div>
-      </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="card ">
+                <div class="card-body pb-0 ">
+                    <div class="h3">TOTAL SERVICE
+                        <span class="circle-total float-right"><img
+                                src="<?php echo base_url() . '/upload/infinite.png' ?>"></span>
+                    </div>
+                    <h2 class="mt-0 ml-3">
+                        <?php
+                        $num_all = count($arr_service);
+                        echo $num_all;
+                        ?>
+                    </h2>
+                    <?php if ($num_all >= $num_yesterday_all) { ?>
+                    <p class="mb-3" style="color: #09F600;">
+                        <i class="fas fa-arrow-up"></i>
+                        <?php echo "(+" . ($num_all - $num_yesterday_all) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php } else { ?>
+                    <p class="mb-3" style="color: #F60029;">
+                        <i class="fas fa-arrow-down"></i>
+                        <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
+                        <label class="ml-3"> From yesterday</label>
+                    </p>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="row d-flex justify-content-center">
       <!-- percent of container type -->
       <div class="col-sm-6 col-md-7">
@@ -400,7 +402,7 @@
           backgroundColor: gradient_dataset_1
         },
         {
-          label: [['DROP'], '<?php echo array_sum($arr_num_drop)?>'],
+          label: [['DROP'], '<?php echo array_sum($arr_num_import)?>'],
           data: 
           <?php
           echo "[";
