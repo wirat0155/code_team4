@@ -244,10 +244,12 @@
                                                     <td>
                                                         <div class="avatar avatar-lg">
                                                             <?php if ($arr_size[$i]->size_image != NULL && $arr_size[$i]->size_image != '') : ?>
-                                                            <img class="avatar-img" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                            <img class="avatar-img img_<?php echo $arr_size[$i]->size_id ?>" src="<?php echo base_url() . '/size_image/' . $arr_size[$i]->size_image ?>" alt="" loading="lazy">
                                                             <?php else : ?>
-                                                            <img class="avatar-img" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="<?php echo $arr_size[$i]->size_name ?>">
+                                                            <img class="avatar-img img_<?php echo $arr_size[$i]->size_id ?>" src="<?php echo base_url() . '/size_image/container_size_placeholder.png' ?>" alt="" loading="lazy">
                                                             <?php endif; ?>
+                                                            <br>
+
                                                             <input hidden type="file" name="size_image_<?php echo $arr_size[$i]->size_id?>" accept="image/*">
                                                         </div>
                                                     </td>
@@ -508,7 +510,6 @@ function get_id(size_id) {
  */
 function open_edit_form(size_id) {
     // alert(size_id);
-    $('input[name=size_image_' + size_id + ']').prop('hidden', false);
     $('.size_name_' + size_id).prop('hidden', true);
     $('.size_width_in_' + size_id).prop('hidden', true);
     $('.size_width_out_' + size_id).prop('hidden', true);
@@ -526,6 +527,8 @@ function open_edit_form(size_id) {
     $('.size_height_out_input_' + size_id).prop('hidden', false);
     $('.confirm_btn_' + size_id).prop('hidden', false);
     $('.cancel_btn_' + size_id).prop('hidden', false);
+    $('.img_' + size_id).attr('onclick', "$('input[name=size_image_" + size_id + "]').click()");
+    $('.img_' + size_id).css("cursor", "pointer");
 }
 
 /*
@@ -539,7 +542,6 @@ function open_edit_form(size_id) {
 
 function cancel_edit(size_id) {
     // alert(size_id);
-    $('input[name=size_image_' + size_id + ']').prop('hidden', true);
     $('.size_name_' + size_id).prop('hidden', false);
     $('.size_width_in_' + size_id).prop('hidden', false);
     $('.size_width_out_' + size_id).prop('hidden', false);
@@ -558,5 +560,7 @@ function cancel_edit(size_id) {
     $('.confirm_btn_' + size_id).prop('hidden', true);
     $('.cancel_btn_' + size_id).prop('hidden', true);
     $(".error_" + size_id).text("");
+    $('.img_' + size_id).prop("onclick", null);
+    $('.img_' + size_id).css("cursor", "none");
 }
 </script>

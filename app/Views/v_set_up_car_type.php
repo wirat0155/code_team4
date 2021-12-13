@@ -204,9 +204,9 @@
                                                     <td>
                                                         <div class="avatar avatar-lg">
                                                             <?php if ($arr_car_type[$i]->cart_image != NULL && $arr_car_type[$i]->cart_image != '') : ?>
-                                                            <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                            <img class="avatar-img img_<?php echo $arr_car_type[$i]->cart_id ?>" src="<?php echo base_url() . '/car_type_image/' . $arr_car_type[$i]->cart_image ?>" alt="" loading="lazy">
                                                             <?php else : ?>
-                                                            <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="<?php echo $arr_car_type[$i]->cart_name ?>">
+                                                            <img class="avatar-img img_<?php echo $arr_car_type[$i]->cart_id ?>" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>" alt="" loading="lazy">
                                                             <?php endif; ?>
 
                                                             <input hidden type="file" name="cart_image_<?php echo $arr_car_type[$i]->cart_id?>" accept="image/*">
@@ -391,12 +391,14 @@ function get_id(cart_id) {
  */
 function open_edit_form(cart_id) {
     // alert(cart_id);
-    $('input[name=cart_image_' + cart_id + ']').prop('hidden', false);
     $('.cart_name_' + cart_id).prop('hidden', true);
     $('.edit_btn_' + cart_id).prop('hidden', true);
     $('.cart_name_input_' + cart_id).prop('hidden', false);
     $('.confirm_btn_' + cart_id).prop('hidden', false);
     $('.cancel_btn_' + cart_id).prop('hidden', false);
+    $('.img_' + cart_id).attr('onclick', "$('input[name=cart_image_" + cart_id + "]').click()");
+    $('.img_' + cart_id).css("cursor", "pointer");
+
 }
 
 /*
@@ -410,12 +412,13 @@ function open_edit_form(cart_id) {
 
 function cancel_edit(cart_id) {
     // alert(cart_id);
-    $('input[name=cart_image_' + cart_id + ']').prop('hidden', true);
     $('.cart_name_' + cart_id).prop('hidden', false);
     $('.edit_btn_' + cart_id).prop('hidden', false);
     $('.cart_name_input_' + cart_id).prop('hidden', true);
     $('.confirm_btn_' + cart_id).prop('hidden', true);
     $('.cancel_btn_' + cart_id).prop('hidden', true);
     $(".error_" + cart_id).text("");
+    $('.img_' + cart_id).prop("onclick", null);
+    $('.img_' + cart_id).css("cursor", "none");
 }
 </script>

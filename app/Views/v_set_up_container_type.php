@@ -396,7 +396,7 @@ function open_edit_form(cont_id) {
     $('.cont_name_input_' + cont_id).prop('hidden', false);
     $('.confirm_btn_' + cont_id).prop('hidden', false);
     $('.cancel_btn_' + cont_id).prop('hidden', false);
-    $('.img_' + cont_id).attr('onclick', "$('input[name=cont_image_"+ cont_id + "]').click()");
+    $('.img_' + cont_id).attr('onclick', "$('input[name=cont_image_" + cont_id + "]').click()");
     $('.img_' + cont_id).css("cursor", "pointer");
 
 }
@@ -421,11 +421,4 @@ function cancel_edit(cont_id) {
     $('.img_' + cont_id).prop("onclick", null);
     $('.img_' + cont_id).css("cursor", "none");
 }
-
-// button edit file
-const actualBtn = document.getElementById('actual-btn');
-const fileChosen = document.getElementById('file-chosen');
-actualBtn.addEventListener('change', function() {
-    fileChosen.textContent = this.files[0].name
-})
 </script>
