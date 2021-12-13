@@ -187,7 +187,7 @@
                                 <table class="table mt-3" id="table">
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                        <tr>
+                                        <tr class="cont_name<?php echo $arr_container_type[$i]->cont_id ?>">
                                             <div <?php echo 'cont_id' . $arr_container_type[$i]->cont_id ?>>
                                                 <!-- delete button -->
                                                 <td>
@@ -271,14 +271,16 @@ $(document).ready(function() {
 });
 
 // search
-var $rows = $('#table tr');
+var columns = $('.cont_name');
+var rows = $('tr');
 $('#search').keyup(function() {
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-    $rows.show().filter(function() {
-        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-    }).hide();
+    rows.hide();
+    for(var i = columns.length; i > 0; i--) {
+        if($('.cont_name_'+ i).text().toLowerCase().search($(this).val()) >= 0){
+            $('.cont_name' + i).show();
+        }
+        console.log(' No.' + i + ' Text : ' + $('.cont_name_'+ i).text().toLowerCase() + ' Val : ' + $('.cont_name_'+ i).text().toLowerCase().search($(this).val()));
+    }
 });
 
 // hide add container type form
