@@ -25,7 +25,7 @@
         }
     });
     </script>
-    
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="http://localhost/code_team4/Assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost/code_team4/Assets/css/atlantis.min.css">
@@ -42,14 +42,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Semantic UI CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-        integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Semantic UI JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
-        integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Daterange -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -58,117 +54,125 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <style>
-        .ranges th {
-            color: black !important;
-            background-color: white !important;
-        }
+    .ranges th {
+        color: black !important;
+        background-color: white !important;
+    }
 
-        .cl-blue {
-            color: #1244b9 !important;
-        }
+    .cl-blue {
+        color: #1244b9 !important;
+    }
 
-        .bg-import {
-            background-color: #22b7ee;
-            /* Dodgrblue */
-        }
+    .bg-defective {
+        background-color: #db2828;
+        ;
+        /* Dodgrred */
+    }
 
-        .bg-export {
-            background-color: #04e17a;
-            /* Springgreen */
-        }
+    .bg-import {
+        background-color: #22b7ee;
+        /* Dodgrblue */
+    }
 
-        .bg-drop {
-            background-color: #ffa611;
-            /* Orange */
-        }
+    .bg-export {
+        background-color: #04e17a;
+        /* Springgreen */
+    }
 
-        .circle-import {
-            width: 63px;
-            height: 59px;
-            display: block;
-            position: relative;
-            background-color: #16ACF0;
-            border-radius: 50%;
-        }
+    .bg-drop {
+        background-color: #ffa611;
+        /* Orange */
+    }
 
-        .circle-drop {
-            width: 63px;
-            height: 59px;
-            display: block;
-            position: relative;
-            background-color: #FFA610;
-            border-radius: 50%;
-        }
+    .circle-import {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #16ACF0;
+        border-radius: 50%;
+    }
 
-        .circle-export {
-            width: 63px;
-            height: 59px;
-            display: block;
-            position: relative;
-            background-color: #44BB55;
-            border-radius: 50%;
-        }
+    .circle-drop {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #FFA610;
+        border-radius: 50%;
+    }
 
-        .circle-total {
-            width: 63px;
-            height: 59px;
-            display: block;
-            position: relative;
-            background-color: #F0168A;
-            border-radius: 50%;
-        }
+    .circle-export {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #44BB55;
+        border-radius: 50%;
+    }
 
-        .circle-import.float-right>img {
-            width: 35px;
-            height: 35px;
-            margin-left: 15px;
-            margin-top: 10px;
-        }
+    .circle-total {
+        width: 63px;
+        height: 59px;
+        display: block;
+        position: relative;
+        background-color: #F0168A;
+        border-radius: 50%;
+    }
 
-        .circle-drop.float-right>img {
-            width: 35px;
-            height: 35px;
-            margin-left: 15px;
-            margin-top: 10px;
-        }
+    .circle-import.float-right>img {
+        width: 35px;
+        height: 35px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
 
-        .circle-export.float-right>img {
-            width: 50px;
-            height: 35px;
-            margin-left: 8px;
-            margin-top: 13px;
-        }
+    .circle-drop.float-right>img {
+        width: 35px;
+        height: 35px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
 
-        .circle-total.float-right>img {
-            width: 35px;
-            height: 35px;
-            margin-left: 13px;
-            margin-top: 13px;
-        }
+    .circle-export.float-right>img {
+        width: 50px;
+        height: 35px;
+        margin-left: 8px;
+        margin-top: 13px;
+    }
 
-        .float-right>img {
-            width: 90px;
-            height: 60px;
-            margin-left: 15px;
-            margin-top: 10px;
-        }
+    .circle-total.float-right>img {
+        width: 35px;
+        height: 35px;
+        margin-left: 13px;
+        margin-top: 13px;
+    }
 
-        input.error {
-            border: 1px solid red !important;
-        }
+    .float-right>img {
+        width: 90px;
+        height: 60px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
 
-        .ui.search.dropdown>input.search.error {
-            border: 1px solid red !important;
-        }
+    input.error {
+        border: 1px solid red !important;
+    }
 
-        small.error,
-        label.error {
-            color: red !important;
-            font-weight: bold;
-        }
-        .main-panel, .page-inner {
-            background-color: #FCFCFC;
-        }
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
+
+    small.error,
+    label.error {
+        color: red !important;
+        font-weight: bold;
+    }
+
+    .main-panel,
+    .page-inner {
+        background-color: #FCFCFC;
+    }
     </style>
 </head>
 
@@ -179,25 +183,23 @@
             <div class="logo-header navbar-color">
 
                 <a href="index.html" class="logo">
-                    <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand" class="navbar-brand"
-                        style="width:100px;">
+                    <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand" class="navbar-brand" style="width:100px;">
                 </a>
 
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation" onclick="show_bar_shot_screen()">
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation" onclick="show_bar_shot_screen()">
                     <span class="navbar-toggler-icon" style="color:white;">
                         <i class="icon-menu"></i>
                     </span>
                 </button>
 
                 <script>
-                    function show_bar_shot_screen(){
-                        if($("html").hasClass("nav_open")){
-                            $('html').removeClass('nav_open');
-                        }else{
-                            $('html').addClass('nav_open');
-                        }
+                function show_bar_shot_screen() {
+                    if ($("html").hasClass("nav_open")) {
+                        $('html').removeClass('nav_open');
+                    } else {
+                        $('html').addClass('nav_open');
                     }
+                }
                 </script>
 
             </div>
@@ -206,11 +208,9 @@
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg navbar-color f_logo" style="color:white;">
 
-                <i class="icon-menu" onclick="show_full_bar();"
-                    style="font-size: 20px; cursor: pointer; margin-right: 10px"></i>
+                <i class="icon-menu" onclick="show_full_bar();" style="font-size: 20px; cursor: pointer; margin-right: 10px"></i>
 
-                <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand"
-                    class="navbar-brand mr-md-auto" style="width:100px">
+                <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand" class="navbar-brand mr-md-auto" style="width:100px">
 
             </nav>
             <!-- End Navbar -->
@@ -231,11 +231,11 @@
                         </li>
 
                         <li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Information</h4>
-						</li>
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Information</h4>
+                        </li>
 
                         <!-- Service menu -->
                         <li class="nav-item <?php if ($_SESSION['menu'] == 'Service_show') echo 'active' ?>">
@@ -249,6 +249,11 @@
                                     <li>
                                         <a href="<?php echo base_url() . '/Service_show/service_show_ajax' ?>">
                                             <span class="sub-item">Service list</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url() . '/Service_show/service_damaged_show_ajax' ?>">
+                                            <span class="sub-item">Damaged container</span>
                                         </a>
                                     </li>
                                     <li>
@@ -370,11 +375,11 @@
                         </li>
 
                         <li class="nav-section">
-							<span class="sidebar-mini-icon">
-								<i class="fa fa-ellipsis-h"></i>
-							</span>
-							<h4 class="text-section">Settings</h4>
-						</li>
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Settings</h4>
+                        </li>
 
                         <!-- Setup menu -->
                         <li class="nav-item <?php if ($_SESSION['menu'] == 'Set_up') echo 'active' ?>">
@@ -387,7 +392,7 @@
                 </div>
             </div>
         </div>
-     
+
         <script>
         // ย่อ ขยายหน้า ตอนกด slide bar
         function slide_bar() {
@@ -407,4 +412,3 @@
             }
         }
         </script>
-        
