@@ -184,10 +184,10 @@
                                 </div>
                             </form>
                             <div class="table-responsive">
-                                <table class="table mt-3" id="table">
+                                <table class="table mt-3">
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_car_type); $i++) { ?>
-                                        <tr>
+                                        <tr class="cart_name<?php echo $arr_car_type[$i]->cart_id ?>">
                                             <div <?php echo 'cart_id' . $arr_car_type[$i]->cart_id ?>>
                                                 <!-- delete button -->
                                                 <td>
@@ -271,14 +271,16 @@ $(document).ready(function() {
 });
 
 // search
-var $rows = $('#table tr');
+var columns = $('.cart_name');
+var rows = $('tr');
 $('#search').keyup(function() {
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-    $rows.show().filter(function() {
-        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-    }).hide();
+    rows.hide();
+    for (var i = columns.length; i > 0; i--) {
+        if ($('.cart_name_' + i).text().toLowerCase().search($(this).val()) >= 0) {
+            $('.cart_name' + i).show();
+        }
+        console.log(' No.' + i + ' Text : ' + $('.cart_name_' + i).text().toLowerCase() + ' Val : ' + $('.cart_name_' + i).text().toLowerCase().search($(this).val()));
+    }
 });
 
 // hide add car type form

@@ -227,7 +227,7 @@
                                     </thead>
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                        <tr>
+                                        <tr class="size_name<?php echo $arr_size[$i]->size_id ?>">
                                             <div <?php echo 'size_id' . $arr_size[$i]->size_id ?>>
                                                 <!-- delete button -->
                                                 <td>
@@ -389,15 +389,16 @@ $(document).ready(function() {
     }
 });
 
-// search
-var $rows = $('#table tr');
+var columns = $('.size_name');
+var rows = $('tr');
 $('#search').keyup(function() {
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-    $rows.show().filter(function() {
-        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-    }).hide();
+    rows.hide();
+    for (var i = columns.length; i > 0; i--) {
+        if ($('.size_name_' + i).text().toLowerCase().search($(this).val()) >= 0) {
+            $('.size_name' + i).show();
+        }
+        console.log(' No.' + i + ' Text : ' + $('.size_name_' + i).text().toLowerCase() + ' Val : ' + $('.size_name_' + i).text().toLowerCase().search($(this).val()));
+    }
 });
 
 // hide add size form

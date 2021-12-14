@@ -184,7 +184,7 @@
                             </form>
 
                             <div class="table-responsive">
-                                <table class="table mt-3" id="table">
+                                <table class="table mt-3">
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
                                         <tr class="cont_name<?php echo $arr_container_type[$i]->cont_id ?>">
@@ -275,11 +275,11 @@ var columns = $('.cont_name');
 var rows = $('tr');
 $('#search').keyup(function() {
     rows.hide();
-    for(var i = columns.length; i > 0; i--) {
-        if($('.cont_name_'+ i).text().toLowerCase().search($(this).val()) >= 0){
+    for (var i = columns.length; i > 0; i--) {
+        if ($('.cont_name_' + i).text().toLowerCase().search($(this).val()) >= 0) {
             $('.cont_name' + i).show();
         }
-        console.log(' No.' + i + ' Text : ' + $('.cont_name_'+ i).text().toLowerCase() + ' Val : ' + $('.cont_name_'+ i).text().toLowerCase().search($(this).val()));
+        console.log(' No.' + i + ' Text : ' + $('.cont_name_' + i).text().toLowerCase() + ' Val : ' + $('.cont_name_' + i).text().toLowerCase().search($(this).val()));
     }
 });
 

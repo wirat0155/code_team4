@@ -175,10 +175,10 @@
                             </form>
 
                             <div class="table-responsive">
-                                <table class="table mt-3" id="table">
+                                <table class="table mt-3">
                                     <tbody>
                                         <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                        <tr>
+                                        <tr class="stac_name<?php echo $arr_status_container[$i]->stac_id ?>">
                                             <div <?php echo 'stac_id' . $arr_status_container[$i]->stac_id ?>>
                                                 <!-- ลบ -->
                                                 <td>
@@ -254,14 +254,16 @@ $(document).ready(function() {
 });
 
 // search
-var $rows = $('#table tr');
+var columns = $('.stac_name');
+var rows = $('tr');
 $('#search').keyup(function() {
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-    $rows.show().filter(function() {
-        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-    }).hide();
+    rows.hide();
+    for (var i = columns.length; i > 0; i--) {
+        if ($('.stac_name_' + i).text().toLowerCase().search($(this).val()) >= 0) {
+            $('.stac_name' + i).show();
+        }
+        console.log(' No.' + i + ' Text : ' + $('.stac_name_' + i).text().toLowerCase() + ' Val : ' + $('.stac_name_' + i).text().toLowerCase().search($(this).val()));
+    }
 });
 
 // hide add status container form
