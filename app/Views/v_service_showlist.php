@@ -1058,7 +1058,7 @@ input[type=number]::-webkit-outer-spin-button {
                     sum_vat += price_vat;
                 }
                 
-                total_cost += price - price_vat;
+                total_cost += price + price_vat;
             }
         }
 
