@@ -62,4 +62,9 @@ class M_cdms_status_container extends Da_cdms_status_container {
         $sql = "SELECT * FROM $this->table WHERE stac_status != 3 ORDER BY stac_id DESC";
         return $this->db->query($sql)->getResult();
     }
+
+    public function get_all_status_damaged($stac_id) {
+        $sql = "SELECT * FROM $this->table WHERE stac_id = 5 OR stac_id = 6";
+        return $this->db->query($sql)->getResult();
+    }
 }
