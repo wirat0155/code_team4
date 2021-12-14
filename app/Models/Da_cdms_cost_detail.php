@@ -13,7 +13,7 @@ use CodeIgniter\Model;
 class Da_cdms_cost_detail extends Model {
     protected $table = 'cdms_cost_detail';
     protected $primaryKey = 'cosd_id';
-    protected $allowedFields = ['cosd_name', 'cosd_cost', 'cosd_status', 'cosd_payment_date', 'cosd_actual_payment_date', 'cosd_ser_id', 'cosd_stap_id', 'cosd_quantity'];
+    protected $allowedFields = ['cosd_name', 'cosd_cost', 'cosd_status', 'cosd_payment_date', 'cosd_actual_payment_date', 'cosd_ser_id', 'cosd_stap_id', 'cosd_quantity', 'cosd_status_vat'];
 
     /*
     * cost_insert
@@ -23,8 +23,8 @@ class Da_cdms_cost_detail extends Model {
     * @author   Natdanai
     * @Create Date  2564-09-16
     */
-    public function cost_insert($cosd_name = NULL, $cosd_cost = NULL, $cosd_payment_date = NULL, $cosd_ser_id = NULL, $cosd_quantity = NULL) {
-        $sql = "INSERT INTO $this->table VALUES (NULL, '$cosd_name', '$cosd_cost', '1', '$cosd_payment_date', NULL, '$cosd_ser_id', '1', '$cosd_quantity')";
+    public function cost_insert($cosd_name = NULL, $cosd_cost = NULL, $cosd_payment_date = NULL, $cosd_ser_id = NULL, $cosd_quantity = NULL, $cosd_status_vat = NULL) {
+        $sql = "INSERT INTO $this->table VALUES (NULL, '$cosd_name', '$cosd_cost', '1', '$cosd_payment_date', NULL, '$cosd_ser_id', '1', '$cosd_quantity', '$cosd_status_vat')";
         $this->db->query($sql);
     }
 
@@ -36,9 +36,9 @@ class Da_cdms_cost_detail extends Model {
     * @author   Natdanai
     * @Create Date  2564-09-16
     */
-    public function cost_update($cosd_id = NULL, $cosd_name = NULL, $cosd_cost = NULL, $cosd_quantity = NULL)
+    public function cost_update($cosd_id = NULL, $cosd_name = NULL, $cosd_cost = NULL, $cosd_quantity = NULL, $cosd_status_vat = NULL)
     {
-        $sql = "UPDATE $this->table SET cosd_name = '$cosd_name', cosd_cost = '$cosd_cost', cosd_quantity = '$cosd_quantity' WHERE cosd_id = '$cosd_id'";
+        $sql = "UPDATE $this->table SET cosd_name = '$cosd_name', cosd_cost = '$cosd_cost', cosd_quantity = '$cosd_quantity', cosd_status_vat = '$cosd_status_vat' WHERE cosd_id = '$cosd_id'";
         $this->db->query($sql);
     }
 

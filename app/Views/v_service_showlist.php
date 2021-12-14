@@ -55,12 +55,52 @@ input[type=number]::-webkit-outer-spin-button {
 
 .field input[type="number"]::placeholder, .field input[type="number"] {
     margin-right: 20px !important;
-    text-align: right;
+    text-align: right;  
 }
 
+.cost_vat input[type="checkbox"]{
+    margin: 10px !important; 
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.float-right.col-6{
+    padding-right: 40px !important;
+}
+
+.cost_vat label{
+    padding-left: 7px !important;
+}
 @media only screen and (max-width: 768px) {
+
+    .cost_vat{
+        width: 90px;
+        display: block !important;
+    }
+
+    .cost_vat label {
+        float: right !important;
+    }
+
+    .fields.cost{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        margin: 20px !important;
+        padding: 20px 20px 30px;
+        border-radius: 10px !important;
+    }
+
+    .fields.cost .btn-danger{
+        position: absolute;
+        right: 6%;
+    }
+
+    .field input[type="number"]::placeholder, .field input[type="number"] {
+        margin-right: 0px !important;
+        text-align: left;
+    }
+
     .btn-icon.btn-round.btn-danger{
-        margin-top: 10px !important;
+        margin-top: 0 !important;
     }
 
     .field .label_res{
@@ -92,6 +132,15 @@ input[type=number]::-webkit-outer-spin-button {
     .field {
         max-width: 100%;
     }
+
+    .label_vat {
+        margin-left: 5%;
+    }
+
+    .float-right.col-6{
+        padding-left: 10%;
+    }
+
 }
 </style>
 
@@ -108,16 +157,14 @@ input[type=number]::-webkit-outer-spin-button {
 
                                 </div>
 
-                                <div class="add bill col-md-10 ml-auto mr-auto mt-4" onclick="add_cost_input()">
-                                    <button class="ui green button col-md-12"><i class='left plus icon'></i>Add cost</button>
+                                <div class="add bill col-md-10 ml-auto mr-auto mt-4">
+                                    <a class="col-md-2" onclick="checkbox_checkall()" style="text-decoration: underline; cursor: pointer">Check all</a>
+                                    <button class="ui green button col-md-9" onclick="add_cost_input()"><i class='left plus icon'></i>Add cost</button>
                                 </div>
 
                                 <div class="inline fields mt-4">
-                                    <div class="ui checkbox mr-3">
-                                        <input type="checkbox" id="checkbox_vat" onclick="check_checkbox_value()">
-                                        <label >Add VAT</label>
-                                    </div>
-                                    <input type="number" size="1" id="vat" value="7" hidden onchange="cal_total_cost()">
+                                        <label class="mr-3 label_vat" style="margin-left: 10%;">VAT</label>
+                                    <input type="number" size="1" id="vat" value="7" onchange="cal_total_cost()">
                                 </div>
 
                                 <div class="float-right col-6">
@@ -773,29 +820,41 @@ input[type=number]::-webkit-outer-spin-button {
         // ถ้าไม่มี สร้าง 1 รายการ
         if (number_cost == 0) {
             number_cost_input = 1;
-            modal_message += `  <div class="fields cost" name="cost_input1">
-                                        <div class="field col-6 cost_name">
-                                        <label>Cost name</label>
-                                        <input type="text" placeholder="Cost name" onchange="cost_insert(1)" step="0.01" name="cosd_name1">
-                                    </div>
-                                    <div class="field col-3 cost_amount">
-                                        <label>Amount (TH Baht)</label>
-                                        <input type="number" placeholder="Amount" onchange="cost_insert(1)" step="0.01" name="cosd_cost1" class="cosd_price">
-                                    </div>
-                                    <div class="field col-3 cost_quantity">
-                                        <label>Quantity (Count) </label>
-                                        <input type="text" placeholder="Quantity" value="0" class="cosd_count" onchange="cost_insert(1)" step="0.01" name="cosd_quantity1">
-                                    </div>
-                                    <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn1" onclick="cost_delete(1,'new')" style="margin-top: 25px;background: #E91414 !important; border-color: #E91414 !important;">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>`;
+            modal_message +=`<div class="fields cost" name="cost_input${number_cost_input}">
+                                <div class="field col-1 cost_vat">
+                                    <label> VAT </label>
+                                    <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat(${number_cost_input})" onchange="cost_insert(${number_cost_input})">
+                                </div>
+                                <div class="field col-6 cost_name">
+                                    <label>Cost name</label>
+                                    <input type="text" placeholder="Cost name" onchange="cost_insert(${number_cost_input})" step="0.01" name="cosd_name${number_cost_input}">
+                                </div>
+                                <div class="field col-3 cost_amount">
+                                    <label>Amount (TH Baht)</label>
+                                    <input type="number" placeholder="Amount" onchange="cost_insert(${number_cost_input})" step="0.01" name="cosd_cost${number_cost_input}" class="cosd_price">
+                                </div>
+                                <div class="field col-3 cost_quantity">
+                                    <label>Quantity (Count) </label>
+                                    <input type="number" placeholder="Quantity" value="0" class="cosd_count" onchange="cost_insert(${number_cost_input})" step="0.01" name="cosd_quantity${number_cost_input}">
+                                </div>
+                                <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn${number_cost_input}" onclick="cost_delete(${number_cost_input},'new')" style="margin-top: 25px;background: #E91414 !important; border-color: #E91414 !important;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>`;
             $('.cost_input_list').append(modal_message);
 
             cal_total_cost();
         } else {
+            var vat_value = '';
+            if(data[0]['cosd_status_vat'] == 1){
+                vat_value = 'checked';
+            }
             modal_message += `  <div class="fields cost" name="cost_input_id${data[0]['cosd_id']}">
-                                        <div class="field col-6 cost_name">
+                                    <div class="field col-1 cost_vat">
+                                        <label> VAT </label>
+                                        <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${data[0]['cosd_id']}" onchange="cost_update(${data[0]['cosd_id']})" ${vat_value}>
+                                    </div>
+                                    <div class="field col-6 cost_name">
                                         <label>Cost name</label>
                                         <input type="text" placeholder="Cost name" onchange="cost_update(${data[0]['cosd_id']})" step="0.01" name="cosd_name_id${data[0]['cosd_id']}" value="${data[0]['cosd_name']}">
                                     </div>
@@ -814,8 +873,19 @@ input[type=number]::-webkit-outer-spin-button {
             $('.cost_input_list').append(modal_message);
             // วน loop แสดงข้อมูล
             for (var i = 1; i < number_cost; i++) {
+                
+                if(data[i]['cosd_status_vat'] == 1){
+                    vat_value = 'checked';
+                }else{
+                    vat_value = '';
+                }
+
                 modal_message = '';
                 modal_message += `  <div class="fields cost" name="cost_input_id${data[i]['cosd_id']}">
+                                        <div class="field col-1 cost_vat">
+                                            <label class="label_res"> VAT </label>
+                                            <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${data[i]['cosd_id']}" onchange="cost_update(${data[i]['cosd_id']})" ${vat_value}>
+                                        </div>
                                         <div class="field col-6 cost_name">
                                             <label class="label_res">Cost name</label>
                                             <input type="text" placeholder="Cost name" onchange="cost_update(${data[i]['cosd_id']})" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">
@@ -844,6 +914,10 @@ input[type=number]::-webkit-outer-spin-button {
         ++number_cost_input;
 
         var cost = `<div class="fields cost" name="cost_input${number_cost_input}">
+                        <div class="field col-1 cost_vat">
+                            <label class="label_res"> VAT </label>
+                            <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat(${number_cost_input})" onchange="cost_insert(${number_cost_input})">
+                        </div>
                         <div class="field col-6 cost_name">
                             <label class="label_res">Cost name</label>
                             <input type="text" placeholder="Cost name" onchange="cost_insert(${number_cost_input})" step="0.01" name="cosd_name${number_cost_input}">
@@ -870,59 +944,76 @@ input[type=number]::-webkit-outer-spin-button {
         var cosd_name = $('input[name="cosd_name' + input_order + '"]').val();
         var cosd_cost = $('input[name="cosd_cost' + input_order + '"]').val();
         var cosd_quantity = $('input[name="cosd_quantity' + input_order + '"]').val();
-        console.log("เข้า insert: " + cosd_ser_id, cosd_name, cosd_cost, cosd_quantity, input_order);
+        var cosd_status_vat = 2;
+        if($('input[name="cosd_status_vat' + input_order + '"]').checked == true) {
+            cosd_status_vat = 1;
+        }
+        console.log("เข้า insert: " + cosd_ser_id, cosd_name, cosd_cost, cosd_quantity, cosd_status_vat, input_order);
+        if(cosd_name != ''){
+            $.ajax({
+                url: '<?php echo base_url() . '/Service_show/cost_insert' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    cosd_ser_id: cosd_ser_id,
+                    cosd_name: cosd_name,
+                    cosd_cost: cosd_cost,
+                    cosd_quantity: cosd_quantity,
+                    cosd_status_vat: cosd_status_vat
+                },
+                success: function(data) {
+                    console.log(data[0]['cosd_id']);
+                    var return_id = data[0]['cosd_id'];
+                    $('input[name="cosd_name' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+                    $('input[name="cosd_name' + input_order + '"]').attr('name', `cosd_name_id${return_id}`);
 
-        $.ajax({
-            url: '<?php echo base_url() . '/Service_show/cost_insert' ?>',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                cosd_ser_id: cosd_ser_id,
-                cosd_name: cosd_name,
-                cosd_cost: cosd_cost,
-                cosd_quantity, cosd_quantity
-            },
-            success: function(data) {
-                console.log(data[0]['cosd_id']);
-                var return_id = data[0]['cosd_id'];
-                $('input[name="cosd_name' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
-                $('input[name="cosd_name' + input_order + '"]').attr('name', `cosd_name_id${return_id}`);
+                    $('input[name="cosd_cost' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+                    $('input[name="cosd_cost' + input_order + '"]').attr('name', `cosd_cost_id${return_id}`);
 
-                $('input[name="cosd_cost' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
-                $('input[name="cosd_cost' + input_order + '"]').attr('name', `cosd_cost_id${return_id}`);
+                    $('input[name="cosd_quantity' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+                    $('input[name="cosd_quantity' + input_order + '"]').attr('name', `cosd_quantity_id${return_id}`);
 
-                $('input[name="cosd_quantity' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
-                $('input[name="cosd_quantity' + input_order + '"]').attr('name', `cosd_quantity_id${return_id}`);
+                    $('input[name="cosd_status_vat' + input_order + '"]').attr('onchange', `cost_update(${return_id})`);
+                    $('input[name="cosd_status_vat' + input_order + '"]').attr('name', `cosd_status_vat${return_id}`);
 
-                $('button[name="cost_delete_btn' + input_order + '"]').attr('onclick', `cost_delete(${return_id},'old')`);
-                $('button[name="cost_delete_btn' + input_order + '"]').attr('name', `cost_delete_btn_id${return_id}`);
+                    $('button[name="cost_delete_btn' + input_order + '"]').attr('onclick', `cost_delete(${return_id},'old')`);
+                    $('button[name="cost_delete_btn' + input_order + '"]').attr('name', `cost_delete_btn_id${return_id}`);
 
-                $('div[name="cost_input' + input_order + '"]').attr('name', `cost_input_id${return_id}`);
-            }
-        });
-        cal_total_cost();
+                    $('div[name="cost_input' + input_order + '"]').attr('name', `cost_input_id${return_id}`);
+                }
+            });
+            cal_total_cost();
+        }
     }
 
     function cost_update(cosd_id) {
         var cosd_name = $('input[name="cosd_name_id' + cosd_id + '"]').val();
         var cosd_cost = $('input[name="cosd_cost_id' + cosd_id + '"]').val();
         var cosd_quantity = $('input[name="cosd_quantity_id' + cosd_id + '"]').val();
-        console.log("เข้า update: " + cosd_name, cosd_cost, cosd_id, cosd_ser_id,cosd_quantity);
-        $.ajax({
-            url: '<?php echo base_url() . '/Service_show/cost_update' ?>',
-            method: 'POST',
-            dataType: 'JSON',
-            data: {
-                cosd_id: cosd_id,
-                cosd_name: cosd_name,
-                cosd_cost: cosd_cost,
-                cosd_quantity: cosd_quantity
-            },
-            success: function(data) {
-                console.log(data);
-            }
-        });
-        cal_total_cost();
+        var cosd_status_vat = 2;
+        if($('input[name="cosd_status_vat' + cosd_id + '"]').is(':checked') == true) {
+            cosd_status_vat = 1;
+        }
+        console.log('Checked : ' + ('input[name="cosd_status_vat' + cosd_id + '"]').checked);
+        console.log("เข้า update: " + cosd_name, cosd_cost, cosd_id, cosd_ser_id,cosd_quantity, cosd_status_vat);
+        if(cosd_name != ''){
+            $.ajax({
+                url: '<?php echo base_url() . '/Service_show/cost_update' ?>',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    cosd_id: cosd_id,
+                    cosd_name: cosd_name,
+                    cosd_cost: cosd_cost,
+                    cosd_quantity: cosd_quantity,
+                    cosd_status_vat: cosd_status_vat
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+            cal_total_cost();
+        }
     }
 
     function cost_delete(delete_id, input_type = 'new') {
@@ -953,37 +1044,56 @@ input[type=number]::-webkit-outer-spin-button {
         var total_cost = 0;
         var cost_price = document.getElementsByClassName('cosd_price');
         var cost_count = document.getElementsByClassName('cosd_count');
-        var checkbox_value = $('#checkbox_vat').is(':checked');
+        var cosd_status_vat = document.getElementsByClassName('cosd_status_vat');
+        var vat = $('#vat').val();
+        var sub_total = 0;
+        var sum_vat = 0;
+
         for (var i = 0; i < cost_price.length; i++) {
             if (cost_price[i].value) {
-                total_cost += parseFloat(cost_price[i].value) * cost_count[i].value ;
+                var price = parseFloat(cost_price[i].value) * cost_count[i].value;
+                sub_total += price; 
+                
+                var price_vat = 0;
+                if(cosd_status_vat[i].checked == true){
+                    price_vat = price * (vat/100);
+                    sum_vat += price_vat;
+                }
+                
+                total_cost += price - price_vat;
             }
         }
 
-        if(checkbox_value == true){
-            var vat = $('#vat').val();
-            console.log(vat);
-            $('.subtotal .price').text(total_cost.toLocaleString() + ' THB');
-            
+        if(sum_vat > 0){
+            $('.subtotal .price').text(sub_total.toLocaleString() + ' THB');
             $('.vat .title').text('VAT ' + vat + '% : ');
-
-            vat = total_cost * (vat / 100);
-
-            total_cost += vat;
-            $('.vat .price').text(vat.toLocaleString() + ' THB');
+            $('.vat .price').text(sum_vat.toLocaleString() + ' THB');
         }
 
         $('.total .price').text(total_cost.toLocaleString() + ' THB');
+        check_checkbox_value()
+    }
+
+    function checkbox_checkall(){
+        var cosd_status_vat = document.getElementsByClassName('cosd_status_vat');
+        for (var i = 0; i < cosd_status_vat.length; i++) {
+            cosd_status_vat[i].click();
+            console.log('true');
+        }
     }
 
     function check_checkbox_value() {
-        var checkbox_value = $('#checkbox_vat').is(':checked');
-        if(checkbox_value == true){
-            $('#vat').removeAttr('hidden');
+        var cosd_status_vat = document.getElementsByClassName('cosd_status_vat');
+        var checkbox_value = 0;
+        for (var i = 0; i < cosd_status_vat.length; i++) {
+            if(cosd_status_vat[i].checked == true){
+                checkbox_value++;
+            }
+        }
+        if(checkbox_value > 0){
             $('.subtotal').removeAttr('hidden');
             $('.vat').removeAttr('hidden');
         }else{
-            $('#vat').prop("hidden", !this.checked);
             $('.subtotal').prop("hidden", !this.checked);
             $('.vat').prop("hidden", !this.checked);
         }
