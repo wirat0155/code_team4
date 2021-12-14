@@ -181,13 +181,11 @@ class M_cdms_service extends Da_cdms_service {
                 WHERE ser_status = 1 AND (
                     ser_arrivals_date LIKE '$start_date%' OR
                     ser_actual_departure_date LIKE '$end_date%' OR
-                    (ser_arrivals_date < '$start_date' AND
-                    (ser_actual_departure_date > '$end_date' OR ser_actual_departure_date IS NULL)) OR
-                    (ser_arrivals_date > '$start_date' AND
-                    ser_actual_departure_date < '$end_date')
-                )
+                    (ser_arrivals_date < '$end_date' AND (ser_actual_departure_date IS NULL OR 
+                    (ser_actual_departure_date LIKE '$start_date%' OR ser_actual_departure_date > '$start_date') 
+                    AND ser_actual_departure_date NOT LIKE '$end_date%')))
                 ORDER BY ser_id DESC";
-
+        // echo $sql;
         // return as array
         return $this->db->query($sql)->getResult();
     }

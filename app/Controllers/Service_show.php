@@ -58,12 +58,13 @@ class Service_show extends Cdms_controller {
         $data['arr_con'] = $m_con->get_all(1);
 
         if(isset($_GET['date_range'])){
+
             $date_range = $this->request->getGet('date_range');
             $start_date = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
             $end_date = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
 
             $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
-
+            $data['arr_service'] = $this->change_service_status_by_date($data['arr_service'], $start_date, $end_date);
             $data['arrivals_date'] = $date_range;
         }
         else{
@@ -115,6 +116,24 @@ class Service_show extends Cdms_controller {
         }
         // print_r($data['arr_service']);
         $this->output('v_service_showlist', $data);
+    }
+    public function change_service_status_by_date($arr_service = [], $start_date = NULL, $end_date = NULL) {
+        for ($i = 0; $i < count($arr_service); $i++) {
+            if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $start_date) {
+               $arr_service[$i]->ser_stac_id = 1;
+               $arr_service[$i]->stac_name = "Import";
+
+            }
+            else if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $end_date) {
+                $arr_service[$i]->ser_stac_id = 4;
+                $arr_service[$i]->stac_name = "Export";
+            }
+            else {
+                $arr_service[$i]->ser_stac_id = 3;
+                $arr_service[$i]->stac_name = "Ready";
+            }
+        }
+        return $arr_service;
     }
 
     /*

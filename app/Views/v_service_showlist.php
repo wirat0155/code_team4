@@ -104,40 +104,40 @@ input[type=number]::-webkit-outer-spin-button {
     </div>
     <div class="scrolling content">
     <div class="ui form">
-                                <div class="cost_input_list mt-2">
+        <div class="cost_input_list mt-2">
 
-                                </div>
+        </div>
 
-                                <div class="add bill col-md-10 ml-auto mr-auto mt-4" onclick="add_cost_input()">
-                                    <button class="ui green button col-md-12"><i class='left plus icon'></i>Add cost</button>
-                                </div>
+        <div class="add bill col-md-10 ml-auto mr-auto mt-4" onclick="add_cost_input()">
+            <button class="ui green button col-md-12"><i class='left plus icon'></i>Add cost</button>
+        </div>
 
-                                <div class="inline fields mt-4">
-                                    <div class="ui checkbox mr-3">
-                                        <input type="checkbox" id="checkbox_vat" onclick="check_checkbox_value()">
-                                        <label >Add VAT</label>
-                                    </div>
-                                    <input type="number" size="1" id="vat" value="7" hidden onchange="cal_total_cost()">
-                                </div>
+        <div class="inline fields mt-4">
+            <div class="ui checkbox mr-3">
+                <input type="checkbox" id="checkbox_vat" onclick="check_checkbox_value()">
+                <label >Add VAT</label>
+            </div>
+            <input type="number" size="1" id="vat" value="7" hidden onchange="cal_total_cost()">
+        </div>
 
-                                <div class="float-right col-6">
-                                    <div class="subtotal row" hidden>
-                                        <div class="title col-6">Subtotal :</div>
-                                        <div class="price col-6 text-right">0 THB</div>
-                                    </div>
+        <div class="float-right col-6">
+            <div class="subtotal row" hidden>
+                <div class="title col-6">Subtotal :</div>
+                <div class="price col-6 text-right">0 THB</div>
+            </div>
 
-                                    <div class="vat row" hidden>
-                                        <div class="title col-6">VAT 7% : </div>
-                                        <div class="price col-6 text-right">0 THB</div>
-                                    </div>
+            <div class="vat row" hidden>
+                <div class="title col-6">VAT 7% : </div>
+                <div class="price col-6 text-right">0 THB</div>
+            </div>
 
-                                    <div class="total row mb-3">
-                                        <div class="title col-6">Total : </div>
-                                        <div class="price col-6 text-right">0 THB</div>
-                                    </div>
-                                </div>
+            <div class="total row mb-3">
+                <div class="title col-6">Total : </div>
+                <div class="price col-6 text-right">0 THB</div>
+            </div>
+        </div>
+    </div>
 
-                            </div>
     </div>
     <div class="actions">
         <button type="button" class="shadow-sm btn btn-success btn-border">
@@ -218,9 +218,7 @@ input[type=number]::-webkit-outer-spin-button {
                     </button>
 
                     <!-- Date -->
-                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range"
-                        value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;"
-                        hidden>
+                    <input class="pl-2 shadow-sm rounded" type="text" name="date_range" id="date_range" value="<?php echo $arrivals_date ?>" style=" height: 43px; width: 180px; text-align: center;">
                 </form>
             </div>
             <!-- Card Report -->
