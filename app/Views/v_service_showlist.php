@@ -821,7 +821,7 @@ input[type=number]::-webkit-outer-spin-button {
             modal_message +=`<div class="fields cost" name="cost_input${number_cost_input}">
                                 <div class="field col-1 cost_vat">
                                     <label> VAT </label>
-                                    <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat(${number_cost_input})" onchange="cost_insert(${number_cost_input})">
+                                    <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${number_cost_input}" onchange="cost_insert(${number_cost_input})">
                                 </div>
                                 <div class="field col-6 cost_name">
                                     <label>Cost name</label>
@@ -914,7 +914,7 @@ input[type=number]::-webkit-outer-spin-button {
         var cost = `<div class="fields cost" name="cost_input${number_cost_input}">
                         <div class="field col-1 cost_vat">
                             <label class="label_res"> VAT </label>
-                            <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat(${number_cost_input})" onchange="cost_insert(${number_cost_input})">
+                            <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${number_cost_input}" onchange="cost_insert(${number_cost_input})">
                         </div>
                         <div class="field col-6 cost_name">
                             <label class="label_res">Cost name</label>
@@ -943,9 +943,11 @@ input[type=number]::-webkit-outer-spin-button {
         var cosd_cost = $('input[name="cosd_cost' + input_order + '"]').val();
         var cosd_quantity = $('input[name="cosd_quantity' + input_order + '"]').val();
         var cosd_status_vat = 2;
-        if($('input[name="cosd_status_vat' + input_order + '"]').checked == true) {
+        console.log(cosd_status_vat);
+        if($('input[name="cosd_status_vat' + input_order + '"]').is(':checked') == true) {
             cosd_status_vat = 1;
         }
+        console.log(cosd_status_vat);
         console.log("เข้า insert: " + cosd_ser_id, cosd_name, cosd_cost, cosd_quantity, cosd_status_vat, input_order);
         if(cosd_name != ''){
             $.ajax({
@@ -992,7 +994,7 @@ input[type=number]::-webkit-outer-spin-button {
         if($('input[name="cosd_status_vat' + cosd_id + '"]').is(':checked') == true) {
             cosd_status_vat = 1;
         }
-        console.log('Checked : ' + ('input[name="cosd_status_vat' + cosd_id + '"]').checked);
+        console.log('Checked : ' + $('input[name="cosd_status_vat' + cosd_id + '"]').is(':checked'));
         console.log("เข้า update: " + cosd_name, cosd_cost, cosd_id, cosd_ser_id,cosd_quantity, cosd_status_vat);
         if(cosd_name != ''){
             $.ajax({
