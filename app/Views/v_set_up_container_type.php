@@ -276,10 +276,9 @@ var rows = $('tr');
 $('#search').keyup(function() {
     rows.hide();
     for (var i = columns.length; i > 0; i--) {
-        if ($('.cont_name_' + i).text().toLowerCase().search($(this).val()) >= 0) {
+        if ($('.cont_name_' + i).text().toLowerCase().search($(this).val().toLowerCase()) >= 0) {
             $('.cont_name' + i).show();
         }
-        console.log(' No.' + i + ' Text : ' + $('.cont_name_' + i).text().toLowerCase() + ' Val : ' + $('.cont_name_' + i).text().toLowerCase().search($(this).val()));
     }
 });
 

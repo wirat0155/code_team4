@@ -390,14 +390,25 @@ $(document).ready(function() {
 });
 
 var columns = $('.size_name');
-var rows = $('tr');
+var rows = $('tbody tr');
 $('#search').keyup(function() {
     rows.hide();
     for (var i = columns.length; i > 0; i--) {
-        if ($('.size_name_' + i).text().toLowerCase().search($(this).val()) >= 0) {
+
+        console.log($(this).val());
+
+        var size_name = $('.size_name_' + i).text().toLowerCase().search($(this).val().toLowerCase());
+        
+        var size_width = $('.size_width_in_' + i).text() + ' ' + $('.size_width_out_' + i).text();
+
+        var size_length = $('.size_length_in_' + i).text() + ' ' + $('.size_length_out_' + i).text();
+        
+        var size_height = $('.size_height_in_' + i).text() + ' ' + $('.size_height_out_' + i).text();
+
+        if (size_name >= 0 || size_width.search($(this).val()) >= 0 || size_length.search($(this).val()) >= 0 || size_height.search($(this).val()) >= 0 ) {
             $('.size_name' + i).show();
         }
-        console.log(' No.' + i + ' Text : ' + $('.size_name_' + i).text().toLowerCase() + ' Val : ' + $('.size_name_' + i).text().toLowerCase().search($(this).val()));
+
     }
 });
 
