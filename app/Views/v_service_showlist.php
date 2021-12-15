@@ -290,7 +290,7 @@ input[type=number]::-webkit-outer-spin-button {
                                                 <?php echo $num_import ?>
                                             </h2>
 
-                                            <div class="mt-3">
+                                            <div class="mb-3">
                                                 <?php if (!$_SESSION['set_date_picker_service']) { ?>
                                                     <?php if ($num_import >= $num_yesterday_import):?>
                                                     <p style="color: #09F600;">
