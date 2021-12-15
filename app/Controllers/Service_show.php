@@ -324,7 +324,7 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function export_service() {
-
+        date_default_timezone_set("Asia/Bangkok");
         $m_ser = new M_cdms_service();
 
         $arr_service = $m_ser->get_all();
@@ -336,12 +336,16 @@ class Service_show extends Cdms_controller {
 
         $date_range = $this->request->getPost('date_range_excel');
 
+        //ถ้าไม่ตรงแสดงว่าเลือก date
         if($date_range != $arrivals_date){
 
-            $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
-            $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
+            $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
+            $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
             $arr_service = $m_ser->get_by_date($start, $end);
-
+            $arr_service = $this->change_service_status_by_date($arr_service, $start, $end);
+            echo '<pre>';
+            print_r($arr_service);
+            echo '</pre>';
         }
 
         $file_name = 'service_report.xlsx';
@@ -392,55 +396,91 @@ class Service_show extends Cdms_controller {
         $sheet->getStyle('A:Z')->getFont()->setName('TH SarabunPSK')->setSize (16);
         $sheet->getStyle('B')->getFont()->setBold(true);
 
-        $sheet->getStyle("B2:B4")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
-        $sheet->getStyle("C2:C4")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
+        $sheet->getStyle("B2:B5")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
+        $sheet->getStyle("C2:C5")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
 
-        $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
-        $sheet->setCellValue('B2', 'ตู้เข้า');
+        $sheet->getStyle("D2:D5")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
+        $sheet->getStyle("E2:E5")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
+
+        $sheet->getStyle("F2:F3")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
+        $sheet->getStyle("G2:G3")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
+
+        $count_import = array_count_values(array_column($arr_service, 'stac_name'))['Import'];
+        $sheet->setCellValue('B2', 'Import');
         $sheet->setCellValue('C2', ($count_import != 0) ? $count_import : '0');
 
-        $count_export = array_count_values(array_column($arr_service, 'ser_type'))[2];
-        $sheet->setCellValue('B3', 'ตู้ออก');
+        $count_export = array_count_values(array_column($arr_service, 'stac_name'))['Ready'];
+        $sheet->setCellValue('B3', 'Drop');
         $sheet->setCellValue('C3', ($count_export != 0) ? $count_export : '0');
 
-        $count_drop = array_count_values(array_column($arr_service, 'ser_type'))[3];
-        $sheet->setCellValue('B4', 'ตู้ดรอป');
+        $count_drop = array_count_values(array_column($arr_service, 'stac_name'))['Export'];
+        $sheet->setCellValue('B4', 'Export');
         $sheet->setCellValue('C4', ($count_drop != 0) ? $count_drop : '0');
 
-        $sheet->getStyle('B2:C4')->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+        $total = $count_import + $count_export + $count_drop;
+        $sheet->setCellValue('B5', 'TOTAL');
+        $sheet->setCellValue('C5', ($total != 0) ? $total : '0');
 
-        $sheet->getStyle("B6:H6")->applyFromArray($thead_cus)->getFont()->setSize (18);
-        $sheet->setCellValue('B6', 'หมายเลขตู้');
-        $sheet->setCellValue('C6', 'สถานะตู้');
-        $sheet->setCellValue('D6', 'ประเภท');
-        $sheet->setCellValue('E6', 'ประเภทตู้');
-        $sheet->setCellValue('F6', 'CUT-OFF');
-        $sheet->setCellValue('G6', 'เอเย่นต์');
-        $sheet->setCellValue('H6', 'ลูกค้า');
+        $count_dry = array_count_values(array_column($arr_service, 'cont_name'))['Dry Container'];
+        $sheet->setCellValue('D2', 'Dry Container');
+        $sheet->setCellValue('E2', ($count_dry != 0) ? $count_dry : '0');
 
-        $count = 7;
+        $count_reefer = array_count_values(array_column($arr_service, 'cont_name'))['Reefer Container'];
+        $sheet->setCellValue('D3', 'Reefer Container');
+        $sheet->setCellValue('E3', ($count_reefer != 0) ? $count_reefer : '0');
+
+        $count_iso = array_count_values(array_column($arr_service, 'cont_name'))['ISO Tank'];
+        $sheet->setCellValue('D4', 'ISO Tank');
+        $sheet->setCellValue('E4', ($count_iso != 0) ? $count_iso : '0');
+
+        $count_open = array_count_values(array_column($arr_service, 'cont_name'))['Open-top'];
+        $sheet->setCellValue('D5', 'Open-top');
+        $sheet->setCellValue('E5', ($count_open != 0) ? $count_open : '0');
+
+        $count_flat = array_count_values(array_column($arr_service, 'cont_name'))['Flat-rack'];
+        $sheet->setCellValue('F2', 'Flat-rack');
+        $sheet->setCellValue('G2', ($count_flat != 0) ? $count_flat : '0');
+
+        $count_ven = array_count_values(array_column($arr_service, 'cont_name'))['Ventilated Container'];
+        $sheet->setCellValue('F3', 'Ventilated Container');
+        $sheet->setCellValue('G3', ($count_ven != 0) ? $count_ven : '0');
+
+        $sheet->getStyle('B2:E5')->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+        $sheet->getStyle('F2:G3')->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+        $sheet->getStyle('B2:B5')->applyFromArray($style);
+        $sheet->getStyle('D2:D5')->applyFromArray($style);
+        $sheet->getStyle('F2:F3')->applyFromArray($style);
+
+        $sheet->getStyle("B7:H7")->applyFromArray($thead_cus)->getFont()->setSize (18);
+        $sheet->setCellValue('B7', 'Container number');
+        $sheet->setCellValue('C7', 'Container status');
+        $sheet->setCellValue('D7', 'Container type');
+        $sheet->setCellValue('E7', 'Cut-off');
+        $sheet->setCellValue('F7', 'Actual departure');
+        $sheet->setCellValue('G7', 'Agent');
+        $sheet->setCellValue('H7', 'Customer');
+
+        $count = 8;
 
         for ($i = 0; $i < count($arr_service); $i++)
 		{
 
 			$sheet->setCellValue('B' . $count, ' ' . $arr_service[$i]->con_number);
+            $sheet->getStyle('B'.$count)->applyFromArray($style);
 
 			$sheet->setCellValue('C' . $count, ' ' . $arr_service[$i]->stac_name);
+            $sheet->getStyle('C'.$count)->applyFromArray($style);
 
-            if ($arr_service[$i]->ser_type == '1') {
-                $cont_stac ="ตู้เข้า";
-            } else if ($arr_service[$i]->ser_type == '2') {
-                $cont_stac = "ตู้ออก";
-            } else if ($arr_service[$i]->ser_type == '3') {
-                $cont_stac = "ตู้ดรอป";
+            $sheet->setCellValue('D' . $count, ' ' . $arr_service[$i]->cont_name);
+
+            $sheet->setCellValue('E' . $count, date_thai($arr_service[$i]->ser_departure_date));
+            $sheet->getStyle('E'.$count)->applyFromArray($style);
+
+            if($arr_service[$i]->ser_actual_departure_date != ''){
+			    $sheet->setCellValue('F' . $count, date_thai($arr_service[$i]->ser_actual_departure_date));
+            }else{
+                $sheet->setCellValue('F' . $count, '-');
             }
-			$sheet->setCellValue('D' . $count, $cont_stac);
-
-            $sheet->getStyle('D'.$count)->applyFromArray($style);
-
-            $sheet->setCellValue('E' . $count, ' ' . $arr_service[$i]->cont_name);
-
-			$sheet->setCellValue('F' . $count, date_thai($arr_service[$i]->ser_departure_date));
             $sheet->getStyle('F'.$count)->applyFromArray($style);
 
             $sheet->setCellValue('G' . $count, ' ' . $arr_service[$i]->agn_company_name);
@@ -454,7 +494,7 @@ class Service_show extends Cdms_controller {
 			$count++;
 		}
 
-        $sheet->getStyle('B6:H'.($count-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+        $sheet->getStyle('B7:H'.($count-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 
         foreach(range('B','H') as $columnID)
         {
