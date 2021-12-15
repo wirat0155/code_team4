@@ -315,7 +315,7 @@ class M_cdms_service extends Da_cdms_service {
 
     public function get_by_departure_date($date = NULL) {
         if ($date != NULL) {
-                $sql = "SELECT con_number, stac_name, cont_name, ser_departure_date, ser_departure_location, dri_name
+                $sql = "SELECT con_number, stac_name, cont_name, ser_departure_date, ser_departure_location, dri_name,
                         car_number, cus_company_name FROM cdms_service
                         LEFT JOIN cdms_container ON con_id = ser_con_id
                         LEFT JOIN cdms_status_container ON stac_id = ser_stac_id
