@@ -34,8 +34,7 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-07-29
     */
     public function service_show_ajax() {
-        //set timezone
-        date_default_timezone_set('GMT');
+        date_default_timezone_set("Asia/Bangkok");
 
         //display the converted time
         $_SESSION['menu'] = 'Service_show';
@@ -44,10 +43,11 @@ class Service_show extends Cdms_controller {
         // load container model
         $m_con = new M_cdms_container();
 
-        $today = date('Y-m-d', strtotime('+7 hour'));
-        $today_time = date('Y-m-d H:i:s', strtotime('+7 hour'));
-        $yesterday = date('Y-m-d', strtotime('-17 hour'));
-        $yesterday_time = date('Y-m-d H:i:s', strtotime('-17 hour'));
+        $today = date('Y-m-d');
+        $today_time = date('Y-m-d H:i:s');
+        $yesterday = date('Y-m-d', strtotime('-1 Day'));
+        $yesterday_time = date('Y-m-d H:i:s', strtotime('-1 Day'));
+        $time = date('H:i:s');
 
         // it will be moved to login page when login was done
         // update ser_stac_id to ready (drop) depend on today
@@ -58,16 +58,30 @@ class Service_show extends Cdms_controller {
         $data['arr_con'] = $m_con->get_all(1);
 
         if(isset($_GET['date_range'])){
+            $_SESSION['set_date_picker_service'] = true;
 
             $date_range = $this->request->getGet('date_range');
             $start_date = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
             $end_date = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
 
+            $end_date_time = $end_date . " " . $time;
+
             $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
             $data['arr_service'] = $this->change_service_status_by_date($data['arr_service'], $start_date, $end_date);
             $data['arrivals_date'] = $date_range;
+
+            // get data in service report card
+            $obj_num_import = $m_ser->get_num_import($start_date, $end_date);
+            $data['num_import'] = $obj_num_import->num_import;
+
+            $obj_num_export = $m_ser->get_num_export($end_date, $end_date_time, $today == $end_date);
+            $data['num_export'] = $obj_num_export->num_export;
+
+            $obj_num_drop = $m_ser->get_num_drop_range($start_date, $end_date);
+            $data['num_drop'] = $obj_num_drop->num_drop;
         }
         else{
+            $_SESSION['set_date_picker_service'] = false;
             // get service data upon by date
             $data['arr_service'] = $m_ser->get_all($today);
             // get all the time service
@@ -117,16 +131,24 @@ class Service_show extends Cdms_controller {
         // print_r($data['arr_service']);
         $this->output('v_service_showlist', $data);
     }
+
+    /*
+    * change_service_status_by_date
+    * set service stac id, name in date
+    * @input    arr_server, start_date, end_date
+    * @output   set service stac id, name in date
+    * @author   Wirat
+    * @Create Date  2564-12-15
+    */
     public function change_service_status_by_date($arr_service = [], $start_date = NULL, $end_date = NULL) {
         for ($i = 0; $i < count($arr_service); $i++) {
-            if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $start_date) {
-               $arr_service[$i]->ser_stac_id = 1;
-               $arr_service[$i]->stac_name = "Import";
-
-            }
-            else if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $end_date) {
+            if (substr($arr_service[$i]->ser_actual_departure_date, 0, 10) == $end_date) {
                 $arr_service[$i]->ser_stac_id = 4;
                 $arr_service[$i]->stac_name = "Export";
+            }
+            else if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $start_date) {
+               $arr_service[$i]->ser_stac_id = 1;
+               $arr_service[$i]->stac_name = "Import";
             }
             else {
                 $arr_service[$i]->ser_stac_id = 3;

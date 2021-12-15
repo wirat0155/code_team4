@@ -290,21 +290,25 @@ input[type=number]::-webkit-outer-spin-button {
                                                 <?php echo $num_import ?>
                                             </h2>
 
-                                            <?php if ($num_import >= $num_yesterday_import):?>
-                                            <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php echo "(+" . ($num_import - $num_yesterday_import) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php endif;?>
+                                            <div class="mt-3">
+                                                <?php if (!$_SESSION['set_date_picker_service']) { ?>
+                                                    <?php if ($num_import >= $num_yesterday_import):?>
+                                                    <p style="color: #09F600;">
+                                                        <i class="fas fa-arrow-up"></i>
+                                                        <?php echo "(+" . ($num_import - $num_yesterday_import) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php endif;?>
 
-                                            <?php if ($num_import < $num_yesterday_import):?>
-                                            <p class="mb-3" style="color: #F60029;">
-                                                <i class="fas fa-arrow-down"></i>
-                                                <?php echo "(" . ($num_import - $num_yesterday_import) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php endif;?>
+                                                    <?php if ($num_import < $num_yesterday_import):?>
+                                                    <p style="color: #F60029;">
+                                                        <i class="fas fa-arrow-down"></i>
+                                                        <?php echo "(" . ($num_import - $num_yesterday_import) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php endif;?>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -318,19 +322,24 @@ input[type=number]::-webkit-outer-spin-button {
                                             <h2 class="mt-0 ml-3">
                                                 <?php echo $num_drop; ?>
                                             </h2>
-                                            <?php if ($num_drop >=  $num_yesterday_drop) { ?>
-                                            <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php echo "(+" . ($num_drop - $num_yesterday_drop) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php } else { ?>
-                                            <p class="mb-3" style="color: #F60029;">
-                                                <i class="fas fa-arrow-down"></i>
-                                                <?php echo "(" . ($num_drop - $num_yesterday_drop) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php } ?>
+
+                                            <div class="mb-3">
+                                                <?php if (!$_SESSION['set_date_picker_service']) { ?>
+                                                    <?php if ($num_drop >=  $num_yesterday_drop) { ?>
+                                                    <p class="mb-3" style="color: #09F600;">
+                                                        <i class="fas fa-arrow-up"></i>
+                                                        <?php echo "(+" . ($num_drop - $num_yesterday_drop) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php } else { ?>
+                                                    <p class="mb-3" style="color: #F60029;">
+                                                        <i class="fas fa-arrow-down"></i>
+                                                        <?php echo "(" . ($num_drop - $num_yesterday_drop) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -344,19 +353,24 @@ input[type=number]::-webkit-outer-spin-button {
                                             <h2 class="mt-0 ml-3">
                                                 <?php echo $num_export?>
                                             </h2>
-                                            <?php if ($num_export >= $num_yesterday_export) { ?>
-                                            <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php echo "(+" . ($num_export - $num_yesterday_export) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php } else { ?>
-                                            <p class="mb-3" style="color: #F60029;">
-                                                <i class="fas fa-arrow-down"></i>
-                                                <?php echo "( " . ($num_export - $num_yesterday_export) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php } ?>
+
+                                            <div class="mb-3">
+                                                <?php if (!$_SESSION['set_date_picker_service']) { ?>
+                                                    <?php if ($num_export >= $num_yesterday_export) { ?>
+                                                    <p class="mb-3" style="color: #09F600;">
+                                                        <i class="fas fa-arrow-up"></i>
+                                                        <?php echo "(+" . ($num_export - $num_yesterday_export) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php } else { ?>
+                                                    <p class="mb-3" style="color: #F60029;">
+                                                        <i class="fas fa-arrow-down"></i>
+                                                        <?php echo "( " . ($num_export - $num_yesterday_export) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -373,19 +387,24 @@ input[type=number]::-webkit-outer-spin-button {
                                                 echo $num_all;
                                                 ?>
                                             </h2>
-                                            <?php if ($num_all >= $num_yesterday_all) { ?>
-                                            <p class="mb-3" style="color: #09F600;">
-                                                <i class="fas fa-arrow-up"></i>
-                                                <?php echo "(+" . ($num_all - $num_yesterday_all) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php } else { ?>
-                                            <p class="mb-3" style="color: #F60029;">
-                                                <i class="fas fa-arrow-down"></i>
-                                                <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
-                                                <label class="ml-3"> From yesterday</label>
-                                            </p>
-                                            <?php } ?>
+
+                                            <div class="mb-3">
+                                                <?php if (!$_SESSION['set_date_picker_service']) { ?>
+                                                    <?php if ($num_all >= $num_yesterday_all) { ?>
+                                                    <p class="mb-3" style="color: #09F600;">
+                                                        <i class="fas fa-arrow-up"></i>
+                                                        <?php echo "(+" . ($num_all - $num_yesterday_all) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php } else { ?>
+                                                    <p class="mb-3" style="color: #F60029;">
+                                                        <i class="fas fa-arrow-down"></i>
+                                                        <?php echo "(" . ($num_all - $num_yesterday_all) . ")"; ?>
+                                                        <label class="ml-3"> From yesterday</label>
+                                                    </p>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

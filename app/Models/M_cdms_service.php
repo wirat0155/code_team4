@@ -53,9 +53,18 @@ class M_cdms_service extends Da_cdms_service {
     * @author   Wirat
     * @Create Date  2564-10-30
     */
-    public function get_num_import($arrivals_date = '') {
-        $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
-                WHERE ser_arrivals_date LIKE '$arrivals_date%' AND ser_status = 1" ;
+    public function get_num_import($arrivals_date = '', $end_date = NULL) {
+        if ($end_date == NULL) {
+            $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
+                    WHERE ser_arrivals_date LIKE '$arrivals_date%' AND ser_status = 1" ;
+        }
+        else {
+            $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
+                    WHERE ser_arrivals_date LIKE '$arrivals_date%'
+                    AND (ser_actual_departure_date NOT LIKE '$end_date%'
+                    OR ser_actual_departure_date IS NULL)
+                    AND ser_status = 1";
+        }
         // return as object
         return $this->db->query($sql)->getRow();
     }
@@ -102,7 +111,29 @@ class M_cdms_service extends Da_cdms_service {
     }
 
     /*
-    * get_num_import
+    * get_num_drop_range
+    * get number of drop service by range of date
+    * @input    start date, end date
+    * @output   drop number
+    * @author   Wirat
+    * @Create Date  2564-12-15
+    */
+    public function get_num_drop_range($start_date = NULL, $end_date = NULL) {
+        $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
+                WHERE (ser_arrivals_date < '$end_date' AND
+                (ser_actual_departure_date IS NULL OR 
+                (ser_actual_departure_date LIKE '$start_date%' OR ser_actual_departure_date > '$start_date') 
+                AND ser_actual_departure_date NOT LIKE '$end_date%')) 
+                AND ser_arrivals_date NOT LIKE '$start_date%'
+                AND ser_arrivals_date NOT LIKE '$end_date%'
+                AND ser_status = 1";
+
+        // return as object
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_num_export
     * get number of export service
     * @input    date, date_time
     * @output   export number
