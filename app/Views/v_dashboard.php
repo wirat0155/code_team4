@@ -169,7 +169,7 @@
 
     <div class="row d-flex justify-content-center">
       <!-- percent of container type -->
-      <div class="col-sm-6 col-md-7">
+      <div class="col-sm-6 col-md-6">
         <div class="card p-3">
           <h2>Container Statistics 15 Day Back Chart</h2>
           <div class="chart-container">
@@ -326,12 +326,12 @@
         labels: {
           font: {
             Color: "white",
-            size: 15,
+            size: 13,
             style: 'bold',
-            textAlign: 'right'
+            textAlign: 'left'
           },
           boxWidth: 20,
-          padding: 20
+          padding: 10
         },
       }
     }
