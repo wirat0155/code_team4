@@ -216,7 +216,20 @@
                       <?php echo $arr_today_service[$i]->con_number ?>
                     </td>
                     <td>
-                      <span class="bg-drop text-white p-2" style="border-radius: 5px;"><?php echo $arr_today_service[$i]->stac_name ?></span>
+                      <?php
+                        // 1 = import (sky blue)
+                        if ($arr_today_service[$i]->ser_stac_id == '1') {
+                            echo '<span class="bg-import text-white p-2" style="border-radius: 5px;">' . $arr_today_service[$i]->stac_name . '<span>';
+                        }
+                        // 4 = export (green)
+                        else if ($arr_today_service[$i]->ser_stac_id == '4') {
+                            echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">' . $arr_today_service[$i]->stac_name . '<span>';
+                        }
+                        // else = drop (orange)
+                        else {
+                            echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_today_service[$i]->stac_name . '<span>';
+                        }
+                      ?>
                     </td>
                     <td>
                       <?php echo $arr_today_service[$i]->cont_name ?>
@@ -402,7 +415,7 @@
           backgroundColor: gradient_dataset_1
         },
         {
-          label: [['DROP'], '<?php echo array_sum($arr_num_import)?>'],
+          label: [['DROP'], '<?php echo array_sum($arr_num_import) + $arr_num_import[count($arr_num_import) - 1]?>'],
           data: 
           <?php
           echo "[";

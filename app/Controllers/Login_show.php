@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\M_cdms_user;
+use App\Models\M_cdms_service;
 
 /*
 * Login_show
@@ -21,6 +22,18 @@ class Login_show extends Cdms_controller {
     * @Create Date  2564-12-07
     */
     public function login_show_ajax() {
+        date_default_timezone_set("Asia/Bangkok");
+        // load service model
+        $m_ser = new M_cdms_service();
+        // load container model
+
+        $today = date('Y-m-d');
+        $today_time = date('Y-m-d H:i:s');
+        // it will be moved to login page when login was done
+        // update ser_stac_id to ready (drop) depend on today
+        $m_ser->change_ser_stac_id(3, $today);
+        // update ser_stac_id to export depend on today
+        $m_ser->change_ser_stac_id(4, $today, $today_time);
         echo view('v_login.php');
     }
 

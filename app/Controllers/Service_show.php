@@ -49,12 +49,6 @@ class Service_show extends Cdms_controller {
         $yesterday_time = date('Y-m-d H:i:s', strtotime('-1 Day'));
         $time = date('H:i:s');
 
-        // it will be moved to login page when login was done
-        // update ser_stac_id to ready (drop) depend on today
-        $m_ser->change_ser_stac_id(3, $today);
-        // update ser_stac_id to export depend on today
-        $m_ser->change_ser_stac_id(4, $today, $today_time);
-
         $data['arr_con'] = $m_con->get_all(1);
 
         if(isset($_GET['date_range'])){

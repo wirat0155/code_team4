@@ -656,7 +656,7 @@ input[type=number]::-webkit-outer-spin-button {
                                                     else {
                                                         echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
                                                     }
-                                                    ?>
+                                                ?>
                                             </td>
 
                                             <!-- Container type -->

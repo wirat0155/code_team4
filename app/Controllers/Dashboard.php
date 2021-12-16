@@ -57,7 +57,6 @@ class Dashboard extends Cdms_controller
             $end_date = substr($date_range, 19, 4) . '-' . substr($date_range, 16, 2) . '-' . (substr($date_range, 13, 2));
 
             $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
-
             $data['arrivals_date'] = $date_range;
         } else {
             // get service data upon by date
