@@ -187,7 +187,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     </div>
     <div class="actions">
-        <button type="button" class="shadow-sm btn btn-success btn-border">
+        <button type="button" class="shadow-sm btn btn-success btn-border" onclick="print_cost()">
             <i class="fas fa-print mr-2"></i>
             Print invoice 
         </button>
@@ -1119,4 +1119,8 @@ input[type=number]::-webkit-outer-spin-button {
         cal_total_cost();
     }
 
+    function print_cost(){
+        window.open('<?php echo base_url('') . '/Service_show/service_print_cost/'?>', '_blank');
+    
+    }
     </script>

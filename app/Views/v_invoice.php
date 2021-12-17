@@ -5,15 +5,88 @@
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+
 </head>
 <style>
-    html, body {
-        font-family: "Garuda";
-        font-size: 12pt;
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1140px;
+        }
     }
+
+
+    @media (min-width: 992px) {
+        .container {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .container {
+            max-width: 540px;
+        }
+    }
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    div {
+        display: block;
+    }
+
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .col {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+    }
+
+    html,
+
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Garuda";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
     img {
-        size: 150px;
-        height: 150px;
+        size: 50px;
+        height: 50px;
     }
 </style>
 
@@ -21,28 +94,28 @@
     <div class="container">
         <div class="row">
             <div class="col" style="text-align: left;">
-                <img src="atpro.PNG" align="LEFT" style="margin-left: 40px;">
-                <img src="V1.2.1 [2021-07-09] Logo 1.jpg" align="LEFT">
-                <b style="font-size: 30px; margin-left: 50px;">At Pro Solutions Co.,Ltd (Head Office)</b><br>
-                <span style="font-size: 15px; margin-left: 50px;">443/8 M.3 T.Surasak A.Sriracha Chonburi
+                <img src="<?php echo base_url('/upload/atpro.PNG') ?>" align="LEFT" style="margin-left: 40px;">
+                <img src="<?php echo base_url('/upload/Logo_IBS.jpg') ?>" align="LEFT">
+                <b style="font-size: 10px; margin-left: 50px;">At Pro Solutions Co.,Ltd (Head Office)</b><br>
+                <span style="font-size: 10px; margin-left: 50px;">443/8 M.3 T.Surasak A.Sriracha Chonburi
                     20110</span><br>
-                <span style="font-size: 15px; margin-left: 50px;">Tax ID : 0205560036887</span> <br>
-                <span style="font-size: 15px; margin-left: 50px;">E-mail : info@ibs-thailand.com</span><br>
-                <span style="font-size: 15px; margin-left: 50px;">Mobile : +66 63 348 7036, +66 91 731 1709</span><br>
+                <span style="font-size: 10px; margin-left: 50px;">Tax ID : 0205560036887</span> <br>
+                <span style="font-size: 10px; margin-left: 50px;">E-mail : info@ibs-thailand.com</span><br>
+                <span style="font-size: 10px; margin-left: 50px;">Mobile : +66 63 348 7036, +66 91 731 1709</span><br>
             </div>
         </div>
     </div>
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-10" style="text-align: center; font-size: 30px; color: #2258A5;">
+            <div class="col-10" style="text-align: center; font-size: 10px; color: #2258A5;">
                 ใบเสร็จรับเงิน/ใบกำกับภาษี
             </div>
-            <div class="col-2" style="font-size: 30px; border-style: solid; padding: 10px 50px 10px 50px;">
+            <div class="col-2" style="font-size: 10px; border-style: solid; padding: 10px 50px 10px 50px;">
                 <span style="color: #2258A5;">ต้นฉบับ</span>
             </div>
         </div>
-        <div class="row" style="font-size: 20px;">
+        <div class="row" style="font-size: 10px;">
             <div class="col-2" style="color: #2258A5;">
                 <span>ชื่อลูกค้า : </span>
             </div>
@@ -56,7 +129,7 @@
                 <span style="float: left;">RE2112001</span>
             </div>
         </div>
-        <div class="row" style="font-size: 20px;">
+        <div class="row" style="font-size: 10px;">
             <div class="col-2" style="color: #2258A5;">
                 <span>ที่อยู่ : </span>
             </div>
@@ -70,7 +143,7 @@
                 <span style="float: left;">INV2112005</span>
             </div>
         </div>
-        <div class="row" style="font-size: 20px;">
+        <div class="row" style="font-size: 10px;">
             <div class="col-2">
             </div>
             <div class="col-5">
@@ -83,7 +156,7 @@
                 <span style="float: left;">December 04, 2021</span>
             </div>
         </div>
-        <div class="row" style="font-size: 20px;">
+        <div class="row" style="font-size: 10px;">
             <div class="col-2" style="color: #2258A5;">
                 <span>เลขผู้เสียภาษี</span>
             </div>
@@ -226,7 +299,7 @@
             </div>
         </div>
         <div class="row" style="padding-top: 20px;">
-            <div class="col-2">  
+            <div class="col-2">
             </div>
             <div class="col-4">
                 ( ) เช็คธนาคาร.............................................
@@ -266,7 +339,7 @@
                 <span>JTC Logistics Co., Ltd.</span>
             </div>
             <div class="col" style="text-align: center;">
-                <span >At Pro Solution Co.,Ltd.</span>
+                <span>At Pro Solution Co.,Ltd.</span>
             </div>
         </div>
         <div class="row" style="text-align: center; padding-top: 50px;">
@@ -274,13 +347,13 @@
                 <span>.............................................................</span>
             </div>
             <div class="col-3">
-                <span >.............................................................</span>
+                <span>.............................................................</span>
             </div>
             <div class="col-3">
-                <span >.............................................................</span>
+                <span>.............................................................</span>
             </div>
             <div class="col-3">
-                <span >.............................................................</span>
+                <span>.............................................................</span>
             </div>
         </div>
         <div class="row" style="text-align: center;">
@@ -291,10 +364,10 @@
                 <span>วันที่</span>
             </div>
             <div class="col-3">
-                <span >ผู้รับเงิน</span>
+                <span>ผู้รับเงิน</span>
             </div>
             <div class="col-3">
-                <span >วันที่</span>
+                <span>วันที่</span>
             </div>
         </div>
     </div>

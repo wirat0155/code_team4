@@ -719,14 +719,13 @@ class Service_show extends Cdms_controller {
         $this->output('v_service_show_information', $data);
     }
 
-    public function test(){
-
+    public function service_print_cost(){
         $mpdf = new \Mpdf\Mpdf();
+        // $data['obj_original_container'] = 'aaa';
         $html = view('v_invoice');
         $mpdf->WriteHTML($html);
         $this->response->setHeader('Content-Type', 'application/pdf');
         $mpdf->Output('arjun.pdf','I'); // opens in browser
 
     }
-
 }
