@@ -46,15 +46,20 @@
         border-collapse: collapse; */
     }
 
-    .cost_detail th, .cost_detail td, .price td{
+    .cost_detail th, .cost_detail td, .price td, .bank th, .bank td{
         border: 1px solid black;
         border-collapse: collapse;
+        padding: 2px 10px 2px;
     }
     
     .cost_detail td{
-        vertical-align: top;
-        height: 350px;
+        border-top: 0;
+        border-bottom: 0;
+        /* vertical-align: top; */
+        /* height: 350px; */
     }
+
+    
 
     table{
         width: 100%;
@@ -210,50 +215,181 @@
             </tr>
         </thead>
         <tbody>
-            <tr class='cost_detail'>
-                <td style="text-align: center;" width="7%">
-                    <div class="data"> สำดำ </div>
+            
+            <?php for($i = 0; $i < 15 ;$i++){?>
+                <tr class='cost_detail'>
+                    <td style="text-align: center;" width="7%">
+                        <div class="data">  </div>
+                    </td>
+                    <td style="text-align: left;" width="40%">
+                        <div class="data"> &nbsp;  </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="data">  </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="data"> </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="data">  </div>
+                    </td>
+                </tr>
+            <?php } ?>
+
+            <tr class="price">
+                <td style="text-align: center;" colspan="3" rowspan="2">
                 </td>
-                <td style="text-align: left;" width="40%">
-                    <div class="data"> &nbsp; รายละเอียด </div>
+                <td style="text-align: right;">
+                    <div class="data title"> รวมเป็นเงิน </div>
                 </td>
-                <td style="text-align: center;">
-                    <div class="data"> จำนวน </div>
-                </td>
-                <td style="text-align: center;">
-                    <div class="data"> ราคา </div>
-                </td>
-                <td style="text-align: center;">
-                    <div class="data"> จำนวนเงิน (บาท) </div>
+                <td style="text-align: right;">
+                    <div class="data"> 1,121.50 </div>
                 </td>
             </tr>
             <tr class="price">
-                <td style="text-align: center;" width="60%" colspan="3" rowspan="2">
+                <td style="text-align: right;">
+                    <div class="data title"> ภาษีมูลค่าเพิ่ม 7% </div>
                 </td>
-                <td style="text-align: center;">
-                    <div class="data"> ราคา </div>
-                </td>
-                <td style="text-align: center;">
-                    <div class="data"> จำนวนเงิน (บาท) </div>
+                <td style="text-align: right;">
+                    <div class="data"> 78.50 </div>
                 </td>
             </tr>
             <tr class="price">
-                <td style="text-align: center;">
-                    <div class="data"> ราคา </div>
+                <td style="text-align: center;" colspan="3">
+                    หนึ่งพันสองร้อยบาทถ้วน
                 </td>
-                <td style="text-align: center;">
-                    <div class="data"> จำนวนเงิน (บาท) </div>
+                <td style="text-align: right;">
+                    <div class="data title"> จำนวนเงินรวมทั้งสิ้น </div>
+                </td>
+                <td style="text-align: right;">
+                    <div class="data"> 1,200.00 </div>
                 </td>
             </tr>
-            <tr class="price">
-                <td style="text-align: center;" width="60%" colspan="3">
-                    หนีึ่งร้อย
+
+        </tbody>
+    </table>
+    
+    <table style="width: 80%; margin-top: 10px">
+        <tbody>
+            <tr>
+                <td style="text-align: left; width: 15%">
+                    ชำระเงินโดย : 
+                </td>
+                <td style="text-align: left; width: 15%">
+                    ( &nbsp; ) เงินสด
+                </td>   
+                <td style="text-align: left; width: 20%">
+                    ( &nbsp; ) โอนเงิน
+                </td>   
+                <td style="text-align: left; width: 25%">
+                    วันที่......................................
+                </td>   
+                <td style="text-align: left; width: 25%">
+                    ยอด......................................
+                </td>      
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    
+                </td>
+                <td style="text-align: left;" colspan="2">
+                    ( &nbsp; ) เช็คธนาคาร......................................
+                </td>   
+                <td style="text-align: left;">
+                    เลขที่.....................................
+                </td>   
+                <td style="text-align: left;">
+                    วันที่......................................
+                </td>      
+            </tr>
+        </tbody>
+    </table>
+
+    <table style="margin-top: 10px">
+        <tbody>
+            <tr>
+                <td style="text-align: left;">
+                    PAYMENT METHOD
+                </td>   
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Bank Information -->
+    <table style="border: 1px solid black; border-collapse: collapse;">
+        <tbody>
+            <tr class="bank">
+                <th style="text-align: center;">
+                    <div class="title"> ธนาคาร </div>
+                </th>
+                <th style="text-align: center;">
+                    <div class="title"> ชื่อบัญชี </div>
+                </th>
+                <th style="text-align: center; width: 20%">
+                    <div class="title"> สาขา </div>
+                </th>
+                <th style="text-align: center; width: 20%">
+                    <div class="title"> เลขที่บัญชี </div>
+                </th> 
+            </tr>
+            <tr class="bank">
+                <td class="data" style="text-align: center;">
+                    ธนาคารกสิกรไทย
+                </td> 
+                <td class="data" style="text-align: center;">
+                    บริษัท แอท โปร โซลูชั่น จำกัด
+                </td>
+                <td class="data" style="text-align: center;">
+                    โรบินสัน ศรีราชา
+                </td> 
+                <td class="data" style="text-align: center;">
+                    101-1-28335-3
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <td style="text-align: center;">
+                    Leschaco (Thailand) Ltd. 
+                </td> 
+                <td style="text-align: center;">
+                    At Pro Solutions Co.,Ltd
+                </td>
+            </tr>
+        </thead>
+    </table>
+    
+    <table style="margin-top: 20px">
+        <tbody>
+            <tr>
+                <td style="text-align: center;">
+                    ............................................................
                 </td>
                 <td style="text-align: center;">
-                    <div class="data"> ราคา </div>
+                    ............................................................
                 </td>
                 <td style="text-align: center;">
-                    <div class="data"> จำนวนเงิน (บาท) </div>
+                    ............................................................
+                </td>
+                <td style="text-align: center;">
+                    ............................................................
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">
+                    ผู้จ่าย
+                </td>
+                <td style="text-align: center;">
+                    วันที่
+                </td>
+                <td style="text-align: center;">
+                    ผู้รับเงิน
+                </td>
+                <td style="text-align: center;">
+                    วันที่
                 </td>
             </tr>
         </tbody>

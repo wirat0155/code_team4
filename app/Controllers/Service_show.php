@@ -722,7 +722,7 @@ class Service_show extends Cdms_controller {
     public function service_print_cost(){
         $mpdf = new \Mpdf\Mpdf();
         // $data['obj_original_container'] = 'aaa';
-        $html = view('v_invoice');
+        $html = view('v_invoice2');
         $mpdf->WriteHTML($html);
         $this->response->setHeader('Content-Type', 'application/pdf');
         $mpdf->Output('arjun.pdf','I'); // opens in browser
