@@ -719,27 +719,13 @@ class Service_show extends Cdms_controller {
         $this->output('v_service_show_information', $data);
     }
 
-    /*
-    * service_print_cost
-    * print invoice service
-    * @input    ser_id, vat
-    * @output   PDF
-    * @author   Natdanai
-    * @Create Date  2564-12-18
-    */
-    public function service_print_cost($ser_id, $vat){
-        //get information service + cost
-        $m_ser = new M_cdms_service();
-        $data['arr_service_cost'] = $m_ser->get_service_cost_all($ser_id);
-        $data['vat'] = $vat;
-        //MPDF config
+    public function service_print_cost(){
         $mpdf = new \Mpdf\Mpdf();
-        $script = view('v_invoice_script', $data);
-        $copy = view('v_invoice_copy', $data);
-        $mpdf->WriteHTML($script); //page manuscript
-        $mpdf->AddPage(); //add page
-        $mpdf->WriteHTML($copy); //page copy
+        // $data['obj_original_container'] = 'aaa';
+        $html = view('v_invoice2');
+        $mpdf->WriteHTML($html);
         $this->response->setHeader('Content-Type', 'application/pdf');
-        $mpdf->Output('invoice.pdf','I'); // opens in browser
+        $mpdf->Output('arjun.pdf','I'); // opens in browser
+
     }
 }

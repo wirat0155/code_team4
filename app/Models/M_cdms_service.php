@@ -10,9 +10,7 @@ use App\Models\Da_cdms_service;
 * @author   Natdanai Worarat
 * @Create Date  2564-07-29
 */
-
-class M_cdms_service extends Da_cdms_service
-{
+class M_cdms_service extends Da_cdms_service {
 
     /*
     * get_all
@@ -22,8 +20,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Natdanai
     * @Create Date  2564-07-30
     */
-    public function get_all($today = '')
-    {
+    public function get_all($today = '') {
         if ($today != '') {
             $sql = "SELECT * FROM $this->table
                     INNER JOIN cdms_customer ON ser_cus_id = cus_id
@@ -34,7 +31,8 @@ class M_cdms_service extends Da_cdms_service
                     WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR ser_actual_departure_date IS NULL)
                     AND ser_status = 1
                     ORDER BY ser_id DESC";
-        } else {
+        }
+        else {
             $sql = "SELECT * FROM $this->table
                     INNER JOIN cdms_customer ON ser_cus_id = cus_id
                     INNER JOIN cdms_container ON ser_con_id = con_id
@@ -55,12 +53,12 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-10-30
     */
-    public function get_num_import($arrivals_date = '', $end_date = NULL)
-    {
+    public function get_num_import($arrivals_date = '', $end_date = NULL) {
         if ($end_date == NULL) {
             $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
-                    WHERE ser_arrivals_date LIKE '$arrivals_date%' AND ser_status = 1";
-        } else {
+                    WHERE ser_arrivals_date LIKE '$arrivals_date%' AND ser_status = 1" ;
+        }
+        else {
             $sql = "SELECT COUNT(ser_id) AS num_import FROM $this->table
                     WHERE ser_arrivals_date LIKE '$arrivals_date%'
                     AND (ser_actual_departure_date NOT LIKE '$end_date%'
@@ -79,8 +77,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-10-30
     */
-    public function get_num_all($today = '', $yesterday_time = '')
-    {
+    public function get_num_all($today = '', $yesterday_time = '') {
         $sql = "SELECT COUNT(ser_id) AS num_all FROM $this->table
                 WHERE ser_arrivals_date < '$today' AND (ser_actual_departure_date > '$yesterday_time' OR ser_actual_departure_date IS NULL) AND ser_status = 1";
 
@@ -96,15 +93,15 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-10-30
     */
-    public function get_num_drop($date = '', $date_time = '', $is_today = true)
-    {
+    public function get_num_drop($date = '', $date_time = '', $is_today = true) {
         if ($is_today) {
             $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
                     WHERE ser_arrivals_date < '$date'
                     AND (ser_actual_departure_date > '$date_time' 
                     OR ser_actual_departure_date IS NULL)
                     AND ser_status = 1";
-        } else {
+        }
+        else {
             $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
                     WHERE ser_arrivals_date < '$date' AND (ser_actual_departure_date > '$date_time' OR ser_actual_departure_date IS NULL) AND ser_status = 1";
         }
@@ -121,8 +118,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-12-15
     */
-    public function get_num_drop_range($start_date = NULL, $end_date = NULL)
-    {
+    public function get_num_drop_range($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT COUNT(ser_id) AS num_drop FROM $this->table
                 WHERE (ser_arrivals_date < '$end_date' AND
                 (ser_actual_departure_date IS NULL OR 
@@ -144,13 +140,13 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-10-30
     */
-    public function get_num_export($date = '', $date_time = '', $is_today = true)
-    {
+    public function get_num_export($date = '', $date_time = '', $is_today = true) {
         if ($is_today) {
             $sql = "SELECT COUNT(ser_id) AS num_export FROM $this->table
                     WHERE ser_actual_departure_date LIKE '$date%' AND ser_actual_departure_date <= '$date_time'
                     AND ser_status = 1";
-        } else {
+        }
+        else {
             $sql = "SELECT COUNT(ser_id) AS num_export FROM $this->table
                     WHERE ser_actual_departure_date LIKE '$date%' AND ser_status = 1";
         }
@@ -166,8 +162,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Worarat
     * @Create Date  2564-08-07
     */
-    public function get_by_id($ser_id)
-    {
+    public function get_by_id($ser_id) {
         $sql = "SELECT * FROM $this->table
                 LEFT JOIN cdms_customer ON ser_cus_id = cus_id
                 LEFT JOIN cdms_container ON ser_con_id = con_id
@@ -186,8 +181,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Kittipod
     * @Create Date  2564-09-10
     */
-    public function get_by_date_customer($start_date = NULL, $end_date = NULL)
-    {
+    public function get_by_date_customer($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT * FROM $this->table
                 INNER JOIN cdms_customer ON ser_cus_id = cus_id
                 INNER JOIN cdms_container ON ser_con_id = con_id
@@ -208,8 +202,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Kittipod
     * @Create Date  2564-09-10
     */
-    public function get_by_date($start_date = NULL, $end_date = NULL)
-    {
+    public function get_by_date($start_date = NULL, $end_date = NULL) {
         $sql = "SELECT * FROM $this->table
                 INNER JOIN cdms_customer ON ser_cus_id = cus_id
                 INNER JOIN cdms_container ON ser_con_id = con_id
@@ -236,8 +229,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Warisara
     * @Create Date  2564-09-20
     */
-    public function get_by_id_change($ser_id_change)
-    {
+    public function get_by_id_change($ser_id_change){
         $sql = "SELECT ser_arrivals_date , con_number , agn_company_name , ser_id_change FROM  cdms_service
         INNER JOIN cdms_container ON ser_con_id=con_id
         INNER JOIN cdms_agent ON agn_id=con_agn_id
@@ -255,8 +247,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Warisara
     * @Create Date  2564-09-20
     */
-    public function get_by_ser_con_id($ser_con_id = '', $today = '')
-    {
+    public function get_by_ser_con_id($ser_con_id = '', $today = '') {
         $sql = "SELECT * FROM $this->table
                 WHERE ser_con_id = '$ser_con_id' AND ser_status = 1 AND (ser_actual_departure_date IS NULL OR ser_actual_departure_date > '$today')
                 LIMIT 1";
@@ -272,8 +263,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-11-14
     */
-    public function get_max_id()
-    {
+    public function get_max_id() {
         $sql = "SELECT MAX(ser_id) AS max_ser_id FROM $this->table WHERE ser_status = 1";
 
         // return as object
@@ -288,8 +278,7 @@ class M_cdms_service extends Da_cdms_service
     * @author   Benjapon
     * @Create Date  2564-12-07
     */
-    public function get_change_service_option($cont_id, $con_size_id)
-    {
+    public function get_change_service_option($cont_id, $con_size_id){
         $sql = "SELECT con_number,cont_name,ser_id FROM cdms_container 
         INNER JOIN cdms_service ON ser_con_id=con_id 
         INNER JOIN cdms_status_container ON con_stac_id=stac_id 
@@ -308,15 +297,13 @@ class M_cdms_service extends Da_cdms_service
     * @author   Wirat
     * @Create Date  2564-12-09
     */
-    public function get_arrivals_date_by_ser_id($ser_id)
-    {
+    public function get_arrivals_date_by_ser_id($ser_id) {
         $sql = "SELECT ser_arrivals_date FROM $this->table
                 WHERE ser_id = '$ser_id'";
         return $this->db->query($sql)->getRow();
     }
 
-    public function get_number_cont($cont_id = '', $date_time = '')
-    {
+    public function get_number_cont($cont_id = '', $date_time = '') {
         $sql = "SELECT COUNT(ser_id) AS num_cont FROM $this->table
                 LEFT JOIN cdms_container ON con_id = ser_con_id
                 LEFT JOIN cdms_container_type ON cont_id = con_cont_id
@@ -326,10 +313,9 @@ class M_cdms_service extends Da_cdms_service
         return $this->db->query($sql)->getRow();
     }
 
-    public function get_by_departure_date($date = NULL)
-    {
+    public function get_by_departure_date($date = NULL) {
         if ($date != NULL) {
-            $sql = "SELECT con_number, ser_stac_id, stac_name, cont_name, ser_departure_date, ser_departure_location, dri_name,
+                $sql = "SELECT con_number, ser_stac_id, stac_name, cont_name, ser_departure_date, ser_departure_location, dri_name,
                         car_number, cus_company_name FROM cdms_service
                         LEFT JOIN cdms_container ON con_id = ser_con_id
                         LEFT JOIN cdms_status_container ON stac_id = ser_stac_id
@@ -341,9 +327,9 @@ class M_cdms_service extends Da_cdms_service
                         (ser_actual_departure_date IS NULL OR ser_actual_departure_date LIKE '$date%')";
             return $this->db->query($sql)->getResult();
         }
+
     }
-    public function get_all_damaged($today = '')
-    {
+    public function get_all_damaged($today = '') {
         if ($today != '') {
             $sql = "SELECT * FROM $this->table
                     INNER JOIN cdms_customer ON ser_cus_id = cus_id
@@ -354,7 +340,8 @@ class M_cdms_service extends Da_cdms_service
                     WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR ser_actual_departure_date IS NULL)
                     AND ser_status = 1 AND stac_id = 5 OR stac_id = 6
                     ORDER BY ser_id DESC";
-        } else {
+        }
+        else {
             $sql = "SELECT * FROM $this->table
                     INNER JOIN cdms_customer ON ser_cus_id = cus_id
                     INNER JOIN cdms_container ON ser_con_id = con_id
@@ -367,25 +354,4 @@ class M_cdms_service extends Da_cdms_service
         return $this->db->query($sql)->getResult();
     }
 
-    /*
-    * get_service_cost_all
-    * get service + cost where ser_id
-    * @input    ser_id
-    * @output   array of service + cost where ser_id
-    * @author   Natdanai
-    * @Create Date  2564-12-18
-    */
-    public function get_service_cost_all($ser_id)
-    {
-        $sql = "SELECT * FROM $this->table
-                    INNER JOIN cdms_customer ON ser_cus_id = cus_id
-                    INNER JOIN cdms_container ON ser_con_id = con_id
-                    INNER JOIN cdms_container_type ON con_cont_id = cont_id
-                    INNER JOIN cdms_status_container ON ser_stac_id = stac_id
-                    INNER JOIN cdms_agent ON con_agn_id = agn_id
-                    INNER JOIN cdms_cost_detail ON ser_id = cosd_ser_id
-                    WHERE  ser_status = 1 and ser_id = '$ser_id'
-                    ORDER BY cosd_id ASC";
-        return $this->db->query($sql)->getResult();
-    }
 }
