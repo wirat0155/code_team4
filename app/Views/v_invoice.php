@@ -5,77 +5,12 @@
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-
-
 </head>
 <style>
-    @media (min-width: 1200px) {
-        .container {
-            max-width: 1140px;
-        }
-    }
-
-
-    @media (min-width: 992px) {
-        .container {
-            max-width: 960px;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .container {
-            max-width: 720px;
-        }
-    }
-
-    @media (min-width: 576px) {
-        .container {
-            max-width: 540px;
-        }
-    }
-
-    .container {
-        width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    *,
-    ::after,
-    ::before {
-        box-sizing: border-box;
-    }
-
-    div {
-        display: block;
-    }
-
-    .row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-
-    .col {
-        -ms-flex-preferred-size: 0;
-        flex-basis: 0;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-        max-width: 100%;
-    }
-
     html,
-
     body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Garuda";
+        font-family: "Garuda", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         font-size: 1rem;
         font-weight: 400;
         line-height: 1.5;
@@ -88,9 +23,37 @@
         size: 50px;
         height: 50px;
     }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
 </style>
 
 <body>
+    <table>
+        <tr>
+            <td><span style="color: #2258A5;">ชื่อลูกค้า : </span></td>
+            <td><span>JTC Logistics Co., Ltd.</span></td>
+            <td><span style="color: #2258A5;">เลขที่ใบเสร็จรับเงิน :</span></td>
+            <td><span>RE2112001</span></td>
+        </tr>
+    </table>
+    <div class="grid-container">
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+        <div class="grid-item">
+            
+        </div>
+    </div>
+
+    </div>
     <div class="container">
         <div class="row">
             <div class="col" style="text-align: left;">
