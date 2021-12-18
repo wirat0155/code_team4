@@ -5,10 +5,11 @@
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
 </head>
 <style>
-    html, body {
+    html,
+    body {
         margin: 0;
         font-family: "THSarabunNew";
         font-size: 15px;
@@ -18,50 +19,62 @@
         width: 220px;
     }
 
-    .company_name{
+    .company_name {
         font-size: 25px;
         font-weight: bold;
     }
 
-    .contact{
-        font-size: 15px;
-    }
-
-    .heading{
+    .contact {
         font-size: 20px;
-        color: #2258A5;
     }
 
-    .title{
+    .heading {
+        font-size: 25px;
+        color: #2258A5;
+        font-weight: bold;
+    }
+
+    .title {
         font-size: 15px;
         color: #2258A5;
     }
 
-    .data{
+    .data {
         font-size: 15px;
     }
 
-    table, th, td{
+    .script {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
         /* border: 1px solid black;
         border-collapse: collapse; */
     }
 
-    .cost_detail th, .cost_detail td, .price td, .bank th, .bank td{
+    .cost_detail th,
+    .cost_detail td,
+    .price td,
+    .bank th,
+    .bank td {
         border: 1px solid black;
         border-collapse: collapse;
         padding: 2px 10px 2px;
     }
-    
-    .cost_detail td{
+
+    .cost_detail td {
         border-top: 0;
         border-bottom: 0;
         /* vertical-align: top; */
         /* height: 350px; */
     }
 
-    
 
-    table{
+
+    table {
         width: 100%;
     }
 </style>
@@ -94,14 +107,14 @@
 
     <!-- Heading -->
     <table>
-        <tbody >
+        <tbody>
             <tr>
-                <td style="text-align: center;">
+                <td style="padding-left: 35%; padding-top: -15px;">
                     <div class="heading">ใบเสร็จรับเงิน/ใบกำกับภาษี</div>
                 </td>
-                <!-- <td>
-                    ต้นฉบับ
-                </td> -->
+                <td>
+                    <div class="heading script">ต้นฉบับ</div>
+                </td>
             </tr>
             <br>
         </tbody>
@@ -116,7 +129,7 @@
                     <div class="title title_detail"> ชื่อลูกค้า : </div>
                 </td>
                 <td class="data" width="50%">
-                    Leschaco (Thailand) Ltd. 
+                    <?php echo $arr_service_cost[0]->cus_company_name ?>
                 </td>
                 <td style="text-align: right;" width="20%">
                     <div class="title title_detail" width="30%"> เลขที่ใบเสร็จรับเงิน : </div>
@@ -131,8 +144,7 @@
                     <div class="title title_detail"> ที่อยู่ : </div>
                 </td>
                 <td class="data" width="50%">
-                    3354/36-39 1 1th Floor, Manorom Building, Rama 4 Rd.,
-                    Klongton, Klongtoey, Bangkok 10110
+                    <?php echo $arr_service_cost[0]->cus_address ?>
                 </td>
                 <td style="text-align: right;" width="20%">
                     <div class="title title_detail" width="30%"> วันที่ : </div>
@@ -147,7 +159,7 @@
                     <div class="title title_detail"> เลขผู้เสียภาษี : </div>
                 </td>
                 <td class="data" width="50%">
-                    0105542055418
+                    <?php echo $arr_service_cost[0]->cus_tax ?>
                 </td>
                 <td style="text-align: right;" width="20%">
                     <div class="title title_detail" width="30%"> ครบกำหนดชำระ : </div>
@@ -162,28 +174,28 @@
                     <div class="title title_detail"> ชื่อผู้ติดต่อ : </div>
                 </td>
                 <td class="data" width="50%">
-                    -
+                    <?php echo $arr_service_cost[0]->cus_firstname . ' ' . $arr_service_cost[0]->cus_lastname ?>
                 </td>
                 <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%">  </div>
+                    <div class="title title_detail" width="30%"> </div>
                 </td>
                 <td class="data">
-                    &nbsp; 
+                    &nbsp;
                 </td>
             </tr>
-            
+
             <tr>
                 <td style="text-align: left;" width="10%">
                     <div class="title title_detail"> เบอร์โทรศัพท์ : </div>
                 </td>
                 <td class="data" width="50%">
-                    -
+                    <?php echo $arr_service_cost[0]->cus_tel ?>
                 </td>
                 <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%">  </div>
+                    <div class="title title_detail" width="30%"> </div>
                 </td>
                 <td class="data">
-                    &nbsp; 
+                    &nbsp;
                 </td>
             </tr>
 
@@ -215,23 +227,51 @@
             </tr>
         </thead>
         <tbody>
-            
-            <?php for($i = 0; $i < 15 ;$i++){?>
+            <?php for ($i = 0; $i < count($arr_service_cost); $i++) { ?>
                 <tr class='cost_detail'>
                     <td style="text-align: center;" width="7%">
-                        <div class="data">  </div>
+
                     </td>
                     <td style="text-align: left;" width="40%">
-                        <div class="data"> &nbsp;  </div>
+                        <div class="data"> &nbsp; <?php echo $arr_service_cost[$i]->cosd_name ?> </div>
                     </td>
                     <td style="text-align: center;">
-                        <div class="data">  </div>
+                        <div class="data" style="text-align: center;"> <?php echo $arr_service_cost[$i]->cosd_quantity ?> </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="data"> <?php echo number_format($arr_service_cost[$i]->cosd_cost, 2, '.', ',') ?> </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="data">
+                            <?php
+                            if ($arr_service_cost[$i]->cosd_quantity == 0) {
+                                echo number_format($arr_service_cost[$i]->cosd_cost, 2, '.', ',');
+                            } else {
+                                echo number_format($arr_service_cost[$i]->cosd_cost * $arr_service_cost[$i]->cosd_quantity, 2, '.', ',');
+                            } ?>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+            <?php
+            $count_entry = 13;
+            $count_entry -= count($arr_service_cost);
+            for ($i = 0; $i < $count_entry; $i++) { ?>
+                <tr class='cost_detail'>
+                    <td style="text-align: center;" width="7%">
+                        <div class="data"> </div>
+                    </td>
+                    <td style="text-align: left;" width="40%">
+                        <div class="data"> &nbsp; </div>
                     </td>
                     <td style="text-align: center;">
                         <div class="data"> </div>
                     </td>
                     <td style="text-align: center;">
-                        <div class="data">  </div>
+                        <div class="data"> </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <div class="data"> </div>
                     </td>
                 </tr>
             <?php } ?>
@@ -243,7 +283,19 @@
                     <div class="data title"> รวมเป็นเงิน </div>
                 </td>
                 <td style="text-align: right;">
-                    <div class="data"> 1,121.50 </div>
+                    <div class="data">
+                        <?php
+                        $subtotal = 0;
+                        for ($i = 0; $i < count($arr_service_cost); $i++) {
+                            if ($arr_service_cost[$i]->cosd_quantity == 0) {
+                                $subtotal += $arr_service_cost[$i]->cosd_cost;
+                            } else {
+                                $subtotal += $arr_service_cost[$i]->cosd_cost * $arr_service_cost[$i]->cosd_quantity;
+                            }
+                        }
+                        echo number_format($subtotal, 2, '.', ',');
+                        ?>
+                    </div>
                 </td>
             </tr>
             <tr class="price">
@@ -251,56 +303,61 @@
                     <div class="data title"> ภาษีมูลค่าเพิ่ม 7% </div>
                 </td>
                 <td style="text-align: right;">
-                    <div class="data"> 78.50 </div>
+                    <div class="data">
+                        <?php
+
+                        $tax = ($subtotal * $vat) / 100;
+                        echo number_format($tax, 2, '.', ','); ?>
+                    </div>
                 </td>
             </tr>
             <tr class="price">
                 <td style="text-align: center;" colspan="3">
-                    หนึ่งพันสองร้อยบาทถ้วน
+                    <?php echo Convert($tax + $subtotal) ?>
                 </td>
                 <td style="text-align: right;">
                     <div class="data title"> จำนวนเงินรวมทั้งสิ้น </div>
                 </td>
                 <td style="text-align: right;">
-                    <div class="data"> 1,200.00 </div>
+                    <div class="data"> <?php echo number_format($tax + $subtotal, 2, '.', ',') ?> </div>
                 </td>
             </tr>
 
         </tbody>
     </table>
-    
+
     <table style="width: 80%; margin-top: 10px">
         <tbody>
             <tr>
                 <td style="text-align: left; width: 15%">
-                    ชำระเงินโดย : 
+                    ชำระเงินโดย :
                 </td>
                 <td style="text-align: left; width: 15%">
                     ( &nbsp; ) เงินสด
-                </td>   
+                </td>
                 <td style="text-align: left; width: 20%">
                     ( &nbsp; ) โอนเงิน
-                </td>   
+                </td>
+                <td style="text-align: left; width: 20%;">
+                    วันที่ &nbsp;<span style="border-bottom: 1px dotted black;">November 30, -0001</span>
+                </td>
                 <td style="text-align: left; width: 25%">
-                    วันที่......................................
-                </td>   
-                <td style="text-align: left; width: 25%">
-                    ยอด......................................
-                </td>      
+                    ยอด &nbsp;<span style="border-bottom: 1px dotted black;"><?php echo number_format($tax + $subtotal, 2, '.', ',') ?></span>
+                </td>
             </tr>
             <tr>
                 <td style="text-align: left;">
-                    
+
                 </td>
                 <td style="text-align: left;" colspan="2">
                     ( &nbsp; ) เช็คธนาคาร......................................
-                </td>   
+                </td>
                 <td style="text-align: left;">
                     เลขที่.....................................
-                </td>   
+                </td>
                 <td style="text-align: left;">
                     วันที่......................................
-                </td>      
+                </td>
             </tr>
         </tbody>
     </table>
@@ -310,7 +367,7 @@
             <tr>
                 <td style="text-align: left;">
                     PAYMENT METHOD
-                </td>   
+                </td>
             </tr>
         </tbody>
     </table>
@@ -330,18 +387,18 @@
                 </th>
                 <th style="text-align: center; width: 20%">
                     <div class="title"> เลขที่บัญชี </div>
-                </th> 
+                </th>
             </tr>
             <tr class="bank">
                 <td class="data" style="text-align: center;">
                     ธนาคารกสิกรไทย
-                </td> 
+                </td>
                 <td class="data" style="text-align: center;">
                     บริษัท แอท โปร โซลูชั่น จำกัด
                 </td>
                 <td class="data" style="text-align: center;">
                     โรบินสัน ศรีราชา
-                </td> 
+                </td>
                 <td class="data" style="text-align: center;">
                     101-1-28335-3
                 </td>
@@ -352,16 +409,16 @@
     <table>
         <thead>
             <tr>
-                <td style="text-align: center;">
-                    Leschaco (Thailand) Ltd. 
-                </td> 
-                <td style="text-align: center;">
+                <td style="padding-left: 22%;">
+                    <?php echo $arr_service_cost[0]->cus_company_name ?>
+                </td>
+                <td>
                     At Pro Solutions Co.,Ltd
                 </td>
             </tr>
         </thead>
     </table>
-    
+
     <table style="margin-top: 20px">
         <tbody>
             <tr>
