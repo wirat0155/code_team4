@@ -46,11 +46,16 @@
         border-collapse: collapse; */
     }
 
-    .cost_detail th, .cost_detail td{
+    .cost_detail th, .cost_detail td, .price td{
         border: 1px solid black;
         border-collapse: collapse;
     }
     
+    .cost_detail td{
+        vertical-align: top;
+        height: 350px;
+    }
+
     table{
         width: 100%;
     }
@@ -207,13 +212,42 @@
         <tbody>
             <tr class='cost_detail'>
                 <td style="text-align: center;" width="7%">
-                    <div class="data"> ลำดับ </div>
+                    <div class="data"> สำดำ </div>
                 </td>
-                <td style="text-align: center;" width="40%">
-                    <div class="data"> รายละเอียด </div>
+                <td style="text-align: left;" width="40%">
+                    <div class="data"> &nbsp; รายละเอียด </div>
                 </td>
                 <td style="text-align: center;">
                     <div class="data"> จำนวน </div>
+                </td>
+                <td style="text-align: center;">
+                    <div class="data"> ราคา </div>
+                </td>
+                <td style="text-align: center;">
+                    <div class="data"> จำนวนเงิน (บาท) </div>
+                </td>
+            </tr>
+            <tr class="price">
+                <td style="text-align: center;" width="60%" colspan="3" rowspan="2">
+                </td>
+                <td style="text-align: center;">
+                    <div class="data"> ราคา </div>
+                </td>
+                <td style="text-align: center;">
+                    <div class="data"> จำนวนเงิน (บาท) </div>
+                </td>
+            </tr>
+            <tr class="price">
+                <td style="text-align: center;">
+                    <div class="data"> ราคา </div>
+                </td>
+                <td style="text-align: center;">
+                    <div class="data"> จำนวนเงิน (บาท) </div>
+                </td>
+            </tr>
+            <tr class="price">
+                <td style="text-align: center;" width="60%" colspan="3">
+                    หนีึ่งร้อย
                 </td>
                 <td style="text-align: center;">
                     <div class="data"> ราคา </div>
