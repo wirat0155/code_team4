@@ -12,7 +12,7 @@
     body {
         margin: 0;
         font-family: "THSarabunNew";
-        font-size: 15px;
+        font-size: 20px;
     }
 
     img {
@@ -20,7 +20,7 @@
     }
 
     .company_name {
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
     }
 
@@ -36,19 +36,19 @@
 
     .title {
         font-weight: bold;
-        font-size: 15px;
+        font-size: 20px;
         color: #2258A5;
     }
 
     .data {
-        font-size: 15px;
+        font-size: 20px;
     }
 
     table,
     th,
     td {
-        /* border: 1px solid black;
-        border-collapse: collapse; */
+        /* border: 1px solid black; */
+        border-collapse: collapse;
     }
 
     .cost_detail th,
@@ -83,7 +83,7 @@
                 <td style="text-align: left; width: 35%;">
                     <img src="<?php echo base_url('/upload/img.png') ?>">
                 </td>
-                <td style="text-align: left; font-size: 10px;">
+                <td style="text-align: left; font-size: 15px;">
                     <div class="company_name">At Pro Solutions Co.,Ltd HeadOffice</div>
                     <div class="contact">
                         443/8 M.3 T.Surasak A.Sriracha Chonburi 20110 <br>
@@ -120,29 +120,29 @@
         <tbody>
 
             <tr>
-                <td style="text-align: left;" width="10%">
+                <td style="text-align: left;" width="15%">
                     <div class="title title_detail"> ชื่อลูกค้า : </div>
                 </td>
-                <td class="data" width="50%">
+                <td class="data" width="40%">
                     <?php echo $arr_service_cost[0]->cus_company_name ?>
                 </td>
-                <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%"> เลขที่ใบเสร็จรับเงิน : </div>
+                <td style="text-align: right;" width="30%">
+                    <div class="title title_detail"> เลขที่ใบเสร็จรับเงิน : </div>
                 </td>
-                <td class="data">
+                <td class="data" width="25%">
                     &nbsp; RE2109003
                 </td>
             </tr>
 
             <tr>
-                <td style="text-align: left;" width="10%">
+                <td style="text-align: left;">
                     <div class="title title_detail"> ที่อยู่ : </div>
                 </td>
-                <td class="data" width="50%">
+                <td class="data">
                     <?php echo $arr_service_cost[0]->cus_address ?>
                 </td>
-                <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%"> วันที่ : </div>
+                <td style="text-align: right;">
+                    <div class="title title_detail"> วันที่ : </div>
                 </td>
                 <td class="data">
                     &nbsp; November 30, -0001
@@ -150,14 +150,14 @@
             </tr>
 
             <tr>
-                <td style="text-align: left;" width="10%">
+                <td style="text-align: left;">
                     <div class="title title_detail"> เลขผู้เสียภาษี : </div>
                 </td>
-                <td class="data" width="50%">
+                <td class="data">
                     <?php echo $arr_service_cost[0]->cus_tax ?>
                 </td>
-                <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%"> ครบกำหนดชำระ : </div>
+                <td style="text-align: right;">
+                    <div class="title title_detail"> ครบกำหนดชำระ : </div>
                 </td>
                 <td class="data">
                     &nbsp; September 04, 2021
@@ -165,14 +165,14 @@
             </tr>
 
             <tr>
-                <td style="text-align: left;" width="10%">
+                <td style="text-align: left;">
                     <div class="title title_detail"> ชื่อผู้ติดต่อ : </div>
                 </td>
-                <td class="data" width="50%">
+                <td class="data">
                     <?php echo $arr_service_cost[0]->cus_firstname . ' ' . $arr_service_cost[0]->cus_lastname ?>
                 </td>
-                <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%"> </div>
+                <td style="text-align: right;">
+                    <div class="title title_detail"> </div>
                 </td>
                 <td class="data">
                     &nbsp;
@@ -180,14 +180,14 @@
             </tr>
 
             <tr>
-                <td style="text-align: left;" width="10%">
+                <td style="text-align: left;">
                     <div class="title title_detail"> เบอร์โทรศัพท์ : </div>
                 </td>
-                <td class="data" width="50%">
+                <td class="data">
                     <?php echo $arr_service_cost[0]->cus_tel ?>
                 </td>
-                <td style="text-align: right;" width="20%">
-                    <div class="title title_detail" width="30%"> </div>
+                <td style="text-align: right;">
+                    <div class="title title_detail"> </div>
                 </td>
                 <td class="data">
                     &nbsp;
@@ -197,14 +197,12 @@
         </tbody>
     </table>
 
-    <br>
-
     <!-- Cost Detail -->
 
     <table style="border: 1px solid black; border-collapse: collapse;">
         <thead>
             <tr class='cost_detail'>
-                <th style="text-align: center;" width="7%">
+                <th style="text-align: center;" width="10%">
                     <div class="title"> ลำดับ </div>
                 </th>
                 <th style="text-align: center;" width="40%">
@@ -224,19 +222,19 @@
         <tbody>
             <?php for ($i = 0; $i < count($arr_service_cost); $i++) { ?>
                 <tr class='cost_detail'>
-                    <td style="text-align: center;" width="7%">
-
+                    <td style="text-align: center;">
+                        <div class="data"> <?php echo $i+1 ?> </div>
                     </td>
-                    <td style="text-align: left;" width="40%">
+                    <td style="text-align: left;">
                         <div class="data"> &nbsp; <?php echo $arr_service_cost[$i]->cosd_name ?> </div>
                     </td>
                     <td style="text-align: center;">
                         <div class="data" style="text-align: center;"> <?php echo $arr_service_cost[$i]->cosd_quantity ?> </div>
                     </td>
-                    <td style="text-align: center;">
+                    <td style="text-align: right;">
                         <div class="data"> <?php echo number_format($arr_service_cost[$i]->cosd_cost, 2, '.', ',') ?> </div>
                     </td>
-                    <td style="text-align: center;">
+                    <td style="text-align: right;">
                         <div class="data">
                             <?php
                             if ($arr_service_cost[$i]->cosd_quantity == 0) {
@@ -249,14 +247,14 @@
                 </tr>
             <?php } ?>
             <?php
-            $count_entry = 13;
+            $count_entry = 10;
             $count_entry -= count($arr_service_cost);
             for ($i = 0; $i < $count_entry; $i++) { ?>
                 <tr class='cost_detail'>
-                    <td style="text-align: center;" width="7%">
+                    <td style="text-align: center;">
                         <div class="data"> </div>
                     </td>
-                    <td style="text-align: left;" width="40%">
+                    <td style="text-align: left;">
                         <div class="data"> &nbsp; </div>
                     </td>
                     <td style="text-align: center;">
@@ -320,7 +318,7 @@
         </tbody>
     </table>
 
-    <table style="width: 80%; margin-top: 10px">
+    <table style="width: 100%; margin-top: 10px">
         <tbody>
             <tr>
                 <td style="text-align: left; width: 15%">
