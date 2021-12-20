@@ -35,17 +35,13 @@
     }
 
     .title {
+        font-weight: bold;
         font-size: 15px;
         color: #2258A5;
     }
 
     .data {
         font-size: 15px;
-    }
-
-    .script {
-        border: 1px solid black;
-        border-collapse: collapse;
     }
 
     table,
@@ -103,20 +99,20 @@
             <br>
         </tbody>
     </table>
-    <hr>
+    <hr style="color: black;">
 
     <!-- Heading -->
     <table>
         <tbody>
             <tr>
-                <td style="padding-left: 35%; padding-top: -15px;">
+                <td style="padding-left: 37%; padding-top: -15px;">
+                    <br>
                     <div class="heading">ใบเสร็จรับเงิน/ใบกำกับภาษี</div>
                 </td>
-                <td>
+                <td style="text-align: center; border: 1px solid black; border-collapse: collapse;">
                     <div class="heading script">ต้นฉบับ</div>
                 </td>
             </tr>
-            <br>
         </tbody>
     </table>
 
@@ -305,7 +301,6 @@
                 <td style="text-align: right;">
                     <div class="data">
                         <?php
-
                         $tax = ($subtotal * $vat) / 100;
                         echo number_format($tax, 2, '.', ','); ?>
                     </div>

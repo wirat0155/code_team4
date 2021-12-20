@@ -68,6 +68,12 @@ input[type=number]::-webkit-outer-spin-button {
     padding-right: 40px !important;
 }
 
+.float-right.col-6 .row .col-6 {
+        font-weight: bold;
+        font-size: 20px;
+        padding-right: 0 !important;
+    }
+
 .cost_vat label{
     padding-left: 7px !important;
 }
@@ -852,7 +858,7 @@ input[type=number]::-webkit-outer-spin-button {
                                 </div>
                                 <div class="field col-3 cost_quantity">
                                     <label>Quantity (Count) </label>
-                                    <input type="number" placeholder="Quantity" value="0" class="cosd_count" onchange="cost_insert(${number_cost_input})" step="0.01" name="cosd_quantity${number_cost_input}">
+                                    <input type="number" placeholder="Quantity" value="0" class="cosd_count" onchange="cost_insert(${number_cost_input})" name="cosd_quantity${number_cost_input}">
                                 </div>
                                 <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn${number_cost_input}" onclick="cost_delete(${number_cost_input},'new')" style="margin-top: 25px;background: #E91414 !important; border-color: #E91414 !important;">
                                     <i class="fas fa-times"></i>
@@ -881,7 +887,7 @@ input[type=number]::-webkit-outer-spin-button {
                                     </div>
                                     <div class="field col-3 cost_quantity">
                                         <label>Quantity (Count) </label>
-                                        <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data[0]['cosd_id']})" step="0.01" name="cosd_quantity_id${data[0]['cosd_id']}" value="${data[0]['cosd_quantity']}">
+                                        <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data[0]['cosd_id']})" name="cosd_quantity_id${data[0]['cosd_id']}" value="${data[0]['cosd_quantity']}">
                                     </div>
                                     <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn_id${data[0]['cosd_id']}" onclick="cost_delete(${data[0]['cosd_id']},'old')" style="margin-top: 25px;background: #E91414 !important; border-color: #E91414 !important;">
                                         <i class="fas fa-times"></i>
@@ -913,7 +919,7 @@ input[type=number]::-webkit-outer-spin-button {
                                         </div>
                                         <div class="field col-3 cost_quantity">
                                             <label class="label_res">Quantity (Count) </label>
-                                            <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data[i]['cosd_id']})" step="0.01" name="cosd_quantity_id${data[i]['cosd_id']}" value="${data[i]['cosd_quantity']}">
+                                            <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data[i]['cosd_id']})" name="cosd_quantity_id${data[i]['cosd_id']}" value="${data[i]['cosd_quantity']}">
                                         </div>
                                         <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn_id${data[i]['cosd_id']}" onclick="cost_delete(${data[i]['cosd_id']},'old')" style="margin-top: 1px;background: #E91414 !important; border-color: #E91414 !important;">
                                             <i class="fas fa-times"></i>
@@ -945,7 +951,7 @@ input[type=number]::-webkit-outer-spin-button {
                         </div>
                         <div class="field col-3 cost_quantity">
                             <label class="label_res">Quantity (Count) </label>
-                            <input type="number" placeholder="Quantity" value="0" class="cosd_count" onchange="cost_insert(${number_cost_input})" step="0.01" name="cosd_quantity${number_cost_input}">
+                            <input type="number" placeholder="Quantity" value="0" class="cosd_count" onchange="cost_insert(${number_cost_input})" name="cosd_quantity${number_cost_input}">
                         </div>
                         <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn${number_cost_input}" onclick="cost_delete(${number_cost_input},'new')" style="margin-top: 1px;background: #E91414 !important; border-color: #E91414 !important;">
                             <i class="fas fa-times"></i>

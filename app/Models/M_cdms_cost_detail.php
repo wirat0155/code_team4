@@ -23,7 +23,7 @@ class M_cdms_cost_detail extends Da_cdms_cost_detail
     public function get_by_ser_id($ser_id){
         $sql = "SELECT * FROM $this->table
                 WHERE cosd_ser_id='$ser_id' and cosd_status=1
-                ORDER BY cosd_id DESC";
+                ORDER BY cosd_id";
         return $this->db->query($sql)->getResult();
     }
 
