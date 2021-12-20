@@ -175,7 +175,7 @@
                     <div class="field">
                         <p><label for="username">Username</label></p>
                         <div class="ui left icon input">
-                            <input placeholder="Enter username" type="text" name="username" id="username">
+                            <input placeholder="Enter username" type="text" name="username" id="username" value="<?php echo $username; ?>">
                             <i class="far fa-user icon"></i>
                         </div>
                     </div>

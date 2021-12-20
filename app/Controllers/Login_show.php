@@ -41,6 +41,7 @@ class Login_show extends Cdms_controller {
         session_start();
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
+        $data['username'] = $username;
 
         $m_user = new M_cdms_user();
         $user = $m_user->get_by_username($username);
@@ -52,7 +53,7 @@ class Login_show extends Cdms_controller {
         }else{
             $_SESSION['logged_in'] = false;
             $_SESSION['invalid_password'] = true;
-            echo view('v_login.php');
+            echo view('v_login.php', $data);
         }
 
     }
