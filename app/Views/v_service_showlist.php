@@ -1042,6 +1042,13 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     function cost_delete(delete_id, input_type = 'new') {
+
+        var n_cosd = false;
+        var cosd1 = $('.fields.cost').eq(0).attr('name');
+        if(cosd1 == 'cost_input_id' + delete_id){
+            n_cosd = true;
+        }
+
         console.log(delete_id, input_type);
         // ลบ input ที่ยังไม่ถูก insert
         if (input_type == 'new') {
@@ -1062,6 +1069,20 @@ input[type=number]::-webkit-outer-spin-button {
             });
             $('div[name="cost_input_id' + delete_id + '"]').remove();
         }
+
+        if(n_cosd){
+            //หากลบบรรทัด 1 จะ show หัวตารางบรรทัด 2
+            var label_res = $('label.label_res');
+            console.log(label_res);
+            for(var i = 0 ; i < 4 ; i++){
+                label_res.eq(i).removeClass();
+            }
+
+            //แก้ปุ่ม
+            var btn = $('.btn-danger');
+            btn.eq(0).css('margin-top','25px');
+        }
+
         cal_total_cost();
     }
 
