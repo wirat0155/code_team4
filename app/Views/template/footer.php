@@ -695,6 +695,43 @@ $('.applyBtn').attr({
 });
 	</script>
 
+        <!-- ค่อยเอาออก -->
+
+        <style>
+            .switch-block div button{
+                margin-top: 10px !important;
+            }
+        </style>
+
+        <div class="custom-template">
+			<div class="title">Sum Link</div>
+			<div class="custom-content">
+				<div class="switcher">
+					<div class="switch-block">
+						<div>
+                            <button class="ui teal button"  onclick="window.open('\/\/semantic-ui.com/elements/button.html', '_blank')" > Semantic-ui </button>
+                            <button class="ui orange button"  onclick="window.open('\/\/localhost/phpmyadmin/', '_blank')" > Database </button>
+                            <button class="ui blue button"  onclick="window.open('\/\/themekita.com/demo-atlantis-lite-bootstrap/livepreview/examples/demo1/', '_blank')" > Template </button>
+                            <button class="ui red button"  onclick="window.open('\/\/localhost/code_team4/public/Login_show/logout')" > LOGOUT </button>
+                        </div>
+					</div>
+				</div>
+			</div>
+			<div class="custom-toggle toggled" onclick="open_set()">
+				<i class="flaticon-settings"></i>
+			</div>
+		</div>
+
+        <script>
+            function open_set(){
+                if($('.custom-template').hasClass('open')){
+                    $('.custom-template').removeClass('open');
+                }else{
+                    $('.custom-template').addClass('open');
+                }
+            }
+        </script>
+
 	</body>
 
 	</html>
