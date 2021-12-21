@@ -29,6 +29,9 @@ class Service_input extends Cdms_controller {
     * @Create Date  2564-08-06
     */
     public function service_input($section_error = '') {
+        if (!isset($_SESSION['service_input_error'])) {
+            $_SESSION['service_input_error'] = false;
+        }
         $_SESSION['menu'] = 'Service_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
@@ -83,9 +86,9 @@ class Service_input extends Cdms_controller {
         $data['arr_cus'] = $m_cus->get_all(2);
 
         // Return service input page with section_error
-        // 1 = Container number dubplicate
-        // 2 = Agent duplicate
-        // 3 = Customer dublicate
+        // 2 = Container number dubplicate
+        // 3 = Agent duplicate
+        // 4 = Customer dublicate
         $data['section_error'] = $section_error;
 
         // call service input view
@@ -129,6 +132,9 @@ class Service_input extends Cdms_controller {
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_agn_id = $this->request->getPost('con_agn_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
+        $size_width_out = $this->request->getPost('size_width_out');
+        $size_length_out = $this->request->getPost('size_length_out');
+        $size_height_out = $this->request->getPost('size_height_out');
 
         // service status same as container status
         $ser_stac_id = $con_stac_id;
@@ -162,6 +168,53 @@ class Service_input extends Cdms_controller {
         $ser_departure_location = $this->request->getPost('ser_departure_location');
         $ser_weight = $this->request->getPost('ser_weight');
 
+        // set service information
+        $_SESSION['ser_departure_date'] = $ser_departure_date;
+        $_SESSION['ser_arrivals_date'] = $ser_arrivals_date;
+        $_SESSION['ser_dri_id_in'] = $ser_dri_id_in;
+        $_SESSION['ser_car_id_in'] = $ser_car_id_in;
+        $_SESSION['ser_dri_id_out'] = $ser_dri_id_out;
+        $_SESSION['ser_car_id_out'] = $ser_car_id_out;
+        $_SESSION['ser_arrivals_location'] = $ser_arrivals_location;
+        $_SESSION['ser_departure_location'] = $ser_departure_location;
+
+        // set container information
+        $_SESSION['con_id'] = $con_id;
+        $_SESSION['con_number'] = $con_number;
+        $_SESSION['con_max_weight'] = $con_max_weight;
+        $_SESSION['con_tare_weight'] = $con_tare_weight;
+        $_SESSION['con_net_weight'] = $con_net_weight;
+        $_SESSION['con_cube'] = $con_cube;
+        $_SESSION['con_size_id'] = $con_size_id;
+        $_SESSION['con_cont_id'] = $con_cont_id;
+        $_SESSION['con_agn_id'] = $con_agn_id;
+        $_SESSION['con_stac_id'] = $con_stac_id;
+        $_SESSION['ser_weight'] = $ser_weight;
+        $_SESSION['size_width_out'] = $size_width_out;
+        $_SESSION['size_length_out'] = $size_length_out;
+        $_SESSION['size_height_out'] = $size_height_out;
+
+        // set agent information
+        $_SESSION['agn_id'] = $agn_id;
+        $_SESSION['agn_company_name'] = $agn_company_name;
+        $_SESSION['agn_firstname'] = $agn_firstname;
+        $_SESSION['agn_lastname'] = $agn_lastname;
+        $_SESSION['agn_tel'] = $agn_tel;
+        $_SESSION['agn_address'] = $agn_address;
+        $_SESSION['agn_tax'] = $agn_tax;
+        $_SESSION['agn_email'] = $agn_email;
+
+        // set customer information
+        $_SESSION['cus_id'] = $cus_id;
+        $_SESSION['cus_company_name'] = $cus_company_name;
+        $_SESSION['cus_firstname'] = $cus_firstname;
+        $_SESSION['cus_lastname'] = $cus_lastname;
+        $_SESSION['cus_branch'] = $cus_branch;
+        $_SESSION['cus_tel'] = $cus_tel;
+        $_SESSION['cus_address'] = $cus_address;
+        $_SESSION['cus_tax'] = $cus_tax;
+        $_SESSION['cus_email'] = $cus_email;
+
         // select customer form dropdown
         // then update customer
         if ($cus_id != 'new'){
@@ -177,37 +230,26 @@ class Service_input extends Cdms_controller {
         // new customer
         // then check duplicate customer company name
         else {
-
             $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
 
             // not duplicate cus_company_name nor cus_branch
             // then insert the customer
             if (count($get_ser_cus_id) == 0) {
-
-                // insert customer
-                $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
-
-                //get new cus_id
-                $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
-                $ser_cus_id = $get_ser_cus_id[0]->cus_id;
+                $is_new_customer = true;
             }
-
-            // duplicae cus_company_name & cus_branch
+            // duplicate cus_company_name & cus_branch
             // go to add service page with customer error
             else {
+
+                $is_new_customer = false;
                 // not input cus_branch
                 if ($cus_branch == '') {
                     $_SESSION['cus_company_name_error'] = 'The customer has already used';
                 }
-
                 // input cus_branch
                 else {
                     $_SESSION['cus_branch_error'] = 'The branch has already used';
                 }
-
-                // 4 = dupplicate cus_company_name & cus_branch
-                $this->service_input(4);
-                exit;
             }
         }
 
@@ -219,16 +261,10 @@ class Service_input extends Cdms_controller {
         }else{
             $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
             if (count($get_ser_agn_id)  == 0) {
-                //new agent
-                //insert new agent
-                $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-                //get new agn_id
-                $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
-                $con_agn_id = $get_ser_agn_id[0]->agn_id;
+                $is_new_agent = true;
             } else {
+                $is_new_agent = false;
                 $_SESSION['agn_company_name_error'] = 'The agent has already used';
-                $this->service_input(3);
-                exit;
             }
         }
 
@@ -238,34 +274,38 @@ class Service_input extends Cdms_controller {
             $con_number = $m_con->get_by_id($con_id);
             $m_con->container_update($con_id, $con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
         }
-
         // New container
         else {
-
             $get_ser_con_id = $m_con->get_by_con_number($con_number);
-
             // New container not duplicate with database
             // Insert container
             if (count($get_ser_con_id)  == 0) {
-                //insert new container
-                $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-
-                // Get new con_id
-                $get_ser_con_id = $m_con->get_by_con_number($con_number);
-                $ser_con_id = $get_ser_con_id[0]->con_id;
+                $is_new_container = true;
             }
-
             // New container duplicate
             // Set session error
             // return to add service page
             else {
+                $is_new_container = false;
                 $_SESSION['con_number_error'] = 'The container number has already used';
-
-                // 2 = duplicate container number
-                // go to add service page with container number error
-                $this->service_input(2);
-                exit;
             }
+        }
+
+        // check service input error
+        if ($_SESSION['con_number_error'] != '') {
+            $_SESSION['service_input_error'] = true;
+            $this->service_input(2);
+            exit(0);
+        }
+        if ($_SESSION['agn_company_name_error'] != ''){
+            $_SESSION['service_input_error'] = true;
+            $this->service_input(3);
+            exit(0);
+        }
+        else if ($_SESSION['cus_company_name_error'] != '' || $_SESSION['cus_branch_error'] != '') {
+            $_SESSION['service_input_error'] = true;
+            $this->service_input(4);
+            exit(0);
         }
 
         // set free to section error session
@@ -273,6 +313,80 @@ class Service_input extends Cdms_controller {
         $_SESSION['agn_company_name_error'] = '';
         $_SESSION['cus_company_name_error'] = '';
         $_SESSION['cus_branch_error'] = '';
+        unset($_SESSION['service_input_error']);
+
+        // unset service information
+        unset($_SESSION['ser_departure_date']);
+        unset($_SESSION['ser_arrivals_date']);
+        unset($_SESSION['ser_dri_id_in']);
+        unset($_SESSION['ser_car_id_in']);
+        unset($_SESSION['ser_dri_id_out']);
+        unset($_SESSION['ser_car_id_out']);
+        unset($_SESSION['ser_arrivals_location']);
+        unset($_SESSION['ser_departure_location']);
+
+        // unset container information
+        unset($_SESSION['con_id']);
+        unset($_SESSION['con_number']);
+        unset($_SESSION['con_max_weight']);
+        unset($_SESSION['con_tare_weight']);
+        unset($_SESSION['con_net_weight']);
+        unset($_SESSION['con_cube']);
+        unset($_SESSION['con_size_id']);
+        unset($_SESSION['con_cont_id']);
+        unset($_SESSION['con_agn_id']);
+        unset($_SESSION['con_stac_id']);
+        unset($_SESSION['ser_weight']);
+        unset($_SESSION['size_width_out']);
+        unset($_SESSION['size_length_out']);
+        unset($_SESSION['size_height_out']);
+
+        // unset agent information
+        unset($_SESSION['agn_id']);
+        unset($_SESSION['agn_company_name']);
+        unset($_SESSION['agn_firstname']);
+        unset($_SESSION['agn_lastname']);
+        unset($_SESSION['agn_tel']);
+        unset($_SESSION['agn_address']);
+        unset($_SESSION['agn_tax']);
+        unset($_SESSION['agn_email']);
+
+        // unset customer information
+        unset($_SESSION['cus_id']);
+        unset($_SESSION['cus_company_name']);
+        unset($_SESSION['cus_firstname']);
+        unset($_SESSION['cus_lastname']);
+        unset($_SESSION['cus_branch']);
+        unset($_SESSION['cus_tel']);
+        unset($_SESSION['cus_address']);
+        unset($_SESSION['cus_tax']);
+        unset($_SESSION['cus_email']);
+
+        if ($is_new_customer) {
+            // insert customer
+            $m_cus->insert($cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+
+            //get new cus_id
+            $get_ser_cus_id = $m_cus->get_by_name($cus_company_name, $cus_branch);
+            $ser_cus_id = $get_ser_cus_id[0]->cus_id;
+        }
+
+        if ($is_new_agent) {
+            //insert new agent
+            $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+            //get new agn_id
+            $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
+            $con_agn_id = $get_ser_agn_id[0]->agn_id;
+        }
+
+        if ($is_new_container) {
+            //insert new container
+            $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
+
+            // Get new con_id
+            $get_ser_con_id = $m_con->get_by_con_number($con_number);
+            $ser_con_id = $get_ser_con_id[0]->con_id;
+        }
 
         //insert service
         $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);

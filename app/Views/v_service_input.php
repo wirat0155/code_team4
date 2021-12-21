@@ -54,11 +54,58 @@
         font-weight: bold;
     }
 </style>
+
+<?php
+    if ($_SESSION['service_input_error']) {
+        $ser_arrivals_date = $_SESSION['ser_arrivals_date'];
+        $ser_departure_date = $_SESSION['ser_departure_date'];
+        $ser_dri_id_in = $_SESSION['ser_dri_id_in'];
+        $ser_car_id_in = $_SESSION['ser_car_id_in'];
+        $ser_dri_id_out = $_SESSION['ser_dri_id_out'];
+        $ser_car_id_out = $_SESSION['ser_car_id_out'];
+        $ser_arrivals_location = $_SESSION['ser_arrivals_location'];
+        $ser_departure_location = $_SESSION['ser_departure_location'];
+
+        $con_id = $_SESSION['con_id'];
+        $con_number = $_SESSION['con_number'];
+        $con_max_weight = $_SESSION['con_max_weight'];
+        $con_tare_weight = $_SESSION['con_tare_weight'];
+        $con_net_weight = $_SESSION['con_net_weight'];
+        $con_cube = $_SESSION['con_cube'];
+        $con_size_id = $_SESSION['con_size_id'];
+        $con_cont_id = $_SESSION['con_cont_id'];
+        $con_agn_id = $_SESSION['con_agn_id'];
+        $con_stac_id = $_SESSION['con_stac_id'];
+        $ser_weight = $_SESSION['ser_weight'];
+        $size_width_out = $_SESSION['size_width_out'];
+        $size_length_out = $_SESSION['size_length_out'];
+        $size_height_out = $_SESSION['size_height_out'];
+
+        $agn_id = $_SESSION['agn_id'];
+        $agn_company_name = $_SESSION['agn_company_name'];
+        $agn_firstname = $_SESSION['agn_firstname'];
+        $agn_lastname = $_SESSION['agn_lastname'];
+        $agn_tel = $_SESSION['agn_tel'];
+        $agn_address = $_SESSION['agn_address'];
+        $agn_tax = $_SESSION['agn_tax'];
+        $agn_email = $_SESSION['agn_email'];
+
+        $cus_id = $_SESSION['cus_id'];
+        $cus_company_name = $_SESSION['cus_company_name'];
+        $cus_firstname = $_SESSION['cus_firstname'];
+        $cus_lastname = $_SESSION['cus_lastname'];
+        $cus_branch = $_SESSION['cus_branch'];
+        $cus_tel = $_SESSION['cus_tel'];
+        $cus_address = $_SESSION['cus_address'];
+        $cus_tax = $_SESSION['cus_tax'];
+        $cus_email = $_SESSION['cus_email'];
+    }
+?>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="pl-4 mt-4 page-header mb-0">
-                <h4 class="page-title">ADD SERVICE</h4>
+                <h4 class="page-title">ADD SERVICE <?php echo "agn_id" . $cus_id ?></h4>
             </div>
             <hr width="95%" color="696969">
             <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
@@ -110,117 +157,9 @@
                                     <div class="card-title">Service Information</div>
                                 </div>
                                 <div class="card-body">
-                                    <h3>1. Import</h3>
-                                    <input type="checkbox" style="margin-left: 50%;" id="open" onclick="open_disable(1)"> Use not a regular car
-                                    <div class="row">
-                                        <!-- Importer -->
-                                        <div class="col-md-2" style="margin-left: 6%;">
-                                            <div class="form-group">
-                                                <label for="ser_dri_id_in">Importer</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <select class="form-control" name="ser_dri_id_in" onclick="get_car_information(1)">
-                                                <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                                    <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_in == $arr_driver[$i]->dri_id) echo "selected" ?>>
-                                                        <?php echo $arr_driver[$i]->dri_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-
-                                        <!-- Importer car -->
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="ser_car_id_in">Importer car</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <select class="form-control" name="ser_car_id_in" disabled>
-                                                <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
-                                                        <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <!-- Arrival date  -->
-                                        <div class="col-md-2" style="margin-left: 6%;">
-                                            <div class="form-group">
-                                                <label for="ser_arrivals_date">Arrival date </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="datetime-local" class="form-control" id="ser_arrivals_date" name="ser_arrivals_date" placeholder="Arrival date">
-                                        </div>
-
-                                        <!-- Cut-off date  -->
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="ser_departure_date">Cut-off date </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="datetime-local" class="form-control" id="ser_departure_date" name="ser_departure_date" placeholder="Cut-off date">
-                                        </div>
-                                    </div>
-
-                                    <h3>2. Export</h3>
-                                    <input type="checkbox" style="margin-left: 50%;" id="open2" onclick="open_disable(2)"> Use not a regular car
-                                    <div class="row">
-                                        <!-- Exporter -->
-                                        <div class="col-md-2" style="margin-left: 6%;">
-                                            <div class="form-group">
-                                                <label for="ser_dri_id_out">Exporter</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <select class="form-control" name="ser_dri_id_out" onclick="get_car_information(2)">
-                                                <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
-                                                    <option value="<?php echo $arr_driver[$i]->dri_id ?>" <?php if ($obj_service[0]->ser_dri_id_out == $arr_driver[$i]->dri_id) echo "selected" ?>>
-                                                        <?php echo $arr_driver[$i]->dri_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-
-                                        <!-- Exporter car -->
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="ser_car_id_out">Exporter car</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <select class="form-control" name="ser_car_id_out" disabled>
-                                                <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                                    <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_driver[0]->dri_car_id == $arr_car[$i]->car_id) echo "selected" ?>>
-                                                        <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <h3>3. Location</h3>
-                                    <div class="row">
-                                        <!-- Arrivals location  -->
-                                        <div class="col-md-2" style="margin-left: 6%;">
-                                            <div class="form-group">
-                                                <label for="ser_arrivals_location">Arrivals location </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="text" class="form-control" id="ser_arrivals_location" name="ser_arrivals_location" placeholder="Arrivals location ">
-                                        </div>
-
-                                        <!-- Departure location   -->
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="ser_departure_location">Departure location </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="text" class="form-control" id="ser_departure_location" name="ser_departure_location" placeholder="Departure location  ">
-                                        </div>
-                                    </div>
+                                    <?php
+                                        require_once dirname(__FILE__) . '/form/service_form.php';
+                                    ?>
                                 </div>
                             </div>
                             <div id="container_section" style="display: none">
@@ -238,7 +177,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="con_id" onchange="get_container_information(); check_con_id();">
+                                                <input type="hidden" name="con_id" onchange="get_container_information(); check_con_id();" value="<?php if ($_SESSION['service_input_error']) echo $con_id ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select container</div>
                                                 <div class="menu">
@@ -250,148 +189,25 @@
                                                 </div>
                                             </div>
                                             <label class="error"></label>
-                                            <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0">
+                                            <input class="form-control mt-5" name="con_number" id="con_number" placeholder="ABCD 12345 0" hidden pattern="[A-Za-z]{4} [0-9]{5} 0" value="<?php echo $con_number ?>">
 
-                                            <label class="error"><?php if ($_SESSION['con_number_error'] != '') echo '<br/><br/>' . $_SESSION['con_number_error']?></label>
+                                            <script>
+                                                if (<?php echo $con_id == 'new' ?>) {
+                                                    $('input[name="con_number"]').prop('hidden', false);
+                                                }
+                                            </script>
+
+                                            <label class="error"><?php if ($_SESSION['con_number_error'] != '') echo $_SESSION['con_number_error']?></label>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <!-- Container type -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="con_cont_id">Container type</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_cont_id" readonly>
-                                                <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                                    <option value="<?php echo $arr_container_type[$i]->cont_id ?>">
-                                                        <?php echo $arr_container_type[$i]->cont_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <!-- Container status -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="con_stac_id">Container status</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_stac_id" readonly>
-                                                <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                    <option value="<?php echo $arr_status_container[$i]->stac_id ?>"
-                                                    <?php if ($arr_status_container[$i]->stac_name == 'Import') echo ' selected'?>>
-                                                        <?php echo $arr_status_container[$i]->stac_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <h3>2. Weight</h3>
-                                    <div class="row">
-                                        <!-- Max weight (t) -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="con_max_weight">Max weight (t)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <input type="number" class="form-control" id="con_max_weight" name="con_max_weight" placeholder="10" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <!-- Tare weight (t) -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="con_tare_weight">Tare weight (t)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="number" class="form-control" id="con_tare_weight" name="con_tare_weight" placeholder="10" readonly>
-                                        </div>
-
-                                        <!-- Net weight (t) -->
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="con_net_weight">Net weight (t)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="number" class="form-control" id="con_net_weight" name="con_net_weight" placeholder="10" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <!-- Current weight (t) -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="ser_weight">Current weight (t)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="number" class="form-control" id="ser_weight" name="ser_weight" placeholder="10" readonly>
-                                        </div>
-
-                                        <!-- Cube(CBM) -->
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label for="con_cube">Cube (cbm)</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <input type="number" class="form-control" id="con_cube" name="con_cube" placeholder="10" readonly>
-                                        </div>
-                                    </div>
-
-                                    <h3>3. Size</h3>
-                                    <div class="row">
-                                        <!-- Container size (t) -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="con_size_id">Container size</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_size_id"
-                                                onclick="get_size_information()" readonly>
-                                                <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
-                                                <option value="<?php echo $arr_size[$i]->size_id ?>"
-                                                    <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
-                                                    <?php echo $arr_size[$i]->size_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <!-- Width(m) -->
-                                        <div class="form-group col-sm-6 col-md-2 ms-md-30">
-                                            <label for="size_width_out">Width (m)</label>
-                                            <input type="number" class="form-control" id="size_width_out"
-                                                name="size_width_out" placeholder="10" readonly>
-                                        </div>
-                                        <div class="col-md-0">
-                                            <label style="margin-top: 45px;" class="md-none"> X </label>
-                                        </div>
-                                        <div class="form-group col-sm-6 col-md-2 md-center">
-                                            <label for="size_length_out">Length (m)</label>
-                                            <input type="number" class="form-control" id="size_length_out"
-                                                name="size_length_out" placeholder="10" readonly>
-                                        </div>
-                                        <div class="col-md-0">
-                                            <label style="margin-top: 45px;" class="md-none"> X </label>
-                                        </div>
-                                        <div class="form-group col-sm-6 col-md-2 md-center">
-                                            <label for="size_height_out">Height (m)</label>
-                                            <input type="number" class="form-control" id="size_height_out"
-                                                name="size_height_out" placeholder="10" readonly>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    $type = 2;
+                                        if ($_SESSION['service_input_error']){
+                                            $type = 1;
+                                        }
+                                    require_once dirname(__FILE__) . '/form/container_form.php';
+                                    ?>
                                 </div>
                             </div>
                             <div id="agent_section" style="display: none">
@@ -409,7 +225,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="agn_id" onchange="get_agent_information();">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php if ($_SESSION['service_input_error']) echo $agn_id; else if ($_SESSION['service_input_error'] && $agn_id == '') echo "new" ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
@@ -421,14 +237,22 @@
                                                 </div>
                                             </div>
                                             <label class="error"></label>
-                                            <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                            <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden value="<?php echo $agn_company_name ?>">
 
-                                            <label class="error"><?php if ($_SESSION['agn_company_name_error'] != '') echo '<br/><br/>' . $_SESSION['agn_company_name_error']?></label>
+                                            <script>
+                                                if (<?php echo $_SESSION['service_input_error'] && $agn_id == '' ?>) {
+                                                    $('input[name="agn_company_name"]').prop('hidden', false);
+                                                }
+                                            </script>
+                                            <label class="error"><?php if ($_SESSION['agn_company_name_error'] != '') echo $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
                                         <!-- Agent form with readonly -->
                                         <?php 
                                         $type = 2;
+                                        if ($_SESSION['service_input_error']){
+                                            $type = 1;
+                                        }
                                         require_once dirname(__FILE__) . '/form/agent_form.php';
                                         ?>
                                         
@@ -448,7 +272,7 @@
 
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();">
+                                                <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();" value="<?php if ($_SESSION['service_input_error']) echo $cus_id ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select customer</div>
                                                 <div class="menu">
@@ -464,8 +288,14 @@
                                                 </div>
                                             </div>
                                             <label class="error"></label>
-                                            <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
-                                            <label class="error"><?php if ($_SESSION['cus_company_name_error'] != '') echo '<br/><br/>' . $_SESSION['cus_company_name_error']?></label>
+                                            <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden value="<?php echo $cus_company_name ?>">
+
+                                            <script>
+                                                if (<?php echo $cus_id == 'new' ?>) {
+                                                    $('input[name="cus_company_name"]').prop('hidden', false);
+                                                }
+                                            </script>
+                                            <label class="error"><?php if ($_SESSION['cus_company_name_error'] != '') echo $_SESSION['cus_company_name_error']?></label>
                                         </div>
 
                                         <style>
@@ -481,8 +311,11 @@
 
                                         <!-- For form with readonly -->
                                         <?php
-                                        $type = 2; 
-                                        require_once dirname(__FILE__) . '/form/customer_form.php';
+                                            $type = 2;
+                                            if ($_SESSION['service_input_error']){
+                                                $type = 1;
+                                            }
+                                            require_once dirname(__FILE__) . '/form/customer_form.php';
                                         ?>
 
                             <div class="card-action" id="first_from_action">
@@ -864,21 +697,20 @@
             function open_disable(status) {
                 if (status == 1) {
                     if (document.getElementById('open').checked) {
-                        $('select[name="ser_car_id_in"]').prop('disabled', false);
+                        $('select[name="ser_car_id_in"]').prop('readonly', false);
                     } else {
-                        $('select[name="ser_car_id_in"]').prop('disabled', true);
+                        $('select[name="ser_car_id_in"]').prop('readonly', true);
                         get_car_information(status);
                     }
                 } else {
                     if (document.getElementById('open2').checked) {
-                        $('select[name="ser_car_id_out"]').prop('disabled', false);
+                        $('select[name="ser_car_id_out"]').prop('readonly', false);
                     } else {
-                        $('select[name="ser_car_id_out"]').prop('disabled', true);
+                        $('select[name="ser_car_id_out"]').prop('readonly', true);
                         get_car_information(status);
                     }
                 }
             }
-
             
             /*
             * show_driver_information
@@ -1088,7 +920,6 @@
                     valid_agent_error();
                 }
             }
-
             
             /*
             * valid_agent_error
