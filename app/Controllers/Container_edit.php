@@ -25,7 +25,7 @@ class Container_edit extends Cdms_controller {
     * @author   Wirat
     * @Create Date  2564-08-06
     */
-    public function container_edit($con_id = NULL) {
+    public function container_edit($con_id = NULL, $data = NULL) {
         $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
             $_SESSION['con_number_error'] = '';
@@ -81,27 +81,28 @@ class Container_edit extends Cdms_controller {
         $con_net_weight = $this->request->getPost('con_net_weight');
         $con_cube = $this->request->getPost('con_cube');
 
+        $data['con_id'] = $con_id;
+        $data['con_number'] = $con_number;
+        $data['con_old_number'] = $con_old_number;
+        $data['con_max_weight'] = $con_max_weight;
+        $data['con_tare_weight'] = $con_tare_weight;
+        $data['con_net_weight'] = $con_net_weight;
+        $data['con_cube'] = $con_cube;
+        
         // other information
         $con_size_id = $this->request->getPost('con_size_id');
         $con_cont_id = $this->request->getPost('con_cont_id');
         $con_stac_id = $this->request->getPost('con_stac_id');
 
+        $data['con_size_id'] = $con_size_id;
+        $data['con_cont_id'] = $con_cont_id;
+        $data['con_stac_id'] = $con_stac_id;
+
         // upload image
         $con_image = $this->request->getPost('con_image');
+        $data['con_image'] = $con_image;
         // echo "hi";
         // print_r($this->request->getPost());
-
-        $m_con = new M_cdms_container();
-        if ($con_number != $con_old_number) {
-            // edit con_number
-            $arr_con_number = $m_con->is_con_number_exist($con_number);
-            if (count($arr_con_number) >= 1) {
-                // duplicate con_number
-                $_SESSION['con_number_error'] = 'The container has already used';
-                $this->container_edit($con_id);
-                exit(0);
-            }
-        }
 
         // agent information
         $agn_id = $this->request->getPost('agn_id');
@@ -112,6 +113,27 @@ class Container_edit extends Cdms_controller {
         $agn_address = $this->request->getPost('agn_address');
         $agn_tax = $this->request->getPost('agn_tax');
         $agn_email = $this->request->getPost('agn_email');
+
+        $data['agn_id'] = $agn_id;
+        $data['agn_company_name'] = $agn_company_name;
+        $data['agn_firstname'] = $agn_firstname;
+        $data['agn_lastname'] = $agn_lastname;
+        $data['agn_tel'] = $agn_tel;
+        $data['agn_address'] = $agn_address;
+        $data['agn_tax'] = $agn_tax;
+        $data['agn_email'] = $agn_email;
+
+        $m_con = new M_cdms_container();
+        if ($con_number != $con_old_number) {
+            // edit con_number
+            $arr_con_number = $m_con->is_con_number_exist($con_number);
+            if (count($arr_con_number) >= 1) {
+                // duplicate con_number
+                $_SESSION['con_number_error'] = 'The container has already used';
+                $this->container_edit($con_id, $data);
+                exit(0);
+            }
+        }
 
         // load agent model
         $m_agn = new M_cdms_agent();
@@ -124,7 +146,7 @@ class Container_edit extends Cdms_controller {
             // duplicate agent company name
             if (count($arr_agent) > 0) {
                 $_SESSION['agn_company_name_error'] = 'The agent has already used';
-                $this->container_edit($con_id);
+                $this->container_edit($con_id, $data);
                 exit(0);
             }
             // insert agent

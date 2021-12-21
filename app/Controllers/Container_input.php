@@ -24,7 +24,7 @@ class Container_input extends Cdms_controller
     * @author   Wirat
     * @Create Date  2564-08-06
     */
-    public function container_input($section_error = '')
+    public function container_input($section_error = '', $data = NULL)
     {
         $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
@@ -82,6 +82,36 @@ class Container_input extends Cdms_controller
         $con_stac_id = $this->request->getPost('con_stac_id');
         $con_image = $this->request->getPost('con_image');
 
+        $data['con_number'] = $con_number;
+        $data['con_max_weight'] = $con_max_weight;
+        $data['con_tare_weight'] = $con_tare_weight;
+        $data['con_net_weight'] = $con_net_weight;
+        $data['con_cube'] = $con_cube;
+        $data['con_size_id'] = $con_size_id;
+        $data['con_cont_id'] = $con_cont_id;
+        $data['con_stac_id'] = $con_stac_id;
+        $data['con_image'] = $con_image;
+
+        // get post value agent form
+        $agn_id = $this->request->getPost('agn_id');
+        $agn_company_name = $this->request->getPost('agn_company_name');
+        $agn_firstname = $this->request->getPost('agn_firstname');
+        $agn_lastname = $this->request->getPost('agn_lastname');
+        $agn_tel = $this->request->getPost('agn_tel');
+        $agn_address = $this->request->getPost('agn_address');
+        $agn_tax = $this->request->getPost('agn_tax');
+        $agn_email = $this->request->getPost('agn_email');
+
+        $data['agn_id'] = $agn_id;
+        $data['agn_company_name'] = $agn_company_name;
+        $data['agn_firstname'] = $agn_firstname;
+        $data['agn_lastname'] = $agn_lastname;
+        $data['agn_tel'] = $agn_tel;
+        $data['agn_address'] = $agn_address;
+        $data['agn_tax'] = $agn_tax;
+        $data['agn_email'] = $agn_email;
+
+
         // load container model
         $m_con = new M_cdms_container();
 
@@ -92,22 +122,12 @@ class Container_input extends Cdms_controller
         // then go to add container form with error
         if (count($arr_container) >= 1) {
             $_SESSION['con_number_error'] = 'The container number has already used';
-            $this->container_input(1);
+            $this->container_input(1, $data);
             exit;
         }
 
         // not duplicate con_number
         else {
-            // get post value agent form
-            $agn_id = $this->request->getPost('agn_id');
-            $agn_company_name = $this->request->getPost('agn_company_name');
-            $agn_firstname = $this->request->getPost('agn_firstname');
-            $agn_lastname = $this->request->getPost('agn_lastname');
-            $agn_tel = $this->request->getPost('agn_tel');
-            $agn_address = $this->request->getPost('agn_address');
-            $agn_tax = $this->request->getPost('agn_tax');
-            $agn_email = $this->request->getPost('agn_email');
-
             // load agent model
             $m_agn = new M_cdms_agent();
 
@@ -132,7 +152,7 @@ class Container_input extends Cdms_controller
                 // exit function
                 if (count($arr_agent) >= 1 ) {
                     $_SESSION['agn_company_name_error'] = 'The agent has already used';
-                    $this->container_input(2);
+                    $this->container_input(2,$data);
                     exit;
                 }
 

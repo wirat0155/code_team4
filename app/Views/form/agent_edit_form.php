@@ -20,14 +20,16 @@
         $agn_email = $obj_agent[0]->agn_email;
     }
     else {
-        $agn_id = $arr_agent[0]->agn_id;
-        $agn_company_name = $arr_agent[0]->agn_company_name;
-        $agn_tax = $arr_agent[0]->agn_tax;
-        $agn_address =  $arr_agent[0]->agn_address;
-        $agn_firstname = $arr_agent[0]->agn_firstname;
-        $agn_lastname = $arr_agent[0]->agn_lastname;
-        $agn_tel = $arr_agent[0]->agn_tel;
-        $agn_email = $arr_agent[0]->agn_email;
+        if($agn_id == NULL){
+            $agn_id = $arr_agent[0]->agn_id;
+            $agn_company_name = $arr_agent[0]->agn_company_name;
+            $agn_tax = $arr_agent[0]->agn_tax;
+            $agn_address =  $arr_agent[0]->agn_address;
+            $agn_firstname = $arr_agent[0]->agn_firstname;
+            $agn_lastname = $arr_agent[0]->agn_lastname;
+            $agn_tel = $arr_agent[0]->agn_tel;
+            $agn_email = $arr_agent[0]->agn_email;
+        }
     }
     if (isset($_SESSION['agn_company_name'])) {
         $agn_company_name = $_SESSION['agn_company_name'];
@@ -83,11 +85,12 @@
                                 <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
                                 </div>
                             <?php } ?>
-                            <div class="item" data-value="new">+ New agent</div>
+                            <div class="item" data-value="new" <?php if($agn_id == 'new') echo "selected" ?> >+ New agent</div>
                         </div>
                     </div>
                     <label class="error"></label>
-                    <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                    <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name"
+                    <?php if($agn_id != 'new') echo "hidden" ?> value="<?php if($agn_id == 'new') echo $agn_company_name ?>">
                     <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
                 </div>
             </div>

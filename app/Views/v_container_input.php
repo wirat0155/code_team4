@@ -111,7 +111,8 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
 
                                             <input class="form-control" name="con_number"
-                                                pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" oninput="check_con_number()">
+                                                pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0"
+                                                value="<?php echo $con_number ?>">
                                             <label class="error"><?php echo $_SESSION['con_number_error']?></label>
                                         </div>
 
@@ -127,7 +128,7 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <select class="form-control" name="con_cont_id">
                                                 <?php for ($i = 0; $i < count($arr_container_type); $i++) { ?>
-                                                <option value="<?php echo $arr_container_type[$i]->cont_id ?>">
+                                                    <option value="<?php echo $arr_container_type[$i]->cont_id ?>" <?php if ($con_cont_id == $arr_container_type[$i]->cont_id) echo "selected" ?>>
                                                     <?php echo $arr_container_type[$i]->cont_name ?></option>
                                                 <?php } ?>
                                             </select>
@@ -144,7 +145,7 @@
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <select class="form-control" name="con_stac_id">
                                                 <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                <option value="<?php echo $arr_status_container[$i]->stac_id ?>">
+                                                <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
                                                     <?php echo $arr_status_container[$i]->stac_name ?></option>
                                                 <?php } ?>
                                             </select>
@@ -161,7 +162,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <input type="number" class="form-control" id="con_max_weight"
-                                                name="con_max_weight" placeholder="10">
+                                                name="con_max_weight" placeholder="10" value="<?php echo $con_max_weight ?>">
                                         </div>
                                     </div>
 
@@ -174,7 +175,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <input type="number" class="form-control" id="con_tare_weight"
-                                                name="con_tare_weight" placeholder="10">
+                                                name="con_tare_weight" placeholder="10" value="<?php echo $con_tare_weight ?>">
                                         </div>
 
                                         <!-- Net weight (t) -->
@@ -185,7 +186,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <input type="number" class="form-control" id="con_net_weight"
-                                                name="con_net_weight" placeholder="10">
+                                                name="con_net_weight" placeholder="10" value="<?php echo $con_net_weight ?>">
                                         </div>
 
                                         <!-- Cube(cbm) -->
@@ -196,7 +197,7 @@
                                         </div>
                                         <div class="col-md-2">
                                             <input type=" number" class="form-control" id="con_cube" name="con_cube"
-                                                placeholder="10" oninput="check_con_number()">
+                                                placeholder="10" value="<?php echo $con_cube ?>">
                                         </div>
                                     </div>
                                     <h3>3. Size</h3>
@@ -262,7 +263,7 @@
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information(); check_agn_id();" value="<?php echo $agn_id ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
@@ -270,11 +271,12 @@
                                                         <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
                                                         </div>
                                                     <?php } ?>
-                                                    <div class="item" data-value="new">+ New agent</div>
+                                                    <div class="item" data-value="new" <?php if($agn_id == 'new') echo "selected" ?>>+ New agent</div>
                                                 </div>
                                             </div>
                                             <label class="error"></label>
-                                            <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden>
+                                            <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" 
+                                            <?php if($agn_id != 'new') echo "hidden" ?> value="<?php if($agn_id == 'new') echo $agn_company_name ?>">
                                             <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
@@ -328,7 +330,7 @@
     <script>
     $(document).ready(function() {
         let section_error = '<?php echo $section_error?>';
-
+        get_size_information();
         // duplicate con_number
         if (section_error == 1) {
             $('#container_step').click();

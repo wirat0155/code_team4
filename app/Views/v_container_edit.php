@@ -124,6 +124,10 @@ label.error {
 
 
             <script>
+
+            $(document).ready(function() {
+                get_size_information();
+            })
             /*
             * get_size_information
             * get size information when select size option
