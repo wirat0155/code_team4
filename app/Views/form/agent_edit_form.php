@@ -31,7 +31,8 @@
             $agn_email = $arr_agent[0]->agn_email;
         }
     }
-    if (isset($_SESSION['agn_company_name'])) {
+    if (isset($_SESSION['agn_id'])) {
+        $agn_id = $_SESSION['agn_id'];
         $agn_company_name = $_SESSION['agn_company_name'];
         $agn_firstname = $_SESSION['agn_firstname'];
         $agn_lastname = $_SESSION['agn_lastname'];
@@ -77,7 +78,7 @@
 
                 <div class="col-12 col-sm-6">
                     <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 90%">
-                        <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $agn_id?>">
+                        <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $agn_id ?>">
                         <i class="dropdown icon"></i>
                         <div class="default text">Select agent</div>
                         <div class="menu">
@@ -85,13 +86,13 @@
                                 <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
                                 </div>
                             <?php } ?>
-                            <div class="item" data-value="new" <?php if($agn_id == 'new') echo "selected" ?> >+ New agent</div>
+                            <div class="item" data-value="new" <?php if($agn_id == 'new' || $agn_id == '') echo "selected" ?> >+ New agent</div>
                         </div>
                     </div>
                     <label class="error"></label>
                     <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name"
-                    <?php if($agn_id != 'new') echo "hidden" ?> value="<?php if($agn_id == 'new') echo $agn_company_name ?>">
-                    <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
+                    <?php if($agn_id != 'new' && $agn_id != '') echo "hidden" ?> value="<?php if($agn_id == 'new' || $agn_id == '') echo $agn_company_name ?>">
+                    <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                 </div>
             </div>
             <?php endif; ?>

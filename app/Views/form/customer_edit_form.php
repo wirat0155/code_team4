@@ -92,15 +92,21 @@
                         <div class="default text">Select customer</div>
                         <div class="menu">
                             <?php for ($i = 0; $i < count($arr_cus); $i++) { ?>
-                                <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>"><?php echo $arr_cus[$i]->cus_company_name;?>
+                                <div class="item" data-value="<?php echo $arr_cus[$i]->cus_id ?>">
+                                <?php 
+                                    echo $arr_cus[$i]->cus_company_name;
+                                    if ($arr_cus[$i]->cus_branch) {
+                                        echo " สาขา" . $arr_cus[$i]->cus_branch;
+                                    }
+                                ?>
                                 </div>
                             <?php } ?>
                             <div class="item" data-value="new">+ New customer</div>
                         </div>
                     </div>
                     <label class="error"></label>
-                    <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" hidden>
-                    <label class="error"><?php echo '<br><br>' . $_SESSION['cus_company_name_error']?></label>
+                    <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" <?php if ($cus_id != "new") echo "hidden"?> value="<?php if ($cus_id == "new") echo $cus_company_name?>">
+                    <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
                 </div>
             </div>
             <?php endif; ?>
