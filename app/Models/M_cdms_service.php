@@ -384,7 +384,7 @@ class M_cdms_service extends Da_cdms_service
                     INNER JOIN cdms_status_container ON ser_stac_id = stac_id
                     INNER JOIN cdms_agent ON con_agn_id = agn_id
                     INNER JOIN cdms_cost_detail ON ser_id = cosd_ser_id
-                    WHERE  ser_status = 1 and ser_id = '$ser_id'
+                    WHERE  ser_status = 1 and ser_id = '$ser_id' and cosd_status = 1
                     ORDER BY cosd_id ASC";
         return $this->db->query($sql)->getResult();
     }

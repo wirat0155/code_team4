@@ -5,7 +5,6 @@
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 <style>
     html,
@@ -69,6 +68,7 @@
     }
 
 
+
     table {
         width: 100%;
     }
@@ -104,7 +104,7 @@
     <table>
         <tbody>
             <tr>
-                <td style="padding-left: 30%; padding-top: -15px;">
+                <td style="padding-left: 37%; padding-top: -15px;">
                     <br>
                     <div class="heading">สำเนาใบเสร็จรับเงิน/สำเนาใบกำกับภาษี</div>
                 </td>
@@ -126,26 +126,27 @@
                 <td class="data" width="40%">
                     <?php echo $arr_service_cost[0]->cus_company_name ?>
                 </td>
-                <td style="text-align: right;" width="30%">
+                <td style="text-align: right;" width="20%">
                     <div class="title title_detail"> เลขที่ใบเสร็จรับเงิน : </div>
                 </td>
                 <td class="data" width="25%">
-                    &nbsp; RE2109003
+                    &nbsp; <?php echo $arr_service_cost[0]->ser_receipt ?>
                 </td>
             </tr>
 
             <tr>
-                <td style="text-align: left;">
+                
+                <td style="text-align: left;" >
                     <div class="title title_detail"> ที่อยู่ : </div>
                 </td>
-                <td class="data">
+                <td class="data" width="50%">
                     <?php echo $arr_service_cost[0]->cus_address ?>
                 </td>
                 <td style="text-align: right;">
-                    <div class="title title_detail"> วันที่ : </div>
+                    <div class="title title_detail"> เลขที่ใบแจ้งหนี้ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; November 30, -0001
+                    &nbsp;   <?php echo $arr_service_cost[0]->ser_invoice ?>
                 </td>
             </tr>
 
@@ -153,14 +154,14 @@
                 <td style="text-align: left;">
                     <div class="title title_detail"> เลขผู้เสียภาษี : </div>
                 </td>
-                <td class="data">
+                <td class="data" width="50%">
                     <?php echo $arr_service_cost[0]->cus_tax ?>
                 </td>
                 <td style="text-align: right;">
-                    <div class="title title_detail"> ครบกำหนดชำระ : </div>
+                    <div class="title title_detail"> วันที่ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; September 04, 2021
+                    &nbsp;  <?php echo format_date_invoice($date_today) ?>
                 </td>
             </tr>
 
@@ -168,14 +169,14 @@
                 <td style="text-align: left;">
                     <div class="title title_detail"> ชื่อผู้ติดต่อ : </div>
                 </td>
-                <td class="data">
+                <td class="data" width="50%">
                     <?php echo $arr_service_cost[0]->cus_firstname . ' ' . $arr_service_cost[0]->cus_lastname ?>
                 </td>
                 <td style="text-align: right;">
-                    <div class="title title_detail"> </div>
+                    <div class="title title_detail"> ครบกำหนดชำระ : </div>
                 </td>
                 <td class="data">
-                    &nbsp;
+                    &nbsp; <?php echo format_date_invoice($arr_service_cost[0]->ser_due_date )?>
                 </td>
             </tr>
 
@@ -196,7 +197,6 @@
 
         </tbody>
     </table>
-
     <!-- Cost Detail -->
 
     <table style="border: 1px solid black; border-collapse: collapse;">
@@ -325,13 +325,22 @@
                     ชำระเงินโดย :
                 </td>
                 <td style="text-align: left; width: 15%">
-                    ( &nbsp; ) เงินสด
+                    <?php if($arr_service_cost[0]->ser_pay_by == 1){ 
+                        echo "( X ) เงินสด";
+                    }else{
+                        echo "( &nbsp; ) เงินสด";
+                    } ?>
+                    
                 </td>
                 <td style="text-align: left; width: 20%">
-                    ( &nbsp; ) โอนเงิน
+                    <?php if($arr_service_cost[0]->ser_pay_by == 2){ 
+                        echo "( X ) เงินโอน";
+                    }else{
+                        echo "( &nbsp; ) เงินโอน";
+                    } ?>
                 </td>
                 <td style="text-align: left; width: 20%;">
-                    วันที่ &nbsp;<span style="border-bottom: 1px dotted black;">November 30, -0001</span>
+                    วันที่ &nbsp;<span style="border-bottom: 1px dotted black;"> <?php echo format_date_invoice($date_today) ?></span>
                 </td>
                 <td style="text-align: left; width: 25%">
                     ยอด &nbsp;<span style="border-bottom: 1px dotted black;"><?php echo number_format($tax + $subtotal, 2, '.', ',') ?></span>
@@ -342,7 +351,11 @@
 
                 </td>
                 <td style="text-align: left;" colspan="2">
-                    ( &nbsp; ) เช็คธนาคาร......................................
+                <?php if($arr_service_cost[0]->ser_pay_by == 3){ 
+                        echo "( X ) เช็คธนาคาร..........................";
+                    }else{
+                        echo "( &nbsp; ) เช็คธนาคาร..........................";
+                    } ?>
                 </td>
                 <td style="text-align: left;">
                     เลขที่.....................................
@@ -415,16 +428,16 @@
         <tbody>
             <tr>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
             </tr>
             <tr>
