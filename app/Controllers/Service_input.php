@@ -396,6 +396,20 @@ class Service_input extends Cdms_controller {
         $m_scl = new M_cdms_status_container_log();
         $m_scl->insert($max_ser_id->max_ser_id, $ser_stac_id);
 
+        if($max_ser_id->max_ser_id < 100){
+            $format_invoice = "0" . $max_ser_id->max_ser_id;
+        }else if($max_ser_id->max_ser_id < 10){
+            $format_invoice = "0" . "0" . $max_ser_id->max_ser_id;
+        }else{
+            $format_invoice = $max_ser_id->max_ser_id;
+        }
+        $today = date("ymd");
+        $ser_receipt = "RE" . $today . $format_invoice;
+        $ser_invoice = "INV" . $today . $format_invoice;
+       
+        // print_r($ser_receipt);
+        // print_r($ser_invoice);
+        $m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);
         // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }

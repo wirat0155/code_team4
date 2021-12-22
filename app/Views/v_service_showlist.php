@@ -1150,6 +1150,5 @@ input[type=number]::-webkit-outer-spin-button {
         var ser_id = $('#cosd_ser_id').val();
         var vat = $('#vat').val();
         window.open('<?php echo base_url('') . '/Service_show/service_print_cost/'?>' + ser_id + '/' + vat, '_blank');
-    
     }
     </script>

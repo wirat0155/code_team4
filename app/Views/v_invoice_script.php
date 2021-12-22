@@ -130,7 +130,7 @@
                     <div class="title title_detail"> เลขที่ใบเสร็จรับเงิน : </div>
                 </td>
                 <td class="data" width="25%">
-                    &nbsp; RE2109003
+                    &nbsp; <?php echo $arr_service_cost[0]->ser_receipt ?>
                 </td>
             </tr>
 
@@ -145,7 +145,7 @@
                     <div class="title title_detail"> วันที่ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; November 30, -0001
+                    &nbsp;  <?php echo $date_today ?>
                 </td>
             </tr>
 
@@ -160,7 +160,7 @@
                     <div class="title title_detail"> ครบกำหนดชำระ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; September 04, 2021
+                    &nbsp; <?php echo $arr_service_cost[0]->ser_due_date ?>
                 </td>
             </tr>
 
@@ -324,10 +324,15 @@
                     ชำระเงินโดย :
                 </td>
                 <td style="text-align: left; width: 15%">
-                    ( &nbsp; ) เงินสด
+                    <?php if($arr_service_cost[0]->ser_pay_by == 1){ 
+                        echo "( X ) เงินสด";
+                    } ?>
+                    
                 </td>
                 <td style="text-align: left; width: 20%">
-                    ( &nbsp; ) โอนเงิน
+                    <?php if($arr_service_cost[0]->ser_pay_by == 2){ 
+                            echo "( X ) เงินโอน";
+                    } ?>
                 </td>
                 <td style="text-align: left; width: 20%;">
                     วันที่ &nbsp;<span style="border-bottom: 1px dotted black;">November 30, -0001</span>

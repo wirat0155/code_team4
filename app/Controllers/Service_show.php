@@ -732,6 +732,8 @@ class Service_show extends Cdms_controller {
         $m_ser = new M_cdms_service();
         $data['arr_service_cost'] = $m_ser->get_service_cost_all($ser_id);
         $data['vat'] = $vat;
+        //date
+        $data['date_today'] = date("Y-m-d H:i:s");
         //MPDF config
         $mpdf = new \Mpdf\Mpdf();
         $script = view('v_invoice_script', $data);
