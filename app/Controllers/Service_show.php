@@ -744,4 +744,17 @@ class Service_show extends Cdms_controller {
         $this->response->setHeader('Content-Type', 'application/pdf');
         $mpdf->Output('invoice.pdf','I'); // opens in browser
     }
+
+    public function ser_pay_update(){
+        $ser_id = $this->request->getPost('cosd_ser_id');
+        $ser_due_date = $this->request->getPost('due_date');
+        $ser_pay_by = $this->request->getPost('pay_by');
+        $ser_cheque = $this->request->getPost('cheque_no');
+
+        $ser_due_date = substr($ser_due_date,6,4).'-'.substr($ser_due_date,3,2).'-'.(substr($ser_due_date,0,2));
+
+        $m_ser = new M_cdms_service();
+        $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_cheque);
+        echo json_encode($this->request->getPost());
+    }
 }
