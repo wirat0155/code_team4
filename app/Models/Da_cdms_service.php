@@ -115,4 +115,11 @@ class Da_cdms_service extends Model
         // query
         $this->db->query($sql);
     }
+
+    public function update_ser_pay($ser_id = NULL, $ser_due_date = NULL, $ser_pay_by = NULL , $ser_cheque = NULL){
+        $sql = "UPDATE $this->table
+                SET ser_due_date = '$ser_due_date', ser_pay_by = '$ser_pay_by', ser_cheque = '$ser_cheque'
+                WHERE ser_id = '$ser_id' ";
+        $this->db->query($sql);
+    }
 }
