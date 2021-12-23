@@ -779,7 +779,8 @@ input[type=number]::-webkit-outer-spin-button {
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>"
                                                         style="right: 0;left: auto;">
-                                                        <div class="item btn_cost" onclick="get_service_cost(<?php echo $arr_service[$i]->ser_id ?>)">
+                                                        <div class="item btn_cost" onclick="get_service_cost(<?php echo $arr_service[$i]->ser_id ?>,
+                                                        '<?php echo $arr_service[$i]->ser_due_date ?>', <?php echo $arr_service[$i]->ser_pay_by ?>, <?php echo $arr_service[$i]->ser_cheque ?>)">
                                                             <i class='far fa-money-bill-alt' style="font-size: 110%;"></i> &nbsp;
                                                             Charge billing
                                                         </div>
@@ -889,7 +890,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     var number_cost_input = 1;
 
-    function get_service_cost(ser_id) {
+    function get_service_cost(ser_id, due_date, pay_by, cheque) {
         console.log(ser_id);
         $.ajax({
             url: '<?php echo base_url() . '/Service_show/get_cost_ajax' ?>',
@@ -900,14 +901,27 @@ input[type=number]::-webkit-outer-spin-button {
             },
             success: function(data) {
                 console.log(data);
-                cost_modal(ser_id, data)
+                cost_modal(ser_id, due_date, pay_by, cheque,data)
             }
         });
     }
 
-    function cost_modal(ser_id, data) {
+    function cost_modal(ser_id, due_date, pay_by, cheque, data) {
         $('.cost_input_list').empty();
         $('.add_cost_input').empty();
+
+        due_date = due_date.toString();
+        due_date = due_date.substring(8) + '/' + due_date.substring(7,5) + '/' + due_date.substring(0,4);
+
+        $('input[name="due_date"]').val(due_date);
+        $('select[name="pay_by"]').val(pay_by);
+
+        if(pay_by == 3){
+            $('.input_cheque').removeAttr('hidden');
+            $('input[name="cheque_no"]').val(cheque);
+        }else{
+            $(".input_cheque").attr("hidden",true);
+        }
 
         // ดึงค่าใช้จ่ายเดิม
         var number_cost = data.length;
