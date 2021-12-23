@@ -200,9 +200,9 @@ input[type=number]::-webkit-outer-spin-button {
 
         </div>
 
-        <div class="add bill col-md-10 ml-auto mr-auto mt-4">
-            <a class="col-md-2" onclick="checkbox_checkall()" style="text-decoration: underline; cursor: pointer">Check all</a>
-            <button class="ui green button col-md-9" onclick="add_cost_input()"><i class='left plus icon'></i>Add cost</button>
+        <div class="add bill col-md-10 ml-auto mr-auto mt-4" align="center">
+            <a class="col-md-2" onclick="checkbox_checkall()" style="text-decoration: underline; cursor: pointer; float: left" align="left">Check all</a>
+            <button class="ui primary button col-md-5" onclick="add_cost_input()" style="width: 205px !important"><i class='left plus icon'></i>Add cost</button>
         </div>
 
         <div class="inline fields mt-4">
