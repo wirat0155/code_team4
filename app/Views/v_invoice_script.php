@@ -340,7 +340,7 @@
                     } ?>
                 </td>
                 <td style="text-align: left; width: 25%;">
-                    <?php if ($arr_service_cost[0]->ser_pay_by == 2) { ?>
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 2 || $arr_service_cost[0]->ser_pay_by == 1) { ?>
                         วันที่ &nbsp;<span style="border-bottom: 1px dotted black;"> <?php echo format_date_invoice($date_today) ?></span>
                     <?php } else {
                         echo "วันที่.....................................";
