@@ -113,6 +113,13 @@
     return substr($date_time, 11, 5);
   }
 
+  function format_date_invoice($date) {
+    $abbr_month = array("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    $month = substr($date, 5, 2);
+    $date = substr($date, 8, 2);
+    $year = date("Y");
+    return $abbr_month[$month] . " " . $date . ", " . $year;
+  }
 
   function show_add_service_form() {
     $elem = '<div class="container row">';

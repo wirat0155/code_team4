@@ -26,21 +26,21 @@ class M_cdms_service extends Da_cdms_service
     {
         if ($today != '') {
             $sql = "SELECT * FROM $this->table
-                    INNER JOIN cdms_customer ON ser_cus_id = cus_id
-                    INNER JOIN cdms_container ON ser_con_id = con_id
-                    INNER JOIN cdms_container_type ON con_cont_id = cont_id
-                    INNER JOIN cdms_status_container ON ser_stac_id = stac_id
-                    INNER JOIN cdms_agent ON con_agn_id = agn_id
+                    LEFT JOIN cdms_customer ON ser_cus_id = cus_id
+                    LEFT JOIN cdms_container ON ser_con_id = con_id
+                    LEFT JOIN cdms_container_type ON con_cont_id = cont_id
+                    LEFT JOIN cdms_status_container ON ser_stac_id = stac_id
+                    LEFT JOIN cdms_agent ON con_agn_id = agn_id
                     WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR ser_actual_departure_date IS NULL)
                     AND ser_status = 1
                     ORDER BY ser_id DESC";
         } else {
             $sql = "SELECT * FROM $this->table
-                    INNER JOIN cdms_customer ON ser_cus_id = cus_id
-                    INNER JOIN cdms_container ON ser_con_id = con_id
-                    INNER JOIN cdms_container_type ON con_cont_id = cont_id
-                    INNER JOIN cdms_status_container ON ser_stac_id = stac_id
-                    INNER JOIN cdms_agent ON con_agn_id = agn_id
+                    LEFT JOIN cdms_customer ON ser_cus_id = cus_id
+                    LEFT JOIN cdms_container ON ser_con_id = con_id
+                    LEFT JOIN cdms_container_type ON con_cont_id = cont_id
+                    LEFT JOIN cdms_status_container ON ser_stac_id = stac_id
+                    LEFT JOIN cdms_agent ON con_agn_id = agn_id
                     WHERE  ser_status = 1
                     ORDER BY ser_id DESC";
         }
@@ -384,7 +384,8 @@ class M_cdms_service extends Da_cdms_service
                     INNER JOIN cdms_status_container ON ser_stac_id = stac_id
                     INNER JOIN cdms_agent ON con_agn_id = agn_id
                     INNER JOIN cdms_cost_detail ON ser_id = cosd_ser_id
-                    WHERE  ser_status = 1 and ser_id = '$ser_id'
+                    LEFT JOIN cdms_bank ON ser_bnk_id = bnk_id 
+                    WHERE  ser_status = 1 and ser_id = '$ser_id' and cosd_status = 1
                     ORDER BY cosd_id ASC";
         return $this->db->query($sql)->getResult();
     }

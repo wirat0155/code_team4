@@ -43,6 +43,23 @@
             $size_height_out = $arr_container[0]->size_height_out;
         }
     }
+    
+    if (isset($_SESSION['con_id'])) {
+        $con_id = $_SESSION['con_id'];
+        $con_number = $_SESSION['con_number'];
+        $con_max_weight = $_SESSION['con_max_weight'];
+        $con_tare_weight = $_SESSION['con_tare_weight'];
+        $con_net_weight = $_SESSION['con_net_weight'];
+        $con_cube = $_SESSION['con_cube'];
+        $con_size_id = $_SESSION['con_size_id'];
+        $con_cont_id = $_SESSION['con_cont_id'];
+        $con_agn_id = $_SESSION['con_agn_id'];
+        $con_stac_id = $_SESSION['con_stac_id'];
+        $ser_weight = $_SESSION['ser_weight'];
+        $size_width_out = $_SESSION['size_width_out'];
+        $size_length_out = $_SESSION['size_length_out'];
+        $size_height_out = $_SESSION['size_height_out'];
+    }
 ?>
 
 
@@ -86,8 +103,8 @@
                             <div class="item" data-value="new">+ New container</div>
                         </div>
                     </div>
-                    <input class="form-control mt-5" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" hidden>
-                    <label class="error mt-5"><?php echo $_SESSION['con_number_error'] ?></label>
+                    <input class="form-control mt-5" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" <?php if ($con_id != "new" && $con_id != '') echo "hidden" ?> value="<?php echo $con_number ?>">
+                    <label class="error mt-2"><?php echo $_SESSION['con_number_error'] ?></label>
                 </div>
             </div>
             <?php endif; ?>

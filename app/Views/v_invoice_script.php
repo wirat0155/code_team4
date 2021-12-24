@@ -106,7 +106,7 @@
             <tr>
                 <td style="padding-left: 37%; padding-top: -15px;">
                     <br>
-                    <div class="heading">ใบเสร็จรับเงิน/ใบกำกับภาษี</div>
+                    <div class="heading">ใบเสร็จรับเงิน/ใบกำกับภาษ</div>
                 </td>
                 <td style="text-align: center; border: 1px solid black; border-collapse: collapse;">
                     <div class="heading script">ต้นฉบับ</div>
@@ -130,22 +130,23 @@
                     <div class="title title_detail"> เลขที่ใบเสร็จรับเงิน : </div>
                 </td>
                 <td class="data" width="25%">
-                    &nbsp; RE2109003
+                    &nbsp; <?php echo $arr_service_cost[0]->ser_receipt ?>
                 </td>
             </tr>
 
             <tr>
-                <td style="text-align: left;" >
+
+                <td style="text-align: left;">
                     <div class="title title_detail"> ที่อยู่ : </div>
                 </td>
                 <td class="data" width="50%">
                     <?php echo $arr_service_cost[0]->cus_address ?>
                 </td>
                 <td style="text-align: right;">
-                    <div class="title title_detail"> วันที่ : </div>
+                    <div class="title title_detail"> เลขที่ใบแจ้งหนี้ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; November 30, -0001
+                    &nbsp; <?php echo $arr_service_cost[0]->ser_invoice ?>
                 </td>
             </tr>
 
@@ -157,10 +158,10 @@
                     <?php echo $arr_service_cost[0]->cus_tax ?>
                 </td>
                 <td style="text-align: right;">
-                    <div class="title title_detail"> ครบกำหนดชำระ : </div>
+                    <div class="title title_detail"> วันที่ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; September 04, 2021
+                    &nbsp; <?php echo format_date_invoice($date_today) ?>
                 </td>
             </tr>
 
@@ -172,10 +173,10 @@
                     <?php echo $arr_service_cost[0]->cus_firstname . ' ' . $arr_service_cost[0]->cus_lastname ?>
                 </td>
                 <td style="text-align: right;">
-                    <div class="title title_detail"> </div>
+                    <div class="title title_detail"> ครบกำหนดชำระ : </div>
                 </td>
                 <td class="data">
-                    &nbsp;
+                    &nbsp; <?php echo format_date_invoice($arr_service_cost[0]->ser_due_date) ?>
                 </td>
             </tr>
 
@@ -222,7 +223,7 @@
             <?php for ($i = 0; $i < count($arr_service_cost); $i++) { ?>
                 <tr class='cost_detail'>
                     <td style="text-align: center;">
-                        <div class="data"> <?php echo $i+1 ?> </div>
+                        <div class="data"> <?php echo $i + 1 ?> </div>
                     </td>
                     <td style="text-align: left;">
                         <div class="data"> &nbsp; <?php echo $arr_service_cost[$i]->cosd_name ?> </div>
@@ -324,15 +325,29 @@
                     ชำระเงินโดย :
                 </td>
                 <td style="text-align: left; width: 15%">
-                    ( &nbsp; ) เงินสด
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 1) {
+                        echo "( X ) เงินสด";
+                    } else {
+                        echo "( &nbsp; ) เงินสด";
+                    } ?>
+
                 </td>
                 <td style="text-align: left; width: 20%">
-                    ( &nbsp; ) โอนเงิน
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 2) {
+                        echo "( X ) เงินโอน";
+                    } else {
+                        echo "( &nbsp; ) เงินโอน";
+                    } ?>
                 </td>
-                <td style="text-align: left; width: 20%;">
-                    วันที่ &nbsp;<span style="border-bottom: 1px dotted black;">November 30, -0001</span>
+                <td style="text-align: left; width: 25%;">
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 2 || $arr_service_cost[0]->ser_pay_by == 1) { ?>
+                        วันที่ &nbsp;<span style="border-bottom: 1px dotted black;"> <?php echo format_date_invoice($date_today) ?></span>
+                    <?php } else {
+                        echo "วันที่.....................................";
+                    } ?>
+
                 </td>
-                <td style="text-align: left; width: 25%">
+                <td style="text-align: left; width: 30%">
                     ยอด &nbsp;<span style="border-bottom: 1px dotted black;"><?php echo number_format($tax + $subtotal, 2, '.', ',') ?></span>
                 </td>
             </tr>
@@ -341,13 +356,26 @@
 
                 </td>
                 <td style="text-align: left;" colspan="2">
-                    ( &nbsp; ) เช็คธนาคาร......................................
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 3) { ?>
+                        ( X ) เช็คธนาคาร &nbsp;<span style="border-bottom: 1px dotted black;"> <?php echo $arr_service_cost[0]->bnk_name ?></span>
+                    <?php } else {
+                        echo "( &nbsp; ) เช็คธนาคาร.....................................";
+                    } ?>
                 </td>
                 <td style="text-align: left;">
-                    เลขที่.....................................
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 3) { ?>
+                        เลขที่ &nbsp;<span style="border-bottom: 1px dotted black;"> <?php echo $arr_service_cost[0]->ser_cheque ?></span>
+                    <?php } else {
+                        echo "เลขที่.....................................";
+                    } ?>
                 </td>
                 <td style="text-align: left;">
-                    วันที่......................................
+                    <?php if ($arr_service_cost[0]->ser_pay_by == 3) {
+                        echo "วันที่ " . "&nbsp;<span style='border-bottom: 1px dotted black;'>" . format_date_invoice($date_today) . "</span>";
+                    } else {
+                        echo "วันที่.....................................";
+                    } ?>
+
                 </td>
             </tr>
         </tbody>
@@ -414,16 +442,16 @@
         <tbody>
             <tr>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
                 <td style="text-align: center;">
-                    ............................................................
+                    ................................................
                 </td>
             </tr>
             <tr>
