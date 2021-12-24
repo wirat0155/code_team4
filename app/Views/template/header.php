@@ -261,6 +261,11 @@
                                             <span class="sub-item">Add service</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="<?php echo base_url() . '/Service_show/show_history' ?>">
+                                            <span class="sub-item">History log</span>
+                                        </a>
+                                    </li>
                                 </ul>
                         </li>
 

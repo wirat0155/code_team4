@@ -41,4 +41,28 @@ class M_cdms_change_container_log extends Da_cdms_change_container_log {
                 WHERE chl_new_ser_id = '$chl_new_ser_id' LIMIT 1";
         return $this->db->query($sql)->getRow();
     }
+
+    public function get_history_all() {
+        $sql = "SELECT table1.con_number AS old_con_number, table2.con_number AS new_con_number, table1.chl_date ,table1.ser_id AS old_ser_id,table2.ser_id AS new_ser_id FROM
+        (SELECT * FROM cdms_change_container_log
+        LEFT JOIN cdms_service ON chl_old_ser_id = ser_id
+        LEFT JOIN cdms_container ON ser_con_id = con_id) AS table1
+        LEFT JOIN
+        (SELECT * FROM cdms_change_container_log
+        LEFT JOIN cdms_service ON chl_new_ser_id = ser_id
+        LEFT JOIN cdms_container ON ser_con_id = con_id) AS table2
+        
+        ON table1.chl_id = table2.chl_id;";
+        return $this->db->query($sql)->getResult();
+    }
+    public function get_chl_new_ser_id() {
+        $sql = "SELECT chl_new_ser_id FROM cdms_change_container_log";
+        return $this->db->query($sql)->getResult();
+    }
+    public function get_chl_old_ser_id() {
+        $sql = "SELECT chl_old_ser_id FROM cdms_change_container_log";
+        return $this->db->query($sql)->getResult();
+    }
+
+
 }
