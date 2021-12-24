@@ -745,7 +745,6 @@ class Service_show extends Cdms_controller {
         $mpdf->Output('invoice.pdf','I'); // opens in browser
     }
 
-=======
 
     public function ser_pay_update(){
         $ser_id = $this->request->getPost('cosd_ser_id');
@@ -759,8 +758,6 @@ class Service_show extends Cdms_controller {
         $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_cheque);
         echo json_encode($this->request->getPost());
     }
->>>>>>> 6c2e97ea58b9dd7542055a9d580c83e53214907f
-<<<<<<< HEAD
     
 
     public function show_history() {
@@ -795,6 +792,8 @@ class Service_show extends Cdms_controller {
         //  print_r($arr_new_ser);
         //  print_r($arr_old_ser);
         // print_r($result);
+
+        // print_r($data['arr_change_container']);
 
         $this->output('v_history_show', $data);
     }
