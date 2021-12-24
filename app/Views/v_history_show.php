@@ -54,10 +54,9 @@
             <div class="ui tab active mx-5" data-tab="service">
                 <h3>Change of container by service</h3>
                 <div class="ui styled fluid accordion">
-                    <?php for ($i = 0; $i < count($arr_change_container); $i++) { ?>
+                <?php for ($i = 0; $i < count($arr_change_container); $i++) { ?>
                         <div class="title">
-                            <!-- <?php echo $arr_change_container[$i][$j+1]->con_number;?> -->
-                            test
+                        <?php echo $arr_change_container[$i][count($arr_change_container)-1]->con_number;?>
                             <div style="display: inline-block; float: right;">
                             create by wirat
                             <i class="ml-5 dropdown icon"></i>
@@ -65,18 +64,13 @@
                         </div>
                         <div class="content">
 
-                                        <!-- <?php for ($j = count($arr_change_container[$i])-3;$j>0;$j--) { ?>
-                                        
-                                            <p><?php echo $arr_change_container[$i][$j+2]->con_number.' '.$arr_change_container[$i][$j+2]->chl_date;?>
-                                            </p>
-                                            <p><?php echo $arr_change_container[$i][$j+1]->con_number.' '.$arr_change_container[$i][$j+1]->chl_date;?>
-                                            </p>
-                                            <p><?php echo $arr_change_container[$i][$j]->con_number.' '.$arr_change_container[$i][$j]->chl_date;?>
-                                        
-                                        <?php } ?> -->
-                                        what
+                                    <?php for ($j = count($arr_change_container)-1;$j>=0;$j--) { ?>
+
+                                        <p><?php echo $arr_change_container[$i][$j]->con_number.' '.$arr_change_container[$i][$j]->chl_date;?></p>
+
+                                    <?php } ?>
                         </div>
-                    <?php } ?>
+                        <?php } ?>
                 </div>
             </div>
             <div class="ui tab mx-5" data-tab="time">
