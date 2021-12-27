@@ -48,6 +48,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .modal_cost .content{
     max-height: 120% !important;
+    overflow-x:hidden !important;
 }
 
 .icon.btn_cost{
@@ -103,6 +104,12 @@ input[type=number]::-webkit-outer-spin-button {
 .input_due label, .input_cheque label {
     font-weight: bold;
     padding: 10px 0px;
+}
+
+.modal_cost {
+    position: absolute !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 @media only screen and (max-width: 768px) {
@@ -228,10 +235,26 @@ input[type=number]::-webkit-outer-spin-button {
                         </select>
                     </div>
                 </div>
-                <div class="inline input_cheque" hidden>
-                    <label class="mr-3" style="margin-left: 10%;" class="input_cheque">Cheque no.</label>
+        </div>
+
+        <div class="float-left input_cheque mt-0" style="margin-left: 10%; padding: 0px !important" hidden>
+                    <div class="inline fields">
+                        <label class="label_vat">Choose Bank</label>
+                        <div class="ui form">
+                            <div class="field">
+                                <select name="bank" class="bank" onchange="ser_update()" style="width: 150px">
+                                    <option value="0"> Please Choose </option>
+                                    <?php for($i = 0; $i < count($arr_bank); $i++){ ?>
+                                        <option value="<?php echo $arr_bank[$i]->bnk_id ?>"> <?php echo $arr_bank[$i]->bnk_name ?> </option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inline">
+                    <label class="mr-3 mb-3" class="input_cheque">Cheque no.</label>
                     <input type="text" placeholder="Cheque" name="cheque_no" class="cheque_no" onchange="ser_update()">
-                </div>
+                    </div>
         </div>
 
         <div class="float-right col-6">
@@ -779,8 +802,7 @@ input[type=number]::-webkit-outer-spin-button {
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <div class="menu ser_id_<?php echo $arr_service[$i]->ser_id ?>"
                                                         style="right: 0;left: auto;">
-                                                        <div class="item btn_cost" onclick="get_service_cost(<?php echo $arr_service[$i]->ser_id ?>,
-                                                        '<?php echo $arr_service[$i]->ser_due_date ?>', <?php echo $arr_service[$i]->ser_pay_by ?>, <?php echo $arr_service[$i]->ser_cheque ?>)">
+                                                        <div class="item btn_cost" onclick="get_service_cost(<?php echo $arr_service[$i]->ser_id ?>)">
                                                             <i class='far fa-money-bill-alt' style="font-size: 110%;"></i> &nbsp;
                                                             Charge billing
                                                         </div>
@@ -890,7 +912,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     var number_cost_input = 1;
 
-    function get_service_cost(ser_id, due_date, pay_by, cheque) {
+    function get_service_cost(ser_id) {
         console.log(ser_id);
         $.ajax({
             url: '<?php echo base_url() . '/Service_show/get_cost_ajax' ?>',
@@ -901,31 +923,26 @@ input[type=number]::-webkit-outer-spin-button {
             },
             success: function(data) {
                 console.log(data);
-                cost_modal(ser_id, due_date, pay_by, cheque,data)
+                cost_modal(ser_id, data)
             }
         });
     }
 
-    function cost_modal(ser_id, due_date, pay_by, cheque, data) {
+    function cost_modal(ser_id, data) {
         $('.cost_input_list').empty();
         $('.add_cost_input').empty();
 
-        due_date = due_date.toString();
-        due_date = due_date.substring(8) + '/' + due_date.substring(7,5) + '/' + due_date.substring(0,4);
-
-        $('input[name="due_date"]').val(due_date);
-        $('select[name="pay_by"]').val(pay_by);
-
-        if(pay_by == 3){
-            $('.input_cheque').removeAttr('hidden');
-            $('input[name="cheque_no"]').val(cheque);
-        }else{
-            $(".input_cheque").attr("hidden",true);
-        }
+        //ค่าเริ่มต้นเมื่อเปิด Modal
+        $('input[name="due_date"]').val('0000-00-00');
+        $('select[name="pay_by"]').val(1);
+        $('input[name="cheque_no"]').val('');
+        $('select[name="bank"]').val(0);
+        $(".input_cheque").attr("hidden",true);
 
         // ดึงค่าใช้จ่ายเดิม
         var number_cost = data.length;
         // ถ้ามี วนลูปแสดง
+        console.log(number_cost);
 
         var modal_message = `<input name="cosd_ser_id" id="cosd_ser_id" type="hidden" value="${ser_id}">`;
 
@@ -958,6 +975,23 @@ input[type=number]::-webkit-outer-spin-button {
 
             cal_total_cost();
         } else {
+            //กำหนดตัวแปรรับ due_date ของ service ที่เลือก
+            due_date = data[0]['ser_due_date'];
+            due_date = due_date.toString();
+            due_date = due_date.substring(8) + '/' + due_date.substring(7,5) + '/' + due_date.substring(0,4);
+
+            //set ค่าใน input
+            $('input[name="due_date"]').val(due_date);
+            $('select[name="pay_by"]').val(data[0]['ser_pay_by']);
+
+            if(data[0]['ser_pay_by'] == 3){
+                $('.input_cheque').removeAttr('hidden');
+                $('input[name="cheque_no"]').val(data[0]['ser_cheque']);
+                $('select[name="bank"]').val(data[0]['ser_bnk_id']);
+            }else{
+                $(".input_cheque").attr("hidden",true);
+            }
+
             var vat_value = '';
             if(data[0]['cosd_status_vat'] == 1){
                 vat_value = 'checked';
@@ -1247,10 +1281,16 @@ input[type=number]::-webkit-outer-spin-button {
         var due_date = $('input[name="due_date"]').val();
         var pay_by = $('select[name="pay_by"]').val();
         var cheque_no = $('input[name="cheque_no"]').val();
+        var bank = $('select[name="bank"]').val();
+
         if(pay_by == '3'){
             $('.input_cheque').removeAttr('hidden');
         }else{
             $(".input_cheque").attr("hidden",true);
+            $('input[name="cheque_no"]').val('');
+            $('select[name="bank"]').val(0);
+            cheque_no = '';
+            bank = 0;
         }
 
         console.log(due_date);
@@ -1263,7 +1303,8 @@ input[type=number]::-webkit-outer-spin-button {
                 cosd_ser_id: cosd_ser_id,
                 due_date: due_date,
                 pay_by: pay_by,
-                cheque_no: cheque_no
+                cheque_no: cheque_no,
+                bank: bank
             },
             success: function(data) {
                 console.log(data);

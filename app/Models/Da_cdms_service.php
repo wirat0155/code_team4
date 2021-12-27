@@ -18,7 +18,8 @@ class Da_cdms_service extends Model
     public $allowedFields = [
         'ser_arrivals_location', 'ser_arrivals_date', 'ser_departure_date',
         'ser_actual_departure_date', 'ser_departure_location', 'ser_weight', 'ser_status', 'ser_con_id', 'ser_stac_id',
-        'ser_cus_id', 'ser_id_change', 'ser_dri_id_in', 'ser_dri_id_out', 'ser_car_id_in', 'ser_car_id_out', 'ser_receipt', 'ser_invoice', 'ser_due_date', 'ser_pay_by', 'ser_cheque'
+        'ser_cus_id', 'ser_id_change', 'ser_dri_id_in', 'ser_dri_id_out', 'ser_car_id_in', 'ser_car_id_out', 'ser_receipt',
+        'ser_invoice', 'ser_due_date', 'ser_pay_by', 'ser_cheque', 'ser_bnk_id'
     ];
 
     /*
@@ -116,9 +117,18 @@ class Da_cdms_service extends Model
         $this->db->query($sql);
     }
 
-    public function update_ser_pay($ser_id = NULL, $ser_due_date = NULL, $ser_pay_by = NULL , $ser_cheque = NULL){
+    /*
+    * update_ser_pay
+    * change ser pay
+    * @input    ser_id, ser_due_date, ser_pay_by, ser_cheque, ser_bank 
+    * @output   change service pay
+    * @author   Kittipod
+    * @Create Date  2564-12-07
+    */
+
+    public function update_ser_pay($ser_id = NULL, $ser_due_date = NULL, $ser_pay_by = NULL, $ser_bnk_id = NULL , $ser_cheque = NULL){
         $sql = "UPDATE $this->table
-                SET ser_due_date = '$ser_due_date', ser_pay_by = '$ser_pay_by', ser_cheque = '$ser_cheque'
+                SET ser_due_date = '$ser_due_date', ser_pay_by = '$ser_pay_by', ser_bnk_id = '$ser_bnk_id', ser_cheque = '$ser_cheque'
                 WHERE ser_id = '$ser_id' ";
         $this->db->query($sql);
     }
