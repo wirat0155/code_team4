@@ -54,46 +54,141 @@
             <div class="ui tab active mx-5" data-tab="service">
                 <h3>Change of container by service</h3>
                 <div class="ui styled fluid accordion">
-                <?php for ($i = 0; $i < count($arr_change_container); $i++) { ?>
-                        <div class="title">
+                    <?php for ($i = 0; $i < count($arr_change_container); $i++) { ?>
+                    <div class="title">
                         <?php echo $arr_change_container[$i][count($arr_change_container)-1]->con_number;?>
-                            <div style="display: inline-block; float: right;">
+                        <div style="display: inline-block; float: right;">
                             create by wirat
                             <i class="ml-5 dropdown icon"></i>
-                            </div>
                         </div>
-                        <div class="content">
+                    </div>
+                    <div class="content">
+                        <ol class="activity-feed">
+                            <!-- <?php for ($j = count($arr_change_container)-1;$j>=0;$j--) { ?>
+                            <p><?php echo $arr_change_container[$i][$j]->con_number?></p>
+                            <?php } ?> -->
+                            <?php if ($index_ser_id == 0) :?>
+                            <?php for ($j = count($arr_change_container)-1;$j>=0;$j--) { 
+                            if (gettype($arr_change_container[$i][$j]) == 'string') : ?>
+                            <li class="feed-item <?php if ($j != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
+                                <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
+                                <span class="text">
+                                    <h4><?php echo $obj_service[0]->con_number?></h4>
+                                </span>
+                            </li>
+                            <?php else : ?>
+                            <li class="feed-item <?php if ($j != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
+                                <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?></time>
+                                <span class="text">
+                                    <h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i][$j]->chl_new_ser_id ?>">
+                                            <?php 
+                                        if ($arr_change_container[$i][$j]->con_number != NULL) {
+                                            echo $arr_change_container[$i][$j]->con_number ;//. " " . $arr_change_container[$i][$j]->chl_new_ser_id;
+                                        }
+                                        else {
+                                            echo "Unknown container" . " ";// . $arr_change_container[$i][$j]->chl_new_ser_id;
+                                        }
+                                        ?></a></h4>
+                                </span>
+                            </li>
+                            <?php endif; ?>
+                            <?php } ?>
+                            <?php else : ?>
+                            <?php for ($j = count($arr_change_container) - 1; $j >= 0; $j--) {
+                            // service ที่เรียกดูข้อมูล
+                            if ($j == $index_ser_id): ?>
+                            <li class="feed-item <?php if ($j != count($arr_change_container) - 1) {
+                                    echo "feed-item-secondary";
+                                }
+                                ?>">
+                                <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[i][$j - 1]->chl_date) ?></time>
+                                <span class="text">
+                                    <h4><?php echo $obj_service[0]->con_number ?></h4>
+                                </span>
+                            </li>
 
-                                    <?php for ($j = count($arr_change_container)-1;$j>=0;$j--) { ?>
+                            <!-- ไม่ใช่ service ที่เรียกดูข้อมูล -->
+                            <?php else: ?>
+                            <!-- service ที่เปลี่ยนหลัง service ที่เรียกดูข้อมูล -->
+                            <?php if ($j > $index_ser_id) { ?>
+                            <li class="feed-item <?php if ($j != count($arr_change_container) - 1) {
+                                    echo "feed-item-secondary";
+                                    }
+                                    ?>">
+                                <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?></time>
+                                <span class="text">
+                                    <h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i][$j]->chl_new_ser_id ?>">
+                                            <?php
+                                            if ($arr_change_container[$i][$j]->con_number != null) {
+                                                    echo $arr_change_container[$i][$j]->con_number . " " . $arr_change_container[$i][$j]->chl_new_ser_id;
+                                                } else {
+                                                    echo "Unknown container" . " " ;//. $arr_change_container[$j]->chl_new_ser_id;
+                                                }
+                                                ?></a></h4>
+                                </span>
+                            </li>
+                            <?php } ?>
 
-                                        <p><?php echo $arr_change_container[$i][$j]->con_number.' '.$arr_change_container[$i][$j]->chl_date;?></p>
+                            <!-- original service -->
+                            <?php if ($j == 0) { ?>
+                            <li class="feed-item <?php if ($j != count($arr_change_container) - 1) {
+                                    echo "feed-item-secondary";
+                                    }
+                                    ?>">
+                                <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_original_container->ser_arrivals_date) ?></time>
+                                <span class="text">
+                                    <h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i][$j]->chl_new_ser_id ?>">
+                                            <?php
+                                            if ($arr_change_container[$i][$j]->con_number != null) {
+                                                    echo $arr_change_container[$i][$j]->con_number . " " . $arr_change_container[$i][$j]->chl_new_ser_id;
+                                                 } else {
+                                                    echo "Unknown container" . " ";// . $arr_change_container[$i][$j]->chl_new_ser_id;
+                                                }
+                                                ?></a></h4>
+                                </span>
+                            </li>
+                            <?php } ?>
 
-                                    <?php } ?>
-                        </div>
-                        <?php } ?>
+                            <?php if ($j < $index_ser_id && $j > 0) { ?>
+                            <li class="feed-item <?php if ($j != count($arr_change_container) - 1) {
+                                        echo "feed-item-secondary";
+                                    }
+                                    ?>">
+                                <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i][$j - 1]->chl_date) ?></time>
+                                <span class="text">
+                                    <h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i][$j]->chl_new_ser_id ?>">
+                                            <?php
+                                            if ($arr_change_container[$i][$j]->con_number != null) {
+                                                    echo $arr_change_container[$i][$j]->con_number . " " . $arr_change_container[$i][$j]->chl_new_ser_id;
+                                                } else {
+                                                    echo "Unknown container" . " " ;//. $arr_change_container[$i][$j]->chl_new_ser_id;
+                                                }
+                                                ?></a></h4>
+                                </span>
+                            </li>
+                            <?php } ?>
+                            <?php endif;?>
+                            <?php }?>
+
+                            <?php endif; ?>
+                        </ol>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="ui tab mx-5" data-tab="time">
                 <h3>Change of container by time</h3>
                 <div class="table-responsive">
-                    <table id="history_list_table" class="display table table-hover cell-border"
-                        style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
+                    <table id="history_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                         <thead>
                             <tr>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table"
-                                    rowspan="1" colspan="1"
-                                    aria-label="Date and time: activate to sort column ascending">Date
+                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="Date and time: activate to sort column ascending">Date
                                     and time</th>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table"
-                                    rowspan="1" colspan="1"
-                                    aria-label="Old container: activate to sort column ascending">Old
+                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="Old container: activate to sort column ascending">Old
                                     container</th>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table"
-                                    rowspan="1" colspan="1"
-                                    aria-label="New container: activate to sort column ascending">New
+                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="New container: activate to sort column ascending">New
                                     container</th>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table"
-                                    rowspan="1" colspan="1" aria-label="Create by: activate to sort column ascending">
+                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="Create by: activate to sort column ascending">
                                     Create by
                                 </th>
                                 <th class="text-center"></th>
