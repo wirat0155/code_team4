@@ -56,7 +56,7 @@
                 <div class="ui styled fluid accordion">
                     <?php for ($i = 0; $i < count($arr_change_container); $i++) { ?>
                     <div class="title">
-                        <?php echo $arr_change_container[$i][count($arr_change_container)-1]->con_number;?>
+                        <?php echo $arr_latest_con_number[$i][count($arr_change_container)-1]->con_number;?>
                         <div style="display: inline-block; float: right;">
                             create by wirat
                             <i class="ml-5 dropdown icon"></i>

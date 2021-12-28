@@ -784,10 +784,15 @@ class Service_show extends Cdms_controller {
         for($i=0;$i<count($result);$i++){
             array_push($arr_change_container,$this->get_change_container_log($result[$i]));
         }
-        // echo "<pre>";
-        // print_r($arr_change_container);
-        // echo "</pre>";
         $data['arr_change_container']=$arr_change_container;
+        $m_ser = new M_cdms_service();
+        $data['arr_service'] = $m_ser->get_con_number_by_ser_id(($ser_id));
+        $arr_latest_con_number=array();
+        array_push($arr_latest_con_number,$data['arr_service']);
+        $data['arr_latest_con_number']=$arr_latest_con_number;
+        // echo "<pre>";
+        // print_r($arr_latest_con_number);
+        // echo "</pre>";
         //$result=array_diff($arr_new_ser,$arr_old_ser);
         //  print_r($arr_new_ser);
         //  print_r($arr_old_ser);

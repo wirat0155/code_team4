@@ -389,4 +389,10 @@ class M_cdms_service extends Da_cdms_service
                     ORDER BY cosd_id ASC";
         return $this->db->query($sql)->getResult();
     }
+
+    public function get_con_number_by_ser_id($ser_id){
+        $sql = "SELECT con_number FROM $this->table
+        INNER JOIN cdms_container ON ser_con_id = con_id";
+        return $this->db->query($sql)->getResult();
+    }
 }
