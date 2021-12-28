@@ -56,6 +56,7 @@ class Container_input extends Cdms_controller
         // Section error
         // 1 = duplicate con_number
         // 2 = duplicate agn_company_name
+        // 3 = duplicate con_number and agn_company_name
         $data['section_error'] = $section_error;
 
         // call container input view
@@ -114,6 +115,8 @@ class Container_input extends Cdms_controller
 
         // load container model
         $m_con = new M_cdms_container();
+        // load agent model
+        $m_agn = new M_cdms_agent();
 
         // get container by con_number
         $arr_container = $m_con->get_by_con_number($con_number);
@@ -122,14 +125,24 @@ class Container_input extends Cdms_controller
         // then go to add container form with error
         if (count($arr_container) >= 1) {
             $_SESSION['con_number_error'] = 'The container number has already used';
+            if($agn_id == 'new'){
+                // get agent by agent company name
+                $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+                // if duplicate agent company name
+                // then go to add agent page
+                // exit function
+                if (count($arr_agent) >= 1 ) {
+                    $_SESSION['agn_company_name_error'] = 'The agent has already used';
+                    $this->container_input(3, $data);
+                    exit;
+                }
+            }
             $this->container_input(1, $data);
             exit;
         }
 
         // not duplicate con_number
         else {
-            // load agent model
-            $m_agn = new M_cdms_agent();
 
             // select agent from dropdown
             // then update agent
@@ -141,8 +154,6 @@ class Container_input extends Cdms_controller
             // new agent
             // then check duplicate agent or not
             else {
-                // load agent model
-                $m_agn = new M_cdms_agent();
 
                 // get agent by agent company name
                 $arr_agent = $m_agn->get_by_company_name($agn_company_name);
