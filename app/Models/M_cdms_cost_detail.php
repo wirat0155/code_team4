@@ -21,8 +21,9 @@ class M_cdms_cost_detail extends Da_cdms_cost_detail
     * @Create Date  2564-09-16
     */
     public function get_by_ser_id($ser_id){
-        $sql = "SELECT * FROM $this->table
-                WHERE cosd_ser_id='$ser_id' and cosd_status=1
+        $sql = "SELECT cdms_cost_detail.* , ser_due_date , ser_pay_by, ser_cheque, ser_bnk_id FROM $this->table
+                LEFT JOIN cdms_service ON ser_id = cosd_ser_id
+                WHERE cosd_ser_id='$ser_id' and cosd_status = 1
                 ORDER BY cosd_id";
         return $this->db->query($sql)->getResult();
     }

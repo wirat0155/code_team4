@@ -13,6 +13,7 @@ use App\Models\M_cdms_car;
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_cost_detail;
 use App\Models\M_cdms_change_container_log;
+use App\Models\M_cdms_bank;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -123,6 +124,11 @@ class Service_show extends Cdms_controller {
             $data['num_yesterday_all'] = $obj_num_yesterday_all->num_all;
         }
         // print_r($data['arr_service']);
+
+        // load Bank model
+        $m_bnk = new M_cdms_bank();
+        $data['arr_bank'] = $m_bnk->get_all();
+
         $this->output('v_service_showlist', $data);
     }
 
@@ -751,11 +757,12 @@ class Service_show extends Cdms_controller {
         $ser_due_date = $this->request->getPost('due_date');
         $ser_pay_by = $this->request->getPost('pay_by');
         $ser_cheque = $this->request->getPost('cheque_no');
+        $ser_bnk_id = $this->request->getPost('bank'); 
 
         $ser_due_date = substr($ser_due_date,6,4).'-'.substr($ser_due_date,3,2).'-'.(substr($ser_due_date,0,2));
 
         $m_ser = new M_cdms_service();
-        $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_cheque);
+        $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_bnk_id ,$ser_cheque);
         echo json_encode($this->request->getPost());
     }
     

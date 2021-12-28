@@ -211,7 +211,12 @@
                 <i class="icon-menu" onclick="show_full_bar();" style="font-size: 20px; cursor: pointer; margin-right: 10px"></i>
 
                 <img src="<?php echo base_url() . '/upload/CDMS.png'?>" alt="navbar brand" class="navbar-brand mr-md-auto" style="width:100px">
-
+                
+                <i class="fas fa-user-circle mr-2" style="font-size: 40px;"></i>
+                
+                <span> <?php echo $_SESSION['user_name']->user_name_th ?> </span>
+                <button class="ui red button ml-2" onclick="window.location.href = '<?php echo base_url() . '/Login_show/logout' ?>'" > <i class="fas fa-sign-out-alt"></i> LOGOUT </button>
+                
             </nav>
             <!-- End Navbar -->
         </div>

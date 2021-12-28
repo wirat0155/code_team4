@@ -49,6 +49,7 @@ class Login_show extends Cdms_controller {
         if(password_verify($password, $user->user_password) && !empty($user) && !preg_match('/[^a-z0-9 _]+/i', $username)){
             $_SESSION['invalid_password'] = false;
             $_SESSION['logged_in'] = true;
+            $_SESSION['user_name'] =  $user;
             return redirect()->to(base_url('/Dashboard/dashboard_show'));
         }else{
             $_SESSION['logged_in'] = false;

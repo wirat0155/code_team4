@@ -277,7 +277,7 @@
                                             <label class="error"></label>
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" 
                                             <?php if($agn_id != 'new') echo "hidden" ?> value="<?php if($agn_id == 'new') echo $agn_company_name ?>">
-                                            <label class="error"><?php echo '<br><br>' . $_SESSION['agn_company_name_error']?></label>
+                                            <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                                         </div>
 
                                         <style>
@@ -340,6 +340,13 @@
         // duplicate agn_company_name
         else if (section_error == 2) {
             $('#agent_step').click();
+            $('#agent_step').addClass('false');
+        }
+
+        // duplicate agn_company_name
+        else if (section_error == 3) {
+            $('#container_step').click();
+            $('#container_step').addClass('false');
             $('#agent_step').addClass('false');
         }
 

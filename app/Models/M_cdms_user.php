@@ -11,11 +11,11 @@ use App\Models\Da_cdms_user;
 class M_cdms_user extends Da_cdms_user {
     /*
     * get_all
-    * get all agent
+    * get all user
     * @input    type
-    * @output   array of agent
-    * @author   Klayuth, Wirat
-    * @Create Date  2564-07-30
+    * @output   array of user
+    * @author   Kittipod
+    * @Create Date  2564-12-07
     */
     public function get_by_username($username) {
 
