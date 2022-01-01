@@ -390,9 +390,18 @@ class M_cdms_service extends Da_cdms_service
         return $this->db->query($sql)->getResult();
     }
 
-    public function get_con_number_by_ser_id($ser_id){
-        $sql = "SELECT con_number FROM $this->table
-        INNER JOIN cdms_container ON ser_con_id = con_id";
-        return $this->db->query($sql)->getResult();
+    /*
+    * get_con_number_by_ser_id
+    * get container number by service id
+    * @input    ser_id
+    * @output   array of service
+    * @author   Benjapon
+    * @Create Date  2564-12-28
+    */
+    public function get_con_number_by_ser_id($ser_id = NULL){
+        $sql = "SELECT ser_id, con_number FROM $this->table
+                LEFT JOIN cdms_container ON ser_con_id = con_id
+                WHERE ser_id = '$ser_id'";
+        return $this->db->query($sql)->getRow();
     }
 }

@@ -770,15 +770,8 @@ class Service_show extends Cdms_controller {
     public function show_history() {
         $_SESSION['menu'] = 'Service_show';
         $m_chl = new M_cdms_change_container_log();
-        //$data_history = $m_chl->get_prev_ser_id($chl_new_ser_id);
 
         $data['arr_history'] = $m_chl->get_history_all();
-        // $m_chl = new M_cdms_change_container_log();
-        // // $arr_new_ser= $m_chl->get_chl_new_ser_id();
-        // $m_chl = new M_cdms_change_container_log();
-        // $arr_old_ser = $m_chl->get_chl_old_ser_id();
-        // // echo gettype($arr_new_ser);
-        // echo gettype($arr_old_ser);
         $arr_new_ser_id=array();
         $arr_old_ser_id=array();
         for($i=0;$i<count($data['arr_history']);$i++){
@@ -786,27 +779,26 @@ class Service_show extends Cdms_controller {
             array_push($arr_old_ser_id,$data['arr_history'][$i]->old_ser_id);
         }
         $result=array_values(array_diff($arr_new_ser_id,$arr_old_ser_id));
-        // print_r($result[2]);
+
         $arr_change_container=array();
         for($i=0;$i<count($result);$i++){
             array_push($arr_change_container,$this->get_change_container_log($result[$i]));
         }
-        $data['arr_change_container']=$arr_change_container;
+        $data['arr_change_container'] = $arr_change_container;
+
+
+        // get latest container number
         $m_ser = new M_cdms_service();
-        $data['arr_service'] = $m_ser->get_con_number_by_ser_id(($ser_id));
-        $arr_latest_con_number=array();
-        array_push($arr_latest_con_number,$data['arr_service']);
-        $data['arr_latest_con_number']=$arr_latest_con_number;
-        // echo "<pre>";
-        // print_r($arr_latest_con_number);
-        // echo "</pre>";
-        //$result=array_diff($arr_new_ser,$arr_old_ser);
-        //  print_r($arr_new_ser);
-        //  print_r($arr_old_ser);
-        // print_r($result);
+        $arr_latest_con_number = array();
+        for ($i = 0; $i < count($data['arr_change_container']); $i++) {
+            // get latest ser_id
+            $ser_id = $data['arr_change_container'][$i][count($data['arr_change_container'][$i]) - 1];
 
-        // print_r($data['arr_change_container']);
-
+            // get container number
+            $data['obj_service'] = $m_ser->get_con_number_by_ser_id($ser_id);
+            array_push($arr_latest_con_number, $data['obj_service']);
+        }
+        $data['arr_latest_con_number'] = $arr_latest_con_number;
         $this->output('v_history_show', $data);
     }
 
