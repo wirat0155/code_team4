@@ -82,15 +82,18 @@
                                             <h4>
                                                 <?php echo $arr_change_container[$i][$j]->con_number ?>
                                             </h4>
+                                        </div>
 
                                         <!-- changed container time -->
-                                        </div>
                                         <div class="col">
                                             <time class="date">
                                                 <i class="bi bi-clock mr-3"></i>
                                                 <?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?>
                                             </time>
+                                        </div>
 
+                                        <div class="col">
+                                            Create by Wirat
                                         </div>
                                     </div>
                                 </li>
