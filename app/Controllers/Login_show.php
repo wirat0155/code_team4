@@ -52,7 +52,7 @@ class Login_show extends Cdms_controller {
             $_SESSION['logged_in'] = true;
             $_SESSION['user_name'] =  $user;
             unset($_SESSION['fail']);
-            return redirect()->to(base_url('/Dashboard/dashboard_show'));
+            return $this->response->redirect(base_url('/Dashboard/dashboard_show'));
         }else{
             $_SESSION['logged_in'] = false;
             $_SESSION['invalid_password'] = true;
