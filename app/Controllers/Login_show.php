@@ -22,6 +22,7 @@ class Login_show extends Cdms_controller {
     * @Create Date  2564-12-07
     */
     public function login_show_ajax() {
+        session_start();
         date_default_timezone_set("Asia/Bangkok");
         // load service model
         $m_ser = new M_cdms_service();
@@ -50,11 +51,13 @@ class Login_show extends Cdms_controller {
             $_SESSION['invalid_password'] = false;
             $_SESSION['logged_in'] = true;
             $_SESSION['user_name'] =  $user;
+            unset($_SESSION['fail']);
             return redirect()->to(base_url('/Dashboard/dashboard_show'));
         }else{
             $_SESSION['logged_in'] = false;
             $_SESSION['invalid_password'] = true;
-            echo view('v_login.php', $data);
+            $_SESSION['fail'] =  $username;
+            return $this->response->redirect(base_url('/Login_show/login_show_ajax'));
         }
 
     }
