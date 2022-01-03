@@ -175,7 +175,9 @@
     }
     </style>
 </head>
-
+<?php
+    session_start();
+?>
 <body>
     <div class="wrapper">
         <div class="main-header">
