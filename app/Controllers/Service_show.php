@@ -586,143 +586,16 @@ class Service_show extends Cdms_controller {
     }
 
     public function service_damaged_show_ajax() {
-        //set timezone
-        date_default_timezone_set('GMT');
-
-        //display the converted time
+        session_start();
         $_SESSION['menu'] = 'Service_show';
+        
         // load service model
         $m_ser = new M_cdms_service();
-        // load container model
-        $m_con = new M_cdms_container();
 
-        $today = date('Y-m-d', strtotime('+7 hour'));
-        $today_time = date('Y-m-d H:i:s', strtotime('+7 hour'));
-        $yesterday = date('Y-m-d', strtotime('-17 hour'));
-        $yesterday_time = date('Y-m-d H:i:s', strtotime('-17 hour'));
-
-        // it will be moved to login page when login was done
-        // update ser_stac_id to ready (drop) depend on today
-        $m_ser->change_ser_stac_id(3, $today);
-        // update ser_stac_id to export depend on today
-        $m_ser->change_ser_stac_id(4, $today, $today_time);
-
-        $data['arr_con'] = $m_con->get_all(1);
-
-        if(isset($_GET['date_range'])){
-            $date_range = $this->request->getGet('date_range');
-            $start_date = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
-            $end_date = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
-
-            $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
-
-            $data['arrivals_date'] = $date_range;
-        }
-        else{
-            // get service data upon by date
-            $data['arr_service'] = $m_ser->get_all_damaged($today);
-            // get all the time service
-            $data['arr_service_temp'] = $m_ser->get_all_damaged();
-
-            // no service data
-            if (count($data['arr_service']) == 0) {
-                $start = date('Y/m/d');
-                $end = date('Y/m/d');
-            }
-            // has service data
-            else {
-                $index = count($data['arr_service_temp']) - 1;
-                $start = $data['arr_service_temp'][$index]->ser_arrivals_date;
-                $end = $data['arr_service_temp'][0]->ser_arrivals_date;
-                $data['arrivals_date'] = substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
-            }
-
-            $date['yesterday'] = $yesterday;
-            $date['today'] = $today;
-
-            // count import service
-            // today and yesterday
-            $obj_num_import = $m_ser->get_num_import($today);
-            $obj_num_yesterday_import = $m_ser->get_num_import($yesterday);
-            $data['num_import'] = $obj_num_import->num_import;
-            $data['num_yesterday_import'] = $obj_num_yesterday_import->num_import;
-
-            // count export service
-            // today and yesterday
-            $obj_num_export = $m_ser->get_num_export($today, $today_time, true);
-            $obj_num_yesterady_export = $m_ser->get_num_export($yesterday, $yesterday_time, false);
-            $data['num_export'] = $obj_num_export->num_export;
-            $data['num_yesterday_export'] = $obj_num_yesterady_export->num_export;
-
-            // count drop service
-            // today and yesterday
-            $obj_num_drop = $m_ser->get_num_drop($today, $today_time, true);
-            $data['num_drop'] = $obj_num_drop->num_drop;
-            $obj_num_yesterday_drop = $m_ser->get_num_drop($yesterday, $yesterday_time, false);
-            $data['num_yesterday_drop'] = $obj_num_yesterday_drop->num_drop;
-
-            // count all service yesterday
-            $obj_num_yesterday_all = $m_ser->get_num_all($today, $yesterday_time);
-            $data['num_yesterday_all'] = $obj_num_yesterday_all->num_all;
-        }
-        // print_r($data['arr_service']);
-        $this->output('v_damaged_container_showlist', $data);
-    }
-    public function service_damaged_detail($ser_id) {
-        $_SESSION['menu'] = 'Service_show';
-
-        // get service
-        $m_ser = new M_cdms_service();
-        $data['obj_service'] = $m_ser->get_by_id($ser_id);
-
-         // get container
-        $m_con = new M_cdms_container();
-        $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
-
-        // size name
-        $m_size = new M_cdms_size();
-        $data['arr_size'] = $m_size->get_by_id($data['obj_container'][0]->con_size_id);
-
-        // container type
-        $m_cont = new M_cdms_container_type();
-        $data['arr_container_type'] = $m_cont->get_by_id($data['obj_container'][0]->con_cont_id);
-
-        // status container
-
-        $m_stac = new M_cdms_status_container();
-        $data['arr_status_container'] = $m_stac->get_all_status_damaged($data['obj_container'][0]->con_stac_id);
-
-        // driver name
-        $m_dri = new M_cdms_driver();
-        $data['arr_driver_in'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_in);
-        $data['arr_driver_out'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_out);
-
-         // car name
-        $m_car = new M_cdms_car();
-        $data['arr_car_in'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_in);
-        $data['arr_car_out'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_out);
-
-        // get customer
-        $m_cus = new M_cdms_customer();
-        $data['obj_customer'] = $m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
-
-        // get agent agent
-        $m_agn = new M_cdms_agent();
-        $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
-
-        $data['arr_change_container'] = $this->get_change_container_log($ser_id);
-
-        $data['index_ser_id'] = 0;
-        for ($i = 0; $i < count($data['arr_change_container']); $i++) {
-            if (gettype($data['arr_change_container'][$i]) == "string") {
-                $data['index_ser_id'] = $i;
-            }
-        }
+        //get all service damaged
+        $data['arr_service'] = $m_ser->get_all_damaged();
         
-        if (gettype($data['arr_change_container'][0]) != "string") {
-            $data['obj_original_container'] = $m_ser->get_arrivals_date_by_ser_id($data['arr_change_container'][0]->chl_old_ser_id);
-        }
-        $this->output('v_service_show_information', $data);
+        $this->output('v_damaged_container_showlist', $data);
     }
 
     /*
@@ -751,7 +624,14 @@ class Service_show extends Cdms_controller {
         $mpdf->Output('invoice.pdf','I'); // opens in browser
     }
 
-
+    /*
+    * ser_pay_update
+    * update pay of service
+    * @input    ser_id, ser_due_date, ser_pay_by, ser_cheque, ser_bnk_id
+    * @output   -
+    * @author   Kittipod
+    * @Create Date  2564-12-22
+    */
     public function ser_pay_update(){
         $ser_id = $this->request->getPost('cosd_ser_id');
         $ser_due_date = $this->request->getPost('due_date');
@@ -768,6 +648,7 @@ class Service_show extends Cdms_controller {
     
 
     public function show_history() {
+        session_start();
         $_SESSION['menu'] = 'Service_show';
         $m_chl = new M_cdms_change_container_log();
 

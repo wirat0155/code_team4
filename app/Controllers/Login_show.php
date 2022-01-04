@@ -38,6 +38,14 @@ class Login_show extends Cdms_controller {
         echo view('v_login.php');
     }
 
+    /*
+    * login
+    * check login
+    * @input    username, password
+    * @output   dashboard_show or login_show_ajax
+    * @author   Kittipod
+    * @Create Date  2564-12-07
+    */
     public function login(){
         session_start();
         $username = $this->request->getPost('username');
@@ -62,6 +70,14 @@ class Login_show extends Cdms_controller {
 
     }
 
+     /*
+    * logout
+    * Logout
+    * @input    -
+    * @output   login_show_ajax
+    * @author   Kittipod
+    * @Create Date  2564-12-22
+    */
     public function logout(){
         session_start();
         session_destroy();
