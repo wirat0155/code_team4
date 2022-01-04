@@ -257,13 +257,13 @@ input[type=number]::-webkit-outer-spin-button {
                                             <td> </td>
 
                                             <!-- Container number -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->con_number;
                                                     ?>
                                             </td>
 
                                             <!-- Status container  -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="px-4 py-3 text-sm text-center" style="min-width: 100px;">
                                                 <?php 
                                                     // 5 = defective (red)
                                                         if ($arr_service[$i]->ser_stac_id == '5') {
@@ -277,16 +277,16 @@ input[type=number]::-webkit-outer-spin-button {
                                             </td>
 
                                             <!-- Container type -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->cont_name ?>
                                             </td>
 
                                             <!-- Cut-off -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo date_thai($arr_service[$i]->ser_departure_date) ?>
                                             </td>
                                             <!-- Act. dep. -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php
                                                     if ($arr_service[$i]->ser_actual_departure_date == "0000-00-00 00:00:00" || $arr_service[$i]->ser_actual_departure_date == NULL) {
                                                         echo "-";
@@ -296,12 +296,12 @@ input[type=number]::-webkit-outer-spin-button {
                                             </td>
 
                                             <!-- aegnt name -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->agn_company_name ?>
                                             </td>
 
                                             <!-- csutomer name -->
-                                            <td onclick="service_damaged_detail(<?php echo $arr_service[$i]->ser_id ?>)">
+                                            <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                 <?php echo $arr_service[$i]->cus_company_name ?>
                                                 <?php if ($arr_service[$i]->cus_branch != NULL && $arr_service[$i]->cus_branch != '') : ?>
                                                 <?php echo ' ' . $arr_service[$i]->cus_branch ?>
@@ -401,15 +401,15 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     /*
-     * service_damaged_detail
+     * service_detail
      * go to service detail page
      * @input    section
      * @output   go to service detail page
      * @author   Natdanai
      * @Create Date  2564-07-28
      */
-    function service_damaged_detail(ser_id) {
-        window.location = '<?php echo base_url('') . '/Service_show/service_damaged_detail/' ?>' + ser_id;
+    function service_detail(ser_id) {
+        window.location = '<?php echo base_url('') . '/Service_show/service_detail/' ?>' + ser_id;
     }
 
     var number_cost_input = 1;
