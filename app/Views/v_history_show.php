@@ -11,6 +11,10 @@
     .feed-item-secondary::after {
         background: grey !important;
     }
+
+    #history_list_table_filter {
+        display: none !important;
+    }
 </style>
 <div class="main-panel">
     <div class="content">
@@ -50,7 +54,7 @@
                 <a class="item" data-tab="time">Time</a>
                 <div class="right menu">
                     <div class="ui transparent left icon input item">
-                        <input type="text" placeholder="Search...">
+                        <input type="text" placeholder="Search..." id="search">
                         <i class="search icon"></i>
                     </div>
                 </div>
@@ -148,26 +152,10 @@ $(document).ready(function() {
         }],
         "order": []
     });
-
-    // order
-    ser_table.on('order.dt search.dt', function() {
-        ser_table.column(0, {
-            search: 'applied',
-            order: 'applied'
-        }).nodes().each(function(cell, i) {
-            cell.innerHTML = i + 1 + '.';
-        });
-    }).draw();
 });
-// search
-var columns = $('.con_number');
-var rows = $('tbody tr');
-$('#search').keyup(function() {
-    rows.hide();
-    for (var i = columns.length; i > 0; i--) {
-        if ($('.con_number_' + i).text().toLowerCase().search($(this).val().toLowerCase()) >= 0) {
-            $('.con_number' + i).show();
-        }
-    }
+
+$( "#search" ).keyup(function() {
+    $('input[type=search]').val(this.value);
+    $('input[type=search]').keyup();
 });
 </script>
