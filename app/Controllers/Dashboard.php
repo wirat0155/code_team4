@@ -163,11 +163,20 @@ class Dashboard extends Cdms_controller
     * @Create Date  2564-12-11
     */
     public function get_day($number_of_day = 15) {
+        // return           array of string
+        // string format   2022-01-25
+
+        // set time zone
         date_default_timezone_set("Asia/Bangkok");
+
+        // create array for collect date
         $arr_dates = array();
+
+        // loop over date
         for($i = 0; $i < $number_of_day; $i++) {
             array_push($arr_dates, date("Y-m-d", strtotime(($i * -1) . " day")));
         }
+
         return $arr_dates;
     }
 

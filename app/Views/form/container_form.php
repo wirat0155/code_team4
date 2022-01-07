@@ -144,7 +144,7 @@
     <div class="form-group col-sm-6 col-md-2 ms-md-30">
         <label for="size_width_out">Width (m)</label>
         <input type="number" class="form-control" id="size_width_out"
-            name="size_width_out" placeholder="10" <?php echo $attr ?> value="<?php echo $size_width_out?>">
+            name="size_width_out" placeholder="10" disabled value="<?php echo $size_width_out?>">
     </div>
     <div class="col-md-0">
         <label style="margin-top: 45px;" class="md-none"> X </label>
@@ -152,7 +152,7 @@
     <div class="form-group col-sm-6 col-md-2 md-center">
         <label for="size_length_out">Length (m)</label>
         <input type="number" class="form-control" id="size_length_out"
-            name="size_length_out" placeholder="10" <?php echo $attr ?> value="<?php echo $size_length_out?>">
+            name="size_length_out" placeholder="10" disabled value="<?php echo $size_length_out?>">
     </div>
     <div class="col-md-0">
         <label style="margin-top: 45px;" class="md-none"> X </label>
@@ -160,6 +160,6 @@
     <div class="form-group col-sm-6 col-md-2 md-center">
         <label for="size_height_out">Height (m)</label>
         <input type="number" class="form-control" id="size_height_out"
-            name="size_height_out" placeholder="10" <?php echo $attr ?> value="<?php echo $size_height_out?>">
+            name="size_height_out" placeholder="10" disabled value="<?php echo $size_height_out?>">
     </div>
 </div>

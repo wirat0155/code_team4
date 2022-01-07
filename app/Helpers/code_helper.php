@@ -103,10 +103,28 @@
       return "";
     }
   }
+
+  /*
+  * short_date
+  * return short date like "Dec 15"
+  * @author Wirat
+  * @Create Date  2565-01-08
+  */
   function short_date($date) {
+    // set array abbr month list
     $abbr_month = array("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+    
+    // first substring month
     $month = substr($date, 5, 2);
+    // substring again if month < october
+    if ($month[0] == "0") $month = substr($date, 6, 1);
+
+    // substring date
     $date = substr($date, 8, 2);
+    // substring again if date < 10
+    if ($date[0] == "0") $date = substr($date, 1, 1);
+
+    // return as mm dd format
     return $abbr_month[$month] . " " . $date;
   }
   function short_time($date_time = "2021-12-11 13:00:00") {

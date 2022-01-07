@@ -105,7 +105,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="pl-4 mt-4 page-header mb-0">
-                <h4 class="page-title">ADD SERVICE <?php echo "agn_id" . $cus_id ?></h4>
+                <h4 class="page-title">ADD SERVICE</h4>
             </div>
             <hr width="95%" color="696969">
             <ul class="pl-2 mr-5 breadcrumbs d-flex align-items-left align-items-md-center" style="height: 30px;">
@@ -148,7 +148,7 @@
                 </div>
             </div>
 
-            <form id="service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" method="POST">
+            <form id="service_form" action="<?php echo base_url() . '/Service_input/test' ?>" method="POST">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -695,18 +695,20 @@
             * @Create Date  2564-08-06
             */
             function open_disable(status) {
+                console.log(status);
                 if (status == 1) {
-                    if (document.getElementById('open').checked) {
-                        $('select[name="ser_car_id_in"]').prop('readonly', false);
+                    if ($("#open").prop("checked") == true) {
+                        $('select[name="ser_car_id_in"]').prop('disabled', false);
                     } else {
-                        $('select[name="ser_car_id_in"]').prop('readonly', true);
+                        $('select[name="ser_car_id_in"]').prop('disabled', true);
                         get_car_information(status);
                     }
-                } else {
-                    if (document.getElementById('open2').checked) {
-                        $('select[name="ser_car_id_out"]').prop('readonly', false);
+                }
+                else {
+                    if ($("#open2").prop("checked") == true) {
+                        $('select[name="ser_car_id_out"]').prop('disabled', false);
                     } else {
-                        $('select[name="ser_car_id_out"]').prop('readonly', true);
+                        $('select[name="ser_car_id_out"]').prop('disabled', true);
                         get_car_information(status);
                     }
                 }
@@ -802,8 +804,10 @@
             * @author   Natdanai
             * @Create Date  2564-08-06
             */
-            function show_container_information(container) {
+            async function show_container_information(container) {
+                // check container type still available
                 $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
+                check_container_type(container[0]['con_cont_id']);
 
                 $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
                 if (container[0]['con_stac_id'] == 0) {
@@ -818,7 +822,25 @@
                 get_size_information();
             }
 
-            
+            function check_container_type(con_cont_id) {
+                // get array container type length
+                $.ajax({
+                    url: '<?php echo base_url() . '/Set_up_container_type/check_container_type' ?>',
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: {
+                        cont_id: con_cont_id
+                    },
+                    success: function(data) {
+                        if (data != null) {
+                            console.log("พบข้อมูล");
+                        } else {
+                            console.log("ไม่พบข้อมูล");
+                            $('select[name="con_cont_id"]').val(<?php echo $arr_container_type[count($arr_container_type) - 1]->cont_id ?>);
+                        }
+                    }
+                });
+            }
             /*
             * clear_container_information
             * clear input in container section form

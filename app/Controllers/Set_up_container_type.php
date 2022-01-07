@@ -146,4 +146,13 @@ class Set_up_container_type extends Cdms_controller
         $m_cont->container_type_update($cont_id, $cont_name, $cont_image);
         return $this->response->redirect(base_url('/Set_up_container_type/container_type_show'));
     }
+
+
+    public function check_container_type() {
+        $m_cont = new M_cdms_container_type();
+        $cont_id = $this->request->getPost('cont_id');
+        $obj_container_type = $m_cont->check_container_type($cont_id);
+        
+        return json_encode($obj_container_type);
+    }
 }

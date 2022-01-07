@@ -67,4 +67,10 @@ class M_cdms_container_type extends Da_cdms_container_type {
         $sql = "SELECT * FROM $this->table ORDER BY cont_id DESC LIMIT 1";
         return $this->db->query($sql)->getResult();
     }
+
+    public function check_container_type($cont_id) {
+        $sql = "SELECT cont_name FROM $this->table 
+                WHERE cont_id = '$cont_id' AND cont_status = 1";
+        return $this->db->query($sql)->getRow();
+    }
 }

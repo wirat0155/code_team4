@@ -9,7 +9,8 @@
 -->
 
 <h3>1. Import</h3>
-<input type="checkbox" style="margin-left: 50%;" id="open" onclick="open_disable(1)"> Use not a regular car
+<input type="checkbox" style="margin-left: 50%;" id="open" onclick="open_disable(1)">
+<label for="open">Use not a regular car</label>
 <div class="row">
     <!-- Importer -->
     <div class="col-md-2" style="margin-left: 6%;">
@@ -38,7 +39,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        <select class="form-control" name="ser_car_id_in" readonly>
+        <select class="form-control" name="ser_car_id_in" disabled>
             <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                 <option value="<?php echo $arr_car[$i]->car_id ?>" 
                 <?php 
@@ -75,7 +76,8 @@
 </div>
 
 <h3>2. Export</h3>
-<input type="checkbox" style="margin-left: 50%;" id="open2" onclick="open_disable(2)"> Use not a regular car
+<input type="checkbox" style="margin-left: 50%;" id="open2" onclick="open_disable(2)">
+<label for="open2">Use not a regular car</label>
 <div class="row">
     <!-- Exporter -->
     <div class="col-md-2" style="margin-left: 6%;">
@@ -100,11 +102,11 @@
     <!-- Exporter car -->
     <div class="col-md-2">
         <div class="form-group">
-            <label for="ser_car_id_out">Exporter  <?php echo $ser_car_id_out?></label>
+            <label for="ser_car_id_out">Exporter</label>
         </div>
     </div>
     <div class="col-md-3">
-        <select class="form-control" name="ser_car_id_out" readonly>
+        <select class="form-control" name="ser_car_id_out" disabled>
             <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                 <option value="<?php echo $arr_car[$i]->car_id ?>" 
                 <?php 
