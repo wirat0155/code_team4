@@ -113,11 +113,19 @@
     return substr($date_time, 11, 5);
   }
 
-  function format_date_invoice($date) {
+  function format_date_invoice($full_date) {
+    // input    2022-02-06
+    // output   February 02, 2022
+
     $abbr_month = array("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-    $month = substr($date, 5, 2);
-    $date = substr($date, 8, 2);
-    $year = date("Y");
+    $month = substr($full_date, 5, 2); // 02
+
+    if ($month[0] == "0") {
+      $month = substr($full_date, 6, 1); // 2
+    }
+    $date = substr($full_date, 8, 2);
+    $year = substr($full_date, 0, 4);
+
     return $abbr_month[$month] . " " . $date . ", " . $year;
   }
 

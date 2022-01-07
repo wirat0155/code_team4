@@ -106,7 +106,7 @@
             <tr>
                 <td style="padding-left: 37%; padding-top: -15px;">
                     <br>
-                    <div class="heading">ใบเสร็จรับเงิน/ใบกำกับภาษ</div>
+                    <div class="heading">ใบเสร็จรับเงิน/ใบกำกับภาษี</div>
                 </td>
                 <td style="text-align: center; border: 1px solid black; border-collapse: collapse;">
                     <div class="heading script">ต้นฉบับ</div>
