@@ -112,15 +112,10 @@
                     <table id="history_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                         <thead>
                             <tr>
-                                <th tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="Date and time: activate to sort column ascending">Date
-                                    and time</th>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="Old container: activate to sort column ascending">Old
-                                    container</th>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="New container: activate to sort column ascending">New
-                                    container</th>
-                                <th class="text-center sorting_asc" tabindex="0" aria-controls="history_list_table" rowspan="1" colspan="1" aria-label="Create by: activate to sort column ascending">
-                                    Create by
-                                </th>
+                                <th>Date and time</th>
+                                <th>Old container</th>
+                                <th>New container</th>
+                                <th>Create by</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -146,12 +141,10 @@ $('.menu.secondary .item').tab();
 $('.ui.accordion').accordion();
 
 $(document).ready(function() {
-    // add service button
-    var his_table = $('#history_list_table').DataTable({
+    // dataTable to table
+    $('#history_list_table').DataTable({
         "columnDefs": [{
-            "searchable": false,
-            "orderable": false,
-            "targets": [0, 4]
+            "searchable": false
         }],
         "order": []
     });
