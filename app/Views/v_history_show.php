@@ -107,6 +107,7 @@
                     <div class="title latest_con ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
                         <div class="ser_id" hidden><?php echo $arr_latest_con_number[$i]->ser_id?></div>
                         <?php echo $arr_latest_con_number[$i]->con_number;?>
+                        <div class="latest_con_number" hidden><?php echo $arr_latest_con_number[$i]->con_number;?></div>
                         <div style="float: right">
                             create by wirat
                             <i class="ml-5 dropdown icon"></i>
@@ -122,6 +123,7 @@
                                         <!-- container number -->
                                         <div class="col">
                                             <h4>
+                                                <div class="history_ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>" hidden><?php echo $arr_change_container[$i][$j]->con_number ?></div>
                                                 <?php echo $arr_change_container[$i][$j]->con_number ?>
                                             </h4>
                                         </div>
@@ -218,9 +220,46 @@ $(document).ready(function() {
     $('.popup.calendar').attr('onmouseout','change_month()');
 });
 
+//Search to search table
 $( "#search" ).keyup(function() {
     $('input[type=search]').val(this.value);
     $('input[type=search]').keyup();
+
+    var ser_change_con = document.getElementsByClassName("ser_id");
+    var latest_con_number = document.getElementsByClassName("latest_con_number");
+    // console.log(latest_con_number[0].innerHTML);
+
+    for(var i = 0; i < latest_con_number.length ;i++){
+        var count_repeat_value = 0;
+        var ser_id = ser_change_con[i].innerText;
+        if(latest_con_number[i].innerHTML.search(this.value) >= 0){
+            count_repeat_value++;
+        }
+
+        var history = document.getElementsByClassName("history_ser_id_"+ser_id);
+
+        for(var j = 0; j < history.length ; j++){        
+            if(history[j].innerHTML.search(this.value) >= 0){
+                count_repeat_value++;
+                console.log(history[j].innerHTML);
+            }
+        }
+
+        if(count_repeat_value == 0){
+            $('.ser_id_' + ser_id).addClass('hidden');
+        }else{
+            $('.ser_id_' + ser_id).removeClass('hidden');
+        }
+
+    }
+
+    // if Class Name is latest_con = Class Name is latest_con hidden
+    // is if hidden all, js will show message no data 
+    if(document.getElementsByClassName("latest_con").length == document.getElementsByClassName("latest_con hidden").length){
+        $('.ser_no_data').removeClass('hidden');
+    }else{
+        $('.ser_no_data').addClass('hidden');
+    }
 });
 
 function change_month(){
@@ -278,6 +317,9 @@ function change_month(){
     }else{
         $('.ser_no_data').addClass('hidden');
     }
+    $( "#search" ).val('');
 }
+
+
 
 </script>
