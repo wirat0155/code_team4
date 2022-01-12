@@ -7,12 +7,35 @@
 * @Create Date  2564-12-14
 */
 -->
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 <style>
     .feed-item-secondary::after {
         background: grey !important;
     }
 
     #history_list_table_filter {
+        display: none !important;
+    }
+
+    .h_service_change h3, #month_picker{
+        display: inline-block !important;
+    }
+
+    .ui.popup{
+        position: absolute; 
+        inset: 38px auto auto -125px !important;
+    }
+
+    .calendar .ui.input input{
+        width: 135px !important;
+    }
+
+    .content{
+        overflow: visible !important;
+    }
+
+    .hidden{
         display: none !important;
     }
 </style>
@@ -60,14 +83,29 @@
                 </div>
             </div>
 
-            <!-- service tab -->
-            <div class="ui tab active mx-5" data-tab="service">
+            <div class="mb-3 h_service_change mx-5">
                 <h3>Change of container by service</h3>
+                
+                <!-- Month -->
+                <div class="ui calendar float-right month_picker" >
+                    <div class="ui input">
+                        <input type="text" placeholder="Time" ondblclick="change_month();" value="<?php echo $date_now ?>">
+                    </div>
+                </div>
+            </div>
+
+            <!-- service tab -->
+            <div class="ui tab active mx-5" data-tab="service" id="ui_service">
 
                 <!-- show latest container number -->
                 <div class="ui styled fluid accordion">
+                    <div class="title ser_no_data hidden">
+                        No data !!
+                    </div>
+                    
                     <?php for ($i = 0; $i < count($arr_latest_con_number); $i++) { ?>
-                    <div class="title">
+                    <div class="title latest_con ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
+                        <div class="ser_id" hidden><?php echo $arr_latest_con_number[$i]->ser_id?></div>
                         <?php echo $arr_latest_con_number[$i]->con_number;?>
                         <div style="float: right">
                             create by wirat
@@ -75,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="content">
+                    <div class="content ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
                         <ol class="activity-feed">
                             <?php for ($j = count($arr_change_container[$i]) - 2; $j >= 0; $j--) { ?>
                                 <li class="feed-item feed-item-secondary">
@@ -93,6 +131,7 @@
                                             <time class="date">
                                                 <i class="bi bi-clock mr-3"></i>
                                                 <?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?>
+                                                <input type="text" name="date<?php echo $arr_latest_con_number[$i]->ser_id?>" value="<?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?>" hidden>
                                             </time>
                                         </div>
 
@@ -109,8 +148,7 @@
             </div>
 
             <!-- time tab -->
-            <div class="ui tab mx-5" data-tab="time">
-                <h3>Change of container by time</h3>
+            <div class="ui tab mx-5" data-tab="time" id="ui_time">
 
                 <div class="table-responsive">
                     <table id="history_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
@@ -124,14 +162,19 @@
                         </thead>
                         <tbody>
                             <?php for ($i = 0; $i < count($arr_history); $i++) { ?>
-                                <tr>
-                                    <td><?php echo date_thai($arr_history[$i]->chl_date)?></td>
-                                    <td><?php echo $arr_history[$i]->old_con_number?></td>
-                                    <td><?php echo $arr_history[$i]->new_con_number?></td>
-                                    <td>ABC</td>
+                                <tr id='time_id_<?php echo $arr_history[$i]->old_ser_id?>' class="time_history">
+                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="date_time"><?php echo date_thai($arr_history[$i]->chl_date)?></td>
+                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="old_con"><?php echo $arr_history[$i]->old_con_number?></td>
+                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="new_con"><?php echo $arr_history[$i]->new_con_number?></td>
+                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="create">ABC</td>
                                 </tr>
                             <?php } ?>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" style="text-align: center" class="time_no_data hidden"> No data !! </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -143,6 +186,24 @@
 <script>
 $('.menu.secondary .item').tab();
 $('.ui.accordion').accordion();
+$('.month_picker').calendar({
+    type: 'month',
+    minDate: new Date($("td[name=date_time]:eq(0)").text()),
+    maxDate: new Date(),
+    popupOptions: {
+        position: 'bottom right',
+        lastResort: 'bottom right',
+    },
+});
+
+// Change Header Change of container by service or time
+$( ".item" ).click(function() {
+    if($( "#ui_service" ).hasClass('active')){
+        $( ".h_service_change h3").text('Change of container by service');
+    }else{
+        $( ".h_service_change h3").text('Change of container by time');
+    }
+});
 
 $(document).ready(function() {
     // dataTable to table
@@ -152,10 +213,71 @@ $(document).ready(function() {
         }],
         "order": []
     });
+
+    change_month();
+    $('.popup.calendar').attr('onmouseout','change_month()');
 });
 
 $( "#search" ).keyup(function() {
     $('input[type=search]').val(this.value);
     $('input[type=search]').keyup();
 });
+
+function change_month(){
+    // Get Value Select Date
+    var full_month = $('.calendar .ui.input input').val();
+    // Convert Format Full Month  January 2022 to Short Month Jan 2022
+    var month_year = full_month.substring(0,3) + ' ' +  full_month.substring(full_month.length - 4);
+    // Get Array Elements By Name date_time
+    var date_change_con = document.getElementsByName("date_time");
+    for(var i = 0; i < date_change_con.length ;i++){
+        // if Text in Elements = Value in Select Date
+        if(date_change_con[i].innerHTML.substring(2, 10) != month_year){
+            // Hide tr = id time_id_ser_id 
+            $('#time_id_' + date_change_con[i].className).addClass('hidden');
+        }else{
+            // show tr = id time_id_ser_id 
+            $('#time_id_' + date_change_con[i].className).removeClass('hidden');
+        }
+    }
+
+    // if Class Name is time_history = Class Name is time_history hidden
+    // is if hidden all, js will show message no data 
+    if(document.getElementsByClassName("time_history").length == document.getElementsByClassName("time_history hidden").length){
+        $('.time_no_data').removeClass('hidden');
+    }else{
+        $('.time_no_data').addClass('hidden');
+    }
+
+    // Get Array Elements By Class Name ser_id
+    var ser_change_con = document.getElementsByClassName("ser_id");
+    for(var i = 0; i < ser_change_con.length ;i++){
+        var ser_id = ser_change_con[i].innerText;
+        // Get Array Elements By Name date + ser_id
+        var date_change_con = document.getElementsByName("date"+ser_id);
+        var count_repeat_month = 0;
+        
+        for(var i = 0; i < date_change_con.length ;i++){
+            if(date_change_con[i].value.substring(2, 10) == month_year){
+                count_repeat_month++;
+            }
+        }
+
+        // if service no have date = month_year js will hide service
+        if(count_repeat_month == 0){
+            $('.ser_id_' + ser_id).addClass('hidden');
+        }else{
+            $('.ser_id_' + ser_id).removeClass('hidden');
+        }
+    }
+
+    // if Class Name is latest_con = Class Name is latest_con hidden
+    // is if hidden all, js will show message no data 
+    if(document.getElementsByClassName("latest_con").length == document.getElementsByClassName("latest_con hidden").length){
+        $('.ser_no_data').removeClass('hidden');
+    }else{
+        $('.ser_no_data').addClass('hidden');
+    }
+}
+
 </script>

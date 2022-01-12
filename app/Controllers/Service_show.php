@@ -680,6 +680,7 @@ class Service_show extends Cdms_controller {
             array_push($arr_latest_con_number, $data['obj_service']);
         }
         $data['arr_latest_con_number'] = $arr_latest_con_number;
+        $data['date_now'] = date("M Y");
         $this->output('v_history_show', $data);
     }
 
