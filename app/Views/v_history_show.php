@@ -102,14 +102,14 @@
                     <div class="title ser_no_data hidden">
                         No data !!
                     </div>
-                    
+
                     <?php for ($i = 0; $i < count($arr_latest_con_number); $i++) { ?>
                     <div class="title latest_con ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
                         <div class="ser_id" hidden><?php echo $arr_latest_con_number[$i]->ser_id?></div>
                         <?php echo $arr_latest_con_number[$i]->con_number;?>
                         <div class="latest_con_number" hidden><?php echo $arr_latest_con_number[$i]->con_number;?></div>
                         <div style="float: right">
-                            create by wirat
+                            create by <?php echo $arr_change_container[$i][count($arr_change_container[$i]) - 2]->user_name_th ?>
                             <i class="ml-5 dropdown icon"></i>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                                         </div>
 
                                         <div class="col">
-                                            Create by Wirat
+                                            create by <?php echo $arr_change_container[$i][$j]->user_name_th ?>
                                         </div>
                                     </div>
                                 </li>
@@ -151,7 +151,6 @@
 
             <!-- time tab -->
             <div class="ui tab mx-5" data-tab="time" id="ui_time">
-
                 <div class="table-responsive">
                     <table id="history_list_table" class="display table table-hover cell-border" style="border-collapse: collapse !important; border-radius: 10px; overflow: hidden;">
                         <thead>
@@ -168,7 +167,7 @@
                                     <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="date_time"><?php echo date_thai($arr_history[$i]->chl_date)?></td>
                                     <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="old_con"><?php echo $arr_history[$i]->old_con_number?></td>
                                     <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="new_con"><?php echo $arr_history[$i]->new_con_number?></td>
-                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="create">ABC</td>
+                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="create"><?php echo $arr_history[$i]->user_name_th?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

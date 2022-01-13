@@ -418,7 +418,7 @@ class Service_edit extends Cdms_controller
             $this->change_container($ser_id, $new_ser_id);
         }
         // go to service list page
-        // return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
+        return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 
     /*
