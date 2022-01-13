@@ -87,13 +87,8 @@ class Service_edit extends Cdms_controller
         $data['arr_agn'] = $m_agn->get_all();
 
         $m_ser = new M_cdms_service();
-        $obj_container=$data['obj_container'];
-        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id,$obj_container[0]->con_size_id);
-        //print_r($obj_container[0]->con_size_id);
-        // call service input view
-        // echo "<pre>";
-        // print_r($data['obj_service'][0]);
-        // echo "</pre>";
+        $obj_container = $data['obj_container'];
+        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id, $obj_container[0]->con_size_id);
         $this->output('v_service_edit', $data);
     }
 
@@ -419,9 +414,11 @@ class Service_edit extends Cdms_controller
         }
 
         $new_ser_id = $this->request->getPost('chl_ser_id');
-        $this->change_container($ser_id, $new_ser_id);
+        if ($new_ser_id != "not change") {
+            $this->change_container($ser_id, $new_ser_id);
+        }
         // go to service list page
-        return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
+        // return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 
     /*
@@ -433,10 +430,13 @@ class Service_edit extends Cdms_controller
     * @Create Date  2564-12-07
     */
     private function change_container($old_ser_id = NULL, $new_ser_id = NULL) {
-        // insert changecontainer log
+        session_start();
+        $chl_user_id = $_SESSION['user_name']->user_id;
+
+        // insert change container log
         if ($old_ser_id != NULL && $new_ser_id != NULL) {
             $m_chl = new M_cdms_change_container_log();
-            $m_chl->insert($old_ser_id, $new_ser_id);
+            $m_chl->insert($old_ser_id, $new_ser_id, $chl_user_id);
         }
     }
 }

@@ -228,7 +228,7 @@
                                         <input type="checkbox" style="margin-left: 3%;" id="open" onclick="open_disable(1)"> Use not a regular car
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right" for="ser_car_id_in">Imported car :</label>
-                                            <select class="input-full form-control col-7" name="ser_car_id_in" readonly>
+                                            <select class="input-full form-control col-7" name="ser_car_id_in" disabled>
                                                 <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                                 <option value="<?php echo $arr_car[$i]->car_id ?>" 
                                                 <?php 
@@ -253,7 +253,7 @@
                                         <input type="checkbox" style="margin-left: 3%;" id="open2" onclick="open_disable(2)"> Use not a regular car
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right" for="ser_car_id_out">Exported car :</label>
-                                            <select class="input-full form-control col-7" name="ser_car_id_out" readonly>
+                                            <select class="input-full form-control col-7" name="ser_car_id_out" disabled>
                                                 <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                                 <option value="<?php echo $arr_car[$i]->car_id ?>" 
                                                 <?php 
@@ -297,23 +297,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="row ">
+                                    <!-- Change container section -->
+                                    <div class="col-12">
                                         <h3>Change container</h3>
                                     </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group form-inline">
-                                                    <label class="col-form-label mr-auto">Container yard :</label>
-                                                    <div class="col-12 col-sm-7 p-0">
-                                                        <select class="input-full form-control col-12" name="chl_ser_id">
-                                                            <?php for ($i = 0; $i < count($opt_service); $i++) { ?>
-                                                            <option value="<?php echo $opt_service[$i]->ser_id ?>">
-                                                                <?php echo $opt_service[$i]->con_number . '(' . $opt_service[$i]->cont_name.')' ?>
-                                                                <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-inline">
+                                            <label class="col-form-label mr-auto">Container yard :</label>
+                                            <div class="col-12 col-sm-7 p-0">
+                                                <select class="input-full form-control col-12" name="chl_ser_id">
+                                                    <option value="not change">Not change container</option>
+                                                    <?php for ($i = 0; $i < count($opt_service); $i++) { ?>
+                                                    <option value="<?php echo $opt_service[$i]->ser_id ?>">
+                                                        <?php echo $opt_service[$i]->con_number . ' (' . $opt_service[$i]->cont_name.')' ?>
+                                                        <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -718,26 +716,28 @@
         }
 
         /*
-         * open_disable
-         * toggle dropdown car
-         * @input    status
-         * @output   get toggle dropdown car
-         * @author   Thanathip
-         * @Create Date  2564-10-15
-         */
+        * open_disable
+        * toggle dropdown car
+        * @input    status
+        * @output   get toggle dropdown car
+        * @author   Natdanai
+        * @Create Date  2564-08-06
+        */
         function open_disable(status) {
+            console.log(status);
             if (status == 1) {
-                if (document.getElementById('open').checked) {
-                    $('select[name="ser_car_id_in"]').prop('readonly', false);
+                if ($("#open").prop("checked") == true) {
+                    $('select[name="ser_car_id_in"]').prop('disabled', false);
                 } else {
-                    $('select[name="ser_car_id_in"]').prop('readonly', true);
+                    $('select[name="ser_car_id_in"]').prop('disabled', true);
                     get_car_information(status);
                 }
-            } else {
-                if (document.getElementById('open2').checked) {
-                    $('select[name="ser_car_id_out"]').prop('readonly', false);
+            }
+            else {
+                if ($("#open2").prop("checked") == true) {
+                    $('select[name="ser_car_id_out"]').prop('disabled', false);
                 } else {
-                    $('select[name="ser_car_id_out"]').prop('readonly', true);
+                    $('select[name="ser_car_id_out"]').prop('disabled', true);
                     get_car_information(status);
                 }
             }

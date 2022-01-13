@@ -21,8 +21,8 @@ class Da_cdms_change_container_log extends Model {
     * @author   Wirat
     * @Create Date  2564-12-07
     */
-    public function insert($chl_old_ser_id = NULL, $chl_new_ser_id = NULL) {
-        $sql = "INSERT INTO $this->table(chl_old_ser_id, chl_new_ser_id) VALUES('$chl_old_ser_id', '$chl_new_ser_id')";
+    public function insert($chl_old_ser_id = NULL, $chl_new_ser_id = NULL, $scl_user_id = NULL) {
+        $sql = "INSERT INTO $this->table(chl_old_ser_id, chl_new_ser_id, chl_user_id) VALUES('$chl_old_ser_id', '$chl_new_ser_id', '$scl_user_id')";
         $this->db->query($sql);
     }
 }
