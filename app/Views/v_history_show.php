@@ -221,7 +221,7 @@ $(document).ready(function() {
 
 //Search to search table
 $( "#search" ).keyup(function() {
-    search_history();
+    change_month();
 });
 
 function search_history() {
