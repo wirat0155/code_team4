@@ -35,7 +35,7 @@
         overflow: visible !important;
     }
 
-    .hidden{
+    .hidden, .search_hidden, .ser_id, .latest_con_number{
         display: none !important;
     }
 </style>
@@ -105,9 +105,9 @@
 
                     <?php for ($i = 0; $i < count($arr_latest_con_number); $i++) { ?>
                     <div class="title latest_con ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
-                        <div class="ser_id" hidden><?php echo $arr_latest_con_number[$i]->ser_id?></div>
+                        <div class="ser_id"><?php echo $arr_latest_con_number[$i]->ser_id?></div>
                         <?php echo $arr_latest_con_number[$i]->con_number;?>
-                        <div class="latest_con_number" hidden><?php echo $arr_latest_con_number[$i]->con_number;?></div>
+                        <div class="latest_con_number"><?php echo $arr_latest_con_number[$i]->con_number;?></div>
                         <div style="float: right">
                             create by <?php echo $arr_change_container[$i][count($arr_change_container[$i]) - 2]->user_name_th ?>
                             <i class="ml-5 dropdown icon"></i>
@@ -221,7 +221,11 @@ $(document).ready(function() {
 
 //Search to search table
 $( "#search" ).keyup(function() {
-    $('input[type=search]').val(this.value);
+    search_history();
+});
+
+function search_history() {
+    $('input[type=search]').val($('#search').val());
     $('input[type=search]').keyup();
 
     var ser_change_con = document.getElementsByClassName("ser_id");
@@ -231,23 +235,23 @@ $( "#search" ).keyup(function() {
     for(var i = 0; i < latest_con_number.length ;i++){
         var count_repeat_value = 0;
         var ser_id = ser_change_con[i].innerText;
-        if(latest_con_number[i].innerHTML.search(this.value) >= 0){
+        if(latest_con_number[i].innerHTML.search($('#search').val()) >= 0){
             count_repeat_value++;
         }
 
         var history = document.getElementsByClassName("history_ser_id_"+ser_id);
 
         for(var j = 0; j < history.length ; j++){        
-            if(history[j].innerHTML.search(this.value) >= 0){
+            if(history[j].innerHTML.search($('#search').val()) >= 0){
                 count_repeat_value++;
                 console.log(history[j].innerHTML);
             }
         }
 
         if(count_repeat_value == 0){
-            $('.ser_id_' + ser_id).addClass('hidden');
+            $('.ser_id_' + ser_id).addClass('hidden search_hidden');
         }else{
-            $('.ser_id_' + ser_id).removeClass('hidden');
+            $('.ser_id_' + ser_id).removeClass('search_hidden');
         }
 
     }
@@ -259,7 +263,7 @@ $( "#search" ).keyup(function() {
     }else{
         $('.ser_no_data').addClass('hidden');
     }
-});
+}
 
 function change_month(){
     // Get Value Select Date
@@ -316,7 +320,7 @@ function change_month(){
     }else{
         $('.ser_no_data').addClass('hidden');
     }
-    $( "#search" ).val('');
+    search_history();
 }
 
 
