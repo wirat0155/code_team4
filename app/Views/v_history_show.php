@@ -164,7 +164,7 @@
                         <tbody>
                             <?php for ($i = 0; $i < count($arr_history); $i++) { ?>
                                 <tr id='time_id_<?php echo $arr_history[$i]->old_ser_id?>' class="time_history">
-                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="date_time"><?php echo date_thai($arr_history[$i]->chl_date)?></td>
+                                    <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="date_time"><?php echo date_thai($arr_history[$i]->chl_date, true)?></td>
                                     <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="old_con"><?php echo $arr_history[$i]->old_con_number?></td>
                                     <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="new_con"><?php echo $arr_history[$i]->new_con_number?></td>
                                     <td class="<?php echo $arr_history[$i]->old_ser_id?>" name="create"><?php echo $arr_history[$i]->user_name_th?></td>

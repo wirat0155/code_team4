@@ -18,7 +18,7 @@
 * @Create Date 2564-07-30
 * @Update Date
 */
-  function date_thai($strDate = NULL)
+  function date_thai($strDate = NULL, $time = false)
   {
     $str_year = date("Y",strtotime($strDate));
     $str_month= date("n",strtotime($strDate));
@@ -28,10 +28,14 @@
     $str_month_cut = Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
     $str_month_thai = $str_month_cut[$str_month];
 
-    if ($str_hour == '00') {
-      return "$str_day $str_month_thai $str_year";
+    if ($time) {
+      return "$str_day $str_month_thai $str_year $str_hour:$str_min";
+    } else {
+      if ($str_hour == '00') {
+        return "$str_day $str_month_thai $str_year";
+      }
+      return "$str_day $str_month_thai $str_year $str_hour:$str_min";
     }
-    return "$str_day $str_month_thai $str_year $str_hour:$str_min";
   }
   /*
   * datetime_format_value
