@@ -313,8 +313,11 @@ function change_month(){
         var count_repeat_month = 0;
         
         for(var i = 0; i < date_change_con.length ;i++){
+            console.log(date_change_con[i].value.substring(2, 11));
             if(month_year == today){
-                if(date_change_con[i].value.substring(2, 10) == month_year || date_change_con[i].value.substring(2, 9) == "Day ago" || date_change_con[i].value.substring(2, 10) == "Days ago"){
+                if(date_change_con[i].value.substring(2, 10) == month_year || date_change_con[i].value.substring(2, 9) == "Day ago" || date_change_con[i].value.substring(2, 10) == "Days ago" || 
+                    date_change_con[i].value.substring(2, 11) == "Hours ago" || date_change_con[i].value.substring(2, 12) == " Hours ago" || date_change_con[i].value.substring(2, 11) == " Mins ago" || 
+                    date_change_con[i].value.substring(2, 10) == "Mins ago"){
                     count_repeat_month++;
                 }
             }else{
