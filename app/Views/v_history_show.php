@@ -266,6 +266,10 @@ function search_history() {
 }
 
 function change_month(){
+    // Today
+    var today = new Date();
+    today = today.toString();
+    today = today.substring(4, 7) + ' ' + today.substring(11, 15);
     // Get Value Select Date
     var full_month = $('.calendar .ui.input input').val();
     // Convert Format Full Month  January 2022 to Short Month Jan 2022
@@ -273,8 +277,17 @@ function change_month(){
     // Get Array Elements By Name date_time
     var date_change_con = document.getElementsByName("date_time");
     for(var i = 0; i < date_change_con.length ;i++){
+        // if length == 16 is Day < 10
+        if(date_change_con[i].innerHTML.length == 16){
+            var history_month = date_change_con[i].innerHTML.substring(2, 10);
+        }
+        // if length != 16 is Day > 9
+        else{
+            var history_month = date_change_con[i].innerHTML.substring(3, 11);
+        }
+
         // if Text in Elements = Value in Select Date
-        if(date_change_con[i].innerHTML.substring(2, 10) != month_year){
+        if(history_month != month_year){
             // Hide tr = id time_id_ser_id 
             $('#time_id_' + date_change_con[i].className).addClass('hidden');
         }else{
@@ -285,7 +298,7 @@ function change_month(){
 
     // if Class Name is time_history = Class Name is time_history hidden
     // is if hidden all, js will show message no data 
-    if(document.getElementsByClassName("time_history").length == document.getElementsByClassName("time_history hidden").length){
+    if(document.getElementsByClassName("time_history").length == document.getElementsByClassName("time_history hidden").length && document.getElementsByClassName("time_history").length != 0){
         $('.time_no_data').removeClass('hidden');
     }else{
         $('.time_no_data').addClass('hidden');
@@ -300,8 +313,14 @@ function change_month(){
         var count_repeat_month = 0;
         
         for(var i = 0; i < date_change_con.length ;i++){
-            if(date_change_con[i].value.substring(2, 10) == month_year){
-                count_repeat_month++;
+            if(month_year == today){
+                if(date_change_con[i].value.substring(2, 10) == month_year || date_change_con[i].value.substring(2, 9) == "Day ago" || date_change_con[i].value.substring(2, 10) == "Days ago"){
+                    count_repeat_month++;
+                }
+            }else{
+                if(date_change_con[i].value.substring(2, 10) == month_year){
+                    count_repeat_month++;
+                }
             }
         }
 
