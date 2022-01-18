@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-12 col-sm-6 mb-4">
-                    <b>Date start :</b>
+                    <b>Start date :</b>
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
                     <?php echo date_thai($arr_driver[0]->dri_date_start) ?>

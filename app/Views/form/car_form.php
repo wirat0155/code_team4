@@ -162,7 +162,7 @@ else {
                     <!-- car status -->
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-4">
-                            <label for="car_status"><b>Car type <?php echo $colon ?></b></label>
+                            <label for="car_status"><b>Car status <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <select class="form-control" id="car_status" name="car_status">

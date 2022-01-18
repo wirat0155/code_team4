@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <b>Date start :</b>
+                    <b>Start date :</b>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <b>Date end :</b>
+                    <b>Resign date :</b>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
