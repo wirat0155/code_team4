@@ -50,7 +50,7 @@ class Da_cdms_status_container extends Model {
     * @author   Klayuth
     * @Create Date  2564-08-07
     */
-    public function delete($stac_id = NULL, bool $purge = false) {
+    public function change_status($stac_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET stac_status = 2 WHERE stac_id = '$stac_id'";
         $this->db->query($sql);
     }
@@ -76,7 +76,7 @@ class Da_cdms_status_container extends Model {
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function status_container_delete($stac_id = NULL, bool $purge = false) {
+    public function delete($stac_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET stac_status = 3 WHERE stac_id = '$stac_id'";
         $this->db->query($sql);
     }

@@ -75,7 +75,7 @@
         Remove Car type ?
     </div>
     <div class="content">
-        <form action="<?php echo base_url() . '/Set_up_car_type/delete' ?>" method="post">
+        <form action="<?php echo base_url() . '/Set_up_car_type/car_type_delete' ?>" method="post">
             <input type="hidden" id="cart_id" name="cart_id">
 
             <p style="font-size: 1rem">Are you sure to remove the car type</p>
@@ -295,7 +295,7 @@ $('#input_add').hide();
  */
 function check_status_car_type(cart_id) {
     if ($('#cart_id' + cart_id).prop('checked')) {
-        car_type_delete(cart_id);
+        car_type_status(cart_id);
         $('#btn_delete' + cart_id).prop("hidden", false);
     } else {
         car_type_restore(cart_id);
@@ -311,10 +311,10 @@ function check_status_car_type(cart_id) {
  * @author   Tadsawan
  * @Create Date  2564-10-22
  */
-function car_type_delete(cart_id) {
-    console.log('car_type_delete', cart_id);
+function car_type_status(cart_id) {
+    console.log('car_type_status', cart_id);
     $.ajax({
-        url: 'car_type_delete',
+        url: 'car_type_status',
         method: 'POST',
         dataType: 'JSON',
         data: {

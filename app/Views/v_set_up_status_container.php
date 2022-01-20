@@ -74,7 +74,7 @@
         Remove Container status ?
     </div>
     <div class="content">
-        <form action="<?php echo base_url() . '/Set_up_status_container/delete' ?>" method="post">
+        <form action="<?php echo base_url() . '/Set_up_status_container/status_container_delete' ?>" method="post">
             <input type="hidden" id="stac_id" name="stac_id">
 
             <p style="font-size: 1rem">Are you sure to remove the container status</p>
@@ -278,7 +278,7 @@ $('#input_add').hide();
  */
 function check_status_container(stac_id) {
     if ($('#stac_id' + stac_id).prop('checked')) {
-        status_container_delete(stac_id);
+        status_container_status(stac_id);
         $('#btn_delete' + stac_id).prop("hidden", false);
     } else {
         status_container_restore(stac_id);
@@ -294,10 +294,10 @@ function check_status_container(stac_id) {
  * @author   Tadsawan
  * @Create Date  2564-10-22
  */
-function status_container_delete(stac_id) {
-    console.log('status_container_delete', stac_id);
+function status_container_status(stac_id) {
+    console.log('status_container_status', stac_id);
     $.ajax({
-        url: 'status_container_delete',
+        url: 'status_container_status',
         method: 'POST',
         dataType: 'JSON',
         data: {

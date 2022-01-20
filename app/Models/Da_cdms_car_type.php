@@ -52,7 +52,7 @@ class Da_cdms_car_type extends Model {
     * @author   Wirat
     * @Create Date  2564-08-12
     */
-    public function delete($cart_id = NULL, bool $purge = false) {
+    public function change_status($cart_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cart_status = 2 WHERE cart_id = '$cart_id'";
         $this->db->query($sql);
     }
@@ -78,7 +78,7 @@ class Da_cdms_car_type extends Model {
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function car_type_delete($cart_id = NULL, bool $purge = false) {
+    public function delete($cart_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cart_status = 3 WHERE cart_id = '$cart_id'";
         $this->db->query($sql);
     }

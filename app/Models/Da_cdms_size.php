@@ -54,8 +54,8 @@ class Da_cdms_size extends Model {
     * @author   Natthadanai
     * @Create Date  2564-08-07
     */
-    public function delete($size_id = NULL, bool $purge = false) {
-        $sql = "UPDATE $this->table SET size_status=2 WHERE size_id='$size_id'";
+    public function change_status($size_id = NULL, bool $purge = false) {
+        $sql = "UPDATE $this->table SET size_status=3 WHERE size_id='$size_id'";
         $this->db->query($sql);
     }
 
@@ -80,7 +80,7 @@ class Da_cdms_size extends Model {
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function size_delete($size_id = NULL, bool $purge = false) {
+    public function delete($size_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET size_status=3 WHERE size_id='$size_id'";
         $this->db->query($sql);
     }

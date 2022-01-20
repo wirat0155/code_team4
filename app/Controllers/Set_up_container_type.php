@@ -55,11 +55,11 @@ class Set_up_container_type extends Cdms_controller
     * @author   Tadsawan
     * @Create Date  2564-10-04
     */
-    public function container_type_delete()
+    public function container_type_status()
     {
         $cont_id = $this->request->getPost('cont_id');
         $m_cont = new M_cdms_container_type();
-        $m_cont->delete($cont_id);
+        $m_cont->change_status($cont_id);
 
         return json_encode('pass');
     }
@@ -118,9 +118,9 @@ class Set_up_container_type extends Cdms_controller
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function delete() {
+    public function container_type_delete() {
         $m_cont = new M_cdms_container_type();
-        $m_cont->container_type_delete($this->request->getPost('cont_id'));
+        $m_cont->delete($this->request->getPost('cont_id'));
         return $this->response->redirect(base_url('/Set_up_container_type/container_type_show'));
     }
 

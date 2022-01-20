@@ -73,7 +73,7 @@
         Remove Container size ?
     </div>
     <div class="content">
-        <form action="<?php echo base_url() . '/Set_up_size/delete' ?>" method="post">
+        <form action="<?php echo base_url() . '/Set_up_size/size_delete' ?>" method="post">
             <input type="hidden" id="size_id" name="size_id">
 
             <p style="font-size: 1rem">Are you sure to remove the container size</p>
@@ -425,7 +425,7 @@ $('#input_add').hide();
  */
 function check_status_size(size_id) {
     if ($('#size_id' + size_id).prop('checked')) {
-        size_delete(size_id);
+        size_status(size_id);
         $('#btn_delete' + size_id).prop("hidden", false);
     } else {
         size_restore(size_id);
@@ -441,10 +441,10 @@ function check_status_size(size_id) {
  * @author   Tadsawan
  * @Create Date  2564-10-22
  */
-function size_delete(size_id) {
-    console.log('size_delete', size_id);
+function size_status(size_id) {
+    console.log('size_status', size_id);
     $.ajax({
-        url: 'size_delete',
+        url: 'size_status',
         method: 'POST',
         dataType: 'JSON',
         data: {

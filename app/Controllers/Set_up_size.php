@@ -55,11 +55,11 @@ class Set_up_size extends Cdms_controller
     * @author   Natadanai
     * @Create Date  2564-08-12
     */
-    public function size_delete()
+    public function size_status()
     {
         $size_id = $this->request->getPost('size_id');
         $m_size = new M_cdms_size();
-        $m_size->delete($size_id);
+        $m_size->change_status($size_id);
 
         return json_encode('pass');
     }
@@ -124,9 +124,9 @@ class Set_up_size extends Cdms_controller
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function delete() {
+    public function size_delete() {
         $m_size = new M_cdms_size();
-        $m_size->size_delete($this->request->getPost('size_id'));
+        $m_size->delete($this->request->getPost('size_id'));
         return $this->response->redirect(base_url('/Set_up_size/size_show'));
     }
 

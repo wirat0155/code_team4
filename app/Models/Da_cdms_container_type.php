@@ -51,7 +51,7 @@ class Da_cdms_container_type extends Model {
     * @author   Benjapon
     * @Create Date  2564-08-06
     */
-    public function delete($cont_id = NULL, bool $purge = false) {
+    public function change_status($cont_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cont_status = 2 WHERE cont_id = '$cont_id'";
         $this->db->query($sql);
     }
@@ -77,7 +77,7 @@ class Da_cdms_container_type extends Model {
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function container_type_delete($cont_id = NULL, bool $purge = false) {
+    public function delete($cont_id = NULL, bool $purge = false) {
         $sql = "UPDATE $this->table SET cont_status = 3 WHERE cont_id = '$cont_id'";
         $this->db->query($sql);
     }

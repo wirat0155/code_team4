@@ -55,11 +55,11 @@ class Set_up_car_type extends Cdms_controller
     * @author   Wirat
     * @Create Date  2564-08-12
     */
-    public function car_type_delete()
+    public function car_type_status()
     {
         $cart_id = $this->request->getPost('cart_id');
         $m_cart = new M_cdms_car_type();
-        $m_cart->delete($cart_id);
+        $m_cart->change_status($cart_id);
 
         return json_encode('pass');
     }
@@ -118,9 +118,9 @@ class Set_up_car_type extends Cdms_controller
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function delete() {
+    public function car_type_delete() {
         $m_cart = new M_cdms_car_type();
-        $m_cart->car_type_delete($this->request->getPost('cart_id'));
+        $m_cart->delete($this->request->getPost('cart_id'));
         return $this->response->redirect(base_url('/Set_up_car_type/car_type_show'));
     }
 

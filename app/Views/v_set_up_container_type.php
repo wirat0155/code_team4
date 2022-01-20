@@ -74,7 +74,7 @@
         Remove Container type ?
     </div>
     <div class="content">
-        <form action="<?php echo base_url() . '/Set_up_container_type/delete' ?>" method="post">
+        <form action="<?php echo base_url() . '/Set_up_container_type/container_type_delete' ?>" method="post">
             <input type="hidden" id="cont_id" name="cont_id">
 
             <p style="font-size: 1rem">Are you sure to remove the container type</p>
@@ -295,7 +295,7 @@ $('#input_add').hide();
  */
 function check_status_container_type(cont_id) {
     if ($('#cont_id' + cont_id).prop('checked')) {
-        container_type_delete(cont_id);
+        container_type_status(cont_id);
         $('#btn_delete' + cont_id).prop("hidden", false);
     } else {
         container_type_restore(cont_id);
@@ -311,10 +311,10 @@ function check_status_container_type(cont_id) {
  * @author   Tadsawan
  * @Create Date  2564-10-22
  */
-function container_type_delete(cont_id) {
-    console.log('container_type_delete', cont_id);
+function container_type_status(cont_id) {
+    console.log('container_type_status', cont_id);
     $.ajax({
-        url: 'container_type_delete',
+        url: 'container_type_status',
         method: 'POST',
         dataType: 'JSON',
         data: {

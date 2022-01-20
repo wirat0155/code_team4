@@ -55,11 +55,11 @@ class Set_up_status_container extends Cdms_controller
     * @author   Natadanai
     * @Create Date  2564-08-12
     */
-    public function status_container_delete()
+    public function status_container_status()
     {
         $stac_id = $this->request->getPost('stac_id');
         $m_stac = new M_cdms_status_container();
-        $m_stac->delete($stac_id);
+        $m_stac->change_status($stac_id);
 
         return json_encode('pass');
     }
@@ -108,9 +108,9 @@ class Set_up_status_container extends Cdms_controller
     * @author   Tadsawan
     * @Create Date  2564-12-08
     */
-    public function delete() {
+    public function status_container_delete() {
         $m_stac = new M_cdms_status_container();
-        $m_stac->status_container_delete($this->request->getPost('stac_id'));
+        $m_stac->delete($this->request->getPost('stac_id'));
         return $this->response->redirect(base_url('/Set_up_status_container/status_container_show'));
     }
     public function edit_status_container() {
