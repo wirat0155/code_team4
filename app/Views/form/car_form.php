@@ -124,12 +124,12 @@ else {
                     </div>
 
                     <!-- car image -->
-                    <div class="row">
+                    <div class="row" hidden>
                         <div class="col-12 col-sm-6 mb-4">
                             <label for="car_image"><b>Image <?php echo $colon ?></b></label>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <div class="input-group mb-3">
+                            <div class="input-group mb-3" >
                                 <input type="text" id="input_show_browse" class="form-control" placeholder="...." disabled style="background: white !important;">
                                 <div class="input-group-append" style="cursor: pointer;" onclick="$('#car_image').click();">
                                     <span class="input-group-text" id="show_browse">Browse</span>

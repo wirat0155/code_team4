@@ -61,6 +61,7 @@
         transition: all 0.2s;
         -webkit-transition: all 0.2s;
         text-align: center;
+        cursor: pointer;
     }
     .cl-blue {
         color: #1244B9 !important;
@@ -116,7 +117,7 @@
                 <!-- driver profile image -->
                 <div class="text-center mt-4 mb-3">
                     <div class="picture-container">
-                        <div class="picture">
+                        <div class="picture" onclick="$('#dri_profile_image').click();">
                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
                         </div>
                     </div>

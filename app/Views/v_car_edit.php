@@ -39,6 +39,22 @@ label.error {
     color: red !important;
     font-weight: bold;
 }
+
+.picture {
+    width: 200px;
+    height: 200px;
+    background-color: #999999;
+    border: 4px solid #CCCCCC;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    text-align: center;
+    cursor: pointer;
+}
+
 </style>
 <div class="main-panel">
     <div class="content">
@@ -77,6 +93,19 @@ label.error {
                     </li>
 
                 </ul>
+            </div>
+
+            <!-- driver profile image -->
+            <div class="text-center mt-4 mb-3">
+                <div class="picture-container">
+                    <div class="picture" onclick="$('#car_image').click();">
+                        <?php if ($arr_car[0]->car_image != NULL && $arr_car[0]->car_image != '') { ?>
+                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[0]->car_image ?>">
+                        <?php } else { ?>
+                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
+                        <?php } ?>
+                    </div> <br>
+                </div>
             </div>
 
             <div class="row mx-5 mt-0">

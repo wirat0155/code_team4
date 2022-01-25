@@ -152,6 +152,22 @@
                 </select>
                 </div>
             </div>
+
+            <!-- driver profile image -->
+            <div class="row mb-3" hidden>
+                <div class="col-12 col-sm-3">
+                    <label for="dri_profile_image" class="mt-2"><b>Profile image</b></label>
+                </div>
+                <div class="col-12 col-sm">
+                    <div class="input-group">
+                        <input type="text" id="input_show_browse" class="form-control" placeholder="...." disabled style="background: white !important;">
+                        <div class="input-group-append" style="cursor: pointer;" onclick="$('#dri_profile_image').click();">
+                            <span class="input-group-text" id="show_browse">Browse</span>
+                        </div>
+                    </div>
+                    <input type="file" id="dri_profile_image" name="dri_profile_image" onchange="get_image();" accept="image/jpg,image/jpeg,image/png" hidden>
+                </div>
+            </div>
         </div>
     </div>
 </div>
