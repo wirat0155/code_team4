@@ -271,13 +271,12 @@ $(document).ready(function() {
 });
 
 // search
-var columns = $('.cont_name');
 var rows = $('tr');
 $('#search').keyup(function() {
     rows.hide();
-    for (var i = columns.length; i > 0; i--) {
-        if ($('.cont_name_' + i).text().toLowerCase().search($(this).val().toLowerCase()) >= 0) {
-            $('.cont_name' + i).show();
+    for(i = 0; i < rows.length; i++){
+        if($('.cont_name_' + rows[i].className.substring(9)).text().toLowerCase().search($(this).val().toLowerCase()) >= 0){
+            $('tr.cont_name' + rows[i].className.substring(9)).show();
         }
     }
 });

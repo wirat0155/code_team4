@@ -271,13 +271,12 @@ $(document).ready(function() {
 });
 
 // search
-var columns = $('.cart_name');
 var rows = $('tr');
 $('#search').keyup(function() {
     rows.hide();
-    for (var i = columns.length; i > 0; i--) {
-        if ($('.cart_name_' + i).text().toLowerCase().search($(this).val().toLowerCase()) >= 0) {
-            $('.cart_name' + i).show();
+    for (var i = 0; i < rows.length; i++) {
+        if ($('.cart_name_' + rows[i].className.substring(9)).text().toLowerCase().search($(this).val().toLowerCase()) >= 0) {
+            $('tr.cart_name' + rows[i].className.substring(9)).show();
         }
     }
 });
