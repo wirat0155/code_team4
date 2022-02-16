@@ -263,6 +263,12 @@ function search_history() {
     }else{
         $('.ser_no_data').addClass('hidden');
     }
+
+    if(document.getElementsByClassName("dataTables_empty").length > 0){
+        $('.time_no_data').addClass('hidden');
+    }else{
+        $('.time_no_data').removeClass('hidden');
+    }
 }
 
 function change_month(){
