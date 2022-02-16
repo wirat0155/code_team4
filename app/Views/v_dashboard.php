@@ -415,7 +415,7 @@
           backgroundColor: gradient_dataset_1
         },
         {
-          label: [['DROP'], '<?php echo array_sum($arr_num_import) + $arr_num_import[count($arr_num_import) - 1]?>'],
+          label: [['DROP'], '<?php echo array_sum($arr_num_import) + $arr_num_drop[count($arr_num_drop) - 1] ?>'],
           data: 
           <?php
           echo "[";

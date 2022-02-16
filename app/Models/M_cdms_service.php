@@ -338,7 +338,7 @@ class M_cdms_service extends Da_cdms_service
                         LEFT JOIN cdms_car ON car_id = ser_car_id_out
                         LEFT JOIN cdms_customer ON cus_id = ser_cus_id
                         WHERE (ser_departure_date LIKE '$date%' OR ser_departure_date < '$date') AND 
-                        (ser_actual_departure_date IS NULL OR ser_actual_departure_date LIKE '$date%')";
+                        (ser_actual_departure_date IS NULL OR ser_actual_departure_date LIKE '$date%') AND ser_status = 1";
             return $this->db->query($sql)->getResult();
         }
     }
