@@ -667,7 +667,9 @@ class Service_show extends Cdms_controller {
         }
         $data['arr_change_container'] = $arr_change_container;
 
-
+        // echo "<pre>";
+        // print_r($arr_change_container);
+        // echo "</pre>";
         // get latest container number
         $m_ser = new M_cdms_service();
         $arr_latest_con_number = array();

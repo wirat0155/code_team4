@@ -32,7 +32,7 @@ class M_cdms_service extends Da_cdms_service
                     LEFT JOIN cdms_status_container ON ser_stac_id = stac_id
                     LEFT JOIN cdms_agent ON con_agn_id = agn_id
                     WHERE (ser_actual_departure_date > '$today' OR ser_actual_departure_date LIKE '$today%' OR ser_actual_departure_date IS NULL)
-                    AND ser_status = 1
+                    AND ser_status = 1 
                     ORDER BY ser_id DESC";
         } else {
             $sql = "SELECT * FROM $this->table
@@ -288,15 +288,15 @@ class M_cdms_service extends Da_cdms_service
     * @author   Benjapon
     * @Create Date  2564-12-07
     */
-    public function get_change_service_option($cont_id, $con_size_id)
+    public function get_change_service_option($cont_id, $con_size_id,$ser_id)
     {
         $sql = "SELECT con_number,cont_name,ser_id FROM cdms_container 
         INNER JOIN cdms_service ON ser_con_id=con_id 
         INNER JOIN cdms_status_container ON con_stac_id=stac_id 
         INNER JOIN cdms_container_type ON con_cont_id=cont_id 
         WHERE ser_stac_id = 1 OR ser_stac_id = 2 OR ser_stac_id = 3 
-        AND ser_departure_date IS NULL AND ser_weight = 0 
-        AND cont_id='$cont_id' AND con_size_id='$con_size_id'";
+        AND (ser_departure_date IS NULL OR ser_departure_date = '0000-00-00 00:00:00') AND ser_weight = 0 
+        AND cont_id='$cont_id' AND con_size_id='$con_size_id' AND ser_id != '$ser_id' AND ser_status = 1";
         return $this->db->query($sql)->getResult();
     }
 

@@ -37,6 +37,19 @@ class Da_cdms_service extends Model
     }
 
     /*
+    * delete
+    * delete service
+    * @input    ser_id
+    * @output   delete service
+    * @author   Worarat
+    * @Create Date  2564-07-30
+    */
+    public function change_status_replace($ser_id = NULL, bool $purge = false)
+    {
+        $sql = "UPDATE $this->table SET ser_status=3 WHERE ser_id='$ser_id'";
+        $this->db->query($sql);
+    }
+    /*
     * service_insert
     * insert service
     * @input    $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id

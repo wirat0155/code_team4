@@ -222,9 +222,6 @@ $(document).ready(function() {
                 ser_arrivals_date: {
                     required: true
                 },
-                ser_departure_date: {
-                    required: true
-                },
                 ser_arrivals_location: {
                     required: true
                 },
@@ -332,9 +329,6 @@ $(document).ready(function() {
                 },
                 ser_arrivals_date: {
                     required: 'Please enter an arrivals date'
-                },
-                ser_departure_date: {
-                    required: 'Please enter a departure date'
                 },
                 ser_arrivals_location: {
                     required: 'Please enter an arrivals location'

@@ -166,7 +166,7 @@
                                     <div class="col-md-6">
                                         <div class="row mb-3">
                                             <div class="col-12 col-sm-4">
-                                                <label for="ser_dri_id_in" class="mt-2"><b>Driver in :</b></label>
+                                                <label for="ser_dri_id_in" class="mt-2"><b>Importer :</b></label>
                                             </div>
 
                                             <div class="col-12 col-sm-8">
@@ -195,7 +195,7 @@
                                     <div class="col-md-6">
                                         <div class="row mb-3">
                                             <div class="col-12 col-sm-4">
-                                                <label for="ser_dri_id_out" class="mt-2"><b>Driver out :</b></label>
+                                                <label for="ser_dri_id_out" class="mt-2"><b>Exporter  :</b></label>
                                             </div>
 
                                             <div class="col-12 col-sm-8">
@@ -222,7 +222,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input type="checkbox" style="margin-left: 35%;" id="open" onclick="open_disable(1)"> Use not a regular car
+                                        <input type="checkbox" style="margin-left: 36%;" id="open" onclick="open_disable(1)"> Use not a regular car
 
                                         <div class="row mb-3">
                                             <div class="col-12 col-sm-4">
@@ -253,7 +253,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input type="checkbox" style="margin-left: 35%;" id="open2" onclick="open_disable(2)"> Use not a regular car
+                                        <input type="checkbox" style="margin-left: 36%;" id="open2" onclick="open_disable(2)"> Use not a regular car
 
                                         <div class="row mb-3">
                                             <div class="col-12 col-sm-4">
@@ -354,7 +354,7 @@
 
                                 <?php
                                     $page = 'service_edit';
-                                    require_once dirname(__FILE__) . '/form/container_edit_form.php';
+                                    require_once dirname(__FILE__) . '/form/container_service_edit_form.php';
                                 ?>
                             </div>
                         </div>

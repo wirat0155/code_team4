@@ -9,7 +9,7 @@
 -->
 
 <h3>1. Import</h3>
-<input type="checkbox" style="margin-left: 50%;" id="open" onclick="open_disable(1)">
+<input type="checkbox" style="margin-left: 66%;" id="open" onclick="open_disable(1)">
 <label for="open">Use not a regular car</label>
 <div class="row">
     <!-- Importer -->
@@ -76,7 +76,7 @@
 </div>
 
 <h3>2. Export</h3>
-<input type="checkbox" style="margin-left: 50%;" id="open2" onclick="open_disable(2)">
+<input type="checkbox" style="margin-left: 66%;" id="open2" onclick="open_disable(2)">
 <label for="open2">Use not a regular car</label>
 <div class="row">
     <!-- Exporter -->

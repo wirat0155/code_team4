@@ -756,7 +756,12 @@ input[type=number]::-webkit-outer-spin-button {
 
                                             <!-- Cut-off -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                <?php echo date_thai($arr_service[$i]->ser_departure_date) ?>
+                                            <?php
+                                                    if ($arr_service[$i]->ser_departure_date == "0000-00-00 00:00:00" || $arr_service[$i]->ser_departure_date == NULL) {
+                                                        echo "-";
+                                                    } else {
+                                                        echo date_thai($arr_service[$i]->ser_departure_date);
+                                                    } ?>
                                             </td>
                                             <!-- Act. dep. -->
                                             <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">

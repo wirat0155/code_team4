@@ -88,7 +88,8 @@ class Service_edit extends Cdms_controller
 
         $m_ser = new M_cdms_service();
         $obj_container = $data['obj_container'];
-        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id, $obj_container[0]->con_size_id);
+        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id, $obj_container[0]->con_size_id, $data['obj_service'][0]->ser_id);
+
         $this->output('v_service_edit', $data);
     }
 
@@ -416,6 +417,7 @@ class Service_edit extends Cdms_controller
         $new_ser_id = $this->request->getPost('chl_ser_id');
         if ($new_ser_id != "not change") {
             $this->change_container($ser_id, $new_ser_id);
+            $m_ser->change_status_replace($ser_id);
         }
         // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
