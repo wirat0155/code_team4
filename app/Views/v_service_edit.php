@@ -126,56 +126,50 @@
                                     <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
 
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Status :</label>
-                                            <div class="col-12 col-sm-7 p-0">
-                                                <select class="input-full form-control" name="ser_stac_id">
-                                                    <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                    <option value="<?php echo $obj_service[$i]->ser_stac_id ?>" 
-                                                    <?php 
-                                                        if ($_SESSION['service_edit_error']) {
-                                                            if ($arr_status_container[$i]->stac_id == $ser_stac_id)
-                                                                echo "selected";
-                                                        }
-                                                        else {
-                                                            if ($obj_service[0]->ser_stac_id == $arr_status_container[$i]->stac_id) 
-                                                                echo "selected";
-                                                        }
-                                                    ?>
-                                                    >
-                                                        <?php echo $arr_status_container[$i]->stac_name ?>
-                                                    </option>
-                                                    <?php } ?>
-                                                </select>
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_departure_date" class="mt-2"><b>Cut-off :</b></label>
+                                            </div>
+    
+                                            <div class="col-12 col-sm-8">
+                                                <input class="form-control" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date)?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6"></div>
+
+                                    <div class="col-md-6">
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_arrivals_date" class="mt-2"><b>Date arrivals :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <input class="form-control" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date)?>">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Cut-off :</label>
-                                            <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date)?>">
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_actual_departure_date" class="mt-2"><b>Date departure :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <input class="form-control" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date arrivals :</label>
-                                             <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date)?>">
-                                        </div>
-                                    </div>
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_dri_id_in" class="mt-2"><b>Driver in :</b></label>
+                                            </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date departure :</label>
-                                            <input class="input-full form-control col-12 col-sm-7" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label for="car_branch" class="col-form-label mr-auto">Driver in :</label>
-                                            <div class="col-12 col-sm-7 p-0">
+                                            <div class="col-12 col-sm-8">
                                                 <select class="input-full form-control" name="ser_dri_id_in" onclick="get_car_information(1)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                                     <option value="<?php echo $arr_driver[$i]->dri_id ?>" 
@@ -199,10 +193,13 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right">Driver out :</label>
-                                            <div class="col-12 col-sm-7 p-0">
-                                                <select class="input-full form-control" name="ser_dri_id_out" onclick="get_car_information(2)">
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_dri_id_out" class="mt-2"><b>Driver out :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <select class="form-control" name="ser_dri_id_out" onclick="get_car_information(2)">
                                                     <?php for ($i = 0; $i < count($arr_driver); $i++) { ?>
                                                     <option value="<?php echo $arr_driver[$i]->dri_id ?>" 
                                                     <?php 
@@ -225,75 +222,97 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input type="checkbox" style="margin-left: 3%;" id="open" onclick="open_disable(1)"> Use not a regular car
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right" for="ser_car_id_in">Imported car :</label>
-                                            <select class="input-full form-control col-7" name="ser_car_id_in" disabled>
-                                                <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                                <option value="<?php echo $arr_car[$i]->car_id ?>" 
-                                                <?php 
-                                                    if ($_SESSION['service_edit_error']) {
-                                                        if ($arr_car[$i]->car_id == $ser_car_id_in)
-                                                            echo "selected";
-                                                    }
-                                                    else {
-                                                        if ($arr_car[$i]->car_id == $obj_service[0]->ser_car_id_in) 
-                                                            echo "selected";
-                                                    }
-                                                ?>
-                                                >
-                                                    <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?>
-                                                </option>
-                                                <?php } ?>
-                                            </select>
+                                        <input type="checkbox" style="margin-left: 35%;" id="open" onclick="open_disable(1)"> Use not a regular car
+
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_car_id_in" class="mt-2"><b>Imported car :</b></label>
+                                            </div>
+                                        
+                                            <div class="col-12 col-sm-8">
+                                                <select class="form-control" name="ser_car_id_in" disabled>
+                                                    <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
+                                                    <option value="<?php echo $arr_car[$i]->car_id ?>" 
+                                                    <?php 
+                                                        if ($_SESSION['service_edit_error']) {
+                                                            if ($arr_car[$i]->car_id == $ser_car_id_in)
+                                                                echo "selected";
+                                                        }
+                                                        else {
+                                                            if ($arr_car[$i]->car_id == $obj_service[0]->ser_car_id_in) 
+                                                                echo "selected";
+                                                        }
+                                                    ?>
+                                                    >
+                                                        <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?>
+                                                    </option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input type="checkbox" style="margin-left: 3%;" id="open2" onclick="open_disable(2)"> Use not a regular car
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto pull-right" for="ser_car_id_out">Exported car :</label>
-                                            <select class="input-full form-control col-7" name="ser_car_id_out" disabled>
-                                                <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                                                <option value="<?php echo $arr_car[$i]->car_id ?>" 
-                                                <?php 
-                                                    if ($_SESSION['service_edit_error']) {
-                                                        if ($arr_car[$i]->car_id == $ser_car_id_out)
-                                                            echo "selected";
-                                                    }
-                                                    else {
-                                                        if ($arr_car[$i]->car_id == $obj_service[0]->ser_car_id_out) 
-                                                            echo "selected";
-                                                    }
-                                                ?>>
-                                                    <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?>
-                                                </option>
-                                                <?php } ?>
-                                            </select>
+                                        <input type="checkbox" style="margin-left: 35%;" id="open2" onclick="open_disable(2)"> Use not a regular car
+
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_car_id_out" class="mt-2"><b>Exported car :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <select class="form-control" name="ser_car_id_out" disabled>
+                                                    <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
+                                                    <option value="<?php echo $arr_car[$i]->car_id ?>" 
+                                                    <?php 
+                                                        if ($_SESSION['service_edit_error']) {
+                                                            if ($arr_car[$i]->car_id == $ser_car_id_out)
+                                                                echo "selected";
+                                                        }
+                                                        else {
+                                                            if ($arr_car[$i]->car_id == $obj_service[0]->ser_car_id_out) 
+                                                                echo "selected";
+                                                        }
+                                                    ?>>
+                                                        <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?>
+                                                    </option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Arrivals location :</label>
-                                            <input class="input-full form-control col-7" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php 
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_arrivals_location" class="mt-2"><b>Arrivals location :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <input class="form-control" type="text" name="ser_arrivals_location" placeholder="สถานที่ต้นทาง" value="<?php 
                                                 if ($_SESSION['service_edit_error'])
                                                     echo $ser_arrivals_location;
                                                 else 
                                                     echo trim($obj_service[0]->ser_arrivals_location);
                                             ?>">
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Departure location :</label>
-                                            <input class="input-full form-control col-7" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php 
-                                                if ($_SESSION['service_edit_error'])
-                                                    echo $ser_departure_location;
-                                                else 
-                                                    echo $obj_service[0]->ser_departure_location;
-                                            ?>">
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="ser_departure_location" class="mt-2"><b>Departure location :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <input class="form-control" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php 
+                                                    if ($_SESSION['service_edit_error'])
+                                                        echo $ser_departure_location;
+                                                    else 
+                                                        echo $obj_service[0]->ser_departure_location;
+                                                ?>">
+                                            </div>
                                         </div>
                                     </div>
 
@@ -302,10 +321,13 @@
                                         <h3>Change container</h3>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Container yard :</label>
-                                            <div class="col-12 col-sm-7 p-0">
-                                                <select class="input-full form-control col-12" name="chl_ser_id">
+                                        <div class="row mb-3">
+                                            <div class="col-12 col-sm-4">
+                                                <label for="chl_ser_id" class="mt-2"><b>Container yard :</b></label>
+                                            </div>
+
+                                            <div class="col-12 col-sm-8">
+                                                <select class="form-control" name="chl_ser_id">
                                                     <option value="not change">Not change container</option>
                                                     <?php for ($i = 0; $i < count($opt_service); $i++) { ?>
                                                     <option value="<?php echo $opt_service[$i]->ser_id ?>">
