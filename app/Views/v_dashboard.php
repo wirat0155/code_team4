@@ -222,12 +222,12 @@
                           echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">' . $arr_today_service[$i]->stac_name . '<span>';
                         }
                         // 5 = defective 
-                        else if ($arr_service[$i]->ser_stac_id == '5') {
-                          echo '<span class="bg-defective text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
+                        else if ($arr_today_service[$i]->ser_stac_id == '5') {
+                          echo '<span class="bg-defective text-white p-2" style="border-radius: 5px;">' . $arr_today_service[$i]->stac_name . '<span>';
                         }
                         // else  = drop
                         else {
-                          echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
+                          echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_today_service[$i]->stac_name . '<span>';
                         }
                         ?>
                       </td>
