@@ -942,7 +942,7 @@ input[type=number]::-webkit-outer-spin-button {
         $('.add_cost_input').empty();
 
         //ค่าเริ่มต้นเมื่อเปิด Modal
-        $('input[name="due_date"]').val('0000-00-00');
+        $('input[name="due_date"]').val('00/00/0000');
         $('select[name="pay_by"]').val(1);
         $('input[name="cheque_no"]').val('');
         $('select[name="bank"]').val(0);
@@ -986,11 +986,15 @@ input[type=number]::-webkit-outer-spin-button {
         } else {
             //กำหนดตัวแปรรับ due_date ของ service ที่เลือก
             due_date = data[0]['ser_due_date'];
-            due_date = due_date.toString();
-            due_date = due_date.substring(8) + '/' + due_date.substring(7,5) + '/' + due_date.substring(0,4);
 
-            //set ค่าใน input
-            $('input[name="due_date"]').val(due_date);
+            if(due_date != null){
+                due_date = due_date.toString();
+                due_date = due_date.substring(8) + '/' + due_date.substring(7,5) + '/' + due_date.substring(0,4);
+
+                //set ค่าใน input
+                $('input[name="due_date"]').val(due_date);
+            }
+
             $('select[name="pay_by"]').val(data[0]['ser_pay_by']);
 
             if(data[0]['ser_pay_by'] == 3){
@@ -1060,8 +1064,9 @@ input[type=number]::-webkit-outer-spin-button {
                                     </div>`;
                 $('.cost_input_list').append(modal_message);
             }
-            
+
             cal_total_cost();
+
         }
     }
 
@@ -1250,7 +1255,8 @@ input[type=number]::-webkit-outer-spin-button {
         }
 
         $('.total .price').text(total_cost.toLocaleString() + ' THB');
-        check_checkbox_value()
+        
+        check_checkbox_value();
     }
 
     function checkbox_checkall(){
@@ -1276,9 +1282,8 @@ input[type=number]::-webkit-outer-spin-button {
             $('.subtotal').prop("hidden", !this.checked);
             $('.vat').prop("hidden", !this.checked);
         }
-        cal_total_cost();
     }
-
+0
     function print_cost(){
         var ser_id = $('#cosd_ser_id').val();
         var vat = $('#vat').val();
@@ -1301,8 +1306,6 @@ input[type=number]::-webkit-outer-spin-button {
             cheque_no = '';
             bank = 0;
         }
-
-        console.log(due_date);
 
         $.ajax({
             url: '<?php echo base_url() . '/Service_show/ser_pay_update' ?>',

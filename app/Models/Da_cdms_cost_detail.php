@@ -23,8 +23,8 @@ class Da_cdms_cost_detail extends Model {
     * @author   Natdanai
     * @Create Date  2564-09-16
     */
-    public function cost_insert($cosd_name = NULL, $cosd_cost = NULL, $cosd_payment_date = NULL, $cosd_ser_id = NULL, $cosd_quantity = NULL, $cosd_status_vat = NULL) {
-        $sql = "INSERT INTO $this->table VALUES (NULL, '$cosd_name', '$cosd_cost', '1', '$cosd_payment_date', NULL, '$cosd_ser_id', '1', '$cosd_quantity', '$cosd_status_vat')";
+    public function cost_insert($cosd_name = NULL, $cosd_cost = NULL, $cosd_ser_id = NULL, $cosd_quantity = NULL, $cosd_status_vat = NULL) {
+        $sql = "INSERT INTO $this->table VALUES (NULL, '$cosd_name', '$cosd_cost', '1', '$cosd_ser_id', '1', '$cosd_quantity', '$cosd_status_vat')";
         $this->db->query($sql);
     }
 
