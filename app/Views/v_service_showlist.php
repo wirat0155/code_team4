@@ -742,7 +742,11 @@ input[type=number]::-webkit-outer-spin-button {
                                                     else if ($arr_service[$i]->ser_stac_id == '4') {
                                                         echo '<span class="bg-export text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
                                                     }
-                                                    // else = drop (orange)
+                                                    // 5 = defective 
+                                                    else if ($arr_service[$i]->ser_stac_id == '5') {
+                                                        echo '<span class="bg-defective text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
+                                                    }
+                                                    // else  = drop
                                                     else {
                                                         echo '<span class="bg-drop text-white p-2" style="border-radius: 5px;">' . $arr_service[$i]->stac_name . '<span>';
                                                     }
