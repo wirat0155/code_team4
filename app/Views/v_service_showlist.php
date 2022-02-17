@@ -208,7 +208,7 @@ input[type=number]::-webkit-outer-spin-button {
         </div>
 
         <div class="add bill col-md-10 ml-auto mr-auto mt-4" align="center">
-            <a class="col-md-2" onclick="checkbox_checkall()" style="text-decoration: underline; cursor: pointer; float: left" align="left">Check all</a>
+            <a class="check_vat col-md-2" onclick="checkbox_check_all()" style="text-decoration: underline; cursor: pointer; float: left" align="left">Check all</a>
             <button class="ui primary button col-md-5" onclick="add_cost_input()" style="width: 205px !important"><i class='left plus icon'></i>Add cost</button>
         </div>
 
@@ -962,7 +962,7 @@ input[type=number]::-webkit-outer-spin-button {
             modal_message +=`<div class="fields cost" name="cost_input${number_cost_input}">
                                 <div class="field col-1 cost_vat">
                                     <label> VAT </label>
-                                    <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${number_cost_input}" onchange="cost_insert(${number_cost_input})">
+                                    <input type="checkbox" tabindex="0" data-cosd_id="${number_cost_input}" class="cosd_status_vat" name="cosd_status_vat${number_cost_input}" onchange="cost_insert(${number_cost_input})">
                                 </div>
                                 <div class="field col-6 cost_name">
                                     <label>Cost name</label>
@@ -1012,7 +1012,7 @@ input[type=number]::-webkit-outer-spin-button {
             modal_message += `  <div class="fields cost" name="cost_input_id${data[0]['cosd_id']}">
                                     <div class="field col-1 cost_vat">
                                         <label> VAT </label>
-                                        <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${data[0]['cosd_id']}" onchange="cost_update(${data[0]['cosd_id']})" ${vat_value}>
+                                        <input type="checkbox" tabindex="0" data-cosd_id="${data[0]['cosd_id']}" class="cosd_status_vat" name="cosd_status_vat${data[0]['cosd_id']}" onchange="cost_update(${data[0]['cosd_id']})" ${vat_value}>
                                     </div>
                                     <div class="field col-6 cost_name">
                                         <label>Cost name</label>
@@ -1044,7 +1044,7 @@ input[type=number]::-webkit-outer-spin-button {
                 modal_message += `  <div class="fields cost" name="cost_input_id${data[i]['cosd_id']}">
                                         <div class="field col-1 cost_vat">
                                             <label class="label_res"> VAT </label>
-                                            <input type="checkbox" tabindex="0" class="cosd_status_vat" name="cosd_status_vat${data[i]['cosd_id']}" onchange="cost_update(${data[i]['cosd_id']})" ${vat_value}>
+                                            <input type="checkbox" tabindex="0" data-cosd_id="${data[i]['cosd_id']}" class="cosd_status_vat" name="cosd_status_vat${data[i]['cosd_id']}" onchange="cost_update(${data[i]['cosd_id']})" ${vat_value}>
                                         </div>
                                         <div class="field col-6 cost_name">
                                             <label class="label_res">Cost name</label>
@@ -1259,11 +1259,23 @@ input[type=number]::-webkit-outer-spin-button {
         check_checkbox_value();
     }
 
-    function checkbox_checkall(){
-        var cosd_status_vat = document.getElementsByClassName('cosd_status_vat');
-        for (var i = 0; i < cosd_status_vat.length; i++) {
-            cosd_status_vat[i].click();
-            console.log('true');
+    function checkbox_check_all(){
+        $('.cosd_status_vat').prop('checked',true);
+        $('.check_vat').attr('onclick', 'checkbox_cancel_all()');
+        update_chack_all();
+    }
+
+    function checkbox_cancel_all(){
+        $('.cosd_status_vat').prop('checked', false);
+        $('.check_vat').attr('onclick', 'checkbox_check_all()');
+        update_chack_all();
+    }
+
+    function update_chack_all(){
+        var check_vat = document.getElementsByClassName('cosd_status_vat'); 
+
+        for(var i = 0;i < check_vat.length; i++){
+            cost_update(check_vat[i].getAttribute("data-cosd_id"));
         }
     }
 
