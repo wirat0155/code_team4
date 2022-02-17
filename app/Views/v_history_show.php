@@ -100,12 +100,11 @@
                 <!-- show latest container number -->
                 <div class="ui styled fluid accordion">
                     <div class="title ser_no_data hidden">
-                        No data !!
+                        No matching records found
                     </div>
 
                     <?php for ($i = 0; $i < count($arr_latest_con_number); $i++) { ?>
-                    <div class="title latest_con ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
-                        <div class="ser_id"><?php echo $arr_latest_con_number[$i]->ser_id?></div>
+                    <div class="title latest_con ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?> ser_title">
                         <?php echo $arr_latest_con_number[$i]->con_number;?>
                         <div class="latest_con_number"><?php echo $arr_latest_con_number[$i]->con_number;?></div>
                         <div style="float: right">
@@ -114,7 +113,7 @@
                         </div>
                     </div>
 
-                    <div class="content ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>">
+                    <div class="content ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?> ser_content">
                         <ol class="activity-feed">
                             <?php for ($j = count($arr_change_container[$i]) - 2; $j >= 0; $j--) { ?>
                                 <li class="feed-item feed-item-secondary">
@@ -123,7 +122,6 @@
                                         <!-- container number -->
                                         <div class="col">
                                             <h4>
-                                                <div class="history_ser_id_<?php echo $arr_latest_con_number[$i]->ser_id?>" hidden><?php echo $arr_change_container[$i][$j]->con_number ?></div>
                                                 <?php echo $arr_change_container[$i][$j]->con_number ?>
                                             </h4>
                                         </div>
@@ -133,8 +131,8 @@
                                             <time class="date">
                                                 <i class="bi bi-clock mr-3"></i>
                                                 <?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?>
-                                                <input type="text" name="date<?php echo $arr_latest_con_number[$i]->ser_id?>" value="<?php echo diff_datetime($arr_change_container[$i][$j]->chl_date) ?>" hidden>
                                             </time>
+                                            <div class="hidden"><?php echo date_thai($arr_change_container[$i][$j]->chl_date) ?></div>
                                         </div>
 
                                         <div class="col">
@@ -171,11 +169,6 @@
                                 </tr>
                             <?php } ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4" style="text-align: center" class="time_no_data hidden"> No data !! </td>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -196,6 +189,12 @@ $('.month_picker').calendar({
         lastResort: 'bottom right',
     },
 });
+
+if($('.ser_title:visible').length == 0){
+    $('.ser_no_data').removeClass('hidden');
+}else{
+    $('.ser_no_data').addClass('hidden');
+}
 
 // Change Header Change of container by service or time
 $( ".item" ).click(function() {
@@ -221,134 +220,49 @@ $(document).ready(function() {
 
 //Search to search table
 $( "#search" ).keyup(function() {
+    
     change_month();
-});
-
-function search_history() {
-    $('input[type=search]').val($('#search').val());
-    $('input[type=search]').keyup();
-
-    var ser_change_con = document.getElementsByClassName("ser_id");
-    var latest_con_number = document.getElementsByClassName("latest_con_number");
-    // console.log(latest_con_number[0].innerHTML);
-
-    for(var i = 0; i < latest_con_number.length ;i++){
-        var count_repeat_value = 0;
-        var ser_id = ser_change_con[i].innerText;
-        if(latest_con_number[i].innerHTML.search($('#search').val()) >= 0){
-            count_repeat_value++;
+    
+    var ser_title = $('.ser_title');
+    var ser_content = $('.ser_content');
+    ser_title.hide();
+    ser_content.hide();
+    for(var i = 0; i < ser_title.length; i++){
+        if($('.ser_content:eq(' + i + ') ol li div div h4').text().toLowerCase().search($(this).val().toLowerCase()) >= 0 ||
+        $('.ser_title:eq(' + i + ') .latest_con_number').text().toLowerCase().search($(this).val().toLowerCase()) >= 0 ){
+            $('.ser_title:eq(' + i + ')').show();
         }
-
-        var history = document.getElementsByClassName("history_ser_id_"+ser_id);
-
-        for(var j = 0; j < history.length ; j++){        
-            if(history[j].innerHTML.search($('#search').val()) >= 0){
-                count_repeat_value++;
-                console.log(history[j].innerHTML);
-            }
-        }
-
-        if(count_repeat_value == 0){
-            $('.ser_id_' + ser_id).addClass('hidden search_hidden');
-        }else{
-            $('.ser_id_' + ser_id).removeClass('search_hidden');
-        }
-
     }
 
-    // if Class Name is latest_con = Class Name is latest_con hidden
-    // is if hidden all, js will show message no data 
-    if(document.getElementsByClassName("latest_con").length == document.getElementsByClassName("latest_con hidden").length){
+    if($('.ser_title:visible').length == 0){
         $('.ser_no_data').removeClass('hidden');
     }else{
         $('.ser_no_data').addClass('hidden');
     }
 
-    if(document.getElementsByClassName("dataTables_empty").length > 0){
-        $('.time_no_data').addClass('hidden');
-    }else{
-        $('.time_no_data').removeClass('hidden');
-    }
-}
+});
 
 function change_month(){
-    // Today
-    var today = new Date();
-    today = today.toString();
-    today = today.substring(4, 7) + ' ' + today.substring(11, 15);
     // Get Value Select Date
     var full_month = $('.calendar .ui.input input').val();
     // Convert Format Full Month  January 2022 to Short Month Jan 2022
     var month_year = full_month.substring(0,3) + ' ' +  full_month.substring(full_month.length - 4);
-    // Get Array Elements By Name date_time
-    var date_change_con = document.getElementsByName("date_time");
-    for(var i = 0; i < date_change_con.length ;i++){
-        // if length == 16 is Day < 10
-        if(date_change_con[i].innerHTML.length == 16){
-            var history_month = date_change_con[i].innerHTML.substring(2, 10);
-        }
-        // if length != 16 is Day > 9
-        else{
-            var history_month = date_change_con[i].innerHTML.substring(3, 11);
-        }
+    
+    //by Time and search
+    $('input[type=search]').val(month_year + ' ' + $('#search').val());
+    $('input[type=search]').keyup();
 
-        // if Text in Elements = Value in Select Date
-        if(history_month != month_year){
-            // Hide tr = id time_id_ser_id 
-            $('#time_id_' + date_change_con[i].className).addClass('hidden');
-        }else{
-            // show tr = id time_id_ser_id 
-            $('#time_id_' + date_change_con[i].className).removeClass('hidden');
+    //by service
+    var ser_title = $('.ser_title');
+    var ser_content = $('.ser_content');
+    ser_title.hide();
+    ser_content.hide();
+    for(var i = 0; i < ser_title.length; i++){
+        if($('.ser_content:eq(' + i + ')').text().toLowerCase().search(month_year.toLowerCase()) >= 0){
+            $('.ser_title:eq(' + i + ')').show();
         }
     }
-
-    // if Class Name is time_history = Class Name is time_history hidden
-    // is if hidden all, js will show message no data 
-    if(document.getElementsByClassName("time_history").length == document.getElementsByClassName("time_history hidden").length && document.getElementsByClassName("time_history").length != 0){
-        $('.time_no_data').removeClass('hidden');
-    }else{
-        $('.time_no_data').addClass('hidden');
-    }
-
-    // Get Array Elements By Class Name ser_id
-    var ser_change_con = document.getElementsByClassName("ser_id");
-    for(var i = 0; i < ser_change_con.length ;i++){
-        var ser_id = ser_change_con[i].innerText;
-        // Get Array Elements By Name date + ser_id
-        var date_change_con = document.getElementsByName("date"+ser_id);
-        var count_repeat_month = 0;
-        
-        for(var i = 0; i < date_change_con.length ;i++){
-            console.log(date_change_con[i].value.substring(2, 11));
-            if(month_year == today){
-                if(date_change_con[i].value.substring(2, 10) == month_year || date_change_con[i].value.substring(2, 9) == "Day ago" || date_change_con[i].value.substring(2, 10) == "Days ago" || 
-                    date_change_con[i].value.substring(2, 11) == "Hours ago" || date_change_con[i].value.substring(2, 12) == " Hours ago" || date_change_con[i].value.substring(2, 11) == " Mins ago" || 
-                    date_change_con[i].value.substring(2, 10) == "Mins ago"){
-                    count_repeat_month++;
-                }
-            }else{
-                if(date_change_con[i].value.substring(2, 10) == month_year){
-                    count_repeat_month++;
-                }
-            }
-        }
-
-        // if service no have date = month_year js will hide service
-        if(count_repeat_month == 0){
-            $('.ser_id_' + ser_id).addClass('hidden');
-        }else{
-            $('.ser_id_' + ser_id).removeClass('hidden');
-        }
-    }
-
-    // if Class Name is latest_con = Class Name is latest_con hidden
-    // is if hidden all, js will show message no data 
-    if(document.getElementsByClassName("latest_con").length == document.getElementsByClassName("latest_con hidden").length){
-        $('.ser_no_data').removeClass('hidden');
-    }else{
-        $('.ser_no_data').addClass('hidden');
-    }
-    search_history();
+    console.log(month_year);
 }
 
 
