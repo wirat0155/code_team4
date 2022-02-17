@@ -393,7 +393,7 @@
                                     <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                         <?php 
                                         if ($arr_change_container[$i]->con_number != NULL) {
-                                            echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                            echo $arr_change_container[$i]->con_number;
                                         }
                                         else {
                                             echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
@@ -429,7 +429,7 @@
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {
-                                                    echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                    echo $arr_change_container[$i]->con_number;
                                                 } else {
                                                     echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
                                                 }
@@ -448,7 +448,7 @@
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {
-                                                    echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                    echo $arr_change_container[$i]->con_number;
                                                 } else {
                                                     echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
                                                 }
@@ -466,7 +466,7 @@
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {
-                                                    echo $arr_change_container[$i]->con_number . " " . $arr_change_container[$i]->chl_new_ser_id;
+                                                    echo $arr_change_container[$i]->con_number;
                                                 } else {
                                                     echo "Unknown container" . " " . $arr_change_container[$i]->chl_new_ser_id;
                                                 }
