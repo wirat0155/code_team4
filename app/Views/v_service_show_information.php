@@ -493,9 +493,11 @@
                 </script>
             </div>
             <div class="actions">
-                <button type="button" class="ui history secondary basic button"><i class='left fas fa-history'></i>
-                    Full history log
-                </button>
+                <a href="<?php echo base_url() . "/Service_show/show_history" ?>">
+                    <button type="button" class="ui history secondary basic button"><i class='left fas fa-history'></i>
+                        Full history log
+                    </button>
+                </a>
             </div>
         </div>
 
