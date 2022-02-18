@@ -480,11 +480,19 @@
       },
       scales: {
         x: {
+          title: {
+            display:true,
+            text:"Day (วันที่)",
+          },
           grid: {
             color: 'rgba(112, 112, 112, 0.1)'
           },
         },
         y: {
+          title: {
+            display:true,
+            text:"Number (จำนวน)",
+          },
           grid: {
             color: 'rgba(112, 112, 112, 0.1)'
           },
