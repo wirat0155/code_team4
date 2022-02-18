@@ -176,7 +176,11 @@
                     <div class="title title_detail"> ครบกำหนดชำระ : </div>
                 </td>
                 <td class="data">
-                    &nbsp; <?php echo format_date_invoice($arr_service_cost[0]->ser_due_date) ?>
+                    <?php if ($arr_service_cost[0]->ser_due_date == null){ ?>
+                         &nbsp; <?php echo '-'; ?>
+                    <?php }else{
+                            echo format_date_invoice($arr_service_cost[0]->ser_due_date) ?>
+                       <?php } ?>
                 </td>
             </tr>
 
