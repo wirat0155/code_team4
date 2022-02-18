@@ -848,6 +848,7 @@ input[type=number]::-webkit-outer-spin-button {
     </div>
 
     <script>
+        
     $(document).ready(function() {
         // add service button
         var ser_table = $('#service_list_table').DataTable({
@@ -893,6 +894,7 @@ input[type=number]::-webkit-outer-spin-button {
         }, function(start, end, label) {
             var years = moment().diff(start, 'years');
         });
+        
     });
 
     /*
@@ -1097,6 +1099,8 @@ input[type=number]::-webkit-outer-spin-button {
                     </div>`;
 
         $('.cost_input_list').append(cost);
+        $('.fields.cost:eq(0) .btn-icon').css('margin-top','25px');
+        $('.fields.cost:eq(0) .field .label_res').removeClass('label_res');
         cal_total_cost();
     }
 
@@ -1208,18 +1212,12 @@ input[type=number]::-webkit-outer-spin-button {
             $('div[name="cost_input_id' + delete_id + '"]').remove();
         }
 
-        if(n_cosd){
-            //หากลบบรรทัด 1 จะ show หัวตารางบรรทัด 2
-            var label_res = $('label.label_res');
-            console.log(label_res);
-            for(var i = 0 ; i < 4 ; i++){
-                label_res.eq(i).removeClass();
-            }
-
-            //แก้ปุ่ม
-            var btn = $('.btn-danger');
-            btn.eq(0).css('margin-top','25px');
+        if($('.fields.cost').length == 0){
+            add_cost_input();
         }
+
+        $('.fields.cost:eq(0) .btn-icon').css('margin-top','25px');
+        $('.fields.cost:eq(0) .field .label_res').removeClass('label_res');
 
         cal_total_cost();
     }
