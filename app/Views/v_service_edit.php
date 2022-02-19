@@ -330,8 +330,11 @@
                                                 <select class="form-control" name="chl_ser_id">
                                                     <option value="not change">Not change container</option>
                                                     <?php for ($i = 0; $i < count($opt_service); $i++) { ?>
-                                                    <option value="<?php echo $opt_service[$i]->ser_id ?>">
-                                                        <?php echo $opt_service[$i]->con_number . ' (' . $opt_service[$i]->cont_name.')' ?>
+                                                        <?php if ($opt_service[$i]->ser_id != $obj_service[0]->ser_id) { ?>
+                                                            <option value="<?php echo $opt_service[$i]->ser_id ?>">
+                                                                <?php echo $opt_service[$i]->con_number . ' (' . $opt_service[$i]->cont_name.')' ?>
+                                                            </option>
+                                                        <?php } ?>
                                                         <?php } ?>
                                                 </select>
                                             </div>
