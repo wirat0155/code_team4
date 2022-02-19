@@ -482,7 +482,7 @@
         x: {
           title: {
             display:true,
-            text:"Day (วันที่)",
+            text:"Date",
           },
           grid: {
             color: 'rgba(112, 112, 112, 0.1)'
@@ -491,7 +491,7 @@
         y: {
           title: {
             display:true,
-            text:"Number (จำนวน)",
+            text:"Number",
           },
           grid: {
             color: 'rgba(112, 112, 112, 0.1)'
