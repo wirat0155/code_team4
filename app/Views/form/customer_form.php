@@ -23,7 +23,7 @@
 
 <div class="col-md-2">
   <input type="text" class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $cus_branch ?>" <?php echo $attr?>>
-  <label class="error"><?php echo $_SESSION['cus_branch_error'] ?></label>
+  <label class="error"><?php echo $cus_branch_error ?></label>
 </div>
 
 <div class="col-md-1">

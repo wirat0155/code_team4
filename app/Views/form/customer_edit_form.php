@@ -7,49 +7,6 @@
 * @Create Date  2564-11-06
 */
 -->
-
-<?php
-    if ($obj_customer != NULL) {
-        $cus_id = $obj_customer[0]->cus_id;
-        $cus_company_name = $obj_customer[0]->cus_company_name;
-        $old_cus_company_name = $cus_company_name;
-        $cus_branch = $obj_customer[0]->cus_branch;
-        $old_cus_branch = $cus_branch;
-        $cus_tax = $obj_customer[0]->cus_tax;
-        $cus_address =  $obj_customer[0]->cus_address;
-        $cus_firstname = $obj_customer[0]->cus_firstname;
-        $cus_lastname = $obj_customer[0]->cus_lastname;
-        $cus_tel = $obj_customer[0]->cus_tel;
-        $cus_email = $obj_customer[0]->cus_email;
-    }
-    else {
-        $cus_id = $arr_customer[0]->cus_id;
-        $cus_company_name = $arr_customer[0]->cus_company_name;
-        $old_cus_company_name = $cus_company_name;
-        $cus_branch = $arr_customer[0]->cus_branch;
-        $old_cus_branch = $cus_branch;
-        $cus_tax = $arr_customer[0]->cus_tax;
-        $cus_address =  $arr_customer[0]->cus_address;
-        $cus_firstname = $arr_customer[0]->cus_firstname;
-        $cus_lastname = $arr_customer[0]->cus_lastname;
-        $cus_tel = $arr_customer[0]->cus_tel;
-        $cus_email = $arr_customer[0]->cus_email;
-    }
-
-    if (isset($_SESSION['cus_id'])) {
-        $cus_id = $_SESSION['cus_id'];
-        $cus_company_name = $_SESSION['cus_company_name'];
-        $old_cus_company_name = $_SESSION['old_cus_company_name'];
-        $cus_firstname = $_SESSION['cus_firstname'];
-        $cus_lastname = $_SESSION['cus_lastname'];
-        $cus_branch = $_SESSION['cus_branch'];
-        $old_cus_branch = $_SESSION['old_cus_branch'];
-        $cus_tel = $_SESSION['cus_tel'];
-        $cus_address = $_SESSION['cus_address'];
-        $cus_tax = $_SESSION['cus_tax'];
-        $cus_email = $_SESSION['cus_email'];
-    }
-?>
 <style>
     .form-inline label {
         display: block;
@@ -76,9 +33,11 @@
                 <div class="col-12 col-sm-6">
                     <input class="form-control" id="cus_company_name" name="cus_company_name" placeholder="Company name" value="<?php echo $cus_company_name ?>">
                     <input name="old_cus_company_name" value="<?php echo $old_cus_company_name ?>" hidden>
-                    <label class="error"><?php echo $_SESSION['cus_company_name_error'] ?></label>
+                    <label class="error"><?php echo $cus_company_name_error ?></label>
                 </div>
             </div>
+
+
             <?php else : ?>
             <div class="row mb-3" style="min-height: 60px">
                 <div class="col-12 col-sm-6">
@@ -106,7 +65,7 @@
                     </div>
                     <label class="error"></label>
                     <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" <?php if ($cus_id != "new") echo "hidden"?> value="<?php if ($cus_id == "new") echo $cus_company_name?>">
-                    <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
+                    <label class="error"><?php echo $cus_company_name_error ?></label>
                 </div>
             </div>
             <?php endif; ?>
@@ -119,8 +78,7 @@
                 </div>
                 <div class="col-12 col-sm-6">
                     <input class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $cus_branch ?>">
-                    <input name="old_cus_branch" value="<?php echo $old_cus_branch ?>" hidden>
-                    <label class="error"><?php echo $_SESSION['cus_branch_error'] ?></label>
+                    <label class="error"><?php echo $cus_branch_error ?></label>
                 </div>
             </div>
 

@@ -83,10 +83,21 @@ class Customer_show extends Cdms_controller {
     * @author   Natadanai
     * @Create Date  2564-08-14
     */
-    public function customer_detail($cus_id) {
-        $_SESSION['menu'] = 'Customer_show';
-        $m_cus = new M_cdms_customer;
-        $data['arr_customer'] = $m_cus->get_by_id($cus_id);
+    public function customer_detail($cus_id = NULL) {
+        $_SESSION["menu"] = 'Customer_show';
+        $m_cus = new M_cdms_customer();
+        $data["obj_customer"] = $m_cus->get_by_id($cus_id);
+
+        $data["cus_id"] = $data["obj_customer"]->cus_id;
+        $data["cus_company_name"] = $data["obj_customer"]->cus_company_name;
+        $data["cus_firstname"] = $data["obj_customer"]->cus_firstname;
+        $data["cus_lastname"] = $data["obj_customer"]->cus_lastname;
+        $data["cus_branch"] = $data["obj_customer"]->cus_branch;
+        $data["cus_tel"] = $data["obj_customer"]->cus_tel;
+        $data["cus_address"] = $data["obj_customer"]->cus_address;
+        $data["cus_tax"] = $data["obj_customer"]->cus_tax;
+        $data["cus_email"] = $data["obj_customer"]->cus_email;
+        
         $this->output('v_customer_show_information', $data);
     }
 

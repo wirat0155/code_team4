@@ -7,20 +7,6 @@
 * @Create Date  2564-08-06
 */
 -->
-
-<?php
-if (isset($_SESSION['cus_company_name'])) {
-    $cus_company_name = $_SESSION['cus_company_name'];
-    $cus_branch = $_SESSION['cus_branch'];
-    $cus_firstname = $_SESSION['cus_firstname'];
-    $cus_lastname = $_SESSION['cus_lastname'];
-    $cus_tel = $_SESSION['cus_tel'];
-    $cus_address = $_SESSION['cus_address'];
-    $cus_tax = $_SESSION['cus_tax'];
-    $cus_email = $_SESSION['cus_email'];
-}
-?>
-
 <style>
     .fa-phone {
         -moz-transform: scaleX(-1);
@@ -44,6 +30,7 @@ if (isset($_SESSION['cus_company_name'])) {
         font-weight: bold;
     }
 </style>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -90,7 +77,7 @@ if (isset($_SESSION['cus_company_name'])) {
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <input class="form-control" name="cus_company_name" placeholder="Company name" value="<?php echo $cus_company_name ?>">
-                                            <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
+                                            <label class="error"><?php echo $cus_company_name_error ?></label>
                                         </div>
 
                                         <?php
@@ -103,7 +90,6 @@ if (isset($_SESSION['cus_company_name'])) {
                                                 <i class="plus icon"></i>
                                                 Add customer
                                             </button>
-
                                         </div>
                                     </div>
                                 </div>

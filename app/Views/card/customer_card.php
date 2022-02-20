@@ -7,30 +7,6 @@
 * @Create Date  2564-11-06
 */
 -->
-
-<?php
-    if ($obj_customer != NULL) {
-        $cus_company_name = $obj_customer[0]->cus_company_name;
-        $cus_branch = $obj_customer[0]->cus_branch;
-        $cus_tax = $obj_customer[0]->cus_tax;
-        $cus_address =  $obj_customer[0]->cus_address;
-        $cus_firstname = $obj_customer[0]->cus_firstname;
-        $cus_lastname = $obj_customer[0]->cus_lastname;
-        $cus_tel = $obj_customer[0]->cus_tel;
-        $cus_email = $obj_customer[0]->cus_email;
-    }
-    else {
-        $cus_company_name = $arr_customer[0]->cus_company_name;
-        $cus_branch = $arr_customer[0]->cus_branch;
-        $cus_tax = $arr_customer[0]->cus_tax;
-        $cus_address =  $arr_customer[0]->cus_address;
-        $cus_firstname = $arr_customer[0]->cus_firstname;
-        $cus_lastname = $arr_customer[0]->cus_lastname;
-        $cus_tel = $arr_customer[0]->cus_tel;
-        $cus_email = $arr_customer[0]->cus_email;
-    }
-?>
-
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-6">

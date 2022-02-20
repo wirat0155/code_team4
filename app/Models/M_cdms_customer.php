@@ -66,10 +66,8 @@ class M_cdms_customer extends Da_cdms_customer {
     * @Create Date  2564-08-02
     */
     public function get_by_id($cus_id) {
-        $sql = "SELECT * FROM $this->table
-
-                WHERE cus_id='$cus_id'";
-        return $this->db->query($sql)->getResult();
+        $sql = "SELECT * FROM $this->table WHERE cus_id = '$cus_id'";
+        return $this->db->query($sql)->getRow();
     }
 
     /*
@@ -102,7 +100,22 @@ class M_cdms_customer extends Da_cdms_customer {
     * @Create Date  2564-08-18
     */
     public function is_cus_branch_exist($cus_company_name = NULL) {
-        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table WHERE cus_company_name = '$cus_company_name' AND cus_status = 1";
+        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table 
+                    WHERE cus_company_name = '$cus_company_name' AND cus_status = 1";
+        return $this->db->query($sql)->getResult();
+    }
+
+    /*
+    * get_by_company_name
+    * get customer information by customer company name
+    * @input    cus_company_name
+    * @output   object of customer
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    public function get_by_company_name($cus_company_name = NULL) {
+        $sql = "SELECT cus_id , cus_company_name, cus_branch FROM $this->table 
+                    WHERE cus_company_name = '$cus_company_name' AND cus_status = 1";
         return $this->db->query($sql)->getResult();
     }
 

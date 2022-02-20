@@ -61,7 +61,7 @@ label.error {
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a class="cl-blue" href="<?php echo base_url() . '/Customer_show/customer_detail/' . $arr_customer[0]->cus_id ?>">Customer
+                    <a class="cl-blue" href="<?php echo base_url() . '/Customer_show/customer_detail/' . $cus_id ?>">Customer
                         details</a>
                 </li>
                 <li class="separator">

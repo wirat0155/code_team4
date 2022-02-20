@@ -7,44 +7,44 @@
 * @Create Date  2564-08-12
 */
 -->
-
 <style>
-.fa-phone {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
-}
+    .fa-phone {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
 
-.cl-blue {
-    color: #1244B9 !important;
-}
+    .cl-blue {
+        color: #1244B9 !important;
+    }
 
-input.error,
-select.error,
-textarea.error {
-    border: 1px solid red !important;
-}
+    input.error,
+    select.error,
+    textarea.error {
+        border: 1px solid red !important;
+    }
 
-.ui.search.dropdown>input.search.error {
-    border: 1px solid red !important;
-}
+    .ui.search.dropdown>input.search.error {
+        border: 1px solid red !important;
+    }
 
-small.error,
-label.error {
-    color: red !important;
-    font-weight: bold;
-}
+    small.error,
+    label.error {
+        color: red !important;
+        font-weight: bold;
+    }
 </style>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="pl-4 mt-4 page-header mb-0">
                 <h4 class="pl-3 page-title">CUSTOMER DETAIL</h4>
                 <div class="card-action ml-auto mr-4">
-                    <a class="ui yellow button" href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $arr_customer[0]->cus_id ?>">
+                    <a class="ui yellow button" href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $cus_id ?>">
                         <i class="far fa-edit mr-1"></i>
                         Edit info
                     </a>
@@ -98,7 +98,7 @@ label.error {
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Customer_show/customer_delete' ?>" method="post">
-                        <input type="hidden" id="cus_id" name="cus_id" value="<?php echo $arr_customer[0]->cus_id ?>">
+                        <input type="hidden" id="cus_id" name="cus_id" value="<?php echo $cus_id ?>">
 
                         <p style=" font-size: 1rem">Are you sure to remove the customer</p>
 
