@@ -57,7 +57,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent</a>
+                    <a href="<?php echo base_url() . '/Agent_show/agent_show_ajax'?>">Agent information</a>
                 </li>
             </ul>
 

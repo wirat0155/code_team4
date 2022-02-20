@@ -966,13 +966,13 @@
             * @Create Date  2564-08-06
             */
             function show_agent_information(agent) {
-                $('input[name="agn_id"]').val(agent[0]['agn_id']);
-                $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
-                $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
-                $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
-                $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
-                $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
-                $('input[name="agn_email"]').val(agent[0]['agn_email']);
+                $('input[name="agn_id"]').val(agent['agn_id']);
+                $('textarea[name="agn_address"]').val(agent['agn_address']);
+                $('input[name="agn_tax"]').val(agent['agn_tax']);
+                $('input[name="agn_firstname"]').val(agent['agn_firstname']);
+                $('input[name="agn_lastname"]').val(agent['agn_lastname']);
+                $('input[name="agn_tel"]').val(agent['agn_tel']);
+                $('input[name="agn_email"]').val(agent['agn_email']);
             }
 
             

@@ -18,13 +18,13 @@ class Agent_input extends Cdms_controller {
     * @Create Date  2564-08-06
 
     */
-    public function agent_input() {
+    public function agent_input($data = []) {
         $_SESSION['menu'] = 'Agent_show';
-        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
-            $_SESSION['agn_company_name_error'] = '';
-        }
 
-        $this->output('v_agent_input');
+        // First set error to ""
+        if (count($data) == 0) $data["agn_company_name_error"] = "";
+        
+        $this->output('v_agent_input', $data);
     }
 
     /*
@@ -37,7 +37,6 @@ class Agent_input extends Cdms_controller {
 
     */
     public function agent_insert() {
-
         // get post value from agent_input form
         $agn_company_name = $this->request->getPost('agn_company_name');
         $agn_firstname = $this->request->getPost('agn_firstname');
@@ -47,45 +46,88 @@ class Agent_input extends Cdms_controller {
         $agn_tax = $this->request->getPost('agn_tax');
         $agn_email = $this->request->getPost('agn_email');
 
-        // load agent model
-        $m_agn = new M_cdms_agent();
-
         // Get agent by agent company name
-        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+        $arr_agent = $this->get_by_company_name($agn_company_name);
 
-        // if duplicate agent company name
+        // if duplicate
         // then go to add agent page
-        // exit function
-        if (count($arr_agent) >= 1 ) {
-            $_SESSION['agn_company_name_error'] = 'The agent has already used';
-
+        if ($this->check_agent_company_name_duplicate($arr_agent) ) {
             // if duplicate
-            // then go to add agent page
-            $_SESSION['agn_company_name'] = $agn_company_name;
-            $_SESSION['agn_firstname'] = $agn_firstname;
-            $_SESSION['agn_lastname'] = $agn_lastname;
-            $_SESSION['agn_tel'] = $agn_tel;
-            $_SESSION['agn_address'] = $agn_address;
-            $_SESSION['agn_tax'] = $agn_tax;
-            $_SESSION['agn_email'] = $agn_email;
+            // then go to agent input page
+            $data['agn_company_name_error'] = "The agent has already used";
+            $data['agn_company_name'] = $agn_company_name;
+            $data['agn_firstname'] = $agn_firstname;
+            $data['agn_lastname'] = $agn_lastname;
+            $data['agn_tel'] = $agn_tel;
+            $data['agn_address'] = $agn_address;
+            $data['agn_tax'] = $agn_tax;
+            $data['agn_email'] = $agn_email;
 
-            $this->agent_input();
+            // Send agent data back to agent input
+            $this->agent_input($data);
             exit(0);
         }
-        // if agent company name is unique
-        // then insert the agent
-        $_SESSION['agn_company_name_error'] = '';
-        unset($_SESSION['agn_id']);
-        unset($_SESSION['agn_company_name']);
-        unset($_SESSION['agn_firstname']);
-        unset($_SESSION['agn_lastname']);
-        unset($_SESSION['agn_tel']);
-        unset($_SESSION['agn_address']);
-        unset($_SESSION['agn_tax']);
-        unset($_SESSION['agn_email']);
+        else {
+            // if agent company name is unique
+            // then insert the agent
+            $this->insert_agent_to_db(
+                $agn_company_name,
+                $agn_firstname,
+                $agn_lastname,
+                $agn_tel,
+                $agn_address,
+                $agn_tax,
+                $agn_email);
+            
+            // Return to agent list page
+            return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+        }
+    } 
 
+     /*
+    * get_by_company_name
+    * get agent information by agent company name
+    * @input     agn company name
+    * @output   array of agent
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    private function get_by_company_name($agn_company_name) {
+        $m_agn = new M_cdms_agent();
+        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+        return $arr_agent;
+    }
+
+    /*
+    * check_agent_company_name_duplicate
+    * check agent company name duplication
+    * @input     array of agent
+    * @output   true | false
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    private function check_agent_company_name_duplicate($arr_agent) {
+        return count($arr_agent) >= 1;
+    }
+
+    /*
+    * insert_agent_to_db
+    * insert agent to database
+    * @input     agent information
+    * @output   inserting agent to database
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    protected function insert_agent_to_db(
+        $agn_company_name,
+        $agn_firstname,
+        $agn_lastname,
+        $agn_tel,
+        $agn_address,
+        $agn_tax,
+        $agn_email
+    ) {
+        $m_agn = new M_cdms_agent();
         $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
-
-    }   
+    }
 }

@@ -23,14 +23,13 @@ class Agent_show extends Cdms_controller {
     * @Create Date  2564-07-30
     */
     public function agent_show_ajax() {
-        $_SESSION['menu'] = 'Agent_show';
+        $_SESSION["menu"] = "Agent_show";
 
         // load agent model
         $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_all(3);
-        // echo '<pre>';
-        // print_r($data['arr_agent']);
-        // echo '</pre>';
+
+        // Get agent with number of use container
+        $data["arr_agent"] = $m_agn->get_all(3);
 
         $this->output('v_agent_showlist', $data);
     }
@@ -45,9 +44,9 @@ class Agent_show extends Cdms_controller {
     */
     public function agent_delete() {
         $m_agn = new M_cdms_agent();
-        $m_agn->delete($this->request->getPost('agn_id'));
+        $m_agn->delete($this->request->getPost("agn_id"));
 
-        return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
+        return $this->response->redirect(base_url("/Agent_show/agent_show_ajax"));
     }
 
     /*
@@ -60,10 +59,9 @@ class Agent_show extends Cdms_controller {
     */
     public function get_agent_ajax() {
         $m_agn = new M_cdms_agent();
-        $agn_id = $this->request->getPost('agn_id');
-        $agn_information = $m_agn->get_by_id($agn_id);
-
-        echo json_encode($agn_information);
+        $agn_id = $this->request->getPost("agn_id");
+        $obj_agent = $m_agn->get_by_id($agn_id);
+        echo json_encode($obj_agent);
     }
 
     /*
@@ -75,9 +73,20 @@ class Agent_show extends Cdms_controller {
     * @Create Date  2564-08-12
     */
     public function agent_detail($agn_id) {
-        $_SESSION['menu'] = 'Agent_show';
+        $_SESSION["menu"] = 'Agent_show';
+
         $m_agn = new M_cdms_agent;
-        $data['arr_agent'] = $m_agn->get_by_id($agn_id);
+        $data["obj_agent"] = $m_agn->get_by_id($agn_id);
+
+        $data['agn_id'] = $data["obj_agent"]->agn_id;
+        $data['agn_company_name'] = $data["obj_agent"]->agn_company_name;
+        $data['agn_firstname'] = $data["obj_agent"]->agn_firstname;
+        $data['agn_lastname'] = $data["obj_agent"]->agn_lastname;
+        $data['agn_tel'] = $data["obj_agent"]->agn_tel;
+        $data['agn_address'] = $data["obj_agent"]->agn_address;
+        $data['agn_tax'] = $data["obj_agent"]->agn_tax;
+        $data['agn_email'] = $data["obj_agent"]->agn_email;
+
         $this->output('v_agent_show_information', $data);
     }
 }

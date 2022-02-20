@@ -13,17 +13,28 @@ class Agent_edit extends Cdms_controller {
     /*
     * agent_edit
     * Show agent edit page
-    * @input    agn_id
-    * @output   agent edit page with agent information
+    * @input     agn_id, data
+    * @output   agent edit page with object agent
     * @author   Klayuth, Preechaya
     * @Create Date  2021-08-06
     */
-    public function agent_edit($agn_id = '') {
+    public function agent_edit($agn_id = NULL, $data = []) {
         $_SESSION['menu'] = 'Agent_show';
 
-        // get agent information
-        $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_by_id($agn_id);
+        if (count($data) == 0) {
+            // get agent information
+            $m_agn = new M_cdms_agent();
+            $data["obj_agent"] = $m_agn->get_by_id($agn_id);
+
+            $data['agn_id'] = $data["obj_agent"]->agn_id;
+            $data['agn_company_name'] = $data["obj_agent"]->agn_company_name;
+            $data['agn_firstname'] = $data["obj_agent"]->agn_firstname;
+            $data['agn_lastname'] = $data["obj_agent"]->agn_lastname;
+            $data['agn_tel'] = $data["obj_agent"]->agn_tel;
+            $data['agn_address'] = $data["obj_agent"]->agn_address;
+            $data['agn_tax'] = $data["obj_agent"]->agn_tax;
+            $data['agn_email'] = $data["obj_agent"]->agn_email;
+        }
 
         // show agent edit page
         $this->output('v_agent_edit', $data);
@@ -38,9 +49,6 @@ class Agent_edit extends Cdms_controller {
     * @Create Date  2021-08-06
     */
     public function agent_update() {
-        // load agent model
-        $m_agn = new M_cdms_agent();
-
         // get agent information form agent edit page
         $agn_id = $this->request->getPost('agn_id');
         $agn_company_name = $this->request->getPost('agn_company_name');
@@ -52,37 +60,84 @@ class Agent_edit extends Cdms_controller {
         $agn_email = $this->request->getPost('agn_email');
 
         // check agent duplicate company name
-        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
-        if (count($arr_agent) >= 1 && $arr_agent[0]->agn_id != $agn_id) {
-            $_SESSION['agn_company_name_error'] = 'The agent has already used';
-            
+        $arr_agent = $this->get_by_company_name($agn_company_name);
+
+        // Duplicate name and not same agn id
+        // Then error
+        if ($this->check_agent_company_name_duplicate($arr_agent) && $arr_agent[0]->agn_id != $agn_id) {
             // if duplicate
             // then go to agent edit page
-            $_SESSION['agn_company_name'] = $agn_company_name;
-            $_SESSION['agn_firstname'] = $agn_firstname;
-            $_SESSION['agn_lastname'] = $agn_lastname;
-            $_SESSION['agn_tel'] = $agn_tel;
-            $_SESSION['agn_address'] = $agn_address;
-            $_SESSION['agn_tax'] = $agn_tax;
-            $_SESSION['agn_email'] = $agn_email;
+            $data['agn_company_name_error'] = 'The agent has already used';
+            $data['agn_company_name'] = $agn_company_name;
+            $data['agn_firstname'] = $agn_firstname;
+            $data['agn_lastname'] = $agn_lastname;
+            $data['agn_tel'] = $agn_tel;
+            $data['agn_address'] = $agn_address;
+            $data['agn_tax'] = $agn_tax;
+            $data['agn_email'] = $agn_email;
 
-            $this->agent_edit($agn_id);
+            $this->agent_edit($agn_id, $data);
             exit(0);
         }
-        
-        // if agent company name is unique
-        // then updaet the agent
-        $_SESSION['agn_company_name_error'] = '';
-        unset($_SESSION['agn_id']);
-        unset($_SESSION['agn_company_name']);
-        unset($_SESSION['agn_firstname']);
-        unset($_SESSION['agn_lastname']);
-        unset($_SESSION['agn_tel']);
-        unset($_SESSION['agn_address']);
-        unset($_SESSION['agn_tax']);
-        unset($_SESSION['agn_email']);
-        $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+        else {
+            $this->update_agent_to_db(
+                $agn_id,
+                $agn_company_name,
+                $agn_firstname,
+                $agn_lastname,
+                $agn_tel,
+                $agn_address,
+                $agn_tax,
+                $agn_email);
+        }
+
         return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
-        
+    }
+
+     /*
+    * get_by_company_name
+    * get agent information by agent company name
+    * @input     agn company name
+    * @output   array of agent
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    private function get_by_company_name($agn_company_name) {
+        $m_agn = new M_cdms_agent();
+        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+        return $arr_agent;
+    }
+
+    /*
+    * check_agent_company_name_duplicate
+    * check agent company name duplication
+    * @input     array of agent
+    * @output   true | false
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    private function check_agent_company_name_duplicate($arr_agent) {
+        return count($arr_agent) >= 1;
+    }
+
+     /*
+    * update_agent_to_db
+    * updating agent data in database
+    * @input     agent onformation
+    * @output   updating agent information
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    private function update_agent_to_db(
+        $agn_id,
+        $agn_company_name,
+        $agn_firstname,
+        $agn_lastname,
+        $agn_tel,
+        $agn_address,
+        $agn_tax,
+        $agn_email) {
+        $m_agn = new M_cdms_agent();
+        $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
     }
 }

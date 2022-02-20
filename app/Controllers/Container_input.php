@@ -24,7 +24,7 @@ class Container_input extends Cdms_controller
     * @author   Wirat
     * @Create Date  2564-08-06
     */
-    public function container_input($section_error = '', $data = NULL)
+    public function container_input($section_error = "", $data = NULL)
     {
         $_SESSION['menu'] = 'Container_show';
         if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {

@@ -9,38 +9,38 @@
 -->
 
 <?php
-    if ($obj_agent != NULL) {
-        $agn_id = $obj_agent[0]->agn_id;
-        $agn_company_name = $obj_agent[0]->agn_company_name;
-        $agn_tax = $obj_agent[0]->agn_tax;
-        $agn_address =  $obj_agent[0]->agn_address;
-        $agn_firstname = $obj_agent[0]->agn_firstname;
-        $agn_lastname = $obj_agent[0]->agn_lastname;
-        $agn_tel = $obj_agent[0]->agn_tel;
-        $agn_email = $obj_agent[0]->agn_email;
-    }
-    else {
-        if($agn_id == NULL){
-            $agn_id = $arr_agent[0]->agn_id;
-            $agn_company_name = $arr_agent[0]->agn_company_name;
-            $agn_tax = $arr_agent[0]->agn_tax;
-            $agn_address =  $arr_agent[0]->agn_address;
-            $agn_firstname = $arr_agent[0]->agn_firstname;
-            $agn_lastname = $arr_agent[0]->agn_lastname;
-            $agn_tel = $arr_agent[0]->agn_tel;
-            $agn_email = $arr_agent[0]->agn_email;
-        }
-    }
-    if (isset($_SESSION['agn_id'])) {
-        $agn_id = $_SESSION['agn_id'];
-        $agn_company_name = $_SESSION['agn_company_name'];
-        $agn_firstname = $_SESSION['agn_firstname'];
-        $agn_lastname = $_SESSION['agn_lastname'];
-        $agn_tel = $_SESSION['agn_tel'];
-        $agn_address = $_SESSION['agn_address'];
-        $agn_tax = $_SESSION['agn_tax'];
-        $agn_email = $_SESSION['agn_email'];
-    }
+    // if ($obj_agent != NULL) {
+    //     $agn_id = $obj_agent[0]->agn_id;
+    //     $agn_company_name = $obj_agent[0]->agn_company_name;
+    //     $agn_tax = $obj_agent[0]->agn_tax;
+    //     $agn_address =  $obj_agent[0]->agn_address;
+    //     $agn_firstname = $obj_agent[0]->agn_firstname;
+    //     $agn_lastname = $obj_agent[0]->agn_lastname;
+    //     $agn_tel = $obj_agent[0]->agn_tel;
+    //     $agn_email = $obj_agent[0]->agn_email;
+    // }
+    // else {
+    //     if($agn_id == NULL){
+    //         $agn_id = $arr_agent[0]->agn_id;
+    //         $agn_company_name = $arr_agent[0]->agn_company_name;
+    //         $agn_tax = $arr_agent[0]->agn_tax;
+    //         $agn_address =  $arr_agent[0]->agn_address;
+    //         $agn_firstname = $arr_agent[0]->agn_firstname;
+    //         $agn_lastname = $arr_agent[0]->agn_lastname;
+    //         $agn_tel = $arr_agent[0]->agn_tel;
+    //         $agn_email = $arr_agent[0]->agn_email;
+    //     }
+    // }
+    // if (isset($_SESSION['agn_id'])) {
+    //     $agn_id = $_SESSION['agn_id'];
+    //     $agn_company_name = $_SESSION['agn_company_name'];
+    //     $agn_firstname = $_SESSION['agn_firstname'];
+    //     $agn_lastname = $_SESSION['agn_lastname'];
+    //     $agn_tel = $_SESSION['agn_tel'];
+    //     $agn_address = $_SESSION['agn_address'];
+    //     $agn_tax = $_SESSION['agn_tax'];
+    //     $agn_email = $_SESSION['agn_email'];
+    // }
 ?>
 <style>
     .form-inline label {
@@ -60,14 +60,14 @@
             <!-- company name -->
             <div class="row mb-3">
                 <!-- agent id for updating agent -->
-                <input type="hidden" name="agn_id" value="<?php echo $arr_agent[0]->agn_id ?>">
+                <input type="hidden" name="agn_id" value="<?php echo $agn_id ?>">
 
                 <div class="col-12 col-sm-6">
                     <label for="agn_company_name" class="mt-2"><b>Company name : </b></label>
                 </div>
                 <div class="col-12 col-sm-6">
                     <input class="form-control" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $agn_company_name ?>">
-                    <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
+                    <label class="error"><?php echo $agn_company_name_error ?></label>
                 </div>
             </div>
             <?php else : ?>

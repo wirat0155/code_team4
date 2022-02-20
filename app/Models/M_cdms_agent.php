@@ -48,8 +48,10 @@ class M_cdms_agent extends Da_cdms_agent {
     */
     public function get_by_id($agn_id) {
         $sql = "SELECT * FROM $this->table
-                WHERE agn_id='$agn_id'";
-        return $this->db->query($sql)->getResult();
+                    WHERE agn_id = '$agn_id'";
+
+        // return as object agent
+        return $this->db->query($sql)->getRow();
     }
 
     /*
