@@ -135,23 +135,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <!-- Container status -->
-                                        <div class="col-md-2 input-label">
-                                            <div class="form-group">
-                                                <label for="con_stac_id">Container status</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-right: 10%;">
-                                            <select class="form-control" name="con_stac_id">
-                                                <?php for ($i = 0; $i < count($arr_status_container); $i++) { ?>
-                                                <option value="<?php echo $arr_status_container[$i]->stac_id ?>" <?php if ($con_stac_id == $arr_status_container[$i]->stac_id) echo "selected" ?>>
-                                                    <?php echo $arr_status_container[$i]->stac_name ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
                                     <h3>2. Weight</h3>
                                     <div class="row">
                                         <!-- Max weight (t) -->
@@ -693,12 +676,12 @@
     * @Create Date  2564-10-12
     */
     function show_agent_information(agent) {
-        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
-        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
-        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
-        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
-        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
-        $('input[name="agn_email"]').val(agent[0]['agn_email']);
+        $('textarea[name="agn_address"]').val(agent['agn_address']);
+        $('input[name="agn_tax"]').val(agent['agn_tax']);
+        $('input[name="agn_firstname"]').val(agent['agn_firstname']);
+        $('input[name="agn_lastname"]').val(agent['agn_lastname']);
+        $('input[name="agn_tel"]').val(agent['agn_tel']);
+        $('input[name="agn_email"]').val(agent['agn_email']);
     }
 
     /*

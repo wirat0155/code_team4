@@ -23,8 +23,18 @@ class Da_cdms_container extends Model {
     * @author   Wirat
     * @Create Date  2564-08-06
     */
-    public function insert($con_number = NULL, $con_max_weight = NULL, $con_tare_weight = NULL, $con_net_weight = NULL, $con_cube = NULL, $con_size_id = NULL, $con_cont_id = NULL, $con_agn_id = NULL, $con_stac_id = NULL) {
-        $sql = "INSERT INTO $this->table VALUES (NULL, '$con_number', '$con_max_weight', '$con_tare_weight', '$con_net_weight', '$con_cube', NULL, '1', '$con_size_id', '$con_cont_id', '$con_agn_id', '$con_stac_id')";
+    public function insert(
+        $con_number = NULL,
+        $con_max_weight = NULL,
+        $con_tare_weight = NULL,
+        $con_net_weight = NULL,
+        $con_cube = NULL,
+        $con_size_id = NULL,
+        $con_cont_id = NULL,
+        $con_agn_id = NULL,
+        $con_stac_id = NULL) {
+        $sql = "INSERT INTO $this->table VALUES (NULL, '$con_number', '$con_max_weight', '$con_tare_weight', '$con_net_weight', '$con_cube', NULL, '1', '$con_size_id', '$con_cont_id', '$con_agn_id', '3')";
+        
         $this->db->query($sql);
     }
 

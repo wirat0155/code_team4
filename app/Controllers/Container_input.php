@@ -24,15 +24,9 @@ class Container_input extends Cdms_controller
     * @author   Wirat
     * @Create Date  2564-08-06
     */
-    public function container_input($section_error = "", $data = NULL)
-    {
+    public function container_input($section_error = "", $data = []) {
         $_SESSION['menu'] = 'Container_show';
-        if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
-            $_SESSION['con_number_error'] = '';
-        }
-        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
-            $_SESSION['agn_company_name_error'] = '';
-        }
+
         // get dropdown
         // container size
         $m_size = new M_cdms_size();
@@ -80,7 +74,6 @@ class Container_input extends Cdms_controller
         $con_cube = $this->request->getPost('con_cube');
         $con_size_id = $this->request->getPost('con_size_id');
         $con_cont_id = $this->request->getPost('con_cont_id');
-        $con_stac_id = $this->request->getPost('con_stac_id');
         $con_image = $this->request->getPost('con_image');
 
         $data['con_number'] = $con_number;
@@ -90,7 +83,6 @@ class Container_input extends Cdms_controller
         $data['con_cube'] = $con_cube;
         $data['con_size_id'] = $con_size_id;
         $data['con_cont_id'] = $con_cont_id;
-        $data['con_stac_id'] = $con_stac_id;
         $data['con_image'] = $con_image;
 
         // get post value agent form
@@ -112,27 +104,25 @@ class Container_input extends Cdms_controller
         $data['agn_tax'] = $agn_tax;
         $data['agn_email'] = $agn_email;
 
-
-        // load container model
-        $m_con = new M_cdms_container();
         // load agent model
         $m_agn = new M_cdms_agent();
 
         // get container by con_number
-        $arr_container = $m_con->get_by_con_number($con_number);
+        $arr_container = $this->get_by_con_number($con_number);
 
         // duplicate con_number
         // then go to add container form with error
         if (count($arr_container) >= 1) {
-            $_SESSION['con_number_error'] = 'The container number has already used';
+            $data['con_number_error'] = 'The container number has already used';
+
             if($agn_id == 'new'){
                 // get agent by agent company name
-                $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+                $arr_agent = $this->get_by_company_name($agn_company_name);
                 // if duplicate agent company name
                 // then go to add agent page
                 // exit function
                 if (count($arr_agent) >= 1 ) {
-                    $_SESSION['agn_company_name_error'] = 'The agent has already used';
+                    $data['agn_company_name_error'] = 'The agent has already used';
                     $this->container_input(3, $data);
                     exit;
                 }
@@ -140,30 +130,21 @@ class Container_input extends Cdms_controller
             $this->container_input(1, $data);
             exit;
         }
-
-        // not duplicate con_number
         else {
-
-            // select agent from dropdown
-            // then update agent
             if ($agn_id != 'new') {
                 $con_agn_id = $agn_id;
                 $m_agn->agent_update($agn_id, NULL, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
             }
-
-            // new agent
-            // then check duplicate agent or not
             else {
-
                 // get agent by agent company name
-                $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+                $arr_agent = $this->get_by_company_name($agn_company_name);
 
                 // if duplicate agent company name
                 // then go to add agent page
                 // exit function
                 if (count($arr_agent) >= 1 ) {
-                    $_SESSION['agn_company_name_error'] = 'The agent has already used';
-                    $this->container_input(2,$data);
+                    $data['agn_company_name_error'] = 'The agent has already used';
+                    $this->container_input(2, $data);
                     exit;
                 }
 
@@ -171,7 +152,14 @@ class Container_input extends Cdms_controller
                 // then insert the agent
                 else {
                     // insert new agent
-                    $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+                    $this->insert_agent_to_db(
+                        $agn_company_name,
+                        $agn_firstname,
+                        $agn_lastname,
+                        $agn_tel,
+                        $agn_address,
+                        $agn_tax,
+                        $agn_email);
 
                     // get agn_id back
                     $max_id_agent = $m_agn->get_max_id();
@@ -181,11 +169,61 @@ class Container_input extends Cdms_controller
         }
 
         // insert container
-        $_SESSION['con_number_error'] = '';
-        $_SESSION['agn_company_name_error'] = '';
-        $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-
+        $this->insert_container_to_db(
+            $con_number,
+            $con_max_weight,
+            $con_tare_weight,
+            $con_net_weight,
+            $con_cube,
+            $con_size_id,
+            $con_cont_id,
+            $con_agn_id);
+    
         $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }
 
+    private function insert_container_to_db(
+        $con_number,
+        $con_max_weight,
+        $con_tare_weight,
+        $con_net_weight,
+        $con_cube,
+        $con_size_id,
+        $con_cont_id,
+        $con_agn_id) {
+        $m_con = new M_cdms_container();
+        $m_con->insert($con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id);
+    }
+
+    protected function insert_agent_to_db(
+        $agn_company_name,
+        $agn_firstname,
+        $agn_lastname,
+        $agn_tel,
+        $agn_address,
+        $agn_tax,
+        $agn_email
+    ) {
+        $m_agn = new M_cdms_agent();
+        $m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+    }
+
+    private function get_by_con_number($con_number) {
+        $m_con = new M_cdms_container();
+        return $m_con->get_by_con_number($con_number);
+    }
+
+     /*
+    * get_by_company_name
+    * get agent information by agent company name
+    * @input     agn company name
+    * @output   array of agent
+    * @author   Wirat
+    * @Create Date  2565-02-20
+    */
+    private function get_by_company_name($agn_company_name) {
+        $m_agn = new M_cdms_agent();
+        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+        return $arr_agent;
+    }
 }
