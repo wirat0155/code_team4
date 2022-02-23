@@ -151,4 +151,11 @@ class Da_cdms_service extends Model
         }
         $this->db->query($sql);
     }
+
+    public function update_payment_status($ser_id = NULL, $ser_stap_id = NULL){
+        $sql = "UPDATE  $this->table SET ser_stap_id = '$ser_stap_id'
+            WHERE ser_id = '$ser_id' ";
+
+        $this->db->query($sql);
+    }
 }

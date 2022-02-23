@@ -685,4 +685,13 @@ class Service_show extends Cdms_controller {
         $this->output('v_history_show', $data);
     }
 
+    public function service_payment_status(){
+        $ser_id = $this->request->getPost('cosd_ser_id');
+        $ser_stap_id = $this->request->getPost('pay_status');
+        $m_ser = new M_cdms_service();
+        $m_ser->update_payment_status($ser_id,$ser_stap_id);
+        print_r($ser_id,$ser_stap_id );
+        echo json_encode('update_payment_complete');
+    }
+
 }
