@@ -166,20 +166,6 @@ class Container_edit extends Cdms_controller {
         
         // update container
         $m_con->container_update($con_id, $con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
-
-        // get service
-        $m_ser = new M_cdms_service();
-        //set timezone
-        date_default_timezone_set('GMT');
-        $today = date('Y-m-d', strtotime('+7 hour'));
-        $obj_service = $m_ser->get_by_ser_con_id($con_id, $today);
-
-        // insert status container log
-        $m_scl = new M_cdms_status_container_log();
-        $scl_stac_id = $m_scl->get_max_by_scl_ser_id($obj_service->ser_id);
-        if ($scl_stac_id->scl_stac_id != $con_stac_id) {
-            $m_scl->insert($obj_service->ser_id, $con_stac_id);
-        }
         $this->response->redirect(base_url() . '/Container_show/container_show_ajax');
     }
 }
