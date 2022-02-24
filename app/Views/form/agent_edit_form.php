@@ -9,26 +9,26 @@
 -->
 
 <?php
-    // if ($obj_agent != NULL) {
-    //     $agn_id = $obj_agent[0]->agn_id;
-    //     $agn_company_name = $obj_agent[0]->agn_company_name;
-    //     $agn_tax = $obj_agent[0]->agn_tax;
-    //     $agn_address =  $obj_agent[0]->agn_address;
-    //     $agn_firstname = $obj_agent[0]->agn_firstname;
-    //     $agn_lastname = $obj_agent[0]->agn_lastname;
-    //     $agn_tel = $obj_agent[0]->agn_tel;
-    //     $agn_email = $obj_agent[0]->agn_email;
-    // }
+    if ($obj_agent != NULL) {
+        $agn_id = $obj_agent->agn_id;
+        $agn_company_name = $obj_agent->agn_company_name;
+        $agn_tax = $obj_agent->agn_tax;
+        $agn_address =  $obj_agent->agn_address;
+        $agn_firstname = $obj_agent->agn_firstname;
+        $agn_lastname = $obj_agent->agn_lastname;
+        $agn_tel = $obj_agent->agn_tel;
+        $agn_email = $obj_agent->agn_email;
+    }
     // else {
     //     if($agn_id == NULL){
-    //         $agn_id = $arr_agent[0]->agn_id;
-    //         $agn_company_name = $arr_agent[0]->agn_company_name;
-    //         $agn_tax = $arr_agent[0]->agn_tax;
-    //         $agn_address =  $arr_agent[0]->agn_address;
-    //         $agn_firstname = $arr_agent[0]->agn_firstname;
-    //         $agn_lastname = $arr_agent[0]->agn_lastname;
-    //         $agn_tel = $arr_agent[0]->agn_tel;
-    //         $agn_email = $arr_agent[0]->agn_email;
+    //         $agn_id = $arr_agent->agn_id;
+    //         $agn_company_name = $arr_agent->agn_company_name;
+    //         $agn_tax = $arr_agent->agn_tax;
+    //         $agn_address =  $arr_agent->agn_address;
+    //         $agn_firstname = $arr_agent->agn_firstname;
+    //         $agn_lastname = $arr_agent->agn_lastname;
+    //         $agn_tel = $arr_agent->agn_tel;
+    //         $agn_email = $arr_agent->agn_email;
     //     }
     // }
     // if (isset($_SESSION['agn_id'])) {

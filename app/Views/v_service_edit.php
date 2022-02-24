@@ -354,7 +354,7 @@
                                 <div class="card-title">Container</div>
                             </div>
                             <div class="card-body">
-
+                                <input type="hidden" name="old_con_id" value="<?php echo $obj_container[0]->con_id ?>">
                                 <?php
                                     $page = 'service_edit';
                                     require_once dirname(__FILE__) . '/form/container_service_edit_form.php';

@@ -38,30 +38,33 @@ class Agent_input extends Cdms_controller {
     */
     public function agent_insert() {
         // get post value from agent_input form
-        $agn_company_name = $this->request->getPost('agn_company_name');
-        $agn_firstname = $this->request->getPost('agn_firstname');
-        $agn_lastname = $this->request->getPost('agn_lastname');
-        $agn_tel = $this->request->getPost('agn_tel');
-        $agn_address = $this->request->getPost('agn_address');
-        $agn_tax = $this->request->getPost('agn_tax');
-        $agn_email = $this->request->getPost('agn_email');
+        // $agn_company_name = $this->request->getPost('agn_company_name');
+        // $agn_firstname = $this->request->getPost('agn_firstname');
+        // $agn_lastname = $this->request->getPost('agn_lastname');
+        // $agn_tel = $this->request->getPost('agn_tel');
+        // $agn_address = $this->request->getPost('agn_address');
+        // $agn_tax = $this->request->getPost('agn_tax');
+        // $agn_email = $this->request->getPost('agn_email');
+
+        $obj_agn = $this->request->getPost();
 
         // Get agent by agent company name
-        $arr_agent = $this->get_by_company_name($agn_company_name);
+        $arr_agent = $this->get_by_company_name($obj_agn["agn_company_name"]);
 
         // if duplicate
         // then go to add agent page
         if ($this->check_agent_company_name_duplicate($arr_agent) ) {
             // if duplicate
             // then go to agent input page
+            $data = $obj_agn;
             $data['agn_company_name_error'] = "The agent has already used";
-            $data['agn_company_name'] = $agn_company_name;
-            $data['agn_firstname'] = $agn_firstname;
-            $data['agn_lastname'] = $agn_lastname;
-            $data['agn_tel'] = $agn_tel;
-            $data['agn_address'] = $agn_address;
-            $data['agn_tax'] = $agn_tax;
-            $data['agn_email'] = $agn_email;
+            // $data['agn_company_name'] = $agn_company_name;
+            // $data['agn_firstname'] = $agn_firstname;
+            // $data['agn_lastname'] = $agn_lastname;
+            // $data['agn_tel'] = $agn_tel;
+            // $data['agn_address'] = $agn_address;
+            // $data['agn_tax'] = $agn_tax;
+            // $data['agn_email'] = $agn_email;
 
             // Send agent data back to agent input
             $this->agent_input($data);
@@ -71,13 +74,13 @@ class Agent_input extends Cdms_controller {
             // if agent company name is unique
             // then insert the agent
             $this->insert_agent_to_db(
-                $agn_company_name,
-                $agn_firstname,
-                $agn_lastname,
-                $agn_tel,
-                $agn_address,
-                $agn_tax,
-                $agn_email);
+                $obj_agn["agn_company_name"],
+                $obj_agn["agn_firstname"],
+                $obj_agn["agn_lastname"],
+                $obj_agn["agn_tel"],
+                $obj_agn["agn_address"],
+                $obj_agn["agn_tax"],
+                $obj_agn["agn_email"]);
             
             // Return to agent list page
             return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
