@@ -242,6 +242,14 @@ $( "#search" ).keyup(function() {
 
 });
 
+/*
+* change_month
+* change month
+* @input    -
+* @output   show history by month
+* @author   Kittipod
+* @Create Date  2565-01-18
+*/
 function change_month(){
     // Get Value Select Date
     var full_month = $('.calendar .ui.input input').val();

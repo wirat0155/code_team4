@@ -414,6 +414,14 @@ input[type=number]::-webkit-outer-spin-button {
 
     var number_cost_input = 1;
 
+    /*
+     * get_service_cost
+     * get cost of service
+     * @input    ser_id
+     * @output   array cost of service
+     * @author   Wirat
+     * @Create Date  2564-12-28
+     */
     function get_service_cost(ser_id) {
         console.log(ser_id);
         $.ajax({
@@ -429,6 +437,15 @@ input[type=number]::-webkit-outer-spin-button {
             }
         });
     }
+
+    /*
+     * cost_modal
+     * show modal cost of service
+     * @input    ser_id, data
+     * @output   cost modal
+     * @author   Wirat, Kittipod
+     * @Create Date  2564-12-23
+     */
 
     function cost_modal(ser_id, data) {
         $('.cost_input_list').empty();
@@ -510,6 +527,15 @@ input[type=number]::-webkit-outer-spin-button {
         }
     }
 
+    /*
+     * add_cost_input
+     * add cost input
+     * @input    -
+     * @output   field cost input
+     * @author   Wirat, Kittipod
+     * @Create Date  2564-12-23
+     */
+
     function add_cost_input() {
 
         ++number_cost_input;
@@ -535,6 +561,15 @@ input[type=number]::-webkit-outer-spin-button {
         $('.cost_input_list').append(cost);
         cal_total_cost();
     }
+
+    /*
+     * cost_insert
+     * inset cost of service
+     * @input    input_order
+     * @output   -
+     * @author   Wirat, Kittipod
+     * @Create Date  2564-12-24
+     */
 
     function cost_insert(input_order) {
         var cosd_ser_id = $('#cosd_ser_id').val();
@@ -575,6 +610,14 @@ input[type=number]::-webkit-outer-spin-button {
         cal_total_cost();
     }
 
+    /*
+     * cost_update
+     * update cost of service
+     * @input    cosd_id
+     * @output   -
+     * @author   Wirat, Kittipod
+     * @Create Date  2564-12-24
+     */
     function cost_update(cosd_id) {
         var cosd_name = $('input[name="cosd_name_id' + cosd_id + '"]').val();
         var cosd_cost = $('input[name="cosd_cost_id' + cosd_id + '"]').val();
@@ -597,6 +640,14 @@ input[type=number]::-webkit-outer-spin-button {
         cal_total_cost();
     }
 
+    /*
+     * cost_delete
+     * delete cost of service
+     * @input    delete_id, input_type
+     * @output   -
+     * @author   Wirat, Kittipod
+     * @Create Date  2564-12-24
+     */
     function cost_delete(delete_id, input_type = 'new') {
         console.log(delete_id, input_type);
         // ลบ input ที่ยังไม่ถูก insert
@@ -621,6 +672,14 @@ input[type=number]::-webkit-outer-spin-button {
         cal_total_cost();
     }
 
+    /*
+     * cal_total_cost
+     * calculate cost
+     * @input    -
+     * @output   total cost
+     * @author   Kittipod
+     * @Create Date  2564-12-25
+     */
     function cal_total_cost() {
         var total_cost = 0;
         var cost_price = document.getElementsByClassName('cosd_price');
@@ -647,6 +706,15 @@ input[type=number]::-webkit-outer-spin-button {
 
         $('.total .price').text(total_cost.toLocaleString() + ' THB');
     }
+
+    /*
+     * check_checkbox_value
+     * check value checkbox
+     * @input    -
+     * @output   have vat or don't have vat
+     * @author   Kittipod
+     * @Create Date  2564-12-25
+     */
 
     function check_checkbox_value() {
         var checkbox_value = $('#checkbox_vat').is(':checked');

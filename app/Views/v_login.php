@@ -210,7 +210,14 @@
 </body>
 
 <script>
-
+    /*
+    * show_eye
+    * change eye
+    * @input    -
+    * @output   change eye hide password
+    * @author   Kittipod
+    * @Create Date  2564-11-18
+    */
     function show_eye() {
         var input_password = $('#password').attr('type');
         if(input_password === "password") {

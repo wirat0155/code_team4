@@ -822,6 +822,14 @@
                 get_size_information();
             }
 
+            /*
+            * check_container_type
+            * check container type
+            * @input    con_cont_id
+            * @output   have or don't have information
+            * @author   Wirat
+            * @Create Date  2564-08-07
+            */
             function check_container_type(con_cont_id) {
                 // get array container type length
                 $.ajax({

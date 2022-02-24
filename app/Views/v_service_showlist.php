@@ -918,6 +918,14 @@
 
         var number_cost_input = 1;
 
+        /*
+         * get_service_cost
+         * get all cost service
+         * @input    ser_id
+         * @output   object of service cost
+         * @author   Wirat
+         * @Create Date  2564-08-18
+         */
         function get_service_cost(ser_id) {
             console.log(ser_id);
             $.ajax({
@@ -933,6 +941,15 @@
                 }
             });
         }
+
+        /*
+         * cost_modal
+         * show cost modal
+         * @input    ser_id, data
+         * @output   cost of service
+         * @author   Wirat,Kittipod
+         * @Create Date  2565-12-18
+         */
 
         function cost_modal(ser_id, data) {
             $('.cost_input_list').empty();
@@ -1068,6 +1085,15 @@
             var payment = ``
         }
 
+        /*
+        * add_cost_input
+        * add cost input
+        * @input    -
+        * @output   field cost input
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-23
+        */
+
         function add_cost_input() {
 
             ++number_cost_input;
@@ -1099,6 +1125,15 @@
             $('.fields.cost:eq(0) .field .label_res').removeClass('label_res');
             cal_total_cost();
         }
+
+        /*
+        * cost_insert
+        * inset cost of service
+        * @input    input_order
+        * @output   -
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-24
+        */
 
         function cost_insert(input_order) {
             var cosd_ser_id = $('#cosd_ser_id').val();
@@ -1149,6 +1184,14 @@
             }
         }
 
+        /*
+        * cost_update
+        * update cost of service
+        * @input    cosd_id
+        * @output   -
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-24
+        */
         function cost_update(cosd_id) {
             var cosd_name = $('input[name="cosd_name_id' + cosd_id + '"]').val();
             var cosd_cost = $('input[name="cosd_cost_id' + cosd_id + '"]').val();
@@ -1178,7 +1221,14 @@
                 cal_total_cost();
             }
         }
-
+        /*
+        * cost_delete
+        * delete cost of service
+        * @input    delete_id, input_type
+        * @output   -
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-24
+        */
         function cost_delete(delete_id, input_type = 'new') {
 
             var n_cosd = false;
@@ -1218,6 +1268,15 @@
             cal_total_cost();
         }
 
+        /*
+        * cal_total_cost
+        * calculate cost
+        * @input    -
+        * @output   total cost
+        * @author   Kittipod
+        * @Create Date  2564-12-25
+        */
+
         function cal_total_cost() {
             var total_cost = 0;
             var cost_price = document.getElementsByClassName('cosd_price');
@@ -1253,17 +1312,44 @@
             check_checkbox_value();
         }
 
+        /*
+        * checkbox_check_all
+        * check all checkbox vat
+        * @input    -
+        * @output   check all checkbox vat
+        * @author   Kittipod
+        * @Create Date  2565-02-12
+        */
+
         function checkbox_check_all() {
             $('.cosd_status_vat').prop('checked', true);
             $('.check_vat').attr('onclick', 'checkbox_cancel_all()');
             update_chack_all();
         }
 
+        /*
+        * checkbox_cancel_all
+        * cancel all checkbox vat
+        * @input    -
+        * @output   cancel all checkbox vat
+        * @author   Kittipod
+        * @Create Date  2565-02-12
+        */
+
         function checkbox_cancel_all() {
             $('.cosd_status_vat').prop('checked', false);
             $('.check_vat').attr('onclick', 'checkbox_check_all()');
             update_chack_all();
         }
+
+        /*
+        * update_chack_all
+        * update cost when check all
+        * @input    -
+        * @output   update cost
+        * @author   Kittipod
+        * @Create Date  2565-02-12
+        */
 
         function update_chack_all() {
             var check_vat = document.getElementsByClassName('cosd_status_vat');
@@ -1272,6 +1358,15 @@
                 cost_update(check_vat[i].getAttribute("data-cosd_id"));
             }
         }
+
+        /*
+        * check_checkbox_value
+        * check value checkbox
+        * @input    -
+        * @output   have vat or don't have vat
+        * @author   Kittipod
+        * @Create Date  2564-12-25
+        */
 
         function check_checkbox_value() {
             var cosd_status_vat = document.getElementsByClassName('cosd_status_vat');
@@ -1296,6 +1391,15 @@
             var vat = $('#vat').val();
             window.open('<?php echo base_url('') . '/Service_show/service_print_cost/' ?>' + ser_id + '/' + vat, '_blank');
         }
+
+        /*
+        * ser_update
+        * update service about cost
+        * @input    -
+        * @output   updata service
+        * @author   Natdanai
+        * @Create Date  2565-02-10
+        */
 
         function ser_update() {
             var cosd_ser_id = $('#cosd_ser_id').val();
@@ -1330,6 +1434,15 @@
                 }
             });
         }
+
+        /*
+        * service_payment_status
+        * update status service status payment 
+        * @input    -
+        * @output   updata status payment service
+        * @author   Natdanai
+        * @Create Date  2565-02-23
+        */
 
         function service_payment_status() {
             var pay_status = $('#pay_status').val();
