@@ -169,7 +169,7 @@
         <div class="card p-3">
           <h2>Container Statistics 15 Day Back Chart</h2>
           <div class="chart-container">
-            <canvas id="myChart">
+            <canvas id="my_chart">
             </canvas>
           </div>
         </div>
@@ -179,7 +179,7 @@
         <div class="card p-3">
           <h2>Percent of Container Type</h2>
           <div class="chart-container">
-            <canvas id="myChart2"></canvas>
+            <canvas id="my_chart2"></canvas>
             </canvas>
           </div>
         </div>
@@ -346,12 +346,12 @@
 
   //render block
   window.onload = function() {
-    const myChart = new Chart($('#myChart2'), config);
+    const my_chart = new Chart($('#my_chart2'), config);
   };
 
   // end-chart circle  
 
-  const ctx = document.getElementById('myChart').getContext('2d');
+  const ctx = document.getElementById('my_chart').getContext('2d');
   const gradient_dataset_1 = ctx.createLinearGradient(0, 0, 0, 300);
   gradient_dataset_1.addColorStop(0, 'rgba(22, 172, 240, 0.7)');
   gradient_dataset_1.addColorStop(0.5, 'rgba(175, 212, 241, 0.5)');
@@ -368,17 +368,17 @@
   gradient_dataset_3.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
 
   Chart.defaults.font.weight = '600';
-  const legendMargin = {
-    id: 'legendMargin',
+  const legend_margin = {
+    id: 'legend_margin',
     beforeInit(chart, legend, options) {
-      const fitValue = chart.legend.fit;
+      const fit_value = chart.legend.fit;
       chart.legend.fit = function fit() {
-        fitValue.bind(chart.legend)();
+        fit_value.bind(chart.legend)();
         return this.height += 50;
       }
     }
   };
-  const myChart = new Chart(ctx, {
+  const my_chart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: <?php
@@ -499,7 +499,7 @@
         }
       }
     },
-    plugins: [legendMargin]
+    plugins: [legend_margin]
 
 
   });

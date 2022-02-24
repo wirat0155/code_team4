@@ -55,6 +55,7 @@ class Login_show extends Cdms_controller {
         $m_user = new M_cdms_user();
         $user = $m_user->get_by_username($username);
 
+        //check password
         if(password_verify($password, $user->user_password) && !empty($user) && !preg_match('/[^a-z0-9 _]+/i', $username)){
             $_SESSION['invalid_password'] = false;
             $_SESSION['logged_in'] = true;

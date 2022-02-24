@@ -28,9 +28,6 @@ class Agent_show extends Cdms_controller {
         // load agent model
         $m_agn = new M_cdms_agent();
         $data['arr_agent'] = $m_agn->get_all(3);
-        // echo '<pre>';
-        // print_r($data['arr_agent']);
-        // echo '</pre>';
 
         $this->output('v_agent_showlist', $data);
     }

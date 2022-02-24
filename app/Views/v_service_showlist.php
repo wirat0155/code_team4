@@ -299,7 +299,7 @@
                 </select>
             </div>
         </div>
-        <button type="button" class="shadow-sm btn btn-success btn-border" onclick="print_cost()">
+        <button type="button" class="shadow-sm btn btn-border" onclick="print_cost()">
             <i class="fas fa-print mr-2"></i>
             Print invoice
         </button>

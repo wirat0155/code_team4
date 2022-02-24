@@ -155,9 +155,8 @@
                         <div class="card-body">
                             Container size set up such as, new size, width, length, height, upload image and switch on-off
 
-                            <div class="col-6 mt-4" style="cursor: pointer;" id="btn_add" onclick="show_input();">
-                                <i class="icon-setup fas fa-plus"></i>
-                                <div class="font-setup">Add new size</div>
+                            <div class="ui labeled icon primary button" id="btn_add" style="cursor: pointer; float: right;" onclick="show_input();">
+                                <i class="left plus icon"></i>Add size
                             </div>
 
                             <form id="add_size_form" action="<?php echo base_url() . '/Set_up_size/size_insert'?>" enctype="multipart/form-data" method="POST">
@@ -207,7 +206,7 @@
                                     </div>
 
                                     <!-- Add size -->
-                                    <button type="submit" class="ui positive button pull-right">Add</button>
+                                    <button type="submit" class="ui positive button pull-right">Save</button>
                                 </div>
                             </form>
 
@@ -240,7 +239,7 @@
                                                 </td>
 
                                                 <!-- container size image -->
-                                                <form action="<?php echo base_url() . '/Set_up_size/edit_size'?>" method="POST" enctype="multipart/form-data">
+                                                <form id="form_size" action="<?php echo base_url() . '/Set_up_size/edit_size'?>" method="POST" enctype="multipart/form-data">
                                                     <td>
                                                         <div class="avatar avatar-lg">
                                                             <?php if ($arr_size[$i]->size_image != NULL && $arr_size[$i]->size_image != '') : ?>
@@ -307,10 +306,10 @@
                                                     </td>
 
                                                     <td>
-                                                        <button hidden type="submit" class="confirm_btn_<?php echo $arr_size[$i]->size_id ?> btn_confirm" onclick="edit_size(<?php echo $arr_size[$i]->size_id ?>)">Confirm</button>
-                                                </form>
-                                                <button hidden class="cancel_btn_<?php echo $arr_size[$i]->size_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_size[$i]->size_id ?>)">Cancel</button>
-                                                <i class="edit_btn_<?php echo $arr_size[$i]->size_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_size[$i]->size_id?>)"></i>
+                                                        <button hidden type="button" class="cancel_btn_<?php echo $arr_size[$i]->size_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_size[$i]->size_id ?>)">Cancel</button>
+                                                        <button hidden type="submit" form="form_size" class="confirm_btn_<?php echo $arr_size[$i]->size_id ?> btn_confirm" onclick="edit_size(<?php echo $arr_size[$i]->size_id ?>)">Confirm</button>
+                                                    </form>
+                                                        <i class="edit_btn_<?php echo $arr_size[$i]->size_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_size[$i]->size_id?>)"></i>
                                                 </td>
                                                 <!-- switch -->
                                                 <td>

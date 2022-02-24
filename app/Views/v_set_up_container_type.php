@@ -156,9 +156,8 @@
                         <div class="card-body">
                             Container type set up such as, new type, upload image and switch on-off type
 
-                            <div class="col-6 mt-4" style="cursor: pointer;" id="btn_add" onclick="show_input();">
-                                <i class="icon-setup fas fa-plus"></i>
-                                <div class="font-setup">Add new type</div>
+                            <div class="ui labeled icon primary button" id="btn_add" style="cursor: pointer; float: right;" onclick="show_input();">
+                                <i class="left plus icon"></i>Add type
                             </div>
 
                             <form id="add_container_type_form" action="<?php echo base_url() . '/Set_up_container_type/container_type_insert'?>" enctype="multipart/form-data" method="POST">
@@ -179,7 +178,7 @@
                                     </div>
 
                                     <!-- Add container type -->
-                                    <button type="submit" class="ui positive button pull-right">Add</button>
+                                    <button type="submit" class="ui positive button pull-right">Save</button>
                                 </div>
                             </form>
 
@@ -223,9 +222,9 @@
                                                         <br />
                                                     </td>
                                                     <td>
+                                                        <button hidden type="button" class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
                                                         <button hidden type="submit" class="confirm_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_container_type[$i]->cont_id ?>)">Confirm</button>
                                                 </form>
-                                                <button hidden class="cancel_btn_<?php echo $arr_container_type[$i]->cont_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_container_type[$i]->cont_id ?>)">Cancel</button>
 
                                                 <i class="edit_btn_<?php echo $arr_container_type[$i]->cont_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_container_type[$i]->cont_id?>)"></i>
                                                 </td>

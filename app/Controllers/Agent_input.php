@@ -16,10 +16,10 @@ class Agent_input extends Cdms_controller {
     * @output   show add agent page
     * @author   Klayuth
     * @Create Date  2564-08-06
-
     */
     public function agent_input() {
         $_SESSION['menu'] = 'Agent_show';
+
         if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
             $_SESSION['agn_company_name_error'] = '';
         }
@@ -34,7 +34,6 @@ class Agent_input extends Cdms_controller {
     * @output   insert agent
     * @author   Klayuth
     * @Create Date  2564-08-06
-
     */
     public function agent_insert() {
 

@@ -131,6 +131,7 @@ class Customer_show extends Cdms_controller {
 
         $date_range = $this->request->getPost('date_range_excel');
 
+        //if not set date range
         if($date_range != $arrivals_date){
 
             $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
@@ -193,6 +194,7 @@ class Customer_show extends Cdms_controller {
         $sheet->getStyle("B2:B4")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
         $sheet->getStyle("C2:C4")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
 
+        //write status container
         $count_import = array_count_values(array_column($arr_service, 'ser_type'))[1];
         $sheet->setCellValue('B2', 'ตู้เข้า');
         $sheet->setCellValue('C2', ($count_import != 0) ? $count_import : '0');
@@ -210,6 +212,7 @@ class Customer_show extends Cdms_controller {
         $sheet->getStyle("E2:E4")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
         $sheet->getStyle("F2:F4")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
 
+        //write container type number
         $count_Dry_Container  = array_count_values(array_column($arr_service, 'cont_name'))['Dry Container'];
         $sheet->setCellValue('E2', 'Dry Container');
         $sheet->setCellValue('F2', ($count_Dry_Container != 0) ? $count_Dry_Container : '0');
@@ -224,6 +227,7 @@ class Customer_show extends Cdms_controller {
 
         $sheet->getStyle('E2:F4')->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 
+        //write head table for customer
         $sheet->getStyle("B6:F6")->applyFromArray($thead_cus)->getFont()->setSize (18);
         $sheet->setCellValue('B6', 'บริษัท');
         $sheet->setCellValue('C6', 'ผู้รับผิดชอบ');
@@ -233,6 +237,7 @@ class Customer_show extends Cdms_controller {
 
         $count = 7;
 
+        //Start Loop write customer information
         for ($i = 0; $i < count($arr_customer); $i++)
 		{
 
@@ -263,6 +268,7 @@ class Customer_show extends Cdms_controller {
 
 			$count++;
 		}
+        //Start Loop write customer information
 
         $sheet->getStyle('B6:F'.($count-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 

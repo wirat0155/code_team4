@@ -173,6 +173,11 @@
     .page-inner {
         background-color: #FCFCFC;
     }
+
+    /* .ui.modal .actions .ui[type="button"]{
+        float: left !important;
+    } */
+
     </style>
 </head>
 <?php

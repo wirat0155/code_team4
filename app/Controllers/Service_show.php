@@ -147,8 +147,8 @@ class Service_show extends Cdms_controller {
                 $arr_service[$i]->stac_name = "Export";
             }
             else if (substr($arr_service[$i]->ser_arrivals_date, 0, 10) == $start_date) {
-               $arr_service[$i]->ser_stac_id = 1;
-               $arr_service[$i]->stac_name = "Import";
+                $arr_service[$i]->ser_stac_id = 1;
+                $arr_service[$i]->stac_name = "Import";
             }
             else {
                 $arr_service[$i]->ser_stac_id = 3;
@@ -342,9 +342,7 @@ class Service_show extends Cdms_controller {
             $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
             $arr_service = $m_ser->get_by_date($start, $end);
             $arr_service = $this->change_service_status_by_date($arr_service, $start, $end);
-            echo '<pre>';
-            print_r($arr_service);
-            echo '</pre>';
+
         }
 
         $file_name = 'service_report.xlsx';
@@ -404,6 +402,7 @@ class Service_show extends Cdms_controller {
         $sheet->getStyle("F2:F3")->applyFromArray($thead_report)->getFont()->setBold(true)->setSize (18);
         $sheet->getStyle("G2:G3")->applyFromArray($style)->getFont()->setBold(true)->setSize (18);
 
+        //write report status container
         $count_import = array_count_values(array_column($arr_service, 'stac_name'))['Import'];
         $sheet->setCellValue('B2', 'Import');
         $sheet->setCellValue('C2', ($count_import != 0) ? $count_import : '0');
@@ -420,6 +419,7 @@ class Service_show extends Cdms_controller {
         $sheet->setCellValue('B5', 'TOTAL');
         $sheet->setCellValue('C5', ($total != 0) ? $total : '0');
 
+        //write report number container type
         $count_dry = array_count_values(array_column($arr_service, 'cont_name'))['Dry Container'];
         $sheet->setCellValue('D2', 'Dry Container');
         $sheet->setCellValue('E2', ($count_dry != 0) ? $count_dry : '0');
@@ -450,6 +450,7 @@ class Service_show extends Cdms_controller {
         $sheet->getStyle('D2:D5')->applyFromArray($style);
         $sheet->getStyle('F2:F3')->applyFromArray($style);
 
+        //write report head table service information 
         $sheet->getStyle("B7:H7")->applyFromArray($thead_cus)->getFont()->setSize (18);
         $sheet->setCellValue('B7', 'Container number');
         $sheet->setCellValue('C7', 'Container status');
@@ -461,6 +462,7 @@ class Service_show extends Cdms_controller {
 
         $count = 8;
 
+        //Loop write report service information 
         for ($i = 0; $i < count($arr_service); $i++)
 		{
 
@@ -584,6 +586,14 @@ class Service_show extends Cdms_controller {
         }
     }
 
+    /*
+    * service_damaged_show_ajax
+    * show list service damaged
+    * @input    -
+    * @output   array of service damaged
+    * @author   Benjapon
+    * @Create Date  2564-12-02
+    */
     public function service_damaged_show_ajax() {
         session_start();
         $_SESSION['menu'] = 'Service_show';
@@ -645,7 +655,14 @@ class Service_show extends Cdms_controller {
         echo json_encode($this->request->getPost());
     }
     
-
+    /*
+    * show_history
+    * show list service history change
+    * @input    -
+    * @output   array of service history
+    * @author   Benjapon
+    * @Create Date  2564-12-02
+    */
     public function show_history() {
         session_start();
         $_SESSION['menu'] = 'Service_show';
@@ -666,10 +683,6 @@ class Service_show extends Cdms_controller {
         }
         $data['arr_change_container'] = $arr_change_container;
 
-        // echo "<pre>";
-        // print_r($arr_change_container);
-        // echo "</pre>";
-        // get latest container number
         $m_ser = new M_cdms_service();
         $arr_latest_con_number = array();
         for ($i = 0; $i < count($data['arr_change_container']); $i++) {
@@ -685,6 +698,14 @@ class Service_show extends Cdms_controller {
         $this->output('v_history_show', $data);
     }
 
+    /*
+    * service_payment_status
+    * print invoice service
+    * @input    cosd_ser_id, pay_status
+    * @output   -
+    * @author   Natdanai
+    * @Create Date  2565-02-23
+    */
     public function service_payment_status(){
         $ser_id = $this->request->getPost('cosd_ser_id');
         $ser_stap_id = $this->request->getPost('pay_status');

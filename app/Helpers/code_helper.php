@@ -3,9 +3,8 @@
 /*
 * tel_format
 * แสดงเบอร์โทรแบบ xxx-xxx-xxxx
-* @author
+* @author Wirat
 * @Create Date 2564-07-30
-* @Update Date
 */
   function tel_format(string $string = NULL)
   {
@@ -13,18 +12,17 @@
   }
 /*
 * date_thai
-* แสดงวันที่ foemat ไทย และเวลา ชม. กับนาที
+* แสดงวันที่ format ไทย และเวลา ชม. กับนาที
 * @author Natdanai
 * @Create Date 2564-07-30
-* @Update Date
 */
-  function date_thai($strDate = NULL, $time = false)
+  function date_thai($str_date = NULL, $time = false)
   {
-    $str_year = date("Y",strtotime($strDate));
-    $str_month= date("n",strtotime($strDate));
-    $str_day = date("j",strtotime($strDate));
-    $str_hour = date("H",strtotime($strDate));
-    $str_min = date("i",strtotime($strDate));
+    $str_year = date("Y",strtotime($str_date));
+    $str_month= date("n",strtotime($str_date));
+    $str_day = date("j",strtotime($str_date));
+    $str_hour = date("H",strtotime($str_date));
+    $str_min = date("i",strtotime($str_date));
     $str_month_cut = Array("","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
     $str_month_thai = $str_month_cut[$str_month];
 
@@ -135,9 +133,14 @@
     return substr($date_time, 11, 5);
   }
 
+  /*
+  * format_date_invoice
+  * เปลี่ยน format วันที่ในใบแจ้งหนี้
+  * @author Wirat
+  * @Create Date 2564-12-02
+  */
+
   function format_date_invoice($full_date) {
-    // input    2022-02-06
-    // output   February 02, 2022
 
     $abbr_month = array("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     $month = substr($full_date, 5, 2); // 02
@@ -151,112 +154,13 @@
     return $abbr_month[$month] . " " . $date . ", " . $year;
   }
 
-  function show_add_service_form() {
-    $elem = '<div class="container row">';
-		$elem .= '<center>';
-		$elem .= '<div class="form-group">';
-		$elem .= '<label class="form-label">Step</label>';
-		$elem .= '<div class="selectgroup w-100">';
-    $elem .= '<label class="selectgroup-item">';
-		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_service_form()" id="service_step">';
-		$elem .= '<span class="selectgroup-button selectgroup-button-icon">';
-    $elem .= '<i class="flaticon-home"></i>';
-    $elem .= '</span>';
-		$elem .= '</label>';
-    $elem .= '<label class="selectgroup-item">';
-		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_container_form()" id="container_step">';
-		$elem .= '<span class="selectgroup-button">Container</span>';
-		$elem .= '</label>';
-		$elem .= '<label class="selectgroup-item">';
-		$elem .= '<input type="radio" name="value" value="150" class="selectgroup-input" onclick="show_agent_form()" id="agent_step">';
-		$elem .= '<span class="selectgroup-button">Agent</span>';
-		$elem .= '</label>';
-		$elem .= '<label class="selectgroup-item">';
-		$elem .= '<input type="radio" name="value" value="200" class="selectgroup-input" onclick="show_customer_form()" id="customer_step">';
-		$elem .= '<span class="selectgroup-button">Customer</span>';
-		$elem .= '</label>';
-		$elem .= '</div>';
-		$elem .= '</div>';
-		$elem .= '</center>';
-		$elem .= '</div>';
-    return $elem;
-  }
-
-  function show_agent_form($type = 1) {
-    $attr = '';
-    if ($type == 2) {
-      $attr = 'readonly';
-    }
-    $elem = '<div class="col-md-2 input-label branch-div">';
-    $elem .= '<div class="form-group">';
-    $elem .= '<label for="agn_tax">Tax number </label>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-6 " style="margin-right: 10%;">';
-    $elem .= '<input type="text" class="form-control" id="agn_tax" name="agn_tax" placeholder="12345678" ' . $attr . '>';
-    $elem .= '</div>';
-
-    $elem .= '<div class="col-md-2 input-label">';
-    $elem .= '<div class="form-group">';
-    $elem .= '<label for="agn_address">Company location </label>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-6 " style="margin-right: 10%;">';
-    $elem .= '<textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" ' . $attr . '></textarea>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<h3>2. Contact information</h3>';
-    $elem .= '<div class="row">';
-    $elem .= '<div class="col-md-2 input-label">';
-    $elem .= '<div class="form-group">';
-    $elem .= '<label for="agn_firstname">First name </label>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-6 " style="margin-right: 10%;">';
-    $elem .= '<input type="text" class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name" ' . $attr . '>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-2 input-label">';
-    $elem .= '<div class="form-group">';
-    $elem .= '<label for="agn_lastname">Last name </label>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-6 " style="margin-right: 10%;">';
-    $elem .= '<input type="text" class="form-control" id="agn_lastname" name="agn_lastname" placeholder="Last name" ' . $attr . '>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-2 input-label">';
-    $elem .= '<div class="form-group">';
-    $elem .= '<label for="agn_tel">Contact number </label>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-6 ">';
-    $elem .= '<div class="input-group" style="margin-right: 10%;">';
-    $elem .= '<div class="input-group-prepend ">';
-    $elem .= '<span class="input-group-text "><i class="fas fa-phone"></i></span>';
-    $elem .= '</div>';
-    $elem .= '<input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx" ' . $attr . '>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-
-    $elem .= '<div class="col-md-2 input-label">';
-    $elem .= '<div class="form-group">';
-    $elem .= '<label for="agn_email">Email </label>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '<div class="col-md-6">';
-    $elem .= '<div class="input-group" style="margin-right: 10%;">';
-    $elem .= '<div class="input-group-prepend ">';
-    $elem .= '<span class="input-group-text "><i class="fas fa-envelope"></i></span>';
-    $elem .= '</div>';
-    $elem .= '<input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com" ' . $attr . '>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    $elem .= '</div>';
-    return $elem;
-  }
-
-  function Convert($amount_number)
+  /*
+  * convert_currency
+  * เปลี่ยน format แสดงค่าเงิน
+  * @author Natdanai
+  * @Create Date 2564-12-02
+  */
+  function convert_currency($amount_number)
 {
     $amount_number = number_format($amount_number, 2, ".","");
     $pt = strpos($amount_number , ".");
@@ -270,19 +174,26 @@
     }
     
     $ret = "";
-    $baht = ReadNumber ($number);
+    $baht = read_number ($number);
     if ($baht != "")
         $ret .= $baht . "บาท";
     
-    $satang = ReadNumber($fraction);
+    $satang = read_number($fraction);
     if ($satang != "")
         $ret .=  $satang . "สตางค์";
     else 
         $ret .= "ถ้วน";
     return $ret;
 }
- 
-function ReadNumber($number)
+
+  /*
+  * read_number
+  * อ่านตัวเลขเปลี่ยนเป็นตัวหนังสือ
+  * @author Natdanai
+  * @Create Date 2564-12-02
+  */
+
+function read_number($number)
 {
     $position_call = array("แสน", "หมื่น", "พัน", "ร้อย", "สิบ", "");
     $number_call = array("", "หนึ่ง", "สอง", "สาม", "สี่", "ห้า", "หก", "เจ็ด", "แปด", "เก้า");
@@ -291,7 +202,7 @@ function ReadNumber($number)
     if ($number == 0) return $ret;
     if ($number > 1000000)
     {
-        $ret .= ReadNumber(intval($number / 1000000)) . "ล้าน";
+        $ret .= read_number(intval($number / 1000000)) . "ล้าน";
         $number = intval(fmod($number, 1000000));
     }
     

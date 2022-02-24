@@ -156,9 +156,8 @@
                         <div class="card-body">
                             Container status set up such as, new status, and switch on-off
 
-                            <div class="col-6 mt-4" style="cursor: pointer;" id="btn_add" onclick="show_input();">
-                                <i class="icon-setup fas fa-plus"></i>
-                                <div class="font-setup">Add new status</div>
+                            <div class="ui labeled icon primary button" id="btn_add" style="cursor: pointer; float: right;" onclick="show_input();">
+                                <i class="left plus icon"></i>Add status
                             </div>
 
                             <form id="add_status_container_form" action="<?php echo base_url() . '/Set_up_status_container/status_container_insert'?>" method="POST">
@@ -169,7 +168,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <!-- Add status container -->
-                                        <button type="submit" class="ui positive button">Add</button>
+                                        <button type="submit" class="ui positive button">Save</button>
                                     </div>
                                 </div>
                             </form>
@@ -204,10 +203,9 @@
                                                     </td>
 
                                                     <td>
+                                                        <button hidden type="button" class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
                                                         <button hidden type="submit" class="confirm_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_confirm" onclick="edit_container_type(<?php echo $arr_status_container[$i]->stac_id ?>)">Confirm</button>
                                                 </form>
-
-                                                <button hidden class="cancel_btn_<?php echo $arr_status_container[$i]->stac_id ?> btn_cancel" onclick="cancel_edit(<?php echo $arr_status_container[$i]->stac_id ?>)">Cancel</button>
 
                                                 <i class="edit_btn_<?php echo $arr_status_container[$i]->stac_id ?> far fa-edit" style="font-size: 130%; cursor:pointer;" onclick="open_edit_form(<?php echo $arr_status_container[$i]->stac_id?>)"></i>
                                                 </td>

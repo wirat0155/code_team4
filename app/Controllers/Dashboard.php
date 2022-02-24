@@ -163,8 +163,6 @@ class Dashboard extends Cdms_controller
     * @Create Date  2564-12-11
     */
     public function get_day($number_of_day = 15) {
-        // return           array of string
-        // string format   2022-01-25
 
         // set time zone
         date_default_timezone_set("Asia/Bangkok");

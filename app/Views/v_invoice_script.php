@@ -309,7 +309,7 @@
             </tr>
             <tr class="price">
                 <td style="text-align: center;" colspan="3">
-                    <?php echo Convert($tax + $subtotal) ?>
+                    <?php echo convert_currency($tax + $subtotal) ?>
                 </td>
                 <td style="text-align: right;">
                     <div class="data title"> จำนวนเงินรวมทั้งสิ้น </div>
