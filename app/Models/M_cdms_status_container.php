@@ -63,6 +63,14 @@ class M_cdms_status_container extends Da_cdms_status_container {
         return $this->db->query($sql)->getResult();
     }
 
+    /*
+    * get_all_status_damaged
+    * get all container damaged
+    * @input    -
+    * @output   array of container damaged
+    * @author   Benjapon
+    * @Create Date  2564-10-22
+    */
     public function get_all_status_damaged($stac_id) {
         $sql = "SELECT * FROM $this->table WHERE stac_id = 5 OR stac_id = 6";
         return $this->db->query($sql)->getResult();

@@ -315,6 +315,15 @@ class M_cdms_service extends Da_cdms_service
         return $this->db->query($sql)->getRow();
     }
 
+    /*
+    * get_number_cont
+    * count container
+    * @input    cont_id, date_time
+    * @output   number container
+    * @author   Wirat
+    * @Create Date  2564-12-15
+    */
+
     public function get_number_cont($cont_id = '', $date_time = '')
     {
         $sql = "SELECT COUNT(ser_id) AS num_cont FROM $this->table
@@ -325,6 +334,15 @@ class M_cdms_service extends Da_cdms_service
                 GROUP BY '$cont_id'";
         return $this->db->query($sql)->getRow();
     }
+
+    /*
+    * get_by_departure_date
+    * get all services by departure
+    * @input    date
+    * @output   array of service
+    * @author   Wirat
+    * @Create Date  2564-12-13
+    */
 
     public function get_by_departure_date($date = NULL)
     {
@@ -342,6 +360,16 @@ class M_cdms_service extends Da_cdms_service
             return $this->db->query($sql)->getResult();
         }
     }
+
+    /*
+    * get_all_damaged
+    * get all services damaged
+    * @input    date
+    * @output   array of service damaged
+    * @author   Benjapon
+    * @Create Date  2564-12-13
+    */
+
     public function get_all_damaged($today = '')
     {
         if ($today != '') {

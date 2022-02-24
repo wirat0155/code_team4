@@ -44,6 +44,15 @@ class M_cdms_change_container_log extends Da_cdms_change_container_log {
         return $this->db->query($sql)->getRow();
     }
 
+    /*
+    * get_history_all
+    * get all history
+    * @input  -
+    * @output array of history
+    * @author Benjapon
+    * @Create Date  2564-02-07
+    */
+
     public function get_history_all() {
         $sql = "SELECT table1.con_number AS old_con_number, table2.con_number AS new_con_number, table1.chl_date ,table1.ser_id AS old_ser_id,table2.ser_id AS new_ser_id, table1.user_name_th AS user_name_th
         FROM
@@ -59,10 +68,29 @@ class M_cdms_change_container_log extends Da_cdms_change_container_log {
         ON table1.chl_id = table2.chl_id;";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * get_chl_new_ser_id
+    * get new container in change container log
+    * @input  -
+    * @output array of new container
+    * @author Benjapon
+    * @Create Date  2564-02-07
+    */
+
     public function get_chl_new_ser_id() {
         $sql = "SELECT chl_new_ser_id FROM cdms_change_container_log";
         return $this->db->query($sql)->getResult();
     }
+
+    /*
+    * get_chl_old_ser_id
+    * get old container in change container log
+    * @input  -
+    * @output array of old container
+    * @author Benjapon
+    * @Create Date  2564-02-07
+    */
     public function get_chl_old_ser_id() {
         $sql = "SELECT chl_old_ser_id FROM cdms_change_container_log";
         return $this->db->query($sql)->getResult();

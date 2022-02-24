@@ -133,9 +133,9 @@ class Da_cdms_service extends Model
     /*
     * update_ser_pay
     * change ser pay
-    * @input    ser_id, ser_due_date, ser_pay_by, ser_cheque, ser_bank 
-    * @output   change service pay
-    * @author   Kittipod
+    * @input ser_id, ser_due_date, ser_pay_by, ser_cheque, ser_bank 
+    * @output change service pay
+    * @author Kittipod
     * @Create Date  2564-12-07
     */
 
@@ -151,6 +151,15 @@ class Da_cdms_service extends Model
         }
         $this->db->query($sql);
     }
+
+    /*
+    * update_payment_status
+    * update status payment
+    * @input ser_id, ser_stap_id
+    * @output change status payment
+    * @author Natdanai
+    * @Create Date  2565-02-23
+    */
 
     public function update_payment_status($ser_id = NULL, $ser_stap_id = NULL){
         $sql = "UPDATE  $this->table SET ser_stap_id = '$ser_stap_id'
