@@ -115,6 +115,16 @@
         align-items: center !important;
     }
 
+    .paid{
+        color: #00FF00 !important;
+    }
+    .npaid{
+        color: red !important;
+    }
+    .pending{
+        color: orange !important;
+    }
+
     @media only screen and (max-width: 768px) {
 
         .cost_vat {
@@ -292,10 +302,9 @@
                 <span>Payment Status</span>
             </div>
             <div class="col-6">
-                <select id="pay_status" onchange="service_payment_status()">
+                <select id="pay_status" onchange="service_payment_status()" style="width:110px">
                     <option value="1">Pending </option>
                     <option value="2">Paid</option>
-                    <option value="3">Overdue</option>
                 </select>
             </div>
         </div>
@@ -717,6 +726,7 @@
                                             <th class="text-center">Act. dep.</th>
                                             <th class="text-center">Agent</th>
                                             <th class="text-center">Customer</th>
+                                            <th class="text-center" >Payment status</th>
                                             <th class="text-center"></th>
                                         </tr>
                                     </thead>
@@ -779,17 +789,27 @@
                                                     } ?>
                                                 </td>
 
-                                                <!-- aegnt name -->
+                                                <!-- agent name -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <?php echo $arr_service[$i]->agn_company_name ?>
                                                 </td>
 
-                                                <!-- csutomer name -->
+                                                <!-- customer name -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
                                                     <?php echo $arr_service[$i]->cus_company_name ?>
                                                     <?php if ($arr_service[$i]->cus_branch != NULL && $arr_service[$i]->cus_branch != '') : ?>
                                                         <?php echo ' ' . $arr_service[$i]->cus_branch ?>
                                                     <?php endif; ?>
+                                                </td>
+
+                                                <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="text-center" id="show_pay_<?php echo $arr_service[$i]->ser_id ?>">
+                                                    <?php if ($arr_service[$i]->ser_stap_id == 1) echo "<p class='pending'>Pending</p>" ?>
+                                                    <?php if ($arr_service[$i]->ser_stap_id == 2) echo "<p class='paid'>Paid</p>" ?>
+                                                    <?php if ($arr_service[$i]->ser_stap_id == 3) echo "<p class='npaid'>Not Paid</p>" ?>
+                                                    <!-- <i class='spinner icon'></i> -->
+                                                    <!-- <i class='check icon'></i> --> 
+                                                    <!-- <i class='x icon'></i> -->
+                                                    <input type='hidden' id='pay_status_<?php echo $arr_service[$i]->ser_id ?>' value="<?php echo $arr_service[$i]->ser_stap_id ?>">
                                                 </td>
 
                                                 <!-- Action -->
@@ -961,6 +981,7 @@
             $('input[name="cheque_no"]').val('');
             $('select[name="bank"]').val(0);
             $(".input_cheque").attr("hidden", true);
+            $("#pay_status").val($('#pay_status_'+ser_id).val());
 
             // ดึงค่าใช้จ่ายเดิม
             var number_cost = data.length;
@@ -1082,7 +1103,7 @@
                 cal_total_cost();
 
             }
-            var payment = ``
+
         }
 
         /*
@@ -1458,7 +1479,17 @@
                 },
                 success: function(data) {
                     console.log(data);
+                    $('#pay_status_'+cosd_ser_id).val($("#pay_status").val());
+                    $('#show_pay_'+cosd_ser_id+' p').remove();
+                    if($("#pay_status").val() == 1){
+                        $('#show_pay_'+cosd_ser_id).append("<p class='pending'>Pending</p>");
+                    }else if($("#pay_status").val() == 2){
+                        $('#show_pay_'+cosd_ser_id).append("<p class='paid'>Paid</p>");
+                    }else{
+                        $('#show_pay_'+cosd_ser_id).append("<p class='npaid'>Not Paid</p>");
+                    }
                 }
             });
         }
+
     </script>
