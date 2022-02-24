@@ -408,11 +408,11 @@ class Service_edit extends Cdms_controller
         $m_ser->service_update($ser_id, $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
 
         // insert status container log
-        $m_scl = new M_cdms_status_container_log();
-        $scl_stac_id = $m_scl->get_max_by_scl_ser_id($ser_id);
-        if ($scl_stac_id->scl_stac_id != $ser_stac_id) {
-            $m_scl->insert($ser_id, $ser_stac_id);
-        }
+        // $m_scl = new M_cdms_status_container_log();
+        // $scl_stac_id = $m_scl->get_max_by_scl_ser_id($ser_id);
+        // if ($scl_stac_id->scl_stac_id != $ser_stac_id) {
+        //     $m_scl->insert($ser_id, $ser_stac_id);
+        // }
 
         $new_ser_id = $this->request->getPost('chl_ser_id');
         if ($new_ser_id != "not change") {
