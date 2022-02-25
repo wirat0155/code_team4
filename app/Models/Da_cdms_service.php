@@ -139,13 +139,12 @@ class Da_cdms_service extends Model
     * @Create Date  2564-12-07
     */
 
-    public function update_ser_pay($ser_id = NULL, $ser_due_date = NULL, $ser_pay_by = NULL, $ser_bnk_id = NULL, $ser_cheque = NULL)
-    {
-        if ($ser_due_date != '00/00/0000') {
+    public function update_ser_pay($ser_id = NULL, $ser_due_date = NULL, $ser_pay_by = NULL, $ser_bnk_id = NULL , $ser_cheque = NULL){
+        if($ser_due_date != '00/00/0000'){
             $sql = "UPDATE $this->table
                     SET ser_due_date = '$ser_due_date', ser_pay_by = '$ser_pay_by', ser_bnk_id = '$ser_bnk_id', ser_cheque = '$ser_cheque'
                     WHERE ser_id = '$ser_id' ";
-        } else {
+        }else{
             $sql = "UPDATE $this->table
                     SET ser_due_date = NULL, ser_pay_by = '$ser_pay_by', ser_bnk_id = '$ser_bnk_id', ser_cheque = '$ser_cheque'
                     WHERE ser_id = '$ser_id' ";
@@ -162,29 +161,9 @@ class Da_cdms_service extends Model
     * @Create Date  2565-02-23
     */
 
-    public function update_payment_status($ser_id = NULL, $ser_stap_id = NULL)
-    {
+    public function update_payment_status($ser_id = NULL, $ser_stap_id = NULL){
         $sql = "UPDATE  $this->table SET ser_stap_id = '$ser_stap_id'
             WHERE ser_id = '$ser_id' ";
-
-        $this->db->query($sql);
-    }
-
-    /*
-    * check_overdue
-    * update status payment
-    * @input ser_id, ser_stap_id
-    * @output change status payment
-    * @author Natdanai
-    * @Create Date  2565-02-23
-    */
-
-    public function check_payment_status($today)
-    {
-        $sql = "UPDATE $this->table SET ser_stap_id = CASE
-                WHEN ser_due_date < '$today' THEN '3'
-                ELSE '1'
-                END";
 
         $this->db->query($sql);
     }

@@ -115,15 +115,13 @@
         align-items: center !important;
     }
 
-    .paid {
+    .paid{
         color: #00FF00 !important;
     }
-
-    .npaid {
+    .npaid{
         color: red !important;
     }
-
-    .pending {
+    .pending{
         color: orange !important;
     }
 
@@ -299,7 +297,7 @@
 
     </div>
     <div class="actions">
-        <div class="float-left ui form row pay_status" hidden>
+        <div class="float-left ui form row">
             <div style="margin-top: 10px;" class="col-6">
                 <span>Payment Status</span>
             </div>
@@ -728,7 +726,7 @@
                                             <th class="text-center">Act. dep.</th>
                                             <th class="text-center">Agent</th>
                                             <th class="text-center">Customer</th>
-                                            <th class="text-center">Payment status</th>
+                                            <th class="text-center" >Payment status</th>
                                             <th class="text-center"></th>
                                         </tr>
                                     </thead>
@@ -807,9 +805,9 @@
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="text-center" id="show_pay_<?php echo $arr_service[$i]->ser_id ?>">
                                                     <?php if ($arr_service[$i]->ser_stap_id == 1) echo "<p class='pending'>Pending</p>" ?>
                                                     <?php if ($arr_service[$i]->ser_stap_id == 2) echo "<p class='paid'>Paid</p>" ?>
-                                                    <?php if ($arr_service[$i]->ser_stap_id == 3) echo "<p class='npaid'>Overdue</p>" ?>
+                                                    <?php if ($arr_service[$i]->ser_stap_id == 3) echo "<p class='npaid'>Not Paid</p>" ?>
                                                     <!-- <i class='spinner icon'></i> -->
-                                                    <!-- <i class='check icon'></i> -->
+                                                    <!-- <i class='check icon'></i> --> 
                                                     <!-- <i class='x icon'></i> -->
                                                     <input type='hidden' id='pay_status_<?php echo $arr_service[$i]->ser_id ?>' value="<?php echo $arr_service[$i]->ser_stap_id ?>">
                                                 </td>
@@ -847,7 +845,7 @@
                                                             <script>
                                                                 $('.modal_remove').modal('attach events', '.test.button', 'toggle');
                                                                 $('.modal_cost').modal('attach events', '.btn_cost', 'toggle');
-                                                                // modal_cost
+                                                                modal_cost
                                                             </script>
                                                         </div>
 
@@ -977,21 +975,13 @@
             $('.cost_input_list').empty();
             $('.add_cost_input').empty();
 
-
-
-
             //ค่าเริ่มต้นเมื่อเปิด Modal
             $('input[name="due_date"]').val('00/00/0000');
             $('select[name="pay_by"]').val(1);
             $('input[name="cheque_no"]').val('');
             $('select[name="bank"]').val(0);
             $(".input_cheque").attr("hidden", true);
-            if ($('#pay_status_' + ser_id).val() == 3) {
-                $("#pay_status").val(1);
-            } else {
-                $("#pay_status").val($('#pay_status_' + ser_id).val());
-            }
-
+            $("#pay_status").val($('#pay_status_'+ser_id).val());
 
             // ดึงค่าใช้จ่ายเดิม
             var number_cost = data.length;
@@ -1026,22 +1016,18 @@
                                 </button>
                             </div>`;
                 $('.cost_input_list').append(modal_message);
-                $('.pay_status').attr('hidden', true);
+
                 cal_total_cost();
             } else {
                 //กำหนดตัวแปรรับ due_date ของ service ที่เลือก
-                due_date = data['ser_due_date'];
-                // if (data[0]['ser_due_date'] != null) {
-                   
-                // }
+                due_date = data[0]['ser_due_date'];
+
                 if (due_date != null) {
                     due_date = due_date.toString();
                     due_date = due_date.substring(8) + '/' + due_date.substring(7, 5) + '/' + due_date.substring(0, 4);
-                    $('.pay_status').attr('hidden', false);
+
                     //set ค่าใน input
                     $('input[name="due_date"]').val(due_date);
-                }else{
-                    $('.pay_status').attr('hidden', true);
                 }
 
                 $('select[name="pay_by"]').val(data[0]['ser_pay_by']);
@@ -1121,13 +1107,13 @@
         }
 
         /*
-         * add_cost_input
-         * add cost input
-         * @input    -
-         * @output   field cost input
-         * @author   Wirat, Kittipod
-         * @Create Date  2564-12-23
-         */
+        * add_cost_input
+        * add cost input
+        * @input    -
+        * @output   field cost input
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-23
+        */
 
         function add_cost_input() {
 
@@ -1162,13 +1148,13 @@
         }
 
         /*
-         * cost_insert
-         * inset cost of service
-         * @input    input_order
-         * @output   -
-         * @author   Wirat, Kittipod
-         * @Create Date  2564-12-24
-         */
+        * cost_insert
+        * inset cost of service
+        * @input    input_order
+        * @output   -
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-24
+        */
 
         function cost_insert(input_order) {
             var cosd_ser_id = $('#cosd_ser_id').val();
@@ -1220,13 +1206,13 @@
         }
 
         /*
-         * cost_update
-         * update cost of service
-         * @input    cosd_id
-         * @output   -
-         * @author   Wirat, Kittipod
-         * @Create Date  2564-12-24
-         */
+        * cost_update
+        * update cost of service
+        * @input    cosd_id
+        * @output   -
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-24
+        */
         function cost_update(cosd_id) {
             var cosd_name = $('input[name="cosd_name_id' + cosd_id + '"]').val();
             var cosd_cost = $('input[name="cosd_cost_id' + cosd_id + '"]').val();
@@ -1257,13 +1243,13 @@
             }
         }
         /*
-         * cost_delete
-         * delete cost of service
-         * @input    delete_id, input_type
-         * @output   -
-         * @author   Wirat, Kittipod
-         * @Create Date  2564-12-24
-         */
+        * cost_delete
+        * delete cost of service
+        * @input    delete_id, input_type
+        * @output   -
+        * @author   Wirat, Kittipod
+        * @Create Date  2564-12-24
+        */
         function cost_delete(delete_id, input_type = 'new') {
 
             var n_cosd = false;
@@ -1304,13 +1290,13 @@
         }
 
         /*
-         * cal_total_cost
-         * calculate cost
-         * @input    -
-         * @output   total cost
-         * @author   Kittipod
-         * @Create Date  2564-12-25
-         */
+        * cal_total_cost
+        * calculate cost
+        * @input    -
+        * @output   total cost
+        * @author   Kittipod
+        * @Create Date  2564-12-25
+        */
 
         function cal_total_cost() {
             var total_cost = 0;
@@ -1348,13 +1334,13 @@
         }
 
         /*
-         * checkbox_check_all
-         * check all checkbox vat
-         * @input    -
-         * @output   check all checkbox vat
-         * @author   Kittipod
-         * @Create Date  2565-02-12
-         */
+        * checkbox_check_all
+        * check all checkbox vat
+        * @input    -
+        * @output   check all checkbox vat
+        * @author   Kittipod
+        * @Create Date  2565-02-12
+        */
 
         function checkbox_check_all() {
             $('.cosd_status_vat').prop('checked', true);
@@ -1363,13 +1349,13 @@
         }
 
         /*
-         * checkbox_cancel_all
-         * cancel all checkbox vat
-         * @input    -
-         * @output   cancel all checkbox vat
-         * @author   Kittipod
-         * @Create Date  2565-02-12
-         */
+        * checkbox_cancel_all
+        * cancel all checkbox vat
+        * @input    -
+        * @output   cancel all checkbox vat
+        * @author   Kittipod
+        * @Create Date  2565-02-12
+        */
 
         function checkbox_cancel_all() {
             $('.cosd_status_vat').prop('checked', false);
@@ -1378,13 +1364,13 @@
         }
 
         /*
-         * update_chack_all
-         * update cost when check all
-         * @input    -
-         * @output   update cost
-         * @author   Kittipod
-         * @Create Date  2565-02-12
-         */
+        * update_chack_all
+        * update cost when check all
+        * @input    -
+        * @output   update cost
+        * @author   Kittipod
+        * @Create Date  2565-02-12
+        */
 
         function update_chack_all() {
             var check_vat = document.getElementsByClassName('cosd_status_vat');
@@ -1395,13 +1381,13 @@
         }
 
         /*
-         * check_checkbox_value
-         * check value checkbox
-         * @input    -
-         * @output   have vat or don't have vat
-         * @author   Kittipod
-         * @Create Date  2564-12-25
-         */
+        * check_checkbox_value
+        * check value checkbox
+        * @input    -
+        * @output   have vat or don't have vat
+        * @author   Kittipod
+        * @Create Date  2564-12-25
+        */
 
         function check_checkbox_value() {
             var cosd_status_vat = document.getElementsByClassName('cosd_status_vat');
@@ -1419,6 +1405,7 @@
                 $('.vat').prop("hidden", !this.checked);
             }
         }
+        0
 
         function print_cost() {
             var ser_id = $('#cosd_ser_id').val();
@@ -1427,13 +1414,13 @@
         }
 
         /*
-         * ser_update
-         * update service about cost
-         * @input    -
-         * @output   updata service
-         * @author   Natdanai
-         * @Create Date  2565-02-10
-         */
+        * ser_update
+        * update service about cost
+        * @input    -
+        * @output   updata service
+        * @author   Natdanai
+        * @Create Date  2565-02-10
+        */
 
         function ser_update() {
             var cosd_ser_id = $('#cosd_ser_id').val();
@@ -1451,12 +1438,7 @@
                 cheque_no = '';
                 bank = 0;
             }
-            // if (due_date != '00/00/0000') {
-            //     $('.pay_status').attr('hidden', false);
-            // } else {
-            //     $('.pay_status').attr('hidden', true);
-            // }
-            console.log("due_date: " + due_date);
+
             $.ajax({
                 url: '<?php echo base_url() . '/Service_show/ser_pay_update' ?>',
                 method: 'POST',
@@ -1469,27 +1451,19 @@
                     bank: bank
                 },
                 success: function(data) {
-                    $('#pay_status_' + cosd_ser_id).val($("#pay_status").val());
-                    $('#show_pay_' + cosd_ser_id + ' p').remove();
-                    if (data == 'pending') {
-                        $('#show_pay_' + cosd_ser_id).append("<p class='pending'>Pending</p>");
-                    } else if (data == 'paid') {
-                        $('#show_pay_' + cosd_ser_id).append("<p class='paid'>Paid</p>");
-                    } else {
-                        $('#show_pay_' + cosd_ser_id).append("<p class='npaid'>Overdue</p>");
-                    }
+                    console.log(data);
                 }
             });
         }
 
         /*
-         * service_payment_status
-         * update status service status payment 
-         * @input    -
-         * @output   updata status payment service
-         * @author   Natdanai
-         * @Create Date  2565-02-23
-         */
+        * service_payment_status
+        * update status service status payment 
+        * @input    -
+        * @output   updata status payment service
+        * @author   Natdanai
+        * @Create Date  2565-02-23
+        */
 
         function service_payment_status() {
             var pay_status = $('#pay_status').val();
@@ -1504,17 +1478,18 @@
                     pay_status: pay_status
                 },
                 success: function(data) {
-                    // console.log(data);
-                    $('#pay_status_' + cosd_ser_id).val($("#pay_status").val());
-                    $('#show_pay_' + cosd_ser_id + ' p').remove();
-                    if ($("#pay_status").val() == 1) {
-                        $('#show_pay_' + cosd_ser_id).append("<p class='pending'>Pending</p>");
-                    } else if ($("#pay_status").val() == 2) {
-                        $('#show_pay_' + cosd_ser_id).append("<p class='paid'>Paid</p>");
-                    } else {
-                        $('#show_pay_' + cosd_ser_id).append("<p class='npaid'>Overdue</p>");
+                    console.log(data);
+                    $('#pay_status_'+cosd_ser_id).val($("#pay_status").val());
+                    $('#show_pay_'+cosd_ser_id+' p').remove();
+                    if($("#pay_status").val() == 1){
+                        $('#show_pay_'+cosd_ser_id).append("<p class='pending'>Pending</p>");
+                    }else if($("#pay_status").val() == 2){
+                        $('#show_pay_'+cosd_ser_id).append("<p class='paid'>Paid</p>");
+                    }else{
+                        $('#show_pay_'+cosd_ser_id).append("<p class='npaid'>Not Paid</p>");
                     }
                 }
             });
         }
+
     </script>
