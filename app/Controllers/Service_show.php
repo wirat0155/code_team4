@@ -36,7 +36,7 @@ class Service_show extends Cdms_controller {
     */
     public function service_show_ajax() {
         date_default_timezone_set("Asia/Bangkok");
-
+        
         //display the converted time
         $_SESSION['menu'] = 'Service_show';
         // load service model
@@ -51,7 +51,7 @@ class Service_show extends Cdms_controller {
         $time = date('H:i:s');
 
         $data['arr_con'] = $m_con->get_all(1);
-
+        $m_ser->check_payment_status($today);
         if(isset($_GET['date_range'])){
             $_SESSION['set_date_picker_service'] = true;
 
@@ -129,6 +129,7 @@ class Service_show extends Cdms_controller {
         $m_bnk = new M_cdms_bank();
         $data['arr_bank'] = $m_bnk->get_all();
 
+        
         $this->output('v_service_showlist', $data);
     }
 
@@ -246,9 +247,19 @@ class Service_show extends Cdms_controller {
     */
     public function get_cost_ajax() {
         $m_cosd = new M_cdms_cost_detail();
+        $m_ser = new M_cdms_service();
         $ser_id = $this->request->getPost('ser_id');
         $arr_service_cost = $m_cosd->get_by_ser_id($ser_id);
-
+        $arr_service_date = $m_ser->get_by_id($ser_id);
+        // print_r($arr_service_cost);
+        $arr_service_cost["ser_due_date"] = $arr_service_date[0]->ser_due_date;
+        // echo "<pre>";
+        // print_r($arr_service_cost);
+        // echo "</pre>";
+        
+        // print_r($arr_service_date);
+        // $obj_merged = (object) array_merge(
+        //     (array) $arr_service_cost, (array) $arr_service_date);
         echo json_encode($arr_service_cost);
     }
 
@@ -651,8 +662,14 @@ class Service_show extends Cdms_controller {
         $ser_due_date = substr($ser_due_date,6,4).'-'.substr($ser_due_date,3,2).'-'.(substr($ser_due_date,0,2));
 
         $m_ser = new M_cdms_service();
+        if($ser_due_date > date("Y-m-d")){
+            $status = "pending";
+        }else{
+            $status = "overdue";
+        }
+        // $m_ser->check_payment_status($today);
         $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_bnk_id ,$ser_cheque);
-        echo json_encode($this->request->getPost());
+        echo json_encode($status);
     }
     
     /*
@@ -700,10 +717,11 @@ class Service_show extends Cdms_controller {
 
     /*
     * service_payment_status
-    * print invoice service
-    * @input    cosd_ser_id, pay_status
-    * @output   -
-    * @author   Natdanai
+    * Change payment status
+    * @Input    cosd_ser_id, pay_status
+    * @Output   -
+    * @Author   Natdanai
+    * @Editer   Natdanai
     * @Create Date  2565-02-23
     */
     public function service_payment_status(){
