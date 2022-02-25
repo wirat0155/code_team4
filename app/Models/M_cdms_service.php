@@ -288,15 +288,13 @@ class M_cdms_service extends Da_cdms_service
     * @author   Benjapon
     * @Create Date  2564-12-07
     */
-    public function get_change_service_option($cont_id, $con_size_id,$ser_id)
+    public function get_change_service_option($cont_id, $con_size_id, $con_agn_id,$ser_id)
     {
-        $sql = "SELECT con_number,cont_name,ser_id FROM cdms_container 
-        INNER JOIN cdms_service ON ser_con_id=con_id 
-        INNER JOIN cdms_status_container ON con_stac_id=stac_id 
-        INNER JOIN cdms_container_type ON con_cont_id=cont_id 
-        WHERE ser_stac_id = 1 OR ser_stac_id = 2 OR ser_stac_id = 3 
-        AND (ser_departure_date IS NULL OR ser_departure_date = '0000-00-00 00:00:00') AND ser_weight = 0 
-        AND cont_id='$cont_id' AND con_size_id='$con_size_id' AND ser_id != '$ser_id' AND ser_status = 1";
+        $sql = "SELECT con_number,cont_name,con_id, cont_id FROM cdms_container
+        INNER JOIN cdms_container_type ON con_cont_id = cont_id 
+        WHERE cont_id = '$cont_id' AND con_size_id = '$con_size_id'
+        AND con_agn_id = '$con_agn_id' AND con_status = 1
+        AND con_stac_id != 5 ";
         return $this->db->query($sql)->getResult();
     }
 
@@ -428,6 +426,21 @@ class M_cdms_service extends Da_cdms_service
     */
     public function get_con_number_by_ser_id($ser_id = NULL){
         $sql = "SELECT ser_id, con_number FROM $this->table
+                LEFT JOIN cdms_container ON ser_con_id = con_id
+                WHERE ser_id = '$ser_id'";
+        return $this->db->query($sql)->getRow();
+    }
+
+    /*
+    * get_cost
+    * get cost service
+    * @input    ser_id
+    * @output   array of cost service
+    * @author   Kittipod
+    * @Create Date  2565-02-25
+    */
+    public function get_cost($ser_id = NULL){
+        $sql = "SELECT ser_due_date , ser_pay_by, ser_cheque, ser_bnk_id FROM $this->table
                 LEFT JOIN cdms_container ON ser_con_id = con_id
                 WHERE ser_id = '$ser_id'";
         return $this->db->query($sql)->getRow();

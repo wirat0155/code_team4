@@ -317,7 +317,7 @@
                                     </div>
 
                                     <!-- Change container section -->
-                                    <div class="col-12">
+                                    <!-- <div class="col-12">
                                         <h3>Change container</h3>
                                     </div>
                                     <div class="col-md-6">
@@ -335,11 +335,11 @@
                                                                 <?php echo $opt_service[$i]->con_number . ' (' . $opt_service[$i]->cont_name.')' ?>
                                                             </option>
                                                         <?php } ?>
-                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -354,7 +354,7 @@
                                 <div class="card-title">Container</div>
                             </div>
                             <div class="card-body">
-
+                                <input type="hidden" name="old_con_id" value="<?php echo $obj_container[0]->con_id ?>">
                                 <?php
                                     $page = 'service_edit';
                                     require_once dirname(__FILE__) . '/form/container_service_edit_form.php';

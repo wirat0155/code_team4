@@ -96,9 +96,12 @@
                         <i class="dropdown icon"></i>
                         <div class="default text">Select container</div>
                         <div class="menu">
-                            <?php for ($i = 0; $i < count($arr_con); $i++) { ?>
-                                <div class="item" data-value="<?php echo $arr_con[$i]->con_id ?>"><?php echo $arr_con[$i]->con_number;?>
-                                </div>
+                            <?php if($con_stac_id == 5){ ?>
+                                <div class="item" data-value="<?php echo $con_id ?>"><?php echo $con_number;?></div>
+                            <?php } ?>
+                            <?php for ($i = 0; $i < count($opt_service); $i++) { ?>
+
+                                    <div class="item" data-value="<?php echo $opt_service[$i]->con_id ?>"><?php echo $opt_service[$i]->con_number;?></div>
                             <?php } ?>
                             <div class="item" data-value="new">+ New container</div>
                         </div>

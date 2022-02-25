@@ -297,7 +297,7 @@
 
     </div>
     <div class="actions">
-        <div class="float-left ui form row">
+        <div class="float-left ui form row pay_status" hidden>
             <div style="margin-top: 10px;" class="col-6">
                 <span>Payment Status</span>
             </div>
@@ -739,7 +739,7 @@
 
                                                 <!-- Container number -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                    <?php echo $arr_service[$i]->con_number;
+                                                    <?php echo $arr_service[$i]->con_number . ' id.' . $arr_service[$i]->ser_id ;
                                                     ?>
                                                 </td>
 
@@ -805,7 +805,7 @@
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)" class="text-center" id="show_pay_<?php echo $arr_service[$i]->ser_id ?>">
                                                     <?php if ($arr_service[$i]->ser_stap_id == 1) echo "<p class='pending'>Pending</p>" ?>
                                                     <?php if ($arr_service[$i]->ser_stap_id == 2) echo "<p class='paid'>Paid</p>" ?>
-                                                    <?php if ($arr_service[$i]->ser_stap_id == 3) echo "<p class='npaid'>Not Paid</p>" ?>
+                                                    <?php if ($arr_service[$i]->ser_stap_id == 3) echo "<p class='npaid'>Overdue</p>" ?>
                                                     <!-- <i class='spinner icon'></i> -->
                                                     <!-- <i class='check icon'></i> --> 
                                                     <!-- <i class='x icon'></i> -->
@@ -957,7 +957,7 @@
                 },
                 success: function(data) {
                     console.log(data);
-                    cost_modal(ser_id, data)
+                    cost_modal(ser_id, data);
                 }
             });
         }
@@ -976,16 +976,71 @@
             $('.add_cost_input').empty();
 
             //ค่าเริ่มต้นเมื่อเปิด Modal
-            $('input[name="due_date"]').val('00/00/0000');
-            $('select[name="pay_by"]').val(1);
-            $('input[name="cheque_no"]').val('');
-            $('select[name="bank"]').val(0);
-            $(".input_cheque").attr("hidden", true);
-            $("#pay_status").val($('#pay_status_'+ser_id).val());
 
-            // ดึงค่าใช้จ่ายเดิม
-            var number_cost = data.length;
-            // ถ้ามี วนลูปแสดง
+            console.log(data);
+            due_date = data['cost_ser']['ser_due_date'];
+
+            //if no set due date = 00/00/0000 
+            //if set due date = in database
+            if(due_date == null){
+                $('.pay_status').attr('hidden', true);
+                $('input[name="due_date"]').val('00/00/0000');
+            }else{
+                due_date = due_date.toString();
+                due_date = due_date.substring(8) + '/' + due_date.substring(7, 5) + '/' + due_date.substring(0, 4);
+                
+                //set ค่าใน input
+                $('input[name="due_date"]').val(due_date);
+                $('.pay_status').attr('hidden', false);
+
+                //Check Date form database
+                $('input[name="due_date"]').daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    minYear: 1901,
+                    maxYear: parseInt(moment().format('YYYY'), 10),
+                    "locale": {
+                        "format": 'DD/MM/YYYY',
+                        "firstDay": 1
+                    },
+                    opens: 'left',
+                    //right here
+                    setDate: new Date(due_date)
+                });
+            }
+
+            //Set Pay By form database
+            pay_by = data['cost_ser']['ser_pay_by'];
+            //ในต้อง Database ต้องเริ่มต้นด้วย 1 
+            $('select[name="pay_by"]').val(pay_by);
+
+            //Set cheaue form database
+            cheque_no = data['cost_ser']['ser_cheque'];
+            $('input[name="cheque_no"]').val(cheque_no);
+
+            bank = data['cost_ser']['ser_bnk_id'];
+            if(bank == null){
+                $('select[name="bank"]').val(0);
+            }else{
+                $('select[name="bank"]').val(bank);
+            }
+
+            //if pay_by == cheque_no will show input cheque
+            if (pay_by == 3) {
+                    $('.input_cheque').removeAttr('hidden');
+            } else {
+                    $(".input_cheque").attr("hidden", true);
+            }
+
+            if ($('#pay_status_' + ser_id).val() == 3) {
+                $("#pay_status").val(1);
+            } else {
+                $("#pay_status").val($('#pay_status_' + ser_id).val());
+            }
+            
+
+            var number_cost = data['cost_all'].length;
+            
             console.log(number_cost);
 
             var modal_message = `<input name="cosd_ser_id" id="cosd_ser_id" type="hidden" value="${ser_id}">`;
@@ -1019,49 +1074,29 @@
 
                 cal_total_cost();
             } else {
-                //กำหนดตัวแปรรับ due_date ของ service ที่เลือก
-                due_date = data[0]['ser_due_date'];
-
-                if (due_date != null) {
-                    due_date = due_date.toString();
-                    due_date = due_date.substring(8) + '/' + due_date.substring(7, 5) + '/' + due_date.substring(0, 4);
-
-                    //set ค่าใน input
-                    $('input[name="due_date"]').val(due_date);
-                }
-
-                $('select[name="pay_by"]').val(data[0]['ser_pay_by']);
-
-                if (data[0]['ser_pay_by'] == 3) {
-                    $('.input_cheque').removeAttr('hidden');
-                    $('input[name="cheque_no"]').val(data[0]['ser_cheque']);
-                    $('select[name="bank"]').val(data[0]['ser_bnk_id']);
-                } else {
-                    $(".input_cheque").attr("hidden", true);
-                }
 
                 var vat_value = '';
-                if (data[0]['cosd_status_vat'] == 1) {
+                if (data['cost_all'][0]['cosd_status_vat'] == 1) {
                     vat_value = 'checked';
                 }
-                modal_message += `  <div class="fields cost" name="cost_input_id${data[0]['cosd_id']}">
+                modal_message += `  <div class="fields cost" name="cost_input_id${data['cost_all'][0]['cosd_id']}">
                                     <div class="field col-1 cost_vat">
                                         <label> VAT </label>
-                                        <input type="checkbox" tabindex="0" data-cosd_id="${data[0]['cosd_id']}" class="cosd_status_vat" name="cosd_status_vat${data[0]['cosd_id']}" onchange="cost_update(${data[0]['cosd_id']})" ${vat_value}>
+                                        <input type="checkbox" tabindex="0" data-cosd_id="${data['cost_all'][0]['cosd_id']}" class="cosd_status_vat" name="cosd_status_vat${data['cost_all'][0]['cosd_id']}" onchange="cost_update(${data['cost_all'][0]['cosd_id']})" ${vat_value}>
                                     </div>
                                     <div class="field col-6 cost_name">
                                         <label>Cost name</label>
-                                        <input type="text" placeholder="Cost name" onchange="cost_update(${data[0]['cosd_id']})" step="0.01" name="cosd_name_id${data[0]['cosd_id']}" value="${data[0]['cosd_name']}">
+                                        <input type="text" placeholder="Cost name" onchange="cost_update(${data['cost_all'][0]['cosd_id']})" step="0.01" name="cosd_name_id${data['cost_all'][0]['cosd_id']}" value="${data['cost_all'][0]['cosd_name']}">
                                     </div>
                                     <div class="field col-3 cost_amount">
                                         <label>Amount (TH Baht)</label>
-                                        <input type="number" placeholder="Amount" onchange="cost_update(${data[0]['cosd_id']})" step="0.01" name="cosd_cost_id${data[0]['cosd_id']}" value="${data[0]['cosd_cost']}" class="cosd_price">
+                                        <input type="number" placeholder="Amount" onchange="cost_update(${data['cost_all'][0]['cosd_id']})" step="0.01" name="cosd_cost_id${data['cost_all'][0]['cosd_id']}" value="${data['cost_all'][0]['cosd_cost']}" class="cosd_price">
                                     </div>
                                     <div class="field col-3 cost_quantity">
                                         <label>Quantity (Count) </label>
-                                        <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data[0]['cosd_id']})" name="cosd_quantity_id${data[0]['cosd_id']}" value="${data[0]['cosd_quantity']}">
+                                        <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data['cost_all'][0]['cosd_id']})" name="cosd_quantity_id${data['cost_all'][0]['cosd_id']}" value="${data['cost_all'][0]['cosd_quantity']}">
                                     </div>
-                                    <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn_id${data[0]['cosd_id']}" onclick="cost_delete(${data[0]['cosd_id']},'old')" style="margin-top: 25px;background: #E91414 !important; border-color: #E91414 !important;">
+                                    <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn_id${data['cost_all'][0]['cosd_id']}" onclick="cost_delete(${data['cost_all'][0]['cosd_id']},'old')" style="margin-top: 25px;background: #E91414 !important; border-color: #E91414 !important;">
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>`;
@@ -1069,31 +1104,31 @@
                 // วน loop แสดงข้อมูล
                 for (var i = 1; i < number_cost; i++) {
 
-                    if (data[i]['cosd_status_vat'] == 1) {
+                    if (data['cost_all'][i]['cosd_status_vat'] == 1) {
                         vat_value = 'checked';
                     } else {
                         vat_value = '';
                     }
 
                     modal_message = '';
-                    modal_message += `  <div class="fields cost" name="cost_input_id${data[i]['cosd_id']}">
+                    modal_message += `  <div class="fields cost" name="cost_input_id${data['cost_all'][i]['cosd_id']}">
                                         <div class="field col-1 cost_vat">
                                             <label class="label_res"> VAT </label>
-                                            <input type="checkbox" tabindex="0" data-cosd_id="${data[i]['cosd_id']}" class="cosd_status_vat" name="cosd_status_vat${data[i]['cosd_id']}" onchange="cost_update(${data[i]['cosd_id']})" ${vat_value}>
+                                            <input type="checkbox" tabindex="0" data-cosd_id="${data['cost_all'][i]['cosd_id']}" class="cosd_status_vat" name="cosd_status_vat${data['cost_all'][i]['cosd_id']}" onchange="cost_update(${data['cost_all'][i]['cosd_id']})" ${vat_value}>
                                         </div>
                                         <div class="field col-6 cost_name">
                                             <label class="label_res">Cost name</label>
-                                            <input type="text" placeholder="Cost name" onchange="cost_update(${data[i]['cosd_id']})" step="0.01" name="cosd_name_id${data[i]['cosd_id']}" value="${data[i]['cosd_name']}">
+                                            <input type="text" placeholder="Cost name" onchange="cost_update(${data['cost_all'][i]['cosd_id']})" step="0.01" name="cosd_name_id${data['cost_all'][i]['cosd_id']}" value="${data['cost_all'][i]['cosd_name']}">
                                         </div>
                                         <div class="field col-3 cost_amount">
                                             <label class="label_res">Amount (TH Baht)</label>
-                                            <input type="number" placeholder="Amount" onchange="cost_update(${data[i]['cosd_id']})" step="0.01" name="cosd_cost_id${data[i]['cosd_id']}" value="${data[i]['cosd_cost']}" class="cosd_price">
+                                            <input type="number" placeholder="Amount" onchange="cost_update(${data['cost_all'][i]['cosd_id']})" step="0.01" name="cosd_cost_id${data['cost_all'][i]['cosd_id']}" value="${data['cost_all'][i]['cosd_cost']}" class="cosd_price">
                                         </div>
                                         <div class="field col-3 cost_quantity">
                                             <label class="label_res">Quantity (Count) </label>
-                                            <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data[i]['cosd_id']})" name="cosd_quantity_id${data[i]['cosd_id']}" value="${data[i]['cosd_quantity']}">
+                                            <input type="number" placeholder="Quantity" class="cosd_count" onchange="cost_update(${data['cost_all'][i]['cosd_id']})" name="cosd_quantity_id${data['cost_all'][i]['cosd_id']}" value="${data['cost_all'][i]['cosd_quantity']}">
                                         </div>
-                                        <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn_id${data[i]['cosd_id']}" onclick="cost_delete(${data[i]['cosd_id']},'old')" style="margin-top: 1px;background: #E91414 !important; border-color: #E91414 !important;">
+                                        <button type="button" class="btn btn-icon btn-round btn-danger" name="cost_delete_btn_id${data['cost_all'][i]['cosd_id']}" onclick="cost_delete(${data['cost_all'][i]['cosd_id']},'old')" style="margin-top: 1px;background: #E91414 !important; border-color: #E91414 !important;">
                                             <i class="fas fa-times"></i>
                                         </button>
                                     </div>`;
@@ -1451,7 +1486,34 @@
                     bank: bank
                 },
                 success: function(data) {
+                    console.log('...');
                     console.log(data);
+
+                    //ไม่รู้คืออะไรเก็บไว้ถาม data ไม่ได้ส่ง pending
+                    // $('#pay_status_' + cosd_ser_id).val($("#pay_status").val());
+                    // $('#show_pay_' + cosd_ser_id + ' p').remove();
+
+                    // if (data == 'pending') {
+                    //     $('#show_pay_' + cosd_ser_id).append("<p class='pending'>Pending</p>");
+                    // } else if (data == 'paid') {
+                    //     $('#show_pay_' + cosd_ser_id).append("<p class='paid'>Paid</p>");
+                    // } else {
+                    //     $('#show_pay_' + cosd_ser_id).append("<p class='npaid'>Overdue</p>");
+                    // }
+                    
+                    $('#show_pay_' + cosd_ser_id + ' p').remove();
+                    $('#pay_status_' + cosd_ser_id).val($("#pay_status").val());
+
+                    if(data == 'overdue' && $("#pay_status").val() != 2) {
+                        $('#show_pay_' + cosd_ser_id).append("<p class='npaid'>Overdue</p>");
+                    }else{
+                        if ($("#pay_status").val() == 1) {
+                            $('#show_pay_' + cosd_ser_id).append("<p class='pending'>Pending</p>");
+                        } else if ($("#pay_status").val() == 2) {
+                            $('#show_pay_' + cosd_ser_id).append("<p class='paid'>Paid</p>");
+                        }
+                    }
+                    
                 }
             });
         }
@@ -1478,15 +1540,16 @@
                     pay_status: pay_status
                 },
                 success: function(data) {
-                    console.log(data);
-                    $('#pay_status_'+cosd_ser_id).val($("#pay_status").val());
-                    $('#show_pay_'+cosd_ser_id+' p').remove();
-                    if($("#pay_status").val() == 1){
-                        $('#show_pay_'+cosd_ser_id).append("<p class='pending'>Pending</p>");
-                    }else if($("#pay_status").val() == 2){
-                        $('#show_pay_'+cosd_ser_id).append("<p class='paid'>Paid</p>");
-                    }else{
-                        $('#show_pay_'+cosd_ser_id).append("<p class='npaid'>Not Paid</p>");
+                    // console.log(data);
+                    $('#pay_status_' + cosd_ser_id).val($("#pay_status").val());
+                    $('#show_pay_' + cosd_ser_id + ' p').remove();
+                    
+                    if ($("#pay_status").val() == 1) {
+                        $('#show_pay_' + cosd_ser_id).append("<p class='pending'>Pending</p>");
+                    } else if ($("#pay_status").val() == 2) {
+                        $('#show_pay_' + cosd_ser_id).append("<p class='paid'>Paid</p>");
+                    } else {
+                        $('#show_pay_' + cosd_ser_id).append("<p class='npaid'>Overdue</p>");
                     }
                 }
             });

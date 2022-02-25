@@ -88,8 +88,11 @@ class Service_edit extends Cdms_controller
 
         $m_ser = new M_cdms_service();
         $obj_container = $data['obj_container'];
-        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id, $obj_container[0]->con_size_id, $data['obj_service'][0]->ser_id);
-
+        $data['opt_service'] = $m_ser->get_change_service_option($obj_container[0]->con_cont_id, $obj_container[0]->con_size_id, $obj_container[0]->con_agn_id, $ser_id);
+        // print_r($obj_container);
+        // echo "<pre>";
+        // print_r($data['opt_service']);
+        // echo "</pre>";
         $this->output('v_service_edit', $data);
     }
 
@@ -123,6 +126,7 @@ class Service_edit extends Cdms_controller
 
         // container information
         $con_id = $this->request->getPost('con_id');
+        $old_con_id = $this->request->getPost('old_con_id');
         $con_number = $this->request->getPost('con_number');
         $con_max_weight = $this->request->getPost('con_max_weight');
         $con_tare_weight = $this->request->getPost('con_tare_weight');
@@ -293,6 +297,11 @@ class Service_edit extends Cdms_controller
         // Select container form dropdown
         if ($con_id != 'new') {
             $is_update_container = true;
+            if($con_id == $old_con_id){
+                $is_update_container = true;
+            }else{
+                $is_change_container = true;
+            }
         }
         // New container
         else {
@@ -404,9 +413,29 @@ class Service_edit extends Cdms_controller
             $m_con->container_update($con_id, $con_number[0]->con_number, $con_max_weight, $con_tare_weight, $con_net_weight, $con_cube, $con_size_id, $con_cont_id, $con_agn_id, $con_stac_id);
         }
 
-        //update service
-        $m_ser->service_update($ser_id, $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
+        if($is_change_container){
+            $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $con_id, $ser_stac_id, $ser_cus_id);
+            $max_ser_id = $m_ser->get_max_id();
 
+            if($max_ser_id->max_ser_id < 100){
+                $format_invoice = "0" . $max_ser_id->max_ser_id;
+            }else if($max_ser_id->max_ser_id < 10){
+                $format_invoice = "0" . "0" . $max_ser_id->max_ser_id;
+            }else{
+                $format_invoice = $max_ser_id->max_ser_id;
+            }
+            $today = date("ymd");
+            $ser_receipt = "RE" . $today . $format_invoice;
+            $ser_invoice = "INV" . $today . $format_invoice;
+
+            $m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);
+
+            $this->change_container($ser_id, $max_ser_id->max_ser_id);
+            $m_ser->change_status_replace($ser_id);
+        }else{
+            //update service
+            $m_ser->service_update($ser_id, $ser_stac_id, $ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in, $ser_actual_departure_date, $ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_cus_id);
+        }
         // insert status container log
         // $m_scl = new M_cdms_status_container_log();
         // $scl_stac_id = $m_scl->get_max_by_scl_ser_id($ser_id);
@@ -414,11 +443,11 @@ class Service_edit extends Cdms_controller
         //     $m_scl->insert($ser_id, $ser_stac_id);
         // }
 
-        $new_ser_id = $this->request->getPost('chl_ser_id');
-        if ($new_ser_id != "not change") {
-            $this->change_container($ser_id, $new_ser_id);
-            $m_ser->change_status_replace($ser_id);
-        }
+        // $new_ser_id = $this->request->getPost('chl_ser_id');
+        // if ($new_ser_id != "not change") {
+        //     $this->change_container($ser_id, $new_ser_id);
+        //     $m_ser->change_status_replace($ser_id);
+        // }
         // go to service list page
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }

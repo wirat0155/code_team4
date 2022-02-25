@@ -52,6 +52,8 @@ class Service_show extends Cdms_controller {
 
         $data['arr_con'] = $m_con->get_all(1);
 
+        $m_ser->check_payment_status($today);
+
         if(isset($_GET['date_range'])){
             $_SESSION['set_date_picker_service'] = true;
 
@@ -246,9 +248,10 @@ class Service_show extends Cdms_controller {
     */
     public function get_cost_ajax() {
         $m_cosd = new M_cdms_cost_detail();
+        $m_ser = new M_cdms_service();
         $ser_id = $this->request->getPost('ser_id');
-        $arr_service_cost = $m_cosd->get_by_ser_id($ser_id);
-
+        $arr_service_cost['cost_all'] = $m_cosd->get_by_ser_id($ser_id);
+        $arr_service_cost['cost_ser'] = $m_ser->get_cost($ser_id);
         echo json_encode($arr_service_cost);
     }
 
@@ -652,7 +655,17 @@ class Service_show extends Cdms_controller {
 
         $m_ser = new M_cdms_service();
         $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_bnk_id ,$ser_cheque);
-        echo json_encode($this->request->getPost());
+
+        date_default_timezone_set("Asia/Bangkok");
+        $today = date('Y-m-d');
+        $m_ser->check_payment_status($today);
+
+        $response = '';
+        if($ser_due_date < $today){
+            $response = 'overdue';
+        }
+
+        echo json_encode($response);
     }
     
     /*
