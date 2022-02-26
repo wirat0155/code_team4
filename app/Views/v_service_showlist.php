@@ -1463,7 +1463,8 @@
             var pay_by = $('select[name="pay_by"]').val();
             var cheque_no = $('input[name="cheque_no"]').val();
             var bank = $('select[name="bank"]').val();
-
+            console.log('...2');
+            console.log(due_date);
             if (pay_by == '3') {
                 $('.input_cheque').removeAttr('hidden');
             } else {
@@ -1472,6 +1473,10 @@
                 $('select[name="bank"]').val(0);
                 cheque_no = '';
                 bank = 0;
+            }
+
+            if (due_date != "00/00/0000") {
+                $(".pay_status").attr("hidden", false);
             }
 
             $.ajax({

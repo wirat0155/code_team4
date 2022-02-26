@@ -651,8 +651,12 @@ class Service_show extends Cdms_controller {
         $ser_cheque = $this->request->getPost('cheque_no');
         $ser_bnk_id = $this->request->getPost('bank'); 
 
+        
         $ser_due_date = substr($ser_due_date,6,4).'-'.substr($ser_due_date,3,2).'-'.(substr($ser_due_date,0,2));
 
+        if($ser_due_date == "0000-00-00"){
+            $ser_due_date = NULL;
+        }
         $m_ser = new M_cdms_service();
         $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_bnk_id ,$ser_cheque);
 

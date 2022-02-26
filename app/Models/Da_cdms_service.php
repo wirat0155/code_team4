@@ -141,7 +141,7 @@ class Da_cdms_service extends Model
 
     public function update_ser_pay($ser_id = NULL, $ser_due_date = NULL, $ser_pay_by = NULL, $ser_bnk_id = NULL, $ser_cheque = NULL)
     {
-        if ($ser_due_date != '00/00/0000') {
+        if ($ser_due_date != NULL) {
             $sql = "UPDATE $this->table
                     SET ser_due_date = '$ser_due_date', ser_pay_by = '$ser_pay_by', ser_bnk_id = '$ser_bnk_id', ser_cheque = '$ser_cheque'
                     WHERE ser_id = '$ser_id' ";
