@@ -290,11 +290,17 @@ class M_cdms_service extends Da_cdms_service
     */
     public function get_change_service_option($cont_id, $con_size_id, $con_agn_id,$ser_id)
     {
-        $sql = "SELECT con_number,cont_name,con_id, cont_id FROM cdms_container
+        $sql = "SELECT con_id,con_number,cont_id,cont_name FROM cdms_container
         INNER JOIN cdms_container_type ON con_cont_id = cont_id 
         WHERE cont_id = '$cont_id' AND con_size_id = '$con_size_id'
-        AND con_agn_id = '$con_agn_id' AND con_status = 1
-        AND con_stac_id != 5 ";
+        AND con_agn_id = '$con_agn_id' AND con_status = 1 AND con_stac_id != 5
+
+        EXCEPT
+        
+        SELECT ser_con_id,con_number,cont_id,cont_name FROM cdms_service 
+        LEFT JOIN cdms_container ON con_id = ser_con_id 
+        LEFT JOIN cdms_container_type ON cont_id = cdms_container.con_cont_id 
+        WHERE ser_status = 1";
         return $this->db->query($sql)->getResult();
     }
 
