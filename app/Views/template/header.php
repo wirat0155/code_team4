@@ -178,6 +178,19 @@
         float: left !important;
     } */
 
+    .ui.modal {
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: 1000px !important;
+        padding: 0px 10px !important;
+        background: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        top: 80px !important;
+        bottom: auto !important;
+    }
+
     </style>
 </head>
 <?php

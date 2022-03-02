@@ -125,6 +125,11 @@
         color: orange !important;
     }
 
+    .modal_cost .content{
+        height: 150% !important;
+        max-height: 500px !important;
+    }
+
     @media only screen and (max-width: 768px) {
 
         .cost_vat {
