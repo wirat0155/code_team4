@@ -46,20 +46,7 @@ class Car_input extends Cdms_controller {
     */
     public function car_insert() {
         $m_car = new M_cdms_car();
-
-        // car information
-        $car_code = $this->request->getPost('car_code');
-        $car_number = $this->request->getPost('car_number');
-        $car_chassis_number = $this->request->getPost('car_chassis_number');
-        $car_brand = $this->request->getPost('car_brand');
-        $car_register_year = $this->request->getPost('car_register_year');
-        $car_weight = $this->request->getPost('car_weight');
-        $car_branch = $this->request->getPost('car_branch');
-        $car_fuel_type = $this->request->getPost('car_fuel_type');
-
-        $car_prov_id = $this->request->getPost('car_prov_id');
-        $car_cart_id = $this->request->getPost('car_cart_id');
-        $car_status = $this->request->getPost('car_status');
+        $obj = $this->request->getPost();
 
         // upload image
         $file = $this->request->getFile('car_image');
@@ -71,7 +58,7 @@ class Car_input extends Cdms_controller {
         $car_image = $imageName;
 
         // inserting car
-        $m_car->insert($car_code, $car_number, $car_chassis_number, $car_brand, $car_register_year, $car_weight, $car_branch, $car_fuel_type, $car_image, $car_prov_id, $car_cart_id, $car_status);
+        $m_car->insert($obj["car_code"], $obj["car_number"], $obj["car_chassis_number"], $obj["car_brand"], $obj["car_register_year"], $obj["car_weight"], $obj["car_branch"], $obj["car_fuel_type"], $car_image, $obj["car_prov_id"], $obj["car_cart_id"], $obj["car_status"]);
         $this->response->redirect(base_url() . '/Car_show/car_show_ajax');
     }
 }
