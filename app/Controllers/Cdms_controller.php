@@ -8,6 +8,8 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\M_cdms_driver;
+use App\Models\M_cdms_car;
 
 /*
 * Cdms_controller
@@ -32,6 +34,8 @@ class Cdms_controller extends Controller
 	 * @var array
 	 */
 	protected $helpers = ['code'];
+	protected $m_dri;
+    protected $m_car;
 
 	/**
 	 * Constructor.
@@ -44,6 +48,12 @@ class Cdms_controller extends Controller
 	{
 		parent::initController($request, $response, $logger);
 	}
+
+	public function __construct()
+    {
+		$this->m_dri = new M_cdms_driver();
+        $this->m_car = new M_cdms_car();
+    }
 
 	/*
     * output

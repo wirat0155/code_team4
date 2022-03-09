@@ -2,10 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\M_cdms_driver;
-use App\Models\M_cdms_car;
-
-
 /*
 * Driver_show
 * show driver input page, insert driver
@@ -23,8 +19,7 @@ class Driver_input extends Cdms_controller {
     */
     public function driver_input() {
         $_SESSION['menu'] = 'Driver_show';
-        $m_car = new M_cdms_car();
-        $data['arr_car'] = $m_car->get_all();
+        $data['arr_car'] = $this->m_car->get_all();
         $this->output('v_driver_input', $data);
     }
 
@@ -37,19 +32,8 @@ class Driver_input extends Cdms_controller {
     * @Create Date  2564-08-07
     */
     public function driver_insert() {
-        $m_dri = new M_cdms_driver();
-
-        // get dirver information form driver input page
-        $dri_name = $this->request->getPost('dri_name');
-        $dri_tel = $this->request->getPost('dri_tel');
-        $dri_card_number = $this->request->getPost('dri_card_number');
-        $dri_license = $this->request->getPost('dri_license');
-        $dri_license_type = $this->request->getPost('dri_license_type');
-        $dri_profile_image = $this->request->getPost('dri_profile_image');
-        $dri_status = $this->request->getPost('dri_status');
-        $dri_date_start = $this->request->getPost('dri_date_start');
-        $dri_date_end = $this->request->getPost('dri_date_end');
-        $dri_car_id = $this->request->getPost('dri_car_id');
+        //get post data
+        $obj_dri = $this->request->getPost();
 
         // upload image
         $file = $this->request->getFile('dri_profile_image');
@@ -58,11 +42,14 @@ class Driver_input extends Cdms_controller {
             $file->move('./dri_profile_image', $imageName);
         }
 
-        $dri_profile_image = $imageName;
+        // set name image
+        $obj_dri["dri_profile_image"] = $imageName;
 
 
         // inserting driver
-        $m_dri->insert($dri_name, $dri_tel, $dri_card_number, $dri_license, $dri_license_type, $dri_profile_image, $dri_status, $dri_date_start, $dri_date_end, $dri_car_id);
+        $this->m_dri->insert($obj_dri["dri_name"], $obj_dri["dri_tel"], $obj_dri["dri_card_number"], 
+        $obj_dri["dri_license"], $obj_dri["dri_license_type"], $obj_dri["dri_profile_image"], 
+        $obj_dri["dri_status"], $obj_dri["dri_date_start"], $obj_dri["dri_date_end"], $obj_dri["dri_car_id"]);
 
         $this->response->redirect(base_url('/Driver_show/driver_show_ajax'));
     }
