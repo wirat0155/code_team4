@@ -354,6 +354,10 @@
         else {
             $('#container_step').click();
         }
+
+        if( == "The agent has already used"){
+            
+        }
     })
 
     /*

@@ -22,8 +22,6 @@ class Login_show extends Cdms_controller {
     * @Create Date  2564-12-07
     */
     public function login_show_ajax() {
-        session_start();
-        date_default_timezone_set("Asia/Bangkok");
         // load service model
         $m_ser = new M_cdms_service();
         // load container model
@@ -47,7 +45,6 @@ class Login_show extends Cdms_controller {
     * @Create Date  2564-12-07
     */
     public function login(){
-        session_start();
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         $data['username'] = $username;
@@ -71,7 +68,7 @@ class Login_show extends Cdms_controller {
 
     }
 
-     /*
+    /*
     * logout
     * Logout
     * @input    -
@@ -80,7 +77,6 @@ class Login_show extends Cdms_controller {
     * @Create Date  2564-12-22
     */
     public function logout(){
-        session_start();
         session_destroy();
         return $this->response->redirect(base_url('/Login_show/login_show_ajax'));
     }

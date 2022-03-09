@@ -8,7 +8,13 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+
+use App\Models\M_cdms_status_container;
+use App\Models\M_cdms_container_type;
+use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
+use App\Models\M_cdms_agent;
+use App\Models\M_cdms_size;
 use App\Models\M_cdms_car;
 
 /*
@@ -34,8 +40,14 @@ class Cdms_controller extends Controller
 	 * @var array
 	 */
 	protected $helpers = ['code'];
+	protected $m_size;
+	protected $m_cont;
+	protected $m_stac;
 	protected $m_dri;
     protected $m_car;
+	protected $m_con;
+	protected $m_agn;
+	
 
 	/**
 	 * Constructor.
@@ -49,9 +61,32 @@ class Cdms_controller extends Controller
 		parent::initController($request, $response, $logger);
 	}
 
+	/*
+    * __construct cdms_controller
+    * กำหนดค่าเริ่มต้น
+    * @input -
+    * @output -
+    * @author Kittipod
+    * @Create Date 2564-03-09
+	* @Editor Kittipod
+    * @Update Date 2564-03-09
+    */
+
 	public function __construct()
     {
+		//Start Session
+		session_start();
+
+		//Set Time Zone
+		date_default_timezone_set("Asia/Bangkok");
+
+		//Load Model
+		$this->m_stac = new M_cdms_status_container();
+		$this->m_cont = new M_cdms_container_type();
+		$this->m_con = new M_cdms_container();
 		$this->m_dri = new M_cdms_driver();
+		$this->m_agn = new M_cdms_agent();
+		$this->m_size = new M_cdms_size();
         $this->m_car = new M_cdms_car();
     }
 

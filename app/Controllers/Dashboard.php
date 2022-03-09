@@ -26,7 +26,6 @@ class Dashboard extends Cdms_controller
     */
     public function dashboard_show()
     {
-        date_default_timezone_set("Asia/Bangkok");
         $_SESSION['menu'] = 'Dashboard';
 
         // get all car type
@@ -147,7 +146,6 @@ class Dashboard extends Cdms_controller
     * @Create Date  2564-12-11
     */
     public function get_today_service() {
-        date_default_timezone_set("Asia/Bangkok");
         $today = date('Y-m-d');
         $m_ser = new M_cdms_service();
         $arr_today_service = $m_ser->get_by_departure_date($today);
@@ -163,9 +161,6 @@ class Dashboard extends Cdms_controller
     * @Create Date  2564-12-11
     */
     public function get_day($number_of_day = 15) {
-
-        // set time zone
-        date_default_timezone_set("Asia/Bangkok");
 
         // create array for collect date
         $arr_dates = array();
@@ -201,7 +196,6 @@ class Dashboard extends Cdms_controller
     * @Create Date  2564-12-11
     */
     public function get_number_export($date = NULL) {
-        date_default_timezone_set("Asia/Bangkok");
         $m_ser = new M_cdms_service();
         $today = date('Y-m-d');
         $today_time = date('Y-m-d H:i:s');
@@ -218,7 +212,6 @@ class Dashboard extends Cdms_controller
     * @Create Date  2564-12-11
     */
     public function get_number_drop($date = NULL) {
-        date_default_timezone_set("Asia/Bangkok");
         $today = date('Y-m-d');
         if ($date == $today) {
             $time = date("H:i:s");
