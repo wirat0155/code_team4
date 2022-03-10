@@ -22,9 +22,9 @@ class M_cdms_container_type extends Da_cdms_container_type {
     */
     public function get_all($type = 1) {
         if($type == 1){
-            $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1 ORDER BY cont_id DESC";
+            $sql = "SELECT cont_id, cont_name FROM $this->table WHERE cont_status = 1 ORDER BY cont_id ASC";
         }else if($type == 2){
-            $sql = "SELECT cont_id, cont_name FROM $this->table ORDER BY cont_id DESC";
+            $sql = "SELECT cont_id, cont_name FROM $this->table ORDER BY cont_id ASC";
         }
         return $this->db->query($sql)->getResult();
     }

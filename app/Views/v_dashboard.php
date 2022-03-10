@@ -240,9 +240,9 @@
                         $today = date('Y-m-d');
                         if (substr($arr_today_service[$i]->ser_departure_date, 0, 10) == $today) {
                           echo "Today, " . short_time($arr_today_service[$i]->ser_departure_date);
-                        } else if($arr_today_service[$i]->ser_departure_date == "0000-00-00 00:00:00" || $arr_today_service[$i]->ser_departure_date == NULL){
+                        } else if ($arr_today_service[$i]->ser_departure_date == "0000-00-00 00:00:00" || $arr_today_service[$i]->ser_departure_date == NULL) {
                           echo "-";
-                        }else{
+                        } else {
                           echo date_thai($arr_today_service[$i]->ser_departure_date);
                         }
                         ?>
@@ -277,23 +277,21 @@
   });
   //set up block
   const data = {
-    labels: [
-      'Dry Con. :    <?php echo $arr_num_cont[0] ?>',
-      'Reefer Con. :    <?php echo $arr_num_cont[1] ?>',
-      'Open Top Con. :    <?php echo $arr_num_cont[2] ?>',
-      'Flat-rack Con. :    <?php echo $arr_num_cont[3] ?>',
-      'ISO Tank Con. :    <?php echo $arr_num_cont[4] ?>',
-      'Ventilated Con. :    <?php echo $arr_num_cont[5] ?>'
-    ],
+    labels: <?php
+            echo "[";
+            for ($i = 0; $i < count($arr_num_cont) - 1; $i++) {
+              echo "'" . $arr_container_type[$i]->cont_name . ' ' . $arr_num_cont[$i] . "'";
+              echo ",";
+            }
+            echo "]";
+            ?>,
     datasets: [{
       label: 'Current container type usage',
       data: <?php
             echo "[";
-            for ($i = 0; $i < 6; $i++) {
+            for ($i = 0; $i < count($arr_num_cont) - 1; $i++) {
               echo $arr_num_cont[$i];
-              if ($i != 5) {
-                echo ",";
-              }
+              echo ",";
             }
             echo "]";
             ?>,
@@ -303,7 +301,11 @@
         '#f7ea48',
         '#2dc84d',
         '#147bd1',
-        '#753bbd'
+        '#753bbd',
+        '#ff928b',
+        '#ffd23f',
+        '#3bceac',
+        '#0ead69',
       ],
       hoverOffset: 5
     }]
@@ -481,8 +483,8 @@
       scales: {
         x: {
           title: {
-            display:true,
-            text:"Date",
+            display: true,
+            text: "Date",
           },
           grid: {
             color: 'rgba(112, 112, 112, 0.1)'
@@ -490,8 +492,8 @@
         },
         y: {
           title: {
-            display:true,
-            text:"Number",
+            display: true,
+            text: "Number",
           },
           grid: {
             color: 'rgba(112, 112, 112, 0.1)'
