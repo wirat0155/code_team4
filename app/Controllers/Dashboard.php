@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\M_cdms_car_type;
+use App\Models\M_cdms_container;
 use App\Models\M_cdms_container_type;
 use App\Models\M_cdms_size;
 use App\Models\M_cdms_status_container;
@@ -235,11 +236,15 @@ class Dashboard extends Cdms_controller
     */
     public function get_number_cont() {
         $arr_num_cont = array();
+        //get array container type
+        $m_cont = new M_cdms_container_type();
+        $data['arr_cont_id'] = $m_cont->get_all();
+        $count_cont_id = count($data['arr_cont_id']);
 
         $today_time = date('Y-m-d H:i:s');
         $m_ser = new M_cdms_service();
-        for ($i = 1; $i <= 6; $i++) {
-            $num_cont = $m_ser->get_number_cont($i , $today_time);
+        for ($i = 0; $i <= $count_cont_id; $i++) {
+            $num_cont = $m_ser->get_number_cont($data['arr_cont_id'][$i]->cont_id, $today_time);
 
             if ($num_cont->num_cont == NULL) {
                 array_push($arr_num_cont, 0);
@@ -248,6 +253,7 @@ class Dashboard extends Cdms_controller
                 array_push($arr_num_cont, $num_cont->num_cont);
             }
         }
+
         return $arr_num_cont;
     }
 }
