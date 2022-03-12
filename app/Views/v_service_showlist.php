@@ -744,8 +744,7 @@
 
                                                 <!-- Container number -->
                                                 <td onclick="service_detail(<?php echo $arr_service[$i]->ser_id ?>)">
-                                                    <?php echo $arr_service[$i]->con_number . ' id.' . $arr_service[$i]->ser_id ;
-                                                    ?>
+                                                    <?php echo $arr_service[$i]->con_number ?>
                                                 </td>
 
                                                 <!-- Status container  -->
