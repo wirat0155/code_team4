@@ -16,8 +16,10 @@ use App\Models\M_cdms_driver;
 use App\Models\M_cdms_agent;
 use App\Models\M_cdms_size;
 use App\Models\M_cdms_car;
+use App\Models\M_cdms_change_container_log;
 use App\Models\M_cdms_customer;
 use App\Models\M_cdms_service;
+use App\Models\M_cdms_status_container_log;
 
 /*
 * Cdms_controller
@@ -51,6 +53,7 @@ class Cdms_controller extends Controller
 	protected $m_cus;
 	protected $m_agn;
 	protected $m_ser;
+	protected $m_scl;
 	
 
 	/**
@@ -94,6 +97,7 @@ class Cdms_controller extends Controller
 		$this->m_cus = new M_cdms_customer();
         $this->m_car = new M_cdms_car();
 		$this->m_ser = new M_cdms_service();
+		$this->m_scl = new M_cdms_change_container_log();
     }
 
 	/*

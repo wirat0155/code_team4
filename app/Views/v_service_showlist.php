@@ -811,9 +811,6 @@
                                                     <?php if ($arr_service[$i]->ser_stap_id == 1) echo "<p class='pending'>Pending</p>" ?>
                                                     <?php if ($arr_service[$i]->ser_stap_id == 2) echo "<p class='paid'>Paid</p>" ?>
                                                     <?php if ($arr_service[$i]->ser_stap_id == 3) echo "<p class='npaid'>Overdue</p>" ?>
-                                                    <!-- <i class='spinner icon'></i> -->
-                                                    <!-- <i class='check icon'></i> --> 
-                                                    <!-- <i class='x icon'></i> -->
                                                     <input type='hidden' id='pay_status_<?php echo $arr_service[$i]->ser_id ?>' value="<?php echo $arr_service[$i]->ser_stap_id ?>">
                                                 </td>
 

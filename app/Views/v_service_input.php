@@ -55,52 +55,6 @@
     }
 </style>
 
-<?php
-    if ($_SESSION['service_input_error']) {
-        $ser_arrivals_date = $_SESSION['ser_arrivals_date'];
-        $ser_departure_date = $_SESSION['ser_departure_date'];
-        $ser_dri_id_in = $_SESSION['ser_dri_id_in'];
-        $ser_car_id_in = $_SESSION['ser_car_id_in'];
-        $ser_dri_id_out = $_SESSION['ser_dri_id_out'];
-        $ser_car_id_out = $_SESSION['ser_car_id_out'];
-        $ser_arrivals_location = $_SESSION['ser_arrivals_location'];
-        $ser_departure_location = $_SESSION['ser_departure_location'];
-
-        $con_id = $_SESSION['con_id'];
-        $con_number = $_SESSION['con_number'];
-        $con_max_weight = $_SESSION['con_max_weight'];
-        $con_tare_weight = $_SESSION['con_tare_weight'];
-        $con_net_weight = $_SESSION['con_net_weight'];
-        $con_cube = $_SESSION['con_cube'];
-        $con_size_id = $_SESSION['con_size_id'];
-        $con_cont_id = $_SESSION['con_cont_id'];
-        $con_agn_id = $_SESSION['con_agn_id'];
-        $con_stac_id = $_SESSION['con_stac_id'];
-        $ser_weight = $_SESSION['ser_weight'];
-        $size_width_out = $_SESSION['size_width_out'];
-        $size_length_out = $_SESSION['size_length_out'];
-        $size_height_out = $_SESSION['size_height_out'];
-
-        $agn_id = $_SESSION['agn_id'];
-        $agn_company_name = $_SESSION['agn_company_name'];
-        $agn_firstname = $_SESSION['agn_firstname'];
-        $agn_lastname = $_SESSION['agn_lastname'];
-        $agn_tel = $_SESSION['agn_tel'];
-        $agn_address = $_SESSION['agn_address'];
-        $agn_tax = $_SESSION['agn_tax'];
-        $agn_email = $_SESSION['agn_email'];
-
-        $cus_id = $_SESSION['cus_id'];
-        $cus_company_name = $_SESSION['cus_company_name'];
-        $cus_firstname = $_SESSION['cus_firstname'];
-        $cus_lastname = $_SESSION['cus_lastname'];
-        $cus_branch = $_SESSION['cus_branch'];
-        $cus_tel = $_SESSION['cus_tel'];
-        $cus_address = $_SESSION['cus_address'];
-        $cus_tax = $_SESSION['cus_tax'];
-        $cus_email = $_SESSION['cus_email'];
-    }
-?>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -176,8 +130,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
+                                            
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="con_id" onchange="get_container_information(); check_con_id();" value="<?php if ($_SESSION['service_input_error']) echo $con_id ?>">
+                                                <input type="hidden" name="con_id" onchange="get_container_information(); check_con_id();" value="<?php if ($service_input_error) echo $con_id ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select container</div>
                                                 <div class="menu">
@@ -197,16 +152,16 @@
                                                 }
                                             </script>
 
-                                            <label class="error"><?php if ($_SESSION['con_number_error'] != '') echo $_SESSION['con_number_error']?></label>
+                                            <label class="error"><?php if ($con_number_error != '') echo $con_number_error ?></label>
                                         </div>
                                     </div>
 
                                     <?php
-                                    $type = 2;
-                                        if ($_SESSION['service_input_error']){
+                                        $type = 2;
+                                        if ($service_input_error){
                                             $type = 1;
                                         }
-                                    require_once dirname(__FILE__) . '/form/container_form.php';
+                                        require_once dirname(__FILE__) . '/form/container_form.php';
                                     ?>
                                 </div>
                             </div>
@@ -220,12 +175,12 @@
                                         <!-- Container number -->
                                         <div class="col-md-2 input-label">
                                             <div class="form-group">
-                                                <label for="agn_company_name">Company name </label>
+                                                <label for="agn_company_name">Company name <?= $sgn_id ?></label>
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php if ($_SESSION['service_input_error']) echo $agn_id; else if ($_SESSION['service_input_error'] && $agn_id == '') echo "new" ?>">
+                                                <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php if ($service_input_error && $agn_id == '') echo "new" ; else if ($service_input_error) echo $agn_id ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select agent</div>
                                                 <div class="menu">
@@ -240,20 +195,20 @@
                                             <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name" hidden value="<?php echo $agn_company_name ?>">
 
                                             <script>
-                                                if (<?php echo $_SESSION['service_input_error'] && $agn_id == '' ?>) {
+                                                if (<?php echo $service_input_error && $agn_id == '' ?>) {
                                                     $('input[name="agn_company_name"]').prop('hidden', false);
                                                 }
                                             </script>
-                                            <label class="error"><?php if ($_SESSION['agn_company_name_error'] != '') echo $_SESSION['agn_company_name_error']?></label>
+                                            <label class="error"><?php if ($agn_company_name_error != '') echo $agn_company_name_error ?></label>
                                         </div>
 
                                         <!-- Agent form with readonly -->
                                         <?php 
-                                        $type = 2;
-                                        if ($_SESSION['service_input_error']){
-                                            $type = 1;
-                                        }
-                                        require_once dirname(__FILE__) . '/form/agent_form.php';
+                                            $type = 2;
+                                            if ($service_input_error){
+                                                $type = 1;
+                                            }
+                                            require_once dirname(__FILE__) . '/form/agent_form.php';
                                         ?>
                                         
                             <div id="customer_section" style="display: none">
@@ -272,7 +227,7 @@
 
                                         <div class="col-md-6" style="margin-right: 10%;">
                                             <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 96.3%">
-                                                <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();" value="<?php if ($_SESSION['service_input_error']) echo $cus_id ?>">
+                                                <input type="hidden" name="cus_id" onchange="get_customer_information(); check_cus_id();" value="<?php if ($service_input_error) echo $cus_id ?>">
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">Select customer</div>
                                                 <div class="menu">
@@ -295,7 +250,7 @@
                                                     $('input[name="cus_company_name"]').prop('hidden', false);
                                                 }
                                             </script>
-                                            <label class="error"><?php if ($_SESSION['cus_company_name_error'] != '') echo $_SESSION['cus_company_name_error']?></label>
+                                            <label class="error"><?php if ($cus_company_name_error != '') echo $cus_company_name_error ?></label>
                                         </div>
 
                                         <style>
@@ -312,7 +267,7 @@
                                         <!-- For form with readonly -->
                                         <?php
                                             $type = 2;
-                                            if ($_SESSION['service_input_error']){
+                                            if ($service_input_error){
                                                 $type = 1;
                                             }
                                             require_once dirname(__FILE__) . '/form/customer_form.php';

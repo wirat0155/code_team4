@@ -155,83 +155,103 @@ class Service_input extends Cdms_controller {
             exit(0);
         }
         
-        // if ($is_new_customer) {
-        //     $this->m_cus->insert(
-        //         $obj["cus_company_name"],
-        //         $obj["cus_firstname"],
-        //         $obj["cus_lastname"],
-        //         $obj["cus_branch"],
-        //         $obj["cus_tel"],
-        //         $obj["cus_address"],
-        //         $obj["cus_tax"],
-        //         $obj["cus_email"]
-        //     );
-        //     $obj["ser_cus_id"] = $this->m_cus->get_by_name($obj["cus_company_name"], $obj["cus_branch"]);
-        //     $obj["ser_cus_id"] = $obj["ser_cus_id"][0]->cus_id;
-        // }
+        if ($is_new_customer) {
+            $this->m_cus->insert(
+                $obj["cus_company_name"],
+                $obj["cus_firstname"],
+                $obj["cus_lastname"],
+                $obj["cus_branch"],
+                $obj["cus_tel"],
+                $obj["cus_address"],
+                $obj["cus_tax"],
+                $obj["cus_email"]
+            );
+            $obj["ser_cus_id"] = $this->m_cus->get_by_name($obj["cus_company_name"], $obj["cus_branch"]);
+            $obj["ser_cus_id"] = $obj["ser_cus_id"][0]->cus_id;
+        }
 
-        // if ($is_new_agent) {
-        //     $this->m_agn->insert($agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
-        //     $get_ser_agn_id = $m_agn->get_by_company_name($agn_company_name);
-        //     $con_agn_id = $get_ser_agn_id[0]->agn_id;
-        // }
+        if ($is_new_agent) {
+            $this->m_agn->insert(
+                $obj["agn_company_name"],
+                $obj["agn_firstname"],
+                $obj["agn_lastname"],
+                $obj["agn_tel"],
+                $obj["agn_address"],
+                $obj["agn_tax"],
+                $obj["agn_email"]
+            );
+            $get_ser_agn_id = $this->m_agn->get_by_company_name($obj["agn_company_name"]);
+            $obj["con_agn_id"] = $get_ser_agn_id[0]->agn_id;
+        }
 
-        // if ($is_new_container) {
-        //     $this->m_con->insert(
-        //         $obj["con_number"],
-        //         $obj["con_max_weight"],
-        //         $obj["con_tare_weight"],
-        //         $obj["con_net_weight"],
-        //         $obj["con_cube"],
-        //         $obj["con_size_id"],
-        //         $obj["con_cont_id"],
-        //         $obj["con_agn_id"],
-        //         $obj["con_stac_id"]
-        //     );
+        if ($is_new_container) {
+            $this->m_con->insert(
+                $obj["con_number"],
+                $obj["con_max_weight"],
+                $obj["con_tare_weight"],
+                $obj["con_net_weight"],
+                $obj["con_cube"],
+                $obj["con_size_id"],
+                $obj["con_cont_id"],
+                $obj["con_agn_id"],
+                $obj["con_stac_id"]
+            );
 
-        //     $obj["ser_con_id"] = $this->m_con->get_by_con_number($obj["con_number"]);
-        //     $obj["ser_con_id"] =$obj["ser_con_id"][0]->con_id;
-        // }
+            $obj["ser_con_id"] = $this->m_con->get_by_con_number($obj["con_number"]);
+            $obj["ser_con_id"] =$obj["ser_con_id"][0]->con_id;
+        }
 
-        // if($container_action == "update") {
-        //     $this->m_con->container_update(
-        //         $obj["con_id"],
-        //         $obj["con_number"],
-        //         $obj["con_max_weight"],
-        //         $obj["con_tare_weight"],
-        //         $obj["con_net_weight"],
-        //         $obj["con_cube"],
-        //         $obj["con_size_id"],
-        //         $obj["con_cont_id"],
-        //         $obj["con_agn_id"],
-        //         $obj["con_stac_id"]
-        //     );
-        // }
+        if($container_action == "update") {
+            $this->m_con->container_update(
+                $obj["con_id"],
+                $obj["con_number"],
+                $obj["con_max_weight"],
+                $obj["con_tare_weight"],
+                $obj["con_net_weight"],
+                $obj["con_cube"],
+                $obj["con_size_id"],
+                $obj["con_cont_id"],
+                $obj["con_agn_id"],
+                $obj["con_stac_id"]
+            );
+        }
 
-        // //insert service
-        // $m_ser->service_insert($ser_departure_date, $ser_car_id_in, $ser_arrivals_date, $ser_dri_id_in,$ser_dri_id_out, $ser_car_id_out, $ser_arrivals_location, $ser_departure_location, $ser_weight, $ser_con_id, $ser_stac_id, $ser_cus_id);
+        //insert service
+        $this->m_ser->service_insert(
+            $obj["ser_departure_date"],
+            $obj["ser_car_id_in"],
+            $obj["ser_arrivals_date"],
+            $obj["ser_dri_id_in"],
+            $obj["ser_dri_id_out"],
+            $obj["ser_car_id_out"],
+            $obj["ser_arrivals_location"],
+            $obj["ser_departure_location"],
+            $obj["ser_weight"],
+            $obj["ser_con_id"],
+            $obj["con_stac_id"],
+            $obj["ser_cus_id"],
+        );
 
-        // $max_ser_id = $m_ser->get_max_id();
+        $max_ser_id = $this->m_ser->get_max_id();
 
-        // $m_scl = new M_cdms_status_container_log();
-        // $m_scl->insert($max_ser_id->max_ser_id, $ser_stac_id);
+        $this->m_scl->insert($max_ser_id->max_ser_id, $obj["ser_stac_id"]);
 
-        // if($max_ser_id->max_ser_id < 100){
-        //     $format_invoice = "0" . $max_ser_id->max_ser_id;
-        // }else if($max_ser_id->max_ser_id < 10){
-        //     $format_invoice = "0" . "0" . $max_ser_id->max_ser_id;
-        // }else{
-        //     $format_invoice = $max_ser_id->max_ser_id;
-        // }
-        // $today = date("ymd");
-        // $ser_receipt = "RE" . $today . $format_invoice;
-        // $ser_invoice = "INV" . $today . $format_invoice;
+        if($max_ser_id->max_ser_id < 100){
+            $format_invoice = "0" . $max_ser_id->max_ser_id;
+        }else if($max_ser_id->max_ser_id < 10){
+            $format_invoice = "0" . "0" . $max_ser_id->max_ser_id;
+        }else{
+            $format_invoice = $max_ser_id->max_ser_id;
+        }
+        $today = date("ymd");
+        $ser_receipt = "RE" . $today . $format_invoice;
+        $ser_invoice = "INV" . $today . $format_invoice;
        
-        // // print_r($ser_receipt);
-        // // print_r($ser_invoice);
-        // $m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);
-        // // go to service list page
-        // return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
+        // print_r($ser_receipt);
+        // print_r($ser_invoice);
+        $this->m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);
+        // go to service list page
+        return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 
 }
