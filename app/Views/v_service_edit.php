@@ -82,7 +82,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a class="cl-blue" href="<?php echo base_url() . '/Service_show/service_detail/' . $obj_service[0]->ser_id ?>">Service
+                        <a class="cl-blue" href="<?php echo base_url() . '/Service_show/service_detail/' . $ser_id ?>">Service
                             details</a>
                     </li>
                     <li class="separator">
@@ -123,7 +123,7 @@
                                 <div class="row px-5">
 
                                     <!-- Start service form -->
-                                    <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
+                                    <input type='hidden' name='ser_id' value="<?php echo $ser_id ?>">
 
                                     <div class="col-md-6">
                                         <div class="row mb-3">
@@ -132,7 +132,7 @@
                                             </div>
     
                                             <div class="col-12 col-sm-8">
-                                                <input class="form-control" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_departure_date)?>">
+                                                <input class="form-control" type="datetime-local" name="ser_departure_date" value="<?php echo datetime_format_value($ser_departure_date)?>">
                                             </div>
                                         </div>
                                     </div>
@@ -146,7 +146,7 @@
                                             </div>
 
                                             <div class="col-12 col-sm-8">
-                                                <input class="form-control" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($obj_service[0]->ser_arrivals_date)?>">
+                                                <input class="form-control" type="datetime-local" name="ser_arrivals_date" value="<?php echo datetime_format_value($ser_arrivals_date)?>">
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                             </div>
 
                                             <div class="col-12 col-sm-8">
-                                                <input class="form-control" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($obj_service[0]->ser_actual_departure_date) ?>">
+                                                <input class="form-control" type="datetime-local" name="ser_actual_departure_date" value="<?php echo datetime_format_value($ser_actual_departure_date) ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@
                                                                 echo "selected";
                                                         }
                                                         else {
-                                                            if ($obj_service[0]->ser_dri_id_in == $arr_driver[$i]->dri_id)
+                                                            if ($ser_dri_id_in == $arr_driver[$i]->dri_id)
                                                                 echo "selected";
                                                         }
                                                     ?>
@@ -208,7 +208,7 @@
                                                                 echo "selected";
                                                         }
                                                         else {
-                                                            if ($obj_service[0]->ser_dri_id_out == $arr_driver[$i]->dri_id)
+                                                            if ($ser_dri_id_out == $arr_driver[$i]->dri_id)
                                                                 echo "selected";
                                                         }
                                                     ?>
@@ -239,7 +239,7 @@
                                                                 echo "selected";
                                                         }
                                                         else {
-                                                            if ($arr_car[$i]->car_id == $obj_service[0]->ser_car_id_in) 
+                                                            if ($arr_car[$i]->car_id == $ser_car_id_in) 
                                                                 echo "selected";
                                                         }
                                                     ?>
@@ -265,15 +265,8 @@
                                                     <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
                                                     <option value="<?php echo $arr_car[$i]->car_id ?>" 
                                                     <?php 
-                                                        if ($_SESSION['service_edit_error']) {
-                                                            if ($arr_car[$i]->car_id == $ser_car_id_out)
-                                                                echo "selected";
-                                                        }
-                                                        else {
-                                                            if ($arr_car[$i]->car_id == $obj_service[0]->ser_car_id_out) 
-                                                                echo "selected";
-                                                        }
-                                                    ?>>
+                                                        if ($arr_car[$i]->car_id == $ser_car_id_out)
+                                                            echo " selected" ?> >
                                                         <?php echo 'คันที่ ' . $arr_car[$i]->car_number . ' ทะเบียน ' . $arr_car[$i]->car_code ?>
                                                     </option>
                                                     <?php } ?>
@@ -293,7 +286,7 @@
                                                 if ($_SESSION['service_edit_error'])
                                                     echo $ser_arrivals_location;
                                                 else 
-                                                    echo trim($obj_service[0]->ser_arrivals_location);
+                                                    echo trim($ser_arrivals_location);
                                             ?>">
                                             </div>
                                         </div>
@@ -310,7 +303,7 @@
                                                     if ($_SESSION['service__error'])
                                                         echo $ser_departure_location;
                                                     else 
-                                                        echo $obj_service[0]->ser_departure_location;
+                                                        echo $ser_departure_location;
                                                 ?>">
                                             </div>
                                         </div>
@@ -330,7 +323,7 @@
                                                 <select class="form-control" name="chl_ser_id">
                                                     <option value="not change">Not change container</option>
                                                     <?php for ($i = 0; $i < count($opt_service); $i++) { ?>
-                                                        <?php if ($opt_service[$i]->ser_id != $obj_service[0]->ser_id) { ?>
+                                                        <?php if ($opt_service[$i]->ser_id != $ser_id) { ?>
                                                             <option value="<?php echo $opt_service[$i]->ser_id ?>">
                                                                 <?php echo $opt_service[$i]->con_number . ' (' . $opt_service[$i]->cont_name.')' ?>
                                                             </option>

@@ -172,10 +172,11 @@ class M_cdms_service extends Da_cdms_service
                 LEFT JOIN cdms_customer ON ser_cus_id = cus_id
                 LEFT JOIN cdms_container ON ser_con_id = con_id
                 LEFT JOIN cdms_container_type ON con_cont_id = cont_id
+                LEFT JOIN cdms_size ON con_size_id = size_id
                 LEFT JOIN cdms_status_container ON con_stac_id = stac_id
                 LEFT JOIN cdms_agent ON con_agn_id = agn_id
                 WHERE ser_id ='$ser_id' ";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*

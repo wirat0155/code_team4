@@ -8,61 +8,6 @@
 */
 -->
 
-<?php
-    if ($obj_container != NULL) {
-        $con_id = $obj_container[0]->con_id;
-        $con_number = $obj_container[0]->con_number;
-        $con_old_number = $con_number;
-        $con_stac_id = $obj_container[0]->con_stac_id;
-        $con_cont_id = $obj_container[0]->con_cont_id;
-        $con_max_weight = $obj_container[0]->con_max_weight;
-        $con_net_weight = $obj_container[0]->con_net_weight;
-        $con_tare_weight = $obj_container[0]->con_tare_weight;
-        $con_cube = $obj_container[0]->con_cube;
-        $con_size_id = $obj_container[0]->con_size_id;
-
-        $size_width_out = $obj_container[0]->size_width_out;
-        $size_length_out = $obj_container[0]->size_length_out;
-        $size_height_out = $obj_container[0]->size_height_out;
-    }
-    else {
-        if($con_id == NULL){
-            $con_id = $arr_container[0]->con_id;
-            $con_number = $arr_container[0]->con_number;
-            $con_old_number = $con_number;
-            $con_stac_id = $arr_container[0]->con_stac_id;
-            $con_cont_id = $arr_container[0]->con_cont_id;
-            $con_max_weight = $arr_container[0]->con_max_weight;
-            $con_net_weight = $arr_container[0]->con_net_weight;
-            $con_tare_weight = $arr_container[0]->con_tare_weight;
-            $con_cube = $arr_container[0]->con_cube;
-            $con_size_id = $arr_container[0]->con_size_id;
-
-            $size_width_out = $arr_container[0]->size_width_out;
-            $size_length_out = $arr_container[0]->size_length_out;
-            $size_height_out = $arr_container[0]->size_height_out;
-        }
-    }
-    
-    if (isset($_SESSION['con_id'])) {
-        $con_id = $_SESSION['con_id'];
-        $con_number = $_SESSION['con_number'];
-        $con_max_weight = $_SESSION['con_max_weight'];
-        $con_tare_weight = $_SESSION['con_tare_weight'];
-        $con_net_weight = $_SESSION['con_net_weight'];
-        $con_cube = $_SESSION['con_cube'];
-        $con_size_id = $_SESSION['con_size_id'];
-        $con_cont_id = $_SESSION['con_cont_id'];
-        $con_agn_id = $_SESSION['con_agn_id'];
-        $con_stac_id = $_SESSION['con_stac_id'];
-        $ser_weight = $_SESSION['ser_weight'];
-        $size_width_out = $_SESSION['size_width_out'];
-        $size_length_out = $_SESSION['size_length_out'];
-        $size_height_out = $_SESSION['size_height_out'];
-    }
-?>
-
-
 <div class="row mt-3 mb-4 ml-2">
     <h3>Container</h3>
 </div>
@@ -104,7 +49,7 @@
                         </div>
                     </div>
                     <input class="form-control mt-5" name="con_number" pattern="[A-Za-z]{4} [0-9]{5} 0" placeholder="ABCD 12345 0" <?php if ($con_id != "new" && $con_id != '') echo "hidden" ?> value="<?php echo $con_number ?>">
-                    <label class="error mt-5"><?php echo $con_number_error ?></label>
+                    <label class="error mt-2"><?php echo $con_number_error ?></label>
                 </div>
             </div>
             <?php endif; ?>
@@ -206,7 +151,7 @@
                     <b>Current weight (t) :</b>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" type="number" step="0.01" name="ser_weight" value="<?php echo $obj_service[0]->ser_weight ?>" placeholder="10">
+                    <input class="form-control" type="number" step="0.01" name="ser_weight" value="<?php echo $ser_weight ?>" placeholder="10">
                 </div>
             </div>
         </div>

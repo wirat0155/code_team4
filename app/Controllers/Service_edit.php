@@ -24,6 +24,7 @@ class Service_edit extends Cdms_controller
             $data["agn_company_name_error"] = "";
             $data["cus_company_name_error"] = "";
             $data["cus_branch_error"] = "";
+
         }
         $_SESSION['menu'] = 'Service_show';
 
@@ -32,20 +33,69 @@ class Service_edit extends Cdms_controller
         $data['arr_status_container'] = $this->m_stac->get_all();
         $data['arr_driver'] = $this->m_dri->get_all();
         $data['arr_car'] = $this->m_car->get_all();
-        $data['obj_service'] = $this->m_ser->get_by_id($ser_id);
-        $data['obj_customer'] = $this->m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
         $data['arr_cus'] = $this->m_cus->get_all();
-        $data['obj_container'] = $this->m_con->get_by_id($data['obj_service'][0]->ser_con_id);
         $data['arr_con'] = $this->m_con->get_all();
-        $data['obj_agent'] = $this->m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
         $data['arr_agn'] = $this->m_agn->get_all();
-        $obj_container = $data['obj_container'];
+        
+        $data['obj_service'] = $this->m_ser->get_by_id($ser_id);
+        // echo "<pre>";
+        // print_r($data["obj_service"]);
+        // echo "</pre>";
+        
+        $data["ser_id"] = $data["obj_service"]->ser_id;
+        $data["ser_arrivals_date"] = $data["obj_service"]->ser_arrivals_date;
+        $data["ser_departure_date"] = $data["obj_service"]->ser_departure_date;
+        $data["ser_actual_departure_date"] = $data["obj_service"]->ser_actual_departure_date;
+        $data["ser_dri_id_in"] = $data["obj_service"]->ser_dri_id_in;
+        $data["ser_dri_id_out"] = $data["obj_service"]->ser_dri_id_out;
+        $data["ser_car_id_in"] = $data["obj_service"]->ser_car_id_in;
+        $data["ser_car_id_out"] = $data["obj_service"]->ser_car_id_out;
+        $data["ser_arrivals_location"] = $data["obj_service"]->ser_arrivals_location;
+        $data["ser_departure_location"] = $data["obj_service"]->ser_departure_location;
+        $data["ser_weight"] = $data["obj_service"]->ser_weight;
+        $data["ser_stac_id"] = $data["obj_service"]->ser_stac_id;
+        
+        $data["con_id"] = $data["obj_service"]->con_id;
+        $data["con_number"] = $data["obj_service"]->con_number;
+        $data["con_stac_id"] = $data["obj_service"]->ser_stac_id;
+        $data["con_cont_id"] = $data["obj_service"]->con_cont_id;
+        $data["con_max_weight"] = $data["obj_service"]->con_max_weight;
+        $data["con_tare_weight"] = $data["obj_service"]->con_tare_weight;
+        $data["con_net_weight"] = $data["obj_service"]->con_net_weight;
+        $data["con_cube"] = $data["obj_service"]->con_cube;
+        $data["con_size_id"] = $data["obj_service"]->con_size_id;
+        $data["size_width_out"] = $data["obj_service"]->size_width_out;
+        $data["size_length_out"] = $data["obj_service"]->size_length_out;
+        $data["size_height_out"] = $data["obj_service"]->size_height_out;        
+        $data["con_agn_id"] = $data["obj_service"]->con_agn_id;
 
+        $data["cus_id"] = $data["obj_service"]->cus_id;
+        $data["cus_company_name"] = $data["obj_service"]->cus_company_name;
+        $data["cus_firstname"] = $data["obj_service"]->cus_firstname;
+        $data["cus_lastname"] = $data["obj_service"]->cus_lastname;
+        $data["cus_branch"] = $data["obj_service"]->cus_branch;
+        $data["cus_tel"] = $data["obj_service"]->cus_tel;
+        $data["cus_address"] = $data["obj_service"]->cus_address;
+        $data["cus_tax"] = $data["obj_service"]->cus_tax;
+        $data["cus_email"] = $data["obj_service"]->cus_email;
+
+        $data["agn_id"] = $data["obj_service"]->agn_id;
+        $data["agn_company_name"] = $data["obj_service"]->agn_company_name;
+        $data["agn_firstname"] = $data["obj_service"]->agn_firstname;
+        $data["agn_lastname"] = $data["obj_service"]->agn_lastname;
+        $data["agn_tel"] = $data["obj_service"]->agn_tel;
+        $data["agn_address"] = $data["obj_service"]->agn_address;
+        $data["agn_tax"] = $data["obj_service"]->agn_tax;
+        $data["agn_email"] = $data["obj_service"]->agn_email;
+        
+
+        $data['obj_agent'] = $this->m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
+        $obj_container = $data['obj_container'];
         $data['opt_service'] = $this->m_ser->get_change_service_option(
-            $obj_container[0]->con_cont_id,
-            $obj_container[0]->con_size_id,
-            $obj_container[0]->con_agn_id,
-            $ser_id
+            $data["con_cont_id"],
+            $data["con_size_id"],
+            $data["con_agn_id"],
+            $data["ser_id"]
         );
 
         $this->output('v_service_edit', $data);
