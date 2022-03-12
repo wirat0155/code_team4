@@ -307,7 +307,7 @@
 
                                             <div class="col-12 col-sm-8">
                                                 <input class="form-control" type="text" name="ser_departure_location" placeholder="สถานที่ปลายทาง" value="<?php 
-                                                    if ($_SESSION['service_edit_error'])
+                                                    if ($_SESSION['service__error'])
                                                         echo $ser_departure_location;
                                                     else 
                                                         echo $obj_service[0]->ser_departure_location;
@@ -1089,6 +1089,7 @@
          */
         function show_customer_information(customer) {
             $('input[name="cus_branch"]').val(customer[0]['cus_branch']);
+            $('input[name="old_cus_branch"]').val(customer[0]['cus_branch']);
             $('textarea[name="cus_address"]').val(customer[0]['cus_address']);
             $('input[name="cus_tax"]').val(customer[0]['cus_tax']);
             $('input[name="cus_firstname"]').val(customer[0]['cus_firstname']);
