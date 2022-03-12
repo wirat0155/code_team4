@@ -43,7 +43,8 @@
 
                 <div class="col-12 col-sm-6">
                     <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 90%">
-                        <input type="hidden" name="agn_id" onchange="get_agent_information();" value="<?php echo $agn_id ?>">
+                        <input type="hidden" name="agn_id" onchange="get_agent_information();" 
+                        value="<?php if ($agn_id == 'new' || $agn_id == '') echo "new"; else echo $agn_id ?>">
                         <i class="dropdown icon"></i>
                         <div class="default text">Select agent</div>
                         <div class="menu">
@@ -57,7 +58,7 @@
                     <label class="error"></label>
                     <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name"
                     <?php if($agn_id != 'new' && $agn_id != '') echo "hidden" ?> value="<?php if($agn_id == 'new' || $agn_id == '') echo $agn_company_name ?>">
-                    <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
+                    <label class="error"><?php echo $agn_company_name_error ?></label>
                 </div>
             </div>
             <?php endif; ?>

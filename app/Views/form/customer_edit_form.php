@@ -64,7 +64,7 @@
                     </div>
                     <label class="error"></label>
                     <input class="form-control mt-5" name="cus_company_name" id="cus_company_name" placeholder="Company name" <?php if ($cus_id != "new") echo "hidden"?> value="<?php if ($cus_id == "new") echo $cus_company_name?>">
-                    <label class="error"><?php echo $_SESSION['cus_company_name_error']?></label>
+                    <label class="error"><?php echo $cus_company_name_error ?></label>
                 </div>
             </div>
             <?php endif; ?>
@@ -78,7 +78,7 @@
                 <div class="col-12 col-sm-6">
                     <input class="form-control" id="cus_branch" name="cus_branch" placeholder="Branch" value="<?php echo $cus_branch ?>">
                     <input name="old_cus_branch" value="<?php echo $old_cus_branch ?>" hidden>
-                    <label class="error"><?php echo $_SESSION['cus_branch_error'] ?></label>
+                    <label class="error"><?php echo $cus_branch_error ?></label>
                 </div>
             </div>
 
