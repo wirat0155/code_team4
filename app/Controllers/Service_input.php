@@ -16,21 +16,13 @@ class Service_input extends Cdms_controller {
     * @Create Date  2564-08-06
     */
     public function service_input($section_error = '', $data = []) {
-        if (!isset($_SESSION['service_input_error'])) {
-            $_SESSION['service_input_error'] = false;
-        }
-        $_SESSION['menu'] = 'Service_show';
-        if (!isset($_SESSION['con_number_error']) || $_SESSION['con_number_error'] == '') {
-            $_SESSION['con_number_error'] = '';
-        }
-        if (!isset($_SESSION['agn_company_name_error']) || $_SESSION['agn_company_name_error'] == '') {
-            $_SESSION['agn_company_name_error'] = '';
-        }
-        if (!isset($_SESSION['cus_company_name_error']) || $_SESSION['cus_company_name_error'] == '') {
-            $_SESSION['cus_company_name_error'] = '';
-        }
-        if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
-            $_SESSION['cus_branch_error'] = '';
+        // First set error to ""
+        if (count($data) == 0) {
+            $data["service_input_error"] = false;
+            $data["con_number_error"] = "";
+            $data["agn_company_name_error"] = "";
+            $data["cus_company_name_error"] = "";
+            $data["cus_branch_error"] = "";
         }
 
         $data['arr_size'] = $this->m_size->get_all();
@@ -47,11 +39,11 @@ class Service_input extends Cdms_controller {
         // print_r($data['arr_cus']);
         // Return service input page with section_error
         // 2 = Container number dubplicate
-        // 3 = Agent duplicate
-        // 4 = Customer dublicate
+        // 3 = Agent company name duplicate
+        // 4 = Customer company name dublicate
         $data['section_error'] = $section_error;
 
-        // call service input view
+        // show service input view
         $this->output('v_service_input', $data);
     }
 
