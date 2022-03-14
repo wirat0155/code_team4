@@ -59,6 +59,7 @@ class Service_input extends Cdms_controller {
     */
     public function service_insert() {
         $obj = $this->request->getPost();
+        // echo "<pre>"; print_r($obj); echo "</pre>";
         $data = $obj;
         if($obj["ser_car_id_in"] == ''){
             $get_ser_car_id_in = $this->m_dri->get_by_id($obj["ser_dri_id_in"]);
@@ -88,6 +89,7 @@ class Service_input extends Cdms_controller {
         }
         else {
             $get_ser_cus_id = $this->m_cus->get_by_name($obj["cus_company_name"], $obj["cus_branch"]);
+            // print_r($get_ser_cus_id);
             if (count($get_ser_cus_id) == 0) {
                 $is_new_customer = true;
             }
@@ -169,7 +171,7 @@ class Service_input extends Cdms_controller {
                 $obj["cus_email"]
             );
             $obj["ser_cus_id"] = $this->m_cus->get_by_name($obj["cus_company_name"], $obj["cus_branch"]);
-            $obj["ser_cus_id"] = $obj["ser_cus_id"]->cus_id;
+            $obj["ser_cus_id"] = $obj["ser_cus_id"][0]->cus_id;
         }
 
         if ($is_new_agent) {
@@ -183,7 +185,7 @@ class Service_input extends Cdms_controller {
                 $obj["agn_email"]
             );
             $get_ser_agn_id = $this->m_agn->get_by_company_name($obj["agn_company_name"]);
-            $obj["con_agn_id"] = $get_ser_agn_id->agn_id;
+            $obj["con_agn_id"] = $get_ser_agn_id[0]->agn_id;
         }
 
         if ($is_new_container) {
@@ -200,7 +202,7 @@ class Service_input extends Cdms_controller {
             );
 
             $obj["ser_con_id"] = $this->m_con->get_by_con_number($obj["con_number"]);
-            $obj["ser_con_id"] =$obj["ser_con_id"]->con_id;
+            $obj["ser_con_id"] =$obj["ser_con_id"][0]->con_id;
         }
 
         if($container_action == "update") {

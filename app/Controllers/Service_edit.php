@@ -266,7 +266,7 @@ class Service_edit extends Cdms_controller
             );
             // get new agn_id
             $get_ser_agn_id = $this->m_agn->get_by_company_name($obj["agn_company_name"]);
-            $obj["con_agn_id"] = $get_ser_agn_id->agn_id;
+            $obj["con_agn_id"] = $get_ser_agn_id[0]->agn_id;
         }
         if ($is_new_container) {
             $this->m_con->insert(
@@ -283,7 +283,7 @@ class Service_edit extends Cdms_controller
 
             // get new con_id
             $get_ser_con_id = $this->m_con->get_by_con_number($obj["con_number"]);
-            $obj["ser_con_id"] = $get_ser_con_id->con_id;
+            $obj["ser_con_id"] = $get_ser_con_id[0]->con_id;
         }
         if ($is_update_container) {
             $obj["ser_con_id"] = $obj["con_id"];

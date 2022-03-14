@@ -90,7 +90,7 @@ class M_cdms_customer extends Da_cdms_customer {
         }
         
         // return as array
-        return $this->db->query($sql)->getRow();
+        return $this->db->query($sql)->getResult();
     }
 
     /*
