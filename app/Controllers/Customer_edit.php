@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\M_cdms_customer;
-
 /*
 * Customer_edit
 * show customer edit page, update customer
@@ -20,9 +18,7 @@ class Customer_edit extends Cdms_controller {
     * @Create Date  2564-08-06
     */
     public function customer_edit($cus_id) {
-        // load customer model
-        $m_cus = new M_cdms_customer;
-        
+
         $_SESSION['menu'] = 'Customer_show';
         if (!isset($_SESSION['cus_branch_error']) || $_SESSION['cus_branch_error'] == '') {
             $_SESSION['cus_branch_error'] = '';
@@ -31,7 +27,7 @@ class Customer_edit extends Cdms_controller {
             $_SESSION['cus_company_name_error'] = '';
         }
 
-        $data['arr_customer'] = $m_cus->get_by_id($cus_id);
+        $data['obj_customer'] = $this->m_cus->get_by_id($cus_id);
         $this->output('v_customer_edit', $data);
     }
     /*
@@ -43,8 +39,6 @@ class Customer_edit extends Cdms_controller {
     * @Create Date  2564-08-06
     */
     public function customer_update() {
-        // load customer model
-        $m_cus = new M_cdms_customer;
 
         // get customer information from edit form
         $cus_id = $this->request->getPost('cus_id');
@@ -61,7 +55,7 @@ class Customer_edit extends Cdms_controller {
 
         // user change cus_company_name and cus_branch
         if (!($cus_company_name == $old_cus_company_name && $cus_branch == $old_cus_branch)) {
-            $obj_customer = $m_cus->get_by_name($cus_company_name, $cus_branch);
+            $obj_customer = $this->m_cus->get_by_name($cus_company_name, $cus_branch);
             if (count($obj_customer)) {
                 // duplicate by cus_company_name
                 if ($cus_branch == '') {
@@ -91,7 +85,7 @@ class Customer_edit extends Cdms_controller {
         }
 
         // updating customer
-        $m_cus->customer_update($cus_id, $cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
+        $this->m_cus->customer_update($cus_id, $cus_company_name, $cus_firstname, $cus_lastname, $cus_branch, $cus_tel, $cus_address, $cus_tax, $cus_email);
         $_SESSION['cus_branch_error'] = '';
         $_SESSION['cus_company_name_error'] = '';
         unset($_SESSION['cus_id']);

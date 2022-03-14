@@ -70,7 +70,7 @@
             <div class="page-inner">
                 <div class="float-right ml-auto mr-4" style='margin-top: 10px'>
                     <!-- botton edit -->
-                    <a class="ui yellow button" href="<?php echo base_url() . '/Driver_edit/driver_edit/' . $arr_driver[0]->dri_id ?>">
+                    <a class="ui yellow button" href="<?php echo base_url() . '/Driver_edit/driver_edit/' . $arr_driver->dri_id ?>">
                         <i class="far fa-edit mr-1"></i>
                         Edit info
                     </a>
@@ -114,8 +114,8 @@
                     <div class="container mt-4 mb-3 d-flex justify-content-center" style="max-width: 800px">
                         <!-- driver profile image -->
                         <div class="picture">
-                            <?php if ($arr_driver[0]->dri_profile_image != NULL && $arr_driver[0]->dri_profile_image != '') : ?>
-                            <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
+                            <?php if ($arr_driver->dri_profile_image != NULL && $arr_driver->dri_profile_image != '') : ?>
+                            <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver->dri_profile_image ?>">
                             <?php else : ?>
                             <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/driver_placeholder.png' ?>">
                             <?php endif; ?>
@@ -123,8 +123,8 @@
 
                         <!-- car image -->
                         <div class="picture">
-                            <?php if ($arr_driver[0]->car_image != NULL && $arr_driver[0]->car_image != '') : ?>
-                            <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->car_image ?>">
+                            <?php if ($arr_driver->car_image != NULL && $arr_driver->car_image != '') : ?>
+                            <img class="avatar-img" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver->car_image ?>">
                             <?php else : ?>
                             <img class="avatar-img" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
                             <?php endif; ?>
@@ -135,9 +135,9 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
                                 <?php
-                                    $dri_status = $arr_driver[0]->dri_status;
+                                    $dri_status = $arr_driver->dri_status;
                                     $arr_dri_status = ['Ready', 'Working', 'Reserved' ,'Resigned'];
-                                    $dri_status = $arr_dri_status[$arr_driver[0]->dri_status - 1];
+                                    $dri_status = $arr_dri_status[$arr_driver->dri_status - 1];
                                 ?>
                                 <div class="card-title">Driver Information <span class="text-con-ready bg-success text-white p-2" style="border-radius: 5px; font-size: 1rem;"><?php echo $dri_status ?></span></div>
 
@@ -165,7 +165,7 @@
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Driver_show/driver_delete' ?>" method="post">
-                        <input type="hidden" name="dri_id" id="dri_id" value="<?php echo $arr_driver[0]->dri_id ?>">
+                        <input type="hidden" name="dri_id" id="dri_id" value="<?php echo $arr_driver->dri_id ?>">
 
                         <p style="font-size: 1rem">Are you sure to remove the driver</p>
 

@@ -9,64 +9,69 @@
 -->
 
 <?php
-    if ($obj_container != NULL) {
-        $con_number = $obj_container[0]->con_number;
+if ($obj_container != null) {
+    $con_number = $obj_container->con_number;
 
-        if ($obj_container[0]->con_stac_id == 0 || $obj_container[0]->con_stac_id == '') {
-            $stac_name = 'Export';
-        }
-        else {
-            // get status container name
+    if ($obj_container->con_stac_id == 0 || $obj_container->con_stac_id == '') {
+        $stac_name = 'Export';
+    } else {
+        // get status container name
+        if ($obj_status_container == null) {
             for ($i = 0; $i < count($arr_status_container); $i++) {
-                if ($obj_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
+                if ($obj_container->con_stac_id == $arr_status_container[$i]->stac_id) {
                     $stac_name = $arr_status_container[$i]->stac_name;
                 }
             }
+        } else {
+            $stac_name = $obj_status_container->stac_name;
         }
+    }
 
-        // get container type name
+    // get container type name
+    if ($obj_container_type == null) {
         for ($i = 0; $i < count($arr_container_type); $i++) {
-            if ($obj_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) {
+            if ($obj_container->con_cont_id == $arr_container_type[$i]->cont_id) {
                 $cont_name = $arr_container_type[$i]->cont_name;
             }
         }
-
-        $con_max_weight = $obj_container[0]->con_max_weight;
-        $con_net_weight = $obj_container[0]->con_net_weight;
-        $con_tare_weight = $obj_container[0]->con_tare_weight;
-        $con_cube = $obj_container[0]->con_cube;
+    } else {
+        $cont_name = $obj_container_type->cont_name;
     }
-    else {
-        $con_number = $arr_container[0]->con_number;
 
-        if ($arr_container[0]->con_stac_id == 0 || $arr_container[0]->con_stac_id == '') {
-            $stac_name = 'Export';
-        }
-        else {
-            // get status container name
-            for ($i = 0; $i < count($arr_status_container); $i++) {
-                if ($arr_container[0]->con_stac_id == $arr_status_container[$i]->stac_id) {
-                    $stac_name = $arr_status_container[$i]->stac_name;
-                }
+    $con_max_weight = $obj_container->con_max_weight;
+    $con_net_weight = $obj_container->con_net_weight;
+    $con_tare_weight = $obj_container->con_tare_weight;
+    $con_cube = $obj_container->con_cube;
+} else {
+    $con_number = $arr_container->con_number;
+
+    if ($arr_container->con_stac_id == 0 || $arr_container->con_stac_id == '') {
+        $stac_name = 'Export';
+    } else {
+        // get status container name
+        for ($i = 0; $i < count($arr_status_container); $i++) {
+            if ($arr_container->con_stac_id == $arr_status_container[$i]->stac_id) {
+                $stac_name = $arr_status_container[$i]->stac_name;
             }
         }
-
-        // get container type name
-        for ($i = 0; $i < count($arr_container_type); $i++) {
-            if ($arr_container[0]->con_cont_id == $arr_container_type[$i]->cont_id) {
-                $cont_name = $arr_container_type[$i]->cont_name;
-            }
-        }
-
-        $con_max_weight = $arr_container[0]->con_max_weight;
-        $con_net_weight = $arr_container[0]->con_net_weight;
-        $con_tare_weight = $arr_container[0]->con_tare_weight;
-        $con_cube = $arr_container[0]->con_cube;
     }
-    $size_name = $arr_size[0]->size_name;
-    $size_width_out = $arr_size[0]->size_width_out;
-    $size_length_out = $arr_size[0]->size_length_out;
-    $size_height_out = $arr_size[0]->size_height_out;
+
+    // get container type name
+    for ($i = 0; $i < count($arr_container_type); $i++) {
+        if ($arr_container->con_cont_id == $arr_container_type[$i]->cont_id) {
+            $cont_name = $arr_container_type[$i]->cont_name;
+        }
+    }
+
+    $con_max_weight = $arr_container->con_max_weight;
+    $con_net_weight = $arr_container->con_net_weight;
+    $con_tare_weight = $arr_container->con_tare_weight;
+    $con_cube = $arr_container->con_cube;
+}
+$size_name = $obj_size->size_name;
+$size_width_out = $obj_size->size_width_out;
+$size_length_out = $obj_size->size_length_out;
+$size_height_out = $obj_size->size_height_out;
 ?>
 
 <div class="row mt-3 mb-3">

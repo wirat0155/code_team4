@@ -69,7 +69,7 @@ class M_cdms_customer extends Da_cdms_customer {
         $sql = "SELECT * FROM $this->table
 
                 WHERE cus_id='$cus_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*
@@ -90,7 +90,7 @@ class M_cdms_customer extends Da_cdms_customer {
         }
         
         // return as array
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*

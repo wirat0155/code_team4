@@ -25,7 +25,7 @@ class Service_edit extends Cdms_controller
             $data["cus_company_name_error"] = "";
             $data["cus_branch_error"] = "";
 
-             $data['obj_service'] = $this->m_ser->get_by_id($ser_id);
+            $data['obj_service'] = $this->m_ser->get_by_id($ser_id);
             $data["ser_id"] = $data["obj_service"]->ser_id;
             $data["ser_arrivals_date"] = $data["obj_service"]->ser_arrivals_date;
             $data["ser_departure_date"] = $data["obj_service"]->ser_departure_date;
@@ -111,11 +111,11 @@ class Service_edit extends Cdms_controller
 
         if($obj["ser_car_id_in"] == ''){
             $get_ser_car_id_in = $this->m_dri->get_by_id($obj["ser_dri_id_in"]);
-            $obj["ser_car_id_in"] = $get_ser_car_id_in[0]->dri_car_id;
+            $obj["ser_car_id_in"] = $get_ser_car_id_in->dri_car_id;
         }
         if($obj["ser_car_id_out"] == ''){
             $get_ser_car_id_out = $this->m_dri->get_by_id($obj["ser_dri_id_out"]);
-            $obj["ser_car_id_out"] = $get_ser_car_id_out[0]->dri_car_id;
+            $obj["ser_car_id_out"] = $get_ser_car_id_out->dri_car_id;
         }
 
         if ($obj["cus_id"] != 'new') {
@@ -123,7 +123,7 @@ class Service_edit extends Cdms_controller
             if ($obj["old_cus_branch"] == $obj["cus_branch"]) {
                 // get customer company name
                 $obj["cus_company_name"] = $this->m_cus->get_by_id($obj["cus_id"]);
-                $obj["cus_company_name"] = $obj["cus_company_name"][0]->cus_company_name;
+                $obj["cus_company_name"] = $obj["cus_company_name"]->cus_company_name;
 
                 $this->m_cus->customer_update(
                     $obj["cus_id"],
@@ -187,7 +187,7 @@ class Service_edit extends Cdms_controller
         if ($obj["agn_id"] != '' && $obj["agn_id"] != "new") {
             $obj["con_agn_id"] = $obj["agn_id"];
             $obj["agn_company_name"] = $this->m_agn->get_by_id($obj["agn_id"]);
-            $obj["agn_company_name"] = $obj["agn_company_name"][0]->agn_company_name;
+            $obj["agn_company_name"] = $obj["agn_company_name"]->agn_company_name;
 
             $this->m_agn->agent_update(
                 $obj["agn_id"],
@@ -252,7 +252,7 @@ class Service_edit extends Cdms_controller
 
             // get new cus_id
             $get_ser_cus_id = $this->m_cus->get_by_name($obj["cus_company_name"], $obj["cus_branch"]);
-            $obj["ser_cus_id"] = $get_ser_cus_id[0]->cus_id;
+            $obj["ser_cus_id"] = $get_ser_cus_id->cus_id;
         }
         if ($is_new_agent) {
             $this->m_agn->insert(
@@ -266,7 +266,7 @@ class Service_edit extends Cdms_controller
             );
             // get new agn_id
             $get_ser_agn_id = $this->m_agn->get_by_company_name($obj["agn_company_name"]);
-            $obj["con_agn_id"] = $get_ser_agn_id[0]->agn_id;
+            $obj["con_agn_id"] = $get_ser_agn_id->agn_id;
         }
         if ($is_new_container) {
             $this->m_con->insert(
@@ -283,12 +283,12 @@ class Service_edit extends Cdms_controller
 
             // get new con_id
             $get_ser_con_id = $this->m_con->get_by_con_number($obj["con_number"]);
-            $obj["ser_con_id"] = $get_ser_con_id[0]->con_id;
+            $obj["ser_con_id"] = $get_ser_con_id->con_id;
         }
         if ($is_update_container) {
             $obj["ser_con_id"] = $obj["con_id"];
             $obj["con_number"] = $this->m_con->get_by_id($obj["con_id"]);
-            $obj["con_number"] =  $obj["con_number"][0]->con_number;
+            $obj["con_number"] =  $obj["con_number"]->con_number;
             $this->m_con->container_update(
                 $obj["con_id"],
                 $obj["con_number"],
@@ -315,7 +315,7 @@ class Service_edit extends Cdms_controller
                 $obj["ser_departure_location"],
                 $obj["ser_weight"],
                 $obj["con_id"],
-                $obj["ser_stac_id"],
+                $obj["con_stac_id"],
                 $obj["ser_cus_id"]
             );
             $max_ser_id = $this->m_ser->get_max_id();
@@ -339,7 +339,7 @@ class Service_edit extends Cdms_controller
             //update service
             $this->m_ser->service_update(
                 $obj["ser_id"],
-                $obj["ser_stac_id"],
+                $obj["con_stac_id"],
                 $obj["ser_departure_date"],
                 $obj["ser_car_id_in"],
                 $obj["ser_arrivals_date"],
@@ -356,6 +356,7 @@ class Service_edit extends Cdms_controller
         }
         
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
+        // echo "<pre>"; print_r($this->request->getPost()); echo "</pre>";
     }
 
     /*

@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <input type="text" class="form-control form-input" id="dri_name" name="dri_name" placeholder="Name surname" value="<?php echo $arr_driver[0]->dri_name ?>">
+                    <input type="text" class="form-control form-input" id="dri_name" name="dri_name" placeholder="Name surname" value="<?php echo $arr_driver->dri_name ?>">
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <input type="text" class="form-control form-input" id="dri_card_number" name="dri_card_number" placeholder="Card number" value="<?php echo $arr_driver[0]->dri_card_number ?>">
+                    <input type="text" class="form-control form-input" id="dri_card_number" name="dri_card_number" placeholder="Card number" value="<?php echo $arr_driver->dri_card_number ?>">
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
@@ -40,7 +40,7 @@
                         <div class="input-group-prepend ">
                             <span class="input-group-text "><i class="fas fa-phone"></i></span>
                         </div>
-                        <input type="tel" class="form-control" id="dri_tel" name="dri_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $arr_driver[0]->dri_tel ?>">
+                        <input type="tel" class="form-control" id="dri_tel" name="dri_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $arr_driver->dri_tel ?>">
                     </div>
                 </div>
 
@@ -54,18 +54,18 @@
                     $status2 = ' ';
                     $status3 = ' ';
                     $status4 = ' ';
-                    if ($arr_driver[0]->dri_status == 1) {
+                    if ($arr_driver->dri_status == 1) {
                         $status1 = 'selected';
-                    } else if ($arr_driver[0]->dri_status == 2) {
+                    } else if ($arr_driver->dri_status == 2) {
                         $status2 = 'selected';
-                    } else if ($arr_driver[0]->dri_status == 3) {
+                    } else if ($arr_driver->dri_status == 3) {
                         $status3 = 'selected';
-                    } else if ($arr_driver[0]->dri_status == 4) {
+                    } else if ($arr_driver->dri_status == 4) {
                         $status4 = 'selected';
                     }
                     ?>
 
-                    <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_status" name="dri_status" value="<?php echo $arr_driver[0]->dri_status ?>">
+                    <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_status" name="dri_status" value="<?php echo $arr_driver->dri_status ?>">
                         <option selected disabled>Select driver status</option>
                         <option value="1" <?php echo  $status1 ?>>Ready</option>
                         <option value="2" <?php echo  $status2 ?>>Working</option>
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start" value="<?php echo $arr_driver[0]->dri_date_start ?>">
+                    <input type="date" class="form-control form-input" id="dri_date_start" name="dri_date_start" value="<?php echo $arr_driver->dri_date_start ?>">
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end" value="<?php echo $arr_driver[0]->dri_date_end ?>">
+                    <input type="date" class="form-control form-input" id="dri_date_end" name="dri_date_end" value="<?php echo $arr_driver->dri_date_end ?>">
                 </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                    <input type="text" class="form-control form-input" id="dri_license" name="dri_license" placeholder="License number" value="<?php echo $arr_driver[0]->dri_license ?>">
+                    <input type="text" class="form-control form-input" id="dri_license" name="dri_license" placeholder="License number" value="<?php echo $arr_driver->dri_license ?>">
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
@@ -115,18 +115,18 @@
                     $license2 = ' ';
                     $license3 = ' ';
                     $license4 = ' ';
-                    if ($arr_driver[0]->dri_license_type == 1) {
+                    if ($arr_driver->dri_license_type == 1) {
                         $license1 = 'selected';
-                    } else if ($arr_driver[0]->dri_license_type == 2) {
+                    } else if ($arr_driver->dri_license_type == 2) {
                         $license2 = 'selected';
-                    } else if ($arr_driver[0]->dri_license_type == 3) {
+                    } else if ($arr_driver->dri_license_type == 3) {
                         $license3 = 'selected';
-                    } else if ($arr_driver[0]->dri_license_type == 4) {
+                    } else if ($arr_driver->dri_license_type == 4) {
                         $license4 = 'selected';
                     }
                     ?>
 
-                    <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_license_type" name="dri_license_type" value="<?php echo $arr_driver[0]->dri_license_type ?>">
+                    <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_license_type" name="dri_license_type" value="<?php echo $arr_driver->dri_license_type ?>">
                         <option selected disabled>Choose license type</option>
                         <option value="1" <?php echo $license1 ?>>ท.1</option>
                         <option value="2" <?php echo $license2 ?>>ท.2</option>
@@ -144,10 +144,10 @@
                     Car ID :
                 </div>
                 <div class="col-12 col-md-6 mb-3">
-                    <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_car_id" name="dri_car_id" value="<?php echo $arr_driver[0]->dri_license_type ?>">
+                    <select class="block w-full mt-1 text-sm focus:outline-none form-control" id="dri_car_id" name="dri_car_id" value="<?php echo $arr_driver->dri_license_type ?>">
                     <option selected disabled>Choose car ID</option>
                     <?php for ($i = 0; $i < count($arr_car); $i++) { ?>
-                        <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_car[$i]->car_id == $arr_driver[0]->dri_car_id) echo " selected" ?>><?php echo 'Car number : ' . $arr_car[$i]->car_number . ' Code ' . $arr_car[$i]->car_code ?></option>
+                        <option value="<?php echo $arr_car[$i]->car_id ?>" <?php if ($arr_car[$i]->car_id == $arr_driver->dri_car_id) echo " selected" ?>><?php echo 'Car number : ' . $arr_car[$i]->car_number . ' Code ' . $arr_car[$i]->car_code ?></option>
                     <?php } ?>
                 </select>
                 </div>

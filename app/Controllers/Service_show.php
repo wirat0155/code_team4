@@ -2,18 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\M_cdms_size;
-use App\Models\M_cdms_container_type;
-use App\Models\M_cdms_status_container;
-use App\Models\M_cdms_service;
-use App\Models\M_cdms_customer;
-use App\Models\M_cdms_container;
-use App\Models\M_cdms_driver;
-use App\Models\M_cdms_car;
-use App\Models\M_cdms_agent;
-use App\Models\M_cdms_cost_detail;
-use App\Models\M_cdms_change_container_log;
-use App\Models\M_cdms_bank;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -39,10 +27,6 @@ class Service_show extends Cdms_controller {
 
         //display the converted time
         $_SESSION['menu'] = 'Service_show';
-        // load service model
-        $m_ser = new M_cdms_service();
-        // load container model
-        $m_con = new M_cdms_container();
 
         $today = date('Y-m-d');
         $today_time = date('Y-m-d H:i:s');
@@ -50,9 +34,9 @@ class Service_show extends Cdms_controller {
         $yesterday_time = date('Y-m-d H:i:s', strtotime('-1 Day'));
         $time = date('H:i:s');
 
-        $data['arr_con'] = $m_con->get_all(1);
+        $data['arr_con'] = $this->m_con->get_all(1);
 
-        $m_ser->check_payment_status($today);
+        $this->m_ser->check_payment_status($today);
 
         if(isset($_GET['date_range'])){
             $_SESSION['set_date_picker_service'] = true;
@@ -63,26 +47,26 @@ class Service_show extends Cdms_controller {
 
             $end_date_time = $end_date . " " . $time;
 
-            $data['arr_service'] = $m_ser->get_by_date($start_date, $end_date);
+            $data['arr_service'] = $this->m_ser->get_by_date($start_date, $end_date);
             $data['arr_service'] = $this->change_service_status_by_date($data['arr_service'], $start_date, $end_date);
             $data['arrivals_date'] = $date_range;
 
             // get data in service report card
-            $obj_num_import = $m_ser->get_num_import($start_date, $end_date);
+            $obj_num_import = $this->m_ser->get_num_import($start_date, $end_date);
             $data['num_import'] = $obj_num_import->num_import;
 
-            $obj_num_export = $m_ser->get_num_export($end_date, $end_date_time, $today == $end_date);
+            $obj_num_export = $this->m_ser->get_num_export($end_date, $end_date_time, $today == $end_date);
             $data['num_export'] = $obj_num_export->num_export;
 
-            $obj_num_drop = $m_ser->get_num_drop_range($start_date, $end_date);
+            $obj_num_drop = $this->m_ser->get_num_drop_range($start_date, $end_date);
             $data['num_drop'] = $obj_num_drop->num_drop;
         }
         else{
             $_SESSION['set_date_picker_service'] = false;
             // get service data upon by date
-            $data['arr_service'] = $m_ser->get_all($today);
+            $data['arr_service'] = $this->m_ser->get_all($today);
             // get all the time service
-            $data['arr_service_temp'] = $m_ser->get_all();
+            $data['arr_service_temp'] = $this->m_ser->get_all();
 
             // no service data
             if (count($data['arr_service']) == 0) {
@@ -93,7 +77,7 @@ class Service_show extends Cdms_controller {
             else {
                 $index = count($data['arr_service_temp']) - 1;
                 $start = $data['arr_service_temp'][$index]->ser_arrivals_date;
-                $end = $data['arr_service_temp'][0]->ser_arrivals_date;
+                $end = $data['arr_service_temp']->ser_arrivals_date;
                 $data['arrivals_date'] = substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) . ' - '. date("d-m-Y");
             }
 
@@ -102,34 +86,32 @@ class Service_show extends Cdms_controller {
 
             // count import service
             // today and yesterday
-            $obj_num_import = $m_ser->get_num_import($today);
-            $obj_num_yesterday_import = $m_ser->get_num_import($yesterday);
+            $obj_num_import = $this->m_ser->get_num_import($today);
+            $obj_num_yesterday_import = $this->m_ser->get_num_import($yesterday);
             $data['num_import'] = $obj_num_import->num_import;
             $data['num_yesterday_import'] = $obj_num_yesterday_import->num_import;
 
             // count export service
             // today and yesterday
-            $obj_num_export = $m_ser->get_num_export($today, $today_time, true);
-            $obj_num_yesterady_export = $m_ser->get_num_export($yesterday, $yesterday_time, false);
+            $obj_num_export = $this->m_ser->get_num_export($today, $today_time, true);
+            $obj_num_yesterady_export = $this->m_ser->get_num_export($yesterday, $yesterday_time, false);
             $data['num_export'] = $obj_num_export->num_export;
             $data['num_yesterday_export'] = $obj_num_yesterady_export->num_export;
 
             // count drop service
             // today and yesterday
-            $obj_num_drop = $m_ser->get_num_drop($today, $today_time, true);
+            $obj_num_drop = $this->m_ser->get_num_drop($today, $today_time, true);
             $data['num_drop'] = $obj_num_drop->num_drop;
-            $obj_num_yesterday_drop = $m_ser->get_num_drop($yesterday, $yesterday_time, false);
+            $obj_num_yesterday_drop = $this->m_ser->get_num_drop($yesterday, $yesterday_time, false);
             $data['num_yesterday_drop'] = $obj_num_yesterday_drop->num_drop;
 
             // count all service yesterday
-            $obj_num_yesterday_all = $m_ser->get_num_all($today, $yesterday_time);
+            $obj_num_yesterday_all = $this->m_ser->get_num_all($today, $yesterday_time);
             $data['num_yesterday_all'] = $obj_num_yesterday_all->num_all;
         }
         // print_r($data['arr_service']);
 
-        // load Bank model
-        $m_bnk = new M_cdms_bank();
-        $data['arr_bank'] = $m_bnk->get_all();
+        $data['arr_bank'] = $this->m_bnk->get_all();
 
         $this->output('v_service_showlist', $data);
     }
@@ -169,8 +151,7 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-07-30
     */
     public function service_delete() {
-        $m_ser = new M_cdms_service();
-        $m_ser->delete($this->request->getPost('ser_id'));
+        $this->m_ser->delete($this->request->getPost('ser_id'));
         return $this->response->redirect(base_url('/Service_show/service_show_ajax'));
     }
 
@@ -186,42 +167,33 @@ class Service_show extends Cdms_controller {
         $_SESSION['menu'] = 'Service_show';
 
         // get service
-        $m_ser = new M_cdms_service();
-        $data['obj_service'] = $m_ser->get_by_id($ser_id);
+        $data['obj_service'] = $this->m_ser->get_by_id($ser_id);
 
          // get container
-        $m_con = new M_cdms_container();
-        $data['obj_container'] = $m_con->get_by_id($data['obj_service'][0]->ser_con_id);
+        $data['obj_container'] = $this->m_con->get_by_id($data['obj_service']->ser_con_id);
 
         // size name
-        $m_size = new M_cdms_size();
-        $data['arr_size'] = $m_size->get_by_id($data['obj_container'][0]->con_size_id);
+        $data['obj_size'] = $this->m_size->get_by_id($data['obj_container']->con_size_id);
 
         // container type
-        $m_cont = new M_cdms_container_type();
-        $data['arr_container_type'] = $m_cont->get_by_id($data['obj_container'][0]->con_cont_id);
+        $data['obj_container_type'] = $this->m_cont->get_by_id($data['obj_container']->con_cont_id);
 
         // status container
-        $m_stac = new M_cdms_status_container();
-        $data['arr_status_container'] = $m_stac->get_by_id($data['obj_container'][0]->con_stac_id);
+        $data['obj_status_container'] = $this->m_stac->get_by_id($data['obj_container']->con_stac_id);
 
         // driver name
-        $m_dri = new M_cdms_driver();
-        $data['arr_driver_in'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_in);
-        $data['arr_driver_out'] = $m_dri->get_by_id($data['obj_service'][0]->ser_dri_id_out);
+        $data['obj_driver_in'] = $this->m_dri->get_by_id($data['obj_service']->ser_dri_id_in);
+        $data['obj_driver_out'] = $this->m_dri->get_by_id($data['obj_service']->ser_dri_id_out);
 
          // car name
-        $m_car = new M_cdms_car();
-        $data['arr_car_in'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_in);
-        $data['arr_car_out'] = $m_car->get_by_id($data['obj_service'][0]->ser_car_id_out);
+        $data['obj_car_in'] = $this->m_car->get_by_id($data['obj_service']->ser_car_id_in);
+        $data['obj_car_out'] = $this->m_car->get_by_id($data['obj_service']->ser_car_id_out);
 
         // get customer
-        $m_cus = new M_cdms_customer();
-        $data['obj_customer'] = $m_cus->get_by_id($data['obj_service'][0]->ser_cus_id);
+        $data['obj_customer'] = $this->m_cus->get_by_id($data['obj_service']->ser_cus_id);
 
         // get agent agent
-        $m_agn = new M_cdms_agent();
-        $data['obj_agent'] = $m_agn->get_by_id($data['obj_container'][0]->con_agn_id);
+        $data['obj_agent'] = $this->m_agn->get_by_id($data['obj_container']->con_agn_id);
 
         $data['arr_change_container'] = $this->get_change_container_log($ser_id);
 
@@ -232,9 +204,13 @@ class Service_show extends Cdms_controller {
             }
         }
         
-        if (gettype($data['arr_change_container'][0]) != "string") {
-            $data['obj_original_container'] = $m_ser->get_arrivals_date_by_ser_id($data['arr_change_container'][0]->chl_old_ser_id);
+        if (gettype($data['arr_change_container']) != "string") {
+            $data['obj_original_container'] = $this->m_ser->get_arrivals_date_by_ser_id($data['arr_change_container']->chl_old_ser_id);
         }
+
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
         $this->output('v_service_show_information', $data);
     }
 
@@ -247,11 +223,9 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function get_cost_ajax() {
-        $m_cosd = new M_cdms_cost_detail();
-        $m_ser = new M_cdms_service();
         $ser_id = $this->request->getPost('ser_id');
-        $arr_service_cost['cost_all'] = $m_cosd->get_by_ser_id($ser_id);
-        $arr_service_cost['cost_ser'] = $m_ser->get_cost($ser_id);
+        $arr_service_cost['cost_all'] = $this->m_cosd->get_by_ser_id($ser_id);
+        $arr_service_cost['cost_ser'] = $this->m_ser->get_cost($ser_id);
         echo json_encode($arr_service_cost);
     }
 
@@ -264,7 +238,6 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function cost_insert() {
-        $m_cosd = new M_cdms_cost_detail();
 
         $cosd_ser_id = $this->request->getPost('cosd_ser_id');
         $cosd_name = $this->request->getPost('cosd_name');
@@ -272,8 +245,8 @@ class Service_show extends Cdms_controller {
         $cosd_quantity = $this->request->getPost('cosd_quantity');
         $cosd_status_vat = $this->request->getPost('cosd_status_vat');
 
-        $m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_ser_id, $cosd_quantity, $cosd_status_vat);
-        $last_cost = $m_cosd->get_last();
+        $this->m_cosd->cost_insert($cosd_name, $cosd_cost, $cosd_ser_id, $cosd_quantity, $cosd_status_vat);
+        $last_cost = $this->m_cosd->get_last();
 
         echo json_encode($last_cost);
     }
@@ -287,15 +260,13 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function cost_update() {
-        $m_cosd = new M_cdms_cost_detail();
-
         $cosd_id = $this->request->getPost('cosd_id');
         $cosd_name = $this->request->getPost('cosd_name');
         $cosd_cost = $this->request->getPost('cosd_cost');
         $cosd_quantity = $this->request->getPost('cosd_quantity');
         $cosd_status_vat = $this->request->getPost('cosd_status_vat');
 
-        $m_cosd->cost_update($cosd_id, $cosd_name, $cosd_cost, $cosd_quantity, $cosd_status_vat);
+        $this->m_cosd->cost_update($cosd_id, $cosd_name, $cosd_cost, $cosd_quantity, $cosd_status_vat);
 
         echo json_encode('update complete');
     }
@@ -309,11 +280,9 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function cost_delete() {
-        $m_cosd = new M_cdms_cost_detail();
-
         $cosd_id = $this->request->getPost('cosd_id');
 
-        $m_cosd->delete($cosd_id);
+        $this->m_cosd->delete($cosd_id);
 
         echo json_encode('delete complete');
     }
@@ -326,13 +295,11 @@ class Service_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function export_service() {
-        date_default_timezone_set("Asia/Bangkok");
-        $m_ser = new M_cdms_service();
 
-        $arr_service = $m_ser->get_all();
+        $arr_service = $this->m_ser->get_all();
         $index = count($arr_service)-1;
         $start = $arr_service[$index]->ser_arrivals_date;
-        $end = $arr_service[0]->ser_arrivals_date;
+        $end = $arr_service->ser_arrivals_date;
         $arrivals_date =  substr($start,8,2).'/'.substr($start,5,2).'/'.(substr($start,0,4)) .
                             ' - '. date("d-m-Y");
 
@@ -343,7 +310,7 @@ class Service_show extends Cdms_controller {
 
             $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2));
             $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2));
-            $arr_service = $m_ser->get_by_date($start, $end);
+            $arr_service = $this->m_ser->get_by_date($start, $end);
             $arr_service = $this->change_service_status_by_date($arr_service, $start, $end);
 
         }
@@ -539,13 +506,13 @@ class Service_show extends Cdms_controller {
     */
     public function get_change_service(){
         $ser_id_change = $this->request->getPost('ser_id_change');
-        $m_ser = new M_cdms_service();
-        $data['obj_service'] = $m_ser->get_by_id_change($ser_id_change);
+
+        $data['obj_service'] = $this->m_ser->get_by_id_change($ser_id_change);
         $data['arr_service']=array();
         $i = 0;
         array_push($data['arr_service'], $data['obj_service']);
         while($data['arr_service'][$i]->ser_id_change){
-            $data['obj_service'] = $m_ser->get_by_id_change($data['arr_service'][$i]->ser_id_change);
+            $data['obj_service'] = $this->m_ser->get_by_id_change($data['arr_service'][$i]->ser_id_change);
             array_push($data['arr_service'], $data['obj_service']);
             $i++;
         }
@@ -564,19 +531,18 @@ class Service_show extends Cdms_controller {
         if ($ser_id != NULL) {
 
             $arr_change_container = array();
-            $m_chl = new M_cdms_change_container_log();
             $old_ser_id = $ser_id;
             // find next service
             array_push($arr_change_container, $old_ser_id);
             do {
-                $obj_change_container = $m_chl->get_next_ser_id($ser_id);
+                $obj_change_container = $this->m_chl->get_next_ser_id($ser_id);
                 $ser_id = $obj_change_container->chl_new_ser_id;
                 array_push($arr_change_container, $obj_change_container);
             }while($obj_change_container != NULL);
             
             // find previous service
             do {
-                $obj_change_container = $m_chl->get_prev_ser_id($old_ser_id);
+                $obj_change_container = $this->m_chl->get_prev_ser_id($old_ser_id);
                 $ser_id = $obj_change_container->chl_old_ser_id;
                 $old_ser_id = $ser_id;
                 array_unshift($arr_change_container, $obj_change_container);
@@ -600,12 +566,9 @@ class Service_show extends Cdms_controller {
     public function service_damaged_show_ajax() {
         session_start();
         $_SESSION['menu'] = 'Service_show';
-        
-        // load service model
-        $m_ser = new M_cdms_service();
 
         //get all service damaged
-        $data['arr_service'] = $m_ser->get_all_damaged();
+        $data['arr_service'] = $this->m_ser->get_all_damaged();
         
         $this->output('v_damaged_container_showlist', $data);
     }
@@ -620,8 +583,7 @@ class Service_show extends Cdms_controller {
     */
     public function service_print_cost($ser_id, $vat){
         //get information service + cost
-        $m_ser = new M_cdms_service();
-        $data['arr_service_cost'] = $m_ser->get_service_cost_all($ser_id);
+        $data['arr_service_cost'] = $this->m_ser->get_service_cost_all($ser_id);
         $data['vat'] = $vat;
         //date
         $data['date_today'] = date("Y-m-d H:i:s");
@@ -657,12 +619,11 @@ class Service_show extends Cdms_controller {
         if($ser_due_date == "0000-00-00"){
             $ser_due_date = NULL;
         }
-        $m_ser = new M_cdms_service();
-        $m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_bnk_id ,$ser_cheque);
+        $this->m_ser->update_ser_pay($ser_id, $ser_due_date, $ser_pay_by, $ser_bnk_id ,$ser_cheque);
 
         date_default_timezone_set("Asia/Bangkok");
         $today = date('Y-m-d');
-        $m_ser->check_payment_status($today);
+        $this->m_ser->check_payment_status($today);
 
         $response = '';
         if($ser_due_date < $today){
@@ -683,9 +644,8 @@ class Service_show extends Cdms_controller {
     public function show_history() {
         session_start();
         $_SESSION['menu'] = 'Service_show';
-        $m_chl = new M_cdms_change_container_log();
 
-        $data['arr_history'] = $m_chl->get_history_all();
+        $data['arr_history'] = $this->m_chl->get_history_all();
         $arr_new_ser_id=array();
         $arr_old_ser_id=array();
         for($i=0;$i<count($data['arr_history']);$i++){
@@ -700,14 +660,13 @@ class Service_show extends Cdms_controller {
         }
         $data['arr_change_container'] = $arr_change_container;
 
-        $m_ser = new M_cdms_service();
         $arr_latest_con_number = array();
         for ($i = 0; $i < count($data['arr_change_container']); $i++) {
             // get latest ser_id
             $ser_id = $data['arr_change_container'][$i][count($data['arr_change_container'][$i]) - 1];
 
             // get container number
-            $data['obj_service'] = $m_ser->get_con_number_by_ser_id($ser_id);
+            $data['obj_service'] = $this->m_ser->get_con_number_by_ser_id($ser_id);
             array_push($arr_latest_con_number, $data['obj_service']);
         }
         $data['arr_latest_con_number'] = $arr_latest_con_number;
@@ -726,8 +685,7 @@ class Service_show extends Cdms_controller {
     public function service_payment_status(){
         $ser_id = $this->request->getPost('cosd_ser_id');
         $ser_stap_id = $this->request->getPost('pay_status');
-        $m_ser = new M_cdms_service();
-        $m_ser->update_payment_status($ser_id,$ser_stap_id);
+        $this->m_ser->update_payment_status($ser_id,$ser_stap_id);
         print_r($ser_id,$ser_stap_id );
         echo json_encode('update_payment_complete');
     }

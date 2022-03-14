@@ -22,28 +22,28 @@
                             <b>Car number :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_number ?>
+                            <?php echo $arr_car->car_number ?>
                         </div>
 
                         <div class="col-12 col-sm-6 mb-4">
                             <b>Car code :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_code . ' ' . $arr_car[0]->prov_name ?>
+                            <?php echo $arr_car->car_code . ' ' . $arr_car->prov_name ?>
                         </div>
 
                         <div class="col-12 col-sm-6 mb-4">
                             <b>Register year :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_register_year ?>
+                            <?php echo $arr_car->car_register_year ?>
                         </div>
 
                         <div class="col-12 col-sm-6 mb-4">
                             <b>Car type :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->cart_name ?>
+                            <?php echo $arr_car->cart_name ?>
                         </div>
                     </div>
                 </div>
@@ -54,19 +54,19 @@
                             <b>Chassis number :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_chassis_number ?>
+                            <?php echo $arr_car->car_chassis_number ?>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <b>Weight (t) :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_weight . ' t'?>
+                            <?php echo $arr_car->car_weight . ' t'?>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
                             <b>Fuel type :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-4">
-                            <?php echo $arr_car[0]->car_fuel_type ?>
+                            <?php echo $arr_car->car_fuel_type ?>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                             <b>Car brand :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-3">
-                            <?php echo $arr_car[0]->car_brand ?>
+                            <?php echo $arr_car->car_brand ?>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             <b>Branch :</b>
                         </div>
                         <div class="col-12 col-sm-6 mb-3">
-                            <?php echo $arr_car[0]->car_branch ?>
+                            <?php echo $arr_car->car_branch ?>
                         </div>
                     </div>
                 </div>

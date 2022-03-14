@@ -34,7 +34,7 @@ class M_cdms_status_container extends Da_cdms_status_container {
     */
     public function get_by_id($stac_id) {
         $sql = "SELECT * FROM $this->table WHERE stac_id = '$stac_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*
@@ -47,7 +47,7 @@ class M_cdms_status_container extends Da_cdms_status_container {
     */
     public function get_last() {
         $sql = "SELECT * FROM $this->table ORDER BY stac_id DESC LIMIT 1";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*

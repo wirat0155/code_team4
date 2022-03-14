@@ -67,7 +67,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="cl-blue"
-                            href="<?php echo base_url() . '/Agent_show/agent_detail/' . $arr_agent[0]->agn_id ?>">Agent
+                            href="<?php echo base_url() . '/Agent_show/agent_detail/' . $obj_agent->agn_id ?>">Agent
                             details</a>
                     </li>
                     <li class="separator">

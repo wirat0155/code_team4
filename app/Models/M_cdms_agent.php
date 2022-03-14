@@ -49,7 +49,7 @@ class M_cdms_agent extends Da_cdms_agent {
     public function get_by_id($agn_id) {
         $sql = "SELECT * FROM $this->table
                 WHERE agn_id='$agn_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*
@@ -62,7 +62,7 @@ class M_cdms_agent extends Da_cdms_agent {
     */
     public function get_by_company_name($agn_company_name = NULL) {
         $sql = "SELECT * FROM $this->table WHERE agn_company_name = '$agn_company_name' AND agn_status = 1";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*

@@ -51,9 +51,9 @@
         $ser_departure_location = $_SESSION['ser_departure_location'];
         $ser_stac_id = $_SESSION['con_stac_id'];
 
-        $obj_service[0]->ser_arrivals_date = $ser_arrivals_date;
-        $obj_service[0]->ser_departure_date = $ser_departure_date;
-        $obj_service[0]->ser_actual_departure_date = $ser_actual_departure_date;
+        $obj_service->ser_arrivals_date = $ser_arrivals_date;
+        $obj_service->ser_departure_date = $ser_departure_date;
+        $obj_service->ser_actual_departure_date = $ser_actual_departure_date;
     }
 ?>
 <div class="main-panel">
@@ -347,7 +347,7 @@
                                 <div class="card-title">Container</div>
                             </div>
                             <div class="card-body">
-                                <input type="hidden" name="old_con_id" value="<?php echo $obj_container[0]->con_id ?>">
+                                <input type="hidden" name="old_con_id" value="<?php echo $con_id?>">
                                 <?php
                                     $page = 'service_edit';
                                     require_once dirname(__FILE__) . '/form/container_service_edit_form.php';
@@ -771,9 +771,9 @@
          */
         function show_driver_information(driver, status) {
             if (status == 1) {
-                $('select[name="ser_car_id_in"]').val(driver[0]['dri_car_id']);
+                $('select[name="ser_car_id_in"]').val(driver['dri_car_id']);
             } else {
-                $('select[name="ser_car_id_out"]').val(driver[0]['dri_car_id']);
+                $('select[name="ser_car_id_out"]').val(driver['dri_car_id']);
             }
         }
 
@@ -848,13 +848,13 @@
          * @Create Date  2564-10-15
          */
         function show_container_information(container) {
-            $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
-            $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
-            $('input[name="con_max_weight"]').val(container[0]['con_max_weight']);
-            $('input[name="con_tare_weight"]').val(container[0]['con_tare_weight']);
-            $('input[name="con_net_weight"]').val(container[0]['con_net_weight']);
-            $('input[name="con_cube"]').val(container[0]['con_cube']);
-            $('select[name="con_size_id"]').val(container[0]['con_size_id']);
+            $('select[name="con_cont_id"]').val(container['con_cont_id']);
+            $('select[name="con_stac_id"]').val(container['con_stac_id']);
+            $('input[name="con_max_weight"]').val(container['con_max_weight']);
+            $('input[name="con_tare_weight"]').val(container['con_tare_weight']);
+            $('input[name="con_net_weight"]').val(container['con_net_weight']);
+            $('input[name="con_cube"]').val(container['con_cube']);
+            $('select[name="con_size_id"]').val(container['con_size_id']);
             get_size_information();
         }
 
@@ -901,7 +901,7 @@
                     size_id: size_id
                 },
                 success: function(data) {
-                    show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]
+                    show_size_information(data['size_height_out'], data['size_width_out'], data
                         ['size_length_out']);
                 }
             });
@@ -980,13 +980,13 @@
          * @Create Date  2564-10-15
          */
         function show_agent_information(agent) {
-            $('input[name="agn_id"]').val(agent[0]['agn_id']);
-            $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
-            $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
-            $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
-            $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
-            $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
-            $('input[name="agn_email"]').val(agent[0]['agn_email']);
+            $('input[name="agn_id"]').val(agent['agn_id']);
+            $('textarea[name="agn_address"]').val(agent['agn_address']);
+            $('input[name="agn_tax"]').val(agent['agn_tax']);
+            $('input[name="agn_firstname"]').val(agent['agn_firstname']);
+            $('input[name="agn_lastname"]').val(agent['agn_lastname']);
+            $('input[name="agn_tel"]').val(agent['agn_tel']);
+            $('input[name="agn_email"]').val(agent['agn_email']);
         }
 
         /*
@@ -1081,14 +1081,14 @@
          * @Create Date  2564-10-15
          */
         function show_customer_information(customer) {
-            $('input[name="cus_branch"]').val(customer[0]['cus_branch']);
-            $('input[name="old_cus_branch"]').val(customer[0]['cus_branch']);
-            $('textarea[name="cus_address"]').val(customer[0]['cus_address']);
-            $('input[name="cus_tax"]').val(customer[0]['cus_tax']);
-            $('input[name="cus_firstname"]').val(customer[0]['cus_firstname']);
-            $('input[name="cus_lastname"]').val(customer[0]['cus_lastname']);
-            $('input[name="cus_tel"]').val(customer[0]['cus_tel']);
-            $('input[name="cus_email"]').val(customer[0]['cus_email']);
+            $('input[name="cus_branch"]').val(customer['cus_branch']);
+            $('input[name="old_cus_branch"]').val(customer['cus_branch']);
+            $('textarea[name="cus_address"]').val(customer['cus_address']);
+            $('input[name="cus_tax"]').val(customer['cus_tax']);
+            $('input[name="cus_firstname"]').val(customer['cus_firstname']);
+            $('input[name="cus_lastname"]').val(customer['cus_lastname']);
+            $('input[name="cus_tel"]').val(customer['cus_tel']);
+            $('input[name="cus_email"]').val(customer['cus_email']);
         }
 
         /*

@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\M_cdms_customer;
-use App\Models\M_cdms_service;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -25,24 +23,22 @@ class Customer_show extends Cdms_controller {
     */
     public function customer_show_ajax() {
         $_SESSION['menu'] = 'Customer_show';
-        $m_cus = new M_cdms_customer();
-        $m_ser = new M_cdms_service();
 
         if(isset($_POST['date_range'])){
             $date_range = $this->request->getPost('date_range');
             $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
             $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
             //Data Customer
-            $data['arr_customer'] = $m_cus->get_by_date($start, $end);
+            $data['arr_customer'] = $this->m_cus->get_by_date($start, $end);
             //Data Service
-            $data['arr_service'] = $m_ser->get_by_date($start, $end);
+            $data['arr_service'] = $this->m_ser->get_by_date($start, $end);
 
             $data['arrivals_date'] = $date_range;
         }else{
             // 3 = get with number of service in each customer
-            $data['arr_customer'] = $m_cus->get_all(3);
+            $data['arr_customer'] = $this->m_cus->get_all(3);
             // get all service
-            $data['arr_service'] = $m_ser->get_all();
+            $data['arr_service'] = $this->m_ser->get_all();
 
             // no customer data
             if (count($data['arr_service']) == 0) {
@@ -70,8 +66,7 @@ class Customer_show extends Cdms_controller {
     * @Create Date  2564-07-29
     */
     public function customer_delete() {
-        $m_cus = new M_cdms_customer();
-        $m_cus->delete($this->request->getPost('cus_id'));
+        $this->m_cus->delete($this->request->getPost('cus_id'));
         return $this->response->redirect(base_url('/Customer_show/customer_show_ajax'));
     }
 
@@ -85,8 +80,7 @@ class Customer_show extends Cdms_controller {
     */
     public function customer_detail($cus_id) {
         $_SESSION['menu'] = 'Customer_show';
-        $m_cus = new M_cdms_customer;
-        $data['arr_customer'] = $m_cus->get_by_id($cus_id);
+        $data['obj_customer'] = $this->m_cus->get_by_id($cus_id);
         $this->output('v_customer_show_information', $data);
     }
 
@@ -99,9 +93,8 @@ class Customer_show extends Cdms_controller {
     * @Create Date  2564-08-14
     */
     public function get_customer_ajax() {
-        $m_cus = new M_cdms_customer();
         $cus_id = $this->request->getPost('cus_id');
-        $cus_information = $m_cus->get_by_id($cus_id);
+        $cus_information = $this->m_cus->get_by_id($cus_id);
 
         echo json_encode($cus_information);
     }
@@ -115,13 +108,11 @@ class Customer_show extends Cdms_controller {
     * @Create Date  2564-09-15
     */
     public function export_customer() {
-        $m_cus = new M_cdms_customer();
-        $m_ser = new M_cdms_service();
 
         //Data Customer
-        $arr_customer = $m_cus->get_all();
+        $arr_customer = $this->m_cus->get_all();
         //Data Service
-        $arr_service = $m_ser->get_all();
+        $arr_service = $this->m_ser->get_all();
 
         $index = count($arr_service)-1;
         $start = $arr_service[$index]->ser_arrivals_date;
@@ -137,9 +128,9 @@ class Customer_show extends Cdms_controller {
             $start = substr($date_range,6,4).'-'.substr($date_range,3,2).'-'.(substr($date_range,0,2)) . ' ' . '00:00:00';
             $end = substr($date_range,19,4).'-'.substr($date_range,16,2).'-'.(substr($date_range,13,2)) . ' ' . '23:59:59';
             //Data Customer
-            $arr_customer = $m_cus->get_by_date($start, $end);
+            $arr_customer = $this->m_cus->get_by_date($start, $end);
             //Data Service
-            $arr_service = $m_ser->get_by_date_customer($start, $end);
+            $arr_service = $this->m_ser->get_by_date_customer($start, $end);
 
         }
 

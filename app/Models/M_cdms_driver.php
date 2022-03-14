@@ -41,6 +41,6 @@ class M_cdms_driver extends Da_cdms_driver {
         $sql = "SELECT * FROM $this->table
                 LEFT JOIN `cdms_car` ON dri_car_id = car_id
                 WHERE dri_id = '$dri_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 }

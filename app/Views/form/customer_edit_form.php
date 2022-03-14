@@ -8,6 +8,22 @@
 */
 -->
 
+<?php
+    if($obj_customer != NULL){
+        $cus_id = $obj_customer->cus_id;
+        $cus_company_name = $obj_customer->cus_company_name;
+        $old_cus_company_name = $obj_customer->old_cus_company_name;
+        $cus_firstname = $obj_customer->cus_firstname;
+        $cus_lastname = $obj_customer->cus_lastname;
+        $cus_branch = $obj_customer->cus_branch;
+        $old_cus_branch = $obj_customer->old_cus_branch;
+        $cus_tel = $obj_customer->cus_tel;
+        $cus_address = $obj_customer->cus_address;
+        $cus_tax = $obj_customer->cus_tax;
+        $cus_email = $obj_customer->cus_email;
+    }
+?>
+
 <style>
     .form-inline label {
         display: block;

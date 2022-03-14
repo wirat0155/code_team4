@@ -29,10 +29,10 @@ class Container_edit extends Cdms_controller {
         }
 
         // get container data
-        $data['arr_container'] = $this->m_con->get_by_id($con_id);
+        $data['obj_container'] = $this->m_con->get_by_id($con_id);
 
         // get agent agent
-        $data['arr_agent'] = $this->m_agn->get_by_id($data['arr_container'][0]->con_agn_id);
+        $data['obj_agent'] = $this->m_agn->get_by_id($data['obj_container']->con_agn_id);
         // print_r($data['arr_agent']);
         $data['arr_agn'] = $this->m_agn->get_all();
 
@@ -41,7 +41,7 @@ class Container_edit extends Cdms_controller {
         $data['arr_size'] = $this->m_size->get_all();
 
         // size information
-        $data['arr_con_size'] = $this->m_size->get_by_id($data['arr_container'][0]->con_size_id);
+        $data['obj_con_size'] = $this->m_size->get_by_id($data['obj_container']->con_size_id);
 
         // container type
         $data['arr_container_type'] = $this->m_cont->get_all();
@@ -50,6 +50,9 @@ class Container_edit extends Cdms_controller {
         $data['arr_status_container'] = $this->m_stac->get_all();
 
         // call container input view
+
+        // echo "<pre>"; print_r($data); echo "</pre>";
+
         $this->output('v_container_edit', $data);
     }
 
@@ -97,7 +100,7 @@ class Container_edit extends Cdms_controller {
 
             // get agn_id back
             $max_id_agent = $this->m_agn->get_max_id();
-            $obj_con["con_agn_id"] = $max_id_agent[0]->agn_id;
+            $obj_con["con_agn_id"] = $max_id_agent->agn_id;
         }
         //  select old agent
         else {

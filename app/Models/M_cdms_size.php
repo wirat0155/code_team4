@@ -59,7 +59,7 @@ class M_cdms_size extends Da_cdms_size {
     */
     public function get_by_id($size_id) {
         $sql = "SELECT * FROM $this->table WHERE size_id = '$size_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*

@@ -102,7 +102,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a class="cl-blue" href="<?php echo base_url() . '/Driver_show/driver_detail/' . $arr_driver[0]->dri_id ?>">Driver details</a>
+                    <a class="cl-blue" href="<?php echo base_url() . '/Driver_show/driver_detail/' . $arr_driver->dri_id ?>">Driver details</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -118,14 +118,14 @@
                 <div class="text-center mt-4 mb-3">
                     <div class="picture-container">
                         <div class="picture" onclick="$('#dri_profile_image').click();">
-                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver[0]->dri_profile_image ?>">
+                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver->dri_profile_image ?>">
                         </div>
                     </div>
                 </div>
 
                 <div class="row mx-4">
                     <div class="col-md-12">
-                        <input type='hidden' name='dri_id' value="<?php echo $arr_driver[0]->dri_id ?>">
+                        <input type='hidden' name='dri_id' value="<?php echo $arr_driver->dri_id ?>">
 
                         <!-- edit driver -->
                         <div class="px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800">

@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-use App\Models\M_cdms_agent;
 
 /*
 * Agent_edit
@@ -22,8 +21,7 @@ class Agent_edit extends Cdms_controller {
         $_SESSION['menu'] = 'Agent_show';
 
         // get agent information
-        $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_by_id($agn_id);
+        $data['obj_agent'] = $this->m_agn->get_by_id($agn_id);
 
         // show agent edit page
         $this->output('v_agent_edit', $data);
@@ -38,8 +36,6 @@ class Agent_edit extends Cdms_controller {
     * @Create Date  2021-08-06
     */
     public function agent_update() {
-        // load agent model
-        $m_agn = new M_cdms_agent();
 
         // get agent information form agent edit page
         $agn_id = $this->request->getPost('agn_id');
@@ -52,7 +48,7 @@ class Agent_edit extends Cdms_controller {
         $agn_email = $this->request->getPost('agn_email');
 
         // check agent duplicate company name
-        $arr_agent = $m_agn->get_by_company_name($agn_company_name);
+        $arr_agent = $this->m_agn->get_by_company_name($agn_company_name);
         if (count($arr_agent) >= 1 && $arr_agent[0]->agn_id != $agn_id) {
             $_SESSION['agn_company_name_error'] = 'The agent has already used';
             
@@ -81,7 +77,7 @@ class Agent_edit extends Cdms_controller {
         unset($_SESSION['agn_address']);
         unset($_SESSION['agn_tax']);
         unset($_SESSION['agn_email']);
-        $m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
+        $this->m_agn->agent_update($agn_id, $agn_company_name, $agn_firstname, $agn_lastname, $agn_tel, $agn_address, $agn_tax, $agn_email);
         return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
         
     }

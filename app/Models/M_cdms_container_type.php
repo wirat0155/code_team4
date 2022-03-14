@@ -52,7 +52,7 @@ class M_cdms_container_type extends Da_cdms_container_type {
     */
     public function get_by_id($cont_id) {
         $sql = "SELECT * FROM $this->table WHERE cont_id='$cont_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     /*
@@ -65,7 +65,7 @@ class M_cdms_container_type extends Da_cdms_container_type {
     */
     public function get_last() {
         $sql = "SELECT * FROM $this->table ORDER BY cont_id DESC LIMIT 1";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 
     public function check_container_type($cont_id) {

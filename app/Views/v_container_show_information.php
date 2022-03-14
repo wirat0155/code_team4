@@ -21,7 +21,7 @@
                     <h4 class="pl-3 page-title">CONTAINER DETAILS</h4>
                     <div class="card-action ml-auto mr-4">
                         <a class="ui yellow button"
-                            href="<?php echo base_url() . '/Container_edit/container_edit/' . $arr_container[0]->con_id ?>">
+                            href="<?php echo base_url() . '/Container_edit/container_edit/' . $obj_container->con_id ?>">
                             <i class="far fa-edit mr-1"></i>
                             Edit info
                         </a>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Container_show/container_delete' ?>" method="post">
-                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $arr_container[0]->con_id ?>">
+                        <input type="hidden" id="agn_id" name="agn_id" value="<?php echo $obj_container->con_id ?>">
                         <p style=" font-size: 1rem">Are you sure to remove the agent</p>
                         <div class="ui info message">
                             <div class="header">

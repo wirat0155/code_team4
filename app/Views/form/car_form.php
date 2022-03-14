@@ -10,19 +10,19 @@
 
 <?php 
 if ($page == 'car_edit') {
-    $car_id = $arr_car[0]->car_id;
-    $car_code = $arr_car[0]->car_code;
-    $car_number = $arr_car[0]->car_number;
-    $car_chassis_number = $arr_car[0]->car_chassis_number;
-    $car_brand = $arr_car[0]->car_brand;
-    $car_register_year = $arr_car[0]->car_register_year;
-    $car_weight = $arr_car[0]->car_weight;
-    $car_branch = $arr_car[0]->car_branch;
-    $car_fuel_type = $arr_car[0]->car_fuel_type;
-    $car_image = $arr_car[0]->car_image;
-    $car_status = $arr_car[0]->car_status;
-    $car_prov_id = $arr_car[0]->car_prov_id;
-    $car_cart_id = $arr_car[0]->car_cart_id;
+    $car_id = $arr_car->car_id;
+    $car_code = $arr_car->car_code;
+    $car_number = $arr_car->car_number;
+    $car_chassis_number = $arr_car->car_chassis_number;
+    $car_brand = $arr_car->car_brand;
+    $car_register_year = $arr_car->car_register_year;
+    $car_weight = $arr_car->car_weight;
+    $car_branch = $arr_car->car_branch;
+    $car_fuel_type = $arr_car->car_fuel_type;
+    $car_image = $arr_car->car_image;
+    $car_status = $arr_car->car_status;
+    $car_prov_id = $arr_car->car_prov_id;
+    $car_cart_id = $arr_car->car_cart_id;
 
     $colon = ' :';
 }

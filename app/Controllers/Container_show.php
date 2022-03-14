@@ -47,10 +47,10 @@ class Container_show extends Cdms_controller
         $_SESSION['menu'] = 'Container_show';
 
         // container id
-        $data['arr_container'] = $this->m_con->get_by_id($con_id);
+        $data['obj_container'] = $this->m_con->get_by_id($con_id);
 
         // container size
-        $data['arr_size'] = $this->m_size->get_by_id($data['arr_container'][0]->con_size_id);
+        $data['obj_size'] = $this->m_size->get_by_id($data['obj_container']->con_size_id);
 
         // container type
         $data['arr_container_type'] = $this->m_cont->get_all();
@@ -59,7 +59,7 @@ class Container_show extends Cdms_controller
         $data['arr_status_container'] = $this->m_stac->get_all();
 
         // data agent
-        $data['arr_agent'] = $this->m_agn->get_by_id($data['arr_container'][0]->con_agn_id);
+        $data['obj_agent'] = $this->m_agn->get_by_id($data['obj_container']->con_agn_id);
 
         $this->output('v_container_show_information', $data);
     }

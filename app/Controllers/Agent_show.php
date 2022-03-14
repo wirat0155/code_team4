@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\M_cdms_agent;
-use App\Models\M_cdms_container;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
@@ -26,8 +24,7 @@ class Agent_show extends Cdms_controller {
         $_SESSION['menu'] = 'Agent_show';
 
         // load agent model
-        $m_agn = new M_cdms_agent();
-        $data['arr_agent'] = $m_agn->get_all(3);
+        $data['arr_agent'] = $this->m_agn->get_all(3);
 
         $this->output('v_agent_showlist', $data);
     }
@@ -41,8 +38,7 @@ class Agent_show extends Cdms_controller {
     * @Create Date  2564-07-30
     */
     public function agent_delete() {
-        $m_agn = new M_cdms_agent();
-        $m_agn->delete($this->request->getPost('agn_id'));
+        $this->m_agn->delete($this->request->getPost('agn_id'));
 
         return $this->response->redirect(base_url('/Agent_show/agent_show_ajax'));
     }
@@ -56,9 +52,8 @@ class Agent_show extends Cdms_controller {
     * @Create Date  2564-08-07
     */
     public function get_agent_ajax() {
-        $m_agn = new M_cdms_agent();
         $agn_id = $this->request->getPost('agn_id');
-        $agn_information = $m_agn->get_by_id($agn_id);
+        $agn_information = $this->m_agn->get_by_id($agn_id);
 
         echo json_encode($agn_information);
     }
@@ -73,8 +68,7 @@ class Agent_show extends Cdms_controller {
     */
     public function agent_detail($agn_id) {
         $_SESSION['menu'] = 'Agent_show';
-        $m_agn = new M_cdms_agent;
-        $data['arr_agent'] = $m_agn->get_by_id($agn_id);
+        $data['obj_agent'] = $this->m_agn->get_by_id($agn_id);
         $this->output('v_agent_show_information', $data);
     }
 }

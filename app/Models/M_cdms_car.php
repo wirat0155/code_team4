@@ -50,6 +50,6 @@ class M_cdms_car extends Da_cdms_car {
                 WHERE car_id = '$car_id'";
 
         // return as array
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 }

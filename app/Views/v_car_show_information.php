@@ -79,7 +79,7 @@
             <div class="pl-4 mt-4 page-header mb-0">
                 <h4 class="pl-3 page-title">CAR DETAIL</h4>
                 <div class="card-action ml-auto mr-4">
-                    <a class="ui yellow button" href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car[0]->car_id ?>">
+                    <a class="ui yellow button" href="<?php echo base_url() . '/Car_edit/car_edit/' . $arr_car->car_id ?>">
                         <i class="far fa-edit mr-1"></i>
                         Edit info
                     </a>
@@ -117,8 +117,8 @@
                 <div class="col-12">
                     <div class="picture-container">
                         <div class="picture">
-                            <?php if ($arr_car[0]->car_image != NULL && $arr_car[0]->car_image != '') : ?>
-                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[0]->car_image ?>">
+                            <?php if ($arr_car->car_image != NULL && $arr_car->car_image != '') : ?>
+                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car->car_image ?>">
                             <?php else : ?>
                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
                             <?php endif; ?>
@@ -147,7 +147,7 @@
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Car_show/car_delete' ?>" method="post">
-                        <input type="hidden" id="car_id" name="car_id" value="<?php echo $arr_car[0]->car_id ?>">
+                        <input type="hidden" id="car_id" name="car_id" value="<?php echo $arr_car->car_id ?>">
 
                         <p style=" font-size: 1rem">Are you sure to remove the car</p>
 

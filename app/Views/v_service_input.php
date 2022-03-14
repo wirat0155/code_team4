@@ -679,9 +679,9 @@
             */
             function show_driver_information(driver, status) {
                 if (status == 1) {
-                    $('select[name="ser_car_id_in"]').val(driver[0]['dri_car_id']);
+                    $('select[name="ser_car_id_in"]').val(driver['dri_car_id']);
                 } else {
-                    $('select[name="ser_car_id_out"]').val(driver[0]['dri_car_id']);
+                    $('select[name="ser_car_id_out"]').val(driver['dri_car_id']);
                 }
             }
 
@@ -761,19 +761,19 @@
             */
             async function show_container_information(container) {
                 // check container type still available
-                $('select[name="con_cont_id"]').val(container[0]['con_cont_id']);
-                check_container_type(container[0]['con_cont_id']);
+                $('select[name="con_cont_id"]').val(container['con_cont_id']);
+                check_container_type(container['con_cont_id']);
 
-                $('select[name="con_stac_id"]').val(container[0]['con_stac_id']);
-                if (container[0]['con_stac_id'] == 0) {
+                $('select[name="con_stac_id"]').val(container['con_stac_id']);
+                if (container['con_stac_id'] == 0) {
                     // set to import
                     $('select[name="con_stac_id"]').val(1);
                 }
-                $('input[name="con_max_weight"]').val(container[0]['con_max_weight']);
-                $('input[name="con_tare_weight"]').val(container[0]['con_tare_weight']);
-                $('input[name="con_net_weight"]').val(container[0]['con_net_weight']);
-                $('input[name="con_cube"]').val(container[0]['con_cube']);
-                $('select[name="con_size_id"]').val(container[0]['con_size_id']);
+                $('input[name="con_max_weight"]').val(container['con_max_weight']);
+                $('input[name="con_tare_weight"]').val(container['con_tare_weight']);
+                $('input[name="con_net_weight"]').val(container['con_net_weight']);
+                $('input[name="con_cube"]').val(container['con_cube']);
+                $('select[name="con_size_id"]').val(container['con_size_id']);
                 get_size_information();
             }
 
@@ -848,7 +848,7 @@
                         size_id: size_id
                     },
                     success: function(data) {
-                        show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]
+                        show_size_information(data['size_height_out'], data['size_width_out'], data
                             ['size_length_out']);
                     }
                 });
@@ -929,13 +929,13 @@
             * @Create Date  2564-08-06
             */
             function show_agent_information(agent) {
-                $('input[name="agn_id"]').val(agent[0]['agn_id']);
-                $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
-                $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
-                $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
-                $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
-                $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
-                $('input[name="agn_email"]').val(agent[0]['agn_email']);
+                $('input[name="agn_id"]').val(agent['agn_id']);
+                $('textarea[name="agn_address"]').val(agent['agn_address']);
+                $('input[name="agn_tax"]').val(agent['agn_tax']);
+                $('input[name="agn_firstname"]').val(agent['agn_firstname']);
+                $('input[name="agn_lastname"]').val(agent['agn_lastname']);
+                $('input[name="agn_tel"]').val(agent['agn_tel']);
+                $('input[name="agn_email"]').val(agent['agn_email']);
             }
 
             
@@ -1034,13 +1034,13 @@
             * @Create Date  2564-08-06
             */
             function show_customer_information(customer) {
-                $('input[name="cus_branch"]').val(customer[0]['cus_branch']);
-                $('textarea[name="cus_address"]').val(customer[0]['cus_address']);
-                $('input[name="cus_tax"]').val(customer[0]['cus_tax']);
-                $('input[name="cus_firstname"]').val(customer[0]['cus_firstname']);
-                $('input[name="cus_lastname"]').val(customer[0]['cus_lastname']);
-                $('input[name="cus_tel"]').val(customer[0]['cus_tel']);
-                $('input[name="cus_email"]').val(customer[0]['cus_email']);
+                $('input[name="cus_branch"]').val(customer['cus_branch']);
+                $('textarea[name="cus_address"]').val(customer['cus_address']);
+                $('input[name="cus_tax"]').val(customer['cus_tax']);
+                $('input[name="cus_firstname"]').val(customer['cus_firstname']);
+                $('input[name="cus_lastname"]').val(customer['cus_lastname']);
+                $('input[name="cus_tel"]').val(customer['cus_tel']);
+                $('input[name="cus_email"]').val(customer['cus_email']);
             }
 
             

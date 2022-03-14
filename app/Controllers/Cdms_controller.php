@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 use App\Models\M_cdms_status_container;
+use App\Models\M_cdms_cost_detail;
 use App\Models\M_cdms_container_type;
 use App\Models\M_cdms_container;
 use App\Models\M_cdms_driver;
@@ -20,6 +21,7 @@ use App\Models\M_cdms_change_container_log;
 use App\Models\M_cdms_customer;
 use App\Models\M_cdms_service;
 use App\Models\M_cdms_status_container_log;
+use App\Models\M_cdms_bank;
 
 /*
 * Cdms_controller
@@ -53,8 +55,9 @@ class Cdms_controller extends Controller
 	protected $m_cus;
 	protected $m_agn;
 	protected $m_ser;
-	protected $m_scl;
-	
+	protected $m_chl;
+	protected $m_cosd;
+	protected $m_bnk;
 
 	/**
 	 * Constructor.
@@ -97,7 +100,9 @@ class Cdms_controller extends Controller
 		$this->m_cus = new M_cdms_customer();
         $this->m_car = new M_cdms_car();
 		$this->m_ser = new M_cdms_service();
-		$this->m_scl = new M_cdms_change_container_log();
+		$this->m_cosd = new M_cdms_cost_detail();
+		$this->m_bnk = new M_cdms_bank();
+		$this->m_chl = new M_cdms_change_container_log();
     }
 
 	/*

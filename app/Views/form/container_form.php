@@ -9,10 +9,10 @@
 -->
 
 <?php
-  $attr = '';
-  if ($type == 2) {
-    $attr = 'readonly';
-  }
+    $attr = '';
+    if ($type == 2) {
+        $attr = 'readonly';
+    }
 ?>
 
 <div class="row">
@@ -128,7 +128,7 @@
             <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
             <option value="<?php echo $arr_size[$i]->size_id ?>"
                 <?php 
-                if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) 
+                if ($obj_container->con_size_id == $arr_size[$i]->size_id) 
                     echo "selected";
                 else if ($_SESSION['service_input_error'] == true && $arr_size[$i]->size_id == $con_size_id)
                     echo "selected";

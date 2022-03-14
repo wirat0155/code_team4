@@ -46,7 +46,7 @@
                             <i class="fas fa-history mr-1"></i>
                             History log
                         </button>
-                        <a class="ui yellow button" href="<?php echo base_url() . '/Service_edit/service_edit/' . $obj_service[0]->ser_id ?>">
+                        <a class="ui yellow button" href="<?php echo base_url() . '/Service_edit/service_edit/' . $obj_service->ser_id ?>">
                             <i class="far fa-edit mr-1"></i>
                             Edit info
                         </a>
@@ -66,13 +66,13 @@
                         </a>
                     </li>
                     <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
+                        <i class="flaticon-right-objow"></i>
                     </li>
                     <li class="nav-item">
                         <a class="cl-blue" href="<?php echo base_url() . '/Service_show/service_show_ajax' ?>">Service information</a>
                     </li>
                     <li class="separator">
-                        <i class="flaticon-right-arrow"></i>
+                        <i class="flaticon-right-objow"></i>
                     </li>
                     <li class="nav-item">
                         <a href="#">Service details</a>
@@ -139,7 +139,7 @@
             <div class="d-flex justify-content-center mt-4 mb-5" id="img-line">
                 <!-- imported driver profile image -->
                 <div class="avatar avatar-xxl ml-5">
-                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver_in[0]->dri_profile_image ?>">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $obj_driver_in->dri_profile_image ?>">
                 </div>
 
                 <div class="mt-5">
@@ -157,14 +157,14 @@
 
                 <!-- exported driver profile image -->
                 <div class="avatar avatar-xxl ml-5">
-                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $arr_driver_out[0]->dri_profile_image ?>">
+                    <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/dri_profile_image/' . $obj_driver_out->dri_profile_image ?>">
                 </div>
             </div>
 
             <form id="service_form" action="<?php echo base_url() . '/Service_input/service_insert' ?>" enctype="multipart/form-data" method="POST">
                 <div class="row mx-5">
                     <div class="col-md-12">
-                        <input type='hidden' name='ser_id' value="<?php echo $obj_service[0]->ser_id ?>">
+                        <input type='hidden' name='ser_id' value="<?php echo $obj_service->ser_id ?>">
                         <div class="card mt-4">
                             <div class="card-header">
                                 <div class="card-title" id="service_information">Service information</div>
@@ -176,7 +176,7 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Type :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $obj_service[0]->stac_name ?></p>
+                                                <p><?php echo $obj_service->stac_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -185,16 +185,16 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Cut-off date :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo date_thai($obj_service[0]->ser_departure_date) ?></p>
+                                                <p><?php echo date_thai($obj_service->ser_departure_date) ?></p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Date arrivals :</label>
+                                            <label class="col-form-label mr-auto">Date objivals :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo date_thai($obj_service[0]->ser_arrivals_date) ?></p>
+                                                <p><?php echo date_thai($obj_service->ser_objivals_date) ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@
                                         <div class="form-group form-inline">
                                             <label for="car_branch" class="col-form-label mr-auto">Importer :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_driver_in[0]->dri_name ?></p>
+                                                <p><?php echo $obj_driver_in->dri_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +212,7 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto pull-right">Exporter :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_driver_out[0]->dri_name ?></p>
+                                                <p><?php echo $obj_driver_out->dri_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +222,7 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Imported car :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_car_in[0]->car_code . ' ' . $arr_car_in[0]->prov_name ?></p>
+                                                <p><?php echo $obj_car_in->car_code . ' ' . $obj_car_in->prov_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Exported car :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $arr_car_out[0]->car_code . ' ' . $arr_car_out[0]->prov_name ?></p>
+                                                <p><?php echo $obj_car_out->car_code . ' ' . $obj_car_out->prov_name ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -241,9 +241,9 @@
                                     <!-- Weight -->
                                     <div class="col-md-6">
                                         <div class="form-group form-inline">
-                                            <label class="col-form-label mr-auto">Arrivals location :</label>
+                                            <label class="col-form-label mr-auto">objivals location :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $obj_service[0]->ser_arrivals_location ?></p>
+                                                <p><?php echo $obj_service->ser_objivals_location ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -253,7 +253,7 @@
                                         <div class="form-group form-inline">
                                             <label class="col-form-label mr-auto">Departure location :</label>
                                             <div class="col-12 col-sm-8">
-                                                <p><?php echo $obj_service[0]->ser_departure_location ?></p>
+                                                <p><?php echo $obj_service->ser_departure_location ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -264,10 +264,10 @@
                                             <div class="col-12 col-sm-8">
                                                 <p>
                                                     <?php 
-                                                if ($obj_service[0]->ser_actual_departure_date == NULL || $obj_service[0]->ser_actual_departure_date == '')
+                                                if ($obj_service->ser_actual_departure_date == NULL || $obj_service->ser_actual_departure_date == '')
                                                     echo 'Not export yet';
                                                 else
-                                                    echo date_thai($obj_service[0]->ser_actual_departure_date) 
+                                                    echo date_thai($obj_service->ser_actual_departure_date) 
                                                 ?>
                                                 </p>
                                             </div>
@@ -340,7 +340,7 @@
             </div>
             <div class="content">
                 <form action="<?php echo base_url() . '/Service_show/service_delete' ?>" method="post">
-                    <input type="hidden" id="ser_id" name="ser_id" value="<?php echo $obj_service[0]->ser_id ?>">
+                    <input type="hidden" id="ser_id" name="ser_id" value="<?php echo $obj_service->ser_id ?>">
 
                     <p style=" font-size: 1rem">Are you sure to remove the service</p>
 
@@ -384,8 +384,8 @@
                         <?php for ($i = count($arr_change_container) - 1; $i >= 0; $i--) {
                             if (gettype($arr_change_container[$i]) == 'string') : ?>
                                 <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
-                                    <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_service[0]->ser_arrivals_date) ?></time>
-                                    <span class="text"><h4><?php echo $obj_service[0]->con_number?></h4></span>
+                                    <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_service->ser_objivals_date) ?></time>
+                                    <span class="text"><h4><?php echo $obj_service->con_number?></h4></span>
                                 </li>
                             <?php else : ?>
                                 <li class="feed-item <?php if ($i != count($arr_change_container) - 1) echo "feed-item-secondary" ?>">
@@ -414,7 +414,7 @@
                                 }
                                 ?>">
                                     <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($arr_change_container[$i - 1]->chl_date) ?></time>
-                                    <span class="text"><h4><?php echo $obj_service[0]->con_number ?></h4></span>
+                                    <span class="text"><h4><?php echo $obj_service->con_number ?></h4></span>
                                 </li>
 
                             <!-- ไม่ใช่ service ที่เรียกดูข้อมูล -->
@@ -444,7 +444,7 @@
                                     echo "feed-item-secondary";
                                     }
                                     ?>">
-                                        <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_original_container->ser_arrivals_date) ?></time>
+                                        <time class="date"><i class="bi bi-clock mr-3"></i><?php echo diff_datetime($obj_original_container->ser_objivals_date) ?></time>
                                         <span class="text"><h4><a href="<?php echo base_url() . '/Service_show/service_detail/' . $arr_change_container[$i]->chl_new_ser_id ?>">
                                             <?php
                                             if ($arr_change_container[$i]->con_number != null) {

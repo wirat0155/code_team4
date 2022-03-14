@@ -10,37 +10,37 @@
 
 <?php
     if ($obj_container != NULL) {
-        $con_id = $obj_container[0]->con_id;
-        $con_number = $obj_container[0]->con_number;
+        $con_id = $obj_container->con_id;
+        $con_number = $obj_container->con_number;
         $con_old_number = $con_number;
-        $con_stac_id = $obj_container[0]->con_stac_id;
-        $con_cont_id = $obj_container[0]->con_cont_id;
-        $con_max_weight = $obj_container[0]->con_max_weight;
-        $con_net_weight = $obj_container[0]->con_net_weight;
-        $con_tare_weight = $obj_container[0]->con_tare_weight;
-        $con_cube = $obj_container[0]->con_cube;
-        $con_size_id = $obj_container[0]->con_size_id;
+        $con_stac_id = $obj_container->con_stac_id;
+        $con_cont_id = $obj_container->con_cont_id;
+        $con_max_weight = $obj_container->con_max_weight;
+        $con_net_weight = $obj_container->con_net_weight;
+        $con_tare_weight = $obj_container->con_tare_weight;
+        $con_cube = $obj_container->con_cube;
+        $con_size_id = $obj_container->con_size_id;
 
-        $size_width_out = $obj_container[0]->size_width_out;
-        $size_length_out = $obj_container[0]->size_length_out;
-        $size_height_out = $obj_container[0]->size_height_out;
+        $size_width_out = $obj_container->size_width_out;
+        $size_length_out = $obj_container->size_length_out;
+        $size_height_out = $obj_container->size_height_out;
     }
     else {
         if($con_id == NULL){
-            $con_id = $arr_container[0]->con_id;
-            $con_number = $arr_container[0]->con_number;
+            $con_id = $arr_container->con_id;
+            $con_number = $arr_container->con_number;
             $con_old_number = $con_number;
-            $con_stac_id = $arr_container[0]->con_stac_id;
-            $con_cont_id = $arr_container[0]->con_cont_id;
-            $con_max_weight = $arr_container[0]->con_max_weight;
-            $con_net_weight = $arr_container[0]->con_net_weight;
-            $con_tare_weight = $arr_container[0]->con_tare_weight;
-            $con_cube = $arr_container[0]->con_cube;
-            $con_size_id = $arr_container[0]->con_size_id;
+            $con_stac_id = $arr_container->con_stac_id;
+            $con_cont_id = $arr_container->con_cont_id;
+            $con_max_weight = $arr_container->con_max_weight;
+            $con_net_weight = $arr_container->con_net_weight;
+            $con_tare_weight = $arr_container->con_tare_weight;
+            $con_cube = $arr_container->con_cube;
+            $con_size_id = $arr_container->con_size_id;
 
-            $size_width_out = $arr_container[0]->size_width_out;
-            $size_length_out = $arr_container[0]->size_length_out;
-            $size_height_out = $arr_container[0]->size_height_out;
+            $size_width_out = $arr_container->size_width_out;
+            $size_length_out = $arr_container->size_length_out;
+            $size_height_out = $arr_container->size_height_out;
         }
     }
     

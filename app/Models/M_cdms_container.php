@@ -105,6 +105,6 @@ class M_cdms_container extends Da_cdms_container {
         $sql = "SELECT * FROM $this->table 
                 LEFT JOIN cdms_size ON size_id = con_size_id
                 WHERE con_id = '$con_id'";
-        return $this->db->query($sql)->getResult();
+        return $this->db->query($sql)->getRow();
     }
 }

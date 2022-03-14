@@ -20,28 +20,28 @@
                     <b>Name-Surname :</b>
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
-                    <?php echo $arr_driver[0]->dri_name ?>
+                    <?php echo $arr_driver->dri_name ?>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-4">
                     <b>Card number :</b>
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
-                    <?php echo $arr_driver[0]->dri_card_number ?>
+                    <?php echo $arr_driver->dri_card_number ?>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-4">
                     <b>Phone number :</b>
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
-                    <?php echo $arr_driver[0]->dri_tel ?>
+                    <?php echo $arr_driver->dri_tel ?>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-4">
                     <b>Start date :</b>
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
-                    <?php echo date_thai($arr_driver[0]->dri_date_start) ?>
+                    <?php echo date_thai($arr_driver->dri_date_start) ?>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                     <b>License number :</b>
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
-                    <?php echo $arr_driver[0]->dri_license ?>
+                    <?php echo $arr_driver->dri_license ?>
                 </div>
 
                 <div class="col-12 col-sm-6 mb-4">
@@ -64,13 +64,13 @@
                 </div>
                 <div class="col-12 col-sm-6 mb-4">
                     <?php
-                    if ($arr_driver[0]->dri_license_type == 1) {
+                    if ($arr_driver->dri_license_type == 1) {
                         echo 'ท.1';
-                    } else if ($arr_driver[0]->dri_license_type == 2) {
+                    } else if ($arr_driver->dri_license_type == 2) {
                         echo 'ท.2';
-                    } else if ($arr_driver[0]->dri_license_type == 3) {
+                    } else if ($arr_driver->dri_license_type == 3) {
                         echo 'ท.3';
-                    } else if ($arr_driver[0]->dri_license_type == 4) {
+                    } else if ($arr_driver->dri_license_type == 4) {
                         echo 'ท.4';
                     } ?>
                 </div>

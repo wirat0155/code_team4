@@ -44,7 +44,7 @@ label.error {
             <div class="pl-4 mt-4 page-header mb-0">
                 <h4 class="pl-3 page-title">CUSTOMER DETAIL</h4>
                 <div class="card-action ml-auto mr-4">
-                    <a class="ui yellow button" href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $arr_customer[0]->cus_id ?>">
+                    <a class="ui yellow button" href="<?php echo base_url() . '/Customer_edit/customer_edit/' . $obj_customer->cus_id ?>">
                         <i class="far fa-edit mr-1"></i>
                         Edit info
                     </a>
@@ -98,7 +98,7 @@ label.error {
                 </div>
                 <div class="content">
                     <form action="<?php echo base_url() . '/Customer_show/customer_delete' ?>" method="post">
-                        <input type="hidden" id="cus_id" name="cus_id" value="<?php echo $arr_customer[0]->cus_id ?>">
+                        <input type="hidden" id="cus_id" name="cus_id" value="<?php echo $obj_customer->cus_id ?>">
 
                         <p style=" font-size: 1rem">Are you sure to remove the customer</p>
 

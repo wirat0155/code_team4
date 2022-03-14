@@ -7,10 +7,25 @@
 * @Create Date  2564-11-06
 */
 -->
-<style>
-    .form-inline label {
-        display: block;
+
+<?php 
+    if ($obj_agent != NULL) {
+        $agn_id = $obj_agent->agn_id;
+        $agn_company_name = $obj_agent->agn_company_name;
+        $agn_firstname = $obj_agent->agn_firstname;
+        $agn_lastname = $obj_agent->agn_lastname;
+        $agn_tel = $obj_agent->agn_tel;
+        $agn_address = $obj_agent->agn_address;
+        $agn_status = $obj_agent->agn_status;
+        $agn_tax = $obj_agent->agn_tax;
+        $agn_email = $obj_agent->agn_email;
     }
+?>
+
+<style>
+.form-inline label {
+    display: block;
+}
 </style>
 
 <div class="container">
@@ -25,13 +40,14 @@
             <!-- company name -->
             <div class="row mb-3">
                 <!-- agent id for updating agent -->
-                <input type="hidden" name="agn_id" value="<?php echo $arr_agent[0]->agn_id ?>">
+                <input type="hidden" name="agn_id" value="<?php echo $arr_agent->agn_id ?>">
 
                 <div class="col-12 col-sm-6">
                     <label for="agn_company_name" class="mt-2"><b>Company name : </b></label>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" id="agn_company_name" name="agn_company_name" placeholder="Company name" value="<?php echo $agn_company_name ?>">
+                    <input class="form-control" id="agn_company_name" name="agn_company_name" placeholder="Company name"
+                        value="<?php echo $agn_company_name ?>">
                     <label class="error"><?php echo $_SESSION['agn_company_name_error']?></label>
                 </div>
             </div>
@@ -43,21 +59,24 @@
 
                 <div class="col-12 col-sm-6">
                     <div class="ui fluid search selection dropdown mt-1" style="left: 25px; width: 90%">
-                        <input type="hidden" name="agn_id" onchange="get_agent_information();" 
-                        value="<?php if ($agn_id == 'new' || $agn_id == '') echo "new"; else echo $agn_id ?>">
+                        <input type="hidden" name="agn_id" onchange="get_agent_information();"
+                            value="<?php if ($agn_id == 'new' || $agn_id == '') echo "new"; else echo $agn_id ?>">
                         <i class="dropdown icon"></i>
                         <div class="default text">Select agent</div>
                         <div class="menu">
                             <?php for ($i = 0; $i < count($arr_agn); $i++) { ?>
-                                <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>"><?php echo $arr_agn[$i]->agn_company_name;?>
-                                </div>
+                            <div class="item" data-value="<?php echo $arr_agn[$i]->agn_id ?>">
+                                <?php echo $arr_agn[$i]->agn_company_name;?>
+                            </div>
                             <?php } ?>
-                            <div class="item" data-value="new" <?php if($agn_id == 'new' || $agn_id == '') echo "selected" ?> >+ New agent</div>
+                            <div class="item" data-value="new"
+                                <?php if($agn_id == 'new' || $agn_id == '') echo "selected" ?>>+ New agent</div>
                         </div>
                     </div>
                     <label class="error"></label>
-                    <input class="form-control mt-5" name="agn_company_name" id="agn_company_name" placeholder="Company name"
-                    <?php if($agn_id != 'new' && $agn_id != '') echo "hidden" ?> value="<?php if($agn_id == 'new' || $agn_id == '') echo $agn_company_name ?>">
+                    <input class="form-control mt-5" name="agn_company_name" id="agn_company_name"
+                        placeholder="Company name" <?php if($agn_id != 'new' && $agn_id != '') echo "hidden" ?>
+                        value="<?php if($agn_id == 'new' || $agn_id == '') echo $agn_company_name ?>">
                     <label class="error"><?php echo $agn_company_name_error ?></label>
                 </div>
             </div>
@@ -69,7 +88,8 @@
                     <label for="agn_tax" class="mt-2"><b>Tax number : </b></label>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" id="agn_tax" name="agn_tax" placeholder="1234567890123" value="<?php echo $agn_tax ?>">
+                    <input class="form-control" id="agn_tax" name="agn_tax" placeholder="1234567890123"
+                        value="<?php echo $agn_tax ?>">
                 </div>
             </div>
 
@@ -79,7 +99,8 @@
                     <label for="agn_address" class="mt-2"><b>Company location : </b></label>
                 </div>
                 <div class="col-12">
-                    <textarea type="text" class="form-control" id="agn_address" name="agn_address" placeholder="Company location" rows="5"><?php echo $agn_address ?></textarea>
+                    <textarea type="text" class="form-control" id="agn_address" name="agn_address"
+                        placeholder="Company location" rows="5"><?php echo $agn_address ?></textarea>
                 </div>
             </div>
         </div>
@@ -96,7 +117,8 @@
                     <label for="agn_firstname" class="mt-2"><b>First name : </b></label>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name" value="<?php echo $agn_firstname ?>">
+                    <input class="form-control" id="agn_firstname" name="agn_firstname" placeholder="First name"
+                        value="<?php echo $agn_firstname ?>">
                 </div>
             </div>
 
@@ -106,7 +128,8 @@
                     <label for="agn_lastname" class="mt-2"><b>Last name : </b></label>
                 </div>
                 <div class="col-12 col-sm-6">
-                    <input class="form-control input-full" id="agn_lastname" name="agn_lastname" placeholder="Last name" value="<?php echo $agn_lastname ?>">
+                    <input class="form-control input-full" id="agn_lastname" name="agn_lastname" placeholder="Last name"
+                        value="<?php echo $agn_lastname ?>">
                 </div>
             </div>
 
@@ -122,7 +145,8 @@
                                 <i class="fas fa-phone"></i>
                             </span>
                         </div>
-                        <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx" value="<?php echo $agn_tel ?>">
+                        <input type="tel" class="form-control" id="agn_tel" name="agn_tel" placeholder="xxx-xxx-xxxx"
+                            value="<?php echo $agn_tel ?>">
                     </div>
                 </div>
             </div>
@@ -137,7 +161,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text "><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="email" class="form-control" id="agn_email" name="agn_email" placeholder="example@gmail.com" value="<?php echo $agn_email ?>">
+                        <input type="email" class="form-control" id="agn_email" name="agn_email"
+                            placeholder="example@gmail.com" value="<?php echo $agn_email ?>">
                     </div>
                 </div>
             </div>

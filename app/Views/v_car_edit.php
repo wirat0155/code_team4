@@ -82,7 +82,7 @@ label.error {
                     </li>
                     <li class="nav-item">
                         <a class="cl-blue"
-                            href="<?php echo base_url() . '/Car_show/car_detail/' . $arr_car[0]->car_id ?>">Car
+                            href="<?php echo base_url() . '/Car_show/car_detail/' . $arr_car->car_id ?>">Car
                             details</a>
                     </li>
                     <li class="separator">
@@ -99,8 +99,8 @@ label.error {
             <div class="text-center mt-4 mb-3">
                 <div class="picture-container">
                     <div class="picture" onclick="$('#car_image').click();">
-                        <?php if ($arr_car[0]->car_image != NULL && $arr_car[0]->car_image != '') { ?>
-                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car[0]->car_image ?>">
+                        <?php if ($arr_car->car_image != NULL && $arr_car->car_image != '') { ?>
+                            <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_image/' . $arr_car->car_image ?>">
                         <?php } else { ?>
                             <img class="avatar-img rounded-circle" src="<?php echo base_url() . '/car_type_image/truck_placeholder.png' ?>">
                         <?php } ?>

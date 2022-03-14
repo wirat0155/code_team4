@@ -43,6 +43,8 @@ class Service_input extends Cdms_controller {
         // 4 = Customer company name dublicate
         $data['section_error'] = $section_error;
 
+        // echo "<pre>"; print_r($data); echo "</pre>";
+
         // show service input view
         $this->output('v_service_input', $data);
     }
@@ -60,17 +62,17 @@ class Service_input extends Cdms_controller {
         $data = $obj;
         if($obj["ser_car_id_in"] == ''){
             $get_ser_car_id_in = $this->m_dri->get_by_id($obj["ser_dri_id_in"]);
-            $obj["ser_car_id_in"] = $get_ser_car_id_in[0]->dri_car_id;
+            $obj["ser_car_id_in"] = $get_ser_car_id_in->dri_car_id;
         }
         if($obj["ser_car_id_out"] == ''){
             $get_ser_car_id_out = $this->m_dri->get_by_id($obj["ser_dri_id_out"]);
-            $obj["ser_car_id_out"] = $get_ser_car_id_out[0]->dri_car_id;
+            $obj["ser_car_id_out"] = $get_ser_car_id_out->dri_car_id;
         }
 
         if ($obj["cus_id"] != 'new'){
             $obj["ser_cus_id"] = $obj["cus_id"];
             $obj["cus_company_name"] = $this->m_cus->get_by_id($obj["cus_id"]);
-            $obj["cus_company_name"] = $obj["cus_company_name"][0]->cus_company_name;
+            $obj["cus_company_name"] = $obj["cus_company_name"]->cus_company_name;
 
             $this->m_cus->customer_update(
                 $obj["cus_id"],
@@ -99,7 +101,7 @@ class Service_input extends Cdms_controller {
         if($obj["agn_id"] != ''){
             $obj["con_agn_id"] = $obj["agn_id"];
             $obj["agn_company_name"] = $this->m_agn->get_by_id($obj["agn_id"]);
-            $obj["agn_company_name"] = $obj["agn_company_name"][0]->agn_company_name;
+            $obj["agn_company_name"] = $obj["agn_company_name"]->agn_company_name;
 
             $this->m_agn->agent_update(
                 $obj["agn_id"],
@@ -125,7 +127,7 @@ class Service_input extends Cdms_controller {
         if ($obj["con_id"] != 'new'){
             $obj["ser_con_id"] = $obj["con_id"];
             $obj["con_number"] = $this->m_con->get_by_id($obj["con_id"]);
-            $obj["con_number"] = $obj["con_number"][0]->con_number;
+            $obj["con_number"] = $obj["con_number"]->con_number;
             $container_action = "update";
         }
         else {
@@ -167,7 +169,7 @@ class Service_input extends Cdms_controller {
                 $obj["cus_email"]
             );
             $obj["ser_cus_id"] = $this->m_cus->get_by_name($obj["cus_company_name"], $obj["cus_branch"]);
-            $obj["ser_cus_id"] = $obj["ser_cus_id"][0]->cus_id;
+            $obj["ser_cus_id"] = $obj["ser_cus_id"]->cus_id;
         }
 
         if ($is_new_agent) {
@@ -181,7 +183,7 @@ class Service_input extends Cdms_controller {
                 $obj["agn_email"]
             );
             $get_ser_agn_id = $this->m_agn->get_by_company_name($obj["agn_company_name"]);
-            $obj["con_agn_id"] = $get_ser_agn_id[0]->agn_id;
+            $obj["con_agn_id"] = $get_ser_agn_id->agn_id;
         }
 
         if ($is_new_container) {
@@ -198,7 +200,7 @@ class Service_input extends Cdms_controller {
             );
 
             $obj["ser_con_id"] = $this->m_con->get_by_con_number($obj["con_number"]);
-            $obj["ser_con_id"] =$obj["ser_con_id"][0]->con_id;
+            $obj["ser_con_id"] =$obj["ser_con_id"]->con_id;
         }
 
         if($container_action == "update") {
@@ -234,8 +236,6 @@ class Service_input extends Cdms_controller {
 
         $max_ser_id = $this->m_ser->get_max_id();
 
-        $this->m_scl->insert($max_ser_id->max_ser_id, $obj["ser_stac_id"]);
-
         if($max_ser_id->max_ser_id < 100){
             $format_invoice = "0" . $max_ser_id->max_ser_id;
         }else if($max_ser_id->max_ser_id < 10){
@@ -246,7 +246,7 @@ class Service_input extends Cdms_controller {
         $today = date("ymd");
         $ser_receipt = "RE" . $today . $format_invoice;
         $ser_invoice = "INV" . $today . $format_invoice;
-       
+    
         // print_r($ser_receipt);
         // print_r($ser_invoice);
         $this->m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);

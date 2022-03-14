@@ -213,7 +213,7 @@
                                                 onclick="get_size_information()">
                                                 <?php for ($i = 0; $i < count($arr_size); $i++) { ?>
                                                 <option value="<?php echo $arr_size[$i]->size_id ?>"
-                                                    <?php if ($obj_container[0]->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
+                                                    <?php if ($obj_container->con_size_id == $arr_size[$i]->size_id) echo "selected" ?>>
                                                     <?php echo $arr_size[$i]->size_name ?></option>
                                                 <?php } ?>
                                             </select>
@@ -495,7 +495,7 @@
                 size_id: size_id
             },
             success: function(data) {
-                show_size_information(data[0]['size_height_out'], data[0]['size_width_out'], data[0]['size_length_out']);
+                show_size_information(data['size_height_out'], data['size_width_out'], data['size_length_out']);
             }
         });
     }
@@ -693,12 +693,12 @@
     * @Create Date  2564-10-12
     */
     function show_agent_information(agent) {
-        $('textarea[name="agn_address"]').val(agent[0]['agn_address']);
-        $('input[name="agn_tax"]').val(agent[0]['agn_tax']);
-        $('input[name="agn_firstname"]').val(agent[0]['agn_firstname']);
-        $('input[name="agn_lastname"]').val(agent[0]['agn_lastname']);
-        $('input[name="agn_tel"]').val(agent[0]['agn_tel']);
-        $('input[name="agn_email"]').val(agent[0]['agn_email']);
+        $('textarea[name="agn_address"]').val(agent['agn_address']);
+        $('input[name="agn_tax"]').val(agent['agn_tax']);
+        $('input[name="agn_firstname"]').val(agent['agn_firstname']);
+        $('input[name="agn_lastname"]').val(agent['agn_lastname']);
+        $('input[name="agn_tel"]').val(agent['agn_tel']);
+        $('input[name="agn_email"]').val(agent['agn_email']);
     }
 
     /*
