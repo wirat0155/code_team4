@@ -75,4 +75,11 @@ class Da_cdms_container extends Model {
         // query
         $this->db->query($sql);
     }
+
+    public function update_con_stac_id_by_con_id($con_id, $con_stac_id) {
+        $sql = "UPDATE $this->table
+                    SET con_stac_id = '$con_stac_id'
+                    WHERE con_id = '$con_id'";
+        $this->db->query($sql);
+    }
 }
