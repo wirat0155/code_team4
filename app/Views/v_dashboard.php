@@ -298,10 +298,10 @@
       backgroundColor: [
         '#e03c31',
         '#ff7f41',
-        '#f7ea48',
+        '#753bbd',
         '#2dc84d',
         '#147bd1',
-        '#753bbd',
+        '#f7ea48',
         '#ff928b',
         '#ffd23f',
         '#3bceac',
