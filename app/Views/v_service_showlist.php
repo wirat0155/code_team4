@@ -846,7 +846,6 @@
                                                             <script>
                                                                 $('.modal_remove').modal('attach events', '.test.button', 'toggle');
                                                                 $('.modal_cost').modal('attach events', '.btn_cost', 'toggle');
-                                                                modal_cost
                                                             </script>
                                                         </div>
 
