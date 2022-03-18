@@ -10,7 +10,7 @@ class Flutter_container extends Cdms_controller {
 
     public function get_by_id() {
         $con_id = $this->request->getPost('con_id');
-        $obj_con = $this->m_con->get_by_id(1);
+        $obj_con = $this->m_con->get_by_id($con_id);
         echo json_encode($obj_con);
     }
 
