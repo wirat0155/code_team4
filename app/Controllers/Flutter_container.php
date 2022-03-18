@@ -7,4 +7,27 @@ class Flutter_container extends Cdms_controller {
         $arr_con = $this->m_con->get_all(3);
         return json_encode($arr_con);
     }
+
+    public function get_by_id() {
+        $con_id = $this->request->getPost('con_id');
+        $obj_con = $this->m_ser->get_by_id($con_id);
+        echo json_encode($obj_con);
+    }
+
+    public function insert() {
+        $obj = $this->request->getPost();
+        $obj["con_stac_id"] = '1'; // 1 = container status 'import'
+
+            $this->m_con->container_insert(
+                $obj["con_number"],
+                $obj["con_max_weight"],
+                $obj["con_tare_weight"],
+                $obj["con_net_weight"],
+                $obj["con_cube"],
+                $obj["con_size_id"],
+                $obj["con_cont_id"],
+                $obj["con_agn_id"],
+                $obj["con_stac_id"],
+            );
+    }
 }
