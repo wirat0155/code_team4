@@ -4,21 +4,21 @@ namespace App\Controllers;
 class Flutter_container extends Cdms_controller {
     public function get_all() {
         // 3 = get only status container is export 
-        $arr_con = $this->m_con->get_all(3);
+        $arr_con = $this->m_con->get_all(1);
         return json_encode($arr_con);
     }
 
     public function get_by_id() {
         $con_id = $this->request->getPost('con_id');
-        $obj_con = $this->m_ser->get_by_id($con_id);
+        $obj_con = $this->m_con->get_by_id(1);
         echo json_encode($obj_con);
     }
 
     public function insert() {
         $obj = $this->request->getPost();
-        $obj["con_stac_id"] = '1'; // 1 = container status 'import'
+        // $obj["con_stac_id"] = '1'; // 1 = container status 'import'
 
-            $this->m_con->container_insert(
+            $this->m_con->insert(
                 $obj["con_number"],
                 $obj["con_max_weight"],
                 $obj["con_tare_weight"],
@@ -29,5 +29,6 @@ class Flutter_container extends Cdms_controller {
                 $obj["con_agn_id"],
                 $obj["con_stac_id"],
             );
+            return json_encode("success");
     }
 }
