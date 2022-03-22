@@ -8,10 +8,10 @@ class Flutter_container extends Cdms_controller {
         return json_encode($arr_con);
     }
 
-    public function get_by_id() {
-        $con_id = $this->request->getPost('con_id');
+    public function get_by_id($con_id) {
+        // $con_id = $this->request->getVar('con_id');
         $obj_con = $this->m_con->get_by_id($con_id);
-        echo json_encode($obj_con);
+        return json_encode($obj_con);
     }
 
     public function insert() {
