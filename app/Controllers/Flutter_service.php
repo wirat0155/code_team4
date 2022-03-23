@@ -14,9 +14,7 @@ class Flutter_service extends Cdms_controller {
     }
 
     public function insert() {
-        $obj = $this->request->getPost();
-        $obj["ser_stac_id"] = '1'; // 1 = container status 'import'
-
+        $obj = json_decode(file_get_contents('php://input'), true);
             $this->m_ser->service_insert(
                 $obj["ser_departure_date"],
                 $obj["ser_car_id_in"],
@@ -32,6 +30,22 @@ class Flutter_service extends Cdms_controller {
                 $obj["ser_cus_id"]
             );
         $this->m_con->update_con_stac_id_by_con_id($obj["ser_con_id"], $obj["ser_stac_id"]);
+
+        $max_ser_id = $this->m_ser->get_max_id();
+
+        if($max_ser_id->max_ser_id < 100){
+            $format_invoice = "0" . $max_ser_id->max_ser_id;
+        }else if($max_ser_id->max_ser_id < 10){
+            $format_invoice = "0" . "0" . $max_ser_id->max_ser_id;
+        }else{
+            $format_invoice = $max_ser_id->max_ser_id;
+        }
+        $today = date("ymd");
+        $ser_receipt = "RE" . $today . $format_invoice;
+        $ser_invoice = "INV" . $today . $format_invoice;
+
+        $this->m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);
+
         return json_encode("success");
     }
 }
