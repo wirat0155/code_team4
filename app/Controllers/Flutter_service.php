@@ -7,8 +7,7 @@ class Flutter_service extends Cdms_controller {
         echo json_encode($arr_ser);
     }
 
-    public function get_by_id() {
-        $ser_id = $this->request->getPost('ser_id');
+    public function get_by_id($ser_id) {
         $obj_ser = $this->m_ser->get_by_id($ser_id);
         echo json_encode($obj_ser);
     }
