@@ -15,20 +15,23 @@ class Flutter_container extends Cdms_controller {
     }
 
     public function insert() {
-        $obj = $this->request->getPost();
-        // $obj["con_stac_id"] = '1'; // 1 = container status 'import'
+        $obj = json_decode(file_get_contents('php://input'), true);
+        $this->m_con->insert(
+            $obj["con_number"],
+            $obj["con_max_weight"],
+            $obj["con_tare_weight"],
+            $obj["con_net_weight"],
+            $obj["con_cube"],
+            $obj["con_size_id"],
+            $obj["con_cont_id"],
+            $obj["con_agn_id"],
+            $obj["con_stac_id"],
+        );
+        return json_encode('insert success');
+    }
 
-            $this->m_con->insert(
-                $obj["con_number"],
-                $obj["con_max_weight"],
-                $obj["con_tare_weight"],
-                $obj["con_net_weight"],
-                $obj["con_cube"],
-                $obj["con_size_id"],
-                $obj["con_cont_id"],
-                $obj["con_agn_id"],
-                $obj["con_stac_id"],
-            );
-            return json_encode("success");
+    public function delete($con_id = NULL) {
+        $this->m_con->delete($con_id);
+        return json_encode($con_id);
     }
 }
