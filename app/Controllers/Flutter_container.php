@@ -2,9 +2,11 @@
 namespace App\Controllers;
 
 class Flutter_container extends Cdms_controller {
-    public function get_all() {
+    public function get_all($choice) {
+        // choice value
+        // 1 = get all sort by con_id descending
         // 3 = get only status container is export 
-        $arr_con = $this->m_con->get_all(1);
+        $arr_con = $this->m_con->get_all($choice);
         return json_encode($arr_con);
     }
 
