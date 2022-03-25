@@ -2,11 +2,12 @@
 namespace App\Controllers;
 
 class Flutter_container extends Cdms_controller {
-    public function get_all($choice) {
+    public function get_all($choice, $con_id = NULL) {
         // choice value
         // 1 = get all sort by con_id descending
         // 3 = get only status container is export 
-        $arr_con = $this->m_con->get_all($choice);
+        // 4 = get only status container is export and specific container
+        $arr_con = $this->m_con->get_all($choice, $con_id);
         return json_encode($arr_con);
     }
 
@@ -29,6 +30,12 @@ class Flutter_container extends Cdms_controller {
             $obj["con_stac_id"],
         );
         return json_encode('insert success');
+    }
+
+    public function update() {
+        $obj = json_decode(file_get_contents('php://input'), true);
+        $this->m_con->update($obj["con_id"], $obj);
+        return json_encode('success');
     }
 
     public function delete($con_id = NULL) {

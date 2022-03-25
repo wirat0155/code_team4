@@ -20,7 +20,7 @@ class M_cdms_container extends Da_cdms_container {
     * @author   Wirat
     * @Create Date  2564-07-29
     */
-    public function get_all($type = 1) {
+    public function get_all($type = 1, $con_id = NULL) {
 
         // sort by con_id descending
         if ($type == 1) {
@@ -62,6 +62,20 @@ class M_cdms_container extends Da_cdms_container {
                     LEFT JOIN cdms_status_container
                     ON con_stac_id = stac_id
                     WHERE con_status = 1 AND con_stac_id IN (0, 4)
+                    ORDER BY CONVERT(con_number USING tis620) ASC" ;
+        }
+        else if ($type == 4) {
+            $sql = "SELECT * FROM $this->table
+                    LEFT JOIN cdms_size
+                    ON con_size_id = size_id
+                    LEFT JOIN cdms_container_type
+                    ON con_cont_id = cont_id
+                    LEFT JOIN cdms_agent
+                    ON con_agn_id = agn_id
+                    LEFT JOIN cdms_status_container
+                    ON con_stac_id = stac_id
+                    WHERE con_id = '$con_id' OR
+                    con_status = 1 AND con_stac_id IN (0, 4)
                     ORDER BY CONVERT(con_number USING tis620) ASC" ;
         }
         return $this->db->query($sql)->getResult();
@@ -106,6 +120,7 @@ class M_cdms_container extends Da_cdms_container {
                 LEFT JOIN cdms_size ON size_id = con_size_id
                 LEFT JOIN cdms_status_container ON con_stac_id = stac_id
                 LEFT JOIN cdms_container_type ON con_cont_id = cont_id
+                LEFT JOIN cdms_agent ON con_agn_id = agn_id
                 WHERE con_id = '$con_id'";
         return $this->db->query($sql)->getRow();
     }
