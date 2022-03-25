@@ -53,6 +53,13 @@ class Flutter_service extends Cdms_controller {
         return json_encode("success");
     }
 
+    public function update() {
+        $obj = json_decode(file_get_contents('php://input'), true);
+        $this->m_ser->update($obj['ser_id'], $obj);
+        return json_encode('success');
+    }
+
+
     public function delete($ser_id) {
         $obj_service = $this->m_ser->where('ser_id', $ser_id)->first();
         $this->m_ser->delete($ser_id);
