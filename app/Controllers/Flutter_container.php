@@ -32,7 +32,11 @@ class Flutter_container extends Cdms_controller {
     }
 
     public function delete($con_id = NULL) {
-        $this->m_con->delete($con_id);
-        return json_encode($con_id);
+        $obj_con = $this->m_con->where('con_id', $con_id)->first();
+        if ($obj_con['con_stac_id'] == '4') {
+            $this->m_con->delete($con_id);
+            return json_encode('success');
+        }
+        return json_encode('fail');
     }
 }

@@ -14,20 +14,25 @@ class Flutter_service extends Cdms_controller {
 
     public function insert() {
         $obj = json_decode(file_get_contents('php://input'), true);
-            $this->m_ser->service_insert(
-                $obj["ser_departure_date"],
-                $obj["ser_car_id_in"],
-                $obj["ser_arrivals_date"],
-                $obj["ser_dri_id_in"],
-                $obj["ser_dri_id_out"],
-                $obj["ser_car_id_out"],
-                $obj["ser_arrivals_location"],
-                $obj["ser_departure_location"],
-                $obj["ser_weight"],
-                $obj["ser_con_id"],
-                $obj["ser_stac_id"],
-                $obj["ser_cus_id"]
-            );
+        $con = [
+            "con_stac_id" => $obj["ser_stac_id"]
+        ];
+
+        $this->m_con->update($obj['ser_con_id'], $con);
+        $this->m_ser->service_insert(
+            $obj["ser_departure_date"],
+            $obj["ser_car_id_in"],
+            $obj["ser_arrivals_date"],
+            $obj["ser_dri_id_in"],
+            $obj["ser_dri_id_out"],
+            $obj["ser_car_id_out"],
+            $obj["ser_arrivals_location"],
+            $obj["ser_departure_location"],
+            $obj["ser_weight"],
+            $obj["ser_con_id"],
+            $obj["ser_stac_id"],
+            $obj["ser_cus_id"]
+        );
         $this->m_con->update_con_stac_id_by_con_id($obj["ser_con_id"], $obj["ser_stac_id"]);
 
         $max_ser_id = $this->m_ser->get_max_id();
@@ -46,5 +51,16 @@ class Flutter_service extends Cdms_controller {
         $this->m_ser->service_update_invoice($max_ser_id->max_ser_id, $ser_receipt, $ser_invoice);
 
         return json_encode("success");
+    }
+
+    public function delete($ser_id) {
+        $obj_service = $this->m_ser->where('ser_id', $ser_id)->first();
+        $this->m_ser->delete($ser_id);
+        
+        $obj_con = [
+            'con_stac_id' => '4'
+        ];
+        $this->m_con->update($obj_service['ser_con_id'], $obj_con);
+        return json_encode('success');
     }
 }
