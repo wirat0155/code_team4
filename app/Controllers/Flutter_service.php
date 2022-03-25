@@ -55,8 +55,18 @@ class Flutter_service extends Cdms_controller {
 
     public function update() {
         $obj = json_decode(file_get_contents('php://input'), true);
+        $obj_service = $this->m_ser->where('ser_id', $obj['ser_id'])->first();
+
+        $obj_container = [
+            'con_stac_id' => '4'
+        ];
+        $obj_new_container = [
+            'con_stac_id' => '1'
+        ];
+        $this->m_con->update($obj_service['ser_con_id'], $obj_container);
+        $this->m_con->update($obj['ser_con_id'], $obj_new_container);
         $this->m_ser->update($obj['ser_id'], $obj);
-        return json_encode('success');
+        return json_encode($obj['ser_con_id']);
     }
 
 
