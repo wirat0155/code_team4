@@ -22,6 +22,7 @@ use App\Models\M_cdms_customer;
 use App\Models\M_cdms_service;
 use App\Models\M_cdms_status_container_log;
 use App\Models\M_cdms_bank;
+use App\Models\M_cdms_user;
 
 /*
 * Cdms_controller
@@ -58,6 +59,7 @@ class Cdms_controller extends Controller
 	protected $m_chl;
 	protected $m_cosd;
 	protected $m_bnk;
+	protected $m_user;
 
 	/**
 	 * Constructor.
@@ -103,6 +105,7 @@ class Cdms_controller extends Controller
 		$this->m_cosd = new M_cdms_cost_detail();
 		$this->m_bnk = new M_cdms_bank();
 		$this->m_chl = new M_cdms_change_container_log();
+		$this->m_user = new M_cdms_user();
     }
 
 	/*
